@@ -10,34 +10,31 @@ body{
 
 .topnav {
     text-align: center;
+    
     overflow: hidden;
     background-color: #4b4b4b;
-    height: 55px;
+    height: 47px;
 }
 
 .topnav a {
-    float: center;
-    margin: 5px;
-    padding: 50px;
+    padding: 25px;
     color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
-    font-style: bold;
+    font-weight: bold; /* Use font-weight instead of font-style */
     font-size: 20px;
-    height: 55px;
+    line-height: 47px;
 }
 
 .topnav a:hover {
   background-color: #ddd;
   color: black;
-  height: 55px;
+  height: 50px;
 }
 
 .topnav a.active {
   background-color: #FF9001;
   color: white;
-  height: 55px;
+  height: 50px;
 }
 
 .heading{
