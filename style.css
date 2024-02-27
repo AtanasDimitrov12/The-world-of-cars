@@ -2,10 +2,80 @@
 {
 margin: 0;
 padding: 0;
-font-family: Arial, Helvetica, sans-serif;
 }
 body{
     background-color: #c4c4c4;
+}
+.roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.roboto-thin-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
 }
 
 .topnav {
@@ -83,6 +153,45 @@ body{
     padding: 10px;
     border: 1px solid #000;
     width: 600px;
+  }
+
+.second {
+  position: relative; /* Set the container as the reference for absolute positioning */
+  }
+
+  .rectangle2 {
+    position: relative;
+    left: 175px;
+    top: 420px;
+    width: 400px;
+    height: 100px;
+    background-color: #a8a8a8; /* Background color of the rectangle */
+    border: 2px solid #000; /* Border of the rectangle */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 1;
+  }
+
+  .bmw {
+    position: absolute; /* Ensure image is a block-level element display: block;*/
+    margin-top: 150px; /* Add margin to create space between the rectangle and the image */
+    width: 670px;
+    height: 380px;
+    top:300px;
+    left: 30px;
+    object-fit: cover; /* Ensure the image covers its container */
+  }
+  
+  .textbox2 {
+    position: absolute;
+    top: 500px; /* Adjust the top position as needed */
+    left: 700px; /* Adjust the right position as needed */
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #000;
+    width: 600px;
+    z-index: 1;
   }
   
   
