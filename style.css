@@ -254,6 +254,7 @@ body{
   
   /* style the submit button */
   input[type=submit] {
+    width: 100%;
     background-color: #04AA6D;
     color: white;
     cursor: pointer;
@@ -265,7 +266,7 @@ body{
   
   /* Two-column layout */
   .col {
-    float: left;
+    float: center;
     width: 100%;
     margin: auto;
     padding: 0 50px;
