@@ -156,21 +156,24 @@ body{
 }
 
 .topnav .search-container {
+  position: relative;
   float: right;
   box-sizing: border-box;
+  right: 30px;
 }
 
 .topnav input[type=text] {
-  padding: 10px; /* Adjusted padding for better appearance */
-  margin-top: 8px;
+  padding: 5px; /* Adjusted padding for better appearance */
+  margin-top: 4px;
   font-size: 17px;
   border: none;
   border-radius: 5px; /* Rounded corners for better aesthetics */
   box-sizing: border-box;
+  width: fit-content;
 }
 
 .topnav .search-container button {
-  padding: 10px; /* Adjusted padding for better appearance */
+  padding: 5px; /* Adjusted padding for better appearance */
   margin-top: 8px;
   background: #ddd;
   font-size: 17px;
