@@ -113,7 +113,7 @@ body {
     .dropbtn {
     position:relative;
     display:inline-block;
-    top:-2px;
+    top:0px;
     left: 0px;
 
     }
@@ -612,7 +612,7 @@ button {
 }
 
 .discussion {
-    position: relative; /* Add relative position to the discussion item */
+    position: relative; 
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -627,19 +627,22 @@ button {
 .reply-form {
     margin-top: 10px;
 }
+.reply-form button {
+    background-color: #ff9001;
+}
 
     .reply-form textarea {
-        width: calc(100% - 20px); /* Adjusted width for the textarea */
+        width: calc(100% - 20px);
         margin-bottom: 10px;
     }
 
 .end-discussion-button,
 .reply-button {
-    position: absolute; /* Position the buttons absolutely */
-    bottom: 5px; /* Adjust the distance from the bottom */
-    right: 5px; /* Adjust the distance from the right */
+    position: absolute; 
+    bottom: 5px; 
+    right: 5px;
     padding: 10px 20px;
-    background-color: #FF9001; /* Change button color */
+    background-color: #FF9001; 
     color: #fff;
     border: none;
     border-radius: 5px;
