@@ -113,7 +113,8 @@ body {
     .dropbtn {
     position:relative;
     display:inline-block;
-    top:-2px;
+    top:0px;
+    left: 0px;
 
     }
     .topnav a, .dropdown .dropbtn {
@@ -131,6 +132,7 @@ body {
     color: black !important;
     position: absolute;
     display: inline-table;
+    top: -3px;
 }
 
 /* Dropdown content */
@@ -568,7 +570,84 @@ button {
     margin-top: 20px;
 }
 
+.containerForum {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
+.discussion-form {
+    margin-bottom: 20px;
+}
+
+    .discussion-form input[type="text"],
+    .discussion-form select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .discussion-form textarea {
+        width: calc(100% - 22px); /* Adjusted width for the textarea */
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .discussion-form button {
+        padding: 10px 20px;
+        background-color: #FF9001; /* Change button color */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+.discussion-list {
+    list-style: none;
+    padding: 0;
+}
+
+.discussion {
+    position: relative; 
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+    .discussion h2 {
+        margin-top: 0;
+    }
+
+.reply-form {
+    margin-top: 10px;
+}
+.reply-form button {
+    background-color: #ff9001;
+}
+
+    .reply-form textarea {
+        width: calc(100% - 20px);
+        margin-bottom: 10px;
+    }
+
+.end-discussion-button,
+.reply-button {
+    position: absolute; 
+    bottom: 5px; 
+    right: 5px;
+    padding: 10px 20px;
+    background-color: #FF9001; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
   
   
