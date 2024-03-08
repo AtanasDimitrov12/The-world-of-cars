@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Asus ROG\\Source\\Repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\TheCarApp.csproj": {}
+    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\TheCarApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Asus ROG\\Source\\Repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\TheCarApp.csproj": {
+    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\TheCarApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus ROG\\Source\\Repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\TheCarApp.csproj",
+        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\TheCarApp.csproj",
         "projectName": "TheCarApp",
-        "projectPath": "C:\\Users\\Asus ROG\\Source\\Repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\TheCarApp.csproj",
+        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\TheCarApp.csproj",
         "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus ROG\\Source\\Repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\obj\\",
+        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
