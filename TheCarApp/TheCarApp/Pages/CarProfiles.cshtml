@@ -1,35 +1,44 @@
 ﻿@page
 @model TheCarApp.Pages.CarProfilesModel
+@using TheCarApp.Models
 @{
     ViewData["Title"] = "Car Profiles";
 }
 
 <div class="containerFilterCar">
-        <h1>Car Information</h1>
-        <div class="select-box">
-            <label for="brand">Select Brand:</label>
-            <select id="brand">
-                <option value="">--Select Brand--</option>
-                <option value="toyota">Toyota</option>
-                <option value="honda">Honda</option>
-                <option value="ford">Ford</option>
-                <!-- Add more options as needed -->
-            </select>
-        </div>
-        <div class="select-box">
-            <label for="model">Select Model:</label>
-            <select id="model" disabled>
-                <option value="">--Select Model--</option>
-                <!-- Options will be populated dynamically using JavaScript -->
-            </select>
-        </div>
-        <div class="select-box">
-            <label for="year">Select Year:</label>
-            <select id="year" disabled>
-                <option value="">--Select Year--</option>
-                <!-- Options will be populated dynamically using JavaScript -->
-            </select>
-        </div>
-        <button id="get-info" disabled>Get Car Information</button>
-        <div id="car-info"></div>
+    <h1>Car Information</h1>
+    <div class="select-box">
+        <label for="brand">Select Brand:</label>
+        <select id="brand">
+            <option value="">--Select Brand--</option>
+            @foreach (var carBrand in Enum.GetValues(typeof(Brands)))
+            {
+                    <option value="@((int)carBrand)">@carBrand</option>
+            }
+        </select>
     </div>
+    <div class="select-box">
+        <label for="model">Select Model:</label>
+        <select id="model" disabled>
+            <option value="">--Select Model--</option>
+            <!-- Options will be populated dynamically using JavaScript -->
+        </select>
+    </div>
+    <div class="select-box">
+        <label for="year">Select Year:</label>
+        <select id="year" disabled>
+            <option value="">--Select Year--</option>
+            <!-- Options will be populated dynamically using JavaScript -->
+        </select>
+    </div>
+    <button id="get-info" disabled>Get Car Information</button>
+    <div id="car-info"></div>
+</div>
+
+@section Scripts {
+        <script src="~/js/BrandsModels.js"></script>
+        <script>
+           
+        </script>
+}
+

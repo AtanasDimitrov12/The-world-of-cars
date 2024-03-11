@@ -1,5 +1,6 @@
 ﻿@page
 @model TheCarApp.Pages.ForumPageModel
+@using TheCarApp.Models
 @{
     ViewData["Title"] = "Forum Page";
 }
@@ -7,16 +8,17 @@
   <div class="containerForum">
         <h1>Forum</h1>
         
-        <!-- Discussion Form -->
+        
         <div class="discussion-form">
             <form id="discussionForm">
                 <input type="text" id="discussionTitle" placeholder="Enter discussion title" required>
                 <select id="topic" required>
                     <option value="" disabled selected>Select topic</option>
-                    <option value="Technology">General Question</option>
-                    <option value="Sports">Engines</option>
-                    <option value="Politics">Brand</option>
-                    <!-- Add more topics as needed -->
+                @foreach (var topic in Enum.GetValues(typeof(CarTopics)))
+                {
+                         <option value="@((int)topic)">@topic</option>
+                }
+                
                 </select>
                 <textarea id="question" placeholder="Ask your question" required></textarea>
                 <button type="submit">Create Discussion</button>
