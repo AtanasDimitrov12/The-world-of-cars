@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace Entity_Layer
 {
-    public class Member
+    public abstract class Member
     {
-        private string name { get; set; }
+        private string email { get; set; }
         private string password { get; set; }
 
         public Member (string name, string password)
         {
-            this.name = name;
+            this.email = name;
             this.password = password;
         }
+
+        public abstract string ToString();
     }
 }
