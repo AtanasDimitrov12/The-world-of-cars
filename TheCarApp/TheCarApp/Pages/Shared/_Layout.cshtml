@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>@ViewData["Title"] - TheCarApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -14,39 +15,89 @@
 </head>
 <body>
     <header>
-            <div class="topnav">
-                <a href="/index">Home</a> @* class="active" *@ 
-                <a href="/CarProfiles">Car profiles</a>
-                <a href="/ForumPage">Forums</a>
-                <a href="/MarketPlace">Marketplace</a>
-                <div class="dropdown">
-                    <button class="dropbtn">Register</button>
-                    <div class="dropdown-content">
-                    <a href="/LogInPage">LogIn</a>
-                    <a href="/SignUpPage">SignUp</a>
-                    </div>
-                </div>
-                <div class="search-container">
-                    <form action="/action_page.php">
-                        <input type="text" placeholder="Search..." name="search">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </form>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="/Index"><h2>The World of Cars</h2></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Index">
+                                Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/CarNews">Car News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/CarProfiles">Car Profiles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ForumPage">Forums</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/MarketPlace">Car Market</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false">Register</a>
+
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/LogInPage">Log In</a>
+                                <a class="dropdown-item" href="/SignUpPage">Sign Up</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </nav>
     </header>
+
+ 
+
+
+    
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    @* <footer id="main-footer" class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2024 - TheCarApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
-    </div>
-    </footer> *@
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>About Us</h5>
+                    <p>
+                        The website of Cars.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Contact Us</h5>
+                    <p>Email: info@example.com</p>
+                    <p>Phone: +1 234 567 890</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var docHeight = $(window).height();
+            var footerHeight = $('#footer').height();
+            var footerTop = $('#footer') position().top + footerHeight;
+            if
+                (footerTop < docHeight)
+                $('#footer').css ('margin-top', 10 + (docHeight - footerTop) + 'px');
+        });
+    </script>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

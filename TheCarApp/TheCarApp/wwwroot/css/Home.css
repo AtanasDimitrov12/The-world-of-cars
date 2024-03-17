@@ -1,12 +1,10 @@
 * {
-    color: white;
-    left: 0;
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-color: black;
+    background-color: #c4c4c4;
 }
 
 .roboto-thin {
@@ -98,7 +96,6 @@ p {
 
 a {
     text-decoration: none !important;
-    color: white;
 }
 
 ul {
@@ -114,11 +111,6 @@ h4,
 h5,
 h6 {
     margin: 0px;
-}
-
-h1 {
-    font-size:60px;
-    font-weight: bold;
 }
 
 header {
@@ -253,39 +245,21 @@ header {
         top: 0;
         left: 0;
         object-fit: cover;
-        background-color: rgba(0, 0, 0, 0.5);
     }
 
     .img-fill::before {
         position: absolute;
+        position:center;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0,5); /* Adjust the opacity as needed */
+        background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
     }
 
-.backgroundImage {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0,5)
+.item-1 .img-fill {
+    background-image: url(/pictures/homepage.jpg);
 }
-
-    .backgroundImage::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5); /* Adjust the opacity (last value) as needed */
-        z-index: 1;
-    }
-
 
 .text-content {
     position: absolute;
@@ -297,48 +271,36 @@ header {
     z-index: 2;
 }
 
+    .text-content h6,
+    .text-content h4,
+    .text-content p {
+        margin: 0;
+    }
+
+    .text-content h4 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
     .text-content p {
         font-size: 16px;
         line-height: 1.5;
     }
-.button {
-    background-color: #04AA6D; 
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    -webkit-transition-duration: 0.4s; 
-    transition-duration: 0.4s;
-}
 
-
-
-.button2:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-    color: black;
-}
 
 
 
 .footer {
     position: fixed;
-    left: 0;
     bottom: 0;
     width: 100%;
     background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    z-index: 999;
+    color: #fff;
+    padding: 20px 0;
 }
 
 body {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 .footer h5 {
