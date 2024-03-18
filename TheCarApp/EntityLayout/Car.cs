@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace EntityLayout
 {
-    public abstract class Car
+    public class Car
     {
-        private CarBrands brand { get; set; }
+        private string brand { get; set; }
         private string Model { get; set; }
         private int FirstRegistration { get; set; }
         private int Mileage { get; set; }
@@ -23,7 +23,7 @@ namespace EntityLayout
         private decimal Price { get; set; }
         //private Pictures 
 
-        protected Car(CarBrands brand, string model, int Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, decimal price)
+        protected Car(string brand, string model, int Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, decimal price)
         {
             this.brand = brand;
             Model = model;
@@ -37,7 +37,7 @@ namespace EntityLayout
             Price = price;
         }
 
-        public CarBrands GetBrand()
+        public string GetBrand()
         {
             return brand;
         }
