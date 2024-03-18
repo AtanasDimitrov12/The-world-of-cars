@@ -6,6 +6,9 @@
 }
 
 body {
+    display: flex;
+    flex-direction:column;
+    min-height: 90vh;
     background-color: black;
 }
 
@@ -323,11 +326,12 @@ header {
     color: black;
 }
 
-
+main {
+    flex-grow:1;
+}
 
 .footer {
     position: fixed;
-    left: 0;
     bottom: 0;
     width: 100%;
     background-color: #333;
@@ -337,11 +341,13 @@ header {
     z-index: 999;
 }
 
+
 body {
     margin-bottom: 60px;
 }
 
 .footer h5 {
+    color: white;
     margin-bottom: 10px;
 }
 

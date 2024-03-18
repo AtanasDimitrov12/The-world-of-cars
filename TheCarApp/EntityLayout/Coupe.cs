@@ -1,7 +1,9 @@
 ﻿using EntityLayout;
 using EntityLayout.Enums;
+using Microsoft.VisualBasic.FileIO;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +15,8 @@ namespace Entity_Layer
         private int NrOfSeats;
         private bool IsComfortable;
 
-        public Coupe(CarBrands brand, string model, int startYear, int endYear, string engineType, int horsePower, int maxSpeed, float acceleration, int nrOfSeats)
-            : base(brand, model, startYear, endYear, engineType, horsePower, maxSpeed, acceleration)
+        public Coupe(CarBrands brand, string model, int Year, int Mileage, string FuelType, int Enginesize, int horsePower, string GearBox, string color, decimal price, int nrOfSeats)
+            : base(brand, model, Year, Mileage, FuelType, Enginesize, horsePower, GearBox, color, price)
         {
             this.NrOfSeats = nrOfSeats;
         }

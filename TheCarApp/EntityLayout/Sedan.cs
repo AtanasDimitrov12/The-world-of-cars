@@ -13,8 +13,8 @@ namespace Entity_Layer
         private int NrOfSeats;
         private bool IsComfortable;
 
-        public Sedan(CarBrands brand, string model, int startYear, int endYear, string engineType, int horsePower, int maxSpeed, float acceleration, int nrOfSeats)
-            : base(brand, model, startYear, endYear, engineType, horsePower, maxSpeed, acceleration)
+        public Sedan(CarBrands brand, string model, int Year, int Mileage, string FuelType, int Enginesize, int horsePower, string GearBox, string color, decimal price, int nrOfSeats)
+            : base(brand, model, Year, Mileage, FuelType, Enginesize, horsePower, GearBox, color, price)
         {
             NrOfSeats = nrOfSeats;
         }

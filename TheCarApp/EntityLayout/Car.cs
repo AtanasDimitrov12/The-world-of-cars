@@ -11,26 +11,30 @@ namespace EntityLayout
 {
     public abstract class Car
     {
-        private CarBrands brand;
-        private string Model;
-        private int StartYear;
-        private int EndYear;
-        private string EngineType;
-        private int HorsePower;
-        private int MaxSpeed;
-        private float Acceleration;
+        private CarBrands brand { get; set; }
+        private string Model { get; set; }
+        private int FirstRegistration { get; set; }
+        private int Mileage { get; set; }
+        private string Fuel { get; set; }
+        private int EngineSize { get; set; }
+        private int HorsePower { get; set; }
+        private string Gearbox { get; set; }
+        private string Color { get; set; }
+        private decimal Price { get; set; }
         //private Pictures 
 
-        protected Car(CarBrands brands, string model, int startYear, int endYear, string engineType, int horsePower, int maxSpeed, float acceleration)
+        protected Car(CarBrands brand, string model, int Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, decimal price)
         {
-            this.brand = brands;
+            this.brand = brand;
             Model = model;
-            StartYear = startYear;
-            EndYear = endYear;
-            EngineType = engineType;
+            FirstRegistration = Year;
+            this.Mileage = Mileage;
+            Fuel = FuelType;
+            EngineSize = Enginesize;
             HorsePower = horsePower;
-            MaxSpeed = maxSpeed;
-            Acceleration = acceleration;
+            Gearbox = GearBox;
+            Color = color;
+            Price = price;
         }
 
         public CarBrands GetBrand()
@@ -43,19 +47,24 @@ namespace EntityLayout
             return Model;
         }
 
-        public int GetStartYear()
+        public int FirstReg()
         {
-            return StartYear;
+            return FirstRegistration;
         }
 
-        public int GetEndYear()
+        public int GetMileage()
         {
-            return EndYear;
+            return Mileage;
+        }
+        
+        public int GetEngineSize()
+        {
+            return EngineSize;
         }
 
-        public string GetEngineType()
+        public string GetFuelType()
         {
-            return EngineType;
+            return Fuel;
         }
 
         public int GetHorsePower()
@@ -63,14 +72,19 @@ namespace EntityLayout
             return HorsePower;
         }
 
-        public int GetMaxSpeed()
+        public string GetColor()
         {
-            return MaxSpeed;
+            return Color;
         }
 
-        public float GetAcceleration()
+        public string GetGearBox()
         {
-            return Acceleration;
+            return Gearbox;
+        }
+
+        public decimal GetPrice()
+        {
+            return Price;
         }
 
         //public List<string> GetPictures()
