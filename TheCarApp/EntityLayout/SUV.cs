@@ -15,8 +15,8 @@ namespace Entity_Layer
         private int WheelDrive;
         private bool IsAllWheelDrive;
 
-        public SUV(CarBrands brand, string model, int startYear, int endYear, string engineType, int horsePower, int maxSpeed, float acceleration, int nrOfSeats, int wheelDrive)
-            : base(brand, model, startYear, endYear, engineType, horsePower, maxSpeed, acceleration)
+        public SUV(CarBrands brand, string model, int Year, int Mileage, string FuelType, int Enginesize, int horsePower, string GearBox, string color, decimal price, int nrOfSeats, int wheelDrive)
+            : base(brand, model, Year, Mileage, FuelType, Enginesize, horsePower, GearBox, color, price)
         {
             this.NrOfSeats = nrOfSeats;
             this.WheelDrive = wheelDrive;

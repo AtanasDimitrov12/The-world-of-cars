@@ -1,42 +1,55 @@
 * {
-    color: white;
+    color:black;
     left: 0;
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 body {
-    background-color: white;
+    color: black; /* Set default text color */
+    background-color: white; /* Set default background color */
+    font-family: 'Poppins', sans-serif; /* Set default font family */
 }
+
+.container {
+    margin: 0 auto; /* Center the container horizontally */
+    max-width: 1200px; /* Limit the maximum width of the container */
+    padding: 0px; /* Add padding to the container sides */
+    position: relative; /* Ensure the container is positioned relative to its parent */
+    z-index: 2; /* Set z-index to ensure visibility */
+}
+
+/* Page Heading Styles */
 .page-heading {
+
+    position:relative;
     text-align: center;
-    background-image: url(/pictures/Marketplace.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 230px 0px 150px 0px;
-    color: #fff;
-    position: relative;
+    background-image: url(/pictures/rentCar.jpg); /* Set background image */
+    /* Center the background image */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+    background-size: cover; /* Ensure the background image covers the entire container */
+    padding: 230px 0; /* Adjust padding as needed */
+    color: white !important; /* Set text color */
+    z-index:4; /* Ensure positioning relative to its parent */
 }
 
-    .page-heading .container {
-        position: relative;
-        z-index: 2;
-    }
-
+    /* Overlay Styles */
     .page-heading:before {
+        color: white !important;
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+        z-index: 1; /* Ensure overlay is behind text */
     }
 
+    /* Adjustments for Text Content */
     .page-heading h1 {
-        text-transform: capitalize;
+        color: white !important;
         font-size: 36px;
         font-weight: 700;
         letter-spacing: 2px;
@@ -47,10 +60,10 @@ body {
         font-size: 15px;
         text-transform: uppercase;
         letter-spacing: 1px;
-        color: #fff;
         display: block;
     }
 
+/* Additional Styles for Other Sections */
 .services {
     margin-top: 140px;
 }
@@ -191,15 +204,18 @@ body {
             text-shadow: none;
             cursor: pointer;
         }
+.filled-button {
+    color:black;
+}
 
-            .callback-form .contact-form button.border-button:hover {
-                background-color: #fff;
-                color: #a4c639;
-            }
+.callback-form .contact-form button.border-button:hover {
+    background-color: #fff;
+    color: #a4c639;
+}
 
 .contact-us .contact-form button.filled-button {
     background-color: #a4c639;
-    color: #fff;
+    color: black;
     border: none;
     font-size: 13px;
     text-transform: uppercase;
@@ -216,13 +232,9 @@ body {
 
     .contact-us .contact-form button.filled-button:hover {
         background-color: #fff;
-        color: #a4c639;
+        color: black;
     }
-
-
-
 /* Partners Style */
-
 .contact-partners {
     margin-top: -8px !important;
 }

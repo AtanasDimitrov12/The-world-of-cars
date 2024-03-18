@@ -1,0 +1,11 @@
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\EntityLayout\obj\Debug\net8.0\Entity Layer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\EntityLayout\obj\Debug\net8.0\Entity Layer.AssemblyInfoInputs.cache
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\EntityLayout\obj\Debug\net8.0\Entity Layer.AssemblyInfo.cs
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\EntityLayout\obj\Debug\net8.0\Entity Layer.csproj.CoreCompileInputs.cache
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\EntityLayout\bin\Debug\net8.0\Entity Layer.deps.json
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\EntityLayout\bin\Debug\net8.0\Entity Layer.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\EntityLayout\bin\Debug\net8.0\Entity Layer.pdb
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\EntityLayout\obj\Debug\net8.0\Entity Layer.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\EntityLayout\obj\Debug\net8.0\refint\Entity Layer.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\EntityLayout\obj\Debug\net8.0\Entity Layer.pdb
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\EntityLayout\obj\Debug\net8.0\ref\Entity Layer.dll
