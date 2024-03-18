@@ -2,7 +2,7 @@
 @model TheCarApp.Pages.MarketPlaceModel
 @{
     ViewData["Title"] = "Car Market";
-        <link rel="stylesheet" href="~/css/market.css" asp-append-version="true" />
+            <link rel="stylesheet" href="~/css/market.css" asp-append-version="true" />
 }
 <div class="container">
     <div class="page-heading header-text">
@@ -19,7 +19,7 @@
     <div class="container">
         <form action="#" id="contact">
             <div class="row">
-                
+
             </div>
 
             <div class="col-sm-4 offset-sm-4">
@@ -36,23 +36,25 @@
     <div class="row"> 
                 @foreach (var car in Model.Cars)
                 {
-                <div class="col-md-4">
-                    <div class="service-item">
-                        <img src="/pictures/BMW2.jpg" alt="@car.GetBrand()">
-                        <div class="down-content">
-                            <h4>@car.GetBrand() @car.GetModel()</h4>
-                            <div style="margin-bottom:10px;">
-                                <span>@car.GetPrice()</span>
+                    <div class="col-md-4">
+                        <div class="service-item">
+                            <img src="/pictures/BMW2.jpg" alt="@car.GetBrand()">
+                            <div class="down-content">
+                                <h4>@car.GetBrand() @car.GetModel()</h4>
+                                <div style="margin-bottom:10px;">
+                                    <span>@car.GetPrice()</span>
+                                </div>
+
+
+                                <p>
+                                        <i class="fa fa-dashboard"></i> @car.GetMileage() km &nbsp;&nbsp;&nbsp;
+                                    <i class="fa fa-cube"></i> @car.GetEngineSize() cc &nbsp;&nbsp;&nbsp;
+                                        <i class="fa fa-cog"></i> @car.GetGearBox() &nbsp;&nbsp;&nbsp;
+                                </p>
+                                <a href="#" class="filled-button">View More</a>
                             </div>
-                            <p>
-                                    <i class="fa fa-dashboard"></i> @car.GetMileage() km &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cube"></i> @car.GetEngineSize() cc &nbsp;&nbsp;&nbsp;
-                                    <i class="fa fa-cog"></i> @car.GetGearBox() &nbsp;&nbsp;&nbsp;
-                            </p>
-                            <a href="#" class="filled-button">View More</a>
                         </div>
                     </div>
-                </div>
                 }
     </div>
 </div> 
