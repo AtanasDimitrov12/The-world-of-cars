@@ -2,6 +2,7 @@
 @model TheCarApp.Pages.SignUpPageModel
 @{
     ViewData["Title"] = "Sign Up";
+    <link rel="stylesheet" href="~/css/Register.css" asp-append-version="true" />
 }
 
 <form action="/action_page.php">
@@ -23,7 +24,7 @@
             <br>
             <button type="submit" class="registerbtn">Register</button>
             <br>
-            <p>Already have an account? <a href="LogInPage.html">Log in</a>.</p>
+            <p>Already have an account? <a href="/LogInPage">Log in</a>.</p>
           </div>
 
         </form>

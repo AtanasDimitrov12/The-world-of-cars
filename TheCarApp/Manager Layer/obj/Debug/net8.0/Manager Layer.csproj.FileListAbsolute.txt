@@ -13,3 +13,18 @@ C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Manager Layer\obj\Debug\
 C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Manager Layer\obj\Debug\net8.0\refint\Manager Layer.dll
 C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Manager Layer\obj\Debug\net8.0\Manager Layer.pdb
 C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Manager Layer\obj\Debug\net8.0\ref\Manager Layer.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\bin\Debug\net8.0\Manager Layer.deps.json
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\bin\Debug\net8.0\Manager Layer.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\bin\Debug\net8.0\Manager Layer.pdb
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\bin\Debug\net8.0\Entity Layer.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\bin\Debug\net8.0\Entity Layer.pdb
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\obj\Debug\net8.0\Manager Layer.csproj.AssemblyReference.cache
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\obj\Debug\net8.0\Manager Layer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\obj\Debug\net8.0\Manager Layer.AssemblyInfoInputs.cache
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\obj\Debug\net8.0\Manager Layer.AssemblyInfo.cs
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\obj\Debug\net8.0\Manager Layer.csproj.CoreCompileInputs.cache
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\obj\Debug\net8.0\Manager Layer.csproj.CopyComplete
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\obj\Debug\net8.0\Manager Layer.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\obj\Debug\net8.0\refint\Manager Layer.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\obj\Debug\net8.0\Manager Layer.pdb
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Manager Layer\obj\Debug\net8.0\ref\Manager Layer.dll
