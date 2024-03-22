@@ -1,0 +1,12 @@
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\bin\Debug\DesktopApp.exe.config
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\bin\Debug\DesktopApp.exe
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\bin\Debug\DesktopApp.pdb
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.csproj.AssemblyReference.cache
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.Properties.Resources.resources
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.csproj.GenerateResource.cache
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.csproj.CoreCompileInputs.cache
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.exe
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.pdb
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.AdminInfoUC.resources
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.ControlPage.resources
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.CarNewsUC.resources
