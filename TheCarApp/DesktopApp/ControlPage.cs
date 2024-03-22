@@ -24,12 +24,10 @@ namespace DesktopApp
             usercontrols = new List<UserControl> { adminInfoUC, carNewsUC };
 
 
-
-            /*panel2.Dock = DockStyle.Fill;*/ // This makes the panel fill the entire form.
             
-            this.Controls.Add(panel2); // Add the panel to the form's controls.
+            this.Controls.Add(panel2); 
 
-            AddUC(); // Now that everything is initialized, add the user controls.
+            AddUC(); 
         }
 
 
@@ -39,7 +37,7 @@ namespace DesktopApp
             {
                 control.Dock = DockStyle.Fill;
                 panel2.Controls.Add(control);
-                control.Hide(); // Hide controls initially here, instead of in the constructor.
+                control.Hide(); 
             }
         }
 
