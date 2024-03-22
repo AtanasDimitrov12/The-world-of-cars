@@ -23,7 +23,7 @@ namespace EntityLayout
         private decimal Price { get; set; }
         //private Pictures 
 
-        protected Car(string brand, string model, int Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, decimal price)
+        public Car(string brand, string model, int Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, decimal price)
         {
             this.brand = brand;
             Model = model;
