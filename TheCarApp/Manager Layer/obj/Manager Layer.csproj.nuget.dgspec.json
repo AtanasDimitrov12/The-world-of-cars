@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Manager Layer\\Manager Layer.csproj": {}
+    "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\Manager Layer\\Manager Layer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
+    "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj",
+        "projectUniqueName": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj",
         "projectName": "Entity Layer",
-        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj",
-        "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\obj\\",
+        "projectPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj",
+        "packagesPath": "C:\\Users\\klond\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\klond\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,17 +59,17 @@
         }
       }
     },
-    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Manager Layer\\Manager Layer.csproj": {
+    "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\Manager Layer\\Manager Layer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Manager Layer\\Manager Layer.csproj",
+        "projectUniqueName": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\Manager Layer\\Manager Layer.csproj",
         "projectName": "Manager Layer",
-        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Manager Layer\\Manager Layer.csproj",
-        "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Manager Layer\\obj\\",
+        "projectPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\Manager Layer\\Manager Layer.csproj",
+        "packagesPath": "C:\\Users\\klond\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\Manager Layer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\klond\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,8 +83,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
-                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj"
+              "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
+                "projectPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj"
               }
             }
           }

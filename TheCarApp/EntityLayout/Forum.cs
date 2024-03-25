@@ -1,4 +1,4 @@
-﻿using Entity_Layer.Enums;
+﻿using Entity_Layer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +9,14 @@ namespace Entity_Layer
 {
     public class Forum
     {
-        private CarTopics CarTopics { get; set; }
+        private string CarTopics { get; set; }
         private string Title { get; set; }  
         private string Description { get; set; }
         private DateTime StartDate { get; set; }
         private DateTime EndDate { get; set; }
         private List<Reply> replies;
 
-        public Forum(CarTopics carTopics, string title, string description, DateTime startDate, DateTime endDate)
+        public Forum(string carTopics, string title, string description, DateTime startDate, DateTime endDate)
         {
             CarTopics = carTopics;
             Title = title;
