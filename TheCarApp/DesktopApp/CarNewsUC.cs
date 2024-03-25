@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DesktopApp
 {
-    public partial class Form1 : Form
+    public partial class CarNewsUC : UserControl
     {
-        public Form1()
+        public CarNewsUC()
         {
             InitializeComponent();
         }
