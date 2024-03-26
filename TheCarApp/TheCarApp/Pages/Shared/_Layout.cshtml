@@ -90,15 +90,26 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function () {
+        // Single consolidated scroll effect script
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function () {
+                header.classList.toggle('scrolled', window.scrollY > 0);
+            });
+        });
+
+        // Footer adjustment script (Ensure you uncomment and correct this part if you intend to use it)
+        /* $(document).ready(function() {
             var docHeight = $(window).height();
             var footerHeight = $('#footer').height();
-            var footerTop = $('#footer') position().top + footerHeight;
-            if
-                (footerTop < docHeight)
-                $('#footer').css ('margin-top', 10 + (docHeight - footerTop) + 'px');
-        });
+            var footerTop = $('#footer').position().top + footerHeight;
+            if (footerTop < docHeight) {
+                $('#footer').css('margin-top', 10 + (docHeight - footerTop) + 'px');
+            }
+        }); */
     </script>
+
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,15 +1,16 @@
 * {
-    color: white;
-    left: 0;
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* Ensures elements' padding and border are included in total width and height */
 }
 
 body {
     display: flex;
-    flex-direction:column;
-    min-height: 90vh;
+    flex-direction: column;
     background-color: black;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    color: white; /* Ensures text is visible on the black background */
 }
 
 .roboto-thin {
@@ -117,148 +118,81 @@ h4,
 h5,
 h6 {
     margin: 0px;
+    color: white;
 }
 
 h1 {
     font-size:60px;
     font-weight: bold;
 }
+h2 {
+    font-weight: 700;
+}
 
 header {
-    position: absolute;
-    z-index: 99999;
-    width: 100%;
-    background-color: transparent !important;
-    height: 80px;
-    transition: all 0.3s ease-in-out 0s;
-}
-
-
-    header .navbar {
-        padding: 20px 0px;
-    }
-
-.background-header .navbar {
-    padding: 10px 0px;
-}
-
-.background-header {
+    position: fixed; /* Keeps the navbar at the top */
     top: 0;
-    position: fixed;
-    background-color: #fff !important;
-    box-shadow: 0px 1px 10px rgba(0,0,0,0.1);
+    z-index: 9999; /* Ensures navbar is above other content */
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0); /* Light background with opacity */
+    transition: all 0.3s ease-in-out; /* Ensures background is transparent initially */
 }
 
-    .background-header .navbar-brand h2 {
-        color: #a4c639 !important;
+.header.scrolled {
+    background-color: rgba(255, 255, 255, 0.9); /* Changes background on scroll */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Adds shadow for better visibility */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Distributes space between navbar items */
+    align-items: center; /* Vertically centers navbar items */
+    padding: 1rem 2rem; /* Adjusts padding for visual spacing */
+}
+
+    .navbar a.nav-link {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem; /* Provides padding around navbar links */
+        transition: color 0.3s ease-in-out;
     }
 
-    .background-header .navbar-nav a.nav-link {
-        color: #1e1e1e !important;
-    }
 
-    .background-header .navbar-nav .nav-link:hover,
-    .background-header .navbar-nav .active > .nav-link,
-    .background-header .navbar-nav .nav-link.active,
-    .background-header .navbar-nav .nav-link.show,
-    .background-header .navbar-nav .show > .nav-link {
-        color: #a4c639 !important;
-    }
-
-.navbar .navbar-brand {
-    float: left;
-    margin-top: 12px;
-    outline: none;
-}
-
-.dropdown-menu .a {
-    color: black !important;
-}
-.dropdown-item {
-    color:black
-}
-.dropdown-menu {
-    color:black;
-}
-
-.navbar .navbar-brand h2 {
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 24px;
-    font-weight: 700;
-    -webkit-transition: all .3s ease 0s;
-    -moz-transition: all .3s ease 0s;
-    -o-transition: all .3s ease 0s;
-    transition: all .3s ease 0s;
-}
-
-        .navbar .navbar-brand h2 em {
-            font-style: normal;
-            font-size: 16px;
+        .navbar a.nav-link:hover,
+        .navbar a.nav-link.active {
+            color: #a4c639; /* Changes link color on hover/active */
+            border-bottom: 3px solid #a4c639; /* Adds a bottom border on hover/active */
         }
 
-#navbarResponsive {
-    z-index: 999;
+.header.scrolled {
+    padding: 10px 0; /* Reduces padding when scrolled */
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly increases opacity */
 }
 
-.navbar-collapse {
-    text-align: center;
-}
+/* Adjustments for mobile screens */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stacks navbar items vertically on small screens */
+    }
 
-.navbar .navbar-nav .nav-item {
-    margin: 0px 15px;
-}
+    .navbar-toggler {
+        display: block; /* Ensures toggler is visible on small screens */
+    }
 
-.navbar .navbar-nav a.nav-link {
-    text-transform: capitalize;
-    font-size: 15px;
-    font-weight: 300;
-    letter-spacing: 0.5px;
-    color: #fff;
-    transition: all 0.5s;
-    margin-top: 5px;
-   
-}
+    .navbar-collapse {
+        display: none; /* Hides navbar links initially on small screens */
+    }
 
-.navbar .navbar-nav .nav-link:hover,
-.navbar .navbar-nav .active > .nav-link,
-.navbar .navbar-nav .nav-link.active,
-.navbar .navbar-nav .nav-link.show,
-.navbar .navbar-nav .show > .nav-link {
-    color: #a4c639;
-    border-bottom: 3px solid #a4c639;
-}
-
-.navbar .navbar-toggler-icon {
-    background-image: none;
-}
-
-.navbar .navbar-toggler {
-    border-color: #fff;
-    background-color: #fff;
-    height: 36px;
-    outline: none;
-    border-radius: 0px;
-    position: absolute;
-    right: 30px;
-    top: 20px;
-}
-
-.navbar .navbar-toggler-icon:after {
-    content: '\f0c9';
-    color: #a4c639;
-    font-size: 18px;
-    line-height: 26px;
-    font-family: 'FontAwesome';
-}
-.dropdown-item.active,
-.dropdown-item:active {
-    background-color: #a4c639;
+        .navbar-collapse.active {
+            display: flex; /* Shows navbar links when toggler is clicked */
+            flex-direction: column; /* Stacks links vertically */
+        }
 }
 
 
 .img-fill {
     position: absolute;
+    left: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
