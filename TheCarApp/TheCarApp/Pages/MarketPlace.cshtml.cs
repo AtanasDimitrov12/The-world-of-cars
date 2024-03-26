@@ -1,6 +1,6 @@
 using Entity_Layer;
 using EntityLayout;
-using EntityLayout.Enums;
+using EntityLayout;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 
