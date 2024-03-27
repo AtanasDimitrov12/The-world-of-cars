@@ -54,31 +54,36 @@
 
 
     
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="main-content">
+        <!-- Your main content goes here -->
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
     </div>
 
-    @* <footer class="footer">
-    <div class="footer_contents">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>About Us</h5>
-                    <p>
-                        The website of Cars.
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <h5>Contact Us</h5>
-                    <p>Email: info@example.com</p>
-                    <p>Phone: +1 234 567 890</p>
+    <footer>
+        <div class="footerContent">
+            <div class="footer_contents">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>About Us</h5>
+                            <p>
+                                The website of Cars.
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Contact Us</h5>
+                            <p>Email: info@example.com</p>
+                            <p>Phone: +1 234 567 890</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-    </footer> *@
+    </footer> 
 
 
     
@@ -96,16 +101,6 @@
                 header.classList.toggle('scrolled', window.scrollY > 0);
             });
         });
-
-        // Footer adjustment script (Ensure you uncomment and correct this part if you intend to use it)
-        /* $(document).ready(function() {
-            var docHeight = $(window).height();
-            var footerHeight = $('#footer').height();
-            var footerTop = $('#footer').position().top + footerHeight;
-            if (footerTop < docHeight) {
-                $('#footer').css('margin-top', 10 + (docHeight - footerTop) + 'px');
-            }
-        }); */
     </script>
 
 

@@ -13,17 +13,25 @@ body {
     .container h1 {
         text-align: center;
         font-size: 36px;
-        color: white; /* Removed !important, try to avoid using !important where it's not necessary */
+        color: white; 
     }
+
+    .container h2 {
+        text-align: center;
+        font-size: 36px;
+        color: black; 
+    }
+    
+    
 
 .page-heading {
     width: 100vw;
     height: 0vw;
     position: relative;
     text-align: center;
-    background: url(/pictures/banner.jpg) no-repeat center/cover; /* Combined background properties */
+    background: url(/pictures/banner.jpg) no-repeat center/cover; 
     padding: 230px 0;
-    color: white; /* Removed redundant !important */
+    color: white; 
     z-index: 4;
     margin-left: calc(-50vw + 50%);
 }
@@ -35,8 +43,8 @@ body {
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5); /* Creates a dark overlay */
-        z-index: -1; /* Ensure the overlay is behind the content */
+        background-color: rgba(0, 0, 0, 0.5); 
+        z-index: -1; 
     }
 
     .page-heading h1 {
@@ -44,7 +52,6 @@ body {
         font-weight: 700;
         letter-spacing: 2px;
         margin-bottom: 16px;
-        /* Color is already defined above, removed the duplicate */
     }
 
     .page-heading span {
@@ -52,7 +59,6 @@ body {
         text-transform: uppercase;
         letter-spacing: 1px;
         display: block;
-        /* Color is already defined, removed the duplicate */
     }
 
 
@@ -282,11 +288,19 @@ body {
         max-width: 100%;
     }
 
-    .single-services h4 {
+    .single-services h4 a {
         font-size: 24px;
         font-weight: 600;
         margin-bottom: 10px;
+        color: black;
     }
+
+        .single-services h4 a:hover {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #a4c639;
+        }
 
     .single-services p {
         font-size: 16px;
