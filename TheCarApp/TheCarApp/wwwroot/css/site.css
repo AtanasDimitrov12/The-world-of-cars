@@ -145,6 +145,7 @@ header {
 
 .navbar {
     display: flex;
+    max-width: 1200px;
     justify-content: space-between; /* Distributes space between navbar items */
     align-items: center; /* Vertically centers navbar items */
     padding: 1rem 2rem; /* Adjusts padding for visual spacing */

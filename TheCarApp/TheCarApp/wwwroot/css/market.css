@@ -1,56 +1,50 @@
-
-
 body {
     background-color: #fff;
     color: black;
-    font-family: 'Poppins', sans-serif;
 }
 
 .container {
     margin: 0 auto;
-    max-width:none;
-    padding: 0px;
+    padding: 0;
     position: relative;
     z-index: 2;
 }
 
     .container h1 {
-    color: black !important;
-    text-align:center;
-    font-size: 36px;
+        text-align: center;
+        font-size: 36px;
+        color: white; /* Removed !important, try to avoid using !important where it's not necessary */
     }
 
 .page-heading {
+    width: 100vw;
+    height: 0vw;
     position: relative;
     text-align: center;
-    background-image: url(/pictures/banner.jpg);
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-position: inherit; 
+    background: url(/pictures/banner.jpg) no-repeat center/cover; /* Combined background properties */
     padding: 230px 0;
-    color: white !important;
+    color: white; /* Removed redundant !important */
     z-index: 4;
+    margin-left: calc(-50vw + 50%);
 }
 
-    .page-heading:before {
-        color: white !important;
+    .page-heading::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.5); /* Creates a dark overlay */
+        z-index: -1; /* Ensure the overlay is behind the content */
     }
 
     .page-heading h1 {
-        color: white !important;
         font-size: 46px;
         font-weight: 700;
         letter-spacing: 2px;
         margin-bottom: 16px;
-        color: white!important;
+        /* Color is already defined above, removed the duplicate */
     }
 
     .page-heading span {
@@ -58,8 +52,9 @@ body {
         text-transform: uppercase;
         letter-spacing: 1px;
         display: block;
-        color: white !important;
+        /* Color is already defined, removed the duplicate */
     }
+
 
 .services {
     margin-top: 140px;
