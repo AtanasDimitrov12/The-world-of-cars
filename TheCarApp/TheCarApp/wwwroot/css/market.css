@@ -1,6 +1,5 @@
 body {
-    background-color: #fff;
-    color: black;
+    background-color: #c4c4c4;
 }
 
 .container {
@@ -19,7 +18,7 @@ body {
     .container h2 {
         text-align: center;
         font-size: 36px;
-        color: black; 
+        color: white; 
     }
     
     
@@ -81,6 +80,7 @@ body {
         font-weight: 700;
         letter-spacing: 0.25px;
         margin-bottom: 15px;
+        color: black;
     }
 
     .service-item .down-content p {
