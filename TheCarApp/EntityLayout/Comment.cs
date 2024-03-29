@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Entity_Layer
 {
-    public class Reply
+    public class Comment
     {
         private User User { get; set; }
         private DateTime Date { get; set; }
         private string Message { get; set; }
 
-        public Reply(User user, DateTime date, string message)
+        public Comment(User user, DateTime date, string message)
         {
             this.User = user;
             this.Date = date;

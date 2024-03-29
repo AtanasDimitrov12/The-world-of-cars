@@ -27,18 +27,18 @@
                 {
                     <div class="col-md-4">
                         <div class="service-item">
-                            <img src="/pictures/BMW2.jpg" alt="@car.GetBrand()">
+                            <img src="/pictures/BMW2.jpg" alt="@car.brand">
                             <div class="down-content">
-                                <h4>@car.GetBrand() @car.GetModel()</h4>
+                                <h4>@car.brand @car.Model</h4>
                                 <div style="margin-bottom:10px;">
-                                    <span>@car.GetPrice()</span>
+                                    <span>@car.PricePerDay</span>
                                 </div>
 
 
                                 <p>
-                                    <i class="fa fa-dashboard"></i> @car.GetMileage() km &nbsp;&nbsp;&nbsp;
-                                    <i class="fa fa-cube"></i> @car.GetEngineSize() cc &nbsp;&nbsp;&nbsp;
-                                    <i class="fa fa-cog"></i> @car.GetGearBox() &nbsp;&nbsp;&nbsp;
+                                    <i class="fa fa-dashboard"></i> @car.Mileage km &nbsp;&nbsp;&nbsp;
+                                    <i class="fa fa-cube"></i> @car.EngineSize cc &nbsp;&nbsp;&nbsp;
+                                    <i class="fa fa-cog"></i> @car.Gearbox &nbsp;&nbsp;&nbsp;
                                 </p>
                                 <a href="/RentACarPage" class="filled-button">View More</a>
                             </div>

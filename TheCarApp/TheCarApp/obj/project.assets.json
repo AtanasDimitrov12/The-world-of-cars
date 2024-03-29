@@ -11,19 +11,6 @@
         "runtime": {
           "bin/placeholder/Entity Layer.dll": {}
         }
-      },
-      "Manager Layer/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Entity Layer": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Manager Layer.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Manager Layer.dll": {}
-        }
       }
     }
   },
@@ -32,17 +19,11 @@
       "type": "project",
       "path": "../EntityLayout/Entity Layer.csproj",
       "msbuildProject": "../EntityLayout/Entity Layer.csproj"
-    },
-    "Manager Layer/1.0.0": {
-      "type": "project",
-      "path": "../Manager Layer/Manager Layer.csproj",
-      "msbuildProject": "../Manager Layer/Manager Layer.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Entity Layer >= 1.0.0",
-      "Manager Layer >= 1.0.0"
+      "Entity Layer >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -74,9 +55,6 @@
           "projectReferences": {
             "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
               "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj"
-            },
-            "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Manager Layer\\Manager Layer.csproj": {
-              "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Manager Layer\\Manager Layer.csproj"
             }
           }
         }

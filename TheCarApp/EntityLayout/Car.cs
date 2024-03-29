@@ -1,4 +1,5 @@
-﻿using EntityLayout;
+﻿using Entity_Layer;
+using EntityLayout;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +12,23 @@ namespace EntityLayout
 {
     public class Car
     {
-        private string brand { get; set; }
-        private string Model { get; set; }
-        private int FirstRegistration { get; set; }
-        private int Mileage { get; set; }
-        private string Fuel { get; set; }
-        private int EngineSize { get; set; }
-        private int HorsePower { get; set; }
-        private string Gearbox { get; set; }
-        private string Color { get; set; }
-        private decimal Price { get; set; }
-        //private Pictures 
+        public string brand { get; set; }
+        public string Model { get; set; }
+        public int FirstRegistration { get; set; }
+        public int Mileage { get; set; }
+        public string Fuel { get; set; }
+        public int EngineSize { get; set; }
+        public int HorsePower { get; set; }
+        public string Gearbox { get; set; }
+        public string Color { get; set; }
+        public string VIN { get; set; }
+        public string Description { get; set; }
+        public decimal PricePerDay { get; set; }
+        public List<string> Pictures { get; set; }
+        public List<Extra> CarExtras { get; set; }
+        public CarStatus CarStatus { get; set; }
 
-        public Car(string brand, string model, int Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, decimal price)
+        public Car(string brand, string model, int Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, decimal price, string vIN, string description, decimal pricePerDay, CarStatus carStatus)
         {
             this.brand = brand;
             Model = model;
@@ -34,58 +39,15 @@ namespace EntityLayout
             HorsePower = horsePower;
             Gearbox = GearBox;
             Color = color;
-            Price = price;
+            PricePerDay = price;
+            VIN = vIN;
+            Description = description;
+            PricePerDay = pricePerDay;
+            Pictures = new List<string> { };
+            CarExtras = new List<Extra> { };
+            CarStatus = carStatus;
         }
 
-        public string GetBrand()
-        {
-            return brand;
-        }
-
-        public string GetModel()
-        {
-            return Model;
-        }
-
-        public int FirstReg()
-        {
-            return FirstRegistration;
-        }
-
-        public int GetMileage()
-        {
-            return Mileage;
-        }
-        
-        public int GetEngineSize()
-        {
-            return EngineSize;
-        }
-
-        public string GetFuelType()
-        {
-            return Fuel;
-        }
-
-        public int GetHorsePower()
-        {
-            return HorsePower;
-        }
-
-        public string GetColor()
-        {
-            return Color;
-        }
-
-        public string GetGearBox()
-        {
-            return Gearbox;
-        }
-
-        public decimal GetPrice()
-        {
-            return Price;
-        }
 
         //public List<string> GetPictures()
         //{
