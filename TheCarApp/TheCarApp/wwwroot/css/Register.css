@@ -14,21 +14,21 @@ body {
 
 flex-container {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full height of the viewport */
-    width: 100vw; /* Full width of the viewport */
-    padding: 20px; /* To avoid touching the viewport edges */
-    box-sizing: border-box; /* To include padding in width and height */
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    width: 100vw; 
+    padding: 20px; 
+    box-sizing: border-box; 
     background-color: white;
 }
 
 .containerSignUp {
     top: 80px;
     position: relative;
-    max-width: 850px; /* Your defined max-width */
-    width: 100%; /* Adjust width as needed */
-    margin: auto; /* This will center the div if flex styles fail for any reason */
+    max-width: 850px; 
+    width: 100%; 
+    margin: auto; 
     padding: 40px 30px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     margin: auto;
@@ -228,8 +228,8 @@ flex-container {
 }
 
 .forms .form-content .button input {
-    color: #fff; /* Text color */
-    background: #45a049; /* This should be your button's background */
+    color: #fff; 
+    background: #45a049;
     border-radius: 6px;
     padding: 0;
     cursor: pointer;
@@ -237,40 +237,37 @@ flex-container {
 }
 
     .forms .form-content .button input:hover {
-        background: #39833c; /* Background color on hover */
+        background: #39833c; 
     }
 input[type="submit"] {
-    background-color: #45a049; /* Green background */
-    color: white; /* White text */
+    background-color: #45a049; 
+    color: white; 
     padding: 15px 30px;
     font-size: 1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    display: block; /* This will make the button a block element */
-    width: 100%; /* Full width */
-    margin: 10px 0; /* Margin for spacing */
+    display: block; 
+    width: 100%; 
+    margin: 10px 0; 
 }
 
     input[type="submit"]:hover {
-        background-color: #39833c; /* Darker green background on hover */
+        background-color: #39833c; 
     }
 
-/* Responsive behavior for mobile views */
 @media (max-width: 730px) {
     .containerSignUp .cover {
-        display: none; /* Hide the cover on smaller screens */
+        display: none;
     }
 
-    /* Adjust the form content area for mobile */
     .containerSignUp .form-content {
         flex-direction: column;
     }
 
-        /* Make sure input and submit button fits container on mobile */
         .containerSignUp .form-content .input-box,
         .containerSignUp .form-content .button input {
-            width: calc(100% - 60px); /* Adjust width to fit padding */
+            width: calc(100% - 60px); 
         }
 }

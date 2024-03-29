@@ -1,34 +1,31 @@
-/* Body styling */
+
 body {
-    background-color: #fff; /* Set a light background color */
-    color: black; /* Set a dark text color for better readability */
+    background-color: #fff; 
+    color: black; 
 }
 
 h1, h4, p, span, a {
     color: black;
 }
 .container {
-    margin: 0 auto; /* Center the container horizontally */
-    max-width: 1200px; /* Limit the maximum width of the container */
-    padding: 0px; /* Add padding to the container sides */
-    position: relative; /* Ensure the container is positioned relative to its parent */
-    z-index: 2; /* Set z-index to ensure visibility */
+    margin: 0 auto; 
+    max-width: 1200px; 
+    padding: 0px; 
+    position: relative; 
+    z-index: 2; 
 }
 
-/* Page Heading Styles */
 .page-heading {
     position: relative;
     text-align: center;
-    background-image: url(/pictures/rentCar.jpg); /* Set background image */
-    /* Center the background image */
-    background-repeat: no-repeat; /* Prevent background image from repeating */
-    background-size: cover; /* Ensure the background image covers the entire container */
-    padding: 230px 0; /* Adjust padding as needed */
-    color: white !important; /* Set text color */
-    z-index: 4; /* Ensure positioning relative to its parent */
+    background-image: url(/pictures/rentCar.jpg); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    padding: 230px 0; 
+    color: white !important; 
+    z-index: 4; 
 }
 
-    /* Overlay Styles */
     .page-heading:before {
         color: white !important;
         content: '';
@@ -37,11 +34,10 @@ h1, h4, p, span, a {
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
-        z-index: 1; /* Ensure overlay is behind text */
+        background-color: rgba(0, 0, 0, 0.5); 
+        z-index: 1; 
     }
 
-    /* Adjustments for Text Content */
     .page-heading h1 {
         color: white !important;
         font-size: 36px;
@@ -58,16 +54,15 @@ h1, h4, p, span, a {
     }
 
 
-/* Tab content styling */
 .tabs-content {
-    margin-top: 30px; /* Add some top margin for spacing */
+    margin-top: 30px; 
 }
 
     .tabs-content img {
         max-width: 100%;
-        height: auto; /* Maintain aspect ratio */
-        display: block; /* Ensure image is centered */
-        margin: 0 auto 15px; /* Center image horizontally and add bottom margin */
+        height: auto; 
+        display: block; 
+        margin: 0 auto 15px; 
     }
 
     .tabs-content h4 {
@@ -79,15 +74,14 @@ h1, h4, p, span, a {
 
     .tabs-content p {
         font-size: 14px;
-        color: #333; /* Set a dark text color */
-        margin-bottom: 15px; /* Add bottom margin for spacing */
-        text-align: left; /* Align paragraph content to the left */
+        color: #333; 
+        margin-bottom: 15px; 
+        text-align: left; 
     }
 
-/* Continue Reading button styling */
 .filled-button {
     display: inline-block;
-    padding: 10px 20px; /* Adjust padding */
+    padding: 10px 20px; 
     background-color: #a4c639;
     color: #fff;
     font-size: 14px;
@@ -103,7 +97,6 @@ h1, h4, p, span, a {
         color: black;
     }
 
-/* Clearfix for floating elements */
 .clearfix::after {
     content: "";
     display: table;
@@ -151,7 +144,7 @@ h1, h4, p, span, a {
         }
 
     .single-services .col-md-8 {
-        margin: 0 auto; /* Center the column */
-        display: inline-block; /* Ensure block-level elements are centered */
-        float: none; /* Clear any previous float */
+        margin: 0 auto; 
+        display: inline-block;
+        float: none; 
     }
