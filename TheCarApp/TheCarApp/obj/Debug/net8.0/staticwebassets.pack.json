@@ -313,6 +313,10 @@
       "PackagePath": "staticwebassets\\pictures\\mb.png"
     },
     {
+      "Id": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\opel.jpg",
+      "PackagePath": "staticwebassets\\pictures\\opel.jpg"
+    },
+    {
       "Id": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\rentCar.jpg",
       "PackagePath": "staticwebassets\\pictures\\rentCar.jpg"
     },

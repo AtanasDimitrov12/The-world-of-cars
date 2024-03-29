@@ -257,7 +257,7 @@ header.scrolled {
         line-height: 1.5;
     }
 .button {
-    background-color: #04AA6D; 
+    background-color: #45a049;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -267,7 +267,7 @@ header.scrolled {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    -webkit-transition-duration: 0.4s; 
+    -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
 }
 

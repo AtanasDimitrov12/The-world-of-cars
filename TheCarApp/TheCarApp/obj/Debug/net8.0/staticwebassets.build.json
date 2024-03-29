@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VpmjrxoFsvHz+UcmZaJubp32Yj84rHTVg1TPTEJO7mE=",
+  "Hash": "AWH5SXP/XI+LLJwMqAOqmCY4gv2Qlhbe2HE1zH6LVOo=",
   "Source": "TheCarApp",
   "BasePath": "_content/TheCarApp",
   "Mode": "Default",
@@ -1516,6 +1516,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\pictures\\mb.png"
+    },
+    {
+      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\opel.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/opel.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\opel.jpg"
     },
     {
       "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\rentCar.jpg",
