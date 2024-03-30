@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNews.Designer.cs">
+      <DependentUpon>AddNews.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminInfoUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -58,6 +64,12 @@
     <Compile Include="CarNewsUC.Designer.cs">
       <DependentUpon>CarNewsUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommentsControlUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CommentsControlUC.Designer.cs">
+      <DependentUpon>CommentsControlUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,11 +78,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddNews.resx">
+      <DependentUpon>AddNews.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminInfoUC.resx">
       <DependentUpon>AdminInfoUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CarNewsUC.resx">
       <DependentUpon>CarNewsUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommentsControlUC.resx">
+      <DependentUpon>CommentsControlUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlPage.resx">
       <DependentUpon>ControlPage.cs</DependentUpon>
