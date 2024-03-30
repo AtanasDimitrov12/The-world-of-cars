@@ -15,14 +15,6 @@
         "runtime": {
           "Entity Layer.dll": {}
         }
-      },
-      "Manager Layer/1.0.0": {
-        "dependencies": {
-          "Entity Layer": "1.0.0"
-        },
-        "runtime": {
-          "Manager Layer.dll": {}
-        }
       }
     }
   },
@@ -33,11 +25,6 @@
       "sha512": ""
     },
     "Entity Layer/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Manager Layer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

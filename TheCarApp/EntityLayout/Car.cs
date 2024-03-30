@@ -28,7 +28,7 @@ namespace EntityLayout
         public List<Extra> CarExtras { get; set; }
         public CarStatus CarStatus { get; set; }
 
-        public Car(string brand, string model, int Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, decimal price, string vIN, string description, decimal pricePerDay, CarStatus carStatus)
+        public Car(string brand, string model, int Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, string VIN, string description, decimal pricePerDay, CarStatus carStatus)
         {
             this.brand = brand;
             Model = model;
@@ -39,8 +39,7 @@ namespace EntityLayout
             HorsePower = horsePower;
             Gearbox = GearBox;
             Color = color;
-            PricePerDay = price;
-            VIN = vIN;
+            VIN = VIN;
             Description = description;
             PricePerDay = pricePerDay;
             Pictures = new List<string> { };

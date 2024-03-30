@@ -96,7 +96,5 @@ C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Debug\net8
 C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Debug\net8.0\TheCarApp.csproj.CopyComplete
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Debug\net8.0\TheCarApp.csproj.AssemblyReference.cache
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\TheCarApp\bin\Debug\net8.0\Entity Layer.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\TheCarApp\bin\Debug\net8.0\Manager Layer.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\TheCarApp\bin\Debug\net8.0\Entity Layer.pdb
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\TheCarApp\bin\Debug\net8.0\Manager Layer.pdb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Debug\net8.0\TheCarApp.csproj.CopyComplete
