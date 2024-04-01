@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace DesktopApp
 {
-    public partial class CommentsControlUC : UserControl
+    public partial class AddCar : Form
     {
-        public CommentsControlUC()
+        public AddCar()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

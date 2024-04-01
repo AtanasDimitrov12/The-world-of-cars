@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace DesktopApp
 {
-    public partial class CommentsControlUC : UserControl
+    public partial class CarControlUC : UserControl
     {
-        public CommentsControlUC()
+        public CarControlUC()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
