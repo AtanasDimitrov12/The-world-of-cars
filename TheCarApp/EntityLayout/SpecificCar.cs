@@ -1,4 +1,4 @@
-﻿using Entity_Layer;
+﻿using Entity_Layer.Enums;
 using EntityLayout;
 
 namespace EntityLayout

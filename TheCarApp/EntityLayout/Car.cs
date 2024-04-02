@@ -1,4 +1,5 @@
 ﻿using Entity_Layer;
+using Entity_Layer.Enums;
 using EntityLayout;
 using System;
 using System.Collections.Generic;

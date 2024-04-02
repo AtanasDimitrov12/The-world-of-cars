@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entity_Layer
+namespace Entity_Layer.Enums
 {
     public enum CarStatus
     {
