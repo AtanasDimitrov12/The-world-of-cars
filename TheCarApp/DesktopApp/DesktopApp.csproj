@@ -46,69 +46,69 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddCar.cs">
+    <Compile Include="Forms\AddCar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddCar.Designer.cs">
+    <Compile Include="Forms\AddCar.Designer.cs">
       <DependentUpon>AddCar.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddNews.cs">
+    <Compile Include="Forms\AddNews.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddNews.Designer.cs">
+    <Compile Include="Forms\AddNews.Designer.cs">
       <DependentUpon>AddNews.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminInfoUC.cs">
+    <Compile Include="UserControls\AdminInfoUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AdminInfoUC.Designer.cs">
+    <Compile Include="UserControls\AdminInfoUC.Designer.cs">
       <DependentUpon>AdminInfoUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="CarControlUC.cs">
+    <Compile Include="UserControls\CarControlUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CarControlUC.Designer.cs">
+    <Compile Include="UserControls\CarControlUC.Designer.cs">
       <DependentUpon>CarControlUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="CarNewsUC.cs">
+    <Compile Include="UserControls\CarNewsUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CarNewsUC.Designer.cs">
+    <Compile Include="UserControls\CarNewsUC.Designer.cs">
       <DependentUpon>CarNewsUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="CommentsControlUC.cs">
+    <Compile Include="UserControls\CommentsControlUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CommentsControlUC.Designer.cs">
+    <Compile Include="UserControls\CommentsControlUC.Designer.cs">
       <DependentUpon>CommentsControlUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="ControlPage.cs">
+    <Compile Include="Forms\ControlPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ControlPage.Designer.cs">
+    <Compile Include="Forms\ControlPage.Designer.cs">
       <DependentUpon>ControlPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddCar.resx">
+    <EmbeddedResource Include="Forms\AddCar.resx">
       <DependentUpon>AddCar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddNews.resx">
+    <EmbeddedResource Include="Forms\AddNews.resx">
       <DependentUpon>AddNews.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminInfoUC.resx">
+    <EmbeddedResource Include="UserControls\AdminInfoUC.resx">
       <DependentUpon>AdminInfoUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CarControlUC.resx">
+    <EmbeddedResource Include="UserControls\CarControlUC.resx">
       <DependentUpon>CarControlUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CarNewsUC.resx">
+    <EmbeddedResource Include="UserControls\CarNewsUC.resx">
       <DependentUpon>CarNewsUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CommentsControlUC.resx">
+    <EmbeddedResource Include="UserControls\CommentsControlUC.resx">
       <DependentUpon>CommentsControlUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlPage.resx">
+    <EmbeddedResource Include="Forms\ControlPage.resx">
       <DependentUpon>ControlPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
