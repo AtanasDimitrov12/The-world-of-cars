@@ -9,11 +9,11 @@ using EntityLayout;
 
 namespace Manager_Layer
 {
-    public class CarAdministrator
+    public class CarManager
     {
         private List<Car> cars;
 
-        public CarAdministrator()
+        public CarManager()
         { 
             cars = new List<Car>(); 
         }
@@ -23,7 +23,12 @@ namespace Manager_Layer
             cars.Add(car);
         }
 
-        public Car SearchForCar(int index)  //Something to search with a new method
+        public void RemoveCar(Car car)
+        {
+            cars.Remove(car);
+        }
+
+        public Car SearchForCar(int index)
         { 
             return cars[index];
         }
