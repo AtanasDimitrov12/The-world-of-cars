@@ -10,3 +10,7 @@ C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.AdminInfoUC.resources
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.ControlPage.resources
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.CarNewsUC.resources
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.AddCar.resources
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.AddNews.resources
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.CarControlUC.resources
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\DesktopApp\obj\Debug\DesktopApp.CommentsControlUC.resources

@@ -29,13 +29,17 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.BTNControlAdminInfo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -57,6 +61,26 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 317);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.button1.Location = new System.Drawing.Point(3, 161);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(194, 70);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Comments";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.button3.Location = new System.Drawing.Point(3, 240);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(194, 73);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Car Control";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -92,30 +116,32 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(204, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(624, 448);
             this.panel2.TabIndex = 3;
             // 
-            // button1
+            // label1
             // 
-            this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.button1.Location = new System.Drawing.Point(3, 161);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 70);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Comments";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(138, 137);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(387, 37);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Welcome to admin page";
             // 
-            // button3
+            // pictureBox1
             // 
-            this.button3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.button3.Location = new System.Drawing.Point(3, 240);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(194, 73);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Car Control";
-            this.button3.UseVisualStyleBackColor = true;
+            this.pictureBox1.Image = global::DesktopApp.Properties.Resources.brabus;
+            this.pictureBox1.Location = new System.Drawing.Point(181, 203);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(321, 195);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // ControlPage
             // 
@@ -128,6 +154,9 @@
             this.Name = "ControlPage";
             this.Text = "ControlPage";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -141,5 +170,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

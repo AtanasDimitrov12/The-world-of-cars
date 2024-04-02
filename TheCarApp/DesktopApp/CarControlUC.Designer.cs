@@ -39,7 +39,7 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.LBCars = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -159,13 +159,13 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Sort by brand:";
             // 
-            // listBox1
+            // LBCars
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(231, 27);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(273, 368);
-            this.listBox1.TabIndex = 22;
+            this.LBCars.FormattingEnabled = true;
+            this.LBCars.Location = new System.Drawing.Point(231, 27);
+            this.LBCars.Name = "LBCars";
+            this.LBCars.Size = new System.Drawing.Size(273, 368);
+            this.LBCars.TabIndex = 22;
             // 
             // CarControlUC
             // 
@@ -174,7 +174,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.LBCars);
             this.Name = "CarControlUC";
             this.Size = new System.Drawing.Size(530, 414);
             this.groupBox1.ResumeLayout(false);
@@ -199,6 +199,6 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox LBCars;
     }
 }
