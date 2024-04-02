@@ -16,5 +16,10 @@ namespace DesktopApp
         {
             InitializeComponent();
         }
+
+        private void BTNAdd_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

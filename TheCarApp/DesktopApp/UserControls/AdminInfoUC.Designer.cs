@@ -29,27 +29,27 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
+            this.BTNUpdateAdminInfo = new System.Windows.Forms.Button();
+            this.TBAdminInfo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.LabelAdminInfo = new System.Windows.Forms.Label();
+            this.RBAdminPhoneNumber = new System.Windows.Forms.RadioButton();
+            this.RBAdminPassword = new System.Windows.Forms.RadioButton();
+            this.RBAdminEmail = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.BTNUpdateAdminInfo);
+            this.groupBox1.Controls.Add(this.TBAdminInfo);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.LabelAdminInfo);
+            this.groupBox1.Controls.Add(this.RBAdminPhoneNumber);
+            this.groupBox1.Controls.Add(this.RBAdminPassword);
+            this.groupBox1.Controls.Add(this.RBAdminEmail);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(218, 61);
@@ -59,68 +59,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Admin Info";
             // 
-            // label1
+            // BTNUpdateAdminInfo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.label1.Location = new System.Drawing.Point(27, 95);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 18);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Previous Information:";
+            this.BTNUpdateAdminInfo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.BTNUpdateAdminInfo.Location = new System.Drawing.Point(65, 233);
+            this.BTNUpdateAdminInfo.Name = "BTNUpdateAdminInfo";
+            this.BTNUpdateAdminInfo.Size = new System.Drawing.Size(104, 37);
+            this.BTNUpdateAdminInfo.TabIndex = 8;
+            this.BTNUpdateAdminInfo.Text = "Update";
+            this.BTNUpdateAdminInfo.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // TBAdminInfo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.label2.Location = new System.Drawing.Point(25, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(180, 18);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "What you will change:";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(9, 60);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(50, 17);
-            this.radioButton1.TabIndex = 2;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Email";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(65, 60);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(71, 17);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Password";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(142, 60);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(94, 17);
-            this.radioButton3.TabIndex = 4;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Phone number";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.label3.Location = new System.Drawing.Point(52, 127);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 18);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Show from db..";
+            this.TBAdminInfo.Location = new System.Drawing.Point(32, 192);
+            this.TBAdminInfo.Name = "TBAdminInfo";
+            this.TBAdminInfo.Size = new System.Drawing.Size(173, 20);
+            this.TBAdminInfo.TabIndex = 7;
             // 
             // label4
             // 
@@ -132,22 +86,68 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Type the information:";
             // 
-            // textBox1
+            // LabelAdminInfo
             // 
-            this.textBox1.Location = new System.Drawing.Point(32, 192);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(173, 20);
-            this.textBox1.TabIndex = 7;
+            this.LabelAdminInfo.AutoSize = true;
+            this.LabelAdminInfo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.LabelAdminInfo.Location = new System.Drawing.Point(52, 127);
+            this.LabelAdminInfo.Name = "LabelAdminInfo";
+            this.LabelAdminInfo.Size = new System.Drawing.Size(126, 18);
+            this.LabelAdminInfo.TabIndex = 5;
+            this.LabelAdminInfo.Text = "Show from db..";
             // 
-            // button1
+            // RBAdminPhoneNumber
             // 
-            this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.button1.Location = new System.Drawing.Point(65, 233);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 37);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Update";
-            this.button1.UseVisualStyleBackColor = true;
+            this.RBAdminPhoneNumber.AutoSize = true;
+            this.RBAdminPhoneNumber.Location = new System.Drawing.Point(142, 60);
+            this.RBAdminPhoneNumber.Name = "RBAdminPhoneNumber";
+            this.RBAdminPhoneNumber.Size = new System.Drawing.Size(94, 17);
+            this.RBAdminPhoneNumber.TabIndex = 4;
+            this.RBAdminPhoneNumber.TabStop = true;
+            this.RBAdminPhoneNumber.Text = "Phone number";
+            this.RBAdminPhoneNumber.UseVisualStyleBackColor = true;
+            // 
+            // RBAdminPassword
+            // 
+            this.RBAdminPassword.AutoSize = true;
+            this.RBAdminPassword.Location = new System.Drawing.Point(65, 60);
+            this.RBAdminPassword.Name = "RBAdminPassword";
+            this.RBAdminPassword.Size = new System.Drawing.Size(71, 17);
+            this.RBAdminPassword.TabIndex = 3;
+            this.RBAdminPassword.TabStop = true;
+            this.RBAdminPassword.Text = "Password";
+            this.RBAdminPassword.UseVisualStyleBackColor = true;
+            // 
+            // RBAdminEmail
+            // 
+            this.RBAdminEmail.AutoSize = true;
+            this.RBAdminEmail.Location = new System.Drawing.Point(9, 60);
+            this.RBAdminEmail.Name = "RBAdminEmail";
+            this.RBAdminEmail.Size = new System.Drawing.Size(50, 17);
+            this.RBAdminEmail.TabIndex = 2;
+            this.RBAdminEmail.TabStop = true;
+            this.RBAdminEmail.Text = "Email";
+            this.RBAdminEmail.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.label2.Location = new System.Drawing.Point(25, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(180, 18);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "What you will change:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.label1.Location = new System.Drawing.Point(27, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(178, 18);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Previous Information:";
             // 
             // AdminInfoUC
             // 
@@ -167,12 +167,12 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button BTNUpdateAdminInfo;
+        private System.Windows.Forms.TextBox TBAdminInfo;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label LabelAdminInfo;
+        private System.Windows.Forms.RadioButton RBAdminPhoneNumber;
+        private System.Windows.Forms.RadioButton RBAdminPassword;
+        private System.Windows.Forms.RadioButton RBAdminEmail;
     }
 }

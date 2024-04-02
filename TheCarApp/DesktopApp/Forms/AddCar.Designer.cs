@@ -28,54 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.RTBCarDescription = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.TBCarModel = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.TBCarBrand = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.DTPCarFirstReg = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.NUDCarMileage = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.TBCarFuel = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CBCarGearbox = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.TBCarNumOfSeats = new System.Windows.Forms.TextBox();
+            this.TBCarNumOfDoors = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.TBCarColor = new System.Windows.Forms.TextBox();
+            this.TBCarVIN = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.TBCarPrice = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.BTNAddExtra = new System.Windows.Forms.Button();
+            this.BTNDeleteExtra = new System.Windows.Forms.Button();
+            this.CBCarExtras = new System.Windows.Forms.ComboBox();
+            this.LBExtras = new System.Windows.Forms.ListBox();
+            this.BTNAddCar = new System.Windows.Forms.Button();
+            this.NUDCarEngineSize = new System.Windows.Forms.NumericUpDown();
+            this.NUDCarPower = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDCarMileage)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDCarEngineSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDCarPower)).BeginInit();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // RTBCarDescription
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(368, 52);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(207, 72);
-            this.richTextBox1.TabIndex = 11;
-            this.richTextBox1.Text = "";
+            this.RTBCarDescription.Location = new System.Drawing.Point(368, 52);
+            this.RTBCarDescription.Name = "RTBCarDescription";
+            this.RTBCarDescription.Size = new System.Drawing.Size(207, 72);
+            this.RTBCarDescription.TabIndex = 11;
+            this.RTBCarDescription.Text = "";
             // 
             // label1
             // 
@@ -97,12 +99,12 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "Model:";
             // 
-            // textBox4
+            // TBCarModel
             // 
-            this.textBox4.Location = new System.Drawing.Point(109, 51);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(142, 20);
-            this.textBox4.TabIndex = 21;
+            this.TBCarModel.Location = new System.Drawing.Point(109, 51);
+            this.TBCarModel.Name = "TBCarModel";
+            this.TBCarModel.Size = new System.Drawing.Size(142, 20);
+            this.TBCarModel.TabIndex = 21;
             // 
             // label7
             // 
@@ -114,12 +116,12 @@
             this.label7.TabIndex = 20;
             this.label7.Text = "Brand:";
             // 
-            // textBox5
+            // TBCarBrand
             // 
-            this.textBox5.Location = new System.Drawing.Point(109, 21);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(142, 20);
-            this.textBox5.TabIndex = 19;
+            this.TBCarBrand.Location = new System.Drawing.Point(109, 21);
+            this.TBCarBrand.Name = "TBCarBrand";
+            this.TBCarBrand.Size = new System.Drawing.Size(142, 20);
+            this.TBCarBrand.TabIndex = 19;
             // 
             // label8
             // 
@@ -131,12 +133,12 @@
             this.label8.TabIndex = 23;
             this.label8.Text = "First registration:";
             // 
-            // dateTimePicker1
+            // DTPCarFirstReg
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(173, 87);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(142, 20);
-            this.dateTimePicker1.TabIndex = 24;
+            this.DTPCarFirstReg.Location = new System.Drawing.Point(173, 87);
+            this.DTPCarFirstReg.Name = "DTPCarFirstReg";
+            this.DTPCarFirstReg.Size = new System.Drawing.Size(142, 20);
+            this.DTPCarFirstReg.TabIndex = 24;
             // 
             // label9
             // 
@@ -148,12 +150,12 @@
             this.label9.TabIndex = 25;
             this.label9.Text = "Mileage:";
             // 
-            // numericUpDown1
+            // NUDCarMileage
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(109, 119);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(142, 20);
-            this.numericUpDown1.TabIndex = 26;
+            this.NUDCarMileage.Location = new System.Drawing.Point(109, 119);
+            this.NUDCarMileage.Name = "NUDCarMileage";
+            this.NUDCarMileage.Size = new System.Drawing.Size(142, 20);
+            this.NUDCarMileage.TabIndex = 26;
             // 
             // label10
             // 
@@ -165,19 +167,12 @@
             this.label10.TabIndex = 27;
             this.label10.Text = "Fuel:";
             // 
-            // textBox6
+            // TBCarFuel
             // 
-            this.textBox6.Location = new System.Drawing.Point(109, 150);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(142, 20);
-            this.textBox6.TabIndex = 28;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(130, 189);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(94, 20);
-            this.textBox7.TabIndex = 30;
+            this.TBCarFuel.Location = new System.Drawing.Point(109, 150);
+            this.TBCarFuel.Name = "TBCarFuel";
+            this.TBCarFuel.Size = new System.Drawing.Size(142, 20);
+            this.TBCarFuel.TabIndex = 28;
             // 
             // label11
             // 
@@ -188,13 +183,6 @@
             this.label11.Size = new System.Drawing.Size(103, 18);
             this.label11.TabIndex = 29;
             this.label11.Text = "Engine size:";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(109, 228);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(115, 20);
-            this.textBox8.TabIndex = 32;
             // 
             // label12
             // 
@@ -236,13 +224,13 @@
             this.label15.TabIndex = 35;
             this.label15.Text = "Gearbox:";
             // 
-            // comboBox1
+            // CBCarGearbox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(109, 263);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(142, 21);
-            this.comboBox1.TabIndex = 36;
+            this.CBCarGearbox.FormattingEnabled = true;
+            this.CBCarGearbox.Location = new System.Drawing.Point(109, 263);
+            this.CBCarGearbox.Name = "CBCarGearbox";
+            this.CBCarGearbox.Size = new System.Drawing.Size(142, 21);
+            this.CBCarGearbox.TabIndex = 36;
             // 
             // label16
             // 
@@ -254,19 +242,19 @@
             this.label16.TabIndex = 37;
             this.label16.Text = "Number of seats:";
             // 
-            // textBox9
+            // TBCarNumOfSeats
             // 
-            this.textBox9.Location = new System.Drawing.Point(170, 297);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(81, 20);
-            this.textBox9.TabIndex = 38;
+            this.TBCarNumOfSeats.Location = new System.Drawing.Point(170, 297);
+            this.TBCarNumOfSeats.Name = "TBCarNumOfSeats";
+            this.TBCarNumOfSeats.Size = new System.Drawing.Size(81, 20);
+            this.TBCarNumOfSeats.TabIndex = 38;
             // 
-            // textBox10
+            // TBCarNumOfDoors
             // 
-            this.textBox10.Location = new System.Drawing.Point(170, 331);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(81, 20);
-            this.textBox10.TabIndex = 40;
+            this.TBCarNumOfDoors.Location = new System.Drawing.Point(170, 331);
+            this.TBCarNumOfDoors.Name = "TBCarNumOfDoors";
+            this.TBCarNumOfDoors.Size = new System.Drawing.Size(81, 20);
+            this.TBCarNumOfDoors.TabIndex = 40;
             // 
             // label17
             // 
@@ -288,19 +276,19 @@
             this.label18.TabIndex = 41;
             this.label18.Text = "Color:";
             // 
-            // textBox11
+            // TBCarColor
             // 
-            this.textBox11.Location = new System.Drawing.Point(109, 368);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(142, 20);
-            this.textBox11.TabIndex = 42;
+            this.TBCarColor.Location = new System.Drawing.Point(109, 368);
+            this.TBCarColor.Name = "TBCarColor";
+            this.TBCarColor.Size = new System.Drawing.Size(142, 20);
+            this.TBCarColor.TabIndex = 42;
             // 
-            // textBox12
+            // TBCarVIN
             // 
-            this.textBox12.Location = new System.Drawing.Point(109, 398);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(142, 20);
-            this.textBox12.TabIndex = 44;
+            this.TBCarVIN.Location = new System.Drawing.Point(109, 398);
+            this.TBCarVIN.Name = "TBCarVIN";
+            this.TBCarVIN.Size = new System.Drawing.Size(142, 20);
+            this.TBCarVIN.TabIndex = 44;
             // 
             // label19
             // 
@@ -312,12 +300,12 @@
             this.label19.TabIndex = 43;
             this.label19.Text = "VIN:";
             // 
-            // textBox13
+            // TBCarPrice
             // 
-            this.textBox13.Location = new System.Drawing.Point(146, 432);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(62, 20);
-            this.textBox13.TabIndex = 46;
+            this.TBCarPrice.Location = new System.Drawing.Point(146, 432);
+            this.TBCarPrice.Name = "TBCarPrice";
+            this.TBCarPrice.Size = new System.Drawing.Size(62, 20);
+            this.TBCarPrice.TabIndex = 46;
             // 
             // label20
             // 
@@ -341,9 +329,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.BTNAddExtra);
+            this.groupBox1.Controls.Add(this.BTNDeleteExtra);
+            this.groupBox1.Controls.Add(this.CBCarExtras);
             this.groupBox1.Location = new System.Drawing.Point(347, 155);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(238, 297);
@@ -352,137 +340,154 @@
             this.groupBox1.Text = "Car\'s extras";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // comboBox2
+            // BTNAddExtra
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(45, 26);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(166, 21);
-            this.comboBox2.TabIndex = 0;
+            this.BTNAddExtra.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.BTNAddExtra.Location = new System.Drawing.Point(82, 58);
+            this.BTNAddExtra.Name = "BTNAddExtra";
+            this.BTNAddExtra.Size = new System.Drawing.Size(87, 36);
+            this.BTNAddExtra.TabIndex = 1;
+            this.BTNAddExtra.Text = "Add";
+            this.BTNAddExtra.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // BTNDeleteExtra
             // 
-            this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.button1.Location = new System.Drawing.Point(82, 58);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 36);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BTNDeleteExtra.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.BTNDeleteExtra.Location = new System.Drawing.Point(79, 251);
+            this.BTNDeleteExtra.Name = "BTNDeleteExtra";
+            this.BTNDeleteExtra.Size = new System.Drawing.Size(87, 36);
+            this.BTNDeleteExtra.TabIndex = 2;
+            this.BTNDeleteExtra.Text = "Delete";
+            this.BTNDeleteExtra.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // CBCarExtras
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(367, 270);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(207, 121);
-            this.listBox1.TabIndex = 49;
+            this.CBCarExtras.FormattingEnabled = true;
+            this.CBCarExtras.Location = new System.Drawing.Point(45, 26);
+            this.CBCarExtras.Name = "CBCarExtras";
+            this.CBCarExtras.Size = new System.Drawing.Size(166, 21);
+            this.CBCarExtras.TabIndex = 0;
             // 
-            // button2
+            // LBExtras
             // 
-            this.button2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.button2.Location = new System.Drawing.Point(79, 251);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 36);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
+            this.LBExtras.FormattingEnabled = true;
+            this.LBExtras.Location = new System.Drawing.Point(367, 270);
+            this.LBExtras.Name = "LBExtras";
+            this.LBExtras.Size = new System.Drawing.Size(207, 121);
+            this.LBExtras.TabIndex = 49;
             // 
-            // button3
+            // BTNAddCar
             // 
-            this.button3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.button3.Location = new System.Drawing.Point(216, 485);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(177, 48);
-            this.button3.TabIndex = 50;
-            this.button3.Text = "Add Car";
-            this.button3.UseVisualStyleBackColor = true;
+            this.BTNAddCar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.BTNAddCar.Location = new System.Drawing.Point(216, 485);
+            this.BTNAddCar.Name = "BTNAddCar";
+            this.BTNAddCar.Size = new System.Drawing.Size(177, 48);
+            this.BTNAddCar.TabIndex = 50;
+            this.BTNAddCar.Text = "Add Car";
+            this.BTNAddCar.UseVisualStyleBackColor = true;
+            this.BTNAddCar.Click += new System.EventHandler(this.BTNAddCar_Click);
+            // 
+            // NUDCarEngineSize
+            // 
+            this.NUDCarEngineSize.Location = new System.Drawing.Point(130, 189);
+            this.NUDCarEngineSize.Name = "NUDCarEngineSize";
+            this.NUDCarEngineSize.Size = new System.Drawing.Size(94, 20);
+            this.NUDCarEngineSize.TabIndex = 51;
+            // 
+            // NUDCarPower
+            // 
+            this.NUDCarPower.Location = new System.Drawing.Point(109, 230);
+            this.NUDCarPower.Name = "NUDCarPower";
+            this.NUDCarPower.Size = new System.Drawing.Size(115, 20);
+            this.NUDCarPower.TabIndex = 52;
             // 
             // AddCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 545);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.NUDCarPower);
+            this.Controls.Add(this.NUDCarEngineSize);
+            this.Controls.Add(this.BTNAddCar);
+            this.Controls.Add(this.LBExtras);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.textBox13);
+            this.Controls.Add(this.TBCarPrice);
             this.Controls.Add(this.label20);
-            this.Controls.Add(this.textBox12);
+            this.Controls.Add(this.TBCarVIN);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.TBCarColor);
             this.Controls.Add(this.label18);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.RTBCarDescription);
+            this.Controls.Add(this.TBCarNumOfDoors);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.TBCarNumOfSeats);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.CBCarGearbox);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox8);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.TBCarFuel);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.NUDCarMileage);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.DTPCarFirstReg);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.TBCarModel);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.TBCarBrand);
             this.Name = "AddCar";
             this.Text = "AddCar";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDCarMileage)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.NUDCarEngineSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDCarPower)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox RTBCarDescription;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox TBCarModel;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox TBCarBrand;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker DTPCarFirstReg;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown NUDCarMileage;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox TBCarFuel;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CBCarGearbox;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox TBCarNumOfSeats;
+        private System.Windows.Forms.TextBox TBCarNumOfDoors;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox TBCarColor;
+        private System.Windows.Forms.TextBox TBCarVIN;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox TBCarPrice;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button BTNAddExtra;
+        private System.Windows.Forms.ComboBox CBCarExtras;
+        private System.Windows.Forms.ListBox LBExtras;
+        private System.Windows.Forms.Button BTNDeleteExtra;
+        private System.Windows.Forms.Button BTNAddCar;
+        private System.Windows.Forms.NumericUpDown NUDCarEngineSize;
+        private System.Windows.Forms.NumericUpDown NUDCarPower;
     }
 }

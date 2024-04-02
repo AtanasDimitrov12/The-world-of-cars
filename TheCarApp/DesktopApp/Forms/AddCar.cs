@@ -21,5 +21,10 @@ namespace DesktopApp
         {
 
         }
+
+        private void BTNAddCar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

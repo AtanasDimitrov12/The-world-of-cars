@@ -16,5 +16,17 @@ namespace DesktopApp
         {
             InitializeComponent();
         }
+
+        private void BTNAddNews_Click(object sender, EventArgs e)
+        {
+            AddNews addNews = new AddNews();
+            addNews.Show();
+        }
+
+        private void BTNModifyNews_Click(object sender, EventArgs e)
+        {
+            AddNews addNews = new AddNews();
+            addNews.Show();
+        }
     }
 }

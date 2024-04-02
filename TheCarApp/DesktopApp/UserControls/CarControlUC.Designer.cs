@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BTNModifyCar = new System.Windows.Forms.Button();
+            this.BTNAddCar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.BTNSearch = new System.Windows.Forms.Button();
+            this.TBSearchByYear = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.RBDesc = new System.Windows.Forms.RadioButton();
+            this.RBAsc = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.LBCars = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
@@ -47,8 +47,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.BTNModifyCar);
+            this.groupBox1.Controls.Add(this.BTNAddCar);
             this.groupBox1.Location = new System.Drawing.Point(14, 282);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(180, 116);
@@ -56,30 +56,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Actions";
             // 
-            // button2
+            // BTNModifyCar
             // 
-            this.button2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.button2.Location = new System.Drawing.Point(26, 72);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 35);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Modify car";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BTNModifyCar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.BTNModifyCar.Location = new System.Drawing.Point(26, 72);
+            this.BTNModifyCar.Name = "BTNModifyCar";
+            this.BTNModifyCar.Size = new System.Drawing.Size(125, 35);
+            this.BTNModifyCar.TabIndex = 21;
+            this.BTNModifyCar.Text = "Modify car";
+            this.BTNModifyCar.UseVisualStyleBackColor = true;
+            this.BTNModifyCar.Click += new System.EventHandler(this.BTNModifyCar_Click);
             // 
-            // button1
+            // BTNAddCar
             // 
-            this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.button1.Location = new System.Drawing.Point(26, 31);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 35);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Add car";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BTNAddCar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.BTNAddCar.Location = new System.Drawing.Point(26, 31);
+            this.BTNAddCar.Name = "BTNAddCar";
+            this.BTNAddCar.Size = new System.Drawing.Size(125, 35);
+            this.BTNAddCar.TabIndex = 20;
+            this.BTNAddCar.Text = "Add car";
+            this.BTNAddCar.UseVisualStyleBackColor = true;
+            this.BTNAddCar.Click += new System.EventHandler(this.BTNAddCar_Click);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.BTNSearch);
+            this.groupBox3.Controls.Add(this.TBSearchByYear);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Location = new System.Drawing.Point(14, 116);
             this.groupBox3.Name = "groupBox3";
@@ -88,22 +90,22 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Search cars";
             // 
-            // button3
+            // BTNSearch
             // 
-            this.button3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.button3.Location = new System.Drawing.Point(27, 82);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(125, 43);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Search";
-            this.button3.UseVisualStyleBackColor = true;
+            this.BTNSearch.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.BTNSearch.Location = new System.Drawing.Point(27, 82);
+            this.BTNSearch.Name = "BTNSearch";
+            this.BTNSearch.Size = new System.Drawing.Size(125, 43);
+            this.BTNSearch.TabIndex = 19;
+            this.BTNSearch.Text = "Search";
+            this.BTNSearch.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // TBSearchByYear
             // 
-            this.textBox3.Location = new System.Drawing.Point(41, 56);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 18;
+            this.TBSearchByYear.Location = new System.Drawing.Point(41, 56);
+            this.TBSearchByYear.Name = "TBSearchByYear";
+            this.TBSearchByYear.Size = new System.Drawing.Size(100, 20);
+            this.TBSearchByYear.TabIndex = 18;
             // 
             // label5
             // 
@@ -117,8 +119,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.RBDesc);
+            this.groupBox2.Controls.Add(this.RBAsc);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(14, 13);
             this.groupBox2.Name = "groupBox2";
@@ -127,27 +129,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Show cars";
             // 
-            // radioButton2
+            // RBDesc
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(101, 46);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(50, 17);
-            this.radioButton2.TabIndex = 16;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Desc";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.RBDesc.AutoSize = true;
+            this.RBDesc.Location = new System.Drawing.Point(101, 46);
+            this.RBDesc.Name = "RBDesc";
+            this.RBDesc.Size = new System.Drawing.Size(50, 17);
+            this.RBDesc.TabIndex = 16;
+            this.RBDesc.TabStop = true;
+            this.RBDesc.Text = "Desc";
+            this.RBDesc.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // RBAsc
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(27, 46);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(43, 17);
-            this.radioButton1.TabIndex = 15;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Asc";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.RBAsc.AutoSize = true;
+            this.RBAsc.Location = new System.Drawing.Point(27, 46);
+            this.RBAsc.Name = "RBAsc";
+            this.RBAsc.Size = new System.Drawing.Size(43, 17);
+            this.RBAsc.TabIndex = 15;
+            this.RBAsc.TabStop = true;
+            this.RBAsc.Text = "Asc";
+            this.RBAsc.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -189,15 +191,15 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BTNModifyCar;
+        private System.Windows.Forms.Button BTNAddCar;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button BTNSearch;
+        private System.Windows.Forms.TextBox TBSearchByYear;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton RBDesc;
+        private System.Windows.Forms.RadioButton RBAsc;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox LBCars;
     }

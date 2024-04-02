@@ -16,5 +16,17 @@ namespace DesktopApp
         {
             InitializeComponent();
         }
+
+        private void BTNAddCar_Click(object sender, EventArgs e)
+        {
+            AddCar addCar = new AddCar();
+            addCar.Show();
+        }
+
+        private void BTNModifyCar_Click(object sender, EventArgs e)
+        {
+            AddCar addCar = new AddCar();
+            addCar.Show();
+        }
     }
 }
