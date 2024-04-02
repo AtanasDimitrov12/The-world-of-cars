@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BTNComments = new System.Windows.Forms.Button();
+            this.BTNCarControl = new System.Windows.Forms.Button();
+            this.BTNCarNews = new System.Windows.Forms.Button();
             this.BTNControlAdminInfo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -47,9 +47,9 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Lime;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.BTNComments, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.BTNCarControl, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.BTNCarNews, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.BTNControlAdminInfo, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 65);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -62,36 +62,38 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 317);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // button1
+            // BTNComments
             // 
-            this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.button1.Location = new System.Drawing.Point(3, 161);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 70);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Comments";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BTNComments.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.BTNComments.Location = new System.Drawing.Point(3, 161);
+            this.BTNComments.Name = "BTNComments";
+            this.BTNComments.Size = new System.Drawing.Size(194, 70);
+            this.BTNComments.TabIndex = 2;
+            this.BTNComments.Text = "Comments";
+            this.BTNComments.UseVisualStyleBackColor = true;
+            this.BTNComments.Click += new System.EventHandler(this.BTNComments_Click);
             // 
-            // button3
+            // BTNCarControl
             // 
-            this.button3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.button3.Location = new System.Drawing.Point(3, 240);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(194, 73);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Car Control";
-            this.button3.UseVisualStyleBackColor = true;
+            this.BTNCarControl.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.BTNCarControl.Location = new System.Drawing.Point(3, 240);
+            this.BTNCarControl.Name = "BTNCarControl";
+            this.BTNCarControl.Size = new System.Drawing.Size(194, 73);
+            this.BTNCarControl.TabIndex = 3;
+            this.BTNCarControl.Text = "Car Control";
+            this.BTNCarControl.UseVisualStyleBackColor = true;
+            this.BTNCarControl.Click += new System.EventHandler(this.BTNCarControl_Click);
             // 
-            // button2
+            // BTNCarNews
             // 
-            this.button2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.button2.Location = new System.Drawing.Point(3, 82);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(194, 73);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Car News";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.BTNCarNews.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.BTNCarNews.Location = new System.Drawing.Point(3, 82);
+            this.BTNCarNews.Name = "BTNCarNews";
+            this.BTNCarNews.Size = new System.Drawing.Size(194, 73);
+            this.BTNCarNews.TabIndex = 1;
+            this.BTNCarNews.Text = "Car News";
+            this.BTNCarNews.UseVisualStyleBackColor = true;
+            this.BTNCarNews.Click += new System.EventHandler(this.BTNCarNews_Click);
             // 
             // BTNControlAdminInfo
             // 
@@ -123,16 +125,6 @@
             this.panel2.Size = new System.Drawing.Size(624, 448);
             this.panel2.TabIndex = 3;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(138, 137);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(387, 37);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Welcome to admin page";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DesktopApp.Properties.Resources.brabus;
@@ -142,6 +134,16 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(138, 137);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(387, 37);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Welcome to admin page";
             // 
             // ControlPage
             // 
@@ -164,12 +166,12 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BTNCarNews;
         private System.Windows.Forms.Button BTNControlAdminInfo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button BTNComments;
+        private System.Windows.Forms.Button BTNCarControl;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
     }

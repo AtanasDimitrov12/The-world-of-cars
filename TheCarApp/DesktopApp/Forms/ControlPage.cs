@@ -14,6 +14,8 @@ namespace DesktopApp
     {
         AdminInfoUC adminInfoUC;
         CarNewsUC carNewsUC;
+        CarControlUC carControlUC;
+        CommentsControlUC commentsControlUC;
         List<UserControl> usercontrols;
         
         public ControlPage()
@@ -21,7 +23,9 @@ namespace DesktopApp
             InitializeComponent();
             adminInfoUC = new AdminInfoUC();
             carNewsUC = new CarNewsUC();
-            usercontrols = new List<UserControl> { adminInfoUC, carNewsUC };
+            carControlUC = new CarControlUC();
+            commentsControlUC = new CommentsControlUC();    
+            usercontrols = new List<UserControl> { adminInfoUC, carNewsUC, carControlUC, commentsControlUC };
 
 
             
@@ -53,10 +57,22 @@ namespace DesktopApp
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void BTNCarNews_Click(object sender, EventArgs e)
         {
             carNewsUC.Show();
             carNewsUC.BringToFront();
+        }
+
+        private void BTNComments_Click(object sender, EventArgs e)
+        {
+            commentsControlUC.Show();
+            commentsControlUC.BringToFront();
+        }
+
+        private void BTNCarControl_Click(object sender, EventArgs e)
+        {
+            carControlUC.Show();
+            carControlUC.BringToFront();
         }
     }
 }

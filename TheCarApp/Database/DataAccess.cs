@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Database
 {
-    internal class DataAccess
+    public class DataAccess
     {
+
     }
 }
