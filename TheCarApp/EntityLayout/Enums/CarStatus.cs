@@ -8,8 +8,8 @@ namespace Entity_Layer.Enums
 {
     public enum CarStatus
     {
-        Available,
-        Rented,
-        Maintenance
+        AVAILABLE,
+        RENTED,
+        MAINTENANCE
     }
 }

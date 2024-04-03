@@ -17,13 +17,13 @@ namespace Manager_Layer
         private DateTime ReturnDate { get; set; }
         private  RentStatus status { get; set; }
 
-        public RentACar(User user, Car car, DateTime startDate, DateTime returnDate)
+        public RentACar(User user, Car car, DateTime startDate, DateTime returnDate, RentStatus Status)
         {
             this.user = user;
             this.car = car;
             this.StartDate = startDate;
             this.ReturnDate = returnDate;
-            this.status = RentStatus.Scheduled;
+            this.status = Status;
         }
 
         public void ChangeStatus(RentStatus Status)

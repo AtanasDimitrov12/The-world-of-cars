@@ -19,7 +19,7 @@ namespace Entity_Layer
         public string ShortIntro { get; set; }
         public List<Comment> comments { get; set; }
 
-        public CarNews(string newsDescription, string releaseDate, string imageURL, string title, string author, string shortIntro)
+        public CarNews(string newsDescription, string releaseDate, string imageURL, string title, string author, string shortIntro, List<Comment> Comments)
         {
             NewsDescription = newsDescription;
             ReleaseDate = releaseDate;
@@ -28,7 +28,7 @@ namespace Entity_Layer
             Title = title;
             Author = author;
             ShortIntro = shortIntro;
-            comments = new List<Comment>();
+            comments = Comments;
         }
 
         public void AddComment(Comment comment)

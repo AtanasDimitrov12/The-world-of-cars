@@ -202,7 +202,8 @@ namespace Database
                                 {
                                     Id = reader.GetInt32(reader.GetOrdinal("CommentId")),
                                     Content = reader.GetString(reader.GetOrdinal("Content")), // Assuming 'extraName' is intended to store the comment content
-                                    CommentDate = reader.GetDateTime(reader.GetOrdinal("CommentDate"))
+                                    Date = reader.GetDateTime(reader.GetOrdinal("CommentDate")),
+                                    UserId = reader.GetInt32(reader.GetOrdinal("UserId")),
                                 });
                             }
                         }
