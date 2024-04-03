@@ -49,11 +49,6 @@ namespace EntityLayout
         }
 
 
-        //public List<string> GetPictures()
-        //{
-        //    return pictures;
-        //}
-
         //public void AddPicture(string picture)
         //{
         //    pictures.Add(picture);

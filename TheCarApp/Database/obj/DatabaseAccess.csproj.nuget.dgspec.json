@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj": {}
+    "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj": {
+    "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj",
+        "projectUniqueName": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj",
         "projectName": "DatabaseAccess",
-        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj",
-        "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\obj\\",
+        "projectPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj",
+        "packagesPath": "C:\\Users\\klond\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\klond\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +39,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
