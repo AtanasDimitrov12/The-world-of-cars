@@ -8,7 +8,7 @@ namespace Entity_Layer
 {
     public class Administrator : Member
     {
-        private string _phoneNumber;
+        private string _phoneNumber { get; set; }
 
         public Administrator(string Email, string Password, string UserName, DateTime CreatedON, string PhoneNumber) : base(Email, Password, UserName, CreatedON) 
         { 

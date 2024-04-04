@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Database;
+using DTO;
+using Entity_Layer.Enums;
+using EntityLayout;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +12,13 @@ namespace Entity_Layer
 {
     public class NewsManager
     {
-       
-        private List<CarNews> news { get; set;}
 
-        public NewsManager() 
+        private List<CarNews> news { get; set; }
+        private DataAccess access;
+
+        public NewsManager()
         {
-            
+
             news = new List<CarNews>();
         }
 
@@ -22,12 +27,12 @@ namespace Entity_Layer
             news.Add(News);
         }
 
-        public void DeleteNews(CarNews News) 
+        public void DeleteNews(CarNews News)
         {
             news.Remove(News);
         }
 
-        public List<CarNews> GetNews() 
+        public List<CarNews> GetNews()
         {
             return news;
         }
@@ -42,9 +47,30 @@ namespace Entity_Layer
             news.RemoveComment(comment);
         }
 
-        public List<Comment> GetComments(CarNews news) 
+        public List<Comment> GetComments(CarNews news)
         {
             return news.GetComments();
+        }
+
+        public void LoadNews()
+        {
+            if (access.GetCarNews() != null)
+            {
+                
+                foreach (CarNewsDTO newsDTO in access.GetCarNews())
+                {
+                    List<Comment> loadComments = new List<Comment>();   
+                    foreach (CommentDTO comment in newsDTO.comments)
+                    {
+                        Comment comm = new Comment(comment.Id, comment.UserId, comment.Date, comment.Content);
+                        loadComments.Add(comm);
+                    }
+
+                    CarNews loadnews = new CarNews(newsDTO.NewsDescription, newsDTO.ReleaseDate, newsDTO.ImageURL, newsDTO.Title, newsDTO.Author, newsDTO.ShortIntro, loadComments);
+
+                    news.Add(loadnews);
+                }
+            }
         }
     }
 }

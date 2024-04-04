@@ -8,13 +8,15 @@ namespace Entity_Layer
 {
     public class Comment
     {
-        private User User { get; set; }
-        private DateTime Date { get; set; }
-        private string Message { get; set; }
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public DateTime Date { get; set; }
+        public string Message { get; set; }
 
-        public Comment(User user, DateTime date, string message)
+        public Comment(int id, int userId, DateTime date, string message)
         {
-            this.User = user;
+            this.Id = id;
+            this.UserId = userId;
             this.Date = date;
             this.Message = message;
         }

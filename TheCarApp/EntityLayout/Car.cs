@@ -13,6 +13,7 @@ namespace EntityLayout
 {
     public class Car
     {
+        public int Id { get; set; }
         public string brand { get; set; }
         public string Model { get; set; }
         public int FirstRegistration { get; set; }
@@ -29,8 +30,9 @@ namespace EntityLayout
         public List<Extra> CarExtras { get; set; }
         public CarStatus CarStatus { get; set; }
 
-        public Car(string brand, string model, int Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, string VIN, string description, decimal pricePerDay, CarStatus carStatus)
+        public Car(int id, string brand, string model, int Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, string VIN, string description, decimal pricePerDay, CarStatus carStatus)
         {
+            this.Id = id;
             this.brand = brand;
             Model = model;
             FirstRegistration = Year;
@@ -48,11 +50,6 @@ namespace EntityLayout
             CarStatus = carStatus;
         }
 
-
-        //public List<string> GetPictures()
-        //{
-        //    return pictures;
-        //}
 
         //public void AddPicture(string picture)
         //{

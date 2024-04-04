@@ -10,7 +10,7 @@ namespace Entity_Layer
 {
     public class User : Member
     {
-        private string _licenseNumber;
+        public string _licenseNumber { get; set; }
 
         public User(string Email, string Password, string UserName, DateTime CreatedON, string License) : base(Email, Password, UserName, CreatedON)
         {

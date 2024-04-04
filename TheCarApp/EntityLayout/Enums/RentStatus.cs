@@ -8,9 +8,9 @@ namespace Entity_Layer.Enums
 {
     public enum RentStatus
     {
-        Scheduled,
-        Active,
-        Completed,
-        Cancelled
+        SCHEDULE,
+        ACTIVE,
+        COMPLETED,
+        CANCELLED
     }
 }
