@@ -1,0 +1,9 @@
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\TheCarApp.exe
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\appsettings.json
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\TheCarApp.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\TheCarApp.deps.json
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\TheCarApp.runtimeconfig.json
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\TheCarApp.pdb
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\Entity Layer.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\Entity Layer.pdb

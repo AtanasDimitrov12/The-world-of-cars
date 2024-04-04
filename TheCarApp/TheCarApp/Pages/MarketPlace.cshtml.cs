@@ -12,12 +12,12 @@ namespace TheCarApp.Pages
 
         public void OnGet()
         {
-            Cars.Add(new SpecificCar("Audi", "A6", 2000, 140000, "Diesel", 2000, 250, "Automatic", "Blue", "VIN", "Description", 150, CarStatus.AVAILABLE));
-            Cars.Add(new SpecificCar("BMW", "230", 2010, 140000, "Petrol", 2500, 300, "Automatic", "Blue", "VIN", "Description", 150, CarStatus.AVAILABLE));
-            Cars.Add(new SpecificCar("Audi", "A6", 2000, 140000, "Diesel", 2000, 250, "Automatic", "Blue", "VIN", "Description", 150, CarStatus.AVAILABLE));
-            Cars.Add(new SpecificCar("BMW", "230", 2010, 140000, "Petrol", 2500, 300, "Automatic", "Blue", "VIN", "Description", 150, CarStatus.AVAILABLE));
-            Cars.Add(new SpecificCar("Audi", "A6", 2000, 140000, "Diesel", 2000, 250, "Automatic", "Blue", "VIN", "Description", 150, CarStatus.AVAILABLE));
-            Cars.Add(new SpecificCar("BMW", "230", 2010, 140000, "Petrol", 2500, 300, "Automatic", "Blue", "VIN", "Description", 150, CarStatus.AVAILABLE));
+            Cars.Add(new Car(1, "Audi", "A6", 2000, 140000, "Diesel", 2000, 250, "Automatic", "Blue", "VIN", "Description", 150, CarStatus.AVAILABLE));
+            Cars.Add(new Car(2, "BMW", "230", 2010, 140000, "Petrol", 2500, 300, "Automatic", "Blue", "VIN", "Description", 150, CarStatus.AVAILABLE));
+            Cars.Add(new Car(3, "Audi", "A6", 2000, 140000, "Diesel", 2000, 250, "Automatic", "Blue", "VIN", "Description", 150, CarStatus.AVAILABLE));
+            Cars.Add(new Car(4, "BMW", "230", 2010, 140000, "Petrol", 2500, 300, "Automatic", "Blue", "VIN", "Description", 150, CarStatus.AVAILABLE));
+            Cars.Add(new Car(5, "Audi", "A6", 2000, 140000, "Diesel", 2000, 250, "Automatic", "Blue", "VIN", "Description", 150, CarStatus.AVAILABLE));
+            Cars.Add(new Car(6, "BMW", "230", 2010, 140000, "Petrol", 2500, 300, "Automatic", "Blue", "VIN", "Description", 150, CarStatus.AVAILABLE));
         }
     }
 }
