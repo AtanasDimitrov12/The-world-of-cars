@@ -44,12 +44,20 @@ namespace ManagerLayer
                     if (isValidArea)
                     {
                         UserDTO userDTO = rentDTO.user;
-                        User loadUser = new User(userDTO.email, userDTO.password, userDTO.Username, userDTO.CreatedOn, userDTO._licenseNumber);
+                        CarDTO carDTO = rentDTO.car;
 
+                        CarStatus carStatusCheck;
+                        bool isValidStatus = Enum.TryParse(carDTO.CarStatus.ToUpper(), true, out carStatusCheck);
+                        if (isValidStatus)
+                        {
+                            User loadUser = new User(userDTO.email, userDTO.password, userDTO.Username, userDTO.CreatedOn, userDTO._licenseNumber);
+                            Car loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, carStatusCheck);
 
-                        //RentACar loadRent = new RentACar(loadUser, rentDTO.car, rentDTO.StartDate, rentDTO.ReturnDate, status);
+                            RentACar loadRent = new RentACar(loadUser, loadCar, rentDTO.StartDate, rentDTO.ReturnDate, status);
 
-                        //rentalHistory.Add(loadRent);
+                            rentalHistory.Add(loadRent);
+
+                        }
 
                     }
                     else
