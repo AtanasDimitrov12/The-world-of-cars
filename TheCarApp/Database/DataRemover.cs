@@ -16,7 +16,7 @@ namespace DatabaseAccess
             connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
         }
 
-        public int RemoveCar(int CarId)
+        public int RemoveCar(int CarId, int ExtraId, int PictureId)
         {
             int rows = -1;
             try
@@ -26,6 +26,9 @@ namespace DatabaseAccess
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@CarId", CarId);
                 rows = cmd.ExecuteNonQuery();
+                RemoveCarDescription(CarId);
+                RemoveCarExtras(CarId, ExtraId);
+                RemoveCarPictures(CarId, PictureId);
             }
             catch (Exception ex)
             {
@@ -74,14 +77,15 @@ namespace DatabaseAccess
             return rows;
         }
 
-        public int RemoveCarPictures(int PictureId)
+        public int RemoveCarPictures(int CarId, int PictureId)
         {
             int rows = -1;
             try
             {
                 connectionString.Open();
-                var sql = "DELETE FROM [dbo].[CarPictures] WHERE [PictureID] = @PictureId";
+                var sql = "DELETE FROM [dbo].[CarPictures] WHERE [CarId] = @CarId AND [PictureID] = @PictureId";
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@CarId", CarId);
                 cmd.Parameters.AddWithValue("@PictureId", PictureId);
                 rows = cmd.ExecuteNonQuery();
             }

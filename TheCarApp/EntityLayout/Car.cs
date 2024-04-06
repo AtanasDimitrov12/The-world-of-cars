@@ -16,7 +16,7 @@ namespace EntityLayout
         public int Id { get; set; }
         public string brand { get; set; }
         public string Model { get; set; }
-        public int FirstRegistration { get; set; }
+        public DateTime FirstRegistration { get; set; }
         public int Mileage { get; set; }
         public string Fuel { get; set; }
         public int EngineSize { get; set; }
@@ -26,11 +26,13 @@ namespace EntityLayout
         public string VIN { get; set; }
         public string Description { get; set; }
         public decimal PricePerDay { get; set; }
-        public List<string> Pictures { get; set; }
+        public List<Picture> Pictures { get; set; }
         public List<Extra> CarExtras { get; set; }
         public CarStatus CarStatus { get; set; }
+        public int NumberOfSeats { get; set; }
+        public string NumberOfDoors { get; set; }
 
-        public Car(int id, string brand, string model, int Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, string VIN, string description, decimal pricePerDay, CarStatus carStatus)
+        public Car(int id, string brand, string model, DateTime Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, string VIN, string description, decimal pricePerDay, CarStatus carStatus, int numberOfSeats, string numberOfDoors)
         {
             this.Id = id;
             this.brand = brand;
@@ -42,24 +44,36 @@ namespace EntityLayout
             HorsePower = horsePower;
             Gearbox = GearBox;
             Color = color;
-            VIN = VIN;
+            this.VIN = VIN;
             Description = description;
             PricePerDay = pricePerDay;
-            Pictures = new List<string> { };
+            Pictures = new List<Picture> { };
             CarExtras = new List<Extra> { };
             CarStatus = carStatus;
+            NumberOfSeats = numberOfSeats;
+            NumberOfDoors = numberOfDoors;
         }
 
 
-        //public void AddPicture(string picture)
-        //{
-        //    pictures.Add(picture);
-        //}
+        public void AddPicture(Picture picture)
+        {
+            Pictures.Add(picture);
+        }
 
-        //public void RemovePicture(string picture)
-        //{
-        //    pictures.Remove(picture);
-        //}
+        public void RemovePicture(Picture picture)
+        {
+            Pictures.Remove(picture);
+        }
+
+        public void AddExtra(Extra extra)
+        {
+            CarExtras.Add(extra);
+        }
+
+        public void RemoveExtra(Extra extra)
+        {
+            CarExtras.Remove(extra);
+        }
 
 
     }

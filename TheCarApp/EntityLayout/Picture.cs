@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Entity_Layer
 {
-    public class Extra
+    public class Picture
     {
         public int Id { get; set; }
-        public string extraName { get; set; }
+        public string PictureURL { get; set; }
 
-        public Extra(string ExtraName, int ID) 
-        { 
-            this.extraName = ExtraName;
-            this.Id = ID;
+        public Picture(int Id, string URL) 
+        {
+            this.Id = Id;
+            this.PictureURL = URL;
         }
     }
 }
