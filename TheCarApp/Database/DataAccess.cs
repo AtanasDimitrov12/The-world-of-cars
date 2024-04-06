@@ -151,7 +151,7 @@ namespace Database
                                     // Initialize your CarNewsDTO properties here
                                     Id=reader.GetInt32(reader.GetOrdinal("NewsId")),
                                     NewsDescription = reader.GetString(reader.GetOrdinal("NewsDescription")),
-                                    ReleaseDate = reader.GetDateTime(reader.GetOrdinal("DatePosted")).ToString("yyyy-MM-dd"),
+                                    ReleaseDate = reader.GetDateTime(reader.GetOrdinal("DatePosted")),
                                     ImageURL = reader.GetString(reader.GetOrdinal("ImageURL")),
                                     Title = reader.GetString(reader.GetOrdinal("Title")),
                                     Author = reader.GetString(reader.GetOrdinal("Author")),

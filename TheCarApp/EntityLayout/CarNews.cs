@@ -8,10 +8,10 @@ namespace Entity_Layer
 {
     public class CarNews
     {
-        
 
+        public int Id { get; set; }
         public string NewsDescription { get; set; }
-        public string ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
         public string ImageURL { get; set; }
         public int NrOfMessages{ get; set; }
         public string Title { get; set; }
@@ -19,8 +19,9 @@ namespace Entity_Layer
         public string ShortIntro { get; set; }
         public List<Comment> comments { get; set; }
 
-        public CarNews(string newsDescription, string releaseDate, string imageURL, string title, string author, string shortIntro, List<Comment> Comments)
+        public CarNews(int Id, string newsDescription, DateTime releaseDate, string imageURL, string title, string author, string shortIntro, List<Comment> Comments)
         {
+            this.Id = Id;
             NewsDescription = newsDescription;
             ReleaseDate = releaseDate;
             ImageURL = imageURL;

@@ -11,7 +11,7 @@ namespace DTO
     {
         public int Id { get; set; }
         public string NewsDescription { get; set; }
-        public string ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
         public string ImageURL { get; set; }
         public int NrOfMessages { get; set; }
         public string Title { get; set; }
