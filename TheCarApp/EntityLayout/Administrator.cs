@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Entity_Layer
 {
-    public class Administrator : Member
+    public class Administrator : Person
     {
-        private string _phoneNumber { get; set; }
+        public string _phoneNumber { get; set; }
 
-        public Administrator(string Email, string Password, string UserName, DateTime CreatedON, string PhoneNumber) : base(Email, Password, UserName, CreatedON) 
+        public Administrator(int Id, string Email, string Password, string UserName, DateTime CreatedON, string PhoneNumber) : base(Id, Email, Password, UserName, CreatedON) 
         { 
             this._phoneNumber = PhoneNumber;
         }

@@ -216,7 +216,7 @@ namespace Database
             return rows;
         }
 
-        public int RentACar(int NewsId, int UserId, DateTime StartDate, DateTime EndDate, string Status)
+        public int RentACar(int CarsId, int UserId, DateTime StartDate, DateTime EndDate, string Status)
         {
             int rows = -1;
             try
@@ -224,12 +224,11 @@ namespace Database
 
                 connectionString.Open();
                 var sql = "INSERT INTO [dbo].[Rentals] ([UserId], [CarId], [StartDate], [EndDate], [Status]) " +
-                    "VALUES (@NewsId, @UserId, @StartDate, @EndDate, @Status)";
-
+                    "VALUES (@UserId, @CarsId, @StartDate, @EndDate, @Status)";
 
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@NewsId", NewsId);
                 cmd.Parameters.AddWithValue("@UserId", UserId);
+                cmd.Parameters.AddWithValue("@CarsId,", CarsId);
                 cmd.Parameters.AddWithValue("@StartDate", StartDate);
                 cmd.Parameters.AddWithValue("@EndDate", EndDate);
                 cmd.Parameters.AddWithValue("@Status", Status);
