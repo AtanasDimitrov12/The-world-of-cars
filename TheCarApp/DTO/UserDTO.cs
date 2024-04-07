@@ -13,6 +13,6 @@ namespace DTO
         public string password { get; set; }
         public string Username { get; set; }
         public DateTime CreatedOn { get; set; }
-        public string _licenseNumber { get; set; }
+        public int _licenseNumber { get; set; }
     }
 }
