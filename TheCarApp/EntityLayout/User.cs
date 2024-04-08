@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace Entity_Layer
 {
-    public class User : Member
+    public class User : Person
     {
-        public string _licenseNumber { get; set; }
+        public int _licenseNumber { get; set; }
 
-        public User(string Email, string Password, string UserName, DateTime CreatedON, string License) : base(Email, Password, UserName, CreatedON)
+        public User(int Id, string Email, string Password, string UserName, DateTime CreatedON, int License) : base(Id, Email, Password, UserName, CreatedON)
         {
             this._licenseNumber = License; 
         }
 
         public override string ToString()
         {
-            return _licenseNumber;
+            return _licenseNumber.ToString();
         }
     }
 }

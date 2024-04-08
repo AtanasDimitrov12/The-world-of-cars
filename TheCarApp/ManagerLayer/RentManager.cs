@@ -1,4 +1,5 @@
 ﻿using Database;
+using DatabaseAccess;
 using DTO;
 using Entity_Layer;
 using Entity_Layer.Enums;
@@ -16,15 +17,22 @@ namespace ManagerLayer
     {
         public List<RentACar> rentalHistory { get; set; }
         private DataAccess access;
+        private DataWriter writer;
+        private DataRemover remover;
 
         public RentManager() 
         { 
             rentalHistory = new List<RentACar>();
+            access = new DataAccess();
+            writer = new DataWriter();
+            remover = new DataRemover();
         }
 
         public void RentACar(User user, Car car, DateTime startDate, DateTime endDate)
         {
             RentACar rentACar = new RentACar(user, car, startDate, endDate, RentStatus.SCHEDULE);
+            writer.RentACar(car.Id, user.Id, startDate, endDate, RentStatus.SCHEDULE.ToString());
+            rentalHistory.Add(rentACar);
         }
 
         public void ChangeRentStatus(RentACar rentACar, RentStatus status)
@@ -51,7 +59,7 @@ namespace ManagerLayer
                         if (isValidStatus)
                         {
                             User loadUser = new User(userDTO.email, userDTO.password, userDTO.Username, userDTO.CreatedOn, userDTO._licenseNumber);
-                            Car loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, carStatusCheck);
+                            Car loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, carStatusCheck, carDTO.NumberOfSeats, carDTO.NumberOfDoors);
 
                             RentACar loadRent = new RentACar(loadUser, loadCar, rentDTO.StartDate, rentDTO.ReturnDate, status);
 

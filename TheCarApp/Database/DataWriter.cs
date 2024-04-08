@@ -47,11 +47,11 @@ namespace Database
 
             catch (SqlException ex)
             {
-                Console.WriteLine($"MySQL error in AddGameSession: {ex.Message}");
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in AddGameSession: {ex.Message}");
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
             return rows;
@@ -78,11 +78,11 @@ namespace Database
 
             catch (SqlException ex)
             {
-                Console.WriteLine($"MySQL error in AddGameSession: {ex.Message}");
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in AddGameSession: {ex.Message}");
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
             return rows;
@@ -108,11 +108,11 @@ namespace Database
 
             catch (SqlException ex)
             {
-                Console.WriteLine($"MySQL error in AddGameSession: {ex.Message}");
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in AddGameSession: {ex.Message}");
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
             return rows;
@@ -138,11 +138,240 @@ namespace Database
 
             catch (SqlException ex)
             {
-                Console.WriteLine($"MySQL error in AddGameSession: {ex.Message}");
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in AddGameSession: {ex.Message}");
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+            }
+            finally { connectionString.Close(); }
+            return rows;
+        }
+
+        public int AddCarNews(string Author, string Title, DateTime DatePosted, string NewsDescription, string ImageURL, string Intro)
+        {
+            int rows = -1;
+            try
+            {
+
+                connectionString.Open();
+                var sql = "INSERT INTO [dbo].[News] ([Author], [Title], [DatePosted], [NewsDescription], [ImageURL], [ShortIntro]) " +
+                    "VALUES (@Author, @Title, @DatePosted, @Description, @ImageURL, @ShortIntro)";
+
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@Author", Author);
+                cmd.Parameters.AddWithValue("@Title", Title);
+                cmd.Parameters.AddWithValue("@DatePosted", DatePosted);
+                cmd.Parameters.AddWithValue("@Description", NewsDescription);
+                cmd.Parameters.AddWithValue("@ImageURL", ImageURL);
+                cmd.Parameters.AddWithValue("@ShortIntro", Intro);
+
+                rows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+            }
+            finally { connectionString.Close(); }
+            return rows;
+        }
+
+        public int AddComment(int NewsId, int UserId, DateTime CommentDate, string Content)
+        {
+            int rows = -1;
+            try
+            {
+
+                connectionString.Open();
+                var sql = "INSERT INTO [dbo].[Comments] ([NewsId], [UserID], [CommentDate], [Content]) " +
+                    "VALUES (@NewsId, @UserId, @CommentDate, @Content)";
+
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@NewsId", NewsId);
+                cmd.Parameters.AddWithValue("@UserId", UserId);
+                cmd.Parameters.AddWithValue("@CommentDate", CommentDate);
+                cmd.Parameters.AddWithValue("@Content", Content);
+
+                rows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+            }
+            finally { connectionString.Close(); }
+            return rows;
+        }
+
+        public int RentACar(int CarsId, int UserId, DateTime StartDate, DateTime EndDate, string Status)
+        {
+            int rows = -1;
+            try
+            {
+
+                connectionString.Open();
+                var sql = "INSERT INTO [dbo].[Rentals] ([UserId], [CarId], [StartDate], [EndDate], [Status]) " +
+                    "VALUES (@UserId, @CarsId, @StartDate, @EndDate, @Status)";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@UserId", UserId);
+                cmd.Parameters.AddWithValue("@CarsId,", CarsId);
+                cmd.Parameters.AddWithValue("@StartDate", StartDate);
+                cmd.Parameters.AddWithValue("@EndDate", EndDate);
+                cmd.Parameters.AddWithValue("@Status", Status);
+
+                rows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+            }
+            finally { connectionString.Close(); }
+            return rows;
+        }
+
+        public int AddUser(string Username, string email, string password, int LicenseNumber, DateTime CreatedOn)
+        {
+            int rows = -1;
+            try
+            {
+
+                connectionString.Open();
+                var sql = "INSERT INTO [dbo].[Users] ([Username], [Email], [PasswordHash], [LicenseNumber], [CreatedOn])" +
+                    "VALUES (@UserName, @Email, @Password, @LicenseNumber, @CreatedOn)";
+
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@UserName", Username);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Password", password);
+                cmd.Parameters.AddWithValue("@LicenseNumber", LicenseNumber);
+                cmd.Parameters.AddWithValue("@CreatedOn", CreatedOn);
+
+                rows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+            }
+            finally { connectionString.Close(); }
+            return rows;
+        }
+
+        public int AddAdmin(string Username, string email, string password, string PhoneNumber, DateTime CreatedOn)
+        {
+            int rows = -1;
+            try
+            {
+
+                connectionString.Open();
+                var sql = "INSERT INTO [dbo].[Administration] ([Username], [Email], [PasswordHash], [PhoneNumber], [CreatedOn])" +
+                    "VALUES (@UserName, @Email, @Password, @PhoneNumber, @CreatedOn)";
+
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@UserName", Username);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Password", password);
+                cmd.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
+                cmd.Parameters.AddWithValue("@CreatedOn", CreatedOn);
+
+                rows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+            }
+            finally { connectionString.Close(); }
+            return rows;
+        }
+
+        public int AddExtra(string ExtraName)
+        {
+            int rows = -1;
+            try
+            {
+
+                connectionString.Open();
+                var sql = "INSERT INTO [dbo].[Extras] ([ExtraName])" +
+                    "VALUES (@ExtraName)";
+
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@ExtraName", ExtraName);
+
+                rows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+            }
+            finally { connectionString.Close(); }
+            return rows;
+        }
+
+        public int AddPicture(string PictureURL)
+        {
+            int rows = -1;
+            try
+            {
+
+                connectionString.Open();
+                var sql = "INSERT INTO [dbo].[Pictures] ([PictureURL])" +
+                    "VALUES (@PictureURL)";
+
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@PictureURL", PictureURL);
+
+                rows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
             return rows;

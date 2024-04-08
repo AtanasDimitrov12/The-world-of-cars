@@ -8,11 +8,13 @@ namespace Entity_Layer
 {
     public class Extra
     {
-        private string extraName { get; set; }
+        public int Id { get; set; }
+        public string extraName { get; set; }
 
-        public Extra(string ExtraName) 
+        public Extra(string ExtraName, int ID) 
         { 
             this.extraName = ExtraName;
+            this.Id = ID;
         }
     }
 }

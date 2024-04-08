@@ -1,4 +1,5 @@
 ﻿using Database;
+using DatabaseAccess;
 using DTO;
 using Entity_Layer.Enums;
 using EntityLayout;
@@ -15,21 +16,28 @@ namespace Entity_Layer
 
         private List<CarNews> news { get; set; }
         private DataAccess access;
+        private DataWriter writer;
+        private DataRemover remover;
 
         public NewsManager()
         {
 
             news = new List<CarNews>();
+            access = new DataAccess();
+            writer = new DataWriter();
+            remover = new DataRemover();
         }
 
-        public void AddNews(CarNews News)
+        public void AddNews(CarNews carnews)
         {
-            news.Add(News);
+            news.Add(carnews);
+            writer.AddCarNews(carnews.Author, carnews.Title, carnews.ReleaseDate, carnews.NewsDescription, carnews.ImageURL, carnews.ShortIntro);
         }
 
-        public void DeleteNews(CarNews News)
+        public void DeleteNews(CarNews carnews)
         {
-            news.Remove(News);
+            news.Remove(carnews);
+            remover.RemoveNews(carnews.Id);
         }
 
         public List<CarNews> GetNews()
@@ -66,7 +74,7 @@ namespace Entity_Layer
                         loadComments.Add(comm);
                     }
 
-                    CarNews loadnews = new CarNews(newsDTO.NewsDescription, newsDTO.ReleaseDate, newsDTO.ImageURL, newsDTO.Title, newsDTO.Author, newsDTO.ShortIntro, loadComments);
+                    CarNews loadnews = new CarNews(newsDTO.Id, newsDTO.NewsDescription, newsDTO.ReleaseDate, newsDTO.ImageURL, newsDTO.Title, newsDTO.Author, newsDTO.ShortIntro, loadComments);
 
                     news.Add(loadnews);
                 }

@@ -11,7 +11,7 @@ namespace DTO
         public int Id { get; set; } 
         public string Brand { get; set; }
         public string Model { get; set; }
-        public int FirstRegistration { get; set; }
+        public DateTime FirstRegistration { get; set; }
         public int Mileage { get; set; }
         public string Fuel { get; set; }
         public int EngineSize { get; set; }
@@ -26,5 +26,6 @@ namespace DTO
         public List<PictureDTO> Pictures { get; set; }
         public List<ExtraDTO> CarExtras { get; set; }
         public string CarStatus { get; set; }
+
     }
 }
