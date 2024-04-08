@@ -535,6 +535,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
+      "Entity Layer >= 1.0.0",
       "ManagerLayer >= 1.0.0"
     ]
   },
@@ -565,6 +566,9 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
+            "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
+              "projectPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj"
+            },
             "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj": {
               "projectPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj"
             }

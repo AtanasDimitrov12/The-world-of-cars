@@ -163,10 +163,9 @@ namespace Database
                         }
                     }
 
-                    // Fetch and attach comments for each news article
                     foreach (var news in newsDTOList)
                     {
-                        news.comments = GetCommentsForNews(news.Id); // Assuming Title is unique or you have another unique identifier
+                        news.comments = GetCommentsForNews(news.Id); 
                     }
                 }
             }
@@ -201,7 +200,7 @@ namespace Database
                                 comments.Add(new CommentDTO
                                 {
                                     Id = reader.GetInt32(reader.GetOrdinal("CommentId")),
-                                    Content = reader.GetString(reader.GetOrdinal("Content")), // Assuming 'extraName' is intended to store the comment content
+                                    Content = reader.GetString(reader.GetOrdinal("Content")),
                                     Date = reader.GetDateTime(reader.GetOrdinal("CommentDate")),
                                     UserId = reader.GetInt32(reader.GetOrdinal("UserId")),
                                 });
@@ -239,8 +238,8 @@ namespace Database
                             {
                                 var rental = new RentACarDTO
                                 {
-                                    user = GetUserById(reader.GetInt32(reader.GetOrdinal("UserId"))), // Assuming a method to fetch UserDTO by UserId
-                                    car = GetCarById(reader.GetInt32(reader.GetOrdinal("CarId"))), // Assuming a method to fetch CarDTO by CarId
+                                    user = GetUserById(reader.GetInt32(reader.GetOrdinal("UserId"))),
+                                    car = GetCarById(reader.GetInt32(reader.GetOrdinal("CarId"))), 
                                     StartDate = reader.GetDateTime(reader.GetOrdinal("StartDate")),
                                     ReturnDate = reader.GetDateTime(reader.GetOrdinal("EndDate")),
                                     status = reader.GetString(reader.GetOrdinal("Status"))
@@ -279,7 +278,7 @@ namespace Database
 
                         using (var reader = command.ExecuteReader())
                         {
-                            if (reader.Read()) // Assuming UserId is unique and only one record will be fetched.
+                            if (reader.Read()) 
                             {
                                 user = new UserDTO
                                 {
@@ -307,7 +306,6 @@ namespace Database
             return user;
         }
 
-        // Placeholder for GetCarById method
         public CarDTO GetCarById(int carId)
         {
             CarDTO car = null;
@@ -350,16 +348,15 @@ namespace Database
                                     Description = reader.GetString(reader.GetOrdinal("Description")),
                                     PricePerDay = reader.GetDecimal(reader.GetOrdinal("PricePerDay")),
                                     CarStatus = reader.GetString(reader.GetOrdinal("CarStatus")),
-                                    Pictures = new List<PictureDTO>(), // Initialize to empty list, populate later
-                                    CarExtras = new List<ExtraDTO>() // Initialize to empty list, populate later
+                                    Pictures = new List<PictureDTO>(), 
+                                    CarExtras = new List<ExtraDTO>() 
                                 };
 
-                                // Optionally, fetch and populate Pictures and CarExtras here
+                                
                             }
                         }
                     }
 
-                    // After fetching the basic CarDTO, you might fetch related Pictures and Extras
                     if (car != null)
                     {
                         car.Pictures = GetCarPictures(carId, connection);
@@ -430,8 +427,7 @@ namespace Database
             {
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    var sql = @"SELECT AdminId, Username, Email, PasswordHash, PhoneNumber, CreatedOn 
-                            FROM [dbi530410_carapp].[dbo].[Administration]";
+                    var sql = @"SELECT AdminId, Username, Email, PasswordHash, PhoneNumber, CreatedOn FROM [dbi530410_carapp].[dbo].[Admininstration]";
                     connection.Open();
 
                     using (var command = new SqlCommand(sql, connection))
