@@ -52,6 +52,11 @@ namespace ManagerLayer
             people.Remove(admin);
         }
 
+        public void UpdateAdmin(Administrator admin)
+        {
+            writer.UpdateAdministration(admin.Id, admin.Username, admin.email, admin.password, admin._phoneNumber, admin.CreatedOn);
+        }
+
 
         public void LoadPeople()
         {

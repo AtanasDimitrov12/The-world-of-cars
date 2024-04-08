@@ -8,6 +8,7 @@ using DatabaseAccess;
 using DTO;
 using Entity_Layer;
 using Entity_Layer.Enums;
+using Entity_Layer.Interfaces;
 using EntityLayout;
 
 
@@ -31,13 +32,21 @@ namespace Manager_Layer
             remover = new DataRemover();
         }
 
-        public void AddCar(Car car, Picture pic, Extra extra)
+        public void AddCar(Car car, List<Picture> pics, List<Extra> extras )
         {
+            // Trqbva da vidim kak da vzimame ID, tuj kato sega ne go slagam no go polzvam
             cars.Add(car);
             writer.AddCar(car.brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
             writer.AddCarDescription(car.Id, car.Description, car.PricePerDay);
-            writer.AddCarExtras(car.Id, extra.Id);
-            writer.AddCarPictures(car.Id, pic.Id);
+            foreach (Picture pic in pics) 
+            {
+                writer.AddCarPictures(car.Id, pic.Id);
+            }
+            foreach (Extra extra in extras)
+            {
+                writer.AddCarExtras(car.Id, extra.Id);
+            }
+            
         }
 
         public void RemoveCar(Car car, Picture pic, Extra extra)
@@ -76,6 +85,19 @@ namespace Manager_Layer
 
         public List<Car> GetCars()
         {
+            return cars;
+        }
+
+        public List<Car> GetCarsASC()
+        {
+            AscendingBrandComparer asc = new AscendingBrandComparer();
+            cars.Sort(asc);
+            return cars;
+        }
+        public List<Car> GetCarsDESC()
+        {
+            DescendingBrandComparer desc = new DescendingBrandComparer();
+            cars.Sort(desc);
             return cars;
         }
 
