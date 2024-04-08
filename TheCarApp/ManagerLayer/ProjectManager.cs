@@ -23,5 +23,12 @@ namespace ManagerLayer
             peopleManager = new PeopleManager();
         }
 
+        public void LoadAllData()
+        { 
+            carManager.LoadCars();
+            newsManager.LoadNews();
+            rentManager.LoadRentals();
+            peopleManager.LoadPeople();
+        }
     }
 }

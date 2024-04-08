@@ -288,7 +288,7 @@ namespace Database
                                     password = reader.IsDBNull(reader.GetOrdinal("PasswordHash")) ? null : reader.GetString(reader.GetOrdinal("PasswordHash")),
                                     Username = reader.IsDBNull(reader.GetOrdinal("Username")) ? null : reader.GetString(reader.GetOrdinal("Username")),
                                     CreatedOn = reader.GetDateTime(reader.GetOrdinal("CreatedOn")),
-                                    _licenseNumber = reader.IsDBNull(reader.GetOrdinal("LicenseNumber")) ? null : reader.GetString(reader.GetOrdinal("LicenseNumber"))
+                                    _licenseNumber = reader.GetInt32(reader.GetOrdinal("LicenseNumber"))
                                 };
                             }
                         }
@@ -403,7 +403,7 @@ namespace Database
                                     password = reader.IsDBNull(reader.GetOrdinal("PasswordHash")) ? null : reader.GetString(reader.GetOrdinal("PasswordHash")),
                                     Username = reader.IsDBNull(reader.GetOrdinal("Username")) ? null : reader.GetString(reader.GetOrdinal("Username")),
                                     CreatedOn = reader.GetDateTime(reader.GetOrdinal("CreatedOn")),
-                                    _licenseNumber = reader.IsDBNull(reader.GetOrdinal("LicenseNumber")) ? null : reader.GetString(reader.GetOrdinal("LicenseNumber"))
+                                    _licenseNumber = reader.GetInt32(reader.GetOrdinal("LicenseNumber"))
                                 };
                                 users.Add(user);
                             }
