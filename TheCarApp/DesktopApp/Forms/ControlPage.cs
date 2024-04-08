@@ -16,7 +16,8 @@ namespace DesktopApp
         CarNewsUC carNewsUC;
         CarControlUC carControlUC;
         CommentsControlUC commentsControlUC;
-        List<UserControl> usercontrols;
+        List<UserControl> userControls;
+        
         
         public ControlPage()
         {
@@ -25,10 +26,7 @@ namespace DesktopApp
             carNewsUC = new CarNewsUC();
             carControlUC = new CarControlUC();
             commentsControlUC = new CommentsControlUC();    
-            usercontrols = new List<UserControl> { adminInfoUC, carNewsUC, carControlUC, commentsControlUC };
-
-
-            
+            userControls = new List<UserControl> { adminInfoUC, carNewsUC, carControlUC, commentsControlUC };
             this.Controls.Add(panel2); 
 
             AddUC(); 
@@ -37,7 +35,7 @@ namespace DesktopApp
 
         public void AddUC()
         {
-            foreach (var control in usercontrols)
+            foreach (var control in userControls)
             {
                 control.Dock = DockStyle.Fill;
                 panel2.Controls.Add(control);
