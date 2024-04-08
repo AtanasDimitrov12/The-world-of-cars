@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ManagerLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,16 @@ namespace DesktopApp
 {
     public partial class AdminInfoUC : UserControl
     {
-        public AdminInfoUC()
+        PeopleManager manager;
+        public AdminInfoUC(PeopleManager pm)
         {
             InitializeComponent();
+            manager = pm;
+        }
+
+        private void BTNUpdateAdminInfo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

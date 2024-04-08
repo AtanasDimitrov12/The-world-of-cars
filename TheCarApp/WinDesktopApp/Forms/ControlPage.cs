@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ManagerLayer;
 
 namespace DesktopApp
 {
@@ -17,18 +18,19 @@ namespace DesktopApp
         CarControlUC carControlUC;
         CommentsControlUC commentsControlUC;
         List<UserControl> userControls;
-        
+        ProjectManager projectManager;
         
         public ControlPage()
         {
             InitializeComponent();
-            adminInfoUC = new AdminInfoUC();
-            carNewsUC = new CarNewsUC();
-            carControlUC = new CarControlUC();
-            commentsControlUC = new CommentsControlUC();    
+            projectManager = new ProjectManager();
+            adminInfoUC = new AdminInfoUC(projectManager.peopleManager);
+            carNewsUC = new CarNewsUC(projectManager.peopleManager, projectManager.newsManager);
+            carControlUC = new CarControlUC(projectManager.peopleManager, projectManager.carManager);
+            commentsControlUC = new CommentsControlUC(projectManager.newsManager);    
             userControls = new List<UserControl> { adminInfoUC, carNewsUC, carControlUC, commentsControlUC };
             this.Controls.Add(panel2); 
-
+              
             AddUC(); 
         }
 

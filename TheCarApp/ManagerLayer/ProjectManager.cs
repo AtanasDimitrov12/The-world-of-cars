@@ -10,10 +10,10 @@ namespace ManagerLayer
 {
     public class ProjectManager
     {
-        CarManager carManager { get; set; }
-        NewsManager newsManager { get; set; }
-        RentManager rentManager { get; set; }
-        PeopleManager peopleManager { get; set; }
+        public CarManager carManager { get; set; }
+        public NewsManager newsManager { get; set; }
+        public RentManager rentManager { get; set; }
+        public PeopleManager peopleManager { get; set; }
 
         public ProjectManager()
         {

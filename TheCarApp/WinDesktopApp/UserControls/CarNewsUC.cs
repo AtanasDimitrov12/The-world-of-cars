@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entity_Layer;
+using ManagerLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,13 @@ namespace DesktopApp
 {
     public partial class CarNewsUC : UserControl
     {
-        public CarNewsUC()
+        PeopleManager peopleManager;
+        NewsManager newsManager;
+        public CarNewsUC(PeopleManager pm, NewsManager nw)
         {
             InitializeComponent();
+            this.peopleManager = pm;
+            this.newsManager = nw;
         }
 
         private void BTNAddNews_Click(object sender, EventArgs e)

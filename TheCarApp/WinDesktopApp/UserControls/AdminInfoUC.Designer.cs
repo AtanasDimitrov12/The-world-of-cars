@@ -28,138 +28,150 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.BTNUpdateAdminInfo = new System.Windows.Forms.Button();
-            this.TBAdminInfo = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.LabelAdminInfo = new System.Windows.Forms.Label();
-            this.RBAdminPhoneNumber = new System.Windows.Forms.RadioButton();
-            this.RBAdminPassword = new System.Windows.Forms.RadioButton();
-            this.RBAdminEmail = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
-            this.SuspendLayout();
+            groupBox1 = new GroupBox();
+            BTNUpdateAdminInfo = new Button();
+            TBAdminInfo = new TextBox();
+            label4 = new Label();
+            LabelAdminInfo = new Label();
+            RBAdminPhoneNumber = new RadioButton();
+            RBAdminPassword = new RadioButton();
+            RBAdminEmail = new RadioButton();
+            label2 = new Label();
+            label1 = new Label();
+            groupBox1.SuspendLayout();
+            SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.BTNUpdateAdminInfo);
-            this.groupBox1.Controls.Add(this.TBAdminInfo);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.LabelAdminInfo);
-            this.groupBox1.Controls.Add(this.RBAdminPhoneNumber);
-            this.groupBox1.Controls.Add(this.RBAdminPassword);
-            this.groupBox1.Controls.Add(this.RBAdminEmail);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(218, 61);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(246, 281);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Admin Info";
+            groupBox1.Controls.Add(BTNUpdateAdminInfo);
+            groupBox1.Controls.Add(TBAdminInfo);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(LabelAdminInfo);
+            groupBox1.Controls.Add(RBAdminPhoneNumber);
+            groupBox1.Controls.Add(RBAdminPassword);
+            groupBox1.Controls.Add(RBAdminEmail);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Location = new Point(254, 70);
+            groupBox1.Margin = new Padding(4, 3, 4, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(4, 3, 4, 3);
+            groupBox1.Size = new Size(287, 324);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Admin Info";
             // 
             // BTNUpdateAdminInfo
             // 
-            this.BTNUpdateAdminInfo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.BTNUpdateAdminInfo.Location = new System.Drawing.Point(65, 233);
-            this.BTNUpdateAdminInfo.Name = "BTNUpdateAdminInfo";
-            this.BTNUpdateAdminInfo.Size = new System.Drawing.Size(104, 37);
-            this.BTNUpdateAdminInfo.TabIndex = 8;
-            this.BTNUpdateAdminInfo.Text = "Update";
-            this.BTNUpdateAdminInfo.UseVisualStyleBackColor = true;
+            BTNUpdateAdminInfo.Font = new Font("Arial Rounded MT Bold", 12F);
+            BTNUpdateAdminInfo.Location = new Point(76, 269);
+            BTNUpdateAdminInfo.Margin = new Padding(4, 3, 4, 3);
+            BTNUpdateAdminInfo.Name = "BTNUpdateAdminInfo";
+            BTNUpdateAdminInfo.Size = new Size(121, 43);
+            BTNUpdateAdminInfo.TabIndex = 8;
+            BTNUpdateAdminInfo.Text = "Update";
+            BTNUpdateAdminInfo.UseVisualStyleBackColor = true;
+            BTNUpdateAdminInfo.Click += BTNUpdateAdminInfo_Click;
             // 
             // TBAdminInfo
             // 
-            this.TBAdminInfo.Location = new System.Drawing.Point(32, 192);
-            this.TBAdminInfo.Name = "TBAdminInfo";
-            this.TBAdminInfo.Size = new System.Drawing.Size(173, 20);
-            this.TBAdminInfo.TabIndex = 7;
+            TBAdminInfo.Location = new Point(37, 222);
+            TBAdminInfo.Margin = new Padding(4, 3, 4, 3);
+            TBAdminInfo.Name = "TBAdminInfo";
+            TBAdminInfo.Size = new Size(201, 23);
+            TBAdminInfo.TabIndex = 7;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.label4.Location = new System.Drawing.Point(29, 162);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(176, 18);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Type the information:";
+            label4.AutoSize = true;
+            label4.Font = new Font("Arial Rounded MT Bold", 12F);
+            label4.Location = new Point(34, 187);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(176, 18);
+            label4.TabIndex = 6;
+            label4.Text = "Type the information:";
             // 
             // LabelAdminInfo
             // 
-            this.LabelAdminInfo.AutoSize = true;
-            this.LabelAdminInfo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.LabelAdminInfo.Location = new System.Drawing.Point(52, 127);
-            this.LabelAdminInfo.Name = "LabelAdminInfo";
-            this.LabelAdminInfo.Size = new System.Drawing.Size(126, 18);
-            this.LabelAdminInfo.TabIndex = 5;
-            this.LabelAdminInfo.Text = "Show from db..";
+            LabelAdminInfo.AutoSize = true;
+            LabelAdminInfo.Font = new Font("Arial Rounded MT Bold", 12F);
+            LabelAdminInfo.Location = new Point(61, 147);
+            LabelAdminInfo.Margin = new Padding(4, 0, 4, 0);
+            LabelAdminInfo.Name = "LabelAdminInfo";
+            LabelAdminInfo.Size = new Size(126, 18);
+            LabelAdminInfo.TabIndex = 5;
+            LabelAdminInfo.Text = "Show from db..";
             // 
             // RBAdminPhoneNumber
             // 
-            this.RBAdminPhoneNumber.AutoSize = true;
-            this.RBAdminPhoneNumber.Location = new System.Drawing.Point(142, 60);
-            this.RBAdminPhoneNumber.Name = "RBAdminPhoneNumber";
-            this.RBAdminPhoneNumber.Size = new System.Drawing.Size(94, 17);
-            this.RBAdminPhoneNumber.TabIndex = 4;
-            this.RBAdminPhoneNumber.TabStop = true;
-            this.RBAdminPhoneNumber.Text = "Phone number";
-            this.RBAdminPhoneNumber.UseVisualStyleBackColor = true;
+            RBAdminPhoneNumber.AutoSize = true;
+            RBAdminPhoneNumber.Location = new Point(166, 69);
+            RBAdminPhoneNumber.Margin = new Padding(4, 3, 4, 3);
+            RBAdminPhoneNumber.Name = "RBAdminPhoneNumber";
+            RBAdminPhoneNumber.Size = new Size(104, 19);
+            RBAdminPhoneNumber.TabIndex = 4;
+            RBAdminPhoneNumber.TabStop = true;
+            RBAdminPhoneNumber.Text = "Phone number";
+            RBAdminPhoneNumber.UseVisualStyleBackColor = true;
             // 
             // RBAdminPassword
             // 
-            this.RBAdminPassword.AutoSize = true;
-            this.RBAdminPassword.Location = new System.Drawing.Point(65, 60);
-            this.RBAdminPassword.Name = "RBAdminPassword";
-            this.RBAdminPassword.Size = new System.Drawing.Size(71, 17);
-            this.RBAdminPassword.TabIndex = 3;
-            this.RBAdminPassword.TabStop = true;
-            this.RBAdminPassword.Text = "Password";
-            this.RBAdminPassword.UseVisualStyleBackColor = true;
+            RBAdminPassword.AutoSize = true;
+            RBAdminPassword.Location = new Point(76, 69);
+            RBAdminPassword.Margin = new Padding(4, 3, 4, 3);
+            RBAdminPassword.Name = "RBAdminPassword";
+            RBAdminPassword.Size = new Size(75, 19);
+            RBAdminPassword.TabIndex = 3;
+            RBAdminPassword.TabStop = true;
+            RBAdminPassword.Text = "Password";
+            RBAdminPassword.UseVisualStyleBackColor = true;
             // 
             // RBAdminEmail
             // 
-            this.RBAdminEmail.AutoSize = true;
-            this.RBAdminEmail.Location = new System.Drawing.Point(9, 60);
-            this.RBAdminEmail.Name = "RBAdminEmail";
-            this.RBAdminEmail.Size = new System.Drawing.Size(50, 17);
-            this.RBAdminEmail.TabIndex = 2;
-            this.RBAdminEmail.TabStop = true;
-            this.RBAdminEmail.Text = "Email";
-            this.RBAdminEmail.UseVisualStyleBackColor = true;
+            RBAdminEmail.AutoSize = true;
+            RBAdminEmail.Location = new Point(10, 69);
+            RBAdminEmail.Margin = new Padding(4, 3, 4, 3);
+            RBAdminEmail.Name = "RBAdminEmail";
+            RBAdminEmail.Size = new Size(54, 19);
+            RBAdminEmail.TabIndex = 2;
+            RBAdminEmail.TabStop = true;
+            RBAdminEmail.Text = "Email";
+            RBAdminEmail.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.label2.Location = new System.Drawing.Point(25, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(180, 18);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "What you will change:";
+            label2.AutoSize = true;
+            label2.Font = new Font("Arial Rounded MT Bold", 12F);
+            label2.Location = new Point(29, 30);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(180, 18);
+            label2.TabIndex = 1;
+            label2.Text = "What you will change:";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.label1.Location = new System.Drawing.Point(27, 95);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 18);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Previous Information:";
+            label1.AutoSize = true;
+            label1.Font = new Font("Arial Rounded MT Bold", 12F);
+            label1.Location = new Point(31, 110);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(178, 18);
+            label1.TabIndex = 0;
+            label1.Text = "Previous Information:";
             // 
             // AdminInfoUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox1);
-            this.Name = "AdminInfoUC";
-            this.Size = new System.Drawing.Size(709, 417);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(groupBox1);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "AdminInfoUC";
+            Size = new Size(827, 481);
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

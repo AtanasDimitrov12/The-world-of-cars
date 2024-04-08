@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entity_Layer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace DesktopApp
 {
     public partial class CommentsControlUC : UserControl
     {
-        public CommentsControlUC()
+        NewsManager newsManager;
+        public CommentsControlUC(NewsManager nm)
         {
             InitializeComponent();
+            newsManager = nm;
         }
 
         private void label1_Click(object sender, EventArgs e)

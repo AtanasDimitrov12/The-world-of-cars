@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ManagerLayer\ManagerLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Forms\AddCar.cs">
       <SubType>Form</SubType>
     </Compile>
