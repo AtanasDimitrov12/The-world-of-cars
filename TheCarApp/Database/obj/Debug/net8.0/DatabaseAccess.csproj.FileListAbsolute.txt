@@ -1,0 +1,15 @@
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\obj\Debug\net8.0\DatabaseAccess.csproj.AssemblyReference.cache
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\obj\Debug\net8.0\DatabaseAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\obj\Debug\net8.0\DatabaseAccess.AssemblyInfoInputs.cache
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\obj\Debug\net8.0\DatabaseAccess.AssemblyInfo.cs
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\obj\Debug\net8.0\DatabaseAccess.csproj.CoreCompileInputs.cache
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\bin\Debug\net8.0\DatabaseAccess.deps.json
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\bin\Debug\net8.0\DatabaseAccess.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\bin\Debug\net8.0\DatabaseAccess.pdb
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\bin\Debug\net8.0\DTO.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\bin\Debug\net8.0\DTO.pdb
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\obj\Debug\net8.0\DatabaseAccess.csproj.CopyComplete
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\obj\Debug\net8.0\DatabaseAccess.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\obj\Debug\net8.0\refint\DatabaseAccess.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\obj\Debug\net8.0\DatabaseAccess.pdb
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\obj\Debug\net8.0\ref\DatabaseAccess.dll

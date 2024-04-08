@@ -29,8 +29,8 @@ namespace DesktopApp
             carControlUC = new CarControlUC(projectManager.peopleManager, projectManager.carManager);
             commentsControlUC = new CommentsControlUC(projectManager.newsManager);    
             userControls = new List<UserControl> { adminInfoUC, carNewsUC, carControlUC, commentsControlUC };
-            this.Controls.Add(panel2); 
-              
+            this.Controls.Add(panel2);
+            projectManager.LoadAllData();
             AddUC(); 
         }
 
