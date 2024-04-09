@@ -417,5 +417,39 @@ namespace Database
             return rowsAffected;
         }
 
+        public int GetCarId(string VIN)
+        {
+            int carId = -1;
+            try
+            {
+                connectionString.Open();
+                var sql = "SELECT [CarId] FROM [dbo].[Cars] WHERE [VIN] = @VIN";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@VIN", VIN);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        carId = (int)reader["ID"];
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in GetCarId: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in GetCarId: {ex.Message}");
+            }
+            finally
+            {
+                connectionString.Close();
+            }
+            return carId;
+        }
+
     }
 }

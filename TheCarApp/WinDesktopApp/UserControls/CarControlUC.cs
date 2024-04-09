@@ -32,7 +32,7 @@ namespace DesktopApp
 
         private void BTNModifyCar_Click(object sender, EventArgs e)
         {
-            AddCar addCar = new AddCar();
+            AddCar addCar = new AddCar(carManager);
             addCar.Show();
         }
 
