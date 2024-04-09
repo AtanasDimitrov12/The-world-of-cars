@@ -486,19 +486,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Asus ROG\\.nuget\\packages\\": {}
+    "C:\\Users\\klond\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj",
+      "projectUniqueName": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj",
       "projectName": "DatabaseAccess",
-      "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj",
-      "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\obj\\",
+      "projectPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj",
+      "packagesPath": "C:\\Users\\klond\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\klond\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -512,8 +512,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj": {
-              "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj"
+            "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj": {
+              "projectPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj"
             }
           }
         }
