@@ -376,5 +376,45 @@ namespace Database
             finally { connectionString.Close(); }
             return rows;
         }
+
+        public int UpdateAdministration(int adminId, string username, string email, string passwordHash, string phoneNumber, DateTime createdOn)
+        {
+            int rowsAffected = -1;
+            try
+            {
+                connectionString.Open();
+                var sql = "UPDATE [dbo].[Admininstration] " +
+                          "SET [Username] = @Username, " +
+                          "[Email] = @Email, " +
+                          "[PasswordHash] = @PasswordHash, " +
+                          "[PhoneNumber] = @PhoneNumber, " +
+                          "[CreatedOn] = @CreatedOn " +
+                          "WHERE [AdminId] = @AdminId";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@Username", username);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@PasswordHash", passwordHash);
+                cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+                cmd.Parameters.AddWithValue("@CreatedOn", createdOn);
+                cmd.Parameters.AddWithValue("@AdminId", adminId);
+
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Server error in update action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in the update action: {ex.Message}");
+            }
+            finally
+            {
+                connectionString.Close();
+            }
+            return rowsAffected;
+        }
+
     }
 }

@@ -28,164 +28,182 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.BTNModifyCar = new System.Windows.Forms.Button();
-            this.BTNAddCar = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.BTNSearch = new System.Windows.Forms.Button();
-            this.TBSearchByYear = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.RBDesc = new System.Windows.Forms.RadioButton();
-            this.RBAsc = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.LBCars = new System.Windows.Forms.ListBox();
-            this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.SuspendLayout();
+            groupBox1 = new GroupBox();
+            BTNModifyCar = new Button();
+            BTNAddCar = new Button();
+            groupBox3 = new GroupBox();
+            BTNSearch = new Button();
+            label5 = new Label();
+            groupBox2 = new GroupBox();
+            RBDesc = new RadioButton();
+            RBAsc = new RadioButton();
+            label4 = new Label();
+            LBCars = new ListBox();
+            TBSearchByYear = new TextBox();
+            groupBox1.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox2.SuspendLayout();
+            SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.BTNModifyCar);
-            this.groupBox1.Controls.Add(this.BTNAddCar);
-            this.groupBox1.Location = new System.Drawing.Point(14, 282);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(180, 116);
-            this.groupBox1.TabIndex = 25;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Actions";
+            groupBox1.Controls.Add(BTNModifyCar);
+            groupBox1.Controls.Add(BTNAddCar);
+            groupBox1.Location = new Point(16, 325);
+            groupBox1.Margin = new Padding(4, 3, 4, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(4, 3, 4, 3);
+            groupBox1.Size = new Size(210, 134);
+            groupBox1.TabIndex = 25;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Actions";
             // 
             // BTNModifyCar
             // 
-            this.BTNModifyCar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.BTNModifyCar.Location = new System.Drawing.Point(26, 72);
-            this.BTNModifyCar.Name = "BTNModifyCar";
-            this.BTNModifyCar.Size = new System.Drawing.Size(125, 35);
-            this.BTNModifyCar.TabIndex = 21;
-            this.BTNModifyCar.Text = "Modify car";
-            this.BTNModifyCar.UseVisualStyleBackColor = true;
-            this.BTNModifyCar.Click += new System.EventHandler(this.BTNModifyCar_Click);
+            BTNModifyCar.Font = new Font("Arial Rounded MT Bold", 12F);
+            BTNModifyCar.Location = new Point(30, 83);
+            BTNModifyCar.Margin = new Padding(4, 3, 4, 3);
+            BTNModifyCar.Name = "BTNModifyCar";
+            BTNModifyCar.Size = new Size(146, 40);
+            BTNModifyCar.TabIndex = 21;
+            BTNModifyCar.Text = "Modify car";
+            BTNModifyCar.UseVisualStyleBackColor = true;
+            BTNModifyCar.Click += BTNModifyCar_Click;
             // 
             // BTNAddCar
             // 
-            this.BTNAddCar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.BTNAddCar.Location = new System.Drawing.Point(26, 31);
-            this.BTNAddCar.Name = "BTNAddCar";
-            this.BTNAddCar.Size = new System.Drawing.Size(125, 35);
-            this.BTNAddCar.TabIndex = 20;
-            this.BTNAddCar.Text = "Add car";
-            this.BTNAddCar.UseVisualStyleBackColor = true;
-            this.BTNAddCar.Click += new System.EventHandler(this.BTNAddCar_Click);
+            BTNAddCar.Font = new Font("Arial Rounded MT Bold", 12F);
+            BTNAddCar.Location = new Point(30, 36);
+            BTNAddCar.Margin = new Padding(4, 3, 4, 3);
+            BTNAddCar.Name = "BTNAddCar";
+            BTNAddCar.Size = new Size(146, 40);
+            BTNAddCar.TabIndex = 20;
+            BTNAddCar.Text = "Add car";
+            BTNAddCar.UseVisualStyleBackColor = true;
+            BTNAddCar.Click += BTNAddCar_Click;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.BTNSearch);
-            this.groupBox3.Controls.Add(this.TBSearchByYear);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(14, 116);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(180, 137);
-            this.groupBox3.TabIndex = 24;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Search cars";
+            groupBox3.Controls.Add(TBSearchByYear);
+            groupBox3.Controls.Add(BTNSearch);
+            groupBox3.Controls.Add(label5);
+            groupBox3.Location = new Point(16, 134);
+            groupBox3.Margin = new Padding(4, 3, 4, 3);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Padding = new Padding(4, 3, 4, 3);
+            groupBox3.Size = new Size(210, 158);
+            groupBox3.TabIndex = 24;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Search cars";
             // 
             // BTNSearch
             // 
-            this.BTNSearch.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.BTNSearch.Location = new System.Drawing.Point(27, 82);
-            this.BTNSearch.Name = "BTNSearch";
-            this.BTNSearch.Size = new System.Drawing.Size(125, 43);
-            this.BTNSearch.TabIndex = 19;
-            this.BTNSearch.Text = "Search";
-            this.BTNSearch.UseVisualStyleBackColor = true;
-            // 
-            // TBSearchByYear
-            // 
-            this.TBSearchByYear.Location = new System.Drawing.Point(41, 56);
-            this.TBSearchByYear.Name = "TBSearchByYear";
-            this.TBSearchByYear.Size = new System.Drawing.Size(100, 20);
-            this.TBSearchByYear.TabIndex = 18;
+            BTNSearch.Font = new Font("Arial Rounded MT Bold", 12F);
+            BTNSearch.Location = new Point(31, 95);
+            BTNSearch.Margin = new Padding(4, 3, 4, 3);
+            BTNSearch.Name = "BTNSearch";
+            BTNSearch.Size = new Size(146, 50);
+            BTNSearch.TabIndex = 19;
+            BTNSearch.Text = "Search";
+            BTNSearch.UseVisualStyleBackColor = true;
+            BTNSearch.Click += BTNSearch_Click;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.label5.Location = new System.Drawing.Point(23, 26);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(134, 18);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Search by year:";
+            label5.AutoSize = true;
+            label5.Font = new Font("Arial Rounded MT Bold", 12F);
+            label5.Location = new Point(27, 30);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(134, 18);
+            label5.TabIndex = 17;
+            label5.Text = "Search by year:";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.RBDesc);
-            this.groupBox2.Controls.Add(this.RBAsc);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(14, 13);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(180, 83);
-            this.groupBox2.TabIndex = 23;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Show cars";
+            groupBox2.Controls.Add(RBDesc);
+            groupBox2.Controls.Add(RBAsc);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Location = new Point(16, 15);
+            groupBox2.Margin = new Padding(4, 3, 4, 3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new Padding(4, 3, 4, 3);
+            groupBox2.Size = new Size(210, 96);
+            groupBox2.TabIndex = 23;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Show cars";
             // 
             // RBDesc
             // 
-            this.RBDesc.AutoSize = true;
-            this.RBDesc.Location = new System.Drawing.Point(101, 46);
-            this.RBDesc.Name = "RBDesc";
-            this.RBDesc.Size = new System.Drawing.Size(50, 17);
-            this.RBDesc.TabIndex = 16;
-            this.RBDesc.TabStop = true;
-            this.RBDesc.Text = "Desc";
-            this.RBDesc.UseVisualStyleBackColor = true;
+            RBDesc.AutoSize = true;
+            RBDesc.Location = new Point(118, 53);
+            RBDesc.Margin = new Padding(4, 3, 4, 3);
+            RBDesc.Name = "RBDesc";
+            RBDesc.Size = new Size(50, 19);
+            RBDesc.TabIndex = 16;
+            RBDesc.TabStop = true;
+            RBDesc.Text = "Desc";
+            RBDesc.UseVisualStyleBackColor = true;
+            RBDesc.CheckedChanged += RBDesc_CheckedChanged;
             // 
             // RBAsc
             // 
-            this.RBAsc.AutoSize = true;
-            this.RBAsc.Location = new System.Drawing.Point(27, 46);
-            this.RBAsc.Name = "RBAsc";
-            this.RBAsc.Size = new System.Drawing.Size(43, 17);
-            this.RBAsc.TabIndex = 15;
-            this.RBAsc.TabStop = true;
-            this.RBAsc.Text = "Asc";
-            this.RBAsc.UseVisualStyleBackColor = true;
+            RBAsc.AutoSize = true;
+            RBAsc.Location = new Point(31, 53);
+            RBAsc.Margin = new Padding(4, 3, 4, 3);
+            RBAsc.Name = "RBAsc";
+            RBAsc.Size = new Size(44, 19);
+            RBAsc.TabIndex = 15;
+            RBAsc.TabStop = true;
+            RBAsc.Text = "Asc";
+            RBAsc.UseVisualStyleBackColor = true;
+            RBAsc.CheckedChanged += RBAsc_CheckedChanged;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.label4.Location = new System.Drawing.Point(26, 23);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 18);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Sort by brand:";
+            label4.AutoSize = true;
+            label4.Font = new Font("Arial Rounded MT Bold", 12F);
+            label4.Location = new Point(30, 27);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(121, 18);
+            label4.TabIndex = 14;
+            label4.Text = "Sort by brand:";
             // 
             // LBCars
             // 
-            this.LBCars.FormattingEnabled = true;
-            this.LBCars.Location = new System.Drawing.Point(231, 27);
-            this.LBCars.Name = "LBCars";
-            this.LBCars.Size = new System.Drawing.Size(273, 368);
-            this.LBCars.TabIndex = 22;
+            LBCars.FormattingEnabled = true;
+            LBCars.ItemHeight = 15;
+            LBCars.Location = new Point(270, 31);
+            LBCars.Margin = new Padding(4, 3, 4, 3);
+            LBCars.Name = "LBCars";
+            LBCars.Size = new Size(318, 424);
+            LBCars.TabIndex = 22;
+            // 
+            // TBSearchByYear
+            // 
+            TBSearchByYear.Location = new Point(51, 66);
+            TBSearchByYear.Name = "TBSearchByYear";
+            TBSearchByYear.Size = new Size(100, 23);
+            TBSearchByYear.TabIndex = 20;
             // 
             // CarControlUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.LBCars);
-            this.Name = "CarControlUC";
-            this.Size = new System.Drawing.Size(530, 414);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(groupBox1);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(LBCars);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "CarControlUC";
+            Size = new Size(618, 478);
+            groupBox1.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -195,12 +213,12 @@
         private System.Windows.Forms.Button BTNAddCar;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button BTNSearch;
-        private System.Windows.Forms.TextBox TBSearchByYear;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton RBDesc;
         private System.Windows.Forms.RadioButton RBAsc;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox LBCars;
+        private TextBox TBSearchByYear;
     }
 }

@@ -39,6 +39,7 @@ namespace DesktopApp
                 {
                     admin._phoneNumber = TBAdminInfo.Text;
                 }
+                manager.UpdateAdmin(admin);
                 MessageBox.Show("You successfully updated the Admin info");
                 TBAdminInfo.Clear();
             }

@@ -1,6 +1,7 @@
 ﻿using Entity_Layer;
 using Entity_Layer.Enums;
 using EntityLayout;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,26 @@ namespace EntityLayout
             NumberOfDoors = numberOfDoors;
         }
 
+        public Car(string brand, string model, DateTime Year, int Mileage, string FuelType, int Enginesize, int horsePower, string GearBox, string color, string VIN, string description, decimal pricePerDay, CarStatus carStatus, int numberOfSeats, string numberOfDoors)
+        {
+            this.brand = brand;
+            Model = model;
+            FirstRegistration = Year;
+            this.Mileage = Mileage;
+            Fuel = FuelType;
+            EngineSize = Enginesize;
+            HorsePower = horsePower;
+            Gearbox = GearBox;
+            Color = color;
+            this.VIN = VIN;
+            Description = description;
+            PricePerDay = pricePerDay;
+            Pictures = new List<Picture> { };
+            CarExtras = new List<Extra> { };
+            CarStatus = carStatus;
+            NumberOfSeats = numberOfSeats;
+            NumberOfDoors = numberOfDoors;
+        }
 
         public void AddPicture(Picture picture)
         {
@@ -75,6 +96,10 @@ namespace EntityLayout
             CarExtras.Remove(extra);
         }
 
+        public string GetInfo()
+        {
+            return $"{brand} {Model} {FirstRegistration}";
+        }
 
     }
 }

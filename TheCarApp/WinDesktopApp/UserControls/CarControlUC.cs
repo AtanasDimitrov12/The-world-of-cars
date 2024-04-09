@@ -1,4 +1,5 @@
-﻿using Manager_Layer;
+﻿using EntityLayout;
+using Manager_Layer;
 using ManagerLayer;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace DesktopApp
 
         private void BTNAddCar_Click(object sender, EventArgs e)
         {
-            AddCar addCar = new AddCar();
+            AddCar addCar = new AddCar(carManager);
             addCar.Show();
         }
 
@@ -33,6 +34,35 @@ namespace DesktopApp
         {
             AddCar addCar = new AddCar();
             addCar.Show();
+        }
+
+        private void RBAsc_CheckedChanged(object sender, EventArgs e)
+        {
+            LBCars.Items.Clear();
+            foreach (Car car in carManager.GetCarsASC())
+            {
+                LBCars.Items.Add(car.GetInfo());
+            }
+        }
+
+        private void RBDesc_CheckedChanged(object sender, EventArgs e)
+        {
+            LBCars.Items.Clear();
+            foreach (Car car in carManager.GetCarsDESC())
+            {
+                LBCars.Items.Add(car.GetInfo());
+            }
+        }
+
+        private void BTNSearch_Click(object sender, EventArgs e)
+        {
+            LBCars.Items.Clear();
+            int year = int.Parse(TBSearchByYear.Text);
+            var filteredCars = carManager.GetCars().Where(car => car.FirstRegistration.Year == year).ToList();
+            foreach (var car in filteredCars)
+            {
+                LBCars.Items.Add(car.GetInfo());
+            }
         }
     }
 }
