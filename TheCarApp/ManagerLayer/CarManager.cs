@@ -32,13 +32,15 @@ namespace Manager_Layer
             remover = new DataRemover();
         }
 
-        public void AddCar(Car car, List<Picture> pics, List<Extra> extras )
+        public void AddCar(Car car, List<Picture> pics, List<Extra> extras)
         {
             // Trqbva da vidim kak da vzimame ID, tuj kato sega ne go slagam no go polzvam
             cars.Add(car);
             writer.AddCar(car.brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
+            int carId = writer.GetCarId(car.VIN);
+            car.Id = carId;
             writer.AddCarDescription(car.Id, car.Description, car.PricePerDay);
-            foreach (Picture pic in pics) 
+            foreach (Picture pic in pics)
             {
                 writer.AddCarPictures(car.Id, pic.Id);
             }
@@ -46,7 +48,7 @@ namespace Manager_Layer
             {
                 writer.AddCarExtras(car.Id, extra.Id);
             }
-            
+
         }
 
         public void RemoveCar(Car car, Picture pic, Extra extra)
@@ -56,24 +58,24 @@ namespace Manager_Layer
         }
 
         public void AddPicture(Picture pic)
-        { 
+        {
             pictures.Add(pic);
             writer.AddPicture(pic.PictureURL);
         }
 
-        public void RemovePicture(Picture pic) 
+        public void RemovePicture(Picture pic)
         {
             pictures.Remove(pic);
             //remover.RemovePicture(pic.Id);
         }
 
-        public void AddExtra(Extra extra) 
+        public void AddExtra(Extra extra)
         {
             extras.Add(extra);
             writer.AddExtra(extra.extraName);
         }
         public void RemoveExtra(Extra extra)
-        { 
+        {
             extras.Remove(extra);
             //remover.RemoveExtras(extra.Id);
         }

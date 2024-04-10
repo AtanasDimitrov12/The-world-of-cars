@@ -79,6 +79,8 @@ namespace Database
             return carsDTO;
         }
 
+
+
         private List<ExtraDTO> GetCarExtras(int carId, SqlConnection connection)
         {
             var extras = new List<ExtraDTO>();
@@ -129,6 +131,7 @@ namespace Database
             return pictures;
         }
 
+        
         public List<CarNewsDTO> GetCarNews()
         {
             List<CarNewsDTO> newsDTOList = new List<CarNewsDTO>();
