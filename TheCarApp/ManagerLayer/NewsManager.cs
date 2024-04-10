@@ -12,10 +12,9 @@ using System.Threading.Tasks;
 
 namespace Entity_Layer
 {
-    public class NewsManager
+    public class NewsManager : INewsManager
     {
-
-        private List<CarNews> news { get; set; }
+        private List<CarNews> news;
         private readonly IDataAccess _dataAccess;
         private readonly IDataWriter _dataWriter;
         private readonly IDataRemover _dataRemover;
@@ -41,42 +40,15 @@ namespace Entity_Layer
             _dataRemover.RemoveNews(carnews.Id);
         }
 
-        public List<CarNews> GetNews()
-        {
-            return news;
-        }
-
-        public void AddComment(CarNews news, Comment comment)
-        {
-            news.AddComment(comment);
-        }
-
-        public void RemoveComment(CarNews news, Comment comment)
-        {
-            news.RemoveComment(comment);
-        }
-
-        public List<Comment> GetComments(CarNews news)
-        {
-            return news.GetComments();
-        }
-
         public void LoadNews()
         {
-            if (_dataAccess.GetCarNews() != null)
+            var carNewsList = _dataAccess.GetCarNews();
+            if (carNewsList != null)
             {
-                
-                foreach (CarNewsDTO newsDTO in _dataAccess.GetCarNews())
+                foreach (CarNewsDTO newsDTO in carNewsList)
                 {
-                    List<Comment> loadComments = new List<Comment>();   
-                    foreach (CommentDTO comment in newsDTO.comments)
-                    {
-                        Comment comm = new Comment(comment.Id, comment.UserId, comment.Date, comment.Content);
-                        loadComments.Add(comm);
-                    }
-
-                    CarNews loadnews = new CarNews(newsDTO.Id, newsDTO.NewsDescription, newsDTO.ReleaseDate, newsDTO.ImageURL, newsDTO.Title, newsDTO.Author, newsDTO.ShortIntro, loadComments);
-
+                    var loadComments = newsDTO.comments.Select(comment => new Comment(comment.Id, comment.UserId, comment.Date, comment.Content)).ToList();
+                    var loadnews = new CarNews(newsDTO.Id, newsDTO.NewsDescription, newsDTO.ReleaseDate, newsDTO.ImageURL, newsDTO.Title, newsDTO.Author, newsDTO.ShortIntro, loadComments);
                     news.Add(loadnews);
                 }
             }

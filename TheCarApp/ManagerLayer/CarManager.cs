@@ -16,7 +16,7 @@ using InterfaceLayer;
 
 namespace Manager_Layer
 {
-    public class CarManager
+    public class CarManager : ICarManager
     {
         private List<Car> cars;
         private readonly IDataAccess _dataAccess;
@@ -31,15 +31,14 @@ namespace Manager_Layer
             _dataRemover = dataRemover;
         }
 
-        public void AddCar(Car car, List<Picture> pics, List<Extra> extras)
+        public void AddCar(Car car, List<Picture> pictures, List<Extra> extras)
         {
-            // Trqbva da vidim kak da vzimame ID, tuj kato sega ne go slagam no go polzvam
             cars.Add(car);
             _dataWriter.AddCar(car.brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
             int carId = _dataWriter.GetCarId(car.VIN);
             car.Id = carId;
             _dataWriter.AddCarDescription(car.Id, car.Description, car.PricePerDay);
-            foreach (Picture pic in pics)
+            foreach (Picture pic in pictures)
             {
                 _dataWriter.AddCarPictures(car.Id, pic.Id);
             }
@@ -47,13 +46,12 @@ namespace Manager_Layer
             {
                 _dataWriter.AddCarExtras(car.Id, extra.Id);
             }
-
         }
 
-        public void RemoveCar(Car car, Picture pic, Extra extra)
+        public void RemoveCar(Car car, Picture picture, Extra extra)
         {
             cars.Remove(car);
-            _dataRemover.RemoveCar(car.Id, extra.Id, pic.Id);
+            _dataRemover.RemoveCar(car.Id, extra.Id, picture.Id);
         }
 
         public Car SearchForCar(int index)
@@ -72,6 +70,7 @@ namespace Manager_Layer
             cars.Sort(asc);
             return cars;
         }
+
         public List<Car> GetCarsDESC()
         {
             DescendingBrandComparer desc = new DescendingBrandComparer();
@@ -89,8 +88,7 @@ namespace Manager_Layer
                     bool isValidArea = Enum.TryParse(carDTO.CarStatus.ToUpper(), true, out status);
 
                     if (isValidArea)
-                    { //load cat Extra and Picture
-
+                    {
                         Car loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, status, carDTO.NumberOfSeats, carDTO.NumberOfDoors);
                         cars.Add(loadCar);
 

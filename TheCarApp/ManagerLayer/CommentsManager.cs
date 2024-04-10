@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ManagerLayer
 {
-    public class CommentsManager
+    public class CommentsManager : ICommentsManager
     {
         private readonly IDataAccess _dataAccess;
         private readonly IDataWriter _dataWriter;
@@ -25,7 +25,7 @@ namespace ManagerLayer
         public void AddComment(CarNews news, Comment comment, User user)
         {
             _dataWriter.AddComment(news.Id, user.Id, comment.Date, comment.Message);
-            comment.Id = _dataWriter.GetCommentId(comment.Date);
+            comment.Id = _dataWriter.GetCommentId(comment.Date); // This assumes GetCommentId method exists and works as intended.
             news.AddComment(comment);
         }
 
@@ -34,6 +34,5 @@ namespace ManagerLayer
             _dataRemover.RemoveComment(comment.Id);
             news.RemoveComment(comment);
         }
-
     }
 }
