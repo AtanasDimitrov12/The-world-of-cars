@@ -21,5 +21,7 @@ namespace InterfaceLayer
         int GetCarId(string VIN);
         int GetExtraId(string VIN);
         int GetPictureId(string VIN);
+        int GetNewsId(string Title);
+        int GetCommentId(DateTime date);
     }
 }

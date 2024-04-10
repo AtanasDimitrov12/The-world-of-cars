@@ -26,7 +26,7 @@ namespace ManagerLayer
             IDataWriter dataWriter = new DataWriter();
             IDataRemover dataremover = new DataRemover();
             carManager = new CarManager(dataAccess, dataWriter, dataremover);
-            newsManager = new NewsManager();    
+            newsManager = new NewsManager(dataAccess, dataWriter, dataremover);    
             rentManager = new RentManager();    
             peopleManager = new PeopleManager();
             extraManager = new ExtraManager(dataWriter, dataremover);

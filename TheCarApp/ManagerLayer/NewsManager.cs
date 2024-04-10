@@ -3,6 +3,7 @@ using DatabaseAccess;
 using DTO;
 using Entity_Layer.Enums;
 using EntityLayout;
+using InterfaceLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,29 +16,29 @@ namespace Entity_Layer
     {
 
         private List<CarNews> news { get; set; }
-        private DataAccess access;
-        private DataWriter writer;
-        private DataRemover remover;
+        private readonly IDataAccess _dataAccess;
+        private readonly IDataWriter _dataWriter;
+        private readonly IDataRemover _dataRemover;
 
-        public NewsManager()
+        public NewsManager(IDataAccess dataAccess, IDataWriter dataWriter, IDataRemover dataRemover)
         {
-
             news = new List<CarNews>();
-            access = new DataAccess();
-            writer = new DataWriter();
-            remover = new DataRemover();
+            _dataAccess = dataAccess;
+            _dataWriter = dataWriter;
+            _dataRemover = dataRemover;
         }
 
         public void AddNews(CarNews carnews)
         {
+            _dataWriter.AddCarNews(carnews.Author, carnews.Title, carnews.ReleaseDate, carnews.NewsDescription, carnews.ImageURL, carnews.ShortIntro);
+            carnews.Id = _dataWriter.GetNewsId(carnews.Title);
             news.Add(carnews);
-            writer.AddCarNews(carnews.Author, carnews.Title, carnews.ReleaseDate, carnews.NewsDescription, carnews.ImageURL, carnews.ShortIntro);
         }
 
         public void DeleteNews(CarNews carnews)
         {
             news.Remove(carnews);
-            remover.RemoveNews(carnews.Id);
+            _dataRemover.RemoveNews(carnews.Id);
         }
 
         public List<CarNews> GetNews()
@@ -62,10 +63,10 @@ namespace Entity_Layer
 
         public void LoadNews()
         {
-            if (access.GetCarNews() != null)
+            if (_dataAccess.GetCarNews() != null)
             {
                 
-                foreach (CarNewsDTO newsDTO in access.GetCarNews())
+                foreach (CarNewsDTO newsDTO in _dataAccess.GetCarNews())
                 {
                     List<Comment> loadComments = new List<Comment>();   
                     foreach (CommentDTO comment in newsDTO.comments)

@@ -25,13 +25,13 @@ namespace DesktopApp
 
         private void BTNAddNews_Click(object sender, EventArgs e)
         {
-            AddNews addNews = new AddNews();
+            AddNews addNews = new AddNews(newsManager);
             addNews.Show();
         }
 
         private void BTNModifyNews_Click(object sender, EventArgs e)
         {
-            AddNews addNews = new AddNews();
+            AddNews addNews = new AddNews(newsManager);
             addNews.Show();
         }
     }
