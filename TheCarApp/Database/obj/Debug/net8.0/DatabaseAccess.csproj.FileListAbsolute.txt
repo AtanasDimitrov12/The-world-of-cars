@@ -28,3 +28,7 @@ C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Database\obj\Debug\ne
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Database\obj\Debug\net8.0\refint\DatabaseAccess.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Database\obj\Debug\net8.0\DatabaseAccess.pdb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Database\obj\Debug\net8.0\ref\DatabaseAccess.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\bin\Debug\net8.0\InterfaceLayer.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\bin\Debug\net8.0\InterfaceLayer.pdb
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\bin\Debug\net8.0\Entity Layer.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\Database\bin\Debug\net8.0\Entity Layer.pdb

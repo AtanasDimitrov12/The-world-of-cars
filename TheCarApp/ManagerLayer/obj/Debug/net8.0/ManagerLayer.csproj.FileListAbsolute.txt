@@ -36,3 +36,5 @@ C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debu
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\refint\ManagerLayer.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.pdb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ref\ManagerLayer.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\InterfaceLayer.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\InterfaceLayer.pdb

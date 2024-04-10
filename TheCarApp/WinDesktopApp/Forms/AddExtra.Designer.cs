@@ -36,18 +36,21 @@
             // BTNAddExtra
             // 
             BTNAddExtra.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNAddExtra.Location = new Point(79, 117);
+            BTNAddExtra.Location = new Point(90, 156);
+            BTNAddExtra.Margin = new Padding(3, 4, 3, 4);
             BTNAddExtra.Name = "BTNAddExtra";
-            BTNAddExtra.Size = new Size(179, 58);
+            BTNAddExtra.Size = new Size(205, 77);
             BTNAddExtra.TabIndex = 0;
             BTNAddExtra.Text = "Add";
             BTNAddExtra.UseVisualStyleBackColor = true;
+            BTNAddExtra.Click += BTNAddExtra_Click;
             // 
             // RTBExtraName
             // 
-            RTBExtraName.Location = new Point(37, 42);
+            RTBExtraName.Location = new Point(42, 56);
+            RTBExtraName.Margin = new Padding(3, 4, 3, 4);
             RTBExtraName.Name = "RTBExtraName";
-            RTBExtraName.Size = new Size(254, 69);
+            RTBExtraName.Size = new Size(290, 91);
             RTBExtraName.TabIndex = 1;
             RTBExtraName.Text = "";
             // 
@@ -55,20 +58,21 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial Rounded MT Bold", 12F);
-            label1.Location = new Point(99, 9);
+            label1.Location = new Point(113, 12);
             label1.Name = "label1";
-            label1.Size = new Size(127, 18);
+            label1.Size = new Size(156, 23);
             label1.TabIndex = 2;
             label1.Text = "Type the extra:";
             // 
             // AddExtra
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(333, 187);
+            ClientSize = new Size(381, 249);
             Controls.Add(label1);
             Controls.Add(RTBExtraName);
             Controls.Add(BTNAddExtra);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "AddExtra";
             Text = "AddExtra";
             ResumeLayout(false);

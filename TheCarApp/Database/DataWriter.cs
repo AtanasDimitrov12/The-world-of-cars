@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlTypes;
+using InterfaceLayer;
 
 namespace Database
 {
-    public class DataWriter
+    public class DataWriter : IDataWriter
     {
         private SqlConnection connectionString;
 
@@ -432,7 +433,7 @@ namespace Database
                 {
                     if (reader.Read())
                     {
-                        carId = (int)reader["ID"];
+                        carId = (int)reader["CarId"];
                     }
                 }
             }
@@ -449,6 +450,74 @@ namespace Database
                 connectionString.Close();
             }
             return carId;
+        }
+
+        public int GetExtraId(string ExtraName)
+        {
+            int ExtraId = -1;
+            try
+            {
+                connectionString.Open();
+                var sql = "SELECT [ExtraId] FROM [dbo].[Extras] WHERE [ExtraName] = @ExtraName";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@ExtraName", ExtraName);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        ExtraId = (int)reader["ExtraId"];
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in GetExtraId: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in GetExtraId: {ex.Message}");
+            }
+            finally
+            {
+                connectionString.Close();
+            }
+            return ExtraId;
+        }
+
+        public int GetPictureId(string PictureURL)
+        {
+            int PictureId = -1;
+            try
+            {
+                connectionString.Open();
+                var sql = "SELECT [PictureId] FROM [dbo].[Pictures] WHERE [PictureURL] = @PictureURL";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@PictureURL", PictureURL);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        PictureId = (int)reader["PictureId"];
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in GetPictureId: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in GetPictureId: {ex.Message}");
+            }
+            finally
+            {
+                connectionString.Close();
+            }
+            return PictureId;
         }
 
     }

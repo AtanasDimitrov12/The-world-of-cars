@@ -1,4 +1,7 @@
-﻿using Entity_Layer;
+﻿using Database;
+using DatabaseAccess;
+using Entity_Layer;
+using InterfaceLayer;
 using Manager_Layer;
 using System;
 using System.Collections.Generic;
@@ -14,13 +17,20 @@ namespace ManagerLayer
         public NewsManager newsManager { get; set; }
         public RentManager rentManager { get; set; }
         public PeopleManager peopleManager { get; set; }
+        public ExtraManager extraManager { get; set; }
+        public PictureManager pictureManager { get; set; }
 
         public ProjectManager()
         {
-            carManager = new CarManager();
+            IDataAccess dataAccess = new DataAccess();
+            IDataWriter dataWriter = new DataWriter();
+            IDataRemover dataremover = new DataRemover();
+            carManager = new CarManager(dataAccess, dataWriter, dataremover);
             newsManager = new NewsManager();    
             rentManager = new RentManager();    
             peopleManager = new PeopleManager();
+            extraManager = new ExtraManager(dataWriter, dataremover);
+            pictureManager = new PictureManager(dataWriter, dataremover);
         }
 
         public void LoadAllData()

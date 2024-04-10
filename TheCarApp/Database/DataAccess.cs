@@ -6,10 +6,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InterfaceLayer;
 
 namespace Database
 {
-    public class DataAccess
+    public class DataAccess : IDataAccess
     {
         private string connectionString;
 

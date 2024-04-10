@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinDesktopApp.Forms;
 
 namespace DesktopApp
 {
@@ -17,11 +18,15 @@ namespace DesktopApp
     {
         PeopleManager peopleManager;
         CarManager carManager;
-        public CarControlUC(PeopleManager pm, CarManager cm)
+        ExtraManager extraManager;
+        PictureManager pictureManager;
+        public CarControlUC(PeopleManager pm, CarManager cm, ExtraManager em, PictureManager picM)
         {
             InitializeComponent();
             this.peopleManager = pm;
             this.carManager = cm;
+            this.extraManager = em;
+            this.pictureManager = picM;
         }
 
         private void BTNAddCar_Click(object sender, EventArgs e)
@@ -63,6 +68,17 @@ namespace DesktopApp
             {
                 LBCars.Items.Add(car.GetInfo());
             }
+        }
+
+        private void BTNAddExtras_Click(object sender, EventArgs e)
+        {
+            AddExtra addExtra = new AddExtra(extraManager);
+            addExtra.Show();
+        }
+
+        private void BTNAddPics_Click(object sender, EventArgs e)
+        {
+            AddPicture addPicture = new AddPicture();
         }
     }
 }

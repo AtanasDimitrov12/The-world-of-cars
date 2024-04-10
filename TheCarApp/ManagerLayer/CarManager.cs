@@ -10,6 +10,7 @@ using Entity_Layer;
 using Entity_Layer.Enums;
 using Entity_Layer.Interfaces;
 using EntityLayout;
+using InterfaceLayer;
 
 
 
@@ -18,35 +19,33 @@ namespace Manager_Layer
     public class CarManager
     {
         private List<Car> cars;
-        private List<Picture> pictures;
-        private List<Extra> extras;
-        private DataAccess access;
-        private DataWriter writer;
-        private DataRemover remover;
+        private readonly IDataAccess _dataAccess;
+        private readonly IDataWriter _dataWriter;
+        private readonly IDataRemover _dataRemover;
 
-        public CarManager()
+        public CarManager(IDataAccess dataAccess, IDataWriter dataWriter, IDataRemover dataRemover)
         {
             cars = new List<Car>();
-            access = new DataAccess();
-            writer = new DataWriter();
-            remover = new DataRemover();
+            _dataAccess = dataAccess;
+            _dataWriter = dataWriter;
+            _dataRemover = dataRemover;
         }
 
         public void AddCar(Car car, List<Picture> pics, List<Extra> extras)
         {
             // Trqbva da vidim kak da vzimame ID, tuj kato sega ne go slagam no go polzvam
             cars.Add(car);
-            writer.AddCar(car.brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
-            int carId = writer.GetCarId(car.VIN);
+            _dataWriter.AddCar(car.brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
+            int carId = _dataWriter.GetCarId(car.VIN);
             car.Id = carId;
-            writer.AddCarDescription(car.Id, car.Description, car.PricePerDay);
+            _dataWriter.AddCarDescription(car.Id, car.Description, car.PricePerDay);
             foreach (Picture pic in pics)
             {
-                writer.AddCarPictures(car.Id, pic.Id);
+                _dataWriter.AddCarPictures(car.Id, pic.Id);
             }
             foreach (Extra extra in extras)
             {
-                writer.AddCarExtras(car.Id, extra.Id);
+                _dataWriter.AddCarExtras(car.Id, extra.Id);
             }
 
         }
@@ -54,30 +53,7 @@ namespace Manager_Layer
         public void RemoveCar(Car car, Picture pic, Extra extra)
         {
             cars.Remove(car);
-            remover.RemoveCar(car.Id, extra.Id, pic.Id);
-        }
-
-        public void AddPicture(Picture pic)
-        {
-            pictures.Add(pic);
-            writer.AddPicture(pic.PictureURL);
-        }
-
-        public void RemovePicture(Picture pic)
-        {
-            pictures.Remove(pic);
-            //remover.RemovePicture(pic.Id);
-        }
-
-        public void AddExtra(Extra extra)
-        {
-            extras.Add(extra);
-            writer.AddExtra(extra.extraName);
-        }
-        public void RemoveExtra(Extra extra)
-        {
-            extras.Remove(extra);
-            //remover.RemoveExtras(extra.Id);
+            _dataRemover.RemoveCar(car.Id, extra.Id, pic.Id);
         }
 
         public Car SearchForCar(int index)
@@ -105,9 +81,9 @@ namespace Manager_Layer
 
         public void LoadCars()
         {
-            if (access.GetCars() != null)
+            if (_dataAccess.GetCars() != null)
             {
-                foreach (CarDTO carDTO in access.GetCars())
+                foreach (CarDTO carDTO in _dataAccess.GetCars())
                 {
                     CarStatus status;
                     bool isValidArea = Enum.TryParse(carDTO.CarStatus.ToUpper(), true, out status);
