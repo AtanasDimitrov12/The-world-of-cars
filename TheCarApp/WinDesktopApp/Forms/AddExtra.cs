@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entity_Layer;
+using Manager_Layer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,18 @@ namespace WinDesktopApp.Forms
 {
     public partial class AddExtra : Form
     {
-        public AddExtra()
+        CarManager manager;
+        public AddExtra(CarManager cm)
         {
             InitializeComponent();
+            manager = cm;
+        }
+
+        private void BTNAddExtra_Click(object sender, EventArgs e)
+        {
+            Extra extra = new Extra(RTBExtraName.Text);
+            manager.AddExtra(extra);
+            this.Close();
         }
     }
 }

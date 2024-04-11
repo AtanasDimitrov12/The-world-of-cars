@@ -201,6 +201,7 @@
             BTNAddPics.TabIndex = 23;
             BTNAddPics.Text = "Add pictures";
             BTNAddPics.UseVisualStyleBackColor = true;
+            BTNAddPics.Click += BTNAddPics_Click;
             // 
             // BTNAddExtras
             // 
@@ -212,6 +213,7 @@
             BTNAddExtras.TabIndex = 22;
             BTNAddExtras.Text = "Add Extras";
             BTNAddExtras.UseVisualStyleBackColor = true;
+            BTNAddExtras.Click += BTNAddExtras_Click;
             // 
             // CarControlUC
             // 

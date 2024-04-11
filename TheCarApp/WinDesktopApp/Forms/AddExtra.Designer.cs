@@ -42,6 +42,7 @@
             BTNAddExtra.TabIndex = 0;
             BTNAddExtra.Text = "Add";
             BTNAddExtra.UseVisualStyleBackColor = true;
+            BTNAddExtra.Click += BTNAddExtra_Click;
             // 
             // RTBExtraName
             // 

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinDesktopApp.Forms;
 
 namespace DesktopApp
 {
@@ -63,6 +64,18 @@ namespace DesktopApp
             {
                 LBCars.Items.Add(car.GetInfo());
             }
+        }
+
+        private void BTNAddExtras_Click(object sender, EventArgs e)
+        {
+            AddExtra addExtra = new AddExtra(carManager);
+            addExtra.Show();
+        }
+
+        private void BTNAddPics_Click(object sender, EventArgs e)
+        {
+            AddPicture addPicture = new AddPicture(carManager);
+            addPicture.Show();
         }
     }
 }

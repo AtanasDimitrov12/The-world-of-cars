@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Entity_Layer;
+using EntityLayout;
+using Manager_Layer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +15,18 @@ namespace WinDesktopApp.Forms
 {
     public partial class AddPicture : Form
     {
-        public AddPicture()
+        CarManager manager;
+        public AddPicture(CarManager cm)
         {
             InitializeComponent();
+            manager = cm;
+        }
+
+        private void BTNAddPicture_Click(object sender, EventArgs e)
+        {
+            Picture pic = new Picture(TBPictureURL.Text);
+            manager.AddPicture(pic);
+            this.Close();
         }
     }
 }

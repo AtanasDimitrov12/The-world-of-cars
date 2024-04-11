@@ -16,5 +16,9 @@ namespace Entity_Layer
             this.extraName = ExtraName;
             this.Id = ID;
         }
+        public Extra(string ExtraName)
+        {
+            this.extraName = ExtraName;
+        }
     }
 }
