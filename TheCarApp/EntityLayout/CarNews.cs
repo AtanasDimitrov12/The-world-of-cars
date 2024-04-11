@@ -32,6 +32,18 @@ namespace Entity_Layer
             comments = Comments;
         }
 
+        public CarNews(string newsDescription, DateTime releaseDate, string imageURL, string title, string author, string shortIntro)
+        {
+            NewsDescription = newsDescription;
+            ReleaseDate = releaseDate;
+            ImageURL = imageURL;
+            NrOfMessages = 0;
+            Title = title;
+            Author = author;
+            ShortIntro = shortIntro;
+            comments = new List<Comment>();
+        }
+
         public void AddComment(Comment comment)
         {
             comments.Add(comment);

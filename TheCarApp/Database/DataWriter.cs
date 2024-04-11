@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlTypes;
+using InterfaceLayer;
 
 namespace Database
 {
-    public class DataWriter
+    public class DataWriter : IDataWriter
     {
         private SqlConnection connectionString;
 
@@ -432,7 +433,7 @@ namespace Database
                 {
                     if (reader.Read())
                     {
-                        carId = (int)reader["ID"];
+                        carId = (int)reader["CarId"];
                     }
                 }
             }
@@ -449,6 +450,142 @@ namespace Database
                 connectionString.Close();
             }
             return carId;
+        }
+
+        public int GetExtraId(string ExtraName)
+        {
+            int ExtraId = -1;
+            try
+            {
+                connectionString.Open();
+                var sql = "SELECT [ExtraId] FROM [dbo].[Extras] WHERE [ExtraName] = @ExtraName";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@ExtraName", ExtraName);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        ExtraId = (int)reader["ExtraId"];
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in GetExtraId: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in GetExtraId: {ex.Message}");
+            }
+            finally
+            {
+                connectionString.Close();
+            }
+            return ExtraId;
+        }
+
+        public int GetPictureId(string PictureURL)
+        {
+            int PictureId = -1;
+            try
+            {
+                connectionString.Open();
+                var sql = "SELECT [PictureId] FROM [dbo].[Pictures] WHERE [PictureURL] = @PictureURL";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@PictureURL", PictureURL);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        PictureId = (int)reader["PictureId"];
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in GetPictureId: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in GetPictureId: {ex.Message}");
+            }
+            finally
+            {
+                connectionString.Close();
+            }
+            return PictureId;
+        }
+
+        public int GetNewsId(string Title)
+        {
+            int NewsId = -1;
+            try
+            {
+                connectionString.Open();
+                var sql = "SELECT [NewsId] FROM [dbi530410_carapp].[dbo].[News] WHERE [Title] = @Title";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@Title", Title);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        NewsId = (int)reader["NewsId"];
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in GetNewsId: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in GetNewsId: {ex.Message}");
+            }
+            finally
+            {
+                connectionString.Close();
+            }
+            return NewsId;
+        }
+
+        public int GetCommentId(DateTime date)
+        {
+            int CommentId = -1;
+            try
+            {
+                connectionString.Open();
+                var sql = "SELECT [CommentId] FROM [dbi530410_carapp].[dbo].[Comments]WHERE [CommentDate] = @Date";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@Date", date);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        CommentId = (int)reader["CommentId"];
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in GetCommentId: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in GetCommentId: {ex.Message}");
+            }
+            finally
+            {
+                connectionString.Close();
+            }
+            return CommentId;
         }
 
     }

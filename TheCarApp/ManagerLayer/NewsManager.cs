@@ -3,6 +3,7 @@ using DatabaseAccess;
 using DTO;
 using Entity_Layer.Enums;
 using EntityLayout;
+using InterfaceLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,71 +12,43 @@ using System.Threading.Tasks;
 
 namespace Entity_Layer
 {
-    public class NewsManager
+    public class NewsManager : INewsManager
     {
+        private List<CarNews> news;
+        private readonly IDataAccess _dataAccess;
+        private readonly IDataWriter _dataWriter;
+        private readonly IDataRemover _dataRemover;
 
-        private List<CarNews> news { get; set; }
-        private DataAccess access;
-        private DataWriter writer;
-        private DataRemover remover;
-
-        public NewsManager()
+        public NewsManager(IDataAccess dataAccess, IDataWriter dataWriter, IDataRemover dataRemover)
         {
-
             news = new List<CarNews>();
-            access = new DataAccess();
-            writer = new DataWriter();
-            remover = new DataRemover();
+            _dataAccess = dataAccess;
+            _dataWriter = dataWriter;
+            _dataRemover = dataRemover;
         }
 
         public void AddNews(CarNews carnews)
         {
+            _dataWriter.AddCarNews(carnews.Author, carnews.Title, carnews.ReleaseDate, carnews.NewsDescription, carnews.ImageURL, carnews.ShortIntro);
+            carnews.Id = _dataWriter.GetNewsId(carnews.Title);
             news.Add(carnews);
-            writer.AddCarNews(carnews.Author, carnews.Title, carnews.ReleaseDate, carnews.NewsDescription, carnews.ImageURL, carnews.ShortIntro);
         }
 
         public void DeleteNews(CarNews carnews)
         {
             news.Remove(carnews);
-            remover.RemoveNews(carnews.Id);
-        }
-
-        public List<CarNews> GetNews()
-        {
-            return news;
-        }
-
-        public void AddComment(CarNews news, Comment comment)
-        {
-            news.AddComment(comment);
-        }
-
-        public void RemoveComment(CarNews news, Comment comment)
-        {
-            news.RemoveComment(comment);
-        }
-
-        public List<Comment> GetComments(CarNews news)
-        {
-            return news.GetComments();
+            _dataRemover.RemoveNews(carnews.Id);
         }
 
         public void LoadNews()
         {
-            if (access.GetCarNews() != null)
+            var carNewsList = _dataAccess.GetCarNews();
+            if (carNewsList != null)
             {
-                
-                foreach (CarNewsDTO newsDTO in access.GetCarNews())
+                foreach (CarNewsDTO newsDTO in carNewsList)
                 {
-                    List<Comment> loadComments = new List<Comment>();   
-                    foreach (CommentDTO comment in newsDTO.comments)
-                    {
-                        Comment comm = new Comment(comment.Id, comment.UserId, comment.Date, comment.Content);
-                        loadComments.Add(comm);
-                    }
-
-                    CarNews loadnews = new CarNews(newsDTO.Id, newsDTO.NewsDescription, newsDTO.ReleaseDate, newsDTO.ImageURL, newsDTO.Title, newsDTO.Author, newsDTO.ShortIntro, loadComments);
-
+                    var loadComments = newsDTO.comments.Select(comment => new Comment(comment.Id, comment.UserId, comment.Date, comment.Content)).ToList();
+                    var loadnews = new CarNews(newsDTO.Id, newsDTO.NewsDescription, newsDTO.ReleaseDate, newsDTO.ImageURL, newsDTO.Title, newsDTO.Author, newsDTO.ShortIntro, loadComments);
                     news.Add(loadnews);
                 }
             }

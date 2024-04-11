@@ -4,10 +4,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InterfaceLayer;
 
 namespace DatabaseAccess
 {
-    public class DataRemover
+    public class DataRemover : IDataRemover
     {
         private SqlConnection connectionString;
 

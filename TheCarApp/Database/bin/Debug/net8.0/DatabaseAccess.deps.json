@@ -9,6 +9,7 @@
       "DatabaseAccess/1.0.0": {
         "dependencies": {
           "DTO": "1.0.0",
+          "InterfaceLayer": "1.0.0",
           "System.Data.SqlClient": "4.8.6"
         },
         "runtime": {
@@ -94,6 +95,20 @@
         "runtime": {
           "DTO.dll": {}
         }
+      },
+      "Entity Layer/1.0.0": {
+        "runtime": {
+          "Entity Layer.dll": {}
+        }
+      },
+      "InterfaceLayer/1.0.0": {
+        "dependencies": {
+          "DTO": "1.0.0",
+          "Entity Layer": "1.0.0"
+        },
+        "runtime": {
+          "InterfaceLayer.dll": {}
+        }
       }
     }
   },
@@ -167,6 +182,16 @@
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
     },
     "DTO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Entity Layer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "InterfaceLayer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

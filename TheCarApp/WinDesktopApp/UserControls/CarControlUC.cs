@@ -18,11 +18,15 @@ namespace DesktopApp
     {
         PeopleManager peopleManager;
         CarManager carManager;
-        public CarControlUC(PeopleManager pm, CarManager cm)
+        ExtraManager extraManager;
+        PictureManager pictureManager;
+        public CarControlUC(PeopleManager pm, CarManager cm, ExtraManager em, PictureManager picM)
         {
             InitializeComponent();
             this.peopleManager = pm;
             this.carManager = cm;
+            this.extraManager = em;
+            this.pictureManager = picM;
         }
 
         private void BTNAddCar_Click(object sender, EventArgs e)
@@ -68,14 +72,13 @@ namespace DesktopApp
 
         private void BTNAddExtras_Click(object sender, EventArgs e)
         {
-            AddExtra addExtra = new AddExtra(carManager);
+            AddExtra addExtra = new AddExtra(extraManager);
             addExtra.Show();
         }
 
         private void BTNAddPics_Click(object sender, EventArgs e)
         {
-            AddPicture addPicture = new AddPicture(carManager);
-            addPicture.Show();
+            AddPicture addPicture = new AddPicture();
         }
     }
 }
