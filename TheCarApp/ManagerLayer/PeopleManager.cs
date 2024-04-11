@@ -4,6 +4,7 @@ using DTO;
 using Entity_Layer;
 using Entity_Layer.Enums;
 using EntityLayout;
+using InterfaceLayer;
 using Manager_Layer;
 using System;
 using System.Collections.Generic;
@@ -27,38 +28,69 @@ namespace ManagerLayer
             writer = new DataWriter();
             remover = new DataRemover();
         }
+        private IUserRepository _userRepository;
+        private IAdministratorRepository _administratorRepository;
 
-        public void AddUser(User user)
+        public PeopleManager(IUserRepository userRepository, IAdministratorRepository administratorRepository)
         {
-            writer.AddUser(user.Username, user.email, user.password, user._licenseNumber, user.CreatedOn);
-            people.Add(user);
+            _userRepository = userRepository;
+            _administratorRepository = administratorRepository;
         }
 
-        public void AddAdmin(Administrator admin)
+        public void AddPerson(Person person)
         {
-            writer.AddAdmin(admin.Username, admin.email, admin.password, admin._phoneNumber, admin.CreatedOn);
-            people.Add(admin);
+            switch (person)
+            {
+                case User user:
+                    _userRepository.AddUser(user);
+                    break;
+                case Administrator admin:
+                    _administratorRepository.AddAdmin(admin);
+                    break;
+                default:
+                    throw new ArgumentException("Unsupported person type");
+            }
         }
 
-        public void RemoveUser(User user)
+        public void RemovePerson(Person person)
         {
-            remover.RemoveUser(user.Id);
-            people.Remove(user);
+            switch (person)
+            {
+                case User user:
+                    _userRepository.RemoveUser(user.Id);
+                    break;
+                case Administrator admin:
+                    _administratorRepository.RemoveAdmin(admin);
+                    break;
+                default:
+                    throw new ArgumentException("Unsupported person type");
+            }
         }
 
-        public void RemoveAdmin(Administrator admin)
+        public void UpdatePerson(Person person)
         {
-            remover.RemoveAdmin(admin.Id);
-            people.Remove(admin);
+            switch (person)
+            {
+                case User user:
+                    _userRepository.UpdateUser(user);
+                    break;
+                case Administrator admin:
+                    _administratorRepository.UpdateAdmin(admin);
+                    break;
+                default:
+                    throw new ArgumentException("Unsupported person type");
+            }
         }
 
-        public void UpdateAdmin(Administrator admin)
+        public IEnumerable<Person> LoadPeople()
         {
-            writer.UpdateAdministration(admin.Id, admin.Username, admin.email, admin.password, admin._phoneNumber, admin.CreatedOn);
+            var users = _userRepository.GetAllUsers();
+            var admins = _administratorRepository.GetAllAdministrators();
+
+            return users.Cast<Person>().Concat(admins);
         }
 
-
-        public void LoadPeople()
+        public void LoadPeopleFromDB() // trqbva da go prehvurlq kum suotvetnite classove
         {
             if (access.GetUsers() != null && access.GetAdministrators() != null)
             {

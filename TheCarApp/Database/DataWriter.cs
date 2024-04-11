@@ -379,6 +379,45 @@ namespace Database
             return rows;
         }
 
+        public int UpdateUser(int userId, string Username, string email, string password, int _licenseNumber, DateTime CreatedOn)
+        {
+            int rowsAffected = -1;
+            try
+            {
+                connectionString.Open();
+                var sql = "UPDATE [dbo].[Users] " +
+                          "SET [Username] = @Username, " +
+                          "[Email] = @Email, " +
+                          "[PasswordHash] = @PasswordHash, " +
+                          "[LicenseNumber] = @License, " +
+                          "[CreatedOn] = @CreatedOn " +
+                          "WHERE [UserId] = @UserId";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@Username", Username);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@PasswordHash", password);
+                cmd.Parameters.AddWithValue("@PhoneNumber", _licenseNumber);
+                cmd.Parameters.AddWithValue("@CreatedOn", CreatedOn);
+                cmd.Parameters.AddWithValue("@UserId", userId);
+
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Server error in update action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in the update action: {ex.Message}");
+            }
+            finally
+            {
+                connectionString.Close();
+            }
+            return rowsAffected;
+        }
+
         public int UpdateAdministration(int adminId, string username, string email, string passwordHash, string phoneNumber, DateTime createdOn)
         {
             int rowsAffected = -1;
