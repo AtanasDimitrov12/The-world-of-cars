@@ -27,33 +27,35 @@ namespace DesktopApp
             this.carManager = cm;
             this.extraManager = em;
             this.pictureManager = picM;
+            DisplayCars(carManager.GetCars());
         }
 
         private void BTNAddCar_Click(object sender, EventArgs e)
         {
-            AddCar addCar = new AddCar(carManager);
+            AddCar addCar = new AddCar(carManager, extraManager, pictureManager);
             addCar.Show();
         }
 
         private void BTNModifyCar_Click(object sender, EventArgs e)
         {
-            AddCar addCar = new AddCar(carManager);
+            AddCar addCar = new AddCar(carManager, extraManager, pictureManager);
             addCar.Show();
         }
 
         private void RBAsc_CheckedChanged(object sender, EventArgs e)
         {
-            LBCars.Items.Clear();
-            foreach (Car car in carManager.GetCarsASC())
-            {
-                LBCars.Items.Add(car.GetInfo());
-            }
+            DisplayCars(carManager.GetCarsDESC());
         }
 
         private void RBDesc_CheckedChanged(object sender, EventArgs e)
         {
+            DisplayCars(carManager.GetCarsDESC());
+        }
+
+        public void DisplayCars(List<Car> sortedCars)
+        {
             LBCars.Items.Clear();
-            foreach (Car car in carManager.GetCarsDESC())
+            foreach (Car car in sortedCars)
             {
                 LBCars.Items.Add(car.GetInfo());
             }
@@ -78,7 +80,8 @@ namespace DesktopApp
 
         private void BTNAddPics_Click(object sender, EventArgs e)
         {
-            AddPicture addPicture = new AddPicture();
+            AddPicture addPicture = new AddPicture(pictureManager);
+            addPicture.Show();
         }
     }
 }

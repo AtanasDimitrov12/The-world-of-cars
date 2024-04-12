@@ -28,100 +28,112 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.BTNSearch = new System.Windows.Forms.Button();
-            this.CBNews = new System.Windows.Forms.ComboBox();
-            this.LBComments = new System.Windows.Forms.ListBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.BTNDelete = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.SuspendLayout();
+            groupBox1 = new GroupBox();
+            BTNSearch = new Button();
+            CBNews = new ComboBox();
+            LBComments = new ListBox();
+            groupBox2 = new GroupBox();
+            label1 = new Label();
+            BTNDelete = new Button();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.BTNSearch);
-            this.groupBox1.Controls.Add(this.CBNews);
-            this.groupBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.groupBox1.Location = new System.Drawing.Point(30, 75);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(218, 131);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Search per news";
+            groupBox1.Controls.Add(BTNSearch);
+            groupBox1.Controls.Add(CBNews);
+            groupBox1.Font = new Font("Arial Rounded MT Bold", 12F);
+            groupBox1.Location = new Point(35, 87);
+            groupBox1.Margin = new Padding(4, 3, 4, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(4, 3, 4, 3);
+            groupBox1.Size = new Size(254, 151);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Search per news";
             // 
             // BTNSearch
             // 
-            this.BTNSearch.Location = new System.Drawing.Point(38, 78);
-            this.BTNSearch.Name = "BTNSearch";
-            this.BTNSearch.Size = new System.Drawing.Size(144, 32);
-            this.BTNSearch.TabIndex = 1;
-            this.BTNSearch.Text = "Search";
-            this.BTNSearch.UseVisualStyleBackColor = true;
+            BTNSearch.Location = new Point(44, 90);
+            BTNSearch.Margin = new Padding(4, 3, 4, 3);
+            BTNSearch.Name = "BTNSearch";
+            BTNSearch.Size = new Size(168, 37);
+            BTNSearch.TabIndex = 1;
+            BTNSearch.Text = "Search";
+            BTNSearch.UseVisualStyleBackColor = true;
+            BTNSearch.Click += BTNSearch_Click;
             // 
             // CBNews
             // 
-            this.CBNews.FormattingEnabled = true;
-            this.CBNews.Location = new System.Drawing.Point(17, 40);
-            this.CBNews.Name = "CBNews";
-            this.CBNews.Size = new System.Drawing.Size(187, 26);
-            this.CBNews.TabIndex = 0;
+            CBNews.FormattingEnabled = true;
+            CBNews.Location = new Point(20, 46);
+            CBNews.Margin = new Padding(4, 3, 4, 3);
+            CBNews.Name = "CBNews";
+            CBNews.Size = new Size(218, 26);
+            CBNews.TabIndex = 0;
             // 
             // LBComments
             // 
-            this.LBComments.FormattingEnabled = true;
-            this.LBComments.Location = new System.Drawing.Point(279, 22);
-            this.LBComments.Name = "LBComments";
-            this.LBComments.Size = new System.Drawing.Size(305, 381);
-            this.LBComments.TabIndex = 1;
+            LBComments.FormattingEnabled = true;
+            LBComments.ItemHeight = 15;
+            LBComments.Location = new Point(326, 25);
+            LBComments.Margin = new Padding(4, 3, 4, 3);
+            LBComments.Name = "LBComments";
+            LBComments.Size = new Size(355, 439);
+            LBComments.TabIndex = 1;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.BTNDelete);
-            this.groupBox2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.groupBox2.Location = new System.Drawing.Point(30, 223);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(218, 131);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Delete news";
+            groupBox2.Controls.Add(label1);
+            groupBox2.Controls.Add(BTNDelete);
+            groupBox2.Font = new Font("Arial Rounded MT Bold", 12F);
+            groupBox2.Location = new Point(35, 257);
+            groupBox2.Margin = new Padding(4, 3, 4, 3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new Padding(4, 3, 4, 3);
+            groupBox2.Size = new Size(254, 151);
+            groupBox2.TabIndex = 2;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Delete news";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(36, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 12);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Select and press the button";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            label1.AutoSize = true;
+            label1.Font = new Font("Arial Rounded MT Bold", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(42, 54);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(158, 12);
+            label1.TabIndex = 2;
+            label1.Text = "Select and press the button";
+            label1.Click += label1_Click;
             // 
             // BTNDelete
             // 
-            this.BTNDelete.Location = new System.Drawing.Point(38, 78);
-            this.BTNDelete.Name = "BTNDelete";
-            this.BTNDelete.Size = new System.Drawing.Size(144, 32);
-            this.BTNDelete.TabIndex = 1;
-            this.BTNDelete.Text = "Delete";
-            this.BTNDelete.UseVisualStyleBackColor = true;
+            BTNDelete.Location = new Point(44, 90);
+            BTNDelete.Margin = new Padding(4, 3, 4, 3);
+            BTNDelete.Name = "BTNDelete";
+            BTNDelete.Size = new Size(168, 37);
+            BTNDelete.TabIndex = 1;
+            BTNDelete.Text = "Delete";
+            BTNDelete.UseVisualStyleBackColor = true;
+            BTNDelete.Click += BTNDelete_Click;
             // 
             // CommentsControlUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.LBComments);
-            this.Controls.Add(this.groupBox1);
-            this.Name = "CommentsControlUC";
-            this.Size = new System.Drawing.Size(615, 424);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(groupBox2);
+            Controls.Add(LBComments);
+            Controls.Add(groupBox1);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "CommentsControlUC";
+            Size = new Size(718, 489);
+            groupBox1.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

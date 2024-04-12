@@ -12,30 +12,36 @@ using System.Windows.Forms;
 using DTO;
 using Entity_Layer.Enums;
 using Entity_Layer;
+using ManagerLayer;
 
 namespace DesktopApp
 {
     public partial class AddCar : Form
     {
         CarManager manager;
+        PictureManager pictureManager;
+        ExtraManager extraManager;
         List<Extra> extras;
         List<Picture> pictures;
-        public AddCar(CarManager cm)
+        public AddCar(CarManager cm, ExtraManager em, PictureManager picmanager)
         {
             InitializeComponent();
             manager = cm;
+            pictureManager = picmanager;
+            extraManager = em;
             extras = new List<Extra>();
             pictures = new List<Picture>();
             LoadCB();
+            this.extraManager = extraManager;
         }
 
         public void LoadCB()
         {
-            foreach (Extra extra in manager.extras)
+            foreach (Extra extra in extraManager.extras)
             { 
                 CBCarExtras.Items.Add($"{extra.Id} - {extra.extraName}");
             }
-            foreach (Picture pic in manager.pictures)
+            foreach (Picture pic in pictureManager.pictures)
             {
                 CBPictureURL.Items.Add($"{pic.Id} - {pic.PictureURL}");
             }

@@ -28,164 +28,182 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LBCarNews = new System.Windows.Forms.ListBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.RBDESC = new System.Windows.Forms.RadioButton();
-            this.RBASC = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.BTNSearchByTitle = new System.Windows.Forms.Button();
-            this.TBNewsTitle = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.BTNAddNews = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.BTNModifyNews = new System.Windows.Forms.Button();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.SuspendLayout();
+            LBCarNews = new ListBox();
+            groupBox2 = new GroupBox();
+            RBDESC = new RadioButton();
+            RBASC = new RadioButton();
+            label4 = new Label();
+            groupBox3 = new GroupBox();
+            BTNSearchByTitle = new Button();
+            TBNewsTitle = new TextBox();
+            label5 = new Label();
+            BTNAddNews = new Button();
+            groupBox1 = new GroupBox();
+            BTNModifyNews = new Button();
+            groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox1.SuspendLayout();
+            SuspendLayout();
             // 
             // LBCarNews
             // 
-            this.LBCarNews.FormattingEnabled = true;
-            this.LBCarNews.Location = new System.Drawing.Point(229, 29);
-            this.LBCarNews.Name = "LBCarNews";
-            this.LBCarNews.Size = new System.Drawing.Size(273, 368);
-            this.LBCarNews.TabIndex = 8;
+            LBCarNews.FormattingEnabled = true;
+            LBCarNews.ItemHeight = 15;
+            LBCarNews.Location = new Point(267, 33);
+            LBCarNews.Margin = new Padding(4, 3, 4, 3);
+            LBCarNews.Name = "LBCarNews";
+            LBCarNews.Size = new Size(318, 424);
+            LBCarNews.TabIndex = 8;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.RBDESC);
-            this.groupBox2.Controls.Add(this.RBASC);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(12, 15);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(180, 83);
-            this.groupBox2.TabIndex = 18;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Show news";
+            groupBox2.Controls.Add(RBDESC);
+            groupBox2.Controls.Add(RBASC);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Location = new Point(14, 17);
+            groupBox2.Margin = new Padding(4, 3, 4, 3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new Padding(4, 3, 4, 3);
+            groupBox2.Size = new Size(210, 96);
+            groupBox2.TabIndex = 18;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Show news";
             // 
             // RBDESC
             // 
-            this.RBDESC.AutoSize = true;
-            this.RBDESC.Location = new System.Drawing.Point(101, 46);
-            this.RBDESC.Name = "RBDESC";
-            this.RBDESC.Size = new System.Drawing.Size(50, 17);
-            this.RBDESC.TabIndex = 16;
-            this.RBDESC.TabStop = true;
-            this.RBDESC.Text = "Desc";
-            this.RBDESC.UseVisualStyleBackColor = true;
+            RBDESC.AutoSize = true;
+            RBDESC.Location = new Point(118, 53);
+            RBDESC.Margin = new Padding(4, 3, 4, 3);
+            RBDESC.Name = "RBDESC";
+            RBDESC.Size = new Size(50, 19);
+            RBDESC.TabIndex = 16;
+            RBDESC.TabStop = true;
+            RBDESC.Text = "Desc";
+            RBDESC.UseVisualStyleBackColor = true;
+            RBDESC.CheckedChanged += RBDESC_CheckedChanged;
             // 
             // RBASC
             // 
-            this.RBASC.AutoSize = true;
-            this.RBASC.Location = new System.Drawing.Point(27, 46);
-            this.RBASC.Name = "RBASC";
-            this.RBASC.Size = new System.Drawing.Size(43, 17);
-            this.RBASC.TabIndex = 15;
-            this.RBASC.TabStop = true;
-            this.RBASC.Text = "Asc";
-            this.RBASC.UseVisualStyleBackColor = true;
+            RBASC.AutoSize = true;
+            RBASC.Location = new Point(31, 53);
+            RBASC.Margin = new Padding(4, 3, 4, 3);
+            RBASC.Name = "RBASC";
+            RBASC.Size = new Size(44, 19);
+            RBASC.TabIndex = 15;
+            RBASC.TabStop = true;
+            RBASC.Text = "Asc";
+            RBASC.UseVisualStyleBackColor = true;
+            RBASC.CheckedChanged += RBASC_CheckedChanged;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.label4.Location = new System.Drawing.Point(31, 23);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 18);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Sort by date:";
+            label4.AutoSize = true;
+            label4.Font = new Font("Arial Rounded MT Bold", 12F);
+            label4.Location = new Point(36, 27);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(110, 18);
+            label4.TabIndex = 14;
+            label4.Text = "Sort by date:";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.BTNSearchByTitle);
-            this.groupBox3.Controls.Add(this.TBNewsTitle);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(12, 118);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(180, 137);
-            this.groupBox3.TabIndex = 19;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Search news";
+            groupBox3.Controls.Add(BTNSearchByTitle);
+            groupBox3.Controls.Add(TBNewsTitle);
+            groupBox3.Controls.Add(label5);
+            groupBox3.Location = new Point(14, 136);
+            groupBox3.Margin = new Padding(4, 3, 4, 3);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Padding = new Padding(4, 3, 4, 3);
+            groupBox3.Size = new Size(210, 158);
+            groupBox3.TabIndex = 19;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Search news";
             // 
             // BTNSearchByTitle
             // 
-            this.BTNSearchByTitle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.BTNSearchByTitle.Location = new System.Drawing.Point(27, 82);
-            this.BTNSearchByTitle.Name = "BTNSearchByTitle";
-            this.BTNSearchByTitle.Size = new System.Drawing.Size(125, 43);
-            this.BTNSearchByTitle.TabIndex = 19;
-            this.BTNSearchByTitle.Text = "Search";
-            this.BTNSearchByTitle.UseVisualStyleBackColor = true;
+            BTNSearchByTitle.Font = new Font("Arial Rounded MT Bold", 12F);
+            BTNSearchByTitle.Location = new Point(31, 95);
+            BTNSearchByTitle.Margin = new Padding(4, 3, 4, 3);
+            BTNSearchByTitle.Name = "BTNSearchByTitle";
+            BTNSearchByTitle.Size = new Size(146, 50);
+            BTNSearchByTitle.TabIndex = 19;
+            BTNSearchByTitle.Text = "Search";
+            BTNSearchByTitle.UseVisualStyleBackColor = true;
             // 
             // TBNewsTitle
             // 
-            this.TBNewsTitle.Location = new System.Drawing.Point(41, 56);
-            this.TBNewsTitle.Name = "TBNewsTitle";
-            this.TBNewsTitle.Size = new System.Drawing.Size(100, 20);
-            this.TBNewsTitle.TabIndex = 18;
+            TBNewsTitle.Location = new Point(48, 65);
+            TBNewsTitle.Margin = new Padding(4, 3, 4, 3);
+            TBNewsTitle.Name = "TBNewsTitle";
+            TBNewsTitle.Size = new Size(116, 23);
+            TBNewsTitle.TabIndex = 18;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.label5.Location = new System.Drawing.Point(31, 26);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 18);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Search by title:";
+            label5.AutoSize = true;
+            label5.Font = new Font("Arial Rounded MT Bold", 12F);
+            label5.Location = new Point(36, 30);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(128, 18);
+            label5.TabIndex = 17;
+            label5.Text = "Search by title:";
             // 
             // BTNAddNews
             // 
-            this.BTNAddNews.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.BTNAddNews.Location = new System.Drawing.Point(26, 31);
-            this.BTNAddNews.Name = "BTNAddNews";
-            this.BTNAddNews.Size = new System.Drawing.Size(125, 35);
-            this.BTNAddNews.TabIndex = 20;
-            this.BTNAddNews.Text = "Add news";
-            this.BTNAddNews.UseVisualStyleBackColor = true;
-            this.BTNAddNews.Click += new System.EventHandler(this.BTNAddNews_Click);
+            BTNAddNews.Font = new Font("Arial Rounded MT Bold", 12F);
+            BTNAddNews.Location = new Point(30, 36);
+            BTNAddNews.Margin = new Padding(4, 3, 4, 3);
+            BTNAddNews.Name = "BTNAddNews";
+            BTNAddNews.Size = new Size(146, 40);
+            BTNAddNews.TabIndex = 20;
+            BTNAddNews.Text = "Add news";
+            BTNAddNews.UseVisualStyleBackColor = true;
+            BTNAddNews.Click += BTNAddNews_Click;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.BTNModifyNews);
-            this.groupBox1.Controls.Add(this.BTNAddNews);
-            this.groupBox1.Location = new System.Drawing.Point(12, 284);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(180, 116);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Actions";
+            groupBox1.Controls.Add(BTNModifyNews);
+            groupBox1.Controls.Add(BTNAddNews);
+            groupBox1.Location = new Point(14, 328);
+            groupBox1.Margin = new Padding(4, 3, 4, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(4, 3, 4, 3);
+            groupBox1.Size = new Size(210, 134);
+            groupBox1.TabIndex = 21;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Actions";
             // 
             // BTNModifyNews
             // 
-            this.BTNModifyNews.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.BTNModifyNews.Location = new System.Drawing.Point(26, 72);
-            this.BTNModifyNews.Name = "BTNModifyNews";
-            this.BTNModifyNews.Size = new System.Drawing.Size(125, 35);
-            this.BTNModifyNews.TabIndex = 21;
-            this.BTNModifyNews.Text = "Modify news";
-            this.BTNModifyNews.UseVisualStyleBackColor = true;
-            this.BTNModifyNews.Click += new System.EventHandler(this.BTNModifyNews_Click);
+            BTNModifyNews.Font = new Font("Arial Rounded MT Bold", 12F);
+            BTNModifyNews.Location = new Point(30, 83);
+            BTNModifyNews.Margin = new Padding(4, 3, 4, 3);
+            BTNModifyNews.Name = "BTNModifyNews";
+            BTNModifyNews.Size = new Size(146, 40);
+            BTNModifyNews.TabIndex = 21;
+            BTNModifyNews.Text = "Modify news";
+            BTNModifyNews.UseVisualStyleBackColor = true;
+            BTNModifyNews.Click += BTNModifyNews_Click;
             // 
             // CarNewsUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.LBCarNews);
-            this.Name = "CarNewsUC";
-            this.Size = new System.Drawing.Size(534, 433);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(groupBox1);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(LBCarNews);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "CarNewsUC";
+            Size = new Size(623, 500);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion

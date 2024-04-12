@@ -1,5 +1,6 @@
 ﻿using Entity_Layer;
 using Manager_Layer;
+using ManagerLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,11 +15,11 @@ namespace WinDesktopApp.Forms
 {
     public partial class AddExtra : Form
     {
-        CarManager manager;
-        public AddExtra(CarManager cm)
+        ExtraManager manager;
+        public AddExtra(ExtraManager em)
         {
             InitializeComponent();
-            manager = cm;
+            manager = em;
         }
 
         private void BTNAddExtra_Click(object sender, EventArgs e)

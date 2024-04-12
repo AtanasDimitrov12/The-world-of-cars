@@ -9,12 +9,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entity_Layer.Interfaces;
 
 namespace Entity_Layer
 {
     public class NewsManager : INewsManager
     {
-        private List<CarNews> news;
+        public List<CarNews> news { get; set; }
         private readonly IDataAccess _dataAccess;
         private readonly IDataWriter _dataWriter;
         private readonly IDataRemover _dataRemover;
@@ -39,6 +40,7 @@ namespace Entity_Layer
             news.Remove(carnews);
             _dataRemover.RemoveNews(carnews.Id);
         }
+
 
         public void LoadNews()
         {
