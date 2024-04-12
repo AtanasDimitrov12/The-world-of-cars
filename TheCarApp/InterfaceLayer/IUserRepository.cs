@@ -10,8 +10,9 @@ namespace InterfaceLayer
     public interface IUserRepository
     {
         void AddUser(User user);
-        void RemoveUser(int userId);
+        void RemoveUser(User user);
         void UpdateUser(User user);
         List<User> GetAllUsers();
+        void LoadUSers();
     }
 }

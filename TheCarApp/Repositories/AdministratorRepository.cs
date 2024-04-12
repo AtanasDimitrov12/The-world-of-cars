@@ -1,5 +1,6 @@
 ﻿using Database;
 using DatabaseAccess;
+using DTO;
 using Entity_Layer;
 using InterfaceLayer;
 using System;
@@ -14,9 +15,16 @@ namespace Repositories
     {
         private IDataWriter writer;
         private IDataRemover remover;
-        public List<Administrator> admins = new List<Administrator>();
+        private IDataAccess access;
+        public List<Administrator> admins;
 
-        // Constructor and implementation of methods
+        public AdministratorRepository()
+        { 
+            writer = new DataWriter();
+            access = new DataAccess();
+            remover = new DataRemover();
+            admins = new List<Administrator>();
+        }
 
         public void AddAdmin(Administrator admin)
         {
@@ -38,6 +46,18 @@ namespace Repositories
         public List<Administrator> GetAllAdministrators()
         {
             return admins;
+        }
+
+        public void LoadAdmins()
+        {
+            if (access.GetAdministrators() != null)
+            {
+                foreach (AdministratorDTO adminDTO in access.GetAdministrators())
+                {
+                    Administrator admin = new Administrator(adminDTO.Id, adminDTO.email, adminDTO.password, adminDTO.Username, adminDTO.CreatedOn, adminDTO._phoneNumber);
+                    admins.Add(admin);
+                }
+            }
         }
     }
 

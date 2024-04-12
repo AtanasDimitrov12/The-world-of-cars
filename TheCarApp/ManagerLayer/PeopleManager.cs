@@ -57,7 +57,7 @@ namespace ManagerLayer
             switch (person)
             {
                 case User user:
-                    _userRepository.RemoveUser(user.Id);
+                    _userRepository.RemoveUser(user);
                     break;
                 case Administrator admin:
                     _administratorRepository.RemoveAdmin(admin);
@@ -82,7 +82,7 @@ namespace ManagerLayer
             }
         }
 
-        public IEnumerable<Person> LoadPeople()
+        public IEnumerable<Person> GetAllPeople()
         {
             var users = _userRepository.GetAllUsers();
             var admins = _administratorRepository.GetAllAdministrators();

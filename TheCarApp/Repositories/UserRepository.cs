@@ -7,6 +7,7 @@ using InterfaceLayer;
 using DatabaseAccess;
 using Database;
 using Entity_Layer;
+using DTO;
 
 namespace Repositories
 {
@@ -14,7 +15,16 @@ namespace Repositories
     {
         private IDataWriter writer;
         private IDataRemover remover;
-        List<User> users = new List<User>();
+        private IDataAccess access;
+        List<User> users;
+
+        public UserRepository()
+        {
+            writer = new DataWriter();
+            remover = new DataRemover();
+            access = new DataAccess();
+            users = new List<User>();
+        }
 
         public void AddUser(User user)
         {
@@ -22,7 +32,7 @@ namespace Repositories
             users.Add(user);
         }
 
-        
+
 
         public void RemoveUser(User user)
         {
@@ -36,8 +46,20 @@ namespace Repositories
         }
 
         public List<User> GetAllUsers()
-        { 
+        {
             return users;
+        }
+
+        public void LoadUSers()
+        {
+            if (access.GetUsers() != null)
+            {
+                foreach (UserDTO userDTO in access.GetUsers())
+                {
+                    User user = new User(userDTO.Id, userDTO.email, userDTO.password, userDTO.Username, userDTO.CreatedOn, userDTO._licenseNumber);
+                    users.Add(user);
+                }
+            }
         }
     }
 }

@@ -13,5 +13,6 @@ namespace InterfaceLayer
         void RemoveAdmin(Administrator admin);
         void UpdateAdmin(Administrator admin);
         List<Administrator> GetAllAdministrators();
+        void LoadAdmins();
     }
 }
