@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\TheCarApp
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Asus ROG/source/repos/the-world-of-cars/TheCarApp/TheCarApp/Pages/AccountPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Asus ROG/source/repos/the-world-of-cars/TheCarApp/TheCarApp/Pages/CarNews.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FyTmV3cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

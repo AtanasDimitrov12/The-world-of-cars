@@ -1,0 +1,65 @@
+﻿@page
+@model TheCarApp.Pages.AccountPageModel
+@{
+    ViewData["Title"] = "Account Page";
+}
+<link rel="stylesheet" href="~/css/Account.css" asp-append-version="true" />
+
+<div class="flex-container">
+    <div class="main-banner header-text" id="top">
+        <div class="container pt-5">
+            <h1 class="text-center mb-4">Account Details</h1>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h5>Username:</h5>
+                    <p>@Model.user.Username</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Email:</h5>
+                    <p>@Model.user.email</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Driving License Number:</h5>
+                    <p>@Model.user._licenseNumber</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Account Created On:</h5>
+                    <p>@Model.user.CreatedOn.ToString("MMMM dd, yyyy")</p>
+                </div>
+            </div>
+            <h2 class="text-center my-4">Rental History</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Car ID</th>
+                        <th>Brand</th>
+                        <th>Model</th>
+                        <th>Pickup Date</th>
+                        <th>Return Date</th>
+                        <th>Rent Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>BMW</td>
+                        <td>320i</td>
+                        <td>12.05.2004</td>
+                        <td>18.05.2004</td>
+                        <td>Completed</td>                    
+                    </tr>
+                    @* @foreach (var rental in Model.Rentals) *@
+                    @* { *@
+                    @* <tr>
+                    <td>@rental.CarId</td>
+                    <td>@rental.Brand</td>
+                    <td>@rental.Model</td>
+                    <td>@rental.PickupDate.ToString("MMMM dd, yyyy")</td>
+                    <td>@rental.ReturnDate.ToString("MMMM dd, yyyy")</td>
+                    </tr> *@
+                    @* } *@
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -11,6 +11,8 @@ namespace TheCarApp.Pages
 
         [BindProperty]
         public User newUser { get; set; }
+
+        [BindProperty]
         public User LogInUser { get; set; }
 
         public SignUpPageModel()
@@ -39,13 +41,15 @@ namespace TheCarApp.Pages
 
         public IActionResult OnPostLogIn()
         {
-            
-            if (_projectManager.peopleManager.AuthenticateUser(LogInUser))
+            _projectManager.LoadAllData();
+            bool isAuthenticated = _projectManager.peopleManager.AuthenticateUser(LogInUser);
+            if (isAuthenticated)
             {
                 return RedirectToPage("/MarketPlace");
             }
-            else 
+            else
             {
+                ModelState.AddModelError("", "Login failed. Please check your username and password.");
                 return Page();
             }
         }
