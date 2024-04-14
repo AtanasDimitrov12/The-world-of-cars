@@ -32,12 +32,12 @@ namespace ManagerLayer
             carManager = new CarManager(dataAccess, dataWriter, dataremover);
             newsManager = new NewsManager(dataAccess, dataWriter, dataremover);
             commentsManager = new CommentsManager(dataAccess, dataWriter, dataremover);
-            rentManager = new RentManager();    
-            peopleManager = new PeopleManager();
+            rentManager = new RentManager();  
             extraManager = new ExtraManager(dataWriter, dataremover);
             pictureManager = new PictureManager(dataWriter, dataremover);
             userRepository = new UserRepository(dataAccess, dataWriter, dataremover);
             administratorRepository = new AdministratorRepository(dataAccess, dataWriter, dataremover);
+            peopleManager = new PeopleManager(userRepository, administratorRepository);
         }
 
         public void LoadAllData()

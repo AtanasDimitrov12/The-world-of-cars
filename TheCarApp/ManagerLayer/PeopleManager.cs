@@ -20,22 +20,19 @@ namespace ManagerLayer
         private DataAccess access;
         private DataWriter writer;
         private DataRemover remover;
-
-        public PeopleManager()
-        {
-            people = new List<Person>();
-            access = new DataAccess();
-            writer = new DataWriter();
-            remover = new DataRemover();
-        }
         private IUserRepository _userRepository;
         private IAdministratorRepository _administratorRepository;
 
         public PeopleManager(IUserRepository userRepository, IAdministratorRepository administratorRepository)
         {
+            people = new List<Person>();
+            access = new DataAccess();
+            writer = new DataWriter();
+            remover = new DataRemover();
             _userRepository = userRepository;
             _administratorRepository = administratorRepository;
         }
+        
 
         public void AddPerson(Person person)
         {
@@ -80,6 +77,23 @@ namespace ManagerLayer
                 default:
                     throw new ArgumentException("Unsupported person type");
             }
+        }
+
+        public bool AuthenticateUser(User checkUser)
+        {
+            foreach (User user in _userRepository.GetAllUsers())
+            {
+                if (user.email == checkUser.email)
+                {
+                    if (user.password == checkUser.password)
+                    {
+                        return true;
+                    }
+                    else { return false; }
+                }
+                else { return false; }
+            }
+            return false;
         }
 
         public IEnumerable<Person> GetAllPeople()

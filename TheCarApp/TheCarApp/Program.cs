@@ -1,7 +1,16 @@
+using ManagerLayer;
+// Add any other necessary 'using' directives for your repositories or services
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+// Register ProjectManager and other dependencies here
+builder.Services.AddScoped<ProjectManager>();
+// If ProjectManager depends on other services or repositories, register them as well:
+// builder.Services.AddScoped<IYourRepository, YourRepositoryImplementation>();
+// ... add other necessary services and repositories
 
 var app = builder.Build();
 

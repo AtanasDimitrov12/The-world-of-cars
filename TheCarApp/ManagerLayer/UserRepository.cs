@@ -50,6 +50,22 @@ namespace Repositories
             return users;
         }
 
+        //public bool CheckUserDetails(User user)
+        //{ 
+        //    foreach (var storedUser in users) 
+        //    {
+        //        if (user.email == storedUser.email)
+        //        {
+        //            if (user.password == storedUser.password)
+        //            {
+        //                return true;
+        //            }
+        //        }
+        //        else { return false; }
+        //    }
+        //    return false;
+        //}
+
         public void LoadUSers()
         {
             if (access.GetUsers() != null)
