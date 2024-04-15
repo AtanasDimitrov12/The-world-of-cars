@@ -21,9 +21,6 @@ body {
         color: white; 
     }
 
-    .container  a{
-        color: limegreen;
-    }
     
     
 
@@ -206,16 +203,13 @@ body {
             cursor: pointer;
         }
 
-.filled-button {
-    color: black;
-}
 
 .callback-form .contact-form button.border-button:hover {
     background-color: #fff;
     color: #a4c639;
 }
 
-.contact-us .contact-form button.filled-button {
+.filled-button {
     background-color: #a4c639;
     color: #fff;
     font-size: 13px;
@@ -227,7 +221,7 @@ body {
     transition: all 0.3s;
 }
 
-    .contact-us .contact-form button.filled-button:hover {
+    .filled-button:hover {
         background-color: #fff;
         color: #a4c639;
     }

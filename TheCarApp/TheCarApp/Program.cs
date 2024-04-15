@@ -1,23 +1,34 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Register Razor Pages
 builder.Services.AddRazorPages();
 
 // Setup authentication
-builder.Services.AddAuthentication("CookieAuth")
-    .AddCookie("CookieAuth", config =>
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
     {
-        config.Cookie.Name = "UserLoginCookie";
-        config.LoginPath = "/SignUpPage";
+        options.LoginPath = "/SignUpPage"; // Dedicated login page
+        options.AccessDeniedPath = "/SignUpPage"; // Separate access denied page
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+        options.Cookie.HttpOnly = true; // Enhance security by making the cookie accessible only through the HTTP protocol
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Ensure the cookie is only sent over HTTPS
     });
+
+// Add any necessary DI services
+// builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
-    app.UseHsts();
+    app.UseExceptionHandler("/Error"); // Use a custom error handling page
+    app.UseHsts(); // Enforce HTTPS
 }
 
 app.UseHttpsRedirection();
@@ -25,7 +36,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication(); // Make sure to call UseAuthentication before UseAuthorization
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();

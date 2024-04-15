@@ -2,9 +2,14 @@ using ManagerLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Entity_Layer;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TheCarApp.Pages
 {
+    [AllowAnonymous]
     public class SignUpPageModel : PageModel
     {
         private ProjectManager _projectManager = new ProjectManager(); // Use a readonly field for the injected service
@@ -17,15 +22,15 @@ namespace TheCarApp.Pages
 
         public SignUpPageModel()
         {
-            // Injected via constructor
+            // Constructor remains empty if no services are injected directly
         }
 
         public void OnGet()
         {
-            // This is where you would prepare any data needed for the GET request  
+            // Intentionally left empty for demonstration
         }
 
-        public IActionResult OnPostSignUp()
+        public async Task<IActionResult> OnPostSignUp()
         {
             if (!ModelState.IsValid)
             {
@@ -33,23 +38,61 @@ namespace TheCarApp.Pages
             }
 
             newUser.CreatedOn = DateTime.Now; // Set the CreatedOn date here
-
-            _projectManager.LoadAllData();
+            // Implement user creation logic
             _projectManager.peopleManager.AddPerson(newUser); // Assuming AddPerson handles null checks
+
+            // Create and sign in the user
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, newUser.email)
+            };
+
+            var claimsIdentity = new ClaimsIdentity(
+                claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = true,
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
+            };
+
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity),
+                authProperties);
+
             return RedirectToPage("/MarketPlace"); // Redirect to a confirmation page or the home page
         }
 
-        public IActionResult OnPostLogIn()
+        public async Task<IActionResult> OnPostLogIn()
         {
             _projectManager.LoadAllData();
-            bool isAuthenticated = _projectManager.peopleManager.AuthenticateUser(LogInUser);
-            if (isAuthenticated)
+            if (_projectManager.peopleManager.AuthenticateUser(LogInUser))
             {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, LogInUser.email)
+                };
+
+                var claimsIdentity = new ClaimsIdentity(
+                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = true,
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
+                };
+
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity),
+                    authProperties);
+
                 return RedirectToPage("/MarketPlace");
             }
             else
             {
-                ModelState.AddModelError("", "Login failed. Please check your username and password.");
+                ModelState.AddModelError("", "Login failed. Please check your email and password.");
                 return Page();
             }
         }

@@ -1,11 +1,13 @@
 using Entity_Layer;
 using Manager_Layer;
 using ManagerLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace TheCarApp.Pages
 {
+    [Authorize]
     public class AccountPageModel : PageModel
     {
         public User user { get; set; }
