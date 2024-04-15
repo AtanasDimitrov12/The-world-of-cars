@@ -32,7 +32,7 @@ namespace ManagerLayer
             _userRepository = userRepository;
             _administratorRepository = administratorRepository;
         }
-        
+
 
         public void AddPerson(Person person)
         {
@@ -94,6 +94,18 @@ namespace ManagerLayer
                 else { return false; }
             }
             return false;
+        }
+
+        public User GetUser(string Email)
+        {
+            foreach (User user in _userRepository.GetAllUsers())
+            {
+                if (user.email == Email)
+                { 
+                    return user;
+                }
+            }
+            return null;
         }
 
         public IEnumerable<Person> GetAllPeople()

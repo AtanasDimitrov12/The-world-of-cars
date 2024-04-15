@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -5,30 +6,36 @@ using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Register Razor Pages
+// Add services to the container.
 builder.Services.AddRazorPages();
 
 // Setup authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/SignUpPage"; // Dedicated login page
-        options.AccessDeniedPath = "/SignUpPage"; // Separate access denied page
+        options.LoginPath = "/SignUpPage";
+        options.AccessDeniedPath = "/SignUpPage";
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-        options.Cookie.HttpOnly = true; // Enhance security by making the cookie accessible only through the HTTP protocol
-        options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Ensure the cookie is only sent over HTTPS
     });
-
-// Add any necessary DI services
-// builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    // Force sign-out on every startup in development mode
+    app.Use(async (context, next) =>
+    {
+        await context.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        // Continue processing other middleware in the pipeline
+        await next.Invoke();
+    });
+}
+
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error"); // Use a custom error handling page
-    app.UseHsts(); // Enforce HTTPS
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
