@@ -2,7 +2,7 @@
 @model TheCarApp.Pages.CarNewsModel
 @{
     ViewData["Title"] = "Car News";
-    <link rel="stylesheet" href="~/css/market.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/market.css" asp-append-version="true" />
 }
 
 <div class="container">
@@ -21,24 +21,27 @@
         <div class="row">
             <div class="col-md-8">
                 <section class='tabs-content'>
-                    <article id='tabs-1'>
-                        <img src="/pictures/BMW3.jpg" alt="">
-                        <h4><a href="/NewsDetails">Lorem ipsum dolor sit amet, consectetur adipisicing.</a></h4>
-                        <div style="margin-bottom:10px;">
-                            <span>John Doe &nbsp;|&nbsp; 27.07.2020 10:10 &nbsp;|&nbsp; 15 comments</span>
-                        </div>
-                        <p>Sed ut dolor in augue cursus ultrices. Vivamus mauris turpis, auctor vel facilisis in, tincidunt vel diam. Sed vitae scelerisque orci. Nunc non magna orci. Aliquam commodo mauris ante, quis posuere nibh vestibulum sit amet.</p>
+                    @foreach (var news in Model.News)
+                    {
+                        <article id='tabs-1'>
+                            <img src="/pictures/@news.ImageURL" alt="News Profile Picture">
+                            <h4><a href="/NewsDetails">@news.Title</a></h4>
+                            <div style="margin-bottom:10px;">
+                                            <span>@news.Author &nbsp;|&nbsp; @news.ReleaseDate &nbsp;|&nbsp; @news.NrOfMessages comments</span>
+                            </div>
+                                <p>@news.ShortIntro</p>
+                            <br>
+                            <div>
+                                <a href="/NewsDetails" class="filled-button">Continue Reading</a>
+                            </div>
+                        </article>
+
                         <br>
-                        <div>
-                            <a href="/NewsDetails" class="filled-button">Continue Reading</a>
-                        </div>
-                    </article>
+                        <br>
+                        <br>
+                    }
 
-                    <br>
-                    <br>
-                    <br>
-
-                    <article id='tabs-2'>
+                    @* <article id='tabs-2'>
                         <img src="/pictures/BMW3.jpg" alt="">
                         <h4><a href="/NewsDetails">Mauris lobortis quam id dictum dignissim</a></h4>
                         <div style="margin-bottom:10px;">
@@ -49,7 +52,7 @@
                         <div>
                             <a href="/NewsDetails" class="filled-button">Continue Reading</a>
                         </div>
-                    </article>
+                    </article> *@
                 </section>
             </div>
         </div>

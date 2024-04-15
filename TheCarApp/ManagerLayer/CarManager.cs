@@ -41,10 +41,12 @@ namespace Manager_Layer
             foreach (Picture pic in pictures)
             {
                 _dataWriter.AddCarPictures(car.Id, pic.Id);
+                car.AddPicture(pic);
             }
             foreach (Extra extra in extras)
             {
                 _dataWriter.AddCarExtras(car.Id, extra.Id);
+                car.AddExtra(extra);
             }
         }
 

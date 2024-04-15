@@ -13,6 +13,8 @@ namespace InterfaceLayer
         List<CarNewsDTO> GetCarNews();
         List<CommentDTO> GetCommentsForNews(int newsId);
         List<RentACarDTO> GetRentals();
+        List<PictureDTO> GetAllPictures();
+        List<ExtraDTO> GetAllExtras();
         UserDTO GetUserById(int userId);
         CarDTO GetCarById(int carId);
         List<UserDTO> GetUsers();

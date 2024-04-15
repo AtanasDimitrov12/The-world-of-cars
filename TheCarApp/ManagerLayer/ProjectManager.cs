@@ -33,11 +33,12 @@ namespace ManagerLayer
             newsManager = new NewsManager(dataAccess, dataWriter, dataremover);
             commentsManager = new CommentsManager(dataAccess, dataWriter, dataremover);
             rentManager = new RentManager();  
-            extraManager = new ExtraManager(dataWriter, dataremover);
-            pictureManager = new PictureManager(dataWriter, dataremover);
+            extraManager = new ExtraManager(dataAccess, dataWriter, dataremover);
+            pictureManager = new PictureManager(dataAccess, dataWriter, dataremover);
             userRepository = new UserRepository(dataAccess, dataWriter, dataremover);
             administratorRepository = new AdministratorRepository(dataAccess, dataWriter, dataremover);
             peopleManager = new PeopleManager(userRepository, administratorRepository);
+            LoadAllData();
         }
 
         public void LoadAllData()
