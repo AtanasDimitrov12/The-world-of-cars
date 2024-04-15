@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InterfaceLayer;
+using EntityLayout;
 
 namespace Database
 {
@@ -55,7 +56,7 @@ namespace Database
                                     Color = reader.GetString(reader.GetOrdinal("Color")),
                                     VIN = reader.GetString(reader.GetOrdinal("VIN")),
                                     Description = reader.GetString(reader.GetOrdinal("CarDescription")),
-                                    PricePerDay = reader.GetDecimal(reader.GetOrdinal("PricePerDay")), 
+                                    PricePerDay = Convert.ToDecimal(reader.GetDouble(reader.GetOrdinal("PricePerDay"))), 
                                     CarStatus = reader.GetString(reader.GetOrdinal("Status"))
                                 };
                                 carsDTO.Add(carDTO);
@@ -85,9 +86,9 @@ namespace Database
         private List<ExtraDTO> GetCarExtras(int carId, SqlConnection connection)
         {
             var extras = new List<ExtraDTO>();
-            var sql = @"SELECT Extras.ExtraId, Extras.ExtraName FROM CarExtra 
-                    INNER JOIN Extras ON CarExtra.ExtraId = Extras.ExtraId 
-                    WHERE CarExtra.CarId = @CarId";
+            var sql = @"SELECT Extras.ExtraId, Extras.ExtraName FROM CarExtras 
+                    INNER JOIN Extras ON CarExtras.ExtraId = Extras.ExtraId 
+                    WHERE CarExtras.CarId = @CarId";
 
             using (var command = new SqlCommand(sql, connection))
             {
@@ -107,16 +108,56 @@ namespace Database
             return extras;
         }
 
-        private List<PictureDTO> GetCarPictures(int pictureId, SqlConnection connection)
+        public List<ExtraDTO> GetAllExtras()
+        {
+            var extras = new List<ExtraDTO>();
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    var sql = @"SELECT [ExtraId], [ExtraName] FROM [dbi530410_carapp].[dbo].[Extras];";
+                    connection.Open();
+
+                    using (var command = new SqlCommand(sql, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var extra = new ExtraDTO
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("ExtraId")),
+                                    extraName = reader.GetString(reader.GetOrdinal("ExtraName"))
+                                };
+                                extras.Add(extra);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new ApplicationException($"Database error: {ex.Message}", ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($"An error occurred: {ex.Message}", ex);
+            }
+
+            return extras;
+        }
+
+
+        private List<PictureDTO> GetCarPictures(int carId, SqlConnection connection)
         {
             var pictures = new List<PictureDTO>();
             var sql = @"SELECT Pictures.[PictureId], Pictures.[PictureURL] FROM CarPictures 
                     INNER JOIN Pictures ON CarPictures.PictureId = Pictures.PictureId 
-                    WHERE CarPictures.PictureId = @PictureId";
+                    WHERE CarPictures.CarId = @CarId";
 
             using (var command = new SqlCommand(sql, connection))
             {
-                command.Parameters.AddWithValue("@PictureId", pictureId);
+                command.Parameters.AddWithValue("@CarId", carId);
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -132,7 +173,47 @@ namespace Database
             return pictures;
         }
 
-        
+        public List<PictureDTO> GetAllPictures()
+        {
+            var pictures = new List<PictureDTO>();
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    var sql = @"SELECT [PictureId], [PictureURL] FROM [dbi530410_carapp].[dbo].[Pictures];";
+                    connection.Open();
+
+                    using (var command = new SqlCommand(sql, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var picture = new PictureDTO
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("PictureId")),
+                                    PictureURL = reader.GetString(reader.GetOrdinal("PictureURL"))
+                                };
+                                pictures.Add(picture);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new ApplicationException($"Database error: {ex.Message}", ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($"An error occurred: {ex.Message}", ex);
+            }
+
+            return pictures;
+        }
+
+
+
         public List<CarNewsDTO> GetCarNews()
         {
             List<CarNewsDTO> newsDTOList = new List<CarNewsDTO>();
