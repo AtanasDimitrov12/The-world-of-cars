@@ -1,4 +1,5 @@
 ﻿using Entity_Layer;
+using Manager_Layer;
 using ManagerLayer;
 using System;
 using System.Collections.Generic;
@@ -14,17 +15,17 @@ namespace WinDesktopApp.Forms
 {
     public partial class AddExtra : Form
     {
-        ExtraManager extraManager;
+        ExtraManager manager;
         public AddExtra(ExtraManager em)
         {
             InitializeComponent();
-            extraManager = em;
+            manager = em;
         }
 
         private void BTNAddExtra_Click(object sender, EventArgs e)
         {
             Extra extra = new Extra(RTBExtraName.Text);
-            extraManager.AddExtra(extra);
+            manager.AddExtra(extra);
             this.Close();
         }
     }

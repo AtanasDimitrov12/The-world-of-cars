@@ -17,6 +17,11 @@ namespace Entity_Layer
             this._licenseNumber = License; 
         }
 
+        public User() 
+        {
+            
+        }
+
         public override string ToString()
         {
             return _licenseNumber.ToString();

@@ -52,6 +52,7 @@
             BTNAddPicture.TabIndex = 3;
             BTNAddPicture.Text = "Add";
             BTNAddPicture.UseVisualStyleBackColor = true;
+            BTNAddPicture.Click += BTNAddPicture_Click;
             // 
             // TBPictureURL
             // 

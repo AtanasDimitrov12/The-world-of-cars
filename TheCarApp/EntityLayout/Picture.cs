@@ -16,5 +16,10 @@ namespace Entity_Layer
             this.Id = Id;
             this.PictureURL = URL;
         }
+
+        public Picture(string URL)
+        {
+            this.PictureURL = URL;
+        }
     }
 }

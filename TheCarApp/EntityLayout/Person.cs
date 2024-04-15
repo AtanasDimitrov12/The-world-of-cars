@@ -23,6 +23,11 @@ namespace Entity_Layer
             this.CreatedOn = createdOn;
         }
 
+        public Person()
+        { 
+        
+        }
+
         public abstract string ToString();
     }
 }

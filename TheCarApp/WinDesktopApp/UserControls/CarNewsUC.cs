@@ -1,4 +1,5 @@
 ﻿using Entity_Layer;
+using Entity_Layer.Interfaces;
 using ManagerLayer;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,14 @@ namespace DesktopApp
     {
         PeopleManager peopleManager;
         NewsManager newsManager;
+        List<CarNews> News;
         public CarNewsUC(PeopleManager pm, NewsManager nw)
         {
             InitializeComponent();
             this.peopleManager = pm;
             this.newsManager = nw;
+            News = newsManager.news;
+            DisplayNews(News);
         }
 
         private void BTNAddNews_Click(object sender, EventArgs e)
@@ -33,6 +37,27 @@ namespace DesktopApp
         {
             AddNews addNews = new AddNews(newsManager);
             addNews.Show();
+        }
+
+        private void RBASC_CheckedChanged(object sender, EventArgs e)
+        {
+            News.Sort(new CarNewsDateDescendingComparer());
+            DisplayNews(News);
+        }
+
+        private void RBDESC_CheckedChanged(object sender, EventArgs e)
+        {
+            News.Sort(new CarNewsDateAscendingComparer());
+            DisplayNews(News);
+        }
+
+        public void DisplayNews(List<CarNews> displayNews)
+        {
+            LBCarNews.Items.Clear();
+            foreach (CarNews carNews in displayNews)
+            { 
+                LBCarNews.Items.Add(carNews.Title);
+            }
         }
     }
 }

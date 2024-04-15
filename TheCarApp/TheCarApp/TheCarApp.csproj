@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EntityLayout\Entity Layer.csproj" />
+    <ProjectReference Include="..\ManagerLayer\ManagerLayer.csproj" />
   </ItemGroup>
 
 </Project>

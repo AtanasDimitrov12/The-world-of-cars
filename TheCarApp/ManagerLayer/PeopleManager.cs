@@ -4,6 +4,7 @@ using DTO;
 using Entity_Layer;
 using Entity_Layer.Enums;
 using EntityLayout;
+using InterfaceLayer;
 using Manager_Layer;
 using System;
 using System.Collections.Generic;
@@ -19,46 +20,91 @@ namespace ManagerLayer
         private DataAccess access;
         private DataWriter writer;
         private DataRemover remover;
+        private IUserRepository _userRepository;
+        private IAdministratorRepository _administratorRepository;
 
-        public PeopleManager()
+        public PeopleManager(IUserRepository userRepository, IAdministratorRepository administratorRepository)
         {
             people = new List<Person>();
             access = new DataAccess();
             writer = new DataWriter();
             remover = new DataRemover();
+            _userRepository = userRepository;
+            _administratorRepository = administratorRepository;
         }
+        
 
-        public void AddUser(User user)
+        public void AddPerson(Person person)
         {
-            writer.AddUser(user.Username, user.email, user.password, user._licenseNumber, user.CreatedOn);
-            people.Add(user);
+            switch (person)
+            {
+                case User user:
+                    _userRepository.AddUser(user);
+                    break;
+                case Administrator admin:
+                    _administratorRepository.AddAdmin(admin);
+                    break;
+                default:
+                    throw new ArgumentException("Unsupported person type");
+            }
         }
 
-        public void AddAdmin(Administrator admin)
+        public void RemovePerson(Person person)
         {
-            writer.AddAdmin(admin.Username, admin.email, admin.password, admin._phoneNumber, admin.CreatedOn);
-            people.Add(admin);
+            switch (person)
+            {
+                case User user:
+                    _userRepository.RemoveUser(user);
+                    break;
+                case Administrator admin:
+                    _administratorRepository.RemoveAdmin(admin);
+                    break;
+                default:
+                    throw new ArgumentException("Unsupported person type");
+            }
         }
 
-        public void RemoveUser(User user)
+        public void UpdatePerson(Person person)
         {
-            remover.RemoveUser(user.Id);
-            people.Remove(user);
+            switch (person)
+            {
+                case User user:
+                    _userRepository.UpdateUser(user);
+                    break;
+                case Administrator admin:
+                    _administratorRepository.UpdateAdmin(admin);
+                    break;
+                default:
+                    throw new ArgumentException("Unsupported person type");
+            }
         }
 
-        public void RemoveAdmin(Administrator admin)
+        public bool AuthenticateUser(User checkUser)
         {
-            remover.RemoveAdmin(admin.Id);
-            people.Remove(admin);
+            foreach (User user in _userRepository.GetAllUsers())
+            {
+                if (user.email == checkUser.email)
+                {
+                    if (user.password == checkUser.password)
+                    {
+                        return true;
+                    }
+                    else { return false; }
+                }
+                else { return false; }
+            }
+            return false;
         }
 
-        public void UpdateAdmin(Administrator admin)
+        public IEnumerable<Person> GetAllPeople()
         {
-            writer.UpdateAdministration(admin.Id, admin.Username, admin.email, admin.password, admin._phoneNumber, admin.CreatedOn);
+            var users = _userRepository.GetAllUsers();
+            var admins = _administratorRepository.GetAllAdministrators();
+
+            return users.Cast<Person>().Concat(admins);
         }
 
-
-        public void LoadPeople()
+        public void LoadPeopleFromDB() // trqbva da go prehvurlq kum suotvetnite classove
         {
             if (access.GetUsers() != null && access.GetAdministrators() != null)
             {
