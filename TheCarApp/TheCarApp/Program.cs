@@ -21,16 +21,16 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    // Force sign-out on every startup in development mode
-    app.Use(async (context, next) =>
-    {
-        await context.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        // Continue processing other middleware in the pipeline
-        await next.Invoke();
-    });
-}
+//if (app.Environment.IsDevelopment())
+//{
+//    // Force sign-out on every startup in development mode
+//    app.Use(async (context, next) =>
+//    {
+//        await context.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+//        // Continue processing other middleware in the pipeline
+//        await next.Invoke();
+//    });
+//}
 
 if (!app.Environment.IsDevelopment())
 {
