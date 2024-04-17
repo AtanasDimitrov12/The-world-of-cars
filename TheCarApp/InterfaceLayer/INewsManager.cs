@@ -13,6 +13,7 @@ namespace InterfaceLayer
 
         void AddNews(CarNews carnews);
         void DeleteNews(CarNews carnews);
+        CarNews GetNewsById(int id);
         void LoadNews();
     }
 }

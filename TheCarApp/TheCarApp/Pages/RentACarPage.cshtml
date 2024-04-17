@@ -29,15 +29,13 @@
                 <div class="row">
                     @foreach (var pic in Model.Car.Pictures)
                     {
-                           <div class="col-sm-4 col-6">
-                                <div>
-                                   <img src="/pictures/@pic.PictureURL" alt="Car's pictures" class="img-fluid">
-                                </div>
-                               <br>
-                           </div>
-                                       
+                       <div class="col-sm-4 col-6">
+                           <div>
+                            <img src="/pictures/@pic.PictureURL" alt="Car's pictures" class="img-fluid">
+                            </div>
+                            <br>
+                       </div>            
                     }
-
                 <br>
                 </div>
             </div>
