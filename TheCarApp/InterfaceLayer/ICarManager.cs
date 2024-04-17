@@ -16,6 +16,7 @@ namespace InterfaceLayer
         List<Car> GetCars();
         List<Car> GetCarsASC();
         List<Car> GetCarsDESC();
+        Car GetCarById(int carId);
         void LoadCars();
     }
 }

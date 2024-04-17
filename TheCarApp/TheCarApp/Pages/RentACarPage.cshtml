@@ -1,10 +1,205 @@
-﻿@page
+﻿@page "/RentACarPage/{CarId:int}"
 @model TheCarApp.Pages.RentACarPageModel
 @{
     ViewData["Title"] = "Rent a car";
-    <link rel="stylesheet" href="~/css/market.css" asp-append-version="true" />
 }
+<link rel="stylesheet" href="~/css/market.css" asp-append-version="true" />
+
 <div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>@Model.Car.brand @Model.Car.Model</h1>
+                <span>
+                    The fastest car on the road
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div>
+                    <img src="@("/pictures/" + Model.Car.Pictures.FirstOrDefault()?.PictureURL)" alt="@Model.Car.brand" class="img-fluid wc-image">
+                </div>
+                <br>
+                @foreach (var pic in Model.Car.Pictures)
+                {
+                                    <div class="row">
+                                        <div class="col-sm-4 col-6">
+                                            <div>
+                                                <img src="/pictures/@pic.PictureURL" alt="Car's pictures" class="img-fluid">
+                                            </div>
+                                            <br>
+                                        </div>
+                                    </div>
+                }
+
+                <br>
+            </div>
+
+            <div class="col-md-5">
+                <form action="#" method="post" class="form">
+                    <ul class="list-group list-group-flush">
+                        @* <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Type</span>
+                                <strong class="pull-right">@Model.Car.Type</strong>
+                            </div>
+                        </li> *@
+
+                         <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Brand</span>
+
+                                <strong class="pull-right">@Model.Car.brand</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left"> Model</span>
+
+                                <strong class="pull-right">@Model.Car.Model</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">First registration</span>
+
+                                <strong class="pull-right">@Model.Car.FirstRegistration.ToShortDateString()</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Mileage</span>
+
+                                <strong class="pull-right">@Model.Car.Mileage km</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Fuel</span>
+
+                                <strong class="pull-right">@Model.Car.Fuel</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Engine size</span>
+
+                                <strong class="pull-right">@Model.Car.EngineSize cc</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Power</span>
+
+                                <strong class="pull-right">@Model.Car.HorsePower hp</strong>
+                            </div>
+                        </li>
+
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Gearbox</span>
+
+                                <strong class="pull-right">@Model.Car.Gearbox</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Number of seats</span>
+
+                                <strong class="pull-right">@Model.Car.NumberOfSeats</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Doors</span>
+
+                                <strong class="pull-right">@Model.Car.NumberOfDoors</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Color</span>
+
+                                <strong class="pull-right">@Model.Car.Color</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">VIN</span>
+
+                                <strong class="pull-right">@Model.Car.VIN</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Price per day</span>
+
+                                <strong class="pull-right">@Model.Car.PricePerDay</strong>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+
+                <br>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="tabs-content">
+                    <h4>Vehicle Description</h4>
+                    <p>@Model.Car.Description</p>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tabs-content">
+                    <h4>Vehicle Extras</h4>
+
+
+                    @foreach (var extra in Model.Car.CarExtras)
+                    {
+                            <p>- @extra.extraName <br></p>
+                    }
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="tabs-content">
+                    <h4>Contact Details</h4>
+                    <!-- Display contact information if available -->
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <br>
+    </div>
+</div>
+
+
+
+
+@* <div class="page-heading header-text">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -249,4 +444,4 @@
         <br>
         <br>
     </div>
-</div>
+</div> *@
