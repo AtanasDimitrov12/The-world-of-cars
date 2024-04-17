@@ -26,30 +26,25 @@
                     <img src="@("/pictures/" + Model.Car.Pictures.FirstOrDefault()?.PictureURL)" alt="@Model.Car.brand" class="img-fluid wc-image">
                 </div>
                 <br>
-                @foreach (var pic in Model.Car.Pictures)
-                {
-                                    <div class="row">
-                                        <div class="col-sm-4 col-6">
-                                            <div>
-                                                <img src="/pictures/@pic.PictureURL" alt="Car's pictures" class="img-fluid">
-                                            </div>
-                                            <br>
-                                        </div>
-                                    </div>
-                }
+                <div class="row">
+                    @foreach (var pic in Model.Car.Pictures)
+                    {
+                           <div class="col-sm-4 col-6">
+                                <div>
+                                   <img src="/pictures/@pic.PictureURL" alt="Car's pictures" class="img-fluid">
+                                </div>
+                               <br>
+                           </div>
+                                       
+                    }
 
                 <br>
+                </div>
             </div>
 
             <div class="col-md-5">
                 <form action="#" method="post" class="form">
                     <ul class="list-group list-group-flush">
-                        @* <li class="list-group-item">
-                            <div class="clearfix">
-                                <span class="pull-left">Type</span>
-                                <strong class="pull-right">@Model.Car.Type</strong>
-                            </div>
-                        </li> *@
 
                          <li class="list-group-item">
                             <div class="clearfix">
@@ -177,7 +172,7 @@
 
                     @foreach (var extra in Model.Car.CarExtras)
                     {
-                            <p>- @extra.extraName <br></p>
+                                <p>- @extra.extraName <br></p>
                     }
 
                 </div>
