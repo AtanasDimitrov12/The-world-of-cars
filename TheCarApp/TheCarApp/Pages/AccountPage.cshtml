@@ -8,7 +8,7 @@
 <div class="flex-container">
     <div class="main-banner header-text" id="top">
         <div class="container pt-5">
-            <h1 class="text-center mb-4">Account Details</h1>
+            <h1 class="text-center mb-4">Account Details</h1> <br>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <h5>Username:</h5>
@@ -25,6 +25,11 @@
                 <div class="col-md-6 mb-3">
                     <h5>Account Created On:</h5>
                     <p>@Model.user.CreatedOn.ToString("MMMM dd, yyyy")</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <form method="post" asp-page-handler="Logout">
+                        <button type="submit" class="btn btn-warning">Log out</button>
+                    </form>
                 </div>
             </div>
             <h2 class="text-center my-4">Rental History</h2>
@@ -60,9 +65,7 @@
                     @* } *@
                 </tbody>
             </table>
-            <form method="post" asp-page-handler="Logout">
-                <button type="submit" class="btn btn-warning">Logout</button>
-            </form>
+            
         </div>
     </div>
 </div>
