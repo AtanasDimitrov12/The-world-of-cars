@@ -47,11 +47,13 @@ namespace Entity_Layer
         public void AddComment(Comment comment)
         {
             comments.Add(comment);
+            NrOfMessages++; 
         }
 
         public void RemoveComment(Comment comment) 
         {
             comments.Remove(comment);
+            NrOfMessages--;
         }
 
         public List<Comment> GetComments() 

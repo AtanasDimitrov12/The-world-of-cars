@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace ManagerLayer
 {
-    public class PeopleManager
+    public class PeopleManager : IPeopleManager
     {
         public List<Person> people { get; set; }
         private DataAccess access;

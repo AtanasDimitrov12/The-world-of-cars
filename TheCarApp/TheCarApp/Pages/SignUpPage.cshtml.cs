@@ -66,7 +66,6 @@ namespace TheCarApp.Pages
 
         public async Task<IActionResult> OnPostLogIn()
         {
-            _projectManager.LoadAllData();
             if (_projectManager.peopleManager.AuthenticateUser(LogInUser))
             {
                 var claims = new List<Claim>

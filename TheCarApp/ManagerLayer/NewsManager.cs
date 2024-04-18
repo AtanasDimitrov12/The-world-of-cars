@@ -41,6 +41,17 @@ namespace Entity_Layer
             _dataRemover.RemoveNews(carnews.Id);
         }
 
+        public CarNews GetNewsById(int id)
+        {
+            foreach (var News in news)
+            {
+                if (News.Id == id)
+                { 
+                return News; 
+                }
+            }
+            return null;
+        }
 
         public void LoadNews()
         {

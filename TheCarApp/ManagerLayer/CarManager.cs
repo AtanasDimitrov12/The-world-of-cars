@@ -80,6 +80,18 @@ namespace Manager_Layer
             return cars;
         }
 
+        public Car GetCarById(int carId) 
+        {
+            foreach (Car car in cars) 
+            {
+                if (car.Id == carId)
+                {
+                    return car;
+                }
+            }
+            return null;
+        }
+
         public void LoadCars()
         {
             if (_dataAccess.GetCars() != null)

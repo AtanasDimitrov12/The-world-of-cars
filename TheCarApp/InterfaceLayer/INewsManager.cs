@@ -9,8 +9,11 @@ namespace InterfaceLayer
 {
     public interface INewsManager
     {
+        List<CarNews> news { get; set; }
+
         void AddNews(CarNews carnews);
         void DeleteNews(CarNews carnews);
+        CarNews GetNewsById(int id);
         void LoadNews();
     }
 }

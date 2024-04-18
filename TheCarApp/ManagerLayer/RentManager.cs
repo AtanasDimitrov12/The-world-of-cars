@@ -5,15 +5,17 @@ using Entity_Layer;
 using Entity_Layer.Enums;
 using EntityLayout;
 using Manager_Layer;
+using Entity_Layer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InterfaceLayer;
 
 namespace ManagerLayer
 {
-    public class RentManager
+    public class RentManager : IRentManager
     {
         public List<RentACar> rentalHistory { get; set; }
         private DataAccess access;

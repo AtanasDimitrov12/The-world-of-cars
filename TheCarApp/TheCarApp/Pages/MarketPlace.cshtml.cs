@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace TheCarApp.Pages
 {
-    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    [Authorize]
     public class MarketPlaceModel : PageModel
     {
         public List<Car> Cars;
