@@ -2,6 +2,7 @@ using Entity_Layer;
 using EntityLayout;
 using ManagerLayer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -19,6 +20,7 @@ namespace TheCarApp.Pages
         public NewsDetailsModel()
         {
             projectManager = new ProjectManager(); // Assuming CarManager has the necessary methods
+            NewComment = new Comment();
         }
 
         public void OnGet(int NewsId)
@@ -30,7 +32,7 @@ namespace TheCarApp.Pages
             }
         }
 
-        public async Task<IActionResult> OnPostAddCommentAsync(int NewsId)
+        public async Task<IActionResult> OnPostAddComment(int NewsId)
         {
             if (!ModelState.IsValid)
             {
@@ -46,11 +48,11 @@ namespace TheCarApp.Pages
                 return RedirectToPage("/NotFound");
             }
 
-            NewComment = new Comment();
+            
             DateTime date = DateTime.Now;
             var user = projectManager.peopleManager.GetUser(User.Identity.Name);
 
-            if (user != null)
+            if (user != null && NewComment.Message != null)
             {
                 NewComment.UserId = user.Id;
                 NewComment.Date = date;

@@ -59,7 +59,7 @@
             <form method="post" asp-page-handler="AddComment">
                 <div class="form-group">
                     <label for="commentContent">Your Message</label>
-                    <textarea asp-for="NewComment.Message" class="form-control" placeholder="Enter your comment" required></textarea>
+                    <input asp-for="NewComment.Message" class="form-control" placeholder="Enter your comment" required />
                 </div>
                 <input type="submit" value="Submit" class="btn btn-primary">
             </form>
