@@ -15,11 +15,54 @@ body {
         color: white; 
     }
 
-    .container h2 {
+    .container h3 {
         text-align: center;
         font-size: 36px;
-        color: white; 
+        color: black; 
     }
+
+    .container h5 {
+        text-align: left;
+        font-size: 36px;
+        color: black;
+        /*color: #a4c639;*/
+        font-weight: bold;
+    }
+
+    .container p {
+        text-align: left;
+        font-size: 20px;
+        color: black;
+        /*color: #a4c639;*/
+    }
+
+.more-info .about-info .row > div {
+    display: flex;
+    align-items: flex-start; /* Aligns content to the top */
+}
+
+.more-info .about-info .col-md-8 {
+    padding-right: 20px; /* Adds some spacing between text and image */
+}
+
+img.img-fluid {
+    width: 100%; /* Full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    width: 600px; /* Maximum width */
+}
+
+@media (min-width: 768px) { /* For tablets and larger devices */
+    img.img-fluid {
+        max-width: 800px; /* Larger image on larger screens */
+    }
+}
+
+@media (min-width: 1200px) { /* For large desktops */
+    img.img-fluid {
+        max-width: 1000px; /* Even larger image on large desktops */
+    }
+}
+
 
     
     
@@ -29,7 +72,7 @@ body {
     height: 0vw;
     position: relative;
     text-align: center;
-    background: url(/pictures/banner.jpg) no-repeat center/cover; 
+    background: url(/pictures/Marketplace.jpg) no-repeat center/cover; 
     padding: 230px 0;
     color: white; 
     z-index: 4;

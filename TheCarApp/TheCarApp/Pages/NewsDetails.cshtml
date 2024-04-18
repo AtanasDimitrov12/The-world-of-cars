@@ -17,17 +17,25 @@
         </div>
     </div>
 </div>
-
+<br>
+<br>
 <div class="more-info about-info">
     <div class="container">
-        <div class="more-info-content">
-            <div class="right-content">
-                <div>
-                    <img src="assets/images/blog-image-fullscren-1-1920x700.jpg" class="img-fluid" alt="">
-                </div>
-                <br>
-                <p>@Model.news.NewsDescription</p>
+        <div class="row">
+            <!-- Text content column -->
+            <div class="col-md-6">
+                <br><br><br><br>
+                <h5>Short description:</h5>
+                <p>@Model.news.ShortIntro</p>
+                
             </div>
+            <!-- Image content column -->
+            <div class="col-md-6">
+                <img src="~/pictures/@Model.news.ImageURL" alt="News Picture" class="img-fluid custom-img-large">
+            </div>
+            <br>
+            <h5>News Description:</h5>
+            <p>@Model.news.NewsDescription</p>
         </div>
     </div>
 </div>
@@ -35,12 +43,6 @@
 <div class="callback-form contact-us">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="section-heading">
-                    <h2>Leave a <em>comment</em></h2>
-                    <span>Suspendisse a ante in neque iaculis lacinia</span>
-                </div>
-            </div>
             <div class="col-md-12">
                 <div class="contact-form">
                     <form id="contact" action="" method="get">

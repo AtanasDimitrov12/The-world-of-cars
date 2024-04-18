@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entity_Layer;
+using InterfaceLayer;
 
 namespace DesktopApp
 {
     public partial class AddNews : Form
     {
-        NewsManager NewsManager;
-        public AddNews(NewsManager newsManager)
+        INewsManager NewsManager;
+        public AddNews(INewsManager newsManager)
         {
             InitializeComponent();
             NewsManager = newsManager;

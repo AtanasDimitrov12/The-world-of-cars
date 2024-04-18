@@ -11,13 +11,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using InterfaceLayer;
 
 namespace WinDesktopApp.Forms
 {
     public partial class AddPicture : Form
     {
-        PictureManager manager;
-        public AddPicture(PictureManager pm)
+        IPictureManager manager;
+        public AddPicture(IPictureManager pm)
         {
             InitializeComponent();
             manager = pm;

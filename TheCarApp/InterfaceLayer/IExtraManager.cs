@@ -9,6 +9,7 @@ namespace InterfaceLayer
 {
     public interface IExtraManager
     {
+        List<Extra> extras { get; set; }
         void AddExtra(Extra extra);
         void RemoveExtra(Extra extra);
     }

@@ -9,14 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entity_Layer;
+using InterfaceLayer;
 
 namespace DesktopApp
 {
     public partial class AdminInfoUC : UserControl
     {
-        PeopleManager manager;
+        IPeopleManager manager;
         List<Person> admins;
-        public AdminInfoUC(PeopleManager pm)
+        public AdminInfoUC(IPeopleManager pm)
         {
             InitializeComponent();
             manager = pm;

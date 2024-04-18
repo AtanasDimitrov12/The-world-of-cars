@@ -10,15 +10,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using InterfaceLayer;
 
 namespace DesktopApp
 {
     public partial class CarNewsUC : UserControl
     {
-        PeopleManager peopleManager;
-        NewsManager newsManager;
+        IPeopleManager peopleManager;
+        INewsManager newsManager;
         List<CarNews> News;
-        public CarNewsUC(PeopleManager pm, NewsManager nw)
+        public CarNewsUC(IPeopleManager pm, INewsManager nw)
         {
             InitializeComponent();
             this.peopleManager = pm;

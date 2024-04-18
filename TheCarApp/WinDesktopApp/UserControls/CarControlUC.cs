@@ -11,16 +11,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinDesktopApp.Forms;
+using InterfaceLayer;
 
 namespace DesktopApp
 {
     public partial class CarControlUC : UserControl
     {
-        PeopleManager peopleManager;
-        CarManager carManager;
-        ExtraManager extraManager;
-        PictureManager pictureManager;
-        public CarControlUC(PeopleManager pm, CarManager cm, ExtraManager em, PictureManager picM)
+        IPeopleManager peopleManager;
+        ICarManager carManager;
+        IExtraManager extraManager;
+        IPictureManager pictureManager;
+        public CarControlUC(IPeopleManager pm, ICarManager cm, IExtraManager em, IPictureManager picM)
         {
             InitializeComponent();
             this.peopleManager = pm;

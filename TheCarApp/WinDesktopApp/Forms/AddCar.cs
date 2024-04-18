@@ -13,17 +13,18 @@ using DTO;
 using Entity_Layer.Enums;
 using Entity_Layer;
 using ManagerLayer;
+using InterfaceLayer;
 
 namespace DesktopApp
 {
     public partial class AddCar : Form
     {
-        CarManager manager;
-        PictureManager pictureManager;
-        ExtraManager extraManager;
+        ICarManager manager;
+        IPictureManager pictureManager;
+        IExtraManager extraManager;
         List<Extra> extras;
         List<Picture> pictures;
-        public AddCar(CarManager cm, ExtraManager em, PictureManager picmanager)
+        public AddCar(ICarManager cm, IExtraManager em, IPictureManager picmanager)
         {
             InitializeComponent();
             manager = cm;

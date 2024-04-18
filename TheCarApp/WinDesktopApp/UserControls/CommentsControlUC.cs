@@ -9,14 +9,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using InterfaceLayer;
 
 namespace DesktopApp
 {
     public partial class CommentsControlUC : UserControl
     {
-        NewsManager newsManager;
-        CommentsManager commentsManager;
-        public CommentsControlUC(NewsManager nm, CommentsManager cm)
+        INewsManager newsManager;
+        ICommentsManager commentsManager;
+        public CommentsControlUC(INewsManager nm, ICommentsManager cm)
         {
             InitializeComponent();
             newsManager = nm;

@@ -10,13 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using InterfaceLayer;
 
 namespace WinDesktopApp.Forms
 {
     public partial class AddExtra : Form
     {
-        ExtraManager manager;
-        public AddExtra(ExtraManager em)
+        IExtraManager manager;
+        public AddExtra(IExtraManager em)
         {
             InitializeComponent();
             manager = em;
