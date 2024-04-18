@@ -12,6 +12,7 @@ namespace InterfaceLayer
         void AddUser(User user);
         void RemoveUser(User user);
         void UpdateUser(User user);
+        string GetUserNameById(int UserID);
         List<User> GetAllUsers();
         void LoadUSers();
     }

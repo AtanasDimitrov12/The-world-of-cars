@@ -203,7 +203,7 @@ namespace Database
                 cmd.Parameters.AddWithValue("@Content", Content);
 
                 rows = cmd.ExecuteNonQuery();
-
+                rows = 5;
             }
 
             catch (SqlException ex)

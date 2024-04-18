@@ -45,6 +45,18 @@ namespace Repositories
             writer.UpdateUser(user.Id, user.Username, user.email, user.password, user._licenseNumber, user.CreatedOn);
         }
 
+        public string GetUserNameById(int UserID) 
+        {
+            foreach (var user in users) 
+            {
+                if (user.Id == UserID)
+                { 
+                    return user.Username;
+                }
+            }
+            return "";
+        }
+
         public List<User> GetAllUsers()
         {
             return users;

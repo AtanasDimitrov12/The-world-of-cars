@@ -27,7 +27,7 @@
                 <br><br><br><br>
                 <h5>Short description:</h5>
                 <p>@Model.news.ShortIntro</p>
-                
+
             </div>
             <!-- Image content column -->
             <div class="col-md-6">
@@ -40,37 +40,30 @@
     </div>
 </div>
 
+@* Mozhe bi da sloja nai otogore za dobavqne na komentar i otdolu da se zarezhdat komentarite kato nai gorniq da e naj noviq *@
+
 <div class="callback-form contact-us">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="contact-form">
-                    <form id="contact" action="" method="get">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12 col-sm-12">
-                                <fieldset>
-                                    <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12">
-                                <fieldset>
-                                    <input name="email" type="email" class="form-control" id="email" placeholder="E-Mail Address" required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                                <fieldset>
-                                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                                <fieldset>
-                                    <button type="submit" id="form-submit" class="filled-button">Submit</button>
-                                </fieldset>
-                            </div>
-                        </div>
-                    </form>
+        <div class="comments-section">
+            <h3>Comments:</h3>
+            @foreach (var comment in Model.news.GetComments())
+            {
+                <div class="comment">
+                    <p><strong>@Model.projectManager.userRepository.GetUserNameById(comment.UserId) / @comment.Date</strong> @comment.Message</p>
                 </div>
-            </div>
+            }
+        </div>
+
+        <div class="add-comment-section">
+            <h3>Add a comment:</h3>
+            <form method="post" asp-page-handler="AddComment">
+                <div class="form-group">
+                    <label for="commentContent">Your Message</label>
+                    <textarea asp-for="NewComment.Message" class="form-control" placeholder="Enter your comment" required></textarea>
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </form>
         </div>
     </div>
 </div>
+

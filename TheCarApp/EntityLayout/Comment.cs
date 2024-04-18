@@ -20,5 +20,10 @@ namespace Entity_Layer
             this.Date = date;
             this.Message = message;
         }
+
+        public Comment() 
+        {
+        
+        }
     }
 }

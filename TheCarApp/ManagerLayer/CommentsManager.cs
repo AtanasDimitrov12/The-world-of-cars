@@ -22,12 +22,14 @@ namespace ManagerLayer
             _dataRemover = dataRemover;
         }
 
-        public void AddComment(CarNews news, Comment comment, User user)
+        public void AddComment(CarNews news, Comment comment)
         {
-            _dataWriter.AddComment(news.Id, user.Id, comment.Date, comment.Message);
+            _dataWriter.AddComment(news.Id, comment.UserId, comment.Date, comment.Message);
             comment.Id = _dataWriter.GetCommentId(comment.Date); // This assumes GetCommentId method exists and works as intended.
             news.AddComment(comment);
         }
+
+        
 
         public void RemoveComment(CarNews news, Comment comment)
         {
