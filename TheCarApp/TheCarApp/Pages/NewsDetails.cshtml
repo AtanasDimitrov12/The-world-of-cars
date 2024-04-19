@@ -39,31 +39,35 @@
         </div>
     </div>
 </div>
+<br>
+<hr>
+<br>
 
 @* Mozhe bi da sloja nai otogore za dobavqne na komentar i otdolu da se zarezhdat komentarite kato nai gorniq da e naj noviq *@
 
-<div class="callback-form contact-us">
-    <div class="container">
-        <div class="comments-section">
-            <h3>Comments:</h3>
-            @foreach (var comment in Model.news.GetComments())
-            {
-                <div class="comment">
-                    <p><strong>@Model.projectManager.userRepository.GetUserNameById(comment.UserId) / @comment.Date</strong> @comment.Message</p>
-                </div>
-            }
-        </div>
+ <div class="comment-box">
+        <h3>Add a comment:</h3>
+        <form method="post" asp-page-handler="AddComment">
+            <div class="form-group">
+                <input asp-for="NewComment.Message" class="text-area" placeholder="Enter your comment" required />
+            </div>
+            <input type="submit" value="Submit" class="comment-submit">
+        </form>
+    </div>
 
-        <div class="add-comment-section">
-            <h3>Add a comment:</h3>
-            <form method="post" asp-page-handler="AddComment">
-                <div class="form-group">
-                    <label for="commentContent">Your Message</label>
-                    <input asp-for="NewComment.Message" class="form-control" placeholder="Enter your comment" required />
+<div class="comments-section">
+    <h3>Comments:</h3>
+    <div class="comments-list">
+        @foreach (var comment in Model.news.GetComments())
+        {
+            <div class="comment-card">
+                <div class="user-info">
+                    <div class="user-name">@Model.projectManager.userRepository.GetUserNameById(comment.UserId)</div>
+                    <div class="comment-date">@comment.Date.ToString("MMM dd, yyyy")</div>
                 </div>
-                <input type="submit" value="Submit" class="btn btn-primary">
-            </form>
-        </div>
+                <div class="comment-content">@comment.Message</div>
+            </div>
+        }
     </div>
 </div>
 

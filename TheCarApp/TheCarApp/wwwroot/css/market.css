@@ -16,9 +16,9 @@ body {
     }
 
     .container h3 {
-        text-align: center;
-        font-size: 36px;
-        color: black; 
+        margin-bottom: 15px;
+        color: #333;
+        font-size: 24px;
     }
 
     .container h5 {
@@ -150,107 +150,6 @@ img.img-fluid {
         background-color: #a4c639;
     }
 
-.callback-services {
-    border-top: 1px solid #eee;
-    padding-top: 140px;
-}
-
-.contact-us {
-    background-color: #f7f7f7;
-    padding: 140px 0px;
-}
-
-    .contact-us .contact-form {
-        background-color: transparent !important;
-        padding: 0 !important;
-    }
-
-.callback-form {
-    margin-top: 140px;
-}
-
-    .callback-form .contact-form {
-        background-color: #a4c639;
-        padding: 60px;
-        border-radius: 5px;
-        text-align: center;
-    }
-
-        .callback-form .contact-form input {
-            border-radius: 20px;
-            height: 40px;
-            line-height: 40px;
-            display: inline-block;
-            padding: 0px 15px;
-            color: #6a6a6a;
-            font-size: 13px;
-            text-transform: none;
-            box-shadow: none;
-            border: none;
-            margin-bottom: 35px;
-        }
-
-            .callback-form .contact-form input:focus {
-                outline: none;
-                box-shadow: none;
-                border: none;
-            }
-
-        .callback-form .contact-form textarea {
-            border-radius: 20px;
-            height: 120px;
-            max-height: 200px;
-            min-height: 120px;
-            display: inline-block;
-            padding: 15px;
-            color: #6a6a6a;
-            font-size: 13px;
-            text-transform: none;
-            box-shadow: none;
-            border: none;
-            margin-bottom: 35px;
-        }
-
-            .callback-form .contact-form textarea:focus {
-                outline: none;
-                box-shadow: none;
-                border: none;
-            }
-
-        .callback-form .contact-form ::-webkit-input-placeholder {
-            color: #aaa;
-        }
-
-        .callback-form .contact-form :-ms-input-placeholder {
-            color: #aaa;
-        }
-
-        .callback-form .contact-form ::placeholder {
-            color: #aaa;
-        }
-
-        .callback-form .contact-form button.border-button {
-            background-color: transparent;
-            color: #fff;
-            border: 2px solid #fff;
-            font-size: 13px;
-            text-transform: uppercase;
-            font-weight: 700;
-            padding: 10px 28px;
-            border-radius: 30px;
-            display: inline-block;
-            transition: all 0.3s;
-            outline: none;
-            box-shadow: none;
-            text-shadow: none;
-            cursor: pointer;
-        }
-
-
-.callback-form .contact-form button.border-button:hover {
-    background-color: #fff;
-    color: #a4c639;
-}
 
 .filled-button {
     background-color: #a4c639;
@@ -372,3 +271,117 @@ img.img-fluid {
         display: inline-block;
         float: none;
     }
+
+.comment-box, .post-comment .list {
+    border-radius:6px;
+    box-shadow: 2px 2px 2px #0002;
+}
+
+.comment-section {
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.comments-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comment-card {
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.post-comment .list {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+    .post-comment .list .user {
+    display: flex;
+    padding: 8px;
+    overflow: hidden;
+    }
+.comment-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-name {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.comment-date {
+    color: #666;
+    font-size: 14px;
+}
+
+.comment-content {
+    color: #333;
+    line-height: 1.5;
+}
+
+.post-comment .comment-psot {
+    padding: 0 0 15px 58px;
+}
+
+.comment-box {
+    padding:10px;
+    overflow:hidden;
+}
+
+    .comment-box .user {
+        display:flex;
+        width: min-content;
+    }
+
+    .comment-box .text-area {
+        background: #eee;
+        width: -webkit-fill-available;
+        height:100px;
+        margin: 10px 0;
+        padding:10px;
+        resize: inherit;
+        border-radius: 5px;
+        border:none;
+        box-shadow: 0 0 0 1px #0003;
+    }
+
+        .comment-box .text-area:focus-visible {
+            box-shadow:inset 0 0 0 2px #009cff;
+            outline:none;
+        }
+
+    .comment-box .comment-submit {
+        float:right;
+        padding:6px 10px;
+        border: none;
+        background: #009cff; /* Цвета на бутона */
+        color: #eee;
+        cursor:pointer;
+        border-radius: 3px;
+
+    }
+
+        .comment-box .comment-submit:hover {
+            background: #009cff;
+        }
+
+@media screen and (max-width: 660px) {
+    .comment-section {
+    width:100%;
+    }
+}
