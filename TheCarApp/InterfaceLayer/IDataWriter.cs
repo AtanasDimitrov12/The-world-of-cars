@@ -1,4 +1,5 @@
 ﻿using Entity_Layer;
+using EntityLayout;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,10 @@ namespace InterfaceLayer
         int AddCarDescription(int CarId, string Description, decimal Price);
         int AddCarExtras(int CarId, int ExtraId);
         int AddCarPictures(int CarId, int PictureId);
+        int UpdateCar(Car car);
+        int UpdateCarDescription(Car car);
+        int RemoveCarExtras(int CarId);
+        int RemoveCarPictures(int CarId);
         int AddCarNews(string Author, string Title, DateTime DatePosted, string NewsDescription, string ImageURL, string Intro);
         int AddComment(int NewsId, int UserId, DateTime CommentDate, string Content);
         int AddUser(string Username, string email, string password, int LicenseNumber, DateTime CreatedOn);

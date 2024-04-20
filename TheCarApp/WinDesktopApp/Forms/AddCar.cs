@@ -125,6 +125,7 @@ namespace DesktopApp
                 else
                 {
                     UpdateCarData();
+                    manager.UpdateCar(carData);
                 }
             }
             catch (Exception ex)

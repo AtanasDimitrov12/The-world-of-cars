@@ -50,6 +50,22 @@ namespace Manager_Layer
             }
         }
 
+        public void UpdateCar(Car car)
+        {
+            _dataWriter.UpdateCar(car);
+            _dataWriter.UpdateCarDescription(car);
+            _dataWriter.RemoveCarPictures(car.Id);
+            _dataWriter.RemoveCarExtras(car.Id);
+            foreach (Picture pic in car.Pictures)
+            {
+                _dataWriter.AddCarPictures(car.Id, pic.Id);
+            }
+            foreach (Extra extra in car.CarExtras)
+            {
+                _dataWriter.AddCarExtras(car.Id, extra.Id);
+            }
+        }
+
         public void RemoveCar(Car car, Picture picture, Extra extra)
         {
             cars.Remove(car);

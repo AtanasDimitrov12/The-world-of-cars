@@ -12,6 +12,7 @@ namespace InterfaceLayer
     {
         void AddCar(Car car, List<Picture> pictures, List<Extra> extras);
         void RemoveCar(Car car, Picture picture, Extra extra);
+        void UpdateCar(Car car);
         Car SearchForCar(int index);
         List<Car> GetCars();
         List<Car> GetCarsASC();

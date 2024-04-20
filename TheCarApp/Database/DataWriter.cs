@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlTypes;
 using InterfaceLayer;
+using EntityLayout;
+using Entity_Layer;
 
 namespace Database
 {
@@ -133,6 +135,137 @@ namespace Database
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@CarId", CarId);
                 cmd.Parameters.AddWithValue("@PictureId", PictureId);
+
+                rows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+            }
+            finally { connectionString.Close(); }
+            return rows;
+        }
+
+        public int UpdateCar(Car car)
+        {
+            int rows = -1;
+            try
+            {
+
+                connectionString.Open();
+                var sql = "UPDATE [dbo].[Cars] SET [Brand] = @Brand, [Model] = @Model, [FirstRegistration] = @FirstRegistration, [Mileage] = @Mileage, [Fuel] = @Fuel, [EngineSize] = @EngineSize, [Power] = @Power, [Gearbox] = @Gearbox, [NumberOfSeats] = @NumberOfSeats, [NumberOfDoors] = @NumberOfDoors, [Color] = @Color, [VIN] = @VIN, [Status] = @Status " +
+                    "WHERE CarId = @CARID;";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@Brand", car.brand);
+                cmd.Parameters.AddWithValue("@Model", car.Model);
+                cmd.Parameters.AddWithValue("@FirstRegistration", car.FirstRegistration);
+                cmd.Parameters.AddWithValue("@Mileage", car.Mileage);
+                cmd.Parameters.AddWithValue("@Fuel", car.Fuel);
+                cmd.Parameters.AddWithValue("@EngineSize", car.EngineSize);
+                cmd.Parameters.AddWithValue("@Power", car.HorsePower);
+                cmd.Parameters.AddWithValue("@Gearbox", car.Gearbox);
+                cmd.Parameters.AddWithValue("@NumberOfSeats", car.NumberOfSeats);
+                cmd.Parameters.AddWithValue("@NumberOfDoors", car.NumberOfDoors);
+                cmd.Parameters.AddWithValue("@Color", car.Color);
+                cmd.Parameters.AddWithValue("@VIN", car.VIN);
+                cmd.Parameters.AddWithValue("@Status", car.CarStatus);
+                cmd.Parameters.AddWithValue("@CARID", car.Id);
+
+                rows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+            }
+            finally { connectionString.Close(); }
+            return rows;
+        }
+
+        public int UpdateCarDescription(Car car)
+        {
+            int rows = -1;
+            try
+            {
+
+                connectionString.Open();
+                var sql = "UPDATE [dbo].[CarDescription] SET [CarDescription] = @CarDescription, [PricePerDay] = @PricePerDay " +
+                    "WHERE Car.Id = @CARID;";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString); 
+
+                cmd.Parameters.AddWithValue("@CarDescription", car.Description);
+                cmd.Parameters.AddWithValue("@PricePerDay", car.PricePerDay);
+                cmd.Parameters.AddWithValue("@CARID", car.Id);
+
+                rows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+            }
+            finally { connectionString.Close(); }
+            return rows;
+        }
+
+        public int RemoveCarExtras(int CarId)
+        {
+            int rows = -1;
+            try
+            {
+
+                connectionString.Open();
+                var sql = "DELETE FROM [dbo].[CarExtras] WHERE CarId = @carId;";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@carId", CarId);
+
+                rows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+            }
+            finally { connectionString.Close(); }
+            return rows;
+        }
+
+        public int RemoveCarPictures(int CarId)
+        {
+            int rows = -1;
+            try
+            {
+
+                connectionString.Open();
+                var sql = "DELETE FROM [dbo].[CarPictures] WHERE CarID = @carId;";
+
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@carId", CarId);
 
                 rows = cmd.ExecuteNonQuery();
 
