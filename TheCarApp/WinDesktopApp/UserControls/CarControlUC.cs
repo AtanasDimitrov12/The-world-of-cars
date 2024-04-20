@@ -33,14 +33,22 @@ namespace DesktopApp
 
         private void BTNAddCar_Click(object sender, EventArgs e)
         {
-            AddCar addCar = new AddCar(carManager, extraManager, pictureManager);
+            AddCar addCar = new AddCar(null, carManager, extraManager, pictureManager);
             addCar.Show();
         }
 
         private void BTNModifyCar_Click(object sender, EventArgs e)
         {
-            AddCar addCar = new AddCar(carManager, extraManager, pictureManager);
-            addCar.Show();
+            string CarInfo = LBCars.SelectedItem.ToString();
+            foreach (var selectedCar in carManager.GetCars())
+            {
+                if (selectedCar.GetInfo() == CarInfo)
+                {
+                    AddCar addCar = new AddCar(selectedCar, carManager, extraManager, pictureManager);
+                    addCar.Show();
+                }
+            }
+            
         }
 
         private void RBAsc_CheckedChanged(object sender, EventArgs e)
@@ -50,7 +58,7 @@ namespace DesktopApp
 
         private void RBDesc_CheckedChanged(object sender, EventArgs e)
         {
-            DisplayCars(carManager.GetCarsDESC());
+            DisplayCars(carManager.GetCarsASC());
         }
 
         public void DisplayCars(List<Car> sortedCars)

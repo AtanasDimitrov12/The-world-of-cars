@@ -98,7 +98,7 @@ namespace EntityLayout
 
         public string GetInfo()
         {
-            return $"{brand} {Model} {FirstRegistration}";
+            return $"{brand} {Model} {FirstRegistration.ToShortDateString()}";
         }
 
     }

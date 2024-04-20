@@ -104,8 +104,7 @@ namespace Manager_Layer
                     if (isValidArea)
                     {
                         Car loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, status, carDTO.NumberOfSeats, carDTO.NumberOfDoors);
-                        cars.Add(loadCar);
-
+                        
                         foreach (ExtraDTO extraDTO in carDTO.CarExtras)
                         {
                             Extra extra = new Extra(extraDTO.extraName, extraDTO.Id);
@@ -116,6 +115,7 @@ namespace Manager_Layer
                             Picture pic = new Picture(picDTO.Id, picDTO.PictureURL);
                             loadCar.AddPicture(pic);
                         }
+                        cars.Add(loadCar);
                     }
                     else
                     {
