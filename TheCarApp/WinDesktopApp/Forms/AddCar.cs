@@ -115,7 +115,6 @@ namespace DesktopApp
                     if (pictures.Count != 0 && extras.Count != 0)
                     {
                         manager.AddCar(car, pictures, extras);
-                        this.Close();
                     }
                     else
                     {
@@ -127,6 +126,7 @@ namespace DesktopApp
                     UpdateCarData();
                     manager.UpdateCar(carData);
                 }
+                this.Close();
             }
             catch (Exception ex)
             {

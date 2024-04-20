@@ -175,7 +175,7 @@ namespace Database
                 cmd.Parameters.AddWithValue("@NumberOfDoors", car.NumberOfDoors);
                 cmd.Parameters.AddWithValue("@Color", car.Color);
                 cmd.Parameters.AddWithValue("@VIN", car.VIN);
-                cmd.Parameters.AddWithValue("@Status", car.CarStatus);
+                cmd.Parameters.AddWithValue("@Status", car.CarStatus.ToString());
                 cmd.Parameters.AddWithValue("@CARID", car.Id);
 
                 rows = cmd.ExecuteNonQuery();
