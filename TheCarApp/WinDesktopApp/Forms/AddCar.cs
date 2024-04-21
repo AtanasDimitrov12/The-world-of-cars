@@ -140,7 +140,7 @@ namespace DesktopApp
         {
             carData.brand = TBCarBrand.Text;
             carData.Model = TBCarModel.Text;
-            carData.FirstRegistration = DTPCarFirstReg.Value; // Assuming this is correctly typed as a DateTime
+            carData.FirstRegistration = DTPCarFirstReg.Value; 
             carData.Mileage = Convert.ToInt32(NUDCarMileage.Value);
             carData.Fuel = TBCarFuel.Text;
             carData.EngineSize = Convert.ToInt32(NUDCarEngineSize.Value);
