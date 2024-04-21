@@ -28,7 +28,7 @@ namespace Repositories
 
         public void AddUser(User user)
         {
-            writer.AddUser(user.Username, user.email, user.password, user._licenseNumber, user.CreatedOn);
+            writer.AddUser(user.Username, user.email, user.password, user._licenseNumber, user.CreatedOn, user.passSalt);
             users.Add(user);
         }
 
@@ -78,13 +78,13 @@ namespace Repositories
         //    return false;
         //}
 
-        public void LoadUSers()
+        public void LoadUsers()
         {
             if (access.GetUsers() != null)
             {
                 foreach (UserDTO userDTO in access.GetUsers())
                 {
-                    User user = new User(userDTO.Id, userDTO.email, userDTO.password, userDTO.Username, userDTO.CreatedOn, userDTO._licenseNumber);
+                    User user = new User(userDTO.Id, userDTO.email, userDTO.password, userDTO.Username, userDTO.CreatedOn, userDTO._licenseNumber, userDTO.passSalt);
                     users.Add(user);
                 }
             }

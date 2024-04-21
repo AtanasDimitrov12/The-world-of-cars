@@ -14,9 +14,8 @@ namespace InterfaceLayer
         void AddPerson(Person person);
         void RemovePerson(Person person);
         void UpdatePerson(Person person);
-        bool AuthenticateUser(User checkUser);
+        bool AuthenticateUser(string Email, string Password);
         User GetUser(string Email);
         IEnumerable<Person> GetAllPeople();
-        void LoadPeopleFromDB();
     }
 }

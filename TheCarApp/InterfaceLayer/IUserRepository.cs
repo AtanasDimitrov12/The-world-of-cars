@@ -14,6 +14,6 @@ namespace InterfaceLayer
         void UpdateUser(User user);
         string GetUserNameById(int UserID);
         List<User> GetAllUsers();
-        void LoadUSers();
+        void LoadUsers();
     }
 }

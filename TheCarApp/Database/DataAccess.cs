@@ -56,7 +56,7 @@ namespace Database
                                     Color = reader.GetString(reader.GetOrdinal("Color")),
                                     VIN = reader.GetString(reader.GetOrdinal("VIN")),
                                     Description = reader.GetString(reader.GetOrdinal("CarDescription")),
-                                    PricePerDay = Convert.ToDecimal(reader.GetDouble(reader.GetOrdinal("PricePerDay"))), 
+                                    PricePerDay = Convert.ToDecimal(reader.GetDouble(reader.GetOrdinal("PricePerDay"))),
                                     CarStatus = reader.GetString(reader.GetOrdinal("Status"))
                                 };
                                 carsDTO.Add(carDTO);
@@ -234,7 +234,7 @@ namespace Database
                                 var newsDTO = new CarNewsDTO
                                 {
                                     // Initialize your CarNewsDTO properties here
-                                    Id=reader.GetInt32(reader.GetOrdinal("NewsId")),
+                                    Id = reader.GetInt32(reader.GetOrdinal("NewsId")),
                                     NewsDescription = reader.GetString(reader.GetOrdinal("NewsDescription")),
                                     ReleaseDate = reader.GetDateTime(reader.GetOrdinal("DatePosted")),
                                     ImageURL = reader.GetString(reader.GetOrdinal("ImageURL")),
@@ -250,7 +250,7 @@ namespace Database
 
                     foreach (var news in newsDTOList)
                     {
-                        news.comments = GetCommentsForNews(news.Id); 
+                        news.comments = GetCommentsForNews(news.Id);
                     }
                 }
             }
@@ -324,7 +324,7 @@ namespace Database
                                 var rental = new RentACarDTO
                                 {
                                     user = GetUserById(reader.GetInt32(reader.GetOrdinal("UserId"))),
-                                    car = GetCarById(reader.GetInt32(reader.GetOrdinal("CarId"))), 
+                                    car = GetCarById(reader.GetInt32(reader.GetOrdinal("CarId"))),
                                     StartDate = reader.GetDateTime(reader.GetOrdinal("StartDate")),
                                     ReturnDate = reader.GetDateTime(reader.GetOrdinal("EndDate")),
                                     status = reader.GetString(reader.GetOrdinal("Status"))
@@ -354,7 +354,7 @@ namespace Database
             {
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    var sql = @"SELECT UserId, Username, Email, PasswordHash, LicenseNumber, CreatedOn FROM [dbi530410_carapp].[dbo].[Users] WHERE UserId = @UserId";
+                    var sql = @"SELECT UserId, Username, Email, PasswordHash, LicenseNumber, CreatedOn, Salt FROM [dbi530410_carapp].[dbo].[Users] WHERE UserId = @UserId";
                     connection.Open();
 
                     using (var command = new SqlCommand(sql, connection))
@@ -363,18 +363,25 @@ namespace Database
 
                         using (var reader = command.ExecuteReader())
                         {
-                            if (reader.Read()) 
+                            var saltString = reader.IsDBNull(reader.GetOrdinal("Salt")) ? null : reader.GetString(reader.GetOrdinal("Salt"));
+                            byte[] saltBytes = null;
+
+                            if (saltString != null)
                             {
-                                user = new UserDTO
-                                {
-                                    Id = reader.GetInt32(reader.GetOrdinal("UserId")),
-                                    email = reader.IsDBNull(reader.GetOrdinal("Email")) ? null : reader.GetString(reader.GetOrdinal("Email")),
-                                    password = reader.IsDBNull(reader.GetOrdinal("PasswordHash")) ? null : reader.GetString(reader.GetOrdinal("PasswordHash")),
-                                    Username = reader.IsDBNull(reader.GetOrdinal("Username")) ? null : reader.GetString(reader.GetOrdinal("Username")),
-                                    CreatedOn = reader.GetDateTime(reader.GetOrdinal("CreatedOn")),
-                                    _licenseNumber = reader.GetInt32(reader.GetOrdinal("LicenseNumber"))
-                                };
+                                saltBytes = Convert.FromBase64String(saltString); // Assuming the salt was base64-encoded
                             }
+
+                            user = new UserDTO
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("UserId")),
+                                email = reader.IsDBNull(reader.GetOrdinal("Email")) ? null : reader.GetString(reader.GetOrdinal("Email")),
+                                password = reader.IsDBNull(reader.GetOrdinal("PasswordHash")) ? null : reader.GetString(reader.GetOrdinal("PasswordHash")),
+                                passSalt = saltBytes, 
+                                Username = reader.IsDBNull(reader.GetOrdinal("Username")) ? null : reader.GetString(reader.GetOrdinal("Username")),
+                                CreatedOn = reader.GetDateTime(reader.GetOrdinal("CreatedOn")),
+                                _licenseNumber = reader.GetInt32(reader.GetOrdinal("LicenseNumber"))
+                            };
+
                         }
                     }
                 }
@@ -433,11 +440,11 @@ namespace Database
                                     Description = reader.GetString(reader.GetOrdinal("Description")),
                                     PricePerDay = reader.GetDecimal(reader.GetOrdinal("PricePerDay")),
                                     CarStatus = reader.GetString(reader.GetOrdinal("CarStatus")),
-                                    Pictures = new List<PictureDTO>(), 
-                                    CarExtras = new List<ExtraDTO>() 
+                                    Pictures = new List<PictureDTO>(),
+                                    CarExtras = new List<ExtraDTO>()
                                 };
 
-                                
+
                             }
                         }
                     }
@@ -468,8 +475,8 @@ namespace Database
             {
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    var sql = @"SELECT UserId, Username, Email, PasswordHash, LicenseNumber, CreatedOn 
-                            FROM [dbi530410_carapp].[dbo].[Users]";
+                    var sql = @"SELECT UserId, Username, Email, PasswordHash, LicenseNumber, CreatedOn, Salt 
+                        FROM [dbi530410_carapp].[dbo].[Users]";
                     connection.Open();
 
                     using (var command = new SqlCommand(sql, connection))
@@ -478,11 +485,21 @@ namespace Database
                         {
                             while (reader.Read())
                             {
+                                var saltString = reader.IsDBNull(reader.GetOrdinal("Salt")) ? null : reader.GetString(reader.GetOrdinal("Salt"));
+                                byte[] saltBytes = null;
+
+                                if (saltString != null)
+                                {
+                                    // Convert the salt from a string to a byte array using UTF-8 encoding
+                                    saltBytes = Encoding.UTF8.GetBytes(saltString);
+                                }
+
                                 var user = new UserDTO
                                 {
                                     Id = reader.GetInt32(reader.GetOrdinal("UserId")),
                                     email = reader.IsDBNull(reader.GetOrdinal("Email")) ? null : reader.GetString(reader.GetOrdinal("Email")),
                                     password = reader.IsDBNull(reader.GetOrdinal("PasswordHash")) ? null : reader.GetString(reader.GetOrdinal("PasswordHash")),
+                                    passSalt = saltBytes, // Assign the byte array here
                                     Username = reader.IsDBNull(reader.GetOrdinal("Username")) ? null : reader.GetString(reader.GetOrdinal("Username")),
                                     CreatedOn = reader.GetDateTime(reader.GetOrdinal("CreatedOn")),
                                     _licenseNumber = reader.GetInt32(reader.GetOrdinal("LicenseNumber"))
@@ -504,6 +521,8 @@ namespace Database
 
             return users;
         }
+
+
 
         public List<AdministratorDTO> GetAdministrators()
         {

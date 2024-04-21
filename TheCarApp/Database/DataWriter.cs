@@ -384,15 +384,15 @@ namespace Database
             return rows;
         }
 
-        public int AddUser(string Username, string email, string password, int LicenseNumber, DateTime CreatedOn)
+        public int AddUser(string Username, string email, string password, int LicenseNumber, DateTime CreatedOn, byte[] Salt)
         {
             int rows = -1;
             try
             {
 
                 connectionString.Open();
-                var sql = "INSERT INTO [dbo].[Users] ([Username], [Email], [PasswordHash], [LicenseNumber], [CreatedOn])" +
-                    "VALUES (@UserName, @Email, @Password, @LicenseNumber, @CreatedOn)";
+                var sql = "INSERT INTO [dbo].[Users] ([Username], [Email], [PasswordHash], [LicenseNumber], [CreatedOn], [Salt])" +
+                    "VALUES (@UserName, @Email, @Password, @LicenseNumber, @CreatedOn, @Salt)";
 
 
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
@@ -401,6 +401,7 @@ namespace Database
                 cmd.Parameters.AddWithValue("@Password", password);
                 cmd.Parameters.AddWithValue("@LicenseNumber", LicenseNumber);
                 cmd.Parameters.AddWithValue("@CreatedOn", CreatedOn);
+                cmd.Parameters.AddWithValue("@Salt", Salt.ToString());
 
                 rows = cmd.ExecuteNonQuery();
 

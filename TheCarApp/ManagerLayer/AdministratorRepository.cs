@@ -54,7 +54,7 @@ namespace Repositories
             {
                 foreach (AdministratorDTO adminDTO in access.GetAdministrators())
                 {
-                    Administrator admin = new Administrator(adminDTO.Id, adminDTO.email, adminDTO.password, adminDTO.Username, adminDTO.CreatedOn, adminDTO._phoneNumber);
+                    Administrator admin = new Administrator(adminDTO.Id, adminDTO.email, adminDTO.password, adminDTO.Username, adminDTO.CreatedOn, adminDTO._phoneNumber, adminDTO.passSalt);
                     admins.Add(admin);
                 }
             }

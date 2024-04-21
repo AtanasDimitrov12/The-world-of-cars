@@ -11,16 +11,18 @@ namespace Entity_Layer
         public int Id { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+        public byte[] passSalt { get; set; }
         public string Username { get; set; }
         public DateTime CreatedOn { get; set; }
 
-        public Person (int Id, string name, string password, string username, DateTime createdOn)
+        public Person (int Id, string name, string password, string username, DateTime createdOn, byte[] passSalt)
         {
             this.Id = Id;
             this.email = name;
             this.password = password;
             this.Username = username;
             this.CreatedOn = createdOn;
+            this.passSalt = passSalt;
         }
 
         public Person()

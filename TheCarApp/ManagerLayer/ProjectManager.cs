@@ -49,7 +49,7 @@ namespace ManagerLayer
             carManager.LoadCars();
             newsManager.LoadNews();
             rentManager.LoadRentals();
-            userRepository.LoadUSers();
+            userRepository.LoadUsers();
             administratorRepository.LoadAdmins();
         }
     }

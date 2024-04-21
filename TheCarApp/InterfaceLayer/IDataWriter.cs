@@ -20,7 +20,7 @@ namespace InterfaceLayer
         int RemoveCarPictures(int CarId);
         int AddCarNews(string Author, string Title, DateTime DatePosted, string NewsDescription, string ImageURL, string Intro);
         int AddComment(int NewsId, int UserId, DateTime CommentDate, string Content);
-        int AddUser(string Username, string email, string password, int LicenseNumber, DateTime CreatedOn);
+        int AddUser(string Username, string email, string password, int LicenseNumber, DateTime CreatedOn, byte[] Salt);
         int UpdateUser(int userId, string Username, string email, string password, int _licenseNumber, DateTime CreatedOn);
         int AddAdmin(string Username, string email, string password, string PhoneNumber, DateTime CreatedOn);
         int UpdateAdministration(int adminId, string username, string email, string passwordHash, string phoneNumber, DateTime createdOn);

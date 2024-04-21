@@ -1,19 +1,18 @@
 ﻿@page
 @model TheCarApp.Pages.SignUpPageModel
 @{
-    ViewData["Title"] = "Sign Up";
+    ViewData["Title"] = "Register";
 }
 <link rel="stylesheet" href="~/css/Register.css" asp-append-version="true" />
-
 
 <div class="flex-container">
     <div class="containerSignUp">
         <input type="checkbox" id="flip">
         <div class="cover">
             <div class="front">
-                <img src="/pictures/opel.jpg" alt="">
+                <img src="/pictures/opel.jpg" alt="Opel Image">
                 <div class="text">
-                    <span class="text-1">Every new friend is a <br> new adventure</span>
+                    <span class="text-1">Every new friend is a new adventure</span>
                     <span class="text-2">Let's get connected</span>
                 </div>
             </div>
@@ -26,11 +25,11 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input asp-for="LogInUser.email" type="text" placeholder="Enter your email" required>
+                                <input asp-for="Email" type="text" placeholder="Enter your email">
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input asp-for="LogInUser.password" type="password" placeholder="Enter your password" required>
+                                <input asp-for="Password" type="password" placeholder="Enter your password">
                             </div>
                             <div class="text"><a href="#">Forgot password?</a></div>
                             <input type="submit" value="Submit">
@@ -44,19 +43,19 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input asp-for="newUser.Username" type="text" placeholder="Enter Username" required>
+                                <input asp-for="Username" type="text" placeholder="Enter Username" required>
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input asp-for="newUser.email" type="text" placeholder="Enter Email" required>
+                                <input asp-for="Email" type="text" placeholder="Enter Email" required>
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input asp-for="newUser.password" type="password" placeholder="Enter Password" required>
+                                <input asp-for="Password" type="password" placeholder="Enter Password" required>
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input asp-for="newUser._licenseNumber" type="text" placeholder="Enter License Number" required>
+                                <input asp-for="LicenseNumber" type="text" placeholder="Enter License Number" required>
                             </div>
                             <input type="submit" value="Sign Up">
                             <div class="text sign-up-text">Already have an account? <a href="/login"><label for="flip">LogIn now</label></a></div>

@@ -9,6 +9,7 @@ using Manager_Layer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,6 +23,9 @@ namespace ManagerLayer
         private DataRemover remover;
         private IUserRepository _userRepository;
         private IAdministratorRepository _administratorRepository;
+        const int keySize = 64;
+        const int iterations = 350000;
+        HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
 
         public PeopleManager(IUserRepository userRepository, IAdministratorRepository administratorRepository)
         {
@@ -39,14 +43,32 @@ namespace ManagerLayer
             switch (person)
             {
                 case User user:
+                    user.password = HashPassword(user.password, out var salt);
+                    user.passSalt = salt;
                     _userRepository.AddUser(user);
                     break;
                 case Administrator admin:
+                    admin.password = HashPassword(admin.password, out salt);
+                    admin.passSalt = salt;
                     _administratorRepository.AddAdmin(admin);
                     break;
                 default:
                     throw new ArgumentException("Unsupported person type");
             }
+        }
+
+        public string HashPassword(string password, out byte[] salt)
+        {
+            salt = RandomNumberGenerator.GetBytes(keySize);
+
+            var hash = Rfc2898DeriveBytes.Pbkdf2(
+                Encoding.UTF8.GetBytes(password),
+            salt,
+                iterations,
+                hashAlgorithm,
+                keySize);
+
+            return Convert.ToHexString(hash);
         }
 
         public void RemovePerson(Person person)
@@ -79,13 +101,14 @@ namespace ManagerLayer
             }
         }
 
-        public bool AuthenticateUser(User checkUser)
+        public bool AuthenticateUser(string UserEmail, string UserPass)
         {
             foreach (User user in _userRepository.GetAllUsers())
             {
-                if (user.email == checkUser.email)
+                string checkPass = CheckHashPassword(UserPass, user.passSalt);
+                if (user.email == UserEmail)
                 {
-                    if (user.password == checkUser.password)
+                    if (user.password == checkPass) // Parolite sa razlichni
                     {
                         return true;
                     }
@@ -93,6 +116,18 @@ namespace ManagerLayer
                 }
             }
             return false;
+        }
+
+        public string CheckHashPassword(string password, byte[] salt)
+        {
+            var hash = Rfc2898DeriveBytes.Pbkdf2(
+                Encoding.UTF8.GetBytes(password),
+            salt,
+                iterations,
+                hashAlgorithm,
+                keySize);
+
+            return Convert.ToHexString(hash);
         }
 
         public User GetUser(string Email)
@@ -113,24 +148,6 @@ namespace ManagerLayer
             var admins = _administratorRepository.GetAllAdministrators();
 
             return users.Cast<Person>().Concat(admins);
-        }
-
-        public void LoadPeopleFromDB() // trqbva da go prehvurlq kum suotvetnite classove
-        {
-            if (access.GetUsers() != null && access.GetAdministrators() != null)
-            {
-                foreach (UserDTO userDTO in access.GetUsers())
-                {
-                    User user = new User(userDTO.Id, userDTO.email, userDTO.password, userDTO.Username, userDTO.CreatedOn, userDTO._licenseNumber);
-                    people.Add(user);
-                }
-
-                foreach (AdministratorDTO adminDTO in access.GetAdministrators())
-                {
-                    Administrator admin = new Administrator(adminDTO.Id, adminDTO.email, adminDTO.password, adminDTO.Username, adminDTO.CreatedOn, adminDTO._phoneNumber);
-                    people.Add(admin);
-                }
-            }
         }
     }
 }

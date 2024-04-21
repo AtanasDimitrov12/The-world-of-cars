@@ -13,10 +13,14 @@ builder.Services.AddRazorPages();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
+        options.Cookie.HttpOnly = true;
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+        options.Cookie.SameSite = SameSiteMode.Strict;
         options.LoginPath = "/SignUpPage";
         options.AccessDeniedPath = "/SignUpPage";
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
     });
+
 
 var app = builder.Build();
 
