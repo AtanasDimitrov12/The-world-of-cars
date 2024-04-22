@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using InterfaceLayer;
+using Manager_Layer;
 
 namespace DesktopApp
 {
@@ -30,14 +31,21 @@ namespace DesktopApp
 
         private void BTNAddNews_Click(object sender, EventArgs e)
         {
-            AddNews addNews = new AddNews(newsManager);
+            AddNews addNews = new AddNews(null, newsManager);
             addNews.Show();
         }
 
         private void BTNModifyNews_Click(object sender, EventArgs e)
         {
-            AddNews addNews = new AddNews(newsManager);
-            addNews.Show();
+            string CarInfo = LBCarNews.SelectedItem.ToString();
+            foreach (var news in newsManager.news)
+            {
+                if ($"{news.Title} - {news.ReleaseDate}" == CarInfo)
+                {
+                    AddNews addNews = new AddNews(news, newsManager);
+                    addNews.Show();
+                }
+            }
         }
 
         private void RBASC_CheckedChanged(object sender, EventArgs e)
@@ -56,8 +64,19 @@ namespace DesktopApp
         {
             LBCarNews.Items.Clear();
             foreach (CarNews carNews in displayNews)
-            { 
+            {
                 LBCarNews.Items.Add($"{carNews.Title} - {carNews.ReleaseDate}");
+            }
+        }
+
+        private void BTNSearchByTitle_Click(object sender, EventArgs e)
+        {
+            LBCarNews.Items.Clear();
+            string title = TBNewsTitle.Text;
+            var filteredNews = newsManager.news.Where(news => news.Title == title).ToList();
+            foreach (var news in filteredNews)
+            {
+                LBCarNews.Items.Add($"{news.Title} - {news.ReleaseDate}");
             }
         }
     }

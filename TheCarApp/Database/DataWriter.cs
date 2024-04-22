@@ -318,6 +318,48 @@ namespace Database
             return rows;
         }
 
+        public int UpdateNews(CarNews news)
+        {
+            int rowsAffected = -1;
+            try
+            {
+                connectionString.Open();
+                var sql = "UPDATE [dbo].[News] SET " +
+                          "[Author] = @Author, " +
+                          "[Title] = @Title, " +
+                          "[DatePosted] = @DatePosted, " +
+                          "[NewsDescription] = @NewsDescription, " +
+                          "[ImageURL] = @ImageURL, " +
+                          "[ShortIntro] = @ShortIntro " +
+                          "WHERE NewsId = @NewsId;";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@Author", news.Author);
+                cmd.Parameters.AddWithValue("@Title", news.Title);
+                cmd.Parameters.AddWithValue("@DatePosted", news.ReleaseDate);
+                cmd.Parameters.AddWithValue("@NewsDescription", news.NewsDescription);
+                cmd.Parameters.AddWithValue("@ImageURL", news.ImageURL);
+                cmd.Parameters.AddWithValue("@ShortIntro", news.ShortIntro);
+                cmd.Parameters.AddWithValue("@NewsId", news.Id);
+
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Server error in update action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in the update action: {ex.Message}");
+            }
+            finally
+            {
+                connectionString.Close();
+            }
+            return rowsAffected;
+        }
+
+
         public int AddComment(int NewsId, int UserId, DateTime CommentDate, string Content)
         {
             int rows = -1;
