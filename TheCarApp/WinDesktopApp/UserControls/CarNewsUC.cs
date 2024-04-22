@@ -42,13 +42,13 @@ namespace DesktopApp
 
         private void RBASC_CheckedChanged(object sender, EventArgs e)
         {
-            News.Sort(new CarNewsDateDescendingComparer());
+            News.Sort(new CarNewsDateAscendingComparer());
             DisplayNews(News);
         }
 
         private void RBDESC_CheckedChanged(object sender, EventArgs e)
         {
-            News.Sort(new CarNewsDateAscendingComparer());
+            News.Sort(new CarNewsDateDescendingComparer());
             DisplayNews(News);
         }
 
@@ -57,7 +57,7 @@ namespace DesktopApp
             LBCarNews.Items.Clear();
             foreach (CarNews carNews in displayNews)
             { 
-                LBCarNews.Items.Add(carNews.Title);
+                LBCarNews.Items.Add($"{carNews.Title} - {carNews.ReleaseDate}");
             }
         }
     }

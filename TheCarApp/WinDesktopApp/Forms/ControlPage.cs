@@ -24,7 +24,7 @@ namespace DesktopApp
         {
             InitializeComponent();
             projectManager = new ProjectManager();
-            adminInfoUC = new AdminInfoUC(projectManager.peopleManager);
+            adminInfoUC = new AdminInfoUC(projectManager.peopleManager, projectManager.administratorRepository);
             carNewsUC = new CarNewsUC(projectManager.peopleManager, projectManager.newsManager);
             carControlUC = new CarControlUC(projectManager.peopleManager, projectManager.carManager, projectManager.extraManager, projectManager.pictureManager);
             commentsControlUC = new CommentsControlUC(projectManager.newsManager, projectManager.commentsManager);    

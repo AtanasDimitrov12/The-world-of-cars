@@ -16,12 +16,14 @@ namespace DesktopApp
     public partial class AdminInfoUC : UserControl
     {
         IPeopleManager manager;
-        List<Person> admins;
-        public AdminInfoUC(IPeopleManager pm)
+        IAdministratorRepository administratorRepository;
+        List<Administrator> admins;
+        public AdminInfoUC(IPeopleManager pm, IAdministratorRepository administratorRepository)
         {
             InitializeComponent();
             manager = pm;
-            admins = manager.people;
+            this.administratorRepository = administratorRepository;
+            admins = administratorRepository.GetAllAdministrators();
         }
 
         private void BTNUpdateAdminInfo_Click(object sender, EventArgs e)
