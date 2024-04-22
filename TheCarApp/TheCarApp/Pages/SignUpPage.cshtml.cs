@@ -43,7 +43,26 @@ namespace TheCarApp.Pages
 
             var newUser = new User(0, Email,Password, Username, DateTime.Now, int.Parse(LicenseNumber), null);
             _projectManager.peopleManager.AddPerson(newUser); // Assuming AddPerson handles null checks
-            return RedirectToPage("/MarketPlace"); // Redirect to a confirmation page or the home page
+            var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, Email)
+                };
+
+            var claimsIdentity = new ClaimsIdentity(
+                claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = true,
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
+            };
+
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity),
+                authProperties);
+
+            return RedirectToPage("/MarketPlace");
         }
 
 
