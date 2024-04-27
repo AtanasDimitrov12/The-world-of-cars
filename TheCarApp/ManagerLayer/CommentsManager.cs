@@ -25,7 +25,7 @@ namespace ManagerLayer
         public void AddComment(CarNews news, Comment comment)
         {
             _dataWriter.AddComment(news.Id, comment.UserId, comment.Date, comment.Message);
-            comment.Id = _dataWriter.GetCommentId(comment.Date); // This assumes GetCommentId method exists and works as intended.
+            comment.Id = _dataWriter.GetCommentId(comment.Date); 
             news.AddComment(comment);
         }
 
