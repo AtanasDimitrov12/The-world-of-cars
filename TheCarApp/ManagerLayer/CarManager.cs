@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Database;
@@ -11,6 +12,7 @@ using Entity_Layer.Enums;
 using Entity_Layer.Interfaces;
 using EntityLayout;
 using InterfaceLayer;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 
@@ -31,24 +33,41 @@ namespace Manager_Layer
             _dataRemover = dataRemover;
         }
 
-        public void AddCar(Car car, List<Picture> pictures, List<Extra> extras)
+        public string AddCar(Car car, List<Picture> pictures, List<Extra> extras)
         {
-            cars.Add(car);
-            _dataWriter.AddCar(car.brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
-            int carId = _dataWriter.GetCarId(car.VIN);
-            car.Id = carId;
-            _dataWriter.AddCarDescription(car.Id, car.Description, car.PricePerDay);
-            foreach (Picture pic in pictures)
+            string Message = _dataWriter.AddCar(car.brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
+            if (Message == "done")
             {
-                _dataWriter.AddCarPictures(car.Id, pic.Id);
-                car.AddPicture(pic);
+                
+                string SearchID = _dataWriter.GetCarId(car.VIN);
+                int CarId;
+                if (int.TryParse(SearchID, out CarId))
+                {
+                    // Return the parsed integer if successful
+                    car.Id = CarId;
+                    _dataWriter.AddCarDescription(car.Id, car.Description, car.PricePerDay);
+                    foreach (Picture pic in pictures)
+                    {
+                        _dataWriter.AddCarPictures(car.Id, pic.Id);
+                        car.AddPicture(pic);
+                    }
+                    foreach (Extra extra in extras)
+                    {
+                        _dataWriter.AddCarExtras(car.Id, extra.Id);
+                        car.AddExtra(extra);
+                    }
+                    cars.Add(car);
+                    return "done";
+                }
+                else
+                {
+                    // Return the original string if parsing fails
+                    return SearchID;
+                }
             }
-            foreach (Extra extra in extras)
-            {
-                _dataWriter.AddCarExtras(car.Id, extra.Id);
-                car.AddExtra(extra);
+            else { return Message; }
+
             }
-        }
 
         public void UpdateCar(Car car)
         {

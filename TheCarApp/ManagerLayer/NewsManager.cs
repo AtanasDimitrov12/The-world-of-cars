@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entity_Layer.Interfaces;
+using System.Xml.Linq;
 
 namespace Entity_Layer
 {
@@ -28,11 +29,28 @@ namespace Entity_Layer
             _dataRemover = dataRemover;
         }
 
-        public void AddNews(CarNews carnews)
+        public string AddNews(CarNews carnews)
         {
-            _dataWriter.AddCarNews(carnews.Author, carnews.Title, carnews.ReleaseDate, carnews.NewsDescription, carnews.ImageURL, carnews.ShortIntro);
-            carnews.Id = _dataWriter.GetNewsId(carnews.Title);
-            news.Add(carnews);
+            string Message = _dataWriter.AddCarNews(carnews.Author, carnews.Title, carnews.ReleaseDate, carnews.NewsDescription, carnews.ImageURL, carnews.ShortIntro);
+            if (Message == "done")
+            {
+                string SearchID = _dataWriter.GetNewsId(carnews.Title);
+                int NewsId;
+                if (int.TryParse(SearchID, out NewsId))
+                {
+                    carnews.Id = NewsId;
+                    news.Add(carnews);
+                    return "done";
+                }
+                else
+                {
+                    return SearchID;
+                }
+            }
+            else
+            {
+                return Message;
+            }
         }
 
         public void DeleteNews(CarNews carnews)

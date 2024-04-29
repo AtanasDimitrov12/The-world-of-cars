@@ -9,7 +9,7 @@ namespace InterfaceLayer
 {
     public interface ICommentsManager
     {
-        void AddComment(CarNews news, Comment comment);
+        string AddComment(CarNews news, Comment comment);
         void RemoveComment(CarNews news, Comment comment);
     }
 }
