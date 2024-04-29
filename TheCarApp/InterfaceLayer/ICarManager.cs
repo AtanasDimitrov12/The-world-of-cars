@@ -11,13 +11,13 @@ namespace InterfaceLayer
     public interface ICarManager
     {
         string AddCar(Car car, List<Picture> pictures, List<Extra> extras);
-        void RemoveCar(Car car, Picture picture, Extra extra);
-        void UpdateCar(Car car);
+        string RemoveCar(Car car, Picture picture, Extra extra);
+        string UpdateCar(Car car);
         Car SearchForCar(int index);
         List<Car> GetCars();
         List<Car> GetCarsASC();
         List<Car> GetCarsDESC();
         Car GetCarById(int carId);
-        void LoadCars();
+        string LoadCars();
     }
 }

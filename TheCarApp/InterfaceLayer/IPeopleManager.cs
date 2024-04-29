@@ -11,9 +11,9 @@ namespace InterfaceLayer
     {
         List<Person> people { get; set; }
 
-        void AddPerson(Person person);
-        void RemovePerson(Person person);
-        void UpdatePerson(Person person);
+        string AddPerson(Person person);
+        string RemovePerson(Person person);
+        string UpdatePerson(Person person);
         bool AuthenticateUser(string Email, string Password);
         User GetUser(string Email);
         IEnumerable<Person> GetAllPeople();

@@ -30,11 +30,27 @@ namespace ManagerLayer
             remover = new DataRemover();
         }
 
-        public void RentACar(User user, Car car, DateTime startDate, DateTime endDate)
+        public string RentACar(User user, Car car, DateTime startDate, DateTime endDate)
         {
-            RentACar rentACar = new RentACar(user, car, startDate, endDate, RentStatus.SCHEDULE);
-            writer.RentACar(car.Id, user.Id, startDate, endDate, RentStatus.SCHEDULE.ToString());
-            rentalHistory.Add(rentACar);
+            try
+            {
+                string Message = writer.RentACar(car.Id, user.Id, startDate, endDate, RentStatus.SCHEDULE.ToString());
+                if (Message == "done")
+                {
+                    RentACar rentACar = new RentACar(user, car, startDate, endDate, RentStatus.SCHEDULE);
+                    rentalHistory.Add(rentACar);
+                    return "done";
+                }
+                else 
+                {
+                    return Message;
+                }
+                
+            }
+            catch (Exception ex) 
+            {
+                return ex.Message;
+            }
         }
 
         public void ChangeRentStatus(RentACar rentACar, RentStatus status)
@@ -42,40 +58,55 @@ namespace ManagerLayer
             rentACar.ChangeStatus(status);
         }
 
-        public void LoadRentals()
+        public string LoadRentals()
         {
-            if (access.GetRentals() != null)
+            try
             {
-                foreach (RentACarDTO rentDTO in access.GetRentals())
+                var loadedRentals = access.GetRentals();
+                if (loadedRentals != null)
                 {
-                    RentStatus status;
-                    bool isValidArea = Enum.TryParse(rentDTO.status.ToUpper(), true, out status);
-
-                    if (isValidArea)
+                    foreach (RentACarDTO rentDTO in loadedRentals)
                     {
-                        UserDTO userDTO = rentDTO.user;
-                        CarDTO carDTO = rentDTO.car;
+                        RentStatus status;
+                        bool isValidArea = Enum.TryParse(rentDTO.status.ToUpper(), true, out status);
 
-                        CarStatus carStatusCheck;
-                        bool isValidStatus = Enum.TryParse(carDTO.CarStatus.ToUpper(), true, out carStatusCheck);
-                        if (isValidStatus)
+                        if (isValidArea)
                         {
-                            User loadUser = new User(userDTO.Id, userDTO.email, userDTO.password, userDTO.Username, userDTO.CreatedOn, userDTO._licenseNumber, userDTO.passSalt); // ne sum siguren dali veche ne trqbva da go vzimam ot sushtestvuvashtite users
-                            Car loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, carStatusCheck, carDTO.NumberOfSeats, carDTO.NumberOfDoors);
+                            UserDTO userDTO = rentDTO.user;
+                            CarDTO carDTO = rentDTO.car;
 
-                            RentACar loadRent = new RentACar(loadUser, loadCar, rentDTO.StartDate, rentDTO.ReturnDate, status);
+                            CarStatus carStatusCheck;
+                            bool isValidStatus = Enum.TryParse(carDTO.CarStatus.ToUpper(), true, out carStatusCheck);
+                            if (isValidStatus)
+                            {
+                                User loadUser = new User(userDTO.Id, userDTO.email, userDTO.password, userDTO.Username, userDTO.CreatedOn, userDTO._licenseNumber, userDTO.passSalt); // ne sum siguren dali veche ne trqbva da go vzimam ot sushtestvuvashtite users
+                                Car loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, carStatusCheck, carDTO.NumberOfSeats, carDTO.NumberOfDoors);
 
-                            rentalHistory.Add(loadRent);
+                                RentACar loadRent = new RentACar(loadUser, loadCar, rentDTO.StartDate, rentDTO.ReturnDate, status);
+
+                                rentalHistory.Add(loadRent);
+                                
+                            }
+                            else
+                            {
+                                return $"Warning: {rentDTO.Id} has an invalid status assigned.";
+                            }
 
                         }
-
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Warning: {rentDTO.Id} has an invalid area assigned.");
+                        else
+                        {
+                            return $"Warning: {rentDTO.Id} has an invalid area assigned.";
+                        }
                     }
                 }
+                return "done";
             }
+            catch (ApplicationException ex)
+            {
+                return ex.Message;
+            }
+
+            
         }
     }
 }

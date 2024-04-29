@@ -26,28 +26,54 @@ namespace ManagerLayer
             _dataRemover = dataRemover;
             LoadPictures(); 
         }
-        public void AddPicture(Picture pic)
+        public string AddPicture(Picture pic)
         {
-            pictures.Add(pic);
-            _dataWriter.AddPicture(pic.PictureURL);
-        }
-
-        public void RemovePicture(Picture pic)
-        {
-            pictures.Remove(pic);
-            //remover.RemovePicture(pic.Id);
-        }
-
-        public void LoadPictures()
-        {
-            if (_dataAccess.GetAllExtras() != null)
+            string Message = _dataWriter.AddPicture(pic.PictureURL);
+            if (Message == "done")
             {
-                foreach (PictureDTO pic in _dataAccess.GetAllPictures())
-                {
-                    Picture picture = new Picture(pic.Id, pic.PictureURL);
-                    pictures.Add(picture);
-                }
+                pictures.Add(pic);
+                return "done";
             }
+            else 
+            {
+                return Message;
+            }
+        }
+
+        public string RemovePicture(Picture pic)
+        {
+            string Message = _dataRemover.RemovePicture(pic.Id);
+            if (Message == "done")
+            {
+                pictures.Remove(pic);
+                return "done";
+            }
+            else
+            {
+                return Message;
+            }
+        }
+
+        public string LoadPictures()
+        {
+            try
+            {
+                var LoadedPics = _dataAccess.GetAllExtras();
+                if (LoadedPics != null)
+                {
+                    foreach (PictureDTO pic in _dataAccess.GetAllPictures())
+                    {
+                        Picture picture = new Picture(pic.Id, pic.PictureURL);
+                        pictures.Add(picture);
+                    }
+                }
+                return "done";
+            }
+            catch (ApplicationException ex)
+            {
+                return ex.Message;
+            }
+            
         }
     }
 

@@ -38,22 +38,20 @@ namespace ManagerLayer
         }
 
 
-        public void AddPerson(Person person)
+        public string AddPerson(Person person)
         {
             switch (person)
             {
                 case User user:
                     user.password = HashPassword(user.password, out var salt);
                     user.passSalt = salt;
-                    _userRepository.AddUser(user);
-                    break;
+                    return _userRepository.AddUser(user);
                 case Administrator admin:
                     admin.password = HashPassword(admin.password, out salt);
                     admin.passSalt = salt;
-                    _administratorRepository.AddAdmin(admin);
-                    break;
+                    return _administratorRepository.AddAdmin(admin);
                 default:
-                    throw new ArgumentException("Unsupported person type");
+                    return "Unsupported person type";
             }
         }
 
@@ -71,33 +69,29 @@ namespace ManagerLayer
             return Convert.ToHexString(hash);
         }
 
-        public void RemovePerson(Person person)
+        public string RemovePerson(Person person)
         {
             switch (person)
             {
                 case User user:
-                    _userRepository.RemoveUser(user);
-                    break;
+                    return _userRepository.RemoveUser(user);
                 case Administrator admin:
-                    _administratorRepository.RemoveAdmin(admin);
-                    break;
+                    return _administratorRepository.RemoveAdmin(admin);
                 default:
-                    throw new ArgumentException("Unsupported person type");
+                    return "Unsupported person type";
             }
         }
 
-        public void UpdatePerson(Person person)
+        public string UpdatePerson(Person person)
         {
             switch (person)
             {
                 case User user:
-                    _userRepository.UpdateUser(user);
-                    break;
+                    return _userRepository.UpdateUser(user);
                 case Administrator admin:
-                    _administratorRepository.UpdateAdmin(admin);
-                    break;
+                    return _administratorRepository.UpdateAdmin(admin);
                 default:
-                    throw new ArgumentException("Unsupported person type");
+                    return "Unsupported person type";
             }
         }
 

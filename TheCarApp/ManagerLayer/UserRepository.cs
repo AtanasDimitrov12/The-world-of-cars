@@ -26,23 +26,39 @@ namespace Repositories
             users = new List<User>();
         }
 
-        public void AddUser(User user)
+        public string AddUser(User user)
         {
-            writer.AddUser(user.Username, user.email, user.password, user._licenseNumber, user.CreatedOn, user.passSalt);
-            users.Add(user);
+            string Message = writer.AddUser(user.Username, user.email, user.password, user._licenseNumber, user.CreatedOn, user.passSalt);
+            if (Message == "done")
+            {
+                users.Add(user);
+                return "done";
+            }
+            else { return Message; }
+            
         }
 
-
-
-        public void RemoveUser(User user)
+        public string RemoveUser(User user)
         {
-            remover.RemoveUser(user.Id);
-            users.Remove(user);
+            string Message = remover.RemoveUser(user.Id);
+            if (Message == "done")
+            {
+                users.Remove(user);
+                return "done";
+            }
+            else { return Message; }
+            
         }
 
-        public void UpdateUser(User user)
+        public string UpdateUser(User user)
         {
-            writer.UpdateUser(user.Id, user.Username, user.email, user.password, user._licenseNumber, user.CreatedOn);
+            string Message = writer.UpdateUser(user.Id, user.Username, user.email, user.password, user._licenseNumber, user.CreatedOn);
+            if (Message == "done")
+            {
+                return "done";
+            }
+            else { return Message; }
+            
         }
 
         public string GetUserNameById(int UserID) 
@@ -78,16 +94,26 @@ namespace Repositories
         //    return false;
         //}
 
-        public void LoadUsers()
+        public string LoadUsers()
         {
-            if (access.GetUsers() != null)
+            try
             {
-                foreach (UserDTO userDTO in access.GetUsers())
+                var loadUsers = access.GetUsers();
+                if (loadUsers != null)
                 {
-                    User user = new User(userDTO.Id, userDTO.email, userDTO.password, userDTO.Username, userDTO.CreatedOn, userDTO._licenseNumber, userDTO.passSalt);
-                    users.Add(user);
+                    foreach (UserDTO userDTO in access.GetUsers())
+                    {
+                        User user = new User(userDTO.Id, userDTO.email, userDTO.password, userDTO.Username, userDTO.CreatedOn, userDTO._licenseNumber, userDTO.passSalt);
+                        users.Add(user);
+                    }
                 }
+                return "done";
             }
+            catch (ApplicationException ex)
+            {
+                return ex.Message;
+            }
+            
         }
     }
 }

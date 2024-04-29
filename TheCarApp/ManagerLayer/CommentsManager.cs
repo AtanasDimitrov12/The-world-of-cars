@@ -51,10 +51,20 @@ namespace ManagerLayer
 
         
 
-        public void RemoveComment(CarNews news, Comment comment)
+        public string RemoveComment(CarNews news, Comment comment)
         {
-            _dataRemover.RemoveComment(comment.Id);
-            news.RemoveComment(comment);
+
+            string Message = _dataRemover.RemoveComment(comment.Id);
+            if (Message == "done")
+            {
+
+                news.RemoveComment(comment);
+                return "done";
+            }
+            else
+            {
+                return Message;
+            }
         }
     }
 }

@@ -53,15 +53,33 @@ namespace Entity_Layer
             }
         }
 
-        public void DeleteNews(CarNews carnews)
+        public string DeleteNews(CarNews carnews)
         {
-            news.Remove(carnews);
-            _dataRemover.RemoveNews(carnews.Id);
+            string Message = _dataRemover.RemoveNews(carnews.Id);
+            if (Message == "done")
+            {
+
+                news.Remove(carnews);
+                return "done";
+            }
+            else
+            {
+                return Message;
+            }
         }
 
-        public void UpdateNews(CarNews news)
+        public string UpdateNews(CarNews news)
         {
-            _dataWriter.UpdateNews(news);
+            string Message = _dataWriter.UpdateNews(news);
+            if (Message == "done")
+            {
+                return "done";
+            }
+            else
+            {
+                return Message;
+            }
+            
         }
 
         public CarNews GetNewsById(int id)
@@ -76,18 +94,27 @@ namespace Entity_Layer
             return null;
         }
 
-        public void LoadNews()
+        public string LoadNews()
         {
-            var carNewsList = _dataAccess.GetCarNews();
-            if (carNewsList != null)
+            try
             {
-                foreach (CarNewsDTO newsDTO in carNewsList)
+                var carNewsList = _dataAccess.GetCarNews();
+                if (carNewsList != null)
                 {
-                    var loadComments = newsDTO.comments.Select(comment => new Comment(comment.Id, comment.UserId, comment.Date, comment.Content)).ToList();
-                    var loadnews = new CarNews(newsDTO.Id, newsDTO.NewsDescription, newsDTO.ReleaseDate, newsDTO.ImageURL, newsDTO.Title, newsDTO.Author, newsDTO.ShortIntro, loadComments);
-                    news.Add(loadnews);
+                    foreach (CarNewsDTO newsDTO in carNewsList)
+                    {
+                        var loadComments = newsDTO.comments.Select(comment => new Comment(comment.Id, comment.UserId, comment.Date, comment.Content)).ToList();
+                        var loadnews = new CarNews(newsDTO.Id, newsDTO.NewsDescription, newsDTO.ReleaseDate, newsDTO.ImageURL, newsDTO.Title, newsDTO.Author, newsDTO.ShortIntro, loadComments);
+                        news.Add(loadnews);
+                    }
                 }
+                return "done";
             }
+            catch (ApplicationException ex)
+            {
+                return ex.Message;
+            }
+            
         }
     }
 }

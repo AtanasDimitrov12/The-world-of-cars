@@ -13,9 +13,8 @@ namespace InterfaceLayer
     public interface IRentManager
     {
         List<RentACar> rentalHistory { get; set; }
-
-        void RentACar(User user, Car car, DateTime startDate, DateTime endDate);
+        string RentACar(User user, Car car, DateTime startDate, DateTime endDate);
         void ChangeRentStatus(RentACar rentACar, RentStatus status);
-        void LoadRentals();
+        string LoadRentals();
     }
 }

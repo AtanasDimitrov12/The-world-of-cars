@@ -12,9 +12,9 @@ namespace InterfaceLayer
         List<CarNews> news { get; set; }
 
         string AddNews(CarNews carnews);
-        void DeleteNews(CarNews carnews);
-        void UpdateNews(CarNews news);
+        string DeleteNews(CarNews carnews);
+        string UpdateNews(CarNews news);
         CarNews GetNewsById(int id);
-        void LoadNews();
+        string LoadNews();
     }
 }

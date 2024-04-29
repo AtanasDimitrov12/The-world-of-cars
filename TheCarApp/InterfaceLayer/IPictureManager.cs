@@ -10,8 +10,8 @@ namespace InterfaceLayer
     public interface IPictureManager
     {
         List<Picture> pictures { get; set; }
-        void AddPicture(Picture picture);
-        void RemovePicture(Picture picture);
+        string AddPicture(Picture picture);
+        string RemovePicture(Picture picture);
     }
 
 }
