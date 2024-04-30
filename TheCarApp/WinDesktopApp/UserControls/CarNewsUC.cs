@@ -37,15 +37,31 @@ namespace DesktopApp
 
         private void BTNModifyNews_Click(object sender, EventArgs e)
         {
-            string CarInfo = LBCarNews.SelectedItem.ToString(); //trqbva da napravq try/catch ako ne e izbrana kola 
-            foreach (var news in newsManager.news)
+            try 
             {
-                if ($"{news.Title} - {news.ReleaseDate}" == CarInfo)
+                if (LBCarNews.SelectedItem != null)
                 {
-                    AddNews addNews = new AddNews(news, newsManager);
-                    addNews.Show();
+                    string CarInfo = LBCarNews.SelectedItem.ToString(); //trqbva da napravq try/catch ako ne e izbrana kola 
+                    foreach (var news in newsManager.news)
+                    {
+                        if ($"{news.Title} - {news.ReleaseDate}" == CarInfo)
+                        {
+                            AddNews addNews = new AddNews(news, newsManager);
+                            addNews.Show();
+                        }
+                    }
                 }
+                else 
+                {
+                    MessageBox.Show("You should select the existing news first!");
+                }
+                
             }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void RBASC_CheckedChanged(object sender, EventArgs e)
