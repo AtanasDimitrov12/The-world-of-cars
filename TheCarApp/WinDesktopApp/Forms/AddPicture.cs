@@ -27,8 +27,12 @@ namespace WinDesktopApp.Forms
         private void BTNAddPicture_Click(object sender, EventArgs e)
         {
             Picture pic = new Picture(TBPictureURL.Text);
-            manager.AddPicture(pic);
-            this.Close();
+            string ReturnMessage = manager.AddPicture(pic);
+            if (ReturnMessage == "done")
+            {
+                this.Close();
+            }
+            else { MessageBox.Show(ReturnMessage); }
         }
     }
 }

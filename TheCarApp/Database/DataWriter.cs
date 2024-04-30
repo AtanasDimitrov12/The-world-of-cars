@@ -198,7 +198,7 @@ namespace Database
 
                 connectionString.Open();
                 var sql = "UPDATE [dbo].[CarDescription] SET [CarDescription] = @CarDescription, [PricePerDay] = @PricePerDay " +
-                    "WHERE Car.Id = @CARID;";
+                    "WHERE CarId = @CARID;";
 
                 SqlCommand cmd = new SqlCommand(sql, connectionString); 
 

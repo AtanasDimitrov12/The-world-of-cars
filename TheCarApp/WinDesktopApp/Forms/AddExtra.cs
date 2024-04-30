@@ -26,8 +26,12 @@ namespace WinDesktopApp.Forms
         private void BTNAddExtra_Click(object sender, EventArgs e)
         {
             Extra extra = new Extra(RTBExtraName.Text);
-            manager.AddExtra(extra);
-            this.Close();
+            string ReturnMessage = manager.AddExtra(extra);
+            if (ReturnMessage == "done")
+            {
+                this.Close();
+            }
+            else { MessageBox.Show(ReturnMessage); }
         }
     }
 }

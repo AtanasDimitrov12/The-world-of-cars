@@ -46,8 +46,13 @@ namespace DesktopApp
             {
                 DateTime dateTime = DateTime.Now;
                 CarNews news = new CarNews(RTBNewsDescription.Text, dateTime, TBNewsImageURL.Text, TBNewsTitle.Text, TBNewsAuthor.Text, RTBNewsIntro.Text);
-                NewsManager.AddNews(news);
-                MessageBox.Show("You successfully added this news!");
+                string ReturnMessage = NewsManager.AddNews(news);
+                if (ReturnMessage == "done")
+                {
+                    MessageBox.Show("You successfully added this news!");
+                    this.Close();
+                }
+                else { MessageBox.Show(ReturnMessage); }
             }
             else 
             {
@@ -56,11 +61,15 @@ namespace DesktopApp
                 newsData.ShortIntro = RTBNewsIntro.Text;
                 newsData.NewsDescription = RTBNewsDescription.Text;
                 newsData.ImageURL = TBNewsImageURL.Text;
-                NewsManager.UpdateNews(newsData);
-                MessageBox.Show("You successfully updated this news!");
+                string ReturnMessage = NewsManager.UpdateNews(newsData);
+                if (ReturnMessage == "done")
+                {
+                    MessageBox.Show("You successfully updated this news!");
+                    this.Close();
+                }
+                else { MessageBox.Show(ReturnMessage); }
             }
             
-            this.Close();
         }
     }
 }

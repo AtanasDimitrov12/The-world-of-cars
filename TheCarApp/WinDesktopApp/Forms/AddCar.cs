@@ -114,7 +114,12 @@ namespace DesktopApp
                     Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), TBCarFuel.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), TBCarColor.Text, TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text);
                     if (pictures.Count != 0 && extras.Count != 0)
                     {
-                        manager.AddCar(car, pictures, extras);
+                        string ReturnMessage = manager.AddCar(car, pictures, extras);
+                        if (ReturnMessage == "done")
+                        {
+                            this.Close();
+                        }
+                        else { MessageBox.Show(ReturnMessage); }
                     }
                     else
                     {
@@ -124,9 +129,13 @@ namespace DesktopApp
                 else
                 {
                     UpdateCarData();
-                    manager.UpdateCar(carData);
+                    string ReturnMessage = manager.UpdateCar(carData);
+                    if (ReturnMessage == "done")
+                    {
+                        this.Close();
+                    }
+                    else { MessageBox.Show(ReturnMessage); }
                 }
-                this.Close();
             }
             catch (Exception ex)
             {

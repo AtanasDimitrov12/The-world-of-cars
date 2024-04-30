@@ -37,7 +37,7 @@ namespace DesktopApp
 
         private void BTNModifyNews_Click(object sender, EventArgs e)
         {
-            string CarInfo = LBCarNews.SelectedItem.ToString();
+            string CarInfo = LBCarNews.SelectedItem.ToString(); //trqbva da napravq try/catch ako ne e izbrana kola 
             foreach (var news in newsManager.news)
             {
                 if ($"{news.Title} - {news.ReleaseDate}" == CarInfo)
