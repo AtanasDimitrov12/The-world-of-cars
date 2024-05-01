@@ -41,7 +41,7 @@ namespace DesktopApp
             {
                 if (LBCarNews.SelectedItem != null)
                 {
-                    string CarInfo = LBCarNews.SelectedItem.ToString(); //trqbva da napravq try/catch ako ne e izbrana kola 
+                    string CarInfo = LBCarNews.SelectedItem.ToString(); 
                     foreach (var news in newsManager.news)
                     {
                         if ($"{news.Title} - {news.ReleaseDate}" == CarInfo)

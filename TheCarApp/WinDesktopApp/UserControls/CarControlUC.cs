@@ -39,15 +39,30 @@ namespace DesktopApp
 
         private void BTNModifyCar_Click(object sender, EventArgs e)
         {
-            string CarInfo = LBCars.SelectedItem.ToString();
-            foreach (var selectedCar in carManager.GetCars())
+            if (LBCars.SelectedItem != null)
             {
-                if (selectedCar.GetInfo() == CarInfo)
+                try
                 {
-                    AddCar addCar = new AddCar(selectedCar, carManager, extraManager, pictureManager);
-                    addCar.Show();
+                    string CarInfo = LBCars.SelectedItem.ToString();
+                    foreach (var selectedCar in carManager.GetCars())
+                    {
+                        if (selectedCar.GetInfo() == CarInfo)
+                        {
+                            AddCar addCar = new AddCar(selectedCar, carManager, extraManager, pictureManager);
+                            addCar.Show();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
+            else 
+            {
+                MessageBox.Show("Please first select a car to modify from the List box!");
+            }
+            
             
         }
 
