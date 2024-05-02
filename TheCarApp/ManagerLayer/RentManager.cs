@@ -17,17 +17,32 @@ namespace ManagerLayer
 {
     public class RentManager : IRentManager
     {
+        private IRentalStrategy _rentalStrategy;
         public List<RentACar> rentalHistory { get; set; }
         private DataAccess access;
         private DataWriter writer;
         private DataRemover remover;
 
-        public RentManager() 
-        { 
+        public RentManager(IRentalStrategy rentalStrategy)
+        {
+            _rentalStrategy = rentalStrategy;
             rentalHistory = new List<RentACar>();
             access = new DataAccess();
             writer = new DataWriter();
             remover = new DataRemover();
+        }
+
+        public RentManager()
+        {
+            rentalHistory = new List<RentACar>();
+            access = new DataAccess();
+            writer = new DataWriter();
+            remover = new DataRemover();
+        }
+
+        public void SetStrategy(IRentalStrategy rentalStrategy)
+        {
+            _rentalStrategy = rentalStrategy;
         }
 
         public string RentACar(User user, Car car, DateTime startDate, DateTime endDate)
@@ -39,23 +54,26 @@ namespace ManagerLayer
                 {
                     RentACar rentACar = new RentACar(user, car, startDate, endDate, RentStatus.SCHEDULE);
                     rentalHistory.Add(rentACar);
+                    TimeSpan daysRented = endDate - startDate;
+                    rentACar.TotalPrice = _rentalStrategy.CalculateRentalPrice(rentACar, daysRented.Days);
                     return "done";
                 }
-                else 
+                else
                 {
                     return Message;
                 }
-                
+
             }
-            catch (Exception ex) 
+
+            catch (Exception ex)
             {
                 return ex.Message;
             }
         }
 
-        public void ChangeRentStatus(RentACar rentACar, RentStatus status)
-        { 
-            rentACar.ChangeStatus(status);
+        public void UpdateRental(RentACar rental, RentStatus newStatus)
+        {
+            _rentalStrategy.UpdateRentalStatus(rental, newStatus);
         }
 
         public string LoadRentals()
@@ -85,7 +103,7 @@ namespace ManagerLayer
                                 RentACar loadRent = new RentACar(loadUser, loadCar, rentDTO.StartDate, rentDTO.ReturnDate, status);
 
                                 rentalHistory.Add(loadRent);
-                                
+
                             }
                             else
                             {
@@ -106,7 +124,7 @@ namespace ManagerLayer
                 return ex.Message;
             }
 
-            
+
         }
     }
 }

@@ -14,7 +14,7 @@ namespace InterfaceLayer
     {
         List<RentACar> rentalHistory { get; set; }
         string RentACar(User user, Car car, DateTime startDate, DateTime endDate);
-        void ChangeRentStatus(RentACar rentACar, RentStatus status);
+        void UpdateRental(RentACar rental, RentStatus newStatus);
         string LoadRentals();
     }
 }
