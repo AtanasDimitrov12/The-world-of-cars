@@ -10,7 +10,7 @@ namespace Entity_Layer
     {
         public string _phoneNumber { get; set; }
 
-        public Administrator(int Id, string Email, string Password, string UserName, DateTime CreatedON, string PhoneNumber, byte[] passSalt) : base(Id, Email, Password, UserName, CreatedON, passSalt) 
+        public Administrator(int Id, string Email, string Password, string UserName, DateTime CreatedON, string PhoneNumber, string passSalt) : base(Id, Email, Password, UserName, CreatedON, passSalt) 
         { 
             this._phoneNumber = PhoneNumber;
         }

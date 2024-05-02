@@ -363,20 +363,20 @@ namespace Database
 
                         using (var reader = command.ExecuteReader())
                         {
-                            var saltString = reader.IsDBNull(reader.GetOrdinal("Salt")) ? null : reader.GetString(reader.GetOrdinal("Salt"));
-                            byte[] saltBytes = null;
+                            //var saltString = reader.IsDBNull(reader.GetOrdinal("Salt")) ? null : reader.GetString(reader.GetOrdinal("Salt"));
+                            //byte[] saltBytes = null;
 
-                            if (saltString != null)
-                            {
-                                saltBytes = Convert.FromBase64String(saltString); // Assuming the salt was base64-encoded
-                            }
+                            //if (saltString != null)
+                            //{
+                            //    saltBytes = Convert.FromBase64String(saltString); // Assuming the salt was base64-encoded
+                            //}
 
                             user = new UserDTO
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("UserId")),
                                 email = reader.IsDBNull(reader.GetOrdinal("Email")) ? null : reader.GetString(reader.GetOrdinal("Email")),
                                 password = reader.IsDBNull(reader.GetOrdinal("PasswordHash")) ? null : reader.GetString(reader.GetOrdinal("PasswordHash")),
-                                passSalt = saltBytes,
+                                passSalt = reader.IsDBNull(reader.GetOrdinal("Salt")) ? null : reader.GetString(reader.GetOrdinal("Salt")),
                                 Username = reader.IsDBNull(reader.GetOrdinal("Username")) ? null : reader.GetString(reader.GetOrdinal("Username")),
                                 CreatedOn = reader.GetDateTime(reader.GetOrdinal("CreatedOn")),
                                 _licenseNumber = reader.GetInt32(reader.GetOrdinal("LicenseNumber"))
@@ -485,21 +485,21 @@ namespace Database
                         {
                             while (reader.Read())
                             {
-                                var saltString = reader.IsDBNull(reader.GetOrdinal("Salt")) ? null : reader.GetString(reader.GetOrdinal("Salt"));
-                                byte[] saltBytes = null;
+                                //var saltString = reader.IsDBNull(reader.GetOrdinal("Salt")) ? null : reader.GetString(reader.GetOrdinal("Salt"));
+                                //byte[] saltBytes = null;
 
-                                if (saltString != null)
-                                {
-                                    // Convert the salt from a string to a byte array using UTF-8 encoding
-                                    saltBytes = Encoding.UTF8.GetBytes(saltString);
-                                }
+                                //if (saltString != null)
+                                //{
+                                //    // Convert the salt from a string to a byte array using UTF-8 encoding
+                                //    saltBytes = Encoding.UTF8.GetBytes(saltString);
+                                //}
 
                                 var user = new UserDTO
                                 {
                                     Id = reader.GetInt32(reader.GetOrdinal("UserId")),
                                     email = reader.IsDBNull(reader.GetOrdinal("Email")) ? null : reader.GetString(reader.GetOrdinal("Email")),
                                     password = reader.IsDBNull(reader.GetOrdinal("PasswordHash")) ? null : reader.GetString(reader.GetOrdinal("PasswordHash")),
-                                    passSalt = saltBytes, // Assign the byte array here
+                                    passSalt = reader.IsDBNull(reader.GetOrdinal("Salt")) ? null : reader.GetString(reader.GetOrdinal("Salt")),
                                     Username = reader.IsDBNull(reader.GetOrdinal("Username")) ? null : reader.GetString(reader.GetOrdinal("Username")),
                                     CreatedOn = reader.GetDateTime(reader.GetOrdinal("CreatedOn")),
                                     _licenseNumber = reader.GetInt32(reader.GetOrdinal("LicenseNumber"))

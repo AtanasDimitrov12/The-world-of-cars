@@ -8,6 +8,7 @@ using InterfaceLayer;
 using Manager_Layer;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -43,30 +44,33 @@ namespace ManagerLayer
             switch (person)
             {
                 case User user:
-                    user.password = HashPassword(user.password, out var salt);
-                    user.passSalt = salt;
+                    var (hash, salt) = HashPassword(user.password);
+                    user.password = hash;
+                    user.passSalt = salt; // Store the salt as a Base64 string
                     return _userRepository.AddUser(user);
+
                 case Administrator admin:
-                    admin.password = HashPassword(admin.password, out salt);
-                    admin.passSalt = salt;
+                    (hash, salt) = HashPassword(admin.password);
+                    admin.password = hash;
+                    admin.passSalt = salt; // Store the salt as a Base64 string
                     return _administratorRepository.AddAdmin(admin);
+
                 default:
                     return "Unsupported person type";
             }
         }
 
-        public string HashPassword(string password, out byte[] salt)
+
+        public (string Hash, string Salt) HashPassword(string password)
         {
-            salt = RandomNumberGenerator.GetBytes(keySize);
+            byte[] salt = RandomNumberGenerator.GetBytes(16); // Generate a 128-bit salt
 
-            var hash = Rfc2898DeriveBytes.Pbkdf2(
-                Encoding.UTF8.GetBytes(password),
-            salt,
-                iterations,
-                hashAlgorithm,
-                keySize);
+            // Use PBKDF2 to hash the password
+            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000); // 10,000 iterations
+            byte[] hash = pbkdf2.GetBytes(20); // Generate a 160-bit hash
 
-            return Convert.ToHexString(hash);
+            // Convert both hash and salt into Base64 strings for easy storage
+            return (Convert.ToBase64String(hash), Convert.ToBase64String(salt));
         }
 
         public string RemovePerson(Person person)
@@ -99,10 +103,9 @@ namespace ManagerLayer
         {
             foreach (User user in _userRepository.GetAllUsers())
             {
-                string checkPass = CheckHashPassword(UserPass, user.passSalt);
                 if (user.email == UserEmail)
                 {
-                    if (user.password == checkPass) // Parolite sa razlichni
+                    if (VerifyPassword(UserPass, user.password, user.passSalt)) // Parolite sa razlichni
                     {
                         return true;
                     }
@@ -112,17 +115,15 @@ namespace ManagerLayer
             return false;
         }
 
-        public string CheckHashPassword(string password, byte[] salt)
+        public bool VerifyPassword(string enteredPassword, string storedPass, string base64Salt)
         {
-            var hash = Rfc2898DeriveBytes.Pbkdf2(
-                Encoding.UTF8.GetBytes(password),
-            salt,
-                iterations,
-                hashAlgorithm,
-                keySize);
+            byte[] salt = Convert.FromBase64String(base64Salt); // Decode the Base64 string to get the salt byte array
+            var pbkdf2 = new Rfc2898DeriveBytes(enteredPassword, salt, 10000);
+            byte[] hash = pbkdf2.GetBytes(20);
 
-            return Convert.ToHexString(hash);
+            return Convert.ToBase64String(hash) == storedPass;
         }
+
 
         public User GetUser(string Email)
         {

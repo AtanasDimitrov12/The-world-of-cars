@@ -418,7 +418,7 @@ namespace Database
             finally { connectionString.Close(); }
         }
 
-        public string AddUser(string Username, string email, string password, int LicenseNumber, DateTime CreatedOn, byte[] Salt)
+        public string AddUser(string Username, string email, string password, int LicenseNumber, DateTime CreatedOn, string Salt)
         {
             int rows = -1;
             try
@@ -435,7 +435,7 @@ namespace Database
                 cmd.Parameters.AddWithValue("@Password", password);
                 cmd.Parameters.AddWithValue("@LicenseNumber", LicenseNumber);
                 cmd.Parameters.AddWithValue("@CreatedOn", CreatedOn);
-                cmd.Parameters.AddWithValue("@Salt", Salt.ToString());
+                cmd.Parameters.AddWithValue("@Salt", Salt);
 
                 rows = cmd.ExecuteNonQuery();
                 return "done";

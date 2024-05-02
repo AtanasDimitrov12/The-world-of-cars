@@ -21,7 +21,7 @@ namespace InterfaceLayer
         string AddCarNews(string Author, string Title, DateTime DatePosted, string NewsDescription, string ImageURL, string Intro);
         string UpdateNews(CarNews news);
         string AddComment(int NewsId, int UserId, DateTime CommentDate, string Content);
-        string AddUser(string Username, string email, string password, int LicenseNumber, DateTime CreatedOn, byte[] Salt);
+        string AddUser(string Username, string email, string password, int LicenseNumber, DateTime CreatedOn, string Salt);
         string UpdateUser(int userId, string Username, string email, string password, int _licenseNumber, DateTime CreatedOn);
         string AddAdmin(string Username, string email, string password, string PhoneNumber, DateTime CreatedOn);
         string UpdateAdministration(int adminId, string username, string email, string passwordHash, string phoneNumber, DateTime createdOn);
