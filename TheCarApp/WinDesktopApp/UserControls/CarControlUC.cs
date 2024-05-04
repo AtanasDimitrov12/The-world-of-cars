@@ -38,34 +38,7 @@ namespace DesktopApp
             addCar.Show();
         }
 
-        private void BTNModifyCar_Click(object sender, EventArgs e)
-        {
-            //if (LBCars.SelectedItem != null)
-            //{
-            //    try
-            //    {
-            //string CarInfo = LBCars.SelectedItem.ToString();
-            //foreach (var selectedCar in carManager.GetCars())
-            //{
-            //    if (selectedCar.GetInfo() == CarInfo)
-            //    {
-            //        AddCar addCar = new AddCar(selectedCar, carManager, extraManager, pictureManager);
-            //        addCar.Show();
-            //    }
-            //}
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Please first select a car to modify from the List box!");
-            //}
-
-
-        }
+        
 
         private void RBAsc_CheckedChanged(object sender, EventArgs e)
         {
@@ -133,7 +106,7 @@ namespace DesktopApp
             addPicture.Show();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DGVCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Check if the click is on the 'Modify' button column
             if (e.ColumnIndex == DGVCars.Columns["Modify"].Index && e.RowIndex >= 0)

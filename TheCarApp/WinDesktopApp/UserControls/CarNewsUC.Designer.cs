@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            LBCarNews = new ListBox();
             groupBox2 = new GroupBox();
             RBDESC = new RadioButton();
             RBASC = new RadioButton();
@@ -39,20 +38,12 @@
             label5 = new Label();
             BTNAddNews = new Button();
             groupBox1 = new GroupBox();
-            BTNModifyNews = new Button();
+            DGVNews = new DataGridView();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DGVNews).BeginInit();
             SuspendLayout();
-            // 
-            // LBCarNews
-            // 
-            LBCarNews.FormattingEnabled = true;
-            LBCarNews.Location = new Point(305, 44);
-            LBCarNews.Margin = new Padding(5, 4, 5, 4);
-            LBCarNews.Name = "LBCarNews";
-            LBCarNews.Size = new Size(363, 564);
-            LBCarNews.TabIndex = 8;
             // 
             // groupBox2
             // 
@@ -156,7 +147,7 @@
             BTNAddNews.Location = new Point(34, 48);
             BTNAddNews.Margin = new Padding(5, 4, 5, 4);
             BTNAddNews.Name = "BTNAddNews";
-            BTNAddNews.Size = new Size(167, 53);
+            BTNAddNews.Size = new Size(167, 59);
             BTNAddNews.TabIndex = 20;
             BTNAddNews.Text = "Add news";
             BTNAddNews.UseVisualStyleBackColor = true;
@@ -164,7 +155,6 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(BTNModifyNews);
             groupBox1.Controls.Add(BTNAddNews);
             groupBox1.Location = new Point(16, 437);
             groupBox1.Margin = new Padding(5, 4, 5, 4);
@@ -175,39 +165,37 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Actions";
             // 
-            // BTNModifyNews
+            // DGVNews
             // 
-            BTNModifyNews.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNModifyNews.Location = new Point(34, 111);
-            BTNModifyNews.Margin = new Padding(5, 4, 5, 4);
-            BTNModifyNews.Name = "BTNModifyNews";
-            BTNModifyNews.Size = new Size(167, 53);
-            BTNModifyNews.TabIndex = 21;
-            BTNModifyNews.Text = "Modify news";
-            BTNModifyNews.UseVisualStyleBackColor = true;
-            BTNModifyNews.Click += BTNModifyNews_Click;
+            DGVNews.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGVNews.Location = new Point(392, 116);
+            DGVNews.Name = "DGVNews";
+            DGVNews.RowHeadersWidth = 51;
+            DGVNews.Size = new Size(691, 320);
+            DGVNews.TabIndex = 22;
+            DGVNews.CellContentClick += DGVNews_CellContentClick;
             // 
             // CarNewsUC
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(DGVNews);
             Controls.Add(groupBox1);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
-            Controls.Add(LBCarNews);
             Margin = new Padding(5, 4, 5, 4);
             Name = "CarNewsUC";
-            Size = new Size(712, 667);
+            Size = new Size(1156, 667);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DGVNews).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private System.Windows.Forms.ListBox LBCarNews;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton RBDESC;
         private System.Windows.Forms.RadioButton RBASC;
@@ -218,6 +206,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button BTNAddNews;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button BTNModifyNews;
+        private DataGridView DGVNews;
     }
 }

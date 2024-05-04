@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using InterfaceLayer;
 using Manager_Layer;
+using EntityLayout;
 
 namespace DesktopApp
 {
@@ -26,7 +27,8 @@ namespace DesktopApp
             this.peopleManager = pm;
             this.newsManager = nw;
             News = newsManager.news;
-            DisplayNews(News);
+            InitializeGridView();
+            FillDataGridView(News);
         }
 
         private void BTNAddNews_Click(object sender, EventArgs e)
@@ -35,64 +37,75 @@ namespace DesktopApp
             addNews.Show();
         }
 
-        private void BTNModifyNews_Click(object sender, EventArgs e)
+        private void InitializeGridView()
         {
-            try 
+            this.DGVNews.ColumnCount = 3;
+            this.DGVNews.Columns[0].Name = "Title";
+            this.DGVNews.Columns[0].Width = 200;
+            this.DGVNews.Columns[1].Name = "Author";
+            this.DGVNews.Columns[1].Width = 150;
+            this.DGVNews.Columns[2].Name = "Date";
+            this.DGVNews.Columns[2].Width = 150;
+
+            var btnModify = new DataGridViewButtonColumn();
+            btnModify.Name = "Modify";
+            btnModify.HeaderText = "Modify";
+            btnModify.Text = "Modify";
+
+            btnModify.UseColumnTextForButtonValue = true;
+            DGVNews.Columns.Add(btnModify);
+        }
+
+        private void FillDataGridView(List<CarNews> news)
+        {
+            this.DGVNews.Rows.Clear();
+            foreach (var carNews in news)
             {
-                if (LBCarNews.SelectedItem != null)
-                {
-                    string CarInfo = LBCarNews.SelectedItem.ToString(); 
-                    foreach (var news in newsManager.news)
-                    {
-                        if ($"{news.Title} - {news.ReleaseDate}" == CarInfo)
-                        {
-                            AddNews addNews = new AddNews(news, newsManager);
-                            addNews.Show();
-                        }
-                    }
-                }
-                else 
-                {
-                    MessageBox.Show("You should select the existing news first!");
-                }
-                
+                this.DGVNews.Rows.Add(carNews.Title, carNews.Author, carNews.ReleaseDate);
             }
-            catch (Exception ex) 
-            {
-                MessageBox.Show(ex.Message);
-            }
-            
         }
 
         private void RBASC_CheckedChanged(object sender, EventArgs e)
         {
             News.Sort(new CarNewsDateAscendingComparer());
-            DisplayNews(News);
+            FillDataGridView(News);
         }
 
         private void RBDESC_CheckedChanged(object sender, EventArgs e)
         {
             News.Sort(new CarNewsDateDescendingComparer());
-            DisplayNews(News);
+            FillDataGridView(News);
         }
 
-        public void DisplayNews(List<CarNews> displayNews)
-        {
-            LBCarNews.Items.Clear();
-            foreach (CarNews carNews in displayNews)
-            {
-                LBCarNews.Items.Add($"{carNews.Title} - {carNews.ReleaseDate}");
-            }
-        }
+        
 
         private void BTNSearchByTitle_Click(object sender, EventArgs e)
         {
-            LBCarNews.Items.Clear();
             string title = TBNewsTitle.Text;
             var filteredNews = newsManager.news.Where(news => news.Title == title).ToList();
-            foreach (var news in filteredNews)
+            FillDataGridView(filteredNews);
+        }
+
+        private void DGVNews_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == DGVNews.Columns["Modify"].Index && e.RowIndex >= 0)
             {
-                LBCarNews.Items.Add($"{news.Title} - {news.ReleaseDate}");
+                if (e.RowIndex != -1)
+                {
+
+                    var newsTitle = DGVNews.Rows[e.RowIndex].Cells["Title"].Value.ToString();
+                    var newsAuthor = DGVNews.Rows[e.RowIndex].Cells["Author"].Value.ToString();
+
+                    foreach (var selectedNews in newsManager.news)
+                    {
+                        if (selectedNews.Title == newsTitle && selectedNews.Author == newsAuthor)
+                        {
+                            AddNews addNews = new AddNews(selectedNews, newsManager);
+                            addNews.Show();
+                            break;
+                        }
+                    }
+                }
             }
         }
     }

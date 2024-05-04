@@ -31,7 +31,6 @@
             groupBox1 = new GroupBox();
             BTNAddPics = new Button();
             BTNAddExtras = new Button();
-            BTNModifyCar = new Button();
             BTNAddCar = new Button();
             groupBox3 = new GroupBox();
             TBSearchByYear = new TextBox();
@@ -52,13 +51,12 @@
             // 
             groupBox1.Controls.Add(BTNAddPics);
             groupBox1.Controls.Add(BTNAddExtras);
-            groupBox1.Controls.Add(BTNModifyCar);
             groupBox1.Controls.Add(BTNAddCar);
-            groupBox1.Location = new Point(18, 375);
+            groupBox1.Location = new Point(18, 401);
             groupBox1.Margin = new Padding(5, 4, 5, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(5, 4, 5, 4);
-            groupBox1.Size = new Size(240, 272);
+            groupBox1.Size = new Size(240, 224);
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
             groupBox1.Text = "Actions";
@@ -86,18 +84,6 @@
             BTNAddExtras.Text = "Add Extras";
             BTNAddExtras.UseVisualStyleBackColor = true;
             BTNAddExtras.Click += BTNAddExtras_Click;
-            // 
-            // BTNModifyCar
-            // 
-            BTNModifyCar.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNModifyCar.Location = new Point(35, 211);
-            BTNModifyCar.Margin = new Padding(5, 4, 5, 4);
-            BTNModifyCar.Name = "BTNModifyCar";
-            BTNModifyCar.Size = new Size(167, 53);
-            BTNModifyCar.TabIndex = 21;
-            BTNModifyCar.Text = "Modify car";
-            BTNModifyCar.UseVisualStyleBackColor = true;
-            BTNModifyCar.Click += BTNModifyCar_Click;
             // 
             // BTNAddCar
             // 
@@ -213,9 +199,9 @@
             DGVCars.Location = new Point(284, 94);
             DGVCars.Name = "DGVCars";
             DGVCars.RowHeadersWidth = 51;
-            DGVCars.Size = new Size(1064, 418);
+            DGVCars.Size = new Size(1027, 418);
             DGVCars.TabIndex = 26;
-            DGVCars.CellContentClick += dataGridView1_CellContentClick;
+            DGVCars.CellContentClick += DGVCars_CellContentClick;
             // 
             // CarControlUC
             // 
@@ -227,7 +213,7 @@
             Controls.Add(groupBox2);
             Margin = new Padding(5, 4, 5, 4);
             Name = "CarControlUC";
-            Size = new Size(1374, 669);
+            Size = new Size(1318, 669);
             groupBox1.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
@@ -240,7 +226,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button BTNModifyCar;
         private System.Windows.Forms.Button BTNAddCar;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button BTNSearch;
