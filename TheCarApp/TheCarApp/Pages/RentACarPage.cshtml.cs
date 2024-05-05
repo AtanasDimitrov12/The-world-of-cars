@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Entity_Layer; // Ensure this namespace correctly references where your Car and other entities are defined
+using Entity_Layer;
 using Manager_Layer;
-using Microsoft.AspNetCore.Authorization; // This should reference your service layer or business logic
+using Microsoft.AspNetCore.Authorization;
 using Entity_Layer;
 using EntityLayout;
 using ManagerLayer;
@@ -14,7 +14,7 @@ namespace TheCarApp.Pages
     [Authorize]
     public class RentACarPageModel : PageModel
     {
-        private ProjectManager projectManager = new ProjectManager(); // Assuming CarManager has the necessary methods
+        private ProjectManager projectManager = new ProjectManager(); 
 
         public Car Car { get; set; }
 
@@ -24,7 +24,7 @@ namespace TheCarApp.Pages
 
         public void OnGet(int carId)
         {
-            Car = projectManager.carManager.GetCarById(carId); // Method to get the car details
+            Car = projectManager.carManager.GetCarById(carId); 
             if (Car == null)
             {
                 RedirectToPage("/NotFound");

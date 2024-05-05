@@ -50,19 +50,26 @@ namespace DesktopApp
 
         private void BTNDelete_Click(object sender, EventArgs e)
         {
-            string DeleteComment = LBComments.SelectedItem.ToString();
-            foreach (CarNews news in newsManager.news)
+            if (LBComments.SelectedItem != null)
             {
-                if (news.Title == CBNews.Text)
+                string DeleteComment = LBComments.SelectedItem.ToString();
+                foreach (CarNews news in newsManager.news)
                 {
-                    foreach (Comment comm in news.comments)
+                    if (news.Title == CBNews.Text)
                     {
-                        if (comm.Message == DeleteComment)
+                        foreach (Comment comm in news.comments)
                         {
-                            news.RemoveComment(comm);
+                            if (comm.Message == DeleteComment)
+                            {
+                                news.RemoveComment(comm);
+                            }
                         }
                     }
                 }
+            }
+            else 
+            {
+                MessageBox.Show("Please first select a comment!");
             }
         }
     }

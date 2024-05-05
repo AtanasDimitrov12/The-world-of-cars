@@ -108,27 +108,19 @@ namespace DesktopApp
 
         private void DGVCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Check if the click is on the 'Modify' button column
             if (e.ColumnIndex == DGVCars.Columns["Modify"].Index && e.RowIndex >= 0)
             {
-                // Ensure that the row index is valid
                 if (e.RowIndex != -1)
                 {
-                    // Extract car information from the clicked row
-                    
                     var carVIN = DGVCars.Rows[e.RowIndex].Cells["VIN"].Value.ToString();
 
-                    // Concatenate the car information to match the format expected by GetInfo()
-
-                    // Loop through the cars managed by carManager to find the matching car
                     foreach (var selectedCar in carManager.GetCars())
                     {
                         if (selectedCar.VIN == carVIN)
                         {
-                            // Assuming AddCar is a form that takes a car object and other managers as parameters
                             AddCar addCar = new AddCar(selectedCar, carManager, extraManager, pictureManager);
-                            addCar.Show(); // Display the AddCar form
-                            break; // Exit the loop after finding the matching car
+                            addCar.Show();
+                            break; 
                         }
                     }
                 }
