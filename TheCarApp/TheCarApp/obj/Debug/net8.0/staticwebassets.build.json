@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zDuj6QSaXbRt3s2knuVnIK+LP1KMY4HLD9kmvQZiqkg=",
+  "Hash": "zD7ivXfgniYXgrQxt5YSNmQPt/pB2+b7tK2hkySrcfA=",
   "Source": "TheCarApp",
   "BasePath": "_content/TheCarApp",
   "Mode": "Default",
@@ -1459,6 +1459,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\pictures\\Dacia.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Fiat500X.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/Fiat500X.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\Fiat500X.jpg"
     },
     {
       "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\GT1000.jpg",

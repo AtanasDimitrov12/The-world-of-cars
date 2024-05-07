@@ -303,12 +303,14 @@ footer {
     z-index: 999;
 }
 
-.footer h5 {
-    color: white;
+.footer h4 {
+    font-size: 18px;
+    color: white !important;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-.footer p {
+.footer p2 {
     margin-bottom: 5px;
 }
 

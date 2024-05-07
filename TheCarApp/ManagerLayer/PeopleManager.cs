@@ -46,13 +46,13 @@ namespace ManagerLayer
                 case User user:
                     var (hash, salt) = HashPassword(user.password);
                     user.password = hash;
-                    user.passSalt = salt; // Store the salt as a Base64 string
+                    user.passSalt = salt; 
                     return _userRepository.AddUser(user);
 
                 case Administrator admin:
                     (hash, salt) = HashPassword(admin.password);
                     admin.password = hash;
-                    admin.passSalt = salt; // Store the salt as a Base64 string
+                    admin.passSalt = salt;
                     return _administratorRepository.AddAdmin(admin);
 
                 default:
@@ -63,13 +63,11 @@ namespace ManagerLayer
 
         public (string Hash, string Salt) HashPassword(string password)
         {
-            byte[] salt = RandomNumberGenerator.GetBytes(16); // Generate a 128-bit salt
+            byte[] salt = RandomNumberGenerator.GetBytes(16); 
 
-            // Use PBKDF2 to hash the password
-            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000); // 10,000 iterations
-            byte[] hash = pbkdf2.GetBytes(20); // Generate a 160-bit hash
+            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000); 
+            byte[] hash = pbkdf2.GetBytes(20); 
 
-            // Convert both hash and salt into Base64 strings for easy storage
             return (Convert.ToBase64String(hash), Convert.ToBase64String(salt));
         }
 
@@ -105,7 +103,7 @@ namespace ManagerLayer
             {
                 if (user.email == UserEmail)
                 {
-                    if (VerifyPassword(UserPass, user.password, user.passSalt)) // Parolite sa razlichni
+                    if (VerifyPassword(UserPass, user.password, user.passSalt)) 
                     {
                         return true;
                     }
@@ -117,7 +115,7 @@ namespace ManagerLayer
 
         public bool VerifyPassword(string enteredPassword, string storedPass, string base64Salt)
         {
-            byte[] salt = Convert.FromBase64String(base64Salt); // Decode the Base64 string to get the salt byte array
+            byte[] salt = Convert.FromBase64String(base64Salt); 
             var pbkdf2 = new Rfc2898DeriveBytes(enteredPassword, salt, 10000);
             byte[] hash = pbkdf2.GetBytes(20);
 

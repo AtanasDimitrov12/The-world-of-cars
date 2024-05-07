@@ -289,6 +289,10 @@
       "PackagePath": "staticwebassets\\pictures\\Dacia.jpg"
     },
     {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Fiat500X.jpg",
+      "PackagePath": "staticwebassets\\pictures\\Fiat500X.jpg"
+    },
+    {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\GT1000.jpg",
       "PackagePath": "staticwebassets\\pictures\\GT1000.jpg"
     },
