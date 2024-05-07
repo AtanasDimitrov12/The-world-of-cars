@@ -1,0 +1,88 @@
+body {
+    background-color: #c4c4c4;
+}
+
+.page-heading {
+    width: 100vw;
+    height: 0vw;
+    position: relative;
+    text-align: center;
+    background: url(/pictures/Marketplace.jpg) no-repeat center/cover;
+    padding: 230px 0;
+    color: white;
+    z-index: 4;
+    margin-left: calc(-50vw + 50%);
+}
+
+    .page-heading::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+
+    .page-heading h1 {
+        font-size: 46px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 16px;
+    }
+
+    .page-heading span {
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: block;
+    }
+
+.img-fluid {
+    width: 100%; /* Ensures responsiveness */
+    cursor: pointer; /* Indicates that the image is clickable */
+}
+
+
+.services h4 {
+    color: black;
+    font-weight: 550;
+}
+
+.services p {
+    margin-left: 20px;
+    font-weight: 600;
+}
+
+.services .col-md-5 h2 {
+    color: black;
+    margin-left: 100px;
+}
+
+.form-actions {
+    margin: 10px 0; /* Adjust as necessary */
+    padding: 0;
+}
+
+.filled-button {
+    background-color: #a4c639;
+    color: #fff;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 12px 30px;
+    border-radius: 30px;
+    display: inline-block;
+    transition: all 0.3s;
+    border: none; /* Ensure no default borders */
+    cursor: pointer; /* Makes it clear the button is clickable */
+    transition: all 0.3s; /* Smooth transition for hover effects */
+
+}
+
+    .filled-button:hover {
+        background-color: #fff;
+        color: #a4c639;
+    }
+

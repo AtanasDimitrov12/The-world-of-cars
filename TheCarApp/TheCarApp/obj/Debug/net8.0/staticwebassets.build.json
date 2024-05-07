@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zD7ivXfgniYXgrQxt5YSNmQPt/pB2+b7tK2hkySrcfA=",
+  "Hash": "eEznH4hP2/Pjv6OeAFM4KieuNLrfKbnpDx4KV/OftYY=",
   "Source": "TheCarApp",
   "BasePath": "_content/TheCarApp",
   "Mode": "Default",
@@ -150,6 +150,25 @@
       "OriginalItemSpec": "wwwroot\\css\\Register.css"
     },
     {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\rent.css",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "css/rent.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\rent.css"
+    },
+    {
       "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\site.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
@@ -188,12 +207,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\js\\BrandsModels.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\js\\rent.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
-      "RelativePath": "js/BrandsModels.js",
+      "RelativePath": "js/rent.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -204,7 +223,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\BrandsModels.js"
+      "OriginalItemSpec": "wwwroot\\js\\rent.js"
     },
     {
       "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\js\\site.js",
