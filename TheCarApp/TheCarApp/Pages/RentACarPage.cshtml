@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Rent a car";
 }
-<link rel="stylesheet" href="~/css/rent.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/rent.css" asp-append-version="true"/>
 <script src="~/js/rent.js" asp-append-version="true"></script>
 
 
@@ -12,9 +12,6 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>@Model.Car.brand @Model.Car.Model</h1>
-                <span>
-                    The fastest car on the road
-                </span>
             </div>
         </div>
     </div>
@@ -162,7 +159,6 @@
                     <li class ="list-group-item">
                     <h2>Rent your car now!</h2><br>
                     </li>
-                    <!-- New fields for rental date selection and price calculation -->
                     <li class="list-group-item">
                         <div class="clearfix">
                             <span class="pull-left">Start Date</span>
@@ -184,7 +180,7 @@
                     <li class="list-group-item">
                         <button type="button" class="filled-button" onclick="calculatePrice()">RENT</button>
                     </li>
-                    <div id="error" style="color: red;"></div> <!-- Error message display -->
+                    <div id="error" style="color: red;"></div>
                 </form>
             </div>
         </div>

@@ -67,7 +67,7 @@ namespace Manager_Layer
 
             }
 
-        public string UpdateCar(Car car)
+        public string UpdateCar(Car car, List<Picture> pictures, List<Extra> extras)
         {
             string MessageCar = _dataWriter.UpdateCar(car);
             if (MessageCar == "done")
@@ -81,13 +81,15 @@ namespace Manager_Layer
                         string MessageRemoveExtras = _dataWriter.RemoveCarExtras(car.Id);
                         if (MessageRemoveExtras == "done")
                         {
-                            foreach (Picture pic in car.Pictures)
+                            foreach (Picture pic in pictures)
                             {
                                 _dataWriter.AddCarPictures(car.Id, pic.Id);
+                                car.AddPicture(pic);
                             }
-                            foreach (Extra extra in car.CarExtras)
+                            foreach (Extra extra in extras)
                             {
                                 _dataWriter.AddCarExtras(car.Id, extra.Id);
+                                car.AddExtra(extra);
                             }
                             return "done";
                         }

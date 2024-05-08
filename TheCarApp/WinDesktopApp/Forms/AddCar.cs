@@ -129,7 +129,7 @@ namespace DesktopApp
                 else
                 {
                     UpdateCarData();
-                    string ReturnMessage = manager.UpdateCar(carData);
+                    string ReturnMessage = manager.UpdateCar(carData, pictures, extras);
                     if (ReturnMessage == "done")
                     {
                         this.Close();

@@ -12,7 +12,7 @@ namespace InterfaceLayer
     {
         string AddCar(Car car, List<Picture> pictures, List<Extra> extras);
         string RemoveCar(Car car, Picture picture, Extra extra);
-        string UpdateCar(Car car);
+        string UpdateCar(Car car, List<Picture> pictures, List<Extra> extras);
         Car SearchForCar(int index);
         List<Car> GetCars();
         List<Car> GetCarsASC();
