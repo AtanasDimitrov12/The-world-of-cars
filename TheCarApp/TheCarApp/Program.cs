@@ -7,10 +7,9 @@ using System;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<ProjectManager, ProjectManager>();
-// Add services to the container.
+
 builder.Services.AddRazorPages();
 
-// Setup authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
