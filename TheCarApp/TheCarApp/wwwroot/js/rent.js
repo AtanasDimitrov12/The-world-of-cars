@@ -1,6 +1,6 @@
 ﻿function updateMainImage(element) {
     var mainImage = document.getElementById('mainImage');
-    mainImage.src = element.src;  // Updates the source of the main image to the clicked thumbnail's source
+    mainImage.src = element.src;  
 }
 
 document.getElementById('endDate').addEventListener('change', calculatePrice);

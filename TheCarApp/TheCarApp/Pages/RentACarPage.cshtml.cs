@@ -14,20 +14,52 @@ namespace TheCarApp.Pages
     [Authorize]
     public class RentACarPageModel : PageModel
     {
-        private ProjectManager projectManager = new ProjectManager(); 
+        private readonly ProjectManager projectManager;
 
         public Car Car { get; set; }
+        public User user { get; set; }
+        public string UserEmail { get; set; }
+        public decimal PricePerDay { get; set; }
 
-        public RentACarPageModel()
+        public RentACarPageModel(ProjectManager _projectManager)
         {
+            projectManager = _projectManager;
         }
+    
 
         public void OnGet(int carId)
         {
-            Car = projectManager.carManager.GetCarById(carId); 
+            Car = projectManager.carManager.GetCarById(carId);
+            PricePerDay = Car.PricePerDay;
             if (Car == null)
             {
                 RedirectToPage("/NotFound");
+            }
+            UserEmail = User.Identity.Name;
+            user = projectManager.peopleManager.GetUser(UserEmail);
+        }
+
+
+
+        public IActionResult OnPostSubmitRental(DateTime startDate, DateTime endDate)
+        {
+            if (user == null || Car == null)
+            {
+                return new JsonResult(new { success = false, message = "User or car not found." });
+            }
+            if (endDate <= startDate)
+            {
+                return new JsonResult(new { success = false, message = "End date must be after start date." });
+            }
+            try
+            {
+                projectManager.rentManager.RentACar(user, Car, startDate, endDate);
+                var data = new { success = true, message = "Success" };
+                return new JsonResult(data);
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult(new { success = false, message = ex.Message });
             }
         }
     }

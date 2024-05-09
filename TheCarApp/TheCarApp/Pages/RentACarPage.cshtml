@@ -4,7 +4,103 @@
     ViewData["Title"] = "Rent a car";
 }
 <link rel="stylesheet" href="~/css/rent.css" asp-append-version="true"/>
-<script src="~/js/rent.js" asp-append-version="true"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialize event listeners after DOM is fully loaded
+        document.getElementById('endDate').addEventListener('change', calculatePrice);
+        document.getElementById('startDate').addEventListener('change', calculatePrice);
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // Function to open the modal
+        window.openModal = function () {
+            modal.style.display = "block";
+        }
+
+        // Function to close the modal if the user clicks anywhere outside of the modal content
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    });
+
+    function updateMainImage(element) {
+        var mainImage = document.getElementById('mainImage');
+        mainImage.src = element.src;
+    }
+
+    function calculatePrice() {
+        var startDate = new Date(document.getElementById('startDate').value);
+        var endDate = new Date(document.getElementById('endDate').value);
+        var today = new Date();
+        today.setHours(0, 0, 0, 0); // Normalize today date to remove time part
+
+        var errorDiv = document.getElementById('error');
+        var totalPriceDiv = document.getElementById('totalPrice');
+
+        // Clear previous messages
+        errorDiv.innerHTML = '';
+        totalPriceDiv.innerHTML = '';
+
+        // Check if start date is before today's date
+        if (startDate < today) {
+            errorDiv.innerHTML = 'Error: Start date cannot be before today.';
+            return;
+        }
+
+        // Check if the end date is before the start date
+        if (endDate <= startDate) {
+            errorDiv.innerHTML = 'Error: End date must be after the start date.';
+            return;
+        }
+
+        // Calculate the total days
+        var timeDiff = endDate - startDate;
+        var days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+        // Assuming price per day is fetched from the model or defined in your script
+        var pricePerDay = @Model.Car.PricePerDay; // Use the server-side price per day
+        var totalPrice = days * pricePerDay;
+        totalPriceDiv.innerHTML = totalPrice + ' euro';
+    }
+
+    function submitRental() {
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+
+        fetch('/api/rental/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ startDate, endDate })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    openModal();
+                } else {
+                    alert('Failed to book the car. Please try again!');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Failed to book rental. Please try again.' + error);
+            });
+    }
+
+
+</script>
 
 
 <div class="page-heading header-text">
@@ -23,7 +119,6 @@
         <div class="row">
             <div class="col-md-7">
                 <div>
-                    <!-- Main image that will be updated -->
                     <img src="@("/pictures/" + Model.Car.Pictures.FirstOrDefault()?.PictureURL)" alt="@Model.Car.brand" class="img-fluid wc-image" id="mainImage">
                 </div>
                 <br>
@@ -32,7 +127,6 @@
                     {
                         <div class="col-sm-4 col-6">
                             <div>
-                                <!-- Thumbnails -->
                                 <img src="/pictures/@pic.PictureURL" alt="Car's pictures" class="img-fluid" onclick="updateMainImage(this)">
                             </div>
                             <br>
@@ -147,7 +241,7 @@
                             <div class="clearfix">
                                 <span class="pull-left">Price per day</span>
 
-                                <strong class="pull-right">@Model.Car.PricePerDay</strong>
+                                <strong class="pull-right">@Model.Car.PricePerDay&#8364;</strong>
                             </div>
                         </li>
                     </ul>
@@ -155,9 +249,9 @@
 
                 <br>
 
-                <form action="/submit-rental" method="post" class="form" id="rentalForm">
-                    <li class ="list-group-item">
-                    <h2>Rent your car now!</h2><br>
+                <form method="post" class="form" id="rentalForm" onsubmit="event.preventDefault(); submitRental();">
+                    <li class="list-group-item">
+                        <h2>Rent your car now!</h2><br>
                     </li>
                     <li class="list-group-item">
                         <div class="clearfix">
@@ -178,10 +272,12 @@
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <button type="button" class="filled-button" onclick="calculatePrice()">RENT</button>
+                        @* <button type="button" class="filled-button" onclick="calculatePrice()">Calculate</button> *@
+                        <input type="submit" class="filled-button" value="Rent">
                     </li>
                     <div id="error" style="color: red;"></div>
                 </form>
+
             </div>
         </div>
         <br><br>
@@ -218,3 +314,11 @@
         <br>
     </div>
 </div>
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Congratulations, you successfully booked that car! Come to our office to sign the contract!</p>
+    </div>
+</div>
+

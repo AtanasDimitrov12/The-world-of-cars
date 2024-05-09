@@ -20,9 +20,6 @@ namespace TheCarApp.Pages
         public void OnGet()
         {
             UserEmail = User.Identity.Name;
-            // This retrieves the email claim you set during the authentication process
-
-
             user = _projectManager.peopleManager.GetUser(UserEmail);
             
 
