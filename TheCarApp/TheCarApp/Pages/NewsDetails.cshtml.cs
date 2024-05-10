@@ -17,15 +17,15 @@ namespace TheCarApp.Pages
         [BindProperty]
         public Comment NewComment { get; set; }
 
-        public NewsDetailsModel()
+        public NewsDetailsModel(ProjectManager pm)
         {
-            projectManager = new ProjectManager(); // Assuming CarManager has the necessary methods
+            projectManager = pm; 
             NewComment = new Comment();
         }
 
         public void OnGet(int NewsId)
         {
-            news = projectManager.newsManager.GetNewsById(NewsId); // Method to get the car details
+            news = projectManager.newsManager.GetNewsById(NewsId); 
             if (news == null)
             {
                 RedirectToPage("/NotFound");
@@ -39,10 +39,8 @@ namespace TheCarApp.Pages
                 return Page();
             }
 
-            // Initialize news in the POST method as well
             news = projectManager.newsManager.GetNewsById(NewsId);
 
-            // Check if news exists before proceeding
             if (news == null)
             {
                 return RedirectToPage("/NotFound");

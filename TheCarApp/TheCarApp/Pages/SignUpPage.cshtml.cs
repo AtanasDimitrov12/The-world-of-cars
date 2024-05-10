@@ -16,7 +16,7 @@ namespace TheCarApp.Pages
         private ProjectManager _projectManager = new ProjectManager();
 
         [BindProperty]
-        public string Username { get; set; } // Assuming newUser has properties for Username, etc.
+        public string Username { get; set; }
         [BindProperty]
         public string Email { get; set; }
         [BindProperty]
@@ -31,18 +31,17 @@ namespace TheCarApp.Pages
 
         public void OnGet()
         {
-            // Intentionally left empty for demonstration
         }
 
         public async Task<IActionResult> OnPostSignUp()
         {
             if (!ModelState.IsValid)
             {
-                return Page(); // Return the same page to display validation errors
+                return Page(); 
             }
 
             var newUser = new User(0, Email,Password, Username, DateTime.Now, int.Parse(LicenseNumber), null);
-            _projectManager.peopleManager.AddPerson(newUser); // Assuming AddPerson handles null checks
+            _projectManager.peopleManager.AddPerson(newUser); 
             var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, Email)
