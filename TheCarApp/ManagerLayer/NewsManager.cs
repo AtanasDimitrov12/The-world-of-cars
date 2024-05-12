@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entity_Layer.Interfaces;
+using System.Xml.Linq;
 
 namespace Entity_Layer
 {
@@ -28,17 +29,57 @@ namespace Entity_Layer
             _dataRemover = dataRemover;
         }
 
-        public void AddNews(CarNews carnews)
+        public string AddNews(CarNews carnews)
         {
-            _dataWriter.AddCarNews(carnews.Author, carnews.Title, carnews.ReleaseDate, carnews.NewsDescription, carnews.ImageURL, carnews.ShortIntro);
-            carnews.Id = _dataWriter.GetNewsId(carnews.Title);
-            news.Add(carnews);
+            string Message = _dataWriter.AddCarNews(carnews.Author, carnews.Title, carnews.ReleaseDate, carnews.NewsDescription, carnews.ImageURL, carnews.ShortIntro);
+            if (Message == "done")
+            {
+                string SearchID = _dataWriter.GetNewsId(carnews.Title);
+                int NewsId;
+                if (int.TryParse(SearchID, out NewsId))
+                {
+                    carnews.Id = NewsId;
+                    news.Add(carnews);
+                    return "done";
+                }
+                else
+                {
+                    return SearchID;
+                }
+            }
+            else
+            {
+                return Message;
+            }
         }
 
-        public void DeleteNews(CarNews carnews)
+        public string DeleteNews(CarNews carnews)
         {
-            news.Remove(carnews);
-            _dataRemover.RemoveNews(carnews.Id);
+            string Message = _dataRemover.RemoveNews(carnews.Id);
+            if (Message == "done")
+            {
+
+                news.Remove(carnews);
+                return "done";
+            }
+            else
+            {
+                return Message;
+            }
+        }
+
+        public string UpdateNews(CarNews news)
+        {
+            string Message = _dataWriter.UpdateNews(news);
+            if (Message == "done")
+            {
+                return "done";
+            }
+            else
+            {
+                return Message;
+            }
+            
         }
 
         public CarNews GetNewsById(int id)
@@ -53,18 +94,27 @@ namespace Entity_Layer
             return null;
         }
 
-        public void LoadNews()
+        public string LoadNews()
         {
-            var carNewsList = _dataAccess.GetCarNews();
-            if (carNewsList != null)
+            try
             {
-                foreach (CarNewsDTO newsDTO in carNewsList)
+                var carNewsList = _dataAccess.GetCarNews();
+                if (carNewsList != null)
                 {
-                    var loadComments = newsDTO.comments.Select(comment => new Comment(comment.Id, comment.UserId, comment.Date, comment.Content)).ToList();
-                    var loadnews = new CarNews(newsDTO.Id, newsDTO.NewsDescription, newsDTO.ReleaseDate, newsDTO.ImageURL, newsDTO.Title, newsDTO.Author, newsDTO.ShortIntro, loadComments);
-                    news.Add(loadnews);
+                    foreach (CarNewsDTO newsDTO in carNewsList)
+                    {
+                        var loadComments = newsDTO.comments.Select(comment => new Comment(comment.Id, comment.UserId, comment.Date, comment.Content)).ToList();
+                        var loadnews = new CarNews(newsDTO.Id, newsDTO.NewsDescription, newsDTO.ReleaseDate, newsDTO.ImageURL, newsDTO.Title, newsDTO.Author, newsDTO.ShortIntro, loadComments);
+                        news.Add(loadnews);
+                    }
                 }
+                return "done";
             }
+            catch (ApplicationException ex)
+            {
+                return ex.Message;
+            }
+            
         }
     }
 }

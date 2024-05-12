@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Car News</h1>
-                <span>Find the car that fits you well!</span>
+                <span>Explore the best car news!</span>
             </div>
         </div>
     </div>
@@ -26,9 +26,9 @@
                     {
                         <article id='tabs-1'>
                             <img src="/pictures/@news.ImageURL" alt="News Profile Picture">
-                            <h4><a href="/NewsDetails">@news.Title</a></h4>
+                                <h4><a href="/NewsDetails/@news.Id">@news.Title</a></h4>
                             <div style="margin-bottom:10px;">
-                                            <span>@news.Author &nbsp;|&nbsp; @news.ReleaseDate &nbsp;|&nbsp; @news.NrOfMessages comments</span>
+                                            <span>@news.Author &nbsp;|&nbsp; @news.ReleaseDate &nbsp;|&nbsp; @news.comments.Count comments</span>
                             </div>
                                 <p>@news.ShortIntro</p>
                             <br>
@@ -41,19 +41,6 @@
                         <br>
                         <br>
                     }
-
-                    @* <article id='tabs-2'>
-                        <img src="/pictures/BMW3.jpg" alt="">
-                        <h4><a href="/NewsDetails">Mauris lobortis quam id dictum dignissim</a></h4>
-                        <div style="margin-bottom:10px;">
-                            <span>John Doe &nbsp;|&nbsp; 27.07.2020 10:10 &nbsp;|&nbsp; 10 comments</span>
-                        </div>
-                        <p>Sed ut dolor in augue cursus ultrices. Vivamus mauris turpis, auctor vel facilisis in, tincidunt vel diam. Sed vitae scelerisque orci. Nunc non magna orci. Aliquam commodo mauris ante, quis posuere nibh vestibulum sit amet</p>
-                        <br>
-                        <div>
-                            <a href="/NewsDetails" class="filled-button">Continue Reading</a>
-                        </div>
-                    </article> *@
                 </section>
             </div>
         </div>

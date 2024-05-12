@@ -13,7 +13,7 @@ namespace Entity_Layer
     {
         public int _licenseNumber { get; set; }
 
-        public User(int Id, string Email, string Password, string UserName, DateTime CreatedON, int License, byte[] passSalt) : base(Id, Email, Password, UserName, CreatedON, passSalt)
+        public User(int Id, string Email, string Password, string UserName, DateTime CreatedON, int License, string passSalt) : base(Id, Email, Password, UserName, CreatedON, passSalt)
         {
             this._licenseNumber = License;
         }

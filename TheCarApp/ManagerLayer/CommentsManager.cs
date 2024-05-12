@@ -1,5 +1,6 @@
 ﻿using Database;
 using Entity_Layer;
+using EntityLayout;
 using InterfaceLayer;
 using System;
 using System.Collections.Generic;
@@ -22,19 +23,48 @@ namespace ManagerLayer
             _dataRemover = dataRemover;
         }
 
-        public void AddComment(CarNews news, Comment comment)
+        public string AddComment(CarNews news, Comment comment)
         {
-            _dataWriter.AddComment(news.Id, comment.UserId, comment.Date, comment.Message);
-            comment.Id = _dataWriter.GetCommentId(comment.Date); // This assumes GetCommentId method exists and works as intended.
-            news.AddComment(comment);
+            string Message = _dataWriter.AddComment(news.Id, comment.UserId, comment.Date, comment.Message);
+            if (Message == "done")
+            {
+
+                string SearchID = _dataWriter.GetCommentId(comment.Date);
+                int CommentId;
+                if (int.TryParse(SearchID, out CommentId))
+                {
+                    comment.Id = CommentId;
+                    news.AddComment(comment);
+                    return "done";
+                }
+                else
+                {
+                    return SearchID;
+                }
+            }
+            else
+            {
+                return Message; 
+            }
+            
         }
 
         
 
-        public void RemoveComment(CarNews news, Comment comment)
+        public string RemoveComment(CarNews news, Comment comment)
         {
-            _dataRemover.RemoveComment(comment.Id);
-            news.RemoveComment(comment);
+
+            string Message = _dataRemover.RemoveComment(comment.Id);
+            if (Message == "done")
+            {
+
+                news.RemoveComment(comment);
+                return "done";
+            }
+            else
+            {
+                return Message;
+            }
         }
     }
 }

@@ -28,7 +28,8 @@ namespace DesktopApp
             this.carManager = cm;
             this.extraManager = em;
             this.pictureManager = picM;
-            DisplayCars(carManager.GetCars());
+            InitializeGridView();
+            FillDataGridView(carManager.GetCars());
         }
 
         private void BTNAddCar_Click(object sender, EventArgs e)
@@ -37,48 +38,60 @@ namespace DesktopApp
             addCar.Show();
         }
 
-        private void BTNModifyCar_Click(object sender, EventArgs e)
-        {
-            string CarInfo = LBCars.SelectedItem.ToString();
-            foreach (var selectedCar in carManager.GetCars())
-            {
-                if (selectedCar.GetInfo() == CarInfo)
-                {
-                    AddCar addCar = new AddCar(selectedCar, carManager, extraManager, pictureManager);
-                    addCar.Show();
-                }
-            }
-            
-        }
+        
 
         private void RBAsc_CheckedChanged(object sender, EventArgs e)
         {
-            DisplayCars(carManager.GetCarsDESC());
+            FillDataGridView(carManager.GetCarsDESC());
         }
 
         private void RBDesc_CheckedChanged(object sender, EventArgs e)
         {
-            DisplayCars(carManager.GetCarsASC());
+            FillDataGridView(carManager.GetCarsASC());
         }
 
-        public void DisplayCars(List<Car> sortedCars)
+
+        private void InitializeGridView()
         {
-            LBCars.Items.Clear();
-            foreach (Car car in sortedCars)
+            this.DGVCars.ColumnCount = 7;
+            this.DGVCars.Columns[0].Name = "Brand";
+            this.DGVCars.Columns[0].Width = 100;
+            this.DGVCars.Columns[1].Name = "Model";
+            this.DGVCars.Columns[1].Width = 100;
+            this.DGVCars.Columns[2].Name = "Year";
+            this.DGVCars.Columns[2].Width = 100;
+            this.DGVCars.Columns[3].Name = "Horse Power";
+            this.DGVCars.Columns[3].Width = 120;
+            this.DGVCars.Columns[4].Name = "Gearbox";
+            this.DGVCars.Columns[4].Width = 80;
+            this.DGVCars.Columns[5].Name = "Fuel";
+            this.DGVCars.Columns[5].Width = 80;
+            this.DGVCars.Columns[6].Name = "VIN";
+            this.DGVCars.Columns[6].Width = 180;
+
+            var btnModify = new DataGridViewButtonColumn();
+            btnModify.Name = "Modify";
+            btnModify.HeaderText = "Modify";
+            btnModify.Text = "Modify";
+
+            btnModify.UseColumnTextForButtonValue = true;
+            DGVCars.Columns.Add(btnModify);
+        }
+
+        private void FillDataGridView(List<Car> cars)
+        {
+            this.DGVCars.Rows.Clear();
+            foreach (var car in cars)
             {
-                LBCars.Items.Add(car.GetInfo());
+                this.DGVCars.Rows.Add(car.brand, car.Model, car.FirstRegistration, car.HorsePower, car.Gearbox, car.Fuel, car.VIN);
             }
         }
 
         private void BTNSearch_Click(object sender, EventArgs e)
         {
-            LBCars.Items.Clear();
             int year = int.Parse(TBSearchByYear.Text);
             var filteredCars = carManager.GetCars().Where(car => car.FirstRegistration.Year == year).ToList();
-            foreach (var car in filteredCars)
-            {
-                LBCars.Items.Add(car.GetInfo());
-            }
+            FillDataGridView(filteredCars);
         }
 
         private void BTNAddExtras_Click(object sender, EventArgs e)
@@ -92,5 +105,27 @@ namespace DesktopApp
             AddPicture addPicture = new AddPicture(pictureManager);
             addPicture.Show();
         }
+
+        private void DGVCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == DGVCars.Columns["Modify"].Index && e.RowIndex >= 0)
+            {
+                if (e.RowIndex != -1)
+                {
+                    var carVIN = DGVCars.Rows[e.RowIndex].Cells["VIN"].Value.ToString();
+
+                    foreach (var selectedCar in carManager.GetCars())
+                    {
+                        if (selectedCar.VIN == carVIN)
+                        {
+                            AddCar addCar = new AddCar(selectedCar, carManager, extraManager, pictureManager);
+                            addCar.Show();
+                            break; 
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

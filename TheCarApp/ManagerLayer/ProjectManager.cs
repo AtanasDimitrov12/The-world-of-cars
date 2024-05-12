@@ -23,9 +23,9 @@ namespace ManagerLayer
         public IPictureManager pictureManager { get; set; }
         public IUserRepository userRepository { get; set; }
         public IAdministratorRepository administratorRepository { get; set; }
-        IDataAccess dataAccess { get; set; }
-        IDataWriter dataWriter { get; set; }
-        IDataRemover dataRemover { get; set; }
+        public IDataAccess dataAccess { get; set; }
+        public IDataWriter dataWriter { get; set; }
+        public IDataRemover dataRemover { get; set; }
 
         public ProjectManager()
         {

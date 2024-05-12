@@ -79,12 +79,12 @@ namespace DesktopApp
             LBPictures.Items.Clear();
             foreach (var picture in pictures)
             {
-                LBPictures.Items.Add($"{picture.Id} - {picture.PictureURL}");
+                LBPictures.Items.Add($"{picture.PictureURL}");
             }
 
             foreach (var extra in extras)
             {
-                LBExtras.Items.Add($"{extra.Id} - {extra.extraName}");
+                LBExtras.Items.Add($"{extra.extraName}");
             }
         }
 
@@ -92,18 +92,18 @@ namespace DesktopApp
         {
             foreach (Extra extra in extraManager.extras)
             {
-                CBCarExtras.Items.Add($"{extra.Id} - {extra.extraName}");
+                CBCarExtras.Items.Add($"{extra.extraName}");
             }
             foreach (Picture pic in pictureManager.pictures)
             {
-                CBPictureURL.Items.Add($"{pic.Id} - {pic.PictureURL}");
+                CBPictureURL.Items.Add($"{pic.PictureURL}");
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
+        //private void groupBox1_Enter(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private void BTNAddCar_Click(object sender, EventArgs e)
         {
@@ -114,7 +114,12 @@ namespace DesktopApp
                     Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), TBCarFuel.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), TBCarColor.Text, TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text);
                     if (pictures.Count != 0 && extras.Count != 0)
                     {
-                        manager.AddCar(car, pictures, extras);
+                        string ReturnMessage = manager.AddCar(car, pictures, extras);
+                        if (ReturnMessage == "done")
+                        {
+                            this.Close();
+                        }
+                        else { MessageBox.Show(ReturnMessage); }
                     }
                     else
                     {
@@ -124,9 +129,13 @@ namespace DesktopApp
                 else
                 {
                     UpdateCarData();
-                    manager.UpdateCar(carData);
+                    string ReturnMessage = manager.UpdateCar(carData, pictures, extras);
+                    if (ReturnMessage == "done")
+                    {
+                        this.Close();
+                    }
+                    else { MessageBox.Show(ReturnMessage); }
                 }
-                this.Close();
             }
             catch (Exception ex)
             {
@@ -140,7 +149,7 @@ namespace DesktopApp
         {
             carData.brand = TBCarBrand.Text;
             carData.Model = TBCarModel.Text;
-            carData.FirstRegistration = DTPCarFirstReg.Value; 
+            carData.FirstRegistration = DTPCarFirstReg.Value;
             carData.Mileage = Convert.ToInt32(NUDCarMileage.Value);
             carData.Fuel = TBCarFuel.Text;
             carData.EngineSize = Convert.ToInt32(NUDCarEngineSize.Value);
@@ -151,22 +160,26 @@ namespace DesktopApp
             carData.PricePerDay = Convert.ToDecimal(TBCarPrice.Text);
             carData.NumberOfSeats = Convert.ToInt32(TBCarNumOfSeats.Text);
             carData.NumberOfDoors = TBCarNumOfDoors.Text;
-
         }
 
         private void BTNAddExtra_Click(object sender, EventArgs e)
         {
             int Index = CBCarExtras.SelectedIndex;
-            foreach (var ex in extras)
+            if (extras.Count > 0)
             {
-                if (ex != extraManager.extras[Index])
+                if (!extras.Contains(extraManager.extras[Index]))
                 {
                     extras.Add(extraManager.extras[Index]);
                 }
-                else 
+                else
                 {
                     MessageBox.Show("This extra is already added to that car!");
                 }
+
+            }
+            else
+            {
+                extras.Add(extraManager.extras[Index]);
             }
             AddToLB();
 
@@ -174,17 +187,30 @@ namespace DesktopApp
 
         private void BTNRemoveExtra_Click(object sender, EventArgs e)
         {
-            int Index = CBCarExtras.SelectedIndex;
-            extras.Remove(extraManager.extras[Index]);
+            string ExtraName = LBExtras.SelectedItem as string;
+            if (ExtraName != null)
+            {
+                foreach (var ex in extraManager.extras)
+                {
+                    if (ex.extraName == ExtraName)
+                    {
+                        extras.Remove(ex);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No item is selected.");
+            }
             AddToLB();
         }
 
         private void BTNAddPicture_Click(object sender, EventArgs e)
         {
             int Index = CBPictureURL.SelectedIndex;
-            foreach (var pic in pictures)
+            if (pictures.Count > 0)
             {
-                if (pic != pictureManager.pictures[Index])
+                if (!pictures.Contains(pictureManager.pictures[Index]))
                 {
                     pictures.Add(pictureManager.pictures[Index]);
                 }
@@ -192,14 +218,40 @@ namespace DesktopApp
                 {
                     MessageBox.Show("This picture is already added to that car!");
                 }
+
+            }
+            else
+            {
+                pictures.Add(pictureManager.pictures[Index]);
             }
             AddToLB();
         }
 
         private void BTNRemovePicture_Click(object sender, EventArgs e)
         {
-            int Index = CBPictureURL.SelectedIndex;
-            pictures.Remove(pictureManager.pictures[Index]);
+            string PicURL = LBPictures.SelectedItem as string;
+            try
+            {
+                if (PicURL != null)
+                {
+                    foreach (var pic in pictureManager.pictures)
+                    {
+                        if (pic.PictureURL == PicURL)
+                        {
+                            pictures.Remove(pic);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No item is selected.");
+                }
+                
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
             AddToLB();
         }
     }

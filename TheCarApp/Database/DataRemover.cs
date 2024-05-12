@@ -17,7 +17,7 @@ namespace DatabaseAccess
             connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
         }
 
-        public int RemoveCar(int CarId, int ExtraId, int PictureId)
+        public string RemoveCar(int CarId, int ExtraId, int PictureId)
         {
             int rows = -1;
             try
@@ -30,16 +30,17 @@ namespace DatabaseAccess
                 RemoveCarDescription(CarId);
                 RemoveCarExtras(CarId, ExtraId);
                 RemoveCarPictures(CarId, PictureId);
+
+                return "done";
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                return $"An error occurred: {ex.Message}";
             }
             finally { connectionString.Close(); }
-            return rows;
         }
 
-        public int RemoveCarDescription(int CarId)
+        public string RemoveCarDescription(int CarId)
         {
             int rows = -1;
             try
@@ -49,16 +50,17 @@ namespace DatabaseAccess
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@CarId", CarId);
                 rows = cmd.ExecuteNonQuery();
+
+                return "done";
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                return $"An error occurred: {ex.Message}";
             }
             finally { connectionString.Close(); }
-            return rows;
         }
 
-        public int RemoveCarExtras(int CarId, int ExtraId)
+        public string RemoveCarExtras(int CarId, int ExtraId)
         {
             int rows = -1;
             try
@@ -69,16 +71,16 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@CarId", CarId);
                 cmd.Parameters.AddWithValue("@ExtraId", ExtraId);
                 rows = cmd.ExecuteNonQuery();
+
+                return "done";
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
-            }
+                return $"An error occurred: {ex.Message}";     }
             finally { connectionString.Close(); }
-            return rows;
         }
 
-        public int RemoveCarPictures(int CarId, int PictureId)
+        public string RemoveCarPictures(int CarId, int PictureId)
         {
             int rows = -1;
             try
@@ -89,16 +91,17 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@CarId", CarId);
                 cmd.Parameters.AddWithValue("@PictureId", PictureId);
                 rows = cmd.ExecuteNonQuery();
+
+                return "done";
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                return $"An error occurred: {ex.Message}";
             }
             finally { connectionString.Close(); }
-            return rows;
         }
 
-        public int RemoveNews(int NewsId)
+        public string RemoveNews(int NewsId)
         {
             int rows = -1;
             try
@@ -108,16 +111,17 @@ namespace DatabaseAccess
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@NewsId", NewsId);
                 rows = cmd.ExecuteNonQuery();
+
+                return "done";
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                return $"An error occurred: {ex.Message}";
             }
             finally { connectionString.Close(); }
-            return rows;
         }
 
-        public int RemoveComment(int CommentId)
+        public string RemoveComment(int CommentId)
         {
             int rows = -1;
             try
@@ -127,16 +131,57 @@ namespace DatabaseAccess
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@CommentId", CommentId);
                 rows = cmd.ExecuteNonQuery();
+
+                return "done";
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                return $"An error occurred: {ex.Message}";
             }
             finally { connectionString.Close(); }
-            return rows;
         }
 
-        public int RemoveRental(int RentalId)
+        public string RemoveExtra(int ExtraId)
+        {
+            int rows = -1;
+            try
+            {
+                connectionString.Open();
+                var sql = "DELETE FROM [dbi530410_carapp].[dbo].[Extras] WHERE [ExtraId] = @ExtraId";
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@ExtraId", ExtraId);
+                rows = cmd.ExecuteNonQuery();
+
+                return "done";
+            }
+            catch (Exception ex)
+            {
+                return $"An error occurred: {ex.Message}";
+            }
+            finally { connectionString.Close(); }
+        }
+
+        public string RemovePicture(int PicId)
+        {
+            int rows = -1;
+            try
+            {
+                connectionString.Open();
+                var sql = "DELETE FROM [dbi530410_carapp].[dbo].[Pictures] WHERE [PictureId] = @PicId";
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@PicId", PicId);
+                rows = cmd.ExecuteNonQuery();
+
+                return "done";
+            }
+            catch (Exception ex)
+            {
+                return $"An error occurred: {ex.Message}";
+            }
+            finally { connectionString.Close(); }
+        }
+
+        public string RemoveRental(int RentalId)
         {
             int rows = -1;
             try
@@ -146,16 +191,17 @@ namespace DatabaseAccess
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@RentalId", RentalId);
                 rows = cmd.ExecuteNonQuery();
+
+                return "done";
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                return $"An error occurred: {ex.Message}";
             }
             finally { connectionString.Close(); }
-            return rows;
         }
 
-        public int RemoveUser(int UserId)
+        public string RemoveUser(int UserId)
         {
             int rows = -1;
             try
@@ -165,16 +211,17 @@ namespace DatabaseAccess
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@UserId", UserId);
                 rows = cmd.ExecuteNonQuery();
+
+                return "done";
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                return $"An error occurred: {ex.Message}";
             }
             finally { connectionString.Close(); }
-            return rows;
         }
 
-        public int RemoveAdmin(int AdminId)
+        public string RemoveAdmin(int AdminId)
         {
             int rows = -1;
             try
@@ -184,13 +231,14 @@ namespace DatabaseAccess
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@AdminId", AdminId);
                 rows = cmd.ExecuteNonQuery();
+
+                return "done";
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                return $"An error occurred: {ex.Message}";
             }
             finally { connectionString.Close(); }
-            return rows;
         }
     }
 }

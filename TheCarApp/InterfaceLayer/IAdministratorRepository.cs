@@ -9,10 +9,10 @@ namespace InterfaceLayer
 {
     public interface IAdministratorRepository
     {
-        void AddAdmin(Administrator admin);
-        void RemoveAdmin(Administrator admin);
-        void UpdateAdmin(Administrator admin);
+        string AddAdmin(Administrator admin);
+        string RemoveAdmin(Administrator admin);
+        string UpdateAdmin(Administrator admin);
         List<Administrator> GetAllAdministrators();
-        void LoadAdmins();
+        string LoadAdmins();
     }
 }

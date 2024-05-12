@@ -15,6 +15,7 @@ body {
         color: white; 
     }
 
+
     .container h3 {
         margin-bottom: 15px;
         color: #333;
@@ -25,7 +26,6 @@ body {
         text-align: left;
         font-size: 36px;
         color: black;
-        /*color: #a4c639;*/
         font-weight: bold;
     }
 
@@ -38,28 +38,28 @@ body {
 
 .more-info .about-info .row > div {
     display: flex;
-    align-items: flex-start; /* Aligns content to the top */
+    align-items: flex-start; 
 }
 
 .more-info .about-info .col-md-8 {
-    padding-right: 20px; /* Adds some spacing between text and image */
+    padding-right: 20px; 
 }
 
 img.img-fluid {
-    width: 100%; /* Full width of the container */
-    height: auto; /* Maintain aspect ratio */
-    width: 600px; /* Maximum width */
+    width: 100%; 
+    height: auto;
+    width: 600px; 
 }
 
-@media (min-width: 768px) { /* For tablets and larger devices */
+@media (min-width: 768px) { 
     img.img-fluid {
-        max-width: 800px; /* Larger image on larger screens */
+        max-width: 800px; 
     }
 }
 
-@media (min-width: 1200px) { /* For large desktops */
+@media (min-width: 1200px) {
     img.img-fluid {
-        max-width: 1000px; /* Even larger image on large desktops */
+        max-width: 1000px; 
     }
 }
 
@@ -109,14 +109,26 @@ img.img-fluid {
     margin-top: 140px;
 }
 
+row {
+    margin-top: 15px; 
+    margin-bottom: 15px; 
+}
+
+.col-md-4 {
+    padding: 15px; 
+}
+
 .service-item img {
     width: 100%;
+    max-height: 250px; 
+    object-fit: cover;
     overflow: hidden;
 }
 
 .service-item .down-content {
     background-color: #f7f7f7;
-    padding: 30px;
+    padding: 30px; 
+    min-height: 200px;
 }
 
     .service-item .down-content h4 {
@@ -168,25 +180,6 @@ img.img-fluid {
         color: #a4c639;
     }
 
-.contact-partners {
-    margin-top: -8px !important;
-}
-
-.partners {
-    margin-top: 140px;
-    background-color: #f7f7f7;
-    padding: 60px 0px;
-}
-
-    .partners .owl-item {
-        text-align: center;
-        cursor: pointer;
-    }
-
-    .partners .partner-item img {
-        max-width: 156px;
-        margin: auto;
-    }
 
 .tabs-content {
     margin-top: 30px;
@@ -226,6 +219,8 @@ img.img-fluid {
 
     .single-services img {
         max-width: 100%;
+        height: 400px; 
+        object-fit: cover;
     }
 
     .single-services h4 a {
@@ -385,3 +380,10 @@ img.img-fluid {
     width:100%;
     }
 }
+
+.img-fluid {
+    width: 100%; /* Ensures responsiveness */
+    cursor: pointer; /* Indicates that the image is clickable */
+}
+
+

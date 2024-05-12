@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Entity_Layer; // Ensure this namespace correctly references where your Car and other entities are defined
+using Entity_Layer;
 using Manager_Layer;
-using Microsoft.AspNetCore.Authorization; // This should reference your service layer or business logic
+using Microsoft.AspNetCore.Authorization;
 using Entity_Layer;
 using EntityLayout;
 using ManagerLayer;
@@ -14,20 +14,52 @@ namespace TheCarApp.Pages
     [Authorize]
     public class RentACarPageModel : PageModel
     {
-        private ProjectManager projectManager = new ProjectManager(); // Assuming CarManager has the necessary methods
+        private readonly ProjectManager projectManager;
 
         public Car Car { get; set; }
+        public User user { get; set; }
+        public string UserEmail { get; set; }
+        public decimal PricePerDay { get; set; }
 
-        public RentACarPageModel()
+        public RentACarPageModel(ProjectManager _projectManager)
         {
+            projectManager = _projectManager;
         }
+    
 
         public void OnGet(int carId)
         {
-            Car = projectManager.carManager.GetCarById(carId); // Method to get the car details
+            Car = projectManager.carManager.GetCarById(carId);
+            PricePerDay = Car.PricePerDay;
             if (Car == null)
             {
                 RedirectToPage("/NotFound");
+            }
+            UserEmail = User.Identity.Name;
+            user = projectManager.peopleManager.GetUser(UserEmail);
+        }
+
+
+
+        public IActionResult OnPostSubmitRental(DateTime startDate, DateTime endDate)
+        {
+            if (user == null || Car == null)
+            {
+                return new JsonResult(new { success = false, message = "User or car not found." });
+            }
+            if (endDate <= startDate)
+            {
+                return new JsonResult(new { success = false, message = "End date must be after start date." });
+            }
+            try
+            {
+                projectManager.rentManager.RentACar(user, Car, startDate, endDate);
+                var data = new { success = true, message = "Success" };
+                return new JsonResult(data);
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult(new { success = false, message = ex.Message });
             }
         }
     }

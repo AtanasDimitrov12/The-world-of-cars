@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Database;
@@ -11,6 +12,7 @@ using Entity_Layer.Enums;
 using Entity_Layer.Interfaces;
 using EntityLayout;
 using InterfaceLayer;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 
@@ -31,45 +33,86 @@ namespace Manager_Layer
             _dataRemover = dataRemover;
         }
 
-        public void AddCar(Car car, List<Picture> pictures, List<Extra> extras)
+        public string AddCar(Car car, List<Picture> pictures, List<Extra> extras)
         {
-            cars.Add(car);
-            _dataWriter.AddCar(car.brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
-            int carId = _dataWriter.GetCarId(car.VIN);
-            car.Id = carId;
-            _dataWriter.AddCarDescription(car.Id, car.Description, car.PricePerDay);
-            foreach (Picture pic in pictures)
+            string Message = _dataWriter.AddCar(car.brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
+            if (Message == "done")
             {
-                _dataWriter.AddCarPictures(car.Id, pic.Id);
-                car.AddPicture(pic);
+                
+                string SearchID = _dataWriter.GetCarId(car.VIN);
+                int CarId;
+                if (int.TryParse(SearchID, out CarId))
+                {
+                    car.Id = CarId;
+                    _dataWriter.AddCarDescription(car.Id, car.Description, car.PricePerDay);
+                    foreach (Picture pic in pictures)
+                    {
+                        _dataWriter.AddCarPictures(car.Id, pic.Id);
+                        car.AddPicture(pic);
+                    }
+                    foreach (Extra extra in extras)
+                    {
+                        _dataWriter.AddCarExtras(car.Id, extra.Id);
+                        car.AddExtra(extra);
+                    }
+                    cars.Add(car);
+                    return "done";
+                }
+                else
+                {
+                    return SearchID;
+                }
             }
-            foreach (Extra extra in extras)
+            else { return Message; }
+
+            }
+
+        public string UpdateCar(Car car, List<Picture> pictures, List<Extra> extras)
+        {
+            string MessageCar = _dataWriter.UpdateCar(car);
+            if (MessageCar == "done")
             {
-                _dataWriter.AddCarExtras(car.Id, extra.Id);
-                car.AddExtra(extra);
+                string MessageCarDesc = _dataWriter.UpdateCarDescription(car);
+                if (MessageCarDesc == "done")
+                { 
+                    string MessageRemovePics = _dataWriter.RemoveCarPictures(car.Id);
+                    if (MessageRemovePics == "done")
+                    { 
+                        string MessageRemoveExtras = _dataWriter.RemoveCarExtras(car.Id);
+                        if (MessageRemoveExtras == "done")
+                        {
+                            foreach (Picture pic in pictures)
+                            {
+                                _dataWriter.AddCarPictures(car.Id, pic.Id);
+                                car.AddPicture(pic);
+                            }
+                            foreach (Extra extra in extras)
+                            {
+                                _dataWriter.AddCarExtras(car.Id, extra.Id);
+                                car.AddExtra(extra);
+                            }
+                            return "done";
+                        }
+                        else { return MessageRemoveExtras; }
+                    }
+                    else { return MessageRemovePics; }
+                }
+                else { return MessageCarDesc; }
             }
+            else { return MessageCar; }
         }
 
-        public void UpdateCar(Car car)
+        public string RemoveCar(Car car, Picture picture, Extra extra)
         {
-            _dataWriter.UpdateCar(car);
-            _dataWriter.UpdateCarDescription(car);
-            _dataWriter.RemoveCarPictures(car.Id);
-            _dataWriter.RemoveCarExtras(car.Id);
-            foreach (Picture pic in car.Pictures)
-            {
-                _dataWriter.AddCarPictures(car.Id, pic.Id);
-            }
-            foreach (Extra extra in car.CarExtras)
-            {
-                _dataWriter.AddCarExtras(car.Id, extra.Id);
-            }
-        }
 
-        public void RemoveCar(Car car, Picture picture, Extra extra)
-        {
-            cars.Remove(car);
-            _dataRemover.RemoveCar(car.Id, extra.Id, picture.Id);
+
+            string MessageCar = _dataRemover.RemoveCar(car.Id, extra.Id, picture.Id); ;
+            if (MessageCar == "done")
+            {
+                cars.Remove(car);
+                return "done";
+            }
+            else { return MessageCar; }
         }
 
         public Car SearchForCar(int index)
@@ -108,37 +151,48 @@ namespace Manager_Layer
             return null;
         }
 
-        public void LoadCars()
+        public string LoadCars()
         {
-            if (_dataAccess.GetCars() != null)
+            List<CarDTO> loadedCars;
+            try
             {
-                foreach (CarDTO carDTO in _dataAccess.GetCars())
+                loadedCars = _dataAccess.GetCars();
+                if (loadedCars != null)
                 {
-                    CarStatus status;
-                    bool isValidArea = Enum.TryParse(carDTO.CarStatus.ToUpper(), true, out status);
+                    foreach (CarDTO carDTO in loadedCars)
+                    {
+                        CarStatus status;
+                        bool isValidArea = Enum.TryParse(carDTO.CarStatus.ToUpper(), true, out status);
 
-                    if (isValidArea)
-                    {
-                        Car loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, status, carDTO.NumberOfSeats, carDTO.NumberOfDoors);
-                        
-                        foreach (ExtraDTO extraDTO in carDTO.CarExtras)
+                        if (isValidArea)
                         {
-                            Extra extra = new Extra(extraDTO.extraName, extraDTO.Id);
-                            loadCar.AddExtra(extra);
+                            Car loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, status, carDTO.NumberOfSeats, carDTO.NumberOfDoors);
+
+                            foreach (ExtraDTO extraDTO in carDTO.CarExtras)
+                            {
+                                Extra extra = new Extra(extraDTO.extraName, extraDTO.Id);
+                                loadCar.AddExtra(extra);
+                            }
+                            foreach (PictureDTO picDTO in carDTO.Pictures)
+                            {
+                                Picture pic = new Picture(picDTO.Id, picDTO.PictureURL);
+                                loadCar.AddPicture(pic);
+                            }
+                            cars.Add(loadCar);
                         }
-                        foreach (PictureDTO picDTO in carDTO.Pictures)
+                        else
                         {
-                            Picture pic = new Picture(picDTO.Id, picDTO.PictureURL);
-                            loadCar.AddPicture(pic);
+                            return $"Warning: {carDTO.Id} has an invalid status assigned.";
                         }
-                        cars.Add(loadCar);
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Warning: {carDTO.Id} has an invalid status assigned.");
                     }
                 }
+                return "done";
             }
+            catch (ApplicationException ex)
+            {
+                return ex.Message;
+            }
+            
         }
     }
 }

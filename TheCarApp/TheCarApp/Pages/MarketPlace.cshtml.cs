@@ -1,6 +1,5 @@
 using Entity_Layer.Enums;
 using EntityLayout;
-using EntityLayout;
 using Manager_Layer;
 using ManagerLayer;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -18,7 +17,7 @@ namespace TheCarApp.Pages
 
         public void OnGet()
         {
-            Cars = projectManager.carManager.GetCars(); // trqbva da ima samo kolite koito imat Status = Available 
+            Cars = projectManager.carManager.GetCars(); // In the future it should display only the cars which status is "Available"
         }
     }
 }

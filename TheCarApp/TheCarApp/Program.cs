@@ -1,3 +1,4 @@
+using ManagerLayer;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -5,11 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped<ProjectManager, ProjectManager>();
 
-// Add services to the container.
 builder.Services.AddRazorPages();
 
-// Setup authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
@@ -35,6 +35,8 @@ var app = builder.Build();
 //        await next.Invoke();
 //    });
 //}
+
+
 
 if (!app.Environment.IsDevelopment())
 {

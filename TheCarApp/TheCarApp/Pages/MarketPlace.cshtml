@@ -14,12 +14,10 @@
             </div>
         </div>
     </div>
-    <br> <h2>See our offers bellow</h2>
 </div>
 
 <div class="services">
     <div class="container">
-        <!-- Cars below -->
         <div class="containerCV">
             <div class="row">
                 @foreach (var car in Model.Cars)
@@ -30,7 +28,7 @@
                             <div class="down-content">
                                 <h4>@car.brand @car.Model</h4>
                                 <div style="margin-bottom:10px;">
-                                    <span>Price per day: @car.PricePerDay</span>
+                                    <span>Price per day: @car.PricePerDay&#8364;</span>
                                 </div>
 
 

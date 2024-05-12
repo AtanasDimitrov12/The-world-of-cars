@@ -11,11 +11,12 @@ namespace Manager_Layer
 {
     public class RentACar
     {
-        private User user { get; set; }
-        private Car car { get; set; }
-        private DateTime StartDate { get; set; } 
-        private DateTime ReturnDate { get; set; }
-        private  RentStatus status { get; set; }
+        public User user { get; set; }
+        public Car car { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime ReturnDate { get; set; }
+        public RentStatus status { get; set; }
+        public decimal TotalPrice {  get; set; }
 
         public RentACar(User user, Car car, DateTime startDate, DateTime returnDate, RentStatus Status)
         {
