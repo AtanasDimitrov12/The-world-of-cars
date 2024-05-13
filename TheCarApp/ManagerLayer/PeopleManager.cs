@@ -99,7 +99,7 @@ namespace ManagerLayer
 
         public bool AuthenticateUser(string UserEmail, string UserPass)
         {
-            foreach (User user in _userRepository.GetAllUsers())
+            foreach (User user in _userRepository.GetAllUsers()) //add different example of return message
             {
                 if (user.email == UserEmail)
                 {

@@ -12,7 +12,7 @@ namespace Entity_Layer
         public string email { get; set; }
         public string password { get; set; }
         public string passSalt { get; set; }
-        public string Username { get; set; }
+        public string Username { get; set; } //use only one format everywhere
         public DateTime CreatedOn { get; set; }
 
         public Person (int Id, string name, string password, string username, DateTime createdOn, string passSalt)

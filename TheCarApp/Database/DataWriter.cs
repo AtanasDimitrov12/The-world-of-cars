@@ -447,7 +447,7 @@ namespace Database
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                return $"An error occurred in this action: {ex.Message}"; //display that message in console
             }
             finally { connectionString.Close(); }
             
