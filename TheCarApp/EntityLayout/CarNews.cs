@@ -44,6 +44,8 @@ namespace Entity_Layer
             comments = new List<Comment>();
         }
 
+        public CarNews() { }
+
         public void AddComment(Comment comment)
         {
             comments.Add(comment);

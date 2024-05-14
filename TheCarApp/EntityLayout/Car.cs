@@ -76,14 +76,16 @@ namespace EntityLayout
             NumberOfDoors = numberOfDoors;
         }
 
+        public Car()
+        { }
         public void AddPicture(Picture picture)
         {
-            Pictures.Add(picture);
+            this.Pictures.Add(picture);
         }
 
         public void RemovePicture(Picture picture)
         {
-            Pictures.Remove(picture);
+            this.Pictures.Remove(picture);
         }
 
         public void AddExtra(Extra extra)
