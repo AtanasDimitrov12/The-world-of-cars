@@ -11,7 +11,7 @@ namespace InterfaceLayer
     public interface ICarManager
     {
         string AddCar(Car car, List<Picture> pictures, List<Extra> extras);
-        string RemoveCar(Car car, Picture picture, Extra extra);
+        string RemoveCar(Car car);
         string UpdateCar(Car car, List<Picture> pictures, List<Extra> extras);
         Car SearchForCar(int index);
         List<Car> GetCars();

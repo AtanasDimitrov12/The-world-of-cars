@@ -38,7 +38,7 @@ namespace DesktopApp
             addCar.Show();
         }
 
-        
+
 
         private void RBAsc_CheckedChanged(object sender, EventArgs e)
         {
@@ -76,6 +76,13 @@ namespace DesktopApp
 
             btnModify.UseColumnTextForButtonValue = true;
             DGVCars.Columns.Add(btnModify);
+
+            var btnDelete = new DataGridViewButtonColumn();
+            btnDelete.Name = "Delete";
+            btnDelete.HeaderText = "Delete";
+            btnDelete.Text = "Delete";
+            btnDelete.UseColumnTextForButtonValue = true;
+            DGVCars.Columns.Add(btnDelete);
         }
 
         private void FillDataGridView(List<Car> cars)
@@ -120,12 +127,30 @@ namespace DesktopApp
                         {
                             AddCar addCar = new AddCar(selectedCar, carManager, extraManager, pictureManager);
                             addCar.Show();
-                            break; 
+                            break;
                         }
                     }
                 }
             }
-        }
 
+            if (e.ColumnIndex == DGVCars.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                if (e.RowIndex != -1)
+                {
+                    var carVIN = DGVCars.Rows[e.RowIndex].Cells["VIN"].Value.ToString();
+
+                    foreach (var selectedCar in carManager.GetCars())
+                    {
+                        if (selectedCar.VIN == carVIN)
+                        {
+                            carManager.RemoveCar(selectedCar);
+                            FillDataGridView(carManager.GetCars());
+                            break;
+                        }
+                    }
+                }
+            }
+
+        }
     }
 }

@@ -17,20 +17,20 @@ namespace DatabaseAccess
             connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
         }
 
-        public string RemoveCar(int CarId, int ExtraId, int PictureId)
+        public string RemoveCar(int CarId)
         {
             int rows = -1;
             try
             {
+                RemoveCarDescription(CarId);
+                RemoveCarExtras(CarId);
+                RemoveCarPictures(CarId);
                 connectionString.Open();
                 var sql = "DELETE FROM [dbo].[Cars] WHERE [CarId] = @CarId";
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@CarId", CarId);
                 rows = cmd.ExecuteNonQuery();
-                RemoveCarDescription(CarId);
-                RemoveCarExtras(CarId, ExtraId);
-                RemoveCarPictures(CarId, PictureId);
-
+                
                 return "done";
             }
             catch (Exception ex)
@@ -60,16 +60,15 @@ namespace DatabaseAccess
             finally { connectionString.Close(); }
         }
 
-        public string RemoveCarExtras(int CarId, int ExtraId)
+        public string RemoveCarExtras(int CarId)
         {
             int rows = -1;
             try
             {
                 connectionString.Open();
-                var sql = "DELETE FROM [dbo].[CarExtras] WHERE [CarId] = @CarId AND [ExtraId] = @ExtraId";
+                var sql = "DELETE FROM [dbo].[CarExtras] WHERE [CarId] = @CarId";
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@CarId", CarId);
-                cmd.Parameters.AddWithValue("@ExtraId", ExtraId);
                 rows = cmd.ExecuteNonQuery();
 
                 return "done";
@@ -80,16 +79,15 @@ namespace DatabaseAccess
             finally { connectionString.Close(); }
         }
 
-        public string RemoveCarPictures(int CarId, int PictureId)
+        public string RemoveCarPictures(int CarId)
         {
             int rows = -1;
             try
             {
                 connectionString.Open();
-                var sql = "DELETE FROM [dbo].[CarPictures] WHERE [CarId] = @CarId AND [PictureID] = @PictureId";
+                var sql = "DELETE FROM [dbo].[CarPictures] WHERE [CarId] = @CarId";
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@CarId", CarId);
-                cmd.Parameters.AddWithValue("@PictureId", PictureId);
                 rows = cmd.ExecuteNonQuery();
 
                 return "done";

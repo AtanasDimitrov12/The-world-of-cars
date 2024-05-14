@@ -102,11 +102,11 @@ namespace Manager_Layer
             else { return MessageCar; }
         }
 
-        public string RemoveCar(Car car, Picture picture, Extra extra)
+        public string RemoveCar(Car car)
         {
 
 
-            string MessageCar = _dataRemover.RemoveCar(car.Id, extra.Id, picture.Id); ;
+            string MessageCar = _dataRemover.RemoveCar(car.Id); ;
             if (MessageCar == "done")
             {
                 cars.Remove(car);

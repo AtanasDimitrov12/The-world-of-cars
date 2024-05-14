@@ -52,11 +52,11 @@
             groupBox1.Controls.Add(BTNAddPics);
             groupBox1.Controls.Add(BTNAddExtras);
             groupBox1.Controls.Add(BTNAddCar);
-            groupBox1.Location = new Point(18, 401);
-            groupBox1.Margin = new Padding(5, 4, 5, 4);
+            groupBox1.Location = new Point(16, 301);
+            groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(5, 4, 5, 4);
-            groupBox1.Size = new Size(240, 224);
+            groupBox1.Padding = new Padding(4, 3, 4, 3);
+            groupBox1.Size = new Size(210, 168);
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
             groupBox1.Text = "Actions";
@@ -64,10 +64,10 @@
             // BTNAddPics
             // 
             BTNAddPics.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNAddPics.Location = new Point(35, 84);
-            BTNAddPics.Margin = new Padding(5, 4, 5, 4);
+            BTNAddPics.Location = new Point(31, 63);
+            BTNAddPics.Margin = new Padding(4, 3, 4, 3);
             BTNAddPics.Name = "BTNAddPics";
-            BTNAddPics.Size = new Size(167, 53);
+            BTNAddPics.Size = new Size(146, 40);
             BTNAddPics.TabIndex = 23;
             BTNAddPics.Text = "Add pictures";
             BTNAddPics.UseVisualStyleBackColor = true;
@@ -76,10 +76,10 @@
             // BTNAddExtras
             // 
             BTNAddExtras.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNAddExtras.Location = new Point(35, 21);
-            BTNAddExtras.Margin = new Padding(5, 4, 5, 4);
+            BTNAddExtras.Location = new Point(31, 16);
+            BTNAddExtras.Margin = new Padding(4, 3, 4, 3);
             BTNAddExtras.Name = "BTNAddExtras";
-            BTNAddExtras.Size = new Size(167, 53);
+            BTNAddExtras.Size = new Size(146, 40);
             BTNAddExtras.TabIndex = 22;
             BTNAddExtras.Text = "Add Extras";
             BTNAddExtras.UseVisualStyleBackColor = true;
@@ -88,10 +88,10 @@
             // BTNAddCar
             // 
             BTNAddCar.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNAddCar.Location = new Point(35, 148);
-            BTNAddCar.Margin = new Padding(5, 4, 5, 4);
+            BTNAddCar.Location = new Point(31, 111);
+            BTNAddCar.Margin = new Padding(4, 3, 4, 3);
             BTNAddCar.Name = "BTNAddCar";
-            BTNAddCar.Size = new Size(167, 53);
+            BTNAddCar.Size = new Size(146, 40);
             BTNAddCar.TabIndex = 20;
             BTNAddCar.Text = "Add car";
             BTNAddCar.UseVisualStyleBackColor = true;
@@ -102,30 +102,29 @@
             groupBox3.Controls.Add(TBSearchByYear);
             groupBox3.Controls.Add(BTNSearch);
             groupBox3.Controls.Add(label5);
-            groupBox3.Location = new Point(18, 156);
-            groupBox3.Margin = new Padding(5, 4, 5, 4);
+            groupBox3.Location = new Point(16, 117);
+            groupBox3.Margin = new Padding(4, 3, 4, 3);
             groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(5, 4, 5, 4);
-            groupBox3.Size = new Size(240, 211);
+            groupBox3.Padding = new Padding(4, 3, 4, 3);
+            groupBox3.Size = new Size(210, 158);
             groupBox3.TabIndex = 24;
             groupBox3.TabStop = false;
             groupBox3.Text = "Search cars";
             // 
             // TBSearchByYear
             // 
-            TBSearchByYear.Location = new Point(58, 88);
-            TBSearchByYear.Margin = new Padding(3, 4, 3, 4);
+            TBSearchByYear.Location = new Point(51, 66);
             TBSearchByYear.Name = "TBSearchByYear";
-            TBSearchByYear.Size = new Size(114, 27);
+            TBSearchByYear.Size = new Size(100, 23);
             TBSearchByYear.TabIndex = 20;
             // 
             // BTNSearch
             // 
             BTNSearch.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNSearch.Location = new Point(35, 127);
-            BTNSearch.Margin = new Padding(5, 4, 5, 4);
+            BTNSearch.Location = new Point(31, 95);
+            BTNSearch.Margin = new Padding(4, 3, 4, 3);
             BTNSearch.Name = "BTNSearch";
-            BTNSearch.Size = new Size(167, 67);
+            BTNSearch.Size = new Size(146, 50);
             BTNSearch.TabIndex = 19;
             BTNSearch.Text = "Search";
             BTNSearch.UseVisualStyleBackColor = true;
@@ -135,10 +134,10 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Arial Rounded MT Bold", 12F);
-            label5.Location = new Point(31, 40);
-            label5.Margin = new Padding(5, 0, 5, 0);
+            label5.Location = new Point(27, 30);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(164, 23);
+            label5.Size = new Size(134, 18);
             label5.TabIndex = 17;
             label5.Text = "Search by year:";
             // 
@@ -147,11 +146,11 @@
             groupBox2.Controls.Add(RBDesc);
             groupBox2.Controls.Add(RBAsc);
             groupBox2.Controls.Add(label4);
-            groupBox2.Location = new Point(18, 20);
-            groupBox2.Margin = new Padding(5, 4, 5, 4);
+            groupBox2.Location = new Point(16, 15);
+            groupBox2.Margin = new Padding(4, 3, 4, 3);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(5, 4, 5, 4);
-            groupBox2.Size = new Size(240, 128);
+            groupBox2.Padding = new Padding(4, 3, 4, 3);
+            groupBox2.Size = new Size(210, 96);
             groupBox2.TabIndex = 23;
             groupBox2.TabStop = false;
             groupBox2.Text = "Show cars";
@@ -159,10 +158,10 @@
             // RBDesc
             // 
             RBDesc.AutoSize = true;
-            RBDesc.Location = new Point(35, 83);
-            RBDesc.Margin = new Padding(5, 4, 5, 4);
+            RBDesc.Location = new Point(31, 62);
+            RBDesc.Margin = new Padding(4, 3, 4, 3);
             RBDesc.Name = "RBDesc";
-            RBDesc.Size = new Size(55, 24);
+            RBDesc.Size = new Size(45, 19);
             RBDesc.TabIndex = 16;
             RBDesc.TabStop = true;
             RBDesc.Text = "A-Z";
@@ -172,10 +171,10 @@
             // RBAsc
             // 
             RBAsc.AutoSize = true;
-            RBAsc.Location = new Point(133, 83);
-            RBAsc.Margin = new Padding(5, 4, 5, 4);
+            RBAsc.Location = new Point(116, 62);
+            RBAsc.Margin = new Padding(4, 3, 4, 3);
             RBAsc.Name = "RBAsc";
-            RBAsc.Size = new Size(55, 24);
+            RBAsc.Size = new Size(45, 19);
             RBAsc.TabIndex = 15;
             RBAsc.TabStop = true;
             RBAsc.Text = "Z-A";
@@ -186,34 +185,35 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Arial Rounded MT Bold", 12F);
-            label4.Location = new Point(46, 43);
-            label4.Margin = new Padding(5, 0, 5, 0);
+            label4.Location = new Point(40, 32);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(150, 23);
+            label4.Size = new Size(121, 18);
             label4.TabIndex = 14;
             label4.Text = "Sort by brand:";
             // 
             // DGVCars
             // 
             DGVCars.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVCars.Location = new Point(284, 94);
+            DGVCars.Location = new Point(248, 70);
+            DGVCars.Margin = new Padding(3, 2, 3, 2);
             DGVCars.Name = "DGVCars";
             DGVCars.RowHeadersWidth = 51;
-            DGVCars.Size = new Size(1027, 418);
+            DGVCars.Size = new Size(1002, 314);
             DGVCars.TabIndex = 26;
             DGVCars.CellContentClick += DGVCars_CellContentClick;
             // 
             // CarControlUC
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(DGVCars);
             Controls.Add(groupBox1);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
-            Margin = new Padding(5, 4, 5, 4);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "CarControlUC";
-            Size = new Size(1318, 669);
+            Size = new Size(1283, 502);
             groupBox1.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
