@@ -29,7 +29,6 @@ namespace UnitTests
         [TestMethod]
         public void AddCar_WhenCalled_ReturnsDone()
         {
-            // Arrange
             var car = new Car { VIN = "123ABC" };
             var pictures = new List<Picture>();
             var extras = new List<Extra>();
@@ -39,10 +38,8 @@ namespace UnitTests
             _mockDataWriter.Setup(m => m.GetCarId(It.IsAny<string>())).Returns("1");
             _mockDataWriter.Setup(m => m.AddCarDescription(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<decimal>())).Verifiable();
 
-            // Act
             var result = _carManager.AddCar(car, pictures, extras);
 
-            // Assert
             Assert.AreEqual("done", result);
             _mockDataWriter.Verify(m => m.AddCarDescription(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<decimal>()), Times.Once);
         }
@@ -50,14 +47,11 @@ namespace UnitTests
         [TestMethod]
         public void RemoveCar_WhenCalled_ReturnsDone()
         {
-            // Arrange
             var car = new Car { Id = 1 };
             _mockDataRemover.Setup(m => m.RemoveCar(It.IsAny<int>())).Returns("done");
 
-            // Act
             var result = _carManager.RemoveCar(car);
 
-            // Assert
             Assert.AreEqual("done", result);
         }
 

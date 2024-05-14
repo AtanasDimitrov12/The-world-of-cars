@@ -66,7 +66,6 @@ namespace DesktopApp
                         {
                             if (comm.Message == DeleteComment)
                             {
-                                //news.RemoveComment(comm);
                                 commentsManager.RemoveComment(news, comm);
                                 DisplayComments(CBNews.Text);
                                 break;
