@@ -34,7 +34,13 @@ namespace DesktopApp
         private void BTNAddNews_Click(object sender, EventArgs e)
         {
             AddNews addNews = new AddNews(null, newsManager);
+            addNews.NewsAdded += AddNews_NewsAdded;
             addNews.Show();
+        }
+
+        private void AddNews_NewsAdded(object sender, EventArgs e)
+        {
+            FillDataGridView(News); 
         }
 
         private void InitializeGridView()

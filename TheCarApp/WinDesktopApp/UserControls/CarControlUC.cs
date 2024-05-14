@@ -35,9 +35,14 @@ namespace DesktopApp
         private void BTNAddCar_Click(object sender, EventArgs e)
         {
             AddCar addCar = new AddCar(null, carManager, extraManager, pictureManager);
+            addCar.CarAdded += AddCar_CarAdded;
             addCar.Show();
         }
 
+        private void AddCar_CarAdded(object sender, EventArgs e)
+        {
+            FillDataGridView(carManager.GetCars()); 
+        }
 
 
         private void RBAsc_CheckedChanged(object sender, EventArgs e)
