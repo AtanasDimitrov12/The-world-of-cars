@@ -35,10 +35,15 @@ namespace DesktopApp
 
         private void BTNSearch_Click(object sender, EventArgs e)
         {
+            DisplayComments(CBNews.Text);
+        }
+
+        private void DisplayComments(string NewsTitle)
+        {
             LBComments.Items.Clear();
             foreach (CarNews news in newsManager.news)
             {
-                if (news.Title == CBNews.Text)
+                if (news.Title == NewsTitle)
                 {
                     foreach (Comment comm in news.comments)
                     {
@@ -61,8 +66,12 @@ namespace DesktopApp
                         {
                             if (comm.Message == DeleteComment)
                             {
-                                news.RemoveComment(comm);
+                                //news.RemoveComment(comm);
+                                commentsManager.RemoveComment(news, comm);
+                                DisplayComments(CBNews.Text);
+                                break;
                             }
+                            
                         }
                     }
                 }

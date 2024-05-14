@@ -54,6 +54,13 @@ namespace DesktopApp
 
             btnModify.UseColumnTextForButtonValue = true;
             DGVNews.Columns.Add(btnModify);
+
+            var btnDelete = new DataGridViewButtonColumn();
+            btnDelete.Name = "Delete";
+            btnDelete.HeaderText = "Delete";
+            btnDelete.Text = "Delete";
+            btnDelete.UseColumnTextForButtonValue = true;
+            DGVNews.Columns.Add(btnDelete);
         }
 
         private void FillDataGridView(List<CarNews> news)
@@ -102,6 +109,25 @@ namespace DesktopApp
                         {
                             AddNews addNews = new AddNews(selectedNews, newsManager);
                             addNews.Show();
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (e.ColumnIndex == DGVNews.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                if (e.RowIndex != -1)
+                {
+                    var newsTitle = DGVNews.Rows[e.RowIndex].Cells["Title"].Value.ToString();
+                    var newsAuthor = DGVNews.Rows[e.RowIndex].Cells["Author"].Value.ToString();
+
+                    foreach (var selectedNews in newsManager.news)
+                    {
+                        if (selectedNews.Title == newsTitle && selectedNews.Author == newsAuthor)
+                        {
+                            newsManager.DeleteNews(selectedNews);
+                            FillDataGridView(newsManager.news);
                             break;
                         }
                     }
