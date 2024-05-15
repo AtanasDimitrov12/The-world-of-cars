@@ -8,11 +8,11 @@ namespace InterfaceLayer
 {
     public interface IDataRemover
     {
-        string RemoveCar(int CarId, int ExtraId, int PictureId);
+        string RemoveCar(int CarId);
         string RemoveCarDescription(int CarId);
         string RemoveNews(int NewsId);
-        string RemoveCarExtras(int CarId, int ExtraId);
-        string RemoveCarPictures(int CarId, int PictureId);
+        string RemoveCarExtras(int CarId);
+        string RemoveCarPictures(int CarId);
         string RemoveComment(int CommentId);
         string RemoveExtra(int ExtraId);
         string RemovePicture(int PicId);

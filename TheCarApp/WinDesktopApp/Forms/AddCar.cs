@@ -26,6 +26,7 @@ namespace DesktopApp
         List<Picture> pictures;
         bool Modify = false;
         Car carData;
+        public event EventHandler CarAdded;
         public AddCar(Car car, ICarManager cm, IExtraManager em, IPictureManager picManager)
         {
             InitializeComponent();
@@ -100,10 +101,6 @@ namespace DesktopApp
             }
         }
 
-        //private void groupBox1_Enter(object sender, EventArgs e)
-        //{
-
-        //}
 
         private void BTNAddCar_Click(object sender, EventArgs e)
         {
@@ -117,6 +114,7 @@ namespace DesktopApp
                         string ReturnMessage = manager.AddCar(car, pictures, extras);
                         if (ReturnMessage == "done")
                         {
+                            CarAdded?.Invoke(this, EventArgs.Empty);
                             this.Close();
                         }
                         else { MessageBox.Show(ReturnMessage); }
@@ -132,6 +130,7 @@ namespace DesktopApp
                     string ReturnMessage = manager.UpdateCar(carData, pictures, extras);
                     if (ReturnMessage == "done")
                     {
+                        CarAdded?.Invoke(this, EventArgs.Empty);
                         this.Close();
                     }
                     else { MessageBox.Show(ReturnMessage); }

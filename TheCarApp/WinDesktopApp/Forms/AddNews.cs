@@ -18,6 +18,7 @@ namespace DesktopApp
         INewsManager NewsManager;
         bool Modify = false;
         CarNews newsData;
+        public event EventHandler NewsAdded;
         public AddNews(CarNews news, INewsManager newsManager)
         {
             InitializeComponent();
@@ -50,6 +51,7 @@ namespace DesktopApp
                 if (ReturnMessage == "done")
                 {
                     MessageBox.Show("You successfully added this news!");
+                    NewsAdded?.Invoke(this, EventArgs.Empty);
                     this.Close();
                 }
                 else { MessageBox.Show(ReturnMessage); }
@@ -65,6 +67,7 @@ namespace DesktopApp
                 if (ReturnMessage == "done")
                 {
                     MessageBox.Show("You successfully updated this news!");
+                    NewsAdded?.Invoke(this, EventArgs.Empty);
                     this.Close();
                 }
                 else { MessageBox.Show(ReturnMessage); }
