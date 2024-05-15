@@ -58,7 +58,7 @@ namespace DesktopApp
 
         private void InitializeGridView()
         {
-            this.DGVCars.ColumnCount = 7;
+            this.DGVCars.ColumnCount = 8;
             this.DGVCars.Columns[0].Name = "Brand";
             this.DGVCars.Columns[0].Width = 100;
             this.DGVCars.Columns[1].Name = "Model";
@@ -68,11 +68,13 @@ namespace DesktopApp
             this.DGVCars.Columns[3].Name = "Horse Power";
             this.DGVCars.Columns[3].Width = 120;
             this.DGVCars.Columns[4].Name = "Gearbox";
-            this.DGVCars.Columns[4].Width = 80;
+            this.DGVCars.Columns[4].Width = 100;
             this.DGVCars.Columns[5].Name = "Fuel";
             this.DGVCars.Columns[5].Width = 80;
             this.DGVCars.Columns[6].Name = "VIN";
-            this.DGVCars.Columns[6].Width = 180;
+            this.DGVCars.Columns[6].Width = 140;
+            this.DGVCars.Columns[7].Name = "Status";
+            this.DGVCars.Columns[7].Width = 100;
 
             var btnModify = new DataGridViewButtonColumn();
             btnModify.Name = "Modify";
@@ -88,6 +90,13 @@ namespace DesktopApp
             btnDelete.Text = "Delete";
             btnDelete.UseColumnTextForButtonValue = true;
             DGVCars.Columns.Add(btnDelete);
+
+            var btnStatus = new DataGridViewButtonColumn();
+            btnStatus.Name = "Change Status";
+            btnStatus.HeaderText = "Change Status";
+            btnStatus.Text = "Change Status";
+            btnStatus.UseColumnTextForButtonValue = true;
+            DGVCars.Columns.Add(btnStatus);
         }
 
         private void FillDataGridView(List<Car> cars)
@@ -95,7 +104,7 @@ namespace DesktopApp
             this.DGVCars.Rows.Clear();
             foreach (var car in cars)
             {
-                this.DGVCars.Rows.Add(car.brand, car.Model, car.FirstRegistration, car.HorsePower, car.Gearbox, car.Fuel, car.VIN);
+                this.DGVCars.Rows.Add(car.brand, car.Model, car.FirstRegistration.ToShortDateString(), car.HorsePower, car.Gearbox, car.Fuel, car.VIN, car.CarStatus);
             }
         }
 
@@ -144,6 +153,30 @@ namespace DesktopApp
                 }
             }
 
+            if (e.ColumnIndex == DGVCars.Columns["Change Status"].Index && e.RowIndex >= 0)
+            {
+                if (e.RowIndex != -1)
+                {
+                    var carVIN = DGVCars.Rows[e.RowIndex].Cells["VIN"].Value.ToString();
+
+                    foreach (var selectedCar in carManager.GetCars())
+                    {
+                        if (selectedCar.VIN == carVIN)
+                        {
+                            ChangeCarStatus changeStatus = new ChangeCarStatus(selectedCar, carManager);
+                            changeStatus.Show();
+                            changeStatus.StatusChanged += ChangeCarStatus_StatusChanged;
+                            break;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private void ChangeCarStatus_StatusChanged(object sender, EventArgs e)
+        {
+            FillDataGridView(carManager.GetCars());
         }
     }
 }

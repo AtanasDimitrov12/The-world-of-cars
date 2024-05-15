@@ -1,4 +1,5 @@
 ﻿using Entity_Layer;
+using Entity_Layer.Enums;
 using EntityLayout;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace InterfaceLayer
     {
         string AddCar(Car car, List<Picture> pictures, List<Extra> extras);
         string RemoveCar(Car car);
+        string ChangeCarStatus(Car car, string newStatus, CarStatus Status);
         string UpdateCar(Car car, List<Picture> pictures, List<Extra> extras);
         Car SearchForCar(int index);
         List<Car> GetCars();
