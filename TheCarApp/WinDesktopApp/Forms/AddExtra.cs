@@ -17,6 +17,8 @@ namespace WinDesktopApp.Forms
     public partial class AddExtra : Form
     {
         IExtraManager manager;
+        public event EventHandler ExtraAdded;
+
         public AddExtra(IExtraManager em)
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace WinDesktopApp.Forms
             string ReturnMessage = manager.AddExtra(extra);
             if (ReturnMessage == "done")
             {
+                ExtraAdded?.Invoke(this, EventArgs.Empty);
                 this.Close();
             }
             else { MessageBox.Show(ReturnMessage); }

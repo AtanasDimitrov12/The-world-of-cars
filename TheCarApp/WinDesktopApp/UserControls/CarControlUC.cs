@@ -106,18 +106,6 @@ namespace DesktopApp
             FillDataGridView(filteredCars);
         }
 
-        private void BTNAddExtras_Click(object sender, EventArgs e)
-        {
-            AddExtra addExtra = new AddExtra(extraManager);
-            addExtra.Show();
-        }
-
-        private void BTNAddPics_Click(object sender, EventArgs e)
-        {
-            AddPicture addPicture = new AddPicture(pictureManager);
-            addPicture.Show();
-        }
-
         private void DGVCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == DGVCars.Columns["Modify"].Index && e.RowIndex >= 0)

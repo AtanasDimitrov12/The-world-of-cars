@@ -18,6 +18,8 @@ namespace WinDesktopApp.Forms
     public partial class AddPicture : Form
     {
         IPictureManager manager;
+        public event EventHandler PicAdded;
+
         public AddPicture(IPictureManager pm)
         {
             InitializeComponent();
@@ -30,6 +32,7 @@ namespace WinDesktopApp.Forms
             string ReturnMessage = manager.AddPicture(pic);
             if (ReturnMessage == "done")
             {
+                PicAdded?.Invoke(this, EventArgs.Empty);
                 this.Close();
             }
             else { MessageBox.Show(ReturnMessage); }
