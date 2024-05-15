@@ -33,7 +33,7 @@ namespace DesktopApp
 
         private void BTNAddNews_Click(object sender, EventArgs e)
         {
-            AddNews addNews = new AddNews(null, newsManager);
+            AddNews addNews = new AddNews(null, newsManager, false);
             addNews.NewsAdded += AddNews_NewsAdded;
             addNews.Show();
         }
@@ -67,6 +67,13 @@ namespace DesktopApp
             btnDelete.Text = "Delete";
             btnDelete.UseColumnTextForButtonValue = true;
             DGVNews.Columns.Add(btnDelete);
+
+            var btnView = new DataGridViewButtonColumn();
+            btnView.Name = "View";
+            btnView.HeaderText = "View";
+            btnView.Text = "View";
+            btnView.UseColumnTextForButtonValue = true;
+            DGVNews.Columns.Add(btnView);
         }
 
         private void FillDataGridView(List<CarNews> news)
@@ -113,7 +120,7 @@ namespace DesktopApp
                     {
                         if (selectedNews.Title == newsTitle && selectedNews.Author == newsAuthor)
                         {
-                            AddNews addNews = new AddNews(selectedNews, newsManager);
+                            AddNews addNews = new AddNews(selectedNews, newsManager, false);
                             addNews.Show();
                             break;
                         }
@@ -134,6 +141,25 @@ namespace DesktopApp
                         {
                             newsManager.DeleteNews(selectedNews);
                             FillDataGridView(newsManager.news);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (e.ColumnIndex == DGVNews.Columns["View"].Index && e.RowIndex >= 0)
+            {
+                if (e.RowIndex != -1)
+                {
+                    var newsTitle = DGVNews.Rows[e.RowIndex].Cells["Title"].Value.ToString();
+                    var newsAuthor = DGVNews.Rows[e.RowIndex].Cells["Author"].Value.ToString();
+
+                    foreach (var selectedNews in newsManager.news)
+                    {
+                        if (selectedNews.Title == newsTitle && selectedNews.Author == newsAuthor)
+                        {
+                            AddNews addNews = new AddNews(selectedNews, newsManager, true);
+                            addNews.Show();
                             break;
                         }
                     }

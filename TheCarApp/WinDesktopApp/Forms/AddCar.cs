@@ -112,7 +112,7 @@ namespace DesktopApp
                 if (!Modify)
                 {
                     Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), TBCarFuel.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), TBCarColor.Text, TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text);
-                    if (pictures.Count != 0 && extras.Count != 0)
+                    if (pictures.Count != 0)
                     {
                         string ReturnMessage = manager.AddCar(car, pictures, extras);
                         if (ReturnMessage == "done")
@@ -124,7 +124,7 @@ namespace DesktopApp
                     }
                     else
                     {
-                        MessageBox.Show("You should first add pictures and extras");
+                        MessageBox.Show("You should first add pictures!");
                     }
                 }
                 else

@@ -52,7 +52,7 @@
             groupBox1.Margin = new Padding(5, 4, 5, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(5, 4, 5, 4);
-            groupBox1.Size = new Size(240, 224);
+            groupBox1.Size = new Size(240, 171);
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
             groupBox1.Text = "Actions";
@@ -60,10 +60,10 @@
             // BTNAddCar
             // 
             BTNAddCar.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNAddCar.Location = new Point(35, 148);
+            BTNAddCar.Location = new Point(28, 57);
             BTNAddCar.Margin = new Padding(5, 4, 5, 4);
             BTNAddCar.Name = "BTNAddCar";
-            BTNAddCar.Size = new Size(167, 53);
+            BTNAddCar.Size = new Size(167, 66);
             BTNAddCar.TabIndex = 20;
             BTNAddCar.Text = "Add car";
             BTNAddCar.UseVisualStyleBackColor = true;
