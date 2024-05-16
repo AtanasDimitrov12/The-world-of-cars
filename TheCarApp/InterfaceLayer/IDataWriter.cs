@@ -16,6 +16,7 @@ namespace InterfaceLayer
         string AddCarPictures(int CarId, int PictureId);
         string UpdateCar(Car car);
         string UpdateCarDescription(Car car);
+        string ChangeCarStatus(Car car, string Status);
         string RemoveCarExtras(int CarId);
         string RemoveCarPictures(int CarId);
         string AddCarNews(string Author, string Title, DateTime DatePosted, string NewsDescription, string ImageURL, string Intro);

@@ -222,6 +222,37 @@ namespace Database
             
         }
 
+        public string ChangeCarStatus(Car car, string Status)
+        {
+            int rows = -1;
+            try
+            {
+
+                connectionString.Open();
+                var sql = "UPDATE [dbo].[Cars] SET [Status] = @Status " +
+                    "WHERE CarId = @CARID;";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+
+                cmd.Parameters.AddWithValue("@Status", Status);
+                cmd.Parameters.AddWithValue("@CARID", car.Id);
+
+                rows = cmd.ExecuteNonQuery();
+                return "done";
+            }
+
+            catch (SqlException ex)
+            {
+                return $"MSSQL error in this action: {ex.Message}";
+            }
+            catch (Exception ex)
+            {
+                return $"An error occurred in this action: {ex.Message}";
+            }
+            finally { connectionString.Close(); }
+
+        }
+
         public string RemoveCarExtras(int CarId)
         {
             int rows = -1;

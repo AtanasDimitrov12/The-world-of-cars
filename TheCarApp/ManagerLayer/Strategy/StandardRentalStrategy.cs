@@ -18,14 +18,6 @@ namespace ManagerLayer.Strategy
             return rental.car.PricePerDay * daysRented;
         }
 
-        //public void ApplyDiscount(RentACar rental)
-        //{
-        //    // Maybe apply a standard discount for rentals longer than a week
-        //    if (rental.DaysRented > 7)
-        //    {
-        //        rental.Discount = 0.1m; // 10% discount
-        //    }
-        //}
 
         public void UpdateRentalStatus(RentACar rental, RentStatus status)
         {

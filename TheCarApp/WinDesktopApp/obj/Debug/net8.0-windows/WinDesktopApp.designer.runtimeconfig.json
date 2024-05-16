@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\Asus ROG\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Asus ROG\\.nuget\\packages"
+      "C:\\Users\\klond\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\klond\\.nuget\\packages"
     ],
     "configProperties": {
       "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": true,

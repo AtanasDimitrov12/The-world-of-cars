@@ -19,7 +19,7 @@ namespace DesktopApp
         bool Modify = false;
         CarNews newsData;
         public event EventHandler NewsAdded;
-        public AddNews(CarNews news, INewsManager newsManager)
+        public AddNews(CarNews news, INewsManager newsManager, bool View)
         {
             InitializeComponent();
             newsData = news;
@@ -29,6 +29,11 @@ namespace DesktopApp
                 Modify = true;
                 LoadNewsData();
                 BTNAdd.Text = "Update Car";
+            }
+            if (View)
+            { 
+                BTNAdd.Enabled = false;
+                BTNAdd.Visible = false;
             }
         }
 

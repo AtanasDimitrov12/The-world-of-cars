@@ -14,6 +14,7 @@ using Entity_Layer.Enums;
 using Entity_Layer;
 using ManagerLayer;
 using InterfaceLayer;
+using WinDesktopApp.Forms;
 
 namespace DesktopApp
 {
@@ -91,6 +92,8 @@ namespace DesktopApp
 
         public void LoadCB()
         {
+            CBCarExtras.Items.Clear();
+            CBPictureURL.Items.Clear(); 
             foreach (Extra extra in extraManager.extras)
             {
                 CBCarExtras.Items.Add($"{extra.extraName}");
@@ -109,7 +112,7 @@ namespace DesktopApp
                 if (!Modify)
                 {
                     Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), TBCarFuel.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), TBCarColor.Text, TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text);
-                    if (pictures.Count != 0 && extras.Count != 0)
+                    if (pictures.Count != 0)
                     {
                         string ReturnMessage = manager.AddCar(car, pictures, extras);
                         if (ReturnMessage == "done")
@@ -121,7 +124,7 @@ namespace DesktopApp
                     }
                     else
                     {
-                        MessageBox.Show("You should first add pictures and extras");
+                        MessageBox.Show("You should first add pictures!");
                     }
                 }
                 else
@@ -245,13 +248,37 @@ namespace DesktopApp
                 {
                     MessageBox.Show("No item is selected.");
                 }
-                
+
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             AddToLB();
+        }
+
+        private void BTNAddExtras_Click(object sender, EventArgs e)
+        {
+            AddExtra addExtra = new AddExtra(extraManager);
+            addExtra.ExtraAdded += AddExtra_ExtraAdded;
+            addExtra.Show();
+        }
+
+        private void AddExtra_ExtraAdded(object sender, EventArgs e)
+        {
+            LoadCB(); 
+        }
+
+        private void BTNAddPics_Click(object sender, EventArgs e)
+        {
+            AddPicture addPicture = new AddPicture(pictureManager);
+            addPicture.PicAdded += AddPic_PicAdded;
+            addPicture.Show();
+        }
+
+        private void AddPic_PicAdded(object sender, EventArgs e)
+        {
+            LoadCB();
         }
     }
 }

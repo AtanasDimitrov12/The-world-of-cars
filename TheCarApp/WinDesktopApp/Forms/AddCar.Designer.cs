@@ -59,6 +59,7 @@
             label21 = new Label();
             groupBox1 = new GroupBox();
             BTNAddExtra = new Button();
+            BTNAddExtras = new Button();
             BTNRemoveExtra = new Button();
             CBCarExtras = new ComboBox();
             LBExtras = new ListBox();
@@ -66,6 +67,7 @@
             NUDCarEngineSize = new NumericUpDown();
             NUDCarPower = new NumericUpDown();
             groupBox2 = new GroupBox();
+            BTNAddPics = new Button();
             LBPictures = new ListBox();
             BTNAddPicture = new Button();
             BTNRemovePicture = new Button();
@@ -367,13 +369,15 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(BTNAddExtra);
+            groupBox1.Controls.Add(BTNAddExtras);
             groupBox1.Controls.Add(BTNRemoveExtra);
             groupBox1.Controls.Add(CBCarExtras);
+            groupBox1.Controls.Add(LBExtras);
             groupBox1.Location = new Point(463, 239);
             groupBox1.Margin = new Padding(5, 4, 5, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(5, 4, 5, 4);
-            groupBox1.Size = new Size(318, 457);
+            groupBox1.Size = new Size(318, 490);
             groupBox1.TabIndex = 48;
             groupBox1.TabStop = false;
             groupBox1.Text = "Car's extras";
@@ -381,7 +385,7 @@
             // BTNAddExtra
             // 
             BTNAddExtra.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNAddExtra.Location = new Point(110, 89);
+            BTNAddExtra.Location = new Point(110, 164);
             BTNAddExtra.Margin = new Padding(5, 4, 5, 4);
             BTNAddExtra.Name = "BTNAddExtra";
             BTNAddExtra.Size = new Size(117, 56);
@@ -390,10 +394,22 @@
             BTNAddExtra.UseVisualStyleBackColor = true;
             BTNAddExtra.Click += BTNAddExtra_Click;
             // 
+            // BTNAddExtras
+            // 
+            BTNAddExtras.Font = new Font("Arial Rounded MT Bold", 12F);
+            BTNAddExtras.Location = new Point(78, 40);
+            BTNAddExtras.Margin = new Padding(5, 4, 5, 4);
+            BTNAddExtras.Name = "BTNAddExtras";
+            BTNAddExtras.Size = new Size(167, 53);
+            BTNAddExtras.TabIndex = 53;
+            BTNAddExtras.Text = "Manage Extras";
+            BTNAddExtras.UseVisualStyleBackColor = true;
+            BTNAddExtras.Click += BTNAddExtras_Click;
+            // 
             // BTNRemoveExtra
             // 
             BTNRemoveExtra.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNRemoveExtra.Location = new Point(105, 387);
+            BTNRemoveExtra.Location = new Point(98, 424);
             BTNRemoveExtra.Margin = new Padding(5, 4, 5, 4);
             BTNRemoveExtra.Name = "BTNRemoveExtra";
             BTNRemoveExtra.Size = new Size(117, 56);
@@ -405,7 +421,7 @@
             // CBCarExtras
             // 
             CBCarExtras.FormattingEnabled = true;
-            CBCarExtras.Location = new Point(59, 40);
+            CBCarExtras.Location = new Point(59, 117);
             CBCarExtras.Margin = new Padding(5, 4, 5, 4);
             CBCarExtras.Name = "CBCarExtras";
             CBCarExtras.Size = new Size(220, 28);
@@ -414,7 +430,7 @@
             // LBExtras
             // 
             LBExtras.FormattingEnabled = true;
-            LBExtras.Location = new Point(489, 416);
+            LBExtras.Location = new Point(27, 232);
             LBExtras.Margin = new Padding(5, 4, 5, 4);
             LBExtras.Name = "LBExtras";
             LBExtras.Size = new Size(275, 184);
@@ -456,6 +472,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(BTNAddPics);
             groupBox2.Controls.Add(LBPictures);
             groupBox2.Controls.Add(BTNAddPicture);
             groupBox2.Controls.Add(BTNRemovePicture);
@@ -464,15 +481,27 @@
             groupBox2.Margin = new Padding(5, 4, 5, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(5, 4, 5, 4);
-            groupBox2.Size = new Size(318, 457);
+            groupBox2.Size = new Size(318, 490);
             groupBox2.TabIndex = 49;
             groupBox2.TabStop = false;
             groupBox2.Text = "Car's pictures";
             // 
+            // BTNAddPics
+            // 
+            BTNAddPics.Font = new Font("Arial Rounded MT Bold", 12F);
+            BTNAddPics.Location = new Point(70, 39);
+            BTNAddPics.Margin = new Padding(5, 4, 5, 4);
+            BTNAddPics.Name = "BTNAddPics";
+            BTNAddPics.Size = new Size(188, 53);
+            BTNAddPics.TabIndex = 54;
+            BTNAddPics.Text = "Manage pictures";
+            BTNAddPics.UseVisualStyleBackColor = true;
+            BTNAddPics.Click += BTNAddPics_Click;
+            // 
             // LBPictures
             // 
             LBPictures.FormattingEnabled = true;
-            LBPictures.Location = new Point(22, 177);
+            LBPictures.Location = new Point(22, 232);
             LBPictures.Margin = new Padding(5, 4, 5, 4);
             LBPictures.Name = "LBPictures";
             LBPictures.Size = new Size(275, 184);
@@ -481,7 +510,7 @@
             // BTNAddPicture
             // 
             BTNAddPicture.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNAddPicture.Location = new Point(110, 89);
+            BTNAddPicture.Location = new Point(110, 168);
             BTNAddPicture.Margin = new Padding(5, 4, 5, 4);
             BTNAddPicture.Name = "BTNAddPicture";
             BTNAddPicture.Size = new Size(117, 56);
@@ -493,7 +522,7 @@
             // BTNRemovePicture
             // 
             BTNRemovePicture.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNRemovePicture.Location = new Point(105, 387);
+            BTNRemovePicture.Location = new Point(110, 424);
             BTNRemovePicture.Margin = new Padding(5, 4, 5, 4);
             BTNRemovePicture.Name = "BTNRemovePicture";
             BTNRemovePicture.Size = new Size(117, 56);
@@ -505,7 +534,7 @@
             // CBPictureURL
             // 
             CBPictureURL.FormattingEnabled = true;
-            CBPictureURL.Location = new Point(55, 40);
+            CBPictureURL.Location = new Point(54, 117);
             CBPictureURL.Margin = new Padding(5, 4, 5, 4);
             CBPictureURL.Name = "CBPictureURL";
             CBPictureURL.Size = new Size(220, 28);
@@ -520,7 +549,6 @@
             Controls.Add(NUDCarPower);
             Controls.Add(NUDCarEngineSize);
             Controls.Add(BTNAddCar);
-            Controls.Add(LBExtras);
             Controls.Add(groupBox1);
             Controls.Add(label21);
             Controls.Add(TBCarPrice);
@@ -606,5 +634,7 @@
         private Button BTNAddPicture;
         private Button BTNRemovePicture;
         private ComboBox CBPictureURL;
+        private Button BTNAddExtras;
+        private Button BTNAddPics;
     }
 }

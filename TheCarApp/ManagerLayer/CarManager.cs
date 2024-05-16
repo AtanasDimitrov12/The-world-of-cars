@@ -115,6 +115,17 @@ namespace Manager_Layer
             else { return MessageCar; }
         }
 
+        public string ChangeCarStatus(Car car, string newStatus, CarStatus Status)
+        {
+            string MessageCar = _dataWriter.ChangeCarStatus(car, newStatus);
+            if (MessageCar == "done")
+            {
+                car.CarStatus = Status;
+                return "done";
+            }
+            else { return MessageCar; }
+        }
+
         public Car SearchForCar(int index)
         {
             return cars[index];
