@@ -14,6 +14,7 @@ namespace InterfaceLayer
         string AddCarDescription(int CarId, string Description, decimal Price);
         string AddCarExtras(int CarId, int ExtraId);
         string AddCarPictures(int CarId, int PictureId);
+        string RecordCarView(int CarId);
         string UpdateCar(Car car);
         string UpdateCarDescription(Car car);
         string ChangeCarStatus(Car car, string Status);

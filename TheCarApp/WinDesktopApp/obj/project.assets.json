@@ -560,19 +560,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\klond\\.nuget\\packages\\": {}
+    "C:\\Users\\Asus ROG\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\WinDesktopApp\\WinDesktopApp.csproj",
+      "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\WinDesktopApp\\WinDesktopApp.csproj",
       "projectName": "WinDesktopApp",
-      "projectPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\WinDesktopApp\\WinDesktopApp.csproj",
-      "packagesPath": "C:\\Users\\klond\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\WinDesktopApp\\obj\\",
+      "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\WinDesktopApp\\WinDesktopApp.csproj",
+      "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\WinDesktopApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\klond\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -586,11 +586,11 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
-              "projectPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj"
+            "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
+              "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj"
             },
-            "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj": {
-              "projectPath": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj"
+            "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj": {
+              "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj"
             }
           }
         }

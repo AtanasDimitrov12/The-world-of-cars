@@ -35,6 +35,11 @@ namespace TheCarApp.Pages
             {
                 RedirectToPage("/NotFound");
             }
+            else
+            {
+                // Record the view
+                projectManager.carManager.RecordCarView(carId);
+            }
             UserEmail = User.Identity.Name;
             user = projectManager.peopleManager.GetUser(UserEmail);
         }

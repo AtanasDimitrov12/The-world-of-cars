@@ -126,6 +126,11 @@ namespace Manager_Layer
             else { return MessageCar; }
         }
 
+        public void RecordCarView(int carId)
+        {
+            _dataWriter.RecordCarView(carId);
+        }
+
         public Car SearchForCar(int index)
         {
             return cars[index];

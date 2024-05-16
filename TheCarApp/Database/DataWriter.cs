@@ -149,6 +149,45 @@ namespace Database
             finally { connectionString.Close(); }
         }
 
+        public string RecordCarView(int CarId)
+        {
+            int rows = -1;
+            try
+            {
+                connectionString.Open();
+                // SQL query to increment the view count for a given car ID
+                var sql = "UPDATE [dbo].[CarViews] SET ViewCount = ViewCount + 1 WHERE CarId = @CarId;";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@CarId", CarId);
+
+                rows = cmd.ExecuteNonQuery();
+                // If no rows were updated, it means the CarId was not found, so we insert it
+                if (rows == 0)
+                {
+                    sql = "INSERT INTO [dbo].[CarViews] (CarId, ViewCount) VALUES (@CarId, 1);";
+                    cmd = new SqlCommand(sql, connectionString);
+                    cmd.Parameters.AddWithValue("@CarId", CarId);
+                    rows = cmd.ExecuteNonQuery();
+                }
+
+                return "done";
+            }
+            catch (SqlException ex)
+            {
+                return $"MSSQL error in this action: {ex.Message}";
+            }
+            catch (Exception ex)
+            {
+                return $"An error occurred in this action: {ex.Message}";
+            }
+            finally
+            {
+                connectionString.Close();
+            }
+        }
+
+
         public string UpdateCar(Car car)
         {
             int rows = -1;

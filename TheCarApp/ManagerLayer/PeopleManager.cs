@@ -19,9 +19,6 @@ namespace ManagerLayer
     public class PeopleManager : IPeopleManager
     {
         public List<Person> people { get; set; }
-        private DataAccess access;
-        private DataWriter writer;
-        private DataRemover remover;
         private IUserRepository _userRepository;
         private IAdministratorRepository _administratorRepository;
         const int keySize = 64;
@@ -31,9 +28,6 @@ namespace ManagerLayer
         public PeopleManager(IUserRepository userRepository, IAdministratorRepository administratorRepository)
         {
             people = new List<Person>();
-            access = new DataAccess();
-            writer = new DataWriter();
-            remover = new DataRemover();
             _userRepository = userRepository;
             _administratorRepository = administratorRepository;
         }
