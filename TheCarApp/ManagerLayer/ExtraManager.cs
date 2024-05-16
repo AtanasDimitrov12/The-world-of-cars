@@ -48,7 +48,7 @@ namespace ManagerLayer
             if (Message == "done")
             {
 
-                extras.Add(extra);
+                extras.Remove(extra);// Need to get extra Id from DB after added a new one
                 return "done";
             }
             else
