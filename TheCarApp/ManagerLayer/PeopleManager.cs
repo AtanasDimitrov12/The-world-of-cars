@@ -38,15 +38,15 @@ namespace ManagerLayer
             switch (person)
             {
                 case User user:
-                    var (hash, salt) = HashPassword(user.password);
-                    user.password = hash;
-                    user.passSalt = salt; 
+                    var (hash, salt) = HashPassword(user.Password);
+                    user.Password = hash;
+                    user.PassSalt = salt; 
                     return _userRepository.AddUser(user);
 
                 case Administrator admin:
-                    (hash, salt) = HashPassword(admin.password);
-                    admin.password = hash;
-                    admin.passSalt = salt;
+                    (hash, salt) = HashPassword(admin.Password);
+                    admin.Password = hash;
+                    admin.PassSalt = salt;
                     return _administratorRepository.AddAdmin(admin);
 
                 default:
@@ -95,9 +95,9 @@ namespace ManagerLayer
         {
             foreach (User user in _userRepository.GetAllUsers()) //add different example of return message
             {
-                if (user.email == UserEmail)
+                if (user.Email == UserEmail)
                 {
-                    if (VerifyPassword(UserPass, user.password, user.passSalt)) 
+                    if (VerifyPassword(UserPass, user.Password, user.PassSalt)) 
                     {
                         return true;
                     }
@@ -121,7 +121,7 @@ namespace ManagerLayer
         {
             foreach (User user in _userRepository.GetAllUsers())
             {
-                if (user.email == Email)
+                if (user.Email == Email)
                 { 
                     return user;
                 }

@@ -104,7 +104,7 @@ namespace DesktopApp
             this.DGVCars.Rows.Clear();
             foreach (var car in cars)
             {
-                this.DGVCars.Rows.Add(car.brand, car.Model, car.FirstRegistration.ToShortDateString(), car.HorsePower, car.Gearbox, car.Fuel, car.VIN, car.CarStatus);
+                this.DGVCars.Rows.Add(car.Brand, car.Model, car.FirstRegistration.ToShortDateString(), car.HorsePower, car.Gearbox, car.Fuel, car.VIN, car.CarStatus);
             }
         }
 

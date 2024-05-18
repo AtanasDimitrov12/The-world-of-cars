@@ -15,7 +15,7 @@ namespace EntityLayout
     public class Car
     {
         public int Id { get; set; }
-        public string brand { get; set; }
+        public string Brand { get; set; }
         public string Model { get; set; }
         public DateTime FirstRegistration { get; set; }
         public int Mileage { get; set; }
@@ -32,11 +32,12 @@ namespace EntityLayout
         public CarStatus CarStatus { get; set; }
         public int NumberOfSeats { get; set; }
         public string NumberOfDoors { get; set; }
+        public int Views { get; set; }
 
-        public Car(int id, string brand, string model, DateTime Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, string VIN, string description, decimal pricePerDay, CarStatus carStatus, int numberOfSeats, string numberOfDoors)
+        public Car(int id, string brand, string model, DateTime Year, int Mileage, string FuelType, int Enginesize , int horsePower, string GearBox, string color, string VIN, string description, decimal pricePerDay, CarStatus carStatus, int numberOfSeats, string numberOfDoors, int views)
         {
             this.Id = id;
-            this.brand = brand;
+            this.Brand = brand;
             Model = model;
             FirstRegistration = Year;
             this.Mileage = Mileage;
@@ -53,11 +54,12 @@ namespace EntityLayout
             CarStatus = carStatus;
             NumberOfSeats = numberOfSeats;
             NumberOfDoors = numberOfDoors;
+            Views = views;
         }
 
-        public Car(string brand, string model, DateTime Year, int Mileage, string FuelType, int Enginesize, int horsePower, string GearBox, string color, string VIN, string description, decimal pricePerDay, CarStatus carStatus, int numberOfSeats, string numberOfDoors)
+        public Car(string brand, string model, DateTime Year, int Mileage, string FuelType, int Enginesize, int horsePower, string GearBox, string color, string VIN, string description, decimal pricePerDay, CarStatus carStatus, int numberOfSeats, string numberOfDoors, int views)
         {
-            this.brand = brand;
+            this.Brand = brand;
             Model = model;
             FirstRegistration = Year;
             this.Mileage = Mileage;
@@ -74,6 +76,7 @@ namespace EntityLayout
             CarStatus = carStatus;
             NumberOfSeats = numberOfSeats;
             NumberOfDoors = numberOfDoors;
+            this.Views = views;
         }
 
         public Car()
@@ -100,7 +103,7 @@ namespace EntityLayout
 
         public string GetInfo()
         {
-            return $"{brand} {Model} {FirstRegistration.ToShortDateString()}";
+            return $"{Brand} {Model} {FirstRegistration.ToShortDateString()}";
         }
 
     }

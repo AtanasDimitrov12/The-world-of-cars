@@ -17,7 +17,7 @@ namespace Entity_Layer
         public string Title { get; set; }
         public string Author { get; set; }
         public string ShortIntro { get; set; }
-        public List<Comment> comments { get; set; }
+        public List<Comment> Comments { get; set; }
 
         public CarNews(int Id, string newsDescription, DateTime releaseDate, string imageURL, string title, string author, string shortIntro, List<Comment> Comments)
         {
@@ -29,7 +29,7 @@ namespace Entity_Layer
             Title = title;
             Author = author;
             ShortIntro = shortIntro;
-            comments = Comments;
+            this.Comments = Comments;
         }
 
         public CarNews(string newsDescription, DateTime releaseDate, string imageURL, string title, string author, string shortIntro)
@@ -41,26 +41,26 @@ namespace Entity_Layer
             Title = title;
             Author = author;
             ShortIntro = shortIntro;
-            comments = new List<Comment>();
+            Comments = new List<Comment>();
         }
 
         public CarNews() { }
 
         public void AddComment(Comment comment)
         {
-            comments.Add(comment);
+            Comments.Add(comment);
             NrOfMessages++; 
         }
 
         public void RemoveComment(Comment comment) 
         {
-            comments.Remove(comment);
+            Comments.Remove(comment);
             NrOfMessages--;
         }
 
         public List<Comment> GetComments() 
         {
-            return comments; 
+            return Comments; 
         } 
 
     }

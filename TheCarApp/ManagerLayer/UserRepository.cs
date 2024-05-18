@@ -28,7 +28,7 @@ namespace Repositories
 
         public string AddUser(User user)
         {
-            string Message = writer.AddUser(user.Username, user.email, user.password, user._licenseNumber, user.CreatedOn, user.passSalt);
+            string Message = writer.AddUser(user.Username, user.Email, user.Password, user.LicenseNumber, user.CreatedOn, user.PassSalt);
             if (Message == "done")
             {
                 users.Add(user);
@@ -52,7 +52,7 @@ namespace Repositories
 
         public string UpdateUser(User user)
         {
-            string Message = writer.UpdateUser(user.Id, user.Username, user.email, user.password, user._licenseNumber, user.CreatedOn);
+            string Message = writer.UpdateUser(user.Id, user.Username, user.Email, user.Password, user.LicenseNumber, user.CreatedOn);
             if (Message == "done")
             {
                 return "done";

@@ -15,7 +15,7 @@ namespace Entity_Layer.Interfaces
             {
                 return x == null ? (y == null ? 0 : -1) : 1;
             }
-            return string.Compare(x.brand, y.brand);
+            return string.Compare(x.Brand, y.Brand);
         }
     }
 }

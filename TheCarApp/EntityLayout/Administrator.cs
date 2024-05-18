@@ -8,16 +8,16 @@ namespace Entity_Layer
 {
     public class Administrator : Person
     {
-        public string _phoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         public Administrator(int Id, string Email, string Password, string UserName, DateTime CreatedON, string PhoneNumber, string passSalt) : base(Id, Email, Password, UserName, CreatedON, passSalt) 
         { 
-            this._phoneNumber = PhoneNumber;
+            this.PhoneNumber = PhoneNumber;
         }
 
         public override string ToString()
         {
-            return _phoneNumber;
+            return PhoneNumber;
         }
     }
 }

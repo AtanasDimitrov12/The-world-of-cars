@@ -15,7 +15,7 @@ namespace Manager_Layer
         public Car car { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime ReturnDate { get; set; }
-        public RentStatus status { get; set; }
+        public RentStatus RentStatus { get; set; }
         public decimal TotalPrice {  get; set; }
 
         public RentACar(User user, Car car, DateTime startDate, DateTime returnDate, RentStatus Status)
@@ -24,12 +24,12 @@ namespace Manager_Layer
             this.car = car;
             this.StartDate = startDate;
             this.ReturnDate = returnDate;
-            this.status = Status;
+            this.RentStatus = Status;
         }
 
         public void ChangeStatus(RentStatus Status)
         {
-            this.status = Status;
+            this.RentStatus = Status;
         }
     }
 }

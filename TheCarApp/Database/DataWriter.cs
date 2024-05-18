@@ -199,7 +199,7 @@ namespace Database
                     "WHERE CarId = @CARID;";
 
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@Brand", car.brand);
+                cmd.Parameters.AddWithValue("@Brand", car.Brand);
                 cmd.Parameters.AddWithValue("@Model", car.Model);
                 cmd.Parameters.AddWithValue("@FirstRegistration", car.FirstRegistration);
                 cmd.Parameters.AddWithValue("@Mileage", car.Mileage);

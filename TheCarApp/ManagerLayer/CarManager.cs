@@ -35,7 +35,7 @@ namespace Manager_Layer
 
         public string AddCar(Car car, List<Picture> pictures, List<Extra> extras)
         {
-            string Message = _dataWriter.AddCar(car.brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
+            string Message = _dataWriter.AddCar(car.Brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
             if (Message == "done")
             {
                 
@@ -129,6 +129,8 @@ namespace Manager_Layer
         public void RecordCarView(int carId)
         {
             _dataWriter.RecordCarView(carId);
+            Car car = GetCarById(carId);
+            car.Views = car.Views + 1;
         }
 
         public Car SearchForCar(int index)
@@ -182,7 +184,7 @@ namespace Manager_Layer
 
                         if (isValidArea)
                         {
-                            Car loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, status, carDTO.NumberOfSeats, carDTO.NumberOfDoors);
+                            Car loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, status, carDTO.NumberOfSeats, carDTO.NumberOfDoors, carDTO.Views);
 
                             foreach (ExtraDTO extraDTO in carDTO.CarExtras)
                             {

@@ -24,7 +24,7 @@ namespace WinDesktopApp.Forms
             InitializeComponent();
             manager = cm;
             car = SelectedCar;
-            LBLBrand.Text = car.brand;
+            LBLBrand.Text = car.Brand;
             LBLModel.Text = car.Model;
             LBLYear.Text = car.FirstRegistration.ToShortDateString();
             LBLCurrentStatus.Text = car.CarStatus.ToString().ToLower();

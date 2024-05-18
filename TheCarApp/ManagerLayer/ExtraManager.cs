@@ -29,7 +29,7 @@ namespace ManagerLayer
         }
         public string AddExtra(Extra extra)
         {
-            string Message = _dataWriter.AddExtra(extra.extraName);
+            string Message = _dataWriter.AddExtra(extra.ExtraName);
             if (Message == "done")
             {
 

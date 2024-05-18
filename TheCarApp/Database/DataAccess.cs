@@ -29,10 +29,13 @@ namespace Database
                 using (var connection = new SqlConnection(connectionString))
                 {
                     var sql = @"SELECT Cars.CarId, Cars.Brand, Cars.Model, Cars.FirstRegistration, Cars.Mileage, 
-                            Cars.Fuel, Cars.EngineSize, Cars.[Power], Cars.Gearbox, Cars.NumberOfSeats, 
-                            Cars.NumberOfDoors, Cars.Color, Cars.VIN, Cars.[Status], 
-                            CarDescription.[CarDescription], CarDescription.PricePerDay 
-                            FROM Cars INNER JOIN CarDescription ON Cars.CarId = CarDescription.CarId;";
+                        Cars.Fuel, Cars.EngineSize, Cars.[Power], Cars.Gearbox, Cars.NumberOfSeats, 
+                        Cars.NumberOfDoors, Cars.Color, Cars.VIN, Cars.[Status], 
+                        CarDescription.[CarDescription], CarDescription.PricePerDay,
+                        ISNULL(CarViews.ViewCount, 0) AS ViewCount
+                        FROM Cars 
+                        INNER JOIN CarDescription ON Cars.CarId = CarDescription.CarId
+                        LEFT JOIN CarViews ON Cars.CarId = CarViews.CarId;";
                     using (var command = new SqlCommand(sql, connection))
                     {
                         connection.Open();
@@ -57,7 +60,8 @@ namespace Database
                                     VIN = reader.GetString(reader.GetOrdinal("VIN")),
                                     Description = reader.GetString(reader.GetOrdinal("CarDescription")),
                                     PricePerDay = Convert.ToDecimal(reader.GetDouble(reader.GetOrdinal("PricePerDay"))),
-                                    CarStatus = reader.GetString(reader.GetOrdinal("Status"))
+                                    CarStatus = reader.GetString(reader.GetOrdinal("Status")),
+                                    Views = reader.GetInt32(reader.GetOrdinal("ViewCount")) 
                                 };
                                 carsDTO.Add(carDTO);
                             }
@@ -80,6 +84,7 @@ namespace Database
             }
             return carsDTO;
         }
+
 
 
 

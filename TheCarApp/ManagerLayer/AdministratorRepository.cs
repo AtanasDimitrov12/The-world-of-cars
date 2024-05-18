@@ -30,7 +30,7 @@ namespace Repositories
         public string AddAdmin(Administrator admin)
         {
 
-            string Message = writer.AddAdmin(admin.Username, admin.email, admin.password, admin._phoneNumber, admin.CreatedOn);
+            string Message = writer.AddAdmin(admin.Username, admin.Email, admin.Password, admin.PhoneNumber, admin.CreatedOn);
             if (Message == "done")
             {
                 admins.Add(admin);
@@ -52,7 +52,7 @@ namespace Repositories
         public string UpdateAdmin(Administrator admin)
         {
             
-            string Message = writer.UpdateAdministration(admin.Id, admin.Username, admin.email, admin.password, admin._phoneNumber, admin.CreatedOn); ;
+            string Message = writer.UpdateAdministration(admin.Id, admin.Username, admin.Email, admin.Password, admin.PhoneNumber, admin.CreatedOn); ;
             if (Message == "done")
             {
                 return "done";

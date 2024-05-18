@@ -11,16 +11,16 @@ namespace Entity_Layer
 {
     public class User : Person
     {
-        public int _licenseNumber { get; set; }
+        public int LicenseNumber { get; set; }
 
         public User(int Id, string Email, string Password, string UserName, DateTime CreatedON, int License, string passSalt) : base(Id, Email, Password, UserName, CreatedON, passSalt)
         {
-            this._licenseNumber = License;
+            this.LicenseNumber = License;
         }
 
         public override string ToString()
         {
-            return _licenseNumber.ToString();
+            return LicenseNumber.ToString();
         }
     }
 }

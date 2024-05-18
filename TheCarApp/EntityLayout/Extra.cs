@@ -9,17 +9,17 @@ namespace Entity_Layer
     public class Extra
     {
         public int Id { get; set; }
-        public string extraName { get; set; }
+        public string ExtraName { get; set; }
 
         public Extra(string ExtraName, int ID) 
         { 
-            this.extraName = ExtraName;
+            this.ExtraName = ExtraName;
             this.Id = ID;
         }
 
         public Extra(string ExtraName)
         {
-            this.extraName = ExtraName;
+            this.ExtraName = ExtraName;
         }
     }
 }

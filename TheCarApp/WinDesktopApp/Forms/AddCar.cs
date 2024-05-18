@@ -49,7 +49,7 @@ namespace DesktopApp
 
         public void LoadCarData()
         {
-            TBCarBrand.Text = carData.brand;
+            TBCarBrand.Text = carData.Brand;
             TBCarModel.Text = carData.Model;
             DTPCarFirstReg.Value = carData.FirstRegistration;
             NUDCarMileage.Value = carData.Mileage;
@@ -111,7 +111,7 @@ namespace DesktopApp
             {
                 if (!Modify)
                 {
-                    Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), TBCarFuel.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), TBCarColor.Text, TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text);
+                    Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), TBCarFuel.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), TBCarColor.Text, TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text, 0);
                     if (pictures.Count != 0)
                     {
                         string ReturnMessage = manager.AddCar(car, pictures, extras);
@@ -149,7 +149,7 @@ namespace DesktopApp
 
         private void UpdateCarData()
         {
-            carData.brand = TBCarBrand.Text;
+            carData.Brand = TBCarBrand.Text;
             carData.Model = TBCarModel.Text;
             carData.FirstRegistration = DTPCarFirstReg.Value;
             carData.Mileage = Convert.ToInt32(NUDCarMileage.Value);

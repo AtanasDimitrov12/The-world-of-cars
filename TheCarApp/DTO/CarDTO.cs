@@ -26,6 +26,7 @@ namespace DTO
         public List<PictureDTO> Pictures { get; set; }
         public List<ExtraDTO> CarExtras { get; set; }
         public string CarStatus { get; set; }
+        public int Views { get; set; }
 
     }
 }
