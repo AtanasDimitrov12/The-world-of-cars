@@ -26,17 +26,22 @@
                         <div class="service-item">
                             <img src="/pictures/@car.Pictures[0].PictureURL" alt="@car.Brand">
                             <div class="down-content">
-                                <h4>@car.Brand @car.Model</h4>
+                                <div class="car-header">
+                                    <h4>@car.Brand @car.Model</h4>
+                                </div>
                                 <div style="margin-bottom:10px;">
-                                    <span>Price per day: @car.PricePerDay&#8364;</span>
+                                    <div class="price">
+                                        <span>Base price per day: @car.PricePerDay&#8364;</span>
+                                    </div>
                                 </div>
 
 
                                 <p>
-                                    <i class="fa fa-dashboard"></i> @car.Mileage km &nbsp;&nbsp;&nbsp;
-                                    <i class="fa fa-cube"></i> @car.EngineSize cc &nbsp;&nbsp;&nbsp;
-                                    <i class="fa fa-cog"></i> @car.Gearbox &nbsp;&nbsp;&nbsp;
-                                    <i class="fa fa-eye"></i> @car.Views &nbsp;&nbsp;&nbsp;
+                                    <i class="fa fa-eye"></i> @car.Views <br>
+                                    <i class="fa fa-dashboard"></i> @car.Mileage km <br>
+                                    <i class="fa fa-cube"></i> @car.EngineSize cc <br>
+                                    <i class="fa fa-cog"></i> @car.Gearbox
+                                    
                                 </p>
                                 <a href="/RentACarPage/@car.Id" class="filled-button">View More</a>
                             </div>

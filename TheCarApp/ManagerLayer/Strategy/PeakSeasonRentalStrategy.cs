@@ -20,7 +20,7 @@ namespace ManagerLayer.Strategy
 
         public void UpdateRentalStatus(RentACar rental, RentStatus status)
         {
-            rental.status = status;
+            rental.RentStatus = status;
         }
     }
 }

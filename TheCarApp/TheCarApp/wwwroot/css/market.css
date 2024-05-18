@@ -117,6 +117,32 @@ row {
 .col-md-4 {
     padding: 15px; 
 }
+.car-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+    .car-header h4 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .car-header .views {
+        font-size: 14px;
+        color: #555;
+    }
+
+.price {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+
 
 .service-item img {
     width: 100%;
