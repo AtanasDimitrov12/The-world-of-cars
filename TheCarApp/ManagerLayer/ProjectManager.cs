@@ -14,43 +14,51 @@ namespace ManagerLayer
 {
     public class ProjectManager
     {
-        public ICarManager carManager { get; set; }
-        public INewsManager newsManager { get; set; }
-        public ICommentsManager commentsManager { get; set; }
-        public IRentManager rentManager { get; set; }
-        public IPeopleManager peopleManager { get; set; }
-        public IExtraManager extraManager { get; set; }
-        public IPictureManager pictureManager { get; set; }
-        public IUserRepository userRepository { get; set; }
-        public IAdministratorRepository administratorRepository { get; set; }
-        public IDataAccess dataAccess { get; set; }
-        public IDataWriter dataWriter { get; set; }
-        public IDataRemover dataRemover { get; set; }
+        public ICarManager CarManager { get; set; }
+        public INewsManager NewsManager { get; set; }
+        public ICommentsManager CommentsManager { get; set; }
+        public IRentManager RentManager { get; set; }
+        public IPeopleManager PeopleManager { get; set; }
+        public IExtraManager ExtraManager { get; set; }
+        public IPictureManager PictureManager { get; set; }
+        public IUserRepository UserRepository { get; set; }
+        public IAdministratorRepository AdministratorRepository { get; set; }
+        public IDataAccess DataAccess { get; set; }
+        public IPeopleDataWriter PeopleDataWriter { get; set; }
+        public ICarDataWriter CarDataWriter { get; set; }
+        public ICarNewsDataWriter CarNewsDataWriter { get; set; }
+        public ICarDataRemover CarDataRemover { get; set; }
+        public ICarNewsDataRemover CarNewsDataRemover { get; set; }
+        public IPeopleDataRemover PeopleDataRemover { get; set; }
 
         public ProjectManager()
         {
-            dataAccess = new DataAccess();
-            dataWriter = new DataWriter();
-            dataRemover = new DataRemover();
-            carManager = new CarManager(dataAccess, dataWriter, dataRemover);
-            newsManager = new NewsManager(dataAccess, dataWriter, dataRemover);
-            commentsManager = new CommentsManager(dataAccess, dataWriter, dataRemover);
-            rentManager = new RentManager();  
-            extraManager = new ExtraManager(dataAccess, dataWriter, dataRemover);
-            pictureManager = new PictureManager(dataAccess, dataWriter, dataRemover);
-            userRepository = new UserRepository(dataAccess, dataWriter, dataRemover);
-            administratorRepository = new AdministratorRepository(dataAccess, dataWriter, dataRemover);
-            peopleManager = new PeopleManager(userRepository, administratorRepository);
+            DataAccess = new DataAccess();
+            PeopleDataWriter = new PeopleDataWriter();
+            CarDataWriter = new CarDataWriter();
+            CarNewsDataWriter = new CarNewsDataWriter();
+            CarDataRemover = new CarDataRemover();
+            CarNewsDataRemover = new CarNewsDataRemover();
+            PeopleDataRemover = new PeopleDataRemover();
+            CarManager = new CarManager(DataAccess, CarDataWriter, CarDataRemover);
+            NewsManager = new NewsManager(DataAccess, CarNewsDataWriter, CarNewsDataRemover);
+            CommentsManager = new CommentsManager(DataAccess, CarNewsDataWriter, CarNewsDataRemover);
+            RentManager = new RentManager(DataAccess, PeopleDataWriter, PeopleDataRemover);  
+            ExtraManager = new ExtraManager(DataAccess, CarDataWriter, CarDataRemover);
+            PictureManager = new PictureManager(DataAccess, CarDataWriter, CarDataRemover);
+            UserRepository = new UserRepository(DataAccess, PeopleDataWriter, PeopleDataRemover);
+            AdministratorRepository = new AdministratorRepository(DataAccess, PeopleDataWriter, PeopleDataRemover);
+            PeopleManager = new PeopleManager(UserRepository, AdministratorRepository);
             LoadAllData();
         }
 
         public void LoadAllData()
         { 
-            carManager.LoadCars();
-            newsManager.LoadNews();
-            rentManager.LoadRentals();
-            userRepository.LoadUsers();
-            administratorRepository.LoadAdmins();
+            CarManager.LoadCars();
+            NewsManager.LoadNews();
+            RentManager.LoadRentals();
+            UserRepository.LoadUsers();
+            AdministratorRepository.LoadAdmins();
         }
     }
 }

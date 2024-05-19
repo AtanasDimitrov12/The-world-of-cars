@@ -24,10 +24,10 @@ namespace DesktopApp
         {
             InitializeComponent();
             projectManager = new ProjectManager();
-            adminInfoUC = new AdminInfoUC(projectManager.peopleManager, projectManager.administratorRepository);
-            carNewsUC = new CarNewsUC(projectManager.peopleManager, projectManager.newsManager);
-            carControlUC = new CarControlUC(projectManager.peopleManager, projectManager.carManager, projectManager.extraManager, projectManager.pictureManager);
-            commentsControlUC = new CommentsControlUC(projectManager.newsManager, projectManager.commentsManager);    
+            adminInfoUC = new AdminInfoUC(projectManager.PeopleManager, projectManager.AdministratorRepository);
+            carNewsUC = new CarNewsUC(projectManager.PeopleManager, projectManager.NewsManager);
+            carControlUC = new CarControlUC(projectManager.PeopleManager, projectManager.CarManager, projectManager.ExtraManager, projectManager.PictureManager);
+            commentsControlUC = new CommentsControlUC(projectManager.NewsManager, projectManager.CommentsManager);    
             userControls = new List<UserControl> { adminInfoUC, carNewsUC, carControlUC, commentsControlUC };
             this.Controls.Add(panel2);
             AddUC(); 

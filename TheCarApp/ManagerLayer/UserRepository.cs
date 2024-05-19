@@ -13,12 +13,12 @@ namespace Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private IDataWriter writer;
-        private IDataRemover remover;
+        private IPeopleDataWriter writer;
+        private IPeopleDataRemover remover;
         private IDataAccess access;
         List<User> users;
 
-        public UserRepository(IDataAccess dataAccess, IDataWriter dataWriter, IDataRemover dataRemover)
+        public UserRepository(IDataAccess dataAccess, IPeopleDataWriter dataWriter, IPeopleDataRemover dataRemover)
         {
             writer = dataWriter;
             remover = dataRemover;

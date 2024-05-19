@@ -13,10 +13,10 @@ namespace ManagerLayer
     public class CommentsManager : ICommentsManager
     {
         private readonly IDataAccess _dataAccess;
-        private readonly IDataWriter _dataWriter;
-        private readonly IDataRemover _dataRemover;
+        private readonly ICarNewsDataWriter _dataWriter;
+        private readonly ICarNewsDataRemover _dataRemover;
 
-        public CommentsManager(IDataAccess dataAccess, IDataWriter dataWriter, IDataRemover dataRemover)
+        public CommentsManager(IDataAccess dataAccess, ICarNewsDataWriter dataWriter, ICarNewsDataRemover dataRemover)
         {
             _dataAccess = dataAccess;
             _dataWriter = dataWriter;

@@ -60,7 +60,7 @@
         {
             <div class="comment-card">
                 <div class="user-info">
-                    <div class="user-name">@Model.projectManager.userRepository.GetUserNameById(comment.UserId)</div>
+                    <div class="user-name">@Model.projectManager.UserRepository.GetUserNameById(comment.UserId)</div>
                     <div class="comment-date">@comment.Date.ToString("MMM dd, yyyy")</div>
                 </div>
                 <div class="comment-content">@comment.Message</div>

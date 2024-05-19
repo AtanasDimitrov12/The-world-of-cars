@@ -18,10 +18,10 @@ namespace Entity_Layer
     {
         public List<CarNews> news { get; set; }
         private readonly IDataAccess _dataAccess;
-        private readonly IDataWriter _dataWriter;
-        private readonly IDataRemover _dataRemover;
+        private readonly ICarNewsDataWriter _dataWriter;
+        private readonly ICarNewsDataRemover _dataRemover;
 
-        public NewsManager(IDataAccess dataAccess, IDataWriter dataWriter, IDataRemover dataRemover)
+        public NewsManager(IDataAccess dataAccess, ICarNewsDataWriter dataWriter, ICarNewsDataRemover dataRemover)
         {
             news = new List<CarNews>();
             _dataAccess = dataAccess;

@@ -63,7 +63,7 @@ namespace WinDesktopApp.Forms
             this.DGVExtras.Rows.Clear();
             foreach (var extra in extras)
             {
-                this.DGVExtras.Rows.Add(extra.Id, extra.extraName);
+                this.DGVExtras.Rows.Add(extra.Id, extra.ExtraName);
             }
         }
 

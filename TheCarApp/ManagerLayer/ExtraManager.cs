@@ -16,10 +16,10 @@ namespace ManagerLayer
     {
         public List<Extra> extras { get; set; }
         private readonly IDataAccess _dataAccess;
-        private readonly IDataWriter _dataWriter;
-        private readonly IDataRemover _dataRemover;
+        private readonly ICarDataWriter _dataWriter;
+        private readonly ICarDataRemover _dataRemover;
 
-        public ExtraManager(IDataAccess dataAccess, IDataWriter dataWriter, IDataRemover dataRemover)
+        public ExtraManager(IDataAccess dataAccess, ICarDataWriter dataWriter, ICarDataRemover dataRemover)
         {
             extras = new List<Extra>();
             this._dataAccess = dataAccess;

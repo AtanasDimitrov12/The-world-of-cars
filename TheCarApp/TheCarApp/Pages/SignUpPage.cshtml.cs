@@ -41,7 +41,7 @@ namespace TheCarApp.Pages
             }
 
             var newUser = new User(0, Email,Password, Username, DateTime.Now, int.Parse(LicenseNumber), null);
-            _projectManager.peopleManager.AddPerson(newUser); 
+            _projectManager.PeopleManager.AddPerson(newUser); 
             var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, Email)
@@ -68,11 +68,12 @@ namespace TheCarApp.Pages
 
         public async Task<IActionResult> OnPostLogin()
         {
-            if (_projectManager.peopleManager.AuthenticateUser(Email, Password))
+
+            if (_projectManager.PeopleManager.AuthenticateUser(Email.ToLower(), Password))
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, Email)
+                    new Claim(ClaimTypes.Name, Email.ToLower())
                 };
 
                 var claimsIdentity = new ClaimsIdentity(

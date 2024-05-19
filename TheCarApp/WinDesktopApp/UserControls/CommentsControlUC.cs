@@ -45,7 +45,7 @@ namespace DesktopApp
             {
                 if (news.Title == NewsTitle)
                 {
-                    foreach (Comment comm in news.comments)
+                    foreach (Comment comm in news.Comments)
                     {
                         LBComments.Items.Add(comm.Message);
                     }
@@ -62,7 +62,7 @@ namespace DesktopApp
                 {
                     if (news.Title == CBNews.Text)
                     {
-                        foreach (Comment comm in news.comments)
+                        foreach (Comment comm in news.Comments)
                         {
                             if (comm.Message == DeleteComment)
                             {

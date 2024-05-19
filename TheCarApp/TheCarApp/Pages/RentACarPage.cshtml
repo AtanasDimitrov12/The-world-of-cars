@@ -3,14 +3,13 @@
 @{
     ViewData["Title"] = "Rent a car";
 }
-<link rel="stylesheet" href="~/css/rent.css" asp-append-version="true"/>
+<link rel="stylesheet" href="~/css/rent.css" asp-append-version="true" />
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('endDate').addEventListener('change', calculatePrice);
         document.getElementById('startDate').addEventListener('change', calculatePrice);
 
         var modal = document.getElementById("myModal");
-
         var span = document.getElementsByClassName("close")[0];
 
         span.onclick = function () {
@@ -33,11 +32,19 @@
         mainImage.src = element.src;
     }
 
+    function setDates() {
+        var startDate = new Date(document.getElementById('startDate').value);
+        var endDate = new Date(document.getElementById('endDate').value);
+
+        document.getElementById('hiddenStartDate').value = startDate.toISOString().split('T')[0];
+        document.getElementById('hiddenEndDate').value = endDate.toISOString().split('T')[0];
+    }
+
     function calculatePrice() {
         var startDate = new Date(document.getElementById('startDate').value);
         var endDate = new Date(document.getElementById('endDate').value);
         var today = new Date();
-        today.setHours(0, 0, 0, 0); 
+        today.setHours(0, 0, 0, 0);
 
         var errorDiv = document.getElementById('error');
         var totalPriceDiv = document.getElementById('totalPrice');
@@ -55,11 +62,10 @@
             return;
         }
 
-        var timeDiff = endDate - startDate;
-        var days = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-        var pricePerDay = @Model.Car.PricePerDay; 
-        var totalPrice = days * pricePerDay;
+        document.getElementById('hiddenStartDate').value = startDate.toISOString().split('T')[0];
+        document.getElementById('hiddenEndDate').value = endDate.toISOString().split('T')[0];
+        //document.getElementById('rentalForm').submit();
+        var totalPrice = @Model.Price;
         totalPriceDiv.innerHTML = totalPrice + ' euro';
     }
 
@@ -90,6 +96,8 @@
 
 
 </script>
+
+
 
 
 <div class="page-heading header-text">
@@ -129,7 +137,7 @@
                 <form action="#" method="post" class="form">
                     <ul class="list-group list-group-flush">
 
-                         <li class="list-group-item">
+                        <li class="list-group-item">
                             <div class="clearfix">
                                 <span class="pull-left">Brand</span>
 
@@ -238,7 +246,7 @@
 
                 <br>
 
-                <form method="post" class="form" id="rentalForm" onsubmit="event.preventDefault(); submitRental();">
+                <form method="post" class="form" id="rentalForm" onsubmit="event.preventDefault(); calculatePrice();">
                     <li class="list-group-item">
                         <h2>Rent your car now!</h2><br>
                     </li>
@@ -264,7 +272,15 @@
                         <input type="submit" class="filled-button" value="Rent">
                     </li>
                     <div id="error" style="color: red;"></div>
+                    <input type="hidden" id="hiddenStartDate" name="hiddenStartDate">
+                    <input type="hidden" id="hiddenEndDate" name="hiddenEndDate">
                 </form>
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>Rental submitted successfully!</p>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -284,7 +300,7 @@
 
                     @foreach (var extra in Model.Car.CarExtras)
                     {
-                                <p>- @extra.ExtraName <br></p>
+                        <p>- @extra.ExtraName <br></p>
                     }
 
                 </div>

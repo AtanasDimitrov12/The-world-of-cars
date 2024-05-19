@@ -86,7 +86,7 @@ namespace DesktopApp
 
             foreach (var extra in extras)
             {
-                LBExtras.Items.Add($"{extra.extraName}");
+                LBExtras.Items.Add($"{extra.ExtraName}");
             }
         }
 
@@ -96,7 +96,7 @@ namespace DesktopApp
             CBPictureURL.Items.Clear(); 
             foreach (Extra extra in extraManager.extras)
             {
-                CBCarExtras.Items.Add($"{extra.extraName}");
+                CBCarExtras.Items.Add($"{extra.ExtraName}");
             }
             foreach (Picture pic in pictureManager.pictures)
             {
@@ -194,7 +194,7 @@ namespace DesktopApp
             {
                 foreach (var ex in extraManager.extras)
                 {
-                    if (ex.extraName == ExtraName)
+                    if (ex.ExtraName == ExtraName)
                     {
                         extras.Remove(ex);
                     }

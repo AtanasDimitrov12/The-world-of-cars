@@ -14,12 +14,12 @@ namespace Repositories
 {
     public class AdministratorRepository : IAdministratorRepository
     {
-        private IDataWriter writer;
-        private IDataRemover remover;
+        private IPeopleDataWriter writer;
+        private IPeopleDataRemover remover;
         private IDataAccess access;
         public List<Administrator> admins;
 
-        public AdministratorRepository(IDataAccess dataAccess, IDataWriter dataWriter, IDataRemover dataRemover)
+        public AdministratorRepository(IDataAccess dataAccess, IPeopleDataWriter dataWriter, IPeopleDataRemover dataRemover)
         {
             writer = dataWriter;
             access = dataAccess;

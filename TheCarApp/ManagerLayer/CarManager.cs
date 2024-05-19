@@ -22,10 +22,10 @@ namespace Manager_Layer
     {
         private List<Car> cars;
         private readonly IDataAccess _dataAccess;
-        private readonly IDataWriter _dataWriter;
-        private readonly IDataRemover _dataRemover;
+        private readonly ICarDataWriter _dataWriter;
+        private readonly ICarDataRemover _dataRemover;
 
-        public CarManager(IDataAccess dataAccess, IDataWriter dataWriter, IDataRemover dataRemover)
+        public CarManager(IDataAccess dataAccess, ICarDataWriter dataWriter, ICarDataRemover dataRemover)
         {
             cars = new List<Car>();
             _dataAccess = dataAccess;

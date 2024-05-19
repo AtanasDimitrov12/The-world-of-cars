@@ -1,14 +1,23 @@
+using InterfaceLayer;
 using ManagerLayer;
+using ManagerLayer.Strategy;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container
 builder.Services.AddScoped<ProjectManager, ProjectManager>();
+builder.Services.AddTransient<StandardRentalStrategy>();
+builder.Services.AddTransient<PeakSeasonRentalStrategy>();
+builder.Services.AddSingleton<IRentalStrategyFactory, RentalStrategyFactory>();
 
 builder.Services.AddRazorPages();
+builder.Services.AddLogging(); // Add logging services
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -21,23 +30,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
     });
 
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//    // Force sign-out on every startup in development mode
-//    app.Use(async (context, next) =>
-//    {
-//        await context.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-//        // Continue processing other middleware in the pipeline
-//        await next.Invoke();
-//    });
-//}
-
-
-
+// Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");

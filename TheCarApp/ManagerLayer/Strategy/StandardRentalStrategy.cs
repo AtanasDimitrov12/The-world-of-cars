@@ -12,10 +12,10 @@ namespace ManagerLayer.Strategy
 {
     public class StandardRentalStrategy : IRentalStrategy
     {
-        public decimal CalculateRentalPrice(RentACar rental, int daysRented)
+        public decimal CalculateRentalPrice(decimal BasePriceOfCar, int daysRented)
         {
             // Standard pricing logic
-            return rental.car.PricePerDay * daysRented;
+            return BasePriceOfCar * daysRented;
         }
 
 

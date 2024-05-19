@@ -32,15 +32,15 @@ namespace DesktopApp
             {
                 if (RBAdminEmail.Checked)
                 {
-                    admin.email = TBAdminInfo.Text;
+                    admin.Email = TBAdminInfo.Text;
                 }
                 else if (RBAdminPassword.Checked)
                 {
-                    admin.password = TBAdminInfo.Text;
+                    admin.Password = TBAdminInfo.Text;
                 }
                 else if (RBAdminPhoneNumber.Checked)
                 {
-                    admin._phoneNumber = TBAdminInfo.Text;
+                    admin.PhoneNumber = TBAdminInfo.Text;
                 }
                 manager.UpdatePerson(admin);
                 MessageBox.Show("You successfully updated the Admin info");
@@ -52,7 +52,7 @@ namespace DesktopApp
         {
             foreach (Administrator admin in admins)
             {
-                LabelAdminInfo.Text = admin.email;
+                LabelAdminInfo.Text = admin.Email;
             }
         }
 
@@ -60,7 +60,7 @@ namespace DesktopApp
         {
             foreach (Administrator admin in admins)
             {
-                LabelAdminInfo.Text = admin.password;
+                LabelAdminInfo.Text = admin.Password;
             }
         }
 
@@ -68,7 +68,7 @@ namespace DesktopApp
         {
             foreach (Administrator admin in admins)
             {
-                LabelAdminInfo.Text = admin._phoneNumber;
+                LabelAdminInfo.Text = admin.PhoneNumber;
             }
         }
     }

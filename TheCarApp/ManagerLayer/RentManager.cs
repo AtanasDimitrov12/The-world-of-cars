@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InterfaceLayer;
+using ManagerLayer.Strategy;
 
 namespace ManagerLayer
 {
@@ -19,30 +20,42 @@ namespace ManagerLayer
     {
         private IRentalStrategy _rentalStrategy;
         public List<RentACar> rentalHistory { get; set; }
-        private DataAccess access;
-        private DataWriter writer;
-        private DataRemover remover;
+        private IPeopleDataWriter writer;
+        private IPeopleDataRemover remover;
+        private IDataAccess access;
 
-        public RentManager(IRentalStrategy rentalStrategy)
-        {
-            _rentalStrategy = rentalStrategy;
-            rentalHistory = new List<RentACar>();
-            access = new DataAccess();
-            writer = new DataWriter();
-            remover = new DataRemover();
-        }
-
-        public RentManager()
+        public RentManager(IDataAccess dataAccess, IPeopleDataWriter dataWriter, IPeopleDataRemover dataRemover)
         {
             rentalHistory = new List<RentACar>();
-            access = new DataAccess();
-            writer = new DataWriter();
-            remover = new DataRemover();
+            writer = dataWriter;
+            remover = dataRemover;
+            access = dataAccess;
         }
 
-        public void SetStrategy(IRentalStrategy rentalStrategy)
+
+        
+
+        public bool IsPeakSeason(DateTime startDate, DateTime endDate)
         {
-            _rentalStrategy = rentalStrategy;
+            // Define peak season logic
+            // Example: June to August is peak season
+            return startDate.Month >= 6 && startDate.Month <= 8;
+        }
+
+        public decimal CalculatePrice(decimal BasePrice, DateTime startDate, DateTime endDate)
+        {
+            TimeSpan timeSpan = endDate - startDate;
+            int days = (int)timeSpan.TotalDays;
+            if (IsPeakSeason(startDate, endDate))
+            {
+                _rentalStrategy = new StandardRentalStrategy();
+                return _rentalStrategy.CalculateRentalPrice(BasePrice, Convert.ToInt32(days));
+            }
+            else 
+            {
+                _rentalStrategy = new PeakSeasonRentalStrategy();
+                return _rentalStrategy.CalculateRentalPrice(BasePrice, Convert.ToInt32(days));
+            }
         }
 
         public string RentACar(User user, Car car, DateTime startDate, DateTime endDate)
@@ -55,7 +68,7 @@ namespace ManagerLayer
                     RentACar rentACar = new RentACar(user, car, startDate, endDate, RentStatus.SCHEDULE);
                     rentalHistory.Add(rentACar);
                     TimeSpan daysRented = endDate - startDate;
-                    rentACar.TotalPrice = _rentalStrategy.CalculateRentalPrice(rentACar, daysRented.Days);
+                    rentACar.TotalPrice = _rentalStrategy.CalculateRentalPrice(rentACar.car.PricePerDay, daysRented.Days);
                     return "done";
                 }
                 else
