@@ -333,6 +333,10 @@
       "PackagePath": "staticwebassets\\pictures\\homepage.jpg"
     },
     {
+      "Id": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\logo_transparent.png",
+      "PackagePath": "staticwebassets\\pictures\\logo_transparent.png"
+    },
+    {
       "Id": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\mb.png",
       "PackagePath": "staticwebassets\\pictures\\mb.png"
     },

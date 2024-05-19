@@ -36,8 +36,8 @@ namespace DesktopApp
         }
         private void BTNChangeAdminInfo_Click(object sender, EventArgs e)
         {
-            ChangeAdminInformation ChangeInfo = new ChangeAdminInformation();
-            AdminVerification Verification = new AdminVerification(ChangeInfo);
+            ChangeAdminInformation ChangeInfo = new ChangeAdminInformation(admins[0], manager);
+            AdminVerification Verification = new AdminVerification(ChangeInfo, admins[0], manager);
             Verification.Show();
         }
     }
