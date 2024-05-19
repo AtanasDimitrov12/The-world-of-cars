@@ -20,7 +20,7 @@ namespace TheCarApp.Pages
         public void OnGet()
         {
             UserEmail = User.Identity.Name;
-            user = _projectManager.peopleManager.GetUser(UserEmail);
+            user = _projectManager.PeopleManager.GetUser(UserEmail);
             
 
             //rentals.Add();

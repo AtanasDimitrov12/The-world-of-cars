@@ -28,166 +28,129 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            BTNUpdateAdminInfo = new Button();
-            TBAdminInfo = new TextBox();
-            label4 = new Label();
-            LabelAdminInfo = new Label();
-            RBAdminPhoneNumber = new RadioButton();
-            RBAdminPassword = new RadioButton();
-            RBAdminEmail = new RadioButton();
-            label2 = new Label();
-            label1 = new Label();
-            groupBox1.SuspendLayout();
+            groupBox2 = new GroupBox();
+            BTNChangeAdminInfo = new Button();
+            LBLAdminPhoneNumber = new Label();
+            LBLAdminEmail = new Label();
+            LBLAdminUsername = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            label3 = new Label();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox1
+            // groupBox2
             // 
-            groupBox1.Controls.Add(BTNUpdateAdminInfo);
-            groupBox1.Controls.Add(TBAdminInfo);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(LabelAdminInfo);
-            groupBox1.Controls.Add(RBAdminPhoneNumber);
-            groupBox1.Controls.Add(RBAdminPassword);
-            groupBox1.Controls.Add(RBAdminEmail);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(290, 93);
-            groupBox1.Margin = new Padding(5, 4, 5, 4);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(5, 4, 5, 4);
-            groupBox1.Size = new Size(328, 432);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Admin Info";
+            groupBox2.Controls.Add(BTNChangeAdminInfo);
+            groupBox2.Controls.Add(LBLAdminPhoneNumber);
+            groupBox2.Controls.Add(LBLAdminEmail);
+            groupBox2.Controls.Add(LBLAdminUsername);
+            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(label5);
+            groupBox2.Controls.Add(label3);
+            groupBox2.Font = new Font("Arial Rounded MT Bold", 12F);
+            groupBox2.Location = new Point(286, 82);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(279, 302);
+            groupBox2.TabIndex = 1;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Admin Info";
             // 
-            // BTNUpdateAdminInfo
+            // BTNChangeAdminInfo
             // 
-            BTNUpdateAdminInfo.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNUpdateAdminInfo.Location = new Point(87, 359);
-            BTNUpdateAdminInfo.Margin = new Padding(5, 4, 5, 4);
-            BTNUpdateAdminInfo.Name = "BTNUpdateAdminInfo";
-            BTNUpdateAdminInfo.Size = new Size(138, 57);
-            BTNUpdateAdminInfo.TabIndex = 8;
-            BTNUpdateAdminInfo.Text = "Update";
-            BTNUpdateAdminInfo.UseVisualStyleBackColor = true;
-            BTNUpdateAdminInfo.Click += BTNUpdateAdminInfo_Click;
+            BTNChangeAdminInfo.Font = new Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BTNChangeAdminInfo.Location = new Point(77, 212);
+            BTNChangeAdminInfo.Name = "BTNChangeAdminInfo";
+            BTNChangeAdminInfo.Size = new Size(115, 64);
+            BTNChangeAdminInfo.TabIndex = 15;
+            BTNChangeAdminInfo.Text = "Change information";
+            BTNChangeAdminInfo.UseVisualStyleBackColor = true;
+            BTNChangeAdminInfo.Click += BTNChangeAdminInfo_Click;
             // 
-            // TBAdminInfo
+            // LBLAdminPhoneNumber
             // 
-            TBAdminInfo.Location = new Point(42, 296);
-            TBAdminInfo.Margin = new Padding(5, 4, 5, 4);
-            TBAdminInfo.Name = "TBAdminInfo";
-            TBAdminInfo.Size = new Size(229, 27);
-            TBAdminInfo.TabIndex = 7;
+            LBLAdminPhoneNumber.AutoSize = true;
+            LBLAdminPhoneNumber.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LBLAdminPhoneNumber.Location = new Point(145, 161);
+            LBLAdminPhoneNumber.Name = "LBLAdminPhoneNumber";
+            LBLAdminPhoneNumber.Size = new Size(47, 15);
+            LBLAdminPhoneNumber.TabIndex = 14;
+            LBLAdminPhoneNumber.Text = "label9";
             // 
-            // label4
+            // LBLAdminEmail
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Arial Rounded MT Bold", 12F);
-            label4.Location = new Point(39, 249);
-            label4.Margin = new Padding(5, 0, 5, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(217, 23);
-            label4.TabIndex = 6;
-            label4.Text = "Type the information:";
+            LBLAdminEmail.AutoSize = true;
+            LBLAdminEmail.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LBLAdminEmail.Location = new Point(82, 104);
+            LBLAdminEmail.Name = "LBLAdminEmail";
+            LBLAdminEmail.Size = new Size(47, 15);
+            LBLAdminEmail.TabIndex = 13;
+            LBLAdminEmail.Text = "label8";
             // 
-            // LabelAdminInfo
+            // LBLAdminUsername
             // 
-            LabelAdminInfo.AutoSize = true;
-            LabelAdminInfo.Font = new Font("Arial Rounded MT Bold", 12F);
-            LabelAdminInfo.Location = new Point(70, 196);
-            LabelAdminInfo.Margin = new Padding(5, 0, 5, 0);
-            LabelAdminInfo.Name = "LabelAdminInfo";
-            LabelAdminInfo.Size = new Size(157, 23);
-            LabelAdminInfo.TabIndex = 5;
-            LabelAdminInfo.Text = "Show from db..";
+            LBLAdminUsername.AutoSize = true;
+            LBLAdminUsername.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LBLAdminUsername.Location = new Point(121, 50);
+            LBLAdminUsername.Name = "LBLAdminUsername";
+            LBLAdminUsername.Size = new Size(47, 15);
+            LBLAdminUsername.TabIndex = 12;
+            LBLAdminUsername.Text = "label7";
             // 
-            // RBAdminPhoneNumber
+            // label6
             // 
-            RBAdminPhoneNumber.AutoSize = true;
-            RBAdminPhoneNumber.Location = new Point(190, 92);
-            RBAdminPhoneNumber.Margin = new Padding(5, 4, 5, 4);
-            RBAdminPhoneNumber.Name = "RBAdminPhoneNumber";
-            RBAdminPhoneNumber.Size = new Size(126, 24);
-            RBAdminPhoneNumber.TabIndex = 4;
-            RBAdminPhoneNumber.TabStop = true;
-            RBAdminPhoneNumber.Text = "Phone number";
-            RBAdminPhoneNumber.UseVisualStyleBackColor = true;
-            RBAdminPhoneNumber.CheckedChanged += RBAdminPhoneNumber_CheckedChanged;
+            label6.AutoSize = true;
+            label6.Font = new Font("Arial Rounded MT Bold", 12F);
+            label6.Location = new Point(19, 158);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(129, 18);
+            label6.TabIndex = 11;
+            label6.Text = "Phone number:";
             // 
-            // RBAdminPassword
+            // label5
             // 
-            RBAdminPassword.AutoSize = true;
-            RBAdminPassword.Location = new Point(87, 92);
-            RBAdminPassword.Margin = new Padding(5, 4, 5, 4);
-            RBAdminPassword.Name = "RBAdminPassword";
-            RBAdminPassword.Size = new Size(91, 24);
-            RBAdminPassword.TabIndex = 3;
-            RBAdminPassword.TabStop = true;
-            RBAdminPassword.Text = "Password";
-            RBAdminPassword.UseVisualStyleBackColor = true;
-            RBAdminPassword.CheckedChanged += RBAdminPassword_CheckedChanged;
+            label5.AutoSize = true;
+            label5.Font = new Font("Arial Rounded MT Bold", 12F);
+            label5.Location = new Point(19, 47);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(95, 18);
+            label5.TabIndex = 10;
+            label5.Text = "Username:";
             // 
-            // RBAdminEmail
+            // label3
             // 
-            RBAdminEmail.AutoSize = true;
-            RBAdminEmail.Location = new Point(11, 92);
-            RBAdminEmail.Margin = new Padding(5, 4, 5, 4);
-            RBAdminEmail.Name = "RBAdminEmail";
-            RBAdminEmail.Size = new Size(67, 24);
-            RBAdminEmail.TabIndex = 2;
-            RBAdminEmail.TabStop = true;
-            RBAdminEmail.Text = "Email";
-            RBAdminEmail.UseVisualStyleBackColor = true;
-            RBAdminEmail.CheckedChanged += RBAdminEmail_CheckedChanged;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial Rounded MT Bold", 12F);
-            label2.Location = new Point(33, 40);
-            label2.Margin = new Padding(5, 0, 5, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(220, 23);
-            label2.TabIndex = 1;
-            label2.Text = "What you will change:";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial Rounded MT Bold", 12F);
-            label1.Location = new Point(35, 147);
-            label1.Margin = new Padding(5, 0, 5, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(218, 23);
-            label1.TabIndex = 0;
-            label1.Text = "Previous Information:";
+            label3.AutoSize = true;
+            label3.Font = new Font("Arial Rounded MT Bold", 12F);
+            label3.Location = new Point(19, 101);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(56, 18);
+            label3.TabIndex = 9;
+            label3.Text = "Email:";
             // 
             // AdminInfoUC
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(groupBox1);
-            Margin = new Padding(5, 4, 5, 4);
+            Controls.Add(groupBox2);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "AdminInfoUC";
-            Size = new Size(945, 641);
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            Size = new Size(827, 481);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button BTNUpdateAdminInfo;
-        private System.Windows.Forms.TextBox TBAdminInfo;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label LabelAdminInfo;
-        private System.Windows.Forms.RadioButton RBAdminPhoneNumber;
-        private System.Windows.Forms.RadioButton RBAdminPassword;
-        private System.Windows.Forms.RadioButton RBAdminEmail;
+        private GroupBox groupBox2;
+        private Label LBLAdminPhoneNumber;
+        private Label LBLAdminEmail;
+        private Label LBLAdminUsername;
+        private Label label6;
+        private Label label5;
+        private Label label3;
+        private Button BTNChangeAdminInfo;
     }
 }

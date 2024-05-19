@@ -15,6 +15,7 @@ namespace InterfaceLayer
         string RemovePerson(Person person);
         string UpdatePerson(Person person);
         bool AuthenticateUser(string Email, string Password);
+        bool VerifyPassword(string enteredPassword, string storedPass, string base64Salt);
         User GetUser(string Email);
         IEnumerable<Person> GetAllPeople();
     }

@@ -14,7 +14,7 @@ namespace TheCarApp.Pages
 
         public void OnGet()
         {
-            News = projectManager.newsManager.news;
+            News = projectManager.NewsManager.news;
         }
     }
 }

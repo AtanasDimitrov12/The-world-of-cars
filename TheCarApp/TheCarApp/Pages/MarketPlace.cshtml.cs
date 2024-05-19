@@ -17,7 +17,7 @@ namespace TheCarApp.Pages
 
         public void OnGet()
         {
-            Cars = projectManager.carManager.GetCars(); // In the future it should display only the cars which status is "Available"
+            Cars = projectManager.CarManager.GetCars(); // In the future it should display only the cars which status is "Available"
         }
     }
 }

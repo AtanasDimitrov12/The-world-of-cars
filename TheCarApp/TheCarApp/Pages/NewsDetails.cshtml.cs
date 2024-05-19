@@ -25,7 +25,7 @@ namespace TheCarApp.Pages
 
         public void OnGet(int NewsId)
         {
-            news = projectManager.newsManager.GetNewsById(NewsId); 
+            news = projectManager.NewsManager.GetNewsById(NewsId); 
             if (news == null)
             {
                 RedirectToPage("/NotFound");
@@ -39,7 +39,7 @@ namespace TheCarApp.Pages
                 return Page();
             }
 
-            news = projectManager.newsManager.GetNewsById(NewsId);
+            news = projectManager.NewsManager.GetNewsById(NewsId);
 
             if (news == null)
             {
@@ -48,13 +48,13 @@ namespace TheCarApp.Pages
 
             
             DateTime date = DateTime.Now;
-            var user = projectManager.peopleManager.GetUser(User.Identity.Name);
+            var user = projectManager.PeopleManager.GetUser(User.Identity.Name);
 
             if (user != null && NewComment.Message != null)
             {
                 NewComment.UserId = user.Id;
                 NewComment.Date = date;
-                projectManager.commentsManager.AddComment(news, NewComment);
+                projectManager.CommentsManager.AddComment(news, NewComment);
             }
 
             
