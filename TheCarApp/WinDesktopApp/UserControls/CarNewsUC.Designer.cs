@@ -172,7 +172,7 @@
             DGVNews.Margin = new Padding(3, 2, 3, 2);
             DGVNews.Name = "DGVNews";
             DGVNews.RowHeadersWidth = 51;
-            DGVNews.Size = new Size(808, 240);
+            DGVNews.Size = new Size(851, 240);
             DGVNews.TabIndex = 22;
             DGVNews.CellContentClick += DGVNews_CellContentClick;
             // 

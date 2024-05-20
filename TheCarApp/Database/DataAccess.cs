@@ -536,7 +536,7 @@ namespace Database
             {
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    var sql = @"SELECT AdminId, Username, Email, PasswordHash, PhoneNumber, CreatedOn FROM [dbi530410_carapp].[dbo].[Admininstration]";
+                    var sql = @"SELECT AdminId, Username, Email, PasswordHash, PhoneNumber, CreatedOn, PassSalt FROM [dbi530410_carapp].[dbo].[Admininstration]";
                     connection.Open();
 
                     using (var command = new SqlCommand(sql, connection))
@@ -552,7 +552,9 @@ namespace Database
                                     password = reader.IsDBNull(reader.GetOrdinal("PasswordHash")) ? null : reader.GetString(reader.GetOrdinal("PasswordHash")),
                                     Username = reader.IsDBNull(reader.GetOrdinal("Username")) ? null : reader.GetString(reader.GetOrdinal("Username")),
                                     CreatedOn = reader.GetDateTime(reader.GetOrdinal("CreatedOn")),
-                                    _phoneNumber = reader.IsDBNull(reader.GetOrdinal("PhoneNumber")) ? null : reader.GetString(reader.GetOrdinal("PhoneNumber"))
+                                    _phoneNumber = reader.IsDBNull(reader.GetOrdinal("PhoneNumber")) ? null : reader.GetString(reader.GetOrdinal("PhoneNumber")),
+                                    passSalt = reader.IsDBNull(reader.GetOrdinal("PassSalt")) ? null : reader.GetString(reader.GetOrdinal("PassSalt"))
+                                    
                                 };
                                 administrators.Add(administrator);
                             }

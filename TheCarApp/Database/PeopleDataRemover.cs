@@ -43,7 +43,7 @@ namespace DatabaseAccess
             try
             {
                 connectionString.Open();
-                var sql = "DELETE FROM [dbo].[Administration] WHERE [AdminId] = @AdminId";
+                var sql = "DELETE FROM [dbi530410_carapp].[dbo].[Admininstration] WHERE [AdminId] = @AdminId";
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@AdminId", AdminId);
                 rows = cmd.ExecuteNonQuery();

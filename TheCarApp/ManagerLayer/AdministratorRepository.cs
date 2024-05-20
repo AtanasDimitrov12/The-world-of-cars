@@ -30,7 +30,7 @@ namespace Repositories
         public string AddAdmin(Administrator admin)
         {
 
-            string Message = writer.AddAdmin(admin.Username, admin.Email, admin.Password, admin.PhoneNumber, admin.CreatedOn);
+            string Message = writer.AddAdmin(admin.Username, admin.Email, admin.Password, admin.PhoneNumber, admin.CreatedOn, admin.PassSalt);
             if (Message == "done")
             {
                 admins.Add(admin);

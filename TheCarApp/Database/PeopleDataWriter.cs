@@ -52,15 +52,15 @@ namespace DatabaseAccess
 
         }
 
-        public string AddAdmin(string Username, string email, string password, string PhoneNumber, DateTime CreatedOn)
+        public string AddAdmin(string Username, string email, string password, string PhoneNumber, DateTime CreatedOn, string PassSalt)
         {
             int rows = -1;
             try
             {
 
                 connectionString.Open();
-                var sql = "INSERT INTO [dbo].[Administration] ([Username], [Email], [PasswordHash], [PhoneNumber], [CreatedOn])" +
-                    "VALUES (@UserName, @Email, @Password, @PhoneNumber, @CreatedOn)";
+                var sql = "INSERT INTO [dbo].[Admininstration] ([Username], [Email], [PasswordHash], [PhoneNumber], [CreatedOn], [PassSalt])" +
+                    "VALUES (@UserName, @Email, @Password, @PhoneNumber, @CreatedOn, @PassSalt)";
 
 
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
@@ -69,6 +69,7 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@Password", password);
                 cmd.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
                 cmd.Parameters.AddWithValue("@CreatedOn", CreatedOn);
+                cmd.Parameters.AddWithValue("@PassSalt", PassSalt);
 
                 rows = cmd.ExecuteNonQuery();
                 return "done";

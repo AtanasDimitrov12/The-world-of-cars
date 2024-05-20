@@ -12,6 +12,7 @@ namespace InterfaceLayer
         List<Person> people { get; set; }
 
         string AddPerson(Person person);
+        (string Hash, string Salt) HashPassword(string password);
         string RemovePerson(Person person);
         string UpdatePerson(Person person);
         bool AuthenticateUser(string Email, string Password);
