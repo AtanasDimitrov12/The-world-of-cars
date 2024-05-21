@@ -41,6 +41,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.FromArgb(163, 177, 138);
             groupBox2.Controls.Add(BTNChangeAdminInfo);
             groupBox2.Controls.Add(LBLAdminPhoneNumber);
             groupBox2.Controls.Add(LBLAdminEmail);
@@ -58,13 +59,15 @@
             // 
             // BTNChangeAdminInfo
             // 
+            BTNChangeAdminInfo.BackColor = Color.FromArgb(88, 129, 87);
             BTNChangeAdminInfo.Font = new Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BTNChangeAdminInfo.ForeColor = Color.White;
             BTNChangeAdminInfo.Location = new Point(77, 212);
             BTNChangeAdminInfo.Name = "BTNChangeAdminInfo";
             BTNChangeAdminInfo.Size = new Size(115, 64);
             BTNChangeAdminInfo.TabIndex = 15;
             BTNChangeAdminInfo.Text = "Change information";
-            BTNChangeAdminInfo.UseVisualStyleBackColor = true;
+            BTNChangeAdminInfo.UseVisualStyleBackColor = false;
             BTNChangeAdminInfo.Click += BTNChangeAdminInfo_Click;
             // 
             // LBLAdminPhoneNumber
@@ -134,6 +137,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(218, 215, 205);
             Controls.Add(groupBox2);
             Margin = new Padding(4, 3, 4, 3);
             Name = "AdminInfoUC";

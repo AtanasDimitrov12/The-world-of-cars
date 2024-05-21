@@ -43,14 +43,16 @@
             // 
             // BTNUpdateAdminInfo
             // 
+            BTNUpdateAdminInfo.BackColor = Color.FromArgb(88, 129, 87);
             BTNUpdateAdminInfo.Font = new Font("Arial Rounded MT Bold", 12F);
+            BTNUpdateAdminInfo.ForeColor = Color.White;
             BTNUpdateAdminInfo.Location = new Point(105, 273);
             BTNUpdateAdminInfo.Margin = new Padding(4, 3, 4, 3);
             BTNUpdateAdminInfo.Name = "BTNUpdateAdminInfo";
             BTNUpdateAdminInfo.Size = new Size(116, 43);
             BTNUpdateAdminInfo.TabIndex = 8;
             BTNUpdateAdminInfo.Text = "Update";
-            BTNUpdateAdminInfo.UseVisualStyleBackColor = true;
+            BTNUpdateAdminInfo.UseVisualStyleBackColor = false;
             BTNUpdateAdminInfo.Click += BTNUpdateAdminInfo_Click;
             // 
             // label6
@@ -139,6 +141,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(218, 215, 205);
             ClientSize = new Size(874, 382);
             Controls.Add(pictureBox1);
             Controls.Add(BTNUpdateAdminInfo);

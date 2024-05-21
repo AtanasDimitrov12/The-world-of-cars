@@ -47,6 +47,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.FromArgb(163, 177, 138);
             groupBox2.Controls.Add(RBDESC);
             groupBox2.Controls.Add(RBASC);
             groupBox2.Controls.Add(label4);
@@ -98,6 +99,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.BackColor = Color.FromArgb(163, 177, 138);
             groupBox3.Controls.Add(BTNSearchByTitle);
             groupBox3.Controls.Add(TBNewsTitle);
             groupBox3.Controls.Add(label5);
@@ -112,14 +114,16 @@
             // 
             // BTNSearchByTitle
             // 
+            BTNSearchByTitle.BackColor = Color.FromArgb(88, 129, 87);
             BTNSearchByTitle.Font = new Font("Arial Rounded MT Bold", 12F);
+            BTNSearchByTitle.ForeColor = Color.White;
             BTNSearchByTitle.Location = new Point(31, 95);
             BTNSearchByTitle.Margin = new Padding(4, 3, 4, 3);
             BTNSearchByTitle.Name = "BTNSearchByTitle";
             BTNSearchByTitle.Size = new Size(146, 50);
             BTNSearchByTitle.TabIndex = 19;
             BTNSearchByTitle.Text = "Search";
-            BTNSearchByTitle.UseVisualStyleBackColor = true;
+            BTNSearchByTitle.UseVisualStyleBackColor = false;
             BTNSearchByTitle.Click += BTNSearchByTitle_Click;
             // 
             // TBNewsTitle
@@ -143,18 +147,21 @@
             // 
             // BTNAddNews
             // 
+            BTNAddNews.BackColor = Color.FromArgb(88, 129, 87);
             BTNAddNews.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNAddNews.Location = new Point(30, 36);
+            BTNAddNews.ForeColor = Color.White;
+            BTNAddNews.Location = new Point(31, 55);
             BTNAddNews.Margin = new Padding(4, 3, 4, 3);
             BTNAddNews.Name = "BTNAddNews";
             BTNAddNews.Size = new Size(146, 44);
             BTNAddNews.TabIndex = 20;
             BTNAddNews.Text = "Add news";
-            BTNAddNews.UseVisualStyleBackColor = true;
+            BTNAddNews.UseVisualStyleBackColor = false;
             BTNAddNews.Click += BTNAddNews_Click;
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.FromArgb(163, 177, 138);
             groupBox1.Controls.Add(BTNAddNews);
             groupBox1.Location = new Point(14, 328);
             groupBox1.Margin = new Padding(4, 3, 4, 3);
@@ -168,11 +175,11 @@
             // DGVNews
             // 
             DGVNews.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVNews.Location = new Point(343, 87);
+            DGVNews.Location = new Point(277, 104);
             DGVNews.Margin = new Padding(3, 2, 3, 2);
             DGVNews.Name = "DGVNews";
             DGVNews.RowHeadersWidth = 51;
-            DGVNews.Size = new Size(851, 240);
+            DGVNews.Size = new Size(802, 240);
             DGVNews.TabIndex = 22;
             DGVNews.CellContentClick += DGVNews_CellContentClick;
             // 
@@ -180,13 +187,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(218, 215, 205);
             Controls.Add(DGVNews);
             Controls.Add(groupBox1);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Margin = new Padding(4, 3, 4, 3);
             Name = "CarNewsUC";
-            Size = new Size(1291, 500);
+            Size = new Size(1160, 500);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);

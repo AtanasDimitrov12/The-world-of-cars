@@ -37,9 +37,9 @@
             LBLCurrentStatus = new Label();
             label8 = new Label();
             groupBox1 = new GroupBox();
-            label9 = new Label();
-            CBChangeStatus = new ComboBox();
             BTNUpdate = new Button();
+            CBChangeStatus = new ComboBox();
+            label9 = new Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,9 +47,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial Rounded MT Bold", 12F);
-            label1.Location = new Point(46, 51);
+            label1.Location = new Point(40, 38);
             label1.Name = "label1";
-            label1.Size = new Size(76, 23);
+            label1.Size = new Size(62, 18);
             label1.TabIndex = 0;
             label1.Text = "Brand:";
             // 
@@ -57,9 +57,9 @@
             // 
             LBLBrand.AutoSize = true;
             LBLBrand.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LBLBrand.Location = new Point(128, 54);
+            LBLBrand.Location = new Point(112, 40);
             LBLBrand.Name = "LBLBrand";
-            LBLBrand.Size = new Size(60, 20);
+            LBLBrand.Size = new Size(48, 16);
             LBLBrand.TabIndex = 1;
             LBLBrand.Text = "label2";
             // 
@@ -67,9 +67,9 @@
             // 
             LBLModel.AutoSize = true;
             LBLModel.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LBLModel.Location = new Point(382, 54);
+            LBLModel.Location = new Point(334, 40);
             LBLModel.Name = "LBLModel";
-            LBLModel.Size = new Size(60, 20);
+            LBLModel.Size = new Size(48, 16);
             LBLModel.TabIndex = 3;
             LBLModel.Text = "label3";
             // 
@@ -77,9 +77,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Arial Rounded MT Bold", 12F);
-            label4.Location = new Point(301, 51);
+            label4.Location = new Point(263, 38);
             label4.Name = "label4";
-            label4.Size = new Size(75, 23);
+            label4.Size = new Size(60, 18);
             label4.TabIndex = 2;
             label4.Text = "Model:";
             // 
@@ -87,9 +87,9 @@
             // 
             LBLYear.AutoSize = true;
             LBLYear.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LBLYear.Location = new Point(611, 54);
+            LBLYear.Location = new Point(535, 40);
             LBLYear.Name = "LBLYear";
-            LBLYear.Size = new Size(60, 20);
+            LBLYear.Size = new Size(48, 16);
             LBLYear.TabIndex = 5;
             LBLYear.Text = "label5";
             // 
@@ -97,9 +97,9 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Arial Rounded MT Bold", 12F);
-            label6.Location = new Point(543, 51);
+            label6.Location = new Point(475, 38);
             label6.Name = "label6";
-            label6.Size = new Size(62, 23);
+            label6.Size = new Size(50, 18);
             label6.TabIndex = 4;
             label6.Text = "Year:";
             // 
@@ -107,9 +107,9 @@
             // 
             LBLCurrentStatus.AutoSize = true;
             LBLCurrentStatus.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LBLCurrentStatus.Location = new Point(422, 135);
+            LBLCurrentStatus.Location = new Point(369, 101);
             LBLCurrentStatus.Name = "LBLCurrentStatus";
-            LBLCurrentStatus.Size = new Size(60, 20);
+            LBLCurrentStatus.Size = new Size(48, 16);
             LBLCurrentStatus.TabIndex = 7;
             LBLCurrentStatus.Text = "label7";
             // 
@@ -117,58 +117,66 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Arial Rounded MT Bold", 12F);
-            label8.Location = new Point(257, 132);
+            label8.Location = new Point(225, 99);
             label8.Name = "label8";
-            label8.Size = new Size(159, 23);
+            label8.Size = new Size(131, 18);
             label8.TabIndex = 6;
             label8.Text = "Current Status:";
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.FromArgb(163, 177, 138);
             groupBox1.Controls.Add(BTNUpdate);
             groupBox1.Controls.Add(CBChangeStatus);
             groupBox1.Controls.Add(label9);
             groupBox1.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(247, 217);
+            groupBox1.Location = new Point(216, 163);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(250, 190);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(219, 142);
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
             groupBox1.Text = "Change Status";
             // 
-            // label9
+            // BTNUpdate
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(36, 36);
-            label9.Name = "label9";
-            label9.Size = new Size(170, 17);
-            label9.TabIndex = 0;
-            label9.Text = "Select the new Status:";
+            BTNUpdate.BackColor = Color.FromArgb(88, 129, 87);
+            BTNUpdate.Font = new Font("Arial Rounded MT Bold", 10.2F);
+            BTNUpdate.ForeColor = Color.White;
+            BTNUpdate.Location = new Point(38, 90);
+            BTNUpdate.Margin = new Padding(3, 2, 3, 2);
+            BTNUpdate.Name = "BTNUpdate";
+            BTNUpdate.Size = new Size(132, 36);
+            BTNUpdate.TabIndex = 2;
+            BTNUpdate.Text = "Update";
+            BTNUpdate.UseVisualStyleBackColor = false;
+            BTNUpdate.Click += BTNUpdate_Click;
             // 
             // CBChangeStatus
             // 
             CBChangeStatus.FormattingEnabled = true;
-            CBChangeStatus.Location = new Point(44, 69);
+            CBChangeStatus.Location = new Point(38, 52);
+            CBChangeStatus.Margin = new Padding(3, 2, 3, 2);
             CBChangeStatus.Name = "CBChangeStatus";
-            CBChangeStatus.Size = new Size(151, 25);
+            CBChangeStatus.Size = new Size(133, 22);
             CBChangeStatus.TabIndex = 1;
             // 
-            // BTNUpdate
+            // label9
             // 
-            BTNUpdate.Font = new Font("Arial Rounded MT Bold", 10.2F);
-            BTNUpdate.Location = new Point(44, 129);
-            BTNUpdate.Name = "BTNUpdate";
-            BTNUpdate.Size = new Size(151, 39);
-            BTNUpdate.TabIndex = 2;
-            BTNUpdate.Text = "Update";
-            BTNUpdate.UseVisualStyleBackColor = true;
-            BTNUpdate.Click += BTNUpdate_Click;
+            label9.AutoSize = true;
+            label9.Location = new Point(32, 27);
+            label9.Name = "label9";
+            label9.Size = new Size(135, 14);
+            label9.TabIndex = 0;
+            label9.Text = "Select the new Status:";
             // 
             // ChangeCarStatus
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.FromArgb(218, 215, 205);
+            ClientSize = new Size(700, 338);
             Controls.Add(groupBox1);
             Controls.Add(LBLCurrentStatus);
             Controls.Add(label8);
@@ -178,6 +186,7 @@
             Controls.Add(label4);
             Controls.Add(LBLBrand);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "ChangeCarStatus";
             Text = "ChangeCarStatus";
             groupBox1.ResumeLayout(false);

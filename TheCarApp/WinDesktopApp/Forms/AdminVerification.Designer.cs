@@ -52,19 +52,22 @@
             // 
             // BTNCheckPass
             // 
+            BTNCheckPass.BackColor = Color.FromArgb(88, 129, 87);
             BTNCheckPass.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BTNCheckPass.ForeColor = Color.White;
             BTNCheckPass.Location = new Point(176, 136);
             BTNCheckPass.Name = "BTNCheckPass";
-            BTNCheckPass.Size = new Size(102, 32);
+            BTNCheckPass.Size = new Size(113, 43);
             BTNCheckPass.TabIndex = 2;
             BTNCheckPass.Text = "Check Pass";
-            BTNCheckPass.UseVisualStyleBackColor = true;
+            BTNCheckPass.UseVisualStyleBackColor = false;
             BTNCheckPass.Click += BTNCheckPass_Click;
             // 
             // AdminVerification
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(218, 215, 205);
             ClientSize = new Size(461, 203);
             Controls.Add(BTNCheckPass);
             Controls.Add(TBAdminPass);

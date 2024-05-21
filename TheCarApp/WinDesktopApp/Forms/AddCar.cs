@@ -28,7 +28,7 @@ namespace DesktopApp
         bool Modify = false;
         Car carData;
         public event EventHandler CarAdded;
-        public AddCar(Car car, ICarManager cm, IExtraManager em, IPictureManager picManager)
+        public AddCar(Car car, ICarManager cm, IExtraManager em, IPictureManager picManager, bool View)
         {
             InitializeComponent();
             manager = cm;
@@ -43,6 +43,24 @@ namespace DesktopApp
                 Modify = true;
                 LoadCarData();
                 BTNAddCar.Text = "Update Car";
+            }
+
+            if (View)
+            { 
+                BTNAddCar.Enabled = false;
+                BTNAddCar.Visible = false;
+                BTNAddExtra.Enabled = false;
+                BTNAddExtra.Visible = false;
+                BTNAddPics.Enabled = false;
+                BTNAddPics.Visible = false;
+                BTNAddPicture.Enabled = false;
+                BTNAddPicture.Visible = false;
+                BTNAddExtras.Enabled = false;
+                BTNAddExtras.Visible = false;
+                BTNRemoveExtra.Enabled = false;
+                BTNRemoveExtra.Visible = false;
+                BTNRemovePicture.Enabled = false;
+                BTNRemovePicture.Visible = false;
             }
 
         }

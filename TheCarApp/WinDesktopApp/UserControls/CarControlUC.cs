@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinDesktopApp.Forms;
 using InterfaceLayer;
+using Entity_Layer;
 
 namespace DesktopApp
 {
@@ -34,7 +35,7 @@ namespace DesktopApp
 
         private void BTNAddCar_Click(object sender, EventArgs e)
         {
-            AddCar addCar = new AddCar(null, carManager, extraManager, pictureManager);
+            AddCar addCar = new AddCar(null, carManager, extraManager, pictureManager, false);
             addCar.CarAdded += AddCar_CarAdded;
             addCar.Show();
         }
@@ -58,29 +59,28 @@ namespace DesktopApp
 
         private void InitializeGridView()
         {
-            this.DGVCars.ColumnCount = 8;
+            this.DGVCars.ColumnCount = 4;
             this.DGVCars.Columns[0].Name = "Brand";
             this.DGVCars.Columns[0].Width = 100;
             this.DGVCars.Columns[1].Name = "Model";
             this.DGVCars.Columns[1].Width = 100;
-            this.DGVCars.Columns[2].Name = "Year";
-            this.DGVCars.Columns[2].Width = 100;
-            this.DGVCars.Columns[3].Name = "Horse Power";
-            this.DGVCars.Columns[3].Width = 120;
-            this.DGVCars.Columns[4].Name = "Gearbox";
-            this.DGVCars.Columns[4].Width = 100;
-            this.DGVCars.Columns[5].Name = "Fuel";
-            this.DGVCars.Columns[5].Width = 80;
-            this.DGVCars.Columns[6].Name = "VIN";
-            this.DGVCars.Columns[6].Width = 140;
-            this.DGVCars.Columns[7].Name = "Status";
-            this.DGVCars.Columns[7].Width = 100;
+            this.DGVCars.Columns[2].Name = "VIN";
+            this.DGVCars.Columns[2].Width = 110;
+            this.DGVCars.Columns[3].Name = "Status";
+            this.DGVCars.Columns[3].Width = 100;
+            
+
+            var btnView = new DataGridViewButtonColumn();
+            btnView.Name = "View";
+            btnView.HeaderText = "View";
+            btnView.Text = "View";
+            btnView.UseColumnTextForButtonValue = true;
+            DGVCars.Columns.Add(btnView);
 
             var btnModify = new DataGridViewButtonColumn();
             btnModify.Name = "Modify";
             btnModify.HeaderText = "Modify";
             btnModify.Text = "Modify";
-
             btnModify.UseColumnTextForButtonValue = true;
             DGVCars.Columns.Add(btnModify);
 
@@ -97,6 +97,8 @@ namespace DesktopApp
             btnStatus.Text = "Change Status";
             btnStatus.UseColumnTextForButtonValue = true;
             DGVCars.Columns.Add(btnStatus);
+
+            
         }
 
         private void FillDataGridView(List<Car> cars)
@@ -104,7 +106,7 @@ namespace DesktopApp
             this.DGVCars.Rows.Clear();
             foreach (var car in cars)
             {
-                this.DGVCars.Rows.Add(car.Brand, car.Model, car.FirstRegistration.ToShortDateString(), car.HorsePower, car.Gearbox, car.Fuel, car.VIN, car.CarStatus);
+                this.DGVCars.Rows.Add(car.Brand, car.Model, car.VIN, car.CarStatus);
             }
         }
 
@@ -117,6 +119,24 @@ namespace DesktopApp
 
         private void DGVCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex == DGVCars.Columns["View"].Index && e.RowIndex >= 0)
+            {
+                if (e.RowIndex != -1)
+                {
+                    var carVIN = DGVCars.Rows[e.RowIndex].Cells["VIN"].Value.ToString();
+
+                    foreach (var selectedCar in carManager.GetCars())
+                    {
+                        if (selectedCar.VIN == carVIN)
+                        {
+                            AddCar addCar = new AddCar(selectedCar, carManager, extraManager, pictureManager, true);
+                            addCar.Show();
+                            break;
+                        }
+                    }
+                }
+            }
+
             if (e.ColumnIndex == DGVCars.Columns["Modify"].Index && e.RowIndex >= 0)
             {
                 if (e.RowIndex != -1)
@@ -127,7 +147,7 @@ namespace DesktopApp
                     {
                         if (selectedCar.VIN == carVIN)
                         {
-                            AddCar addCar = new AddCar(selectedCar, carManager, extraManager, pictureManager);
+                            AddCar addCar = new AddCar(selectedCar, carManager, extraManager, pictureManager, false);
                             addCar.Show();
                             break;
                         }
@@ -172,6 +192,7 @@ namespace DesktopApp
                 }
             }
 
+            
         }
 
         private void ChangeCarStatus_StatusChanged(object sender, EventArgs e)

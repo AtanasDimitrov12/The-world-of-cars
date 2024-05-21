@@ -41,57 +41,62 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.FromArgb(163, 177, 138);
             groupBox1.Controls.Add(BTNSearch);
             groupBox1.Controls.Add(CBNews);
             groupBox1.Font = new Font("Arial Rounded MT Bold", 12F);
-            groupBox1.Location = new Point(40, 116);
-            groupBox1.Margin = new Padding(5, 4, 5, 4);
+            groupBox1.Location = new Point(35, 87);
+            groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(5, 4, 5, 4);
-            groupBox1.Size = new Size(290, 201);
+            groupBox1.Padding = new Padding(4, 3, 4, 3);
+            groupBox1.Size = new Size(254, 151);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Search per news";
             // 
             // BTNSearch
             // 
-            BTNSearch.Location = new Point(50, 120);
-            BTNSearch.Margin = new Padding(5, 4, 5, 4);
+            BTNSearch.BackColor = Color.FromArgb(88, 129, 87);
+            BTNSearch.ForeColor = Color.White;
+            BTNSearch.Location = new Point(44, 90);
+            BTNSearch.Margin = new Padding(4, 3, 4, 3);
             BTNSearch.Name = "BTNSearch";
-            BTNSearch.Size = new Size(192, 49);
+            BTNSearch.Size = new Size(168, 37);
             BTNSearch.TabIndex = 1;
             BTNSearch.Text = "Search";
-            BTNSearch.UseVisualStyleBackColor = true;
+            BTNSearch.UseVisualStyleBackColor = false;
             BTNSearch.Click += BTNSearch_Click;
             // 
             // CBNews
             // 
             CBNews.FormattingEnabled = true;
-            CBNews.Location = new Point(23, 61);
-            CBNews.Margin = new Padding(5, 4, 5, 4);
+            CBNews.Location = new Point(20, 46);
+            CBNews.Margin = new Padding(4, 3, 4, 3);
             CBNews.Name = "CBNews";
-            CBNews.Size = new Size(249, 31);
+            CBNews.Size = new Size(218, 26);
             CBNews.TabIndex = 0;
             // 
             // LBComments
             // 
             LBComments.FormattingEnabled = true;
-            LBComments.Location = new Point(373, 33);
-            LBComments.Margin = new Padding(5, 4, 5, 4);
+            LBComments.ItemHeight = 15;
+            LBComments.Location = new Point(326, 25);
+            LBComments.Margin = new Padding(4, 3, 4, 3);
             LBComments.Name = "LBComments";
-            LBComments.Size = new Size(405, 584);
+            LBComments.Size = new Size(355, 439);
             LBComments.TabIndex = 1;
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.FromArgb(163, 177, 138);
             groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(BTNDelete);
             groupBox2.Font = new Font("Arial Rounded MT Bold", 12F);
-            groupBox2.Location = new Point(40, 343);
-            groupBox2.Margin = new Padding(5, 4, 5, 4);
+            groupBox2.Location = new Point(35, 257);
+            groupBox2.Margin = new Padding(4, 3, 4, 3);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(5, 4, 5, 4);
-            groupBox2.Size = new Size(290, 201);
+            groupBox2.Padding = new Padding(4, 3, 4, 3);
+            groupBox2.Size = new Size(254, 151);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Delete comment";
@@ -99,36 +104,39 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Arial Rounded MT Bold", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(48, 72);
-            label1.Margin = new Padding(5, 0, 5, 0);
+            label1.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(34, 53);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(193, 16);
+            label1.Size = new Size(184, 15);
             label1.TabIndex = 2;
             label1.Text = "Select and press the button";
             label1.Click += label1_Click;
             // 
             // BTNDelete
             // 
-            BTNDelete.Location = new Point(50, 120);
-            BTNDelete.Margin = new Padding(5, 4, 5, 4);
+            BTNDelete.BackColor = Color.FromArgb(88, 129, 87);
+            BTNDelete.ForeColor = Color.White;
+            BTNDelete.Location = new Point(44, 90);
+            BTNDelete.Margin = new Padding(4, 3, 4, 3);
             BTNDelete.Name = "BTNDelete";
-            BTNDelete.Size = new Size(192, 49);
+            BTNDelete.Size = new Size(168, 37);
             BTNDelete.TabIndex = 1;
             BTNDelete.Text = "Delete";
-            BTNDelete.UseVisualStyleBackColor = true;
+            BTNDelete.UseVisualStyleBackColor = false;
             BTNDelete.Click += BTNDelete_Click;
             // 
             // CommentsControlUC
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(218, 215, 205);
             Controls.Add(groupBox2);
             Controls.Add(LBComments);
             Controls.Add(groupBox1);
-            Margin = new Padding(5, 4, 5, 4);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "CommentsControlUC";
-            Size = new Size(821, 652);
+            Size = new Size(718, 489);
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();

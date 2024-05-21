@@ -29,6 +29,7 @@ namespace DesktopApp
             News = newsManager.news;
             InitializeGridView();
             FillDataGridView(News);
+            
         }
 
         private void BTNAddNews_Click(object sender, EventArgs e)
@@ -47,9 +48,9 @@ namespace DesktopApp
         {
             this.DGVNews.ColumnCount = 3;
             this.DGVNews.Columns[0].Name = "Title";
-            this.DGVNews.Columns[0].Width = 200;
+            this.DGVNews.Columns[0].Width = 180;
             this.DGVNews.Columns[1].Name = "Author";
-            this.DGVNews.Columns[1].Width = 150;
+            this.DGVNews.Columns[1].Width = 130;
             this.DGVNews.Columns[2].Name = "Date";
             this.DGVNews.Columns[2].Width = 150;
 
