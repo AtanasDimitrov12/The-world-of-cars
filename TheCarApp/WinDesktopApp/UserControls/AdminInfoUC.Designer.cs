@@ -50,7 +50,7 @@
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label3);
             groupBox2.Font = new Font("Arial Rounded MT Bold", 12F);
-            groupBox2.Location = new Point(286, 82);
+            groupBox2.Location = new Point(444, 85);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(279, 302);
             groupBox2.TabIndex = 1;
@@ -141,7 +141,7 @@
             Controls.Add(groupBox2);
             Margin = new Padding(4, 3, 4, 3);
             Name = "AdminInfoUC";
-            Size = new Size(827, 481);
+            Size = new Size(1160, 502);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ResumeLayout(false);

@@ -374,6 +374,7 @@
             groupBox1.Controls.Add(BTNRemoveExtra);
             groupBox1.Controls.Add(CBCarExtras);
             groupBox1.Controls.Add(LBExtras);
+            groupBox1.Font = new Font("Arial Rounded MT Bold", 9.75F);
             groupBox1.Location = new Point(405, 179);
             groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
@@ -488,6 +489,7 @@
             groupBox2.Controls.Add(BTNAddPicture);
             groupBox2.Controls.Add(BTNRemovePicture);
             groupBox2.Controls.Add(CBPictureURL);
+            groupBox2.Font = new Font("Arial Rounded MT Bold", 9.75F);
             groupBox2.Location = new Point(724, 179);
             groupBox2.Margin = new Padding(4, 3, 4, 3);
             groupBox2.Name = "groupBox2";

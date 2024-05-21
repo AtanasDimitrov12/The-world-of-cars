@@ -51,6 +51,7 @@
             groupBox2.Controls.Add(RBDESC);
             groupBox2.Controls.Add(RBASC);
             groupBox2.Controls.Add(label4);
+            groupBox2.Font = new Font("Arial Rounded MT Bold", 9.75F);
             groupBox2.Location = new Point(14, 17);
             groupBox2.Margin = new Padding(4, 3, 4, 3);
             groupBox2.Name = "groupBox2";
@@ -66,7 +67,7 @@
             RBDESC.Location = new Point(118, 53);
             RBDESC.Margin = new Padding(4, 3, 4, 3);
             RBDESC.Name = "RBDESC";
-            RBDESC.Size = new Size(50, 19);
+            RBDESC.Size = new Size(58, 19);
             RBDESC.TabIndex = 16;
             RBDESC.TabStop = true;
             RBDESC.Text = "Desc";
@@ -79,7 +80,7 @@
             RBASC.Location = new Point(31, 53);
             RBASC.Margin = new Padding(4, 3, 4, 3);
             RBASC.Name = "RBASC";
-            RBASC.Size = new Size(44, 19);
+            RBASC.Size = new Size(49, 19);
             RBASC.TabIndex = 15;
             RBASC.TabStop = true;
             RBASC.Text = "Asc";
@@ -103,6 +104,7 @@
             groupBox3.Controls.Add(BTNSearchByTitle);
             groupBox3.Controls.Add(TBNewsTitle);
             groupBox3.Controls.Add(label5);
+            groupBox3.Font = new Font("Arial Rounded MT Bold", 9.75F);
             groupBox3.Location = new Point(14, 136);
             groupBox3.Margin = new Padding(4, 3, 4, 3);
             groupBox3.Name = "groupBox3";
@@ -163,6 +165,7 @@
             // 
             groupBox1.BackColor = Color.FromArgb(163, 177, 138);
             groupBox1.Controls.Add(BTNAddNews);
+            groupBox1.Font = new Font("Arial Rounded MT Bold", 9.75F);
             groupBox1.Location = new Point(14, 328);
             groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";

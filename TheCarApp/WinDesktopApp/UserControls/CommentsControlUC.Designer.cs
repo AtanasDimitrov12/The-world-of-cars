@@ -45,7 +45,7 @@
             groupBox1.Controls.Add(BTNSearch);
             groupBox1.Controls.Add(CBNews);
             groupBox1.Font = new Font("Arial Rounded MT Bold", 12F);
-            groupBox1.Location = new Point(35, 87);
+            groupBox1.Location = new Point(249, 84);
             groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4, 3, 4, 3);
@@ -78,9 +78,10 @@
             // 
             // LBComments
             // 
+            LBComments.Font = new Font("Arial Rounded MT Bold", 9.75F);
             LBComments.FormattingEnabled = true;
             LBComments.ItemHeight = 15;
-            LBComments.Location = new Point(326, 25);
+            LBComments.Location = new Point(540, 22);
             LBComments.Margin = new Padding(4, 3, 4, 3);
             LBComments.Name = "LBComments";
             LBComments.Size = new Size(355, 439);
@@ -92,7 +93,7 @@
             groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(BTNDelete);
             groupBox2.Font = new Font("Arial Rounded MT Bold", 12F);
-            groupBox2.Location = new Point(35, 257);
+            groupBox2.Location = new Point(249, 254);
             groupBox2.Margin = new Padding(4, 3, 4, 3);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(4, 3, 4, 3);
@@ -136,7 +137,7 @@
             Controls.Add(groupBox1);
             Margin = new Padding(4, 3, 4, 3);
             Name = "CommentsControlUC";
-            Size = new Size(718, 489);
+            Size = new Size(1160, 502);
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();

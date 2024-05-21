@@ -125,7 +125,7 @@ namespace DatabaseAccess
             }
         }
 
-        public string UpdateAdministration(int adminId, string username, string email, string passwordHash, string phoneNumber, DateTime createdOn)
+        public string UpdateAdministration(int adminId, string username, string email, string passwordHash, string phoneNumber, DateTime createdOn, string PassSalt)
         {
             int rowsAffected = -1;
             try
@@ -136,7 +136,8 @@ namespace DatabaseAccess
                           "[Email] = @Email, " +
                           "[PasswordHash] = @PasswordHash, " +
                           "[PhoneNumber] = @PhoneNumber, " +
-                          "[CreatedOn] = @CreatedOn " +
+                          "[CreatedOn] = @CreatedOn, " +
+                          "[PassSalt] = @PassSalt " +
                           "WHERE [AdminId] = @AdminId";
 
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
@@ -145,6 +146,7 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@PasswordHash", passwordHash);
                 cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
                 cmd.Parameters.AddWithValue("@CreatedOn", createdOn);
+                cmd.Parameters.AddWithValue("@PassSalt", PassSalt);
                 cmd.Parameters.AddWithValue("@AdminId", adminId);
 
                 rowsAffected = cmd.ExecuteNonQuery();

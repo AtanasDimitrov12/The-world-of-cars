@@ -58,7 +58,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 23F));
-            tableLayoutPanel1.Size = new Size(233, 366);
+            tableLayoutPanel1.Size = new Size(241, 366);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // BTNComments
@@ -69,7 +69,7 @@
             BTNComments.Location = new Point(4, 185);
             BTNComments.Margin = new Padding(4, 3, 4, 3);
             BTNComments.Name = "BTNComments";
-            BTNComments.Size = new Size(224, 81);
+            BTNComments.Size = new Size(233, 85);
             BTNComments.TabIndex = 2;
             BTNComments.Text = "Comments";
             BTNComments.UseVisualStyleBackColor = false;
@@ -83,7 +83,7 @@
             BTNCarControl.Location = new Point(4, 276);
             BTNCarControl.Margin = new Padding(4, 3, 4, 3);
             BTNCarControl.Name = "BTNCarControl";
-            BTNCarControl.Size = new Size(224, 84);
+            BTNCarControl.Size = new Size(233, 87);
             BTNCarControl.TabIndex = 3;
             BTNCarControl.Text = "Car Control";
             BTNCarControl.UseVisualStyleBackColor = false;
@@ -97,7 +97,7 @@
             BTNCarNews.Location = new Point(4, 94);
             BTNCarNews.Margin = new Padding(4, 3, 4, 3);
             BTNCarNews.Name = "BTNCarNews";
-            BTNCarNews.Size = new Size(224, 84);
+            BTNCarNews.Size = new Size(233, 85);
             BTNCarNews.TabIndex = 1;
             BTNCarNews.Text = "Car News";
             BTNCarNews.UseVisualStyleBackColor = false;
@@ -111,7 +111,7 @@
             BTNControlAdminInfo.Location = new Point(4, 3);
             BTNControlAdminInfo.Margin = new Padding(4, 3, 4, 3);
             BTNControlAdminInfo.Name = "BTNControlAdminInfo";
-            BTNControlAdminInfo.Size = new Size(224, 84);
+            BTNControlAdminInfo.Size = new Size(233, 85);
             BTNControlAdminInfo.TabIndex = 0;
             BTNControlAdminInfo.Text = "Admin Info";
             BTNControlAdminInfo.UseVisualStyleBackColor = false;
@@ -130,10 +130,10 @@
             // 
             panel2.BackColor = Color.FromArgb(218, 215, 205);
             panel2.Controls.Add(label1);
-            panel2.Location = new Point(237, 0);
+            panel2.Location = new Point(245, 0);
             panel2.Margin = new Padding(4, 3, 4, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1149, 517);
+            panel2.Size = new Size(1140, 517);
             panel2.TabIndex = 3;
             // 
             // label1

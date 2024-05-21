@@ -56,10 +56,11 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(TBNewsTitle);
+            groupBox1.Font = new Font("Arial Rounded MT Bold", 9.75F);
             groupBox1.Location = new Point(14, 14);
-            groupBox1.Margin = new Padding(4, 4, 4, 4);
+            groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 4, 4, 4);
+            groupBox1.Padding = new Padding(4);
             groupBox1.Size = new Size(697, 279);
             groupBox1.TabIndex = 18;
             groupBox1.TabStop = false;
@@ -79,7 +80,7 @@
             // TBNewsImageURL
             // 
             TBNewsImageURL.Location = new Point(132, 109);
-            TBNewsImageURL.Margin = new Padding(4, 4, 4, 4);
+            TBNewsImageURL.Margin = new Padding(4);
             TBNewsImageURL.Name = "TBNewsImageURL";
             TBNewsImageURL.Size = new Size(308, 23);
             TBNewsImageURL.TabIndex = 17;
@@ -98,7 +99,7 @@
             // TBNewsAuthor
             // 
             TBNewsAuthor.Location = new Point(132, 70);
-            TBNewsAuthor.Margin = new Padding(4, 4, 4, 4);
+            TBNewsAuthor.Margin = new Padding(4);
             TBNewsAuthor.Name = "TBNewsAuthor";
             TBNewsAuthor.Size = new Size(156, 23);
             TBNewsAuthor.TabIndex = 15;
@@ -109,7 +110,7 @@
             BTNAdd.Font = new Font("Arial Rounded MT Bold", 12F);
             BTNAdd.ForeColor = Color.White;
             BTNAdd.Location = new Point(563, 160);
-            BTNAdd.Margin = new Padding(4, 4, 4, 4);
+            BTNAdd.Margin = new Padding(4);
             BTNAdd.Name = "BTNAdd";
             BTNAdd.Size = new Size(125, 99);
             BTNAdd.TabIndex = 14;
@@ -120,7 +121,7 @@
             // RTBNewsDescription
             // 
             RTBNewsDescription.Location = new Point(115, 160);
-            RTBNewsDescription.Margin = new Padding(4, 4, 4, 4);
+            RTBNewsDescription.Margin = new Padding(4);
             RTBNewsDescription.Name = "RTBNewsDescription";
             RTBNewsDescription.Size = new Size(413, 98);
             RTBNewsDescription.TabIndex = 13;
@@ -140,7 +141,7 @@
             // RTBNewsIntro
             // 
             RTBNewsIntro.Location = new Point(458, 24);
-            RTBNewsIntro.Margin = new Padding(4, 4, 4, 4);
+            RTBNewsIntro.Margin = new Padding(4);
             RTBNewsIntro.Name = "RTBNewsIntro";
             RTBNewsIntro.Size = new Size(229, 83);
             RTBNewsIntro.TabIndex = 11;
@@ -171,7 +172,7 @@
             // TBNewsTitle
             // 
             TBNewsTitle.Location = new Point(132, 34);
-            TBNewsTitle.Margin = new Padding(4, 4, 4, 4);
+            TBNewsTitle.Margin = new Padding(4);
             TBNewsTitle.Name = "TBNewsTitle";
             TBNewsTitle.Size = new Size(156, 23);
             TBNewsTitle.TabIndex = 8;
@@ -183,7 +184,7 @@
             BackColor = Color.FromArgb(218, 215, 205);
             ClientSize = new Size(729, 308);
             Controls.Add(groupBox1);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "AddNews";
             Text = "AddNews";
             groupBox1.ResumeLayout(false);

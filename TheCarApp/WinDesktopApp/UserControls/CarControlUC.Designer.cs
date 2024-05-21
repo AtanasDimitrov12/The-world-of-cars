@@ -49,6 +49,7 @@
             // 
             groupBox1.BackColor = Color.FromArgb(163, 177, 138);
             groupBox1.Controls.Add(BTNAddCar);
+            groupBox1.Font = new Font("Arial Rounded MT Bold", 9.75F);
             groupBox1.Location = new Point(16, 301);
             groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
@@ -78,6 +79,7 @@
             groupBox3.Controls.Add(TBSearchByYear);
             groupBox3.Controls.Add(BTNSearch);
             groupBox3.Controls.Add(label5);
+            groupBox3.Font = new Font("Arial Rounded MT Bold", 9.75F);
             groupBox3.Location = new Point(16, 128);
             groupBox3.Margin = new Padding(4, 3, 4, 3);
             groupBox3.Name = "groupBox3";
@@ -125,6 +127,7 @@
             groupBox2.Controls.Add(RBDesc);
             groupBox2.Controls.Add(RBAsc);
             groupBox2.Controls.Add(label4);
+            groupBox2.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(16, 15);
             groupBox2.Margin = new Padding(4, 3, 4, 3);
             groupBox2.Name = "groupBox2";
@@ -140,7 +143,7 @@
             RBDesc.Location = new Point(31, 62);
             RBDesc.Margin = new Padding(4, 3, 4, 3);
             RBDesc.Name = "RBDesc";
-            RBDesc.Size = new Size(45, 19);
+            RBDesc.Size = new Size(46, 19);
             RBDesc.TabIndex = 16;
             RBDesc.TabStop = true;
             RBDesc.Text = "A-Z";
@@ -153,7 +156,7 @@
             RBAsc.Location = new Point(116, 62);
             RBAsc.Margin = new Padding(4, 3, 4, 3);
             RBAsc.Name = "RBAsc";
-            RBAsc.Size = new Size(45, 19);
+            RBAsc.Size = new Size(46, 19);
             RBAsc.TabIndex = 15;
             RBAsc.TabStop = true;
             RBAsc.Text = "Z-A";
