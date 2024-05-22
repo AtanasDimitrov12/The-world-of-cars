@@ -23,7 +23,7 @@ namespace DesktopApp
         ICarManager carManager;
         IExtraManager extraManager;
         IPictureManager pictureManager;
-        private readonly ICarFormFactory formFactory;
+        
         public CarControlUC(IPeopleManager pm, ICarManager cm, IExtraManager em, IPictureManager picM)
         {
             InitializeComponent();
@@ -31,15 +31,15 @@ namespace DesktopApp
             this.carManager = cm;
             this.extraManager = em;
             this.pictureManager = picM;
-            this.formFactory = new CarFormFactory(carManager, extraManager, pictureManager);
             InitializeGridView();
             FillDataGridView(carManager.GetCars());
         }
 
         private void BTNAddCar_Click(object sender, EventArgs e)
         {
-            var addForm = formFactory.CreateAddForm();
-            addForm.CarActionCompleted += AddCar_CarAdded;
+            ICarFormFactory factory = new AddCarFormFactory();
+            var addForm = factory.CreateCarForm(null, carManager, extraManager, pictureManager);
+            addForm.AddCarClicked += AddCar_CarAdded;
             addForm.ShowForm();
         }
 
@@ -124,45 +124,47 @@ namespace DesktopApp
 
         private void DGVCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
-
-            var carVIN = DGVCars.Rows[e.RowIndex].Cells["VIN"].Value.ToString();
-            var car = carManager.GetCars().FirstOrDefault(c => c.VIN == carVIN);
-
-            if (car == null) return;
-
-            ICarForm form = null;
-
-            if (e.ColumnIndex == DGVCars.Columns["View"].Index)
+            if (e.RowIndex >= 0)
             {
-                form = formFactory.CreateViewForm(car);
-            }
-            else if (e.ColumnIndex == DGVCars.Columns["Modify"].Index)
-            {
-                form = formFactory.CreateModifyForm(car);
-            }
-            else if (e.ColumnIndex == DGVCars.Columns["Delete"].Index)
-            {
-                carManager.RemoveCar(car);
-                FillDataGridView(carManager.GetCars());
-                return;
-            }
-            else if (e.ColumnIndex == DGVCars.Columns["Change Status"].Index)
-            {
-                var changeStatus = new ChangeCarStatus(car, carManager);
-                changeStatus.Show();
-                changeStatus.StatusChanged += ChangeCarStatus_StatusChanged;
-                return;
-            }
+                var carVIN = DGVCars.Rows[e.RowIndex].Cells["VIN"].Value.ToString();
+                var selectedCar = carManager.GetCars().FirstOrDefault(car => car.VIN == carVIN);
 
-            if (form != null)
-            {
-                form.CarActionCompleted += (s, ev) => FillDataGridView(carManager.GetCars());
-                form.ShowForm();
+                if (selectedCar != null)
+                {
+                    ICarFormFactory factory = null;
+
+                    if (e.ColumnIndex == DGVCars.Columns["View"].Index)
+                    {
+                        factory = new ViewCarFormFactory();
+                    }
+                    else if (e.ColumnIndex == DGVCars.Columns["Modify"].Index)
+                    {
+                        factory = new ModifyCarFormFactory();
+                    }
+                    else if (e.ColumnIndex == DGVCars.Columns["Delete"].Index)
+                    {
+                        carManager.RemoveCar(selectedCar);
+                        FillDataGridView(carManager.GetCars());
+                        return;
+                    }
+                    else if (e.ColumnIndex == DGVCars.Columns["Change Status"].Index)
+                    {
+                        ChangeCarStatus changeStatus = new ChangeCarStatus(selectedCar, carManager);
+                        changeStatus.Show();
+                        changeStatus.StatusChanged += ChangeCarStatus_StatusChanged;
+                        return;
+                    }
+
+                    if (factory != null)
+                    {
+                        var carForm = factory.CreateCarForm(selectedCar, carManager, extraManager, pictureManager);
+                        carForm.AddCarClicked += AddCar_CarAdded; 
+                        carForm.ShowForm();
+                    }
+                }
             }
-
-
         }
+
 
         private void ChangeCarStatus_StatusChanged(object sender, EventArgs e)
         {

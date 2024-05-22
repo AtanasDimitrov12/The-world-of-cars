@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entity_Layer;
+using EntityLayout;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +10,12 @@ namespace InterfaceLayer
 {
     public interface ICarForm
     {
-        void ShowForm();
-        event EventHandler CarActionCompleted;
+        void LoadCarData(Car car);
+        void LoadExtrasAndPictures(List<Extra> extras, List<Picture> pictures);
+        void DisableControls();
+        void EnableControls();
+        void ShowForm(); 
+        event EventHandler AddCarClicked;
     }
 
 }

@@ -9,9 +9,7 @@ namespace InterfaceLayer
 {
     public interface ICarFormFactory
     {
-        ICarForm CreateViewForm(Car car);
-        ICarForm CreateModifyForm(Car car);
-        ICarForm CreateAddForm();
+        ICarForm CreateCarForm(Car car, ICarManager cm, IExtraManager em, IPictureManager picManager);
     }
 
 }
