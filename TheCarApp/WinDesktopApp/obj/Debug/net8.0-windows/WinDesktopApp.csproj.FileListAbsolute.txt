@@ -87,3 +87,6 @@ C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Deb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Forms.AdminVerification.resources
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Forms.ChangeAdminInformation.resources
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Properties.Resources.resources
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Forms.AdminVerification.resources
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Forms.ChangeAdminInformation.resources
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Properties.Resources.resources

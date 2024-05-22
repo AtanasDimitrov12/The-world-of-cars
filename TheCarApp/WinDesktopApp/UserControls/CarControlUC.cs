@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using WinDesktopApp.Forms;
 using InterfaceLayer;
 using Entity_Layer;
+using WinDesktopApp.Models;
 
 namespace DesktopApp
 {
@@ -22,6 +23,7 @@ namespace DesktopApp
         ICarManager carManager;
         IExtraManager extraManager;
         IPictureManager pictureManager;
+        private readonly ICarFormFactory formFactory;
         public CarControlUC(IPeopleManager pm, ICarManager cm, IExtraManager em, IPictureManager picM)
         {
             InitializeComponent();
@@ -29,15 +31,16 @@ namespace DesktopApp
             this.carManager = cm;
             this.extraManager = em;
             this.pictureManager = picM;
+            this.formFactory = new CarFormFactory(carManager, extraManager, pictureManager);
             InitializeGridView();
             FillDataGridView(carManager.GetCars());
         }
 
         private void BTNAddCar_Click(object sender, EventArgs e)
         {
-            AddCar addCar = new AddCar(null, carManager, extraManager, pictureManager, false);
-            addCar.CarAdded += AddCar_CarAdded;
-            addCar.Show();
+            var addForm = formFactory.CreateAddForm();
+            addForm.CarActionCompleted += AddCar_CarAdded;
+            addForm.ShowForm();
         }
 
         private void AddCar_CarAdded(object sender, EventArgs e)
@@ -119,80 +122,44 @@ namespace DesktopApp
 
         private void DGVCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == DGVCars.Columns["View"].Index && e.RowIndex >= 0)
-            {
-                if (e.RowIndex != -1)
-                {
-                    var carVIN = DGVCars.Rows[e.RowIndex].Cells["VIN"].Value.ToString();
+            if (e.RowIndex < 0) return;
 
-                    foreach (var selectedCar in carManager.GetCars())
-                    {
-                        if (selectedCar.VIN == carVIN)
-                        {
-                            AddCar addCar = new AddCar(selectedCar, carManager, extraManager, pictureManager, true);
-                            addCar.Show();
-                            break;
-                        }
-                    }
-                }
+            var carVIN = DGVCars.Rows[e.RowIndex].Cells["VIN"].Value.ToString();
+            var car = carManager.GetCars().FirstOrDefault(c => c.VIN == carVIN);
+
+            if (car == null) return;
+
+            ICarForm form = null;
+
+            if (e.ColumnIndex == DGVCars.Columns["View"].Index)
+            {
+                form = formFactory.CreateViewForm(car);
+            }
+            else if (e.ColumnIndex == DGVCars.Columns["Modify"].Index)
+            {
+                form = formFactory.CreateModifyForm(car);
+            }
+            else if (e.ColumnIndex == DGVCars.Columns["Delete"].Index)
+            {
+                carManager.RemoveCar(car);
+                FillDataGridView(carManager.GetCars());
+                return;
+            }
+            else if (e.ColumnIndex == DGVCars.Columns["Change Status"].Index)
+            {
+                var changeStatus = new ChangeCarStatus(car, carManager);
+                changeStatus.Show();
+                changeStatus.StatusChanged += ChangeCarStatus_StatusChanged;
+                return;
             }
 
-            if (e.ColumnIndex == DGVCars.Columns["Modify"].Index && e.RowIndex >= 0)
+            if (form != null)
             {
-                if (e.RowIndex != -1)
-                {
-                    var carVIN = DGVCars.Rows[e.RowIndex].Cells["VIN"].Value.ToString();
-
-                    foreach (var selectedCar in carManager.GetCars())
-                    {
-                        if (selectedCar.VIN == carVIN)
-                        {
-                            AddCar addCar = new AddCar(selectedCar, carManager, extraManager, pictureManager, false);
-                            addCar.Show();
-                            break;
-                        }
-                    }
-                }
+                form.CarActionCompleted += (s, ev) => FillDataGridView(carManager.GetCars());
+                form.ShowForm();
             }
 
-            if (e.ColumnIndex == DGVCars.Columns["Delete"].Index && e.RowIndex >= 0)
-            {
-                if (e.RowIndex != -1)
-                {
-                    var carVIN = DGVCars.Rows[e.RowIndex].Cells["VIN"].Value.ToString();
 
-                    foreach (var selectedCar in carManager.GetCars())
-                    {
-                        if (selectedCar.VIN == carVIN)
-                        {
-                            carManager.RemoveCar(selectedCar);
-                            FillDataGridView(carManager.GetCars());
-                            break;
-                        }
-                    }
-                }
-            }
-
-            if (e.ColumnIndex == DGVCars.Columns["Change Status"].Index && e.RowIndex >= 0)
-            {
-                if (e.RowIndex != -1)
-                {
-                    var carVIN = DGVCars.Rows[e.RowIndex].Cells["VIN"].Value.ToString();
-
-                    foreach (var selectedCar in carManager.GetCars())
-                    {
-                        if (selectedCar.VIN == carVIN)
-                        {
-                            ChangeCarStatus changeStatus = new ChangeCarStatus(selectedCar, carManager);
-                            changeStatus.Show();
-                            changeStatus.StatusChanged += ChangeCarStatus_StatusChanged;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            
         }
 
         private void ChangeCarStatus_StatusChanged(object sender, EventArgs e)
