@@ -62,15 +62,17 @@ namespace DesktopApp
 
         private void InitializeGridView()
         {
-            this.DGVCars.ColumnCount = 4;
+            this.DGVCars.ColumnCount = 5;
             this.DGVCars.Columns[0].Name = "Brand";
             this.DGVCars.Columns[0].Width = 100;
             this.DGVCars.Columns[1].Name = "Model";
             this.DGVCars.Columns[1].Width = 100;
-            this.DGVCars.Columns[2].Name = "VIN";
-            this.DGVCars.Columns[2].Width = 110;
-            this.DGVCars.Columns[3].Name = "Status";
-            this.DGVCars.Columns[3].Width = 100;
+            this.DGVCars.Columns[2].Name = "Year";
+            this.DGVCars.Columns[2].Width = 100;
+            this.DGVCars.Columns[3].Name = "VIN";
+            this.DGVCars.Columns[3].Width = 110;
+            this.DGVCars.Columns[4].Name = "Status";
+            this.DGVCars.Columns[4].Width = 100;
             
 
             var btnView = new DataGridViewButtonColumn();
@@ -109,7 +111,7 @@ namespace DesktopApp
             this.DGVCars.Rows.Clear();
             foreach (var car in cars)
             {
-                this.DGVCars.Rows.Add(car.Brand, car.Model, car.VIN, car.CarStatus);
+                this.DGVCars.Rows.Add(car.Brand, car.Model, car.FirstRegistration.ToShortDateString(), car.VIN, car.CarStatus);
             }
         }
 
