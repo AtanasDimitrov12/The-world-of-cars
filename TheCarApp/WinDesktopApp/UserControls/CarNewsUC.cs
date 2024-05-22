@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using InterfaceLayer;
 using Manager_Layer;
 using EntityLayout;
+using System.Text.RegularExpressions;
 
 namespace DesktopApp
 {
@@ -103,7 +104,9 @@ namespace DesktopApp
         private void BTNSearchByTitle_Click(object sender, EventArgs e)
         {
             string title = TBNewsTitle.Text;
-            var filteredNews = newsManager.news.Where(news => news.Title == title).ToList();
+            var filteredNews = newsManager.news
+                .Where(news => Regex.IsMatch(news.Title, Regex.Escape(title), RegexOptions.IgnoreCase))
+                .ToList();
             FillDataGridView(filteredNews);
         }
 
