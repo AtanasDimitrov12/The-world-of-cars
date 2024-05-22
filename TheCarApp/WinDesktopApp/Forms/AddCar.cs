@@ -46,7 +46,7 @@ namespace DesktopApp
             }
 
             if (View)
-            { 
+            {
                 BTNAddCar.Enabled = false;
                 BTNAddCar.Visible = false;
                 BTNAddExtra.Enabled = false;
@@ -61,6 +61,11 @@ namespace DesktopApp
                 BTNRemoveExtra.Visible = false;
                 BTNRemovePicture.Enabled = false;
                 BTNRemovePicture.Visible = false;
+            }
+            else
+            { 
+                BTNClose.Enabled = false;
+                BTNClose.Visible = false;
             }
 
         }
@@ -111,7 +116,7 @@ namespace DesktopApp
         public void LoadCB()
         {
             CBCarExtras.Items.Clear();
-            CBPictureURL.Items.Clear(); 
+            CBPictureURL.Items.Clear();
             foreach (Extra extra in extraManager.extras)
             {
                 CBCarExtras.Items.Add($"{extra.ExtraName}");
@@ -284,7 +289,7 @@ namespace DesktopApp
 
         private void AddExtra_ExtraAdded(object sender, EventArgs e)
         {
-            LoadCB(); 
+            LoadCB();
         }
 
         private void BTNAddPics_Click(object sender, EventArgs e)
@@ -297,6 +302,11 @@ namespace DesktopApp
         private void AddPic_PicAdded(object sender, EventArgs e)
         {
             LoadCB();
+        }
+
+        private void BTNClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
