@@ -28,6 +28,14 @@ namespace DesktopApp
         bool Modify = false;
         Car carData;
         public event EventHandler CarAdded;
+        public Button BTNAddCarGet { get; }
+        public Button BTNAddExtraGet { get; }
+        public Button BTNAddExtrasGet { get; }
+        public Button BTNAddPictureGet { get; }
+        public Button BTNAddPicturesGet { get; }
+        public Button BTNRemovePictureGet { get; }
+        public Button BTNRemoveExtraGet { get; }
+        public Button BTNCloseGet { get; }
         public AddCar(Car car, ICarManager cm, IExtraManager em, IPictureManager picManager, bool View)
         {
             InitializeComponent();
@@ -38,6 +46,16 @@ namespace DesktopApp
             pictures = new List<Picture>();
             LoadCB();
             carData = car;
+            BTNAddCarGet = BTNAddCar;
+            BTNAddExtraGet = BTNAddExtra;
+            BTNAddExtrasGet = BTNAddExtras;
+            BTNAddPictureGet = BTNAddPicture;
+            BTNAddPicturesGet = BTNAddPics;
+            BTNRemoveExtraGet = BTNRemoveExtra;
+            BTNRemovePictureGet = BTNRemovePicture;
+            BTNCloseGet = BTNClose;
+
+
             if (carData != null)
             {
                 Modify = true;
@@ -46,7 +64,7 @@ namespace DesktopApp
             }
 
             if (View)
-            { 
+            {
                 BTNAddCar.Enabled = false;
                 BTNAddCar.Visible = false;
                 BTNAddExtra.Enabled = false;
@@ -61,6 +79,11 @@ namespace DesktopApp
                 BTNRemoveExtra.Visible = false;
                 BTNRemovePicture.Enabled = false;
                 BTNRemovePicture.Visible = false;
+            }
+            else
+            { 
+                BTNClose.Enabled = false;
+                BTNClose.Visible = false;
             }
 
         }
@@ -111,7 +134,7 @@ namespace DesktopApp
         public void LoadCB()
         {
             CBCarExtras.Items.Clear();
-            CBPictureURL.Items.Clear(); 
+            CBPictureURL.Items.Clear();
             foreach (Extra extra in extraManager.extras)
             {
                 CBCarExtras.Items.Add($"{extra.ExtraName}");
@@ -284,7 +307,7 @@ namespace DesktopApp
 
         private void AddExtra_ExtraAdded(object sender, EventArgs e)
         {
-            LoadCB(); 
+            LoadCB();
         }
 
         private void BTNAddPics_Click(object sender, EventArgs e)
@@ -297,6 +320,11 @@ namespace DesktopApp
         private void AddPic_PicAdded(object sender, EventArgs e)
         {
             LoadCB();
+        }
+
+        private void BTNClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
