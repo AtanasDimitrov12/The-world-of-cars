@@ -18,7 +18,7 @@ namespace DatabaseAccess
             connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
         }
 
-        public string AddCarNews(string Author, string Title, DateTime DatePosted, string NewsDescription, string ImageURL, string Intro)
+        public void AddCarNews(string Author, string Title, DateTime DatePosted, string NewsDescription, string ImageURL, string Intro)
         {
             int rows = -1;
             try
@@ -38,21 +38,21 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@ShortIntro", Intro);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
-            {
-                return $"An error occurred in this action: {ex.Message}";
+            {   
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string UpdateNews(CarNews news)
+        public void UpdateNews(CarNews news)
         {
             int rowsAffected = -1;
             try
@@ -77,15 +77,15 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@NewsId", news.Id);
 
                 rowsAffected = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
             catch (SqlException ex)
             {
-                return $"SQL Server error in update action: {ex.Message}";
+                Console.WriteLine($"SQL Server error in update action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in the update action: {ex.Message}";
+                Console.WriteLine($"An error occurred in the update action: {ex.Message}");
             }
             finally
             {
@@ -93,7 +93,7 @@ namespace DatabaseAccess
             }
         }
 
-        public string AddComment(int NewsId, int UserId, DateTime CommentDate, string Content)
+        public void AddComment(int NewsId, int UserId, DateTime CommentDate, string Content)
         {
             int rows = -1;
             try
@@ -111,22 +111,22 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@Content", Content);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
 
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string GetNewsId(string Title)
+        public int GetNewsId(string Title)
         {
             int NewsId = -1;
             try
@@ -144,23 +144,25 @@ namespace DatabaseAccess
                         NewsId = (int)reader["NewsId"];
                     }
                 }
-                return $"{NewsId}";
+                
             }
             catch (SqlException ex)
             {
-                return $"MSSQL error in GetNewsId: {ex.Message}";
+                Console.WriteLine($"MSSQL error in GetNewsId: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in GetNewsId: {ex.Message}";
+                Console.WriteLine($"An error occurred in GetNewsId: {ex.Message}");
             }
             finally
             {
                 connectionString.Close();
+                
             }
+            return NewsId;
         }
 
-        public string GetCommentId(DateTime date)
+        public int GetCommentId(DateTime date)
         {
             int CommentId = -1;
             try
@@ -178,20 +180,21 @@ namespace DatabaseAccess
                         CommentId = (int)reader["CommentId"];
                     }
                 }
-                return $"{CommentId}";
+                
             }
             catch (SqlException ex)
             {
-                return $"MSSQL error in GetCommentId: {ex.Message}";
+                Console.WriteLine($"MSSQL error in GetCommentId: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in GetCommentId: {ex.Message}";
+                Console.WriteLine($"An error occurred in GetCommentId: {ex.Message}");
             }
             finally
             {
                 connectionString.Close();
             }
+            return CommentId;
         }
     }
 }

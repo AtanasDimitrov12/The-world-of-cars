@@ -8,12 +8,12 @@ namespace InterfaceLayer
 {
     public interface ICarDataRemover
     {
-        string RemoveCar(int CarId);
-        string RemoveCarDescription(int CarId);
-        string RemoveCarExtras(int CarId);
-        string RemoveCarPictures(int CarId);
-        string RemoveCarViewsHistory(int CarId);
-        string RemoveExtra(int ExtraId);
-        string RemovePicture(int PicId);
+        void RemoveCar(int CarId);
+        void RemoveCarDescription(int CarId);
+        void RemoveCarExtras(int CarId);
+        void RemoveCarPictures(int CarId);
+        void RemoveCarViewsHistory(int CarId);
+        void RemoveExtra(int ExtraId);
+        void RemovePicture(int PicId);
     }
 }

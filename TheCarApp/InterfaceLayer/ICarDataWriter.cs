@@ -9,20 +9,20 @@ namespace InterfaceLayer
 {
     public interface ICarDataWriter
     {
-        string AddCar(string Brand, string Model, DateTime FirstRegistration, int Mileage, string Fuel, int EngineSize, int HP, string Gearbox, int NumOfSeats, string NumOfDoors, string color, string VIN, string Status);
-        string AddCarDescription(int CarId, string Description, decimal Price);
-        string AddCarExtras(int CarId, int ExtraId);
-        string AddCarPictures(int CarId, int PictureId);
-        string RecordCarView(int CarId);
-        string UpdateCar(Car car);
-        string UpdateCarDescription(Car car);
-        string ChangeCarStatus(Car car, string Status);
-        string RemoveCarExtras(int CarId);
-        string RemoveCarPictures(int CarId);
-        string GetCarId(string VIN);
-        string AddExtra(string ExtraName);
-        string AddPicture(string PictureURL);
-        string GetExtraId(string ExtraName);
-        string GetPictureId(string PictureURL);
+        void AddCar(string Brand, string Model, DateTime FirstRegistration, int Mileage, string Fuel, int EngineSize, int HP, string Gearbox, int NumOfSeats, string NumOfDoors, string color, string VIN, string Status);
+        void AddCarDescription(int CarId, string Description, decimal Price);
+        void AddCarExtras(int CarId, int ExtraId);
+        void AddCarPictures(int CarId, int PictureId);
+        void RecordCarView(int CarId);
+        void UpdateCar(Car car);
+        void UpdateCarDescription(Car car);
+        void ChangeCarStatus(Car car, string Status);
+        void RemoveCarExtras(int CarId);
+        void RemoveCarPictures(int CarId);
+        int GetCarId(string VIN);
+        void AddExtra(string ExtraName);
+        void AddPicture(string PictureURL);
+        int GetExtraId(string ExtraName);
+        int GetPictureId(string PictureURL);
     }
 }

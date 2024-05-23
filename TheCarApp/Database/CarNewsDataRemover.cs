@@ -17,7 +17,7 @@ namespace DatabaseAccess
             connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
         }
 
-        public string RemoveNews(int NewsId)
+        public void RemoveNews(int NewsId)
         {
             int rows = -1;
             try
@@ -28,16 +28,16 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@NewsId", NewsId);
                 rows = cmd.ExecuteNonQuery();
 
-                return "done";
+                
             }
             catch (Exception ex)
             {
-                return $"An error occurred: {ex.Message}";
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string RemoveComment(int CommentId)
+        public void RemoveComment(int CommentId)
         {
             int rows = -1;
             try
@@ -48,11 +48,11 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@CommentId", CommentId);
                 rows = cmd.ExecuteNonQuery();
 
-                return "done";
+                
             }
             catch (Exception ex)
             {
-                return $"An error occurred: {ex.Message}";
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }

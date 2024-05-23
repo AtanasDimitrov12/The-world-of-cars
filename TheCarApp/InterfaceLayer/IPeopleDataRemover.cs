@@ -8,8 +8,8 @@ namespace InterfaceLayer
 {
     public interface IPeopleDataRemover
     {
-        string RemoveUser(int UserId);
-        string RemoveAdmin(int AdminId);
-        string RemoveRental(int RentalId);
+        void RemoveUser(int UserId);
+        void RemoveAdmin(int AdminId);
+        void RemoveRental(int RentalId);
     }
 }

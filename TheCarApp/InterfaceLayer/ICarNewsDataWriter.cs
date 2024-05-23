@@ -9,10 +9,10 @@ namespace InterfaceLayer
 {
     public interface ICarNewsDataWriter
     {
-        string AddCarNews(string Author, string Title, DateTime DatePosted, string NewsDescription, string ImageURL, string Intro);
-        string UpdateNews(CarNews news);
-        string AddComment(int NewsId, int UserId, DateTime CommentDate, string Content);
-        string GetNewsId(string Title);
-        string GetCommentId(DateTime date);
+        void AddCarNews(string Author, string Title, DateTime DatePosted, string NewsDescription, string ImageURL, string Intro);
+        void UpdateNews(CarNews news);
+        void AddComment(int NewsId, int UserId, DateTime CommentDate, string Content);
+        int GetNewsId(string Title);
+        int GetCommentId(DateTime date);
     }
 }

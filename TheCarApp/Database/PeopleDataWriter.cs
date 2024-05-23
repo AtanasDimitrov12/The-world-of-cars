@@ -17,7 +17,7 @@ namespace DatabaseAccess
             connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
         }
 
-        public string AddUser(string Username, string email, string password, int LicenseNumber, DateTime CreatedOn, string Salt)
+        public void AddUser(string Username, string email, string password, int LicenseNumber, DateTime CreatedOn, string Salt)
         {
             int rows = -1;
             try
@@ -37,22 +37,22 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@Salt", Salt);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}"; //display that message in console
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");   
             }
             finally { connectionString.Close(); }
 
         }
 
-        public string AddAdmin(string Username, string email, string password, string PhoneNumber, DateTime CreatedOn, string PassSalt)
+        public void AddAdmin(string Username, string email, string password, string PhoneNumber, DateTime CreatedOn, string PassSalt)
         {
             int rows = -1;
             try
@@ -72,21 +72,21 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@PassSalt", PassSalt);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string UpdateUser(int userId, string Username, string email, string password, int _licenseNumber, DateTime CreatedOn)
+        public void UpdateUser(int userId, string Username, string email, string password, int _licenseNumber, DateTime CreatedOn)
         {
             int rowsAffected = -1;
             try
@@ -109,15 +109,15 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@UserId", userId);
 
                 rowsAffected = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
             catch (SqlException ex)
             {
-                return $"SQL Server error in update action: {ex.Message}";
+                Console.WriteLine($"SQL Server error in update action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in the update action: {ex.Message}";
+                Console.WriteLine($"An error occurred in the update action: {ex.Message}");
             }
             finally
             {
@@ -125,7 +125,7 @@ namespace DatabaseAccess
             }
         }
 
-        public string UpdateAdministration(int adminId, string username, string email, string passwordHash, string phoneNumber, DateTime createdOn, string PassSalt)
+        public void UpdateAdministration(int adminId, string username, string email, string passwordHash, string phoneNumber, DateTime createdOn, string PassSalt)
         {
             int rowsAffected = -1;
             try
@@ -150,15 +150,15 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@AdminId", adminId);
 
                 rowsAffected = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
             catch (SqlException ex)
             {
-                return $"SQL Server error in update action: {ex.Message}";
+                Console.WriteLine($"SQL Server error in update action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in the update action: {ex.Message}";
+                Console.WriteLine($"An error occurred in the update action: {ex.Message}");
             }
             finally
             {
@@ -166,7 +166,7 @@ namespace DatabaseAccess
             }
         }
 
-        public string RentACar(int CarsId, int UserId, DateTime StartDate, DateTime EndDate, string Status)
+        public void RentACar(int CarsId, int UserId, DateTime StartDate, DateTime EndDate, string Status)
         {
             int rows = -1;
             try
@@ -184,16 +184,16 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@Status", Status);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }

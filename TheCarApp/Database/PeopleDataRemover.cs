@@ -17,7 +17,7 @@ namespace DatabaseAccess
             connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
         }
 
-        public string RemoveUser(int UserId)
+        public void RemoveUser(int UserId)
         {
             int rows = -1;
             try
@@ -28,16 +28,15 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@UserId", UserId);
                 rows = cmd.ExecuteNonQuery();
 
-                return "done";
             }
             catch (Exception ex)
             {
-                return $"An error occurred: {ex.Message}";
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string RemoveAdmin(int AdminId)
+        public void RemoveAdmin(int AdminId)
         {
             int rows = -1;
             try
@@ -48,16 +47,15 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@AdminId", AdminId);
                 rows = cmd.ExecuteNonQuery();
 
-                return "done";
             }
             catch (Exception ex)
             {
-                return $"An error occurred: {ex.Message}";
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string RemoveRental(int RentalId)
+        public void RemoveRental(int RentalId)
         {
             int rows = -1;
             try
@@ -68,11 +66,10 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@RentalId", RentalId);
                 rows = cmd.ExecuteNonQuery();
 
-                return "done";
             }
             catch (Exception ex)
             {
-                return $"An error occurred: {ex.Message}";
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }

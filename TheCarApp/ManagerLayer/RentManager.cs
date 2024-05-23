@@ -33,7 +33,7 @@ namespace ManagerLayer
         }
 
 
-        
+
 
         public bool IsPeakSeason(DateTime startDate, DateTime endDate)
         {
@@ -51,7 +51,7 @@ namespace ManagerLayer
                 _rentalStrategy = new StandardRentalStrategy();
                 return _rentalStrategy.CalculateRentalPrice(BasePrice, Convert.ToInt32(days));
             }
-            else 
+            else
             {
                 _rentalStrategy = new PeakSeasonRentalStrategy();
                 return _rentalStrategy.CalculateRentalPrice(BasePrice, Convert.ToInt32(days));
@@ -62,19 +62,14 @@ namespace ManagerLayer
         {
             try
             {
-                string Message = writer.RentACar(car.Id, user.Id, startDate, endDate, RentStatus.SCHEDULE.ToString());
-                if (Message == "done")
-                {
-                    RentACar rentACar = new RentACar(user, car, startDate, endDate, RentStatus.SCHEDULE);
-                    rentalHistory.Add(rentACar);
-                    TimeSpan daysRented = endDate - startDate;
-                    rentACar.TotalPrice = _rentalStrategy.CalculateRentalPrice(rentACar.car.PricePerDay, daysRented.Days);
-                    return "done";
-                }
-                else
-                {
-                    return Message;
-                }
+                writer.RentACar(car.Id, user.Id, startDate, endDate, RentStatus.SCHEDULE.ToString());
+
+                RentACar rentACar = new RentACar(user, car, startDate, endDate, RentStatus.SCHEDULE);
+                rentalHistory.Add(rentACar);
+                TimeSpan daysRented = endDate - startDate;
+                rentACar.TotalPrice = _rentalStrategy.CalculateRentalPrice(rentACar.car.PricePerDay, daysRented.Days);
+                return "done";
+
 
             }
 

@@ -29,31 +29,30 @@ namespace ManagerLayer
         }
         public string AddExtra(Extra extra)
         {
-            string Message = _dataWriter.AddExtra(extra.ExtraName);
-            if (Message == "done")
+            try
             {
-
+                _dataWriter.AddExtra(extra.ExtraName);
                 extras.Add(extra);
                 return "done";
             }
-            else
+            catch (Exception ex)
             {
-                return Message;
+                return ex.Message;
             }
+
         }
 
         public string RemoveExtra(Extra extra)
         {
-            string Message = _dataRemover.RemoveExtra(extra.Id);
-            if (Message == "done")
+            try
             {
-
+                _dataRemover.RemoveExtra(extra.Id);
                 extras.Remove(extra);// Need to get extra Id from DB after added a new one
                 return "done";
             }
-            else
+            catch (Exception ex)
             {
-                return Message;
+                return ex.Message;
             }
         }
 
@@ -77,7 +76,7 @@ namespace ManagerLayer
             {
                 return ex.Message;
             }
-            
+
         }
     }
 }

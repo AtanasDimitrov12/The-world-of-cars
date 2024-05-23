@@ -17,7 +17,7 @@ namespace DatabaseAccess
             connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
         }
 
-        public string RemoveCar(int CarId)
+        public void RemoveCar(int CarId)
         {
             int rows = -1;
             try
@@ -32,16 +32,15 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@CarId", CarId);
                 rows = cmd.ExecuteNonQuery();
 
-                return "done";
             }
             catch (Exception ex)
             {
-                return $"An error occurred: {ex.Message}";
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string RemoveCarDescription(int CarId)
+        public void RemoveCarDescription(int CarId)
         {
             int rows = -1;
             try
@@ -51,17 +50,15 @@ namespace DatabaseAccess
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@CarId", CarId);
                 rows = cmd.ExecuteNonQuery();
-
-                return "done";
             }
             catch (Exception ex)
             {
-                return $"An error occurred: {ex.Message}";
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string RemoveCarExtras(int CarId)
+        public void RemoveCarExtras(int CarId)
         {
             int rows = -1;
             try
@@ -72,16 +69,15 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@CarId", CarId);
                 rows = cmd.ExecuteNonQuery();
 
-                return "done";
             }
             catch (Exception ex)
             {
-                return $"An error occurred: {ex.Message}";
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string RemoveCarPictures(int CarId)
+        public void RemoveCarPictures(int CarId)
         {
             int rows = -1;
             try
@@ -92,16 +88,15 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@CarId", CarId);
                 rows = cmd.ExecuteNonQuery();
 
-                return "done";
             }
             catch (Exception ex)
             {
-                return $"An error occurred: {ex.Message}";
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string RemoveCarViewsHistory(int CarId)
+        public void RemoveCarViewsHistory(int CarId)
         {
             int rows = -1;
             try
@@ -112,16 +107,15 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@CarId", CarId);
                 rows = cmd.ExecuteNonQuery();
 
-                return "done";
             }
             catch (Exception ex)
             {
-                return $"An error occurred: {ex.Message}";
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string RemoveExtra(int ExtraId)
+        public void RemoveExtra(int ExtraId)
         {
             int rows = -1;
             try
@@ -132,16 +126,15 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@ExtraId", ExtraId);
                 rows = cmd.ExecuteNonQuery();
 
-                return "done";
             }
             catch (Exception ex)
             {
-                return $"An error occurred: {ex.Message}";
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string RemovePicture(int PicId)
+        public void RemovePicture(int PicId)
         {
             int rows = -1;
             try
@@ -152,11 +145,11 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@PicId", PicId);
                 rows = cmd.ExecuteNonQuery();
 
-                return "done";
+                
             }
             catch (Exception ex)
             {
-                return $"An error occurred: {ex.Message}";
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }

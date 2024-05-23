@@ -31,55 +31,48 @@ namespace Entity_Layer
 
         public string AddNews(CarNews carnews)
         {
-            string Message = _dataWriter.AddCarNews(carnews.Author, carnews.Title, carnews.ReleaseDate, carnews.NewsDescription, carnews.ImageURL, carnews.ShortIntro);
-            if (Message == "done")
+            try
             {
-                string SearchID = _dataWriter.GetNewsId(carnews.Title);
-                int NewsId;
-                if (int.TryParse(SearchID, out NewsId))
-                {
-                    carnews.Id = NewsId;
-                    news.Add(carnews);
-                    return "done";
-                }
-                else
-                {
-                    return SearchID;
-                }
+                _dataWriter.AddCarNews(carnews.Author, carnews.Title, carnews.ReleaseDate, carnews.NewsDescription, carnews.ImageURL, carnews.ShortIntro);
+                int NewsId = _dataWriter.GetNewsId(carnews.Title);
+                carnews.Id = NewsId;
+                news.Add(carnews);
+                return "done";
             }
-            else
+            catch (Exception ex)
             {
-                return Message;
+                return ex.Message;
             }
+
+
         }
 
         public string DeleteNews(CarNews carnews)
         {
-            string Message = _dataRemover.RemoveNews(carnews.Id);
-            if (Message == "done")
+            try
             {
-
+                _dataRemover.RemoveNews(carnews.Id);
                 news.Remove(carnews);
                 return "done";
             }
-            else
+            catch (Exception ex)
             {
-                return Message;
+                return ex.Message;
             }
         }
 
         public string UpdateNews(CarNews news)
         {
-            string Message = _dataWriter.UpdateNews(news);
-            if (Message == "done")
+            try
             {
+                _dataWriter.UpdateNews(news);
                 return "done";
             }
-            else
+            catch (Exception ex)
             {
-                return Message;
+                return ex.Message;
             }
-            
+
         }
 
         public CarNews GetNewsById(int id)
@@ -87,8 +80,8 @@ namespace Entity_Layer
             foreach (var News in news)
             {
                 if (News.Id == id)
-                { 
-                return News; 
+                {
+                    return News;
                 }
             }
             return null;
@@ -114,7 +107,7 @@ namespace Entity_Layer
             {
                 return ex.Message;
             }
-            
+
         }
     }
 }

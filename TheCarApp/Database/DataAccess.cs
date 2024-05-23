@@ -76,11 +76,11 @@ namespace Database
             }
             catch (SqlException ex)
             {
-                throw new ApplicationException($"Database error: {ex.Message}", ex);
+                Console.WriteLine($"Database error: {ex.Message}", ex);
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"An error occurred: {ex.Message}", ex);
+                Console.WriteLine($"An error occurred: {ex.Message}", ex);
             }
             return carsDTO;
         }
@@ -91,24 +91,35 @@ namespace Database
         private List<ExtraDTO> GetCarExtras(int carId, SqlConnection connection)
         {
             var extras = new List<ExtraDTO>();
-            var sql = @"SELECT Extras.ExtraId, Extras.ExtraName FROM CarExtras 
+            try
+            {
+                var sql = @"SELECT Extras.ExtraId, Extras.ExtraName FROM CarExtras 
                     INNER JOIN Extras ON CarExtras.ExtraId = Extras.ExtraId 
                     WHERE CarExtras.CarId = @CarId";
 
-            using (var command = new SqlCommand(sql, connection))
-            {
-                command.Parameters.AddWithValue("@CarId", carId);
-                using (var reader = command.ExecuteReader())
+                using (var command = new SqlCommand(sql, connection))
                 {
-                    while (reader.Read())
+                    command.Parameters.AddWithValue("@CarId", carId);
+                    using (var reader = command.ExecuteReader())
                     {
-                        extras.Add(new ExtraDTO
+                        while (reader.Read())
                         {
-                            Id = reader.GetInt32(reader.GetOrdinal("ExtraId")),
-                            extraName = reader.GetString(reader.GetOrdinal("ExtraName"))
-                        });
+                            extras.Add(new ExtraDTO
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("ExtraId")),
+                                extraName = reader.GetString(reader.GetOrdinal("ExtraName"))
+                            });
+                        }
                     }
                 }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Database error: {ex.Message}", ex);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}", ex);
             }
             return extras;
         }
@@ -142,11 +153,11 @@ namespace Database
             }
             catch (SqlException ex)
             {
-                throw new ApplicationException($"Database error: {ex.Message}", ex);
+                Console.WriteLine($"Database error: {ex.Message}", ex);
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"An error occurred: {ex.Message}", ex);
+                Console.WriteLine($"An error occurred: {ex.Message}", ex);
             }
 
             return extras;
@@ -156,24 +167,35 @@ namespace Database
         private List<PictureDTO> GetCarPictures(int carId, SqlConnection connection)
         {
             var pictures = new List<PictureDTO>();
-            var sql = @"SELECT Pictures.[PictureId], Pictures.[PictureURL] FROM CarPictures 
+            try
+            {
+                var sql = @"SELECT Pictures.[PictureId], Pictures.[PictureURL] FROM CarPictures 
                     INNER JOIN Pictures ON CarPictures.PictureId = Pictures.PictureId 
                     WHERE CarPictures.CarId = @CarId";
 
-            using (var command = new SqlCommand(sql, connection))
-            {
-                command.Parameters.AddWithValue("@CarId", carId);
-                using (var reader = command.ExecuteReader())
+                using (var command = new SqlCommand(sql, connection))
                 {
-                    while (reader.Read())
+                    command.Parameters.AddWithValue("@CarId", carId);
+                    using (var reader = command.ExecuteReader())
                     {
-                        pictures.Add(new PictureDTO
+                        while (reader.Read())
                         {
-                            Id = reader.GetInt32(reader.GetOrdinal("PictureId")),
-                            PictureURL = reader.GetString(reader.GetOrdinal("PictureURL"))
-                        });
+                            pictures.Add(new PictureDTO
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("PictureId")),
+                                PictureURL = reader.GetString(reader.GetOrdinal("PictureURL"))
+                            });
+                        }
                     }
                 }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Database error: {ex.Message}", ex);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}", ex);
             }
             return pictures;
         }
@@ -207,11 +229,11 @@ namespace Database
             }
             catch (SqlException ex)
             {
-                throw new ApplicationException($"Database error: {ex.Message}", ex);
+                Console.WriteLine($"Database error: {ex.Message}", ex);
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"An error occurred: {ex.Message}", ex);
+                Console.WriteLine($"An error occurred: {ex.Message}", ex);
             }
 
             return pictures;
@@ -261,11 +283,11 @@ namespace Database
             }
             catch (SqlException ex)
             {
-                throw new ApplicationException($"Database error: {ex.Message}", ex);
+                Console.WriteLine($"Database error: {ex.Message}", ex);
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"An error occurred: {ex.Message}", ex);
+                Console.WriteLine($"An error occurred: {ex.Message}", ex);
             }
             return newsDTOList;
         }
@@ -301,11 +323,11 @@ namespace Database
             }
             catch (SqlException ex)
             {
-                throw new ApplicationException($"Database error: {ex.Message}", ex);
+                Console.WriteLine($"Database error: {ex.Message}", ex);
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"An error occurred: {ex.Message}", ex);
+                Console.WriteLine($"An error occurred: {ex.Message}", ex);
             }
             return comments;
         }
@@ -342,11 +364,11 @@ namespace Database
             }
             catch (SqlException ex)
             {
-                throw new ApplicationException($"Database error: {ex.Message}", ex);
+                Console.WriteLine($"Database error: {ex.Message}", ex);
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"An error occurred: {ex.Message}", ex);
+                Console.WriteLine($"An error occurred: {ex.Message}", ex);
             }
             return rentals;
         }
@@ -368,13 +390,6 @@ namespace Database
 
                         using (var reader = command.ExecuteReader())
                         {
-                            //var saltString = reader.IsDBNull(reader.GetOrdinal("Salt")) ? null : reader.GetString(reader.GetOrdinal("Salt"));
-                            //byte[] saltBytes = null;
-
-                            //if (saltString != null)
-                            //{
-                            //    saltBytes = Convert.FromBase64String(saltString); // Assuming the salt was base64-encoded
-                            //}
 
                             user = new UserDTO
                             {
@@ -393,11 +408,11 @@ namespace Database
             }
             catch (SqlException ex)
             {
-                throw new ApplicationException($"Database error: {ex.Message}", ex);
+                Console.WriteLine($"Database error: {ex.Message}", ex);
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"An error occurred: {ex.Message}", ex);
+                Console.WriteLine($"An error occurred: {ex.Message}", ex);
             }
 
             return user;
@@ -463,11 +478,11 @@ namespace Database
             }
             catch (SqlException ex)
             {
-                throw new ApplicationException($"Database error: {ex.Message}", ex);
+                Console.WriteLine($"Database error: {ex.Message}", ex);
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"An error occurred: {ex.Message}", ex);
+                Console.WriteLine($"An error occurred: {ex.Message}", ex);
             }
 
             return car;
@@ -490,15 +505,6 @@ namespace Database
                         {
                             while (reader.Read())
                             {
-                                //var saltString = reader.IsDBNull(reader.GetOrdinal("Salt")) ? null : reader.GetString(reader.GetOrdinal("Salt"));
-                                //byte[] saltBytes = null;
-
-                                //if (saltString != null)
-                                //{
-                                //    // Convert the salt from a string to a byte array using UTF-8 encoding
-                                //    saltBytes = Encoding.UTF8.GetBytes(saltString);
-                                //}
-
                                 var user = new UserDTO
                                 {
                                     Id = reader.GetInt32(reader.GetOrdinal("UserId")),
@@ -517,11 +523,11 @@ namespace Database
             }
             catch (SqlException ex)
             {
-                throw new ApplicationException($"Database error: {ex.Message}", ex);
+                Console.WriteLine($"Database error: {ex.Message}", ex);
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"An error occurred: {ex.Message}", ex);
+                Console.WriteLine($"An error occurred: {ex.Message}", ex);
             }
 
             return users;
@@ -564,11 +570,11 @@ namespace Database
             }
             catch (SqlException ex)
             {
-                throw new ApplicationException($"Database error: {ex.Message}", ex);
+                Console.WriteLine($"Database error: {ex.Message}", ex);
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"An error occurred: {ex.Message}", ex);
+                Console.WriteLine($"An error occurred: {ex.Message}", ex);
             }
 
             return administrators;

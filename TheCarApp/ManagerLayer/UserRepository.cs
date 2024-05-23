@@ -28,37 +28,47 @@ namespace Repositories
 
         public string AddUser(User user)
         {
-            string Message = writer.AddUser(user.Username, user.Email, user.Password, user.LicenseNumber, user.CreatedOn, user.PassSalt);
-            if (Message == "done")
+            try
             {
+                writer.AddUser(user.Username, user.Email, user.Password, user.LicenseNumber, user.CreatedOn, user.PassSalt);
                 users.Add(user);
                 return "done";
             }
-            else { return Message; }
+            catch (Exception ex) 
+            {
+                return ex.Message;
+            }
+            
             
         }
 
         public string RemoveUser(User user)
         {
-            string Message = remover.RemoveUser(user.Id);
-            if (Message == "done")
+            try
             {
+                remover.RemoveUser(user.Id);
                 users.Remove(user);
                 return "done";
             }
-            else { return Message; }
-            
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
         }
 
         public string UpdateUser(User user)
         {
-            string Message = writer.UpdateUser(user.Id, user.Username, user.Email, user.Password, user.LicenseNumber, user.CreatedOn);
-            if (Message == "done")
-            {
-                return "done";
+            try
+            { 
+            writer.UpdateUser(user.Id, user.Username, user.Email, user.Password, user.LicenseNumber, user.CreatedOn);
+            return "done";
             }
-            else { return Message; }
-            
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
         }
 
         public string GetUserNameById(int UserID) 
@@ -77,22 +87,6 @@ namespace Repositories
         {
             return users;
         }
-
-        //public bool CheckUserDetails(User user)
-        //{ 
-        //    foreach (var storedUser in users) 
-        //    {
-        //        if (user.email == storedUser.email)
-        //        {
-        //            if (user.password == storedUser.password)
-        //            {
-        //                return true;
-        //            }
-        //        }
-        //        else { return false; }
-        //    }
-        //    return false;
-        //}
 
         public string LoadUsers()
         {

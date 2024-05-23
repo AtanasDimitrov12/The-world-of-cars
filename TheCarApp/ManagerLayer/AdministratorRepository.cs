@@ -29,35 +29,43 @@ namespace Repositories
 
         public string AddAdmin(Administrator admin)
         {
-
-            string Message = writer.AddAdmin(admin.Username, admin.Email, admin.Password, admin.PhoneNumber, admin.CreatedOn, admin.PassSalt);
-            if (Message == "done")
+            try
             {
+                writer.AddAdmin(admin.Username, admin.Email, admin.Password, admin.PhoneNumber, admin.CreatedOn, admin.PassSalt);
+
                 admins.Add(admin);
                 return "done";
             }
-            else { return Message; }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
         public string RemoveAdmin(Administrator admin)
         {
-            string Message = remover.RemoveAdmin(admin.Id);
-            if (Message == "done")
+            try
             {
+                remover.RemoveAdmin(admin.Id);
                 admins.Remove(admin);
                 return "done";
             }
-            else { return Message; }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
         public string UpdateAdmin(Administrator admin)
         {
-            
-            string Message = writer.UpdateAdministration(admin.Id, admin.Username, admin.Email, admin.Password, admin.PhoneNumber, admin.CreatedOn, admin.PassSalt); ;
-            if (Message == "done")
+            try
             {
+                writer.UpdateAdministration(admin.Id, admin.Username, admin.Email, admin.Password, admin.PhoneNumber, admin.CreatedOn, admin.PassSalt); ;
                 return "done";
             }
-            else { return Message; }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
         public List<Administrator> GetAllAdministrators()
         {
@@ -84,7 +92,7 @@ namespace Repositories
             {
                 return ex.Message;
             }
-            
+
         }
     }
 

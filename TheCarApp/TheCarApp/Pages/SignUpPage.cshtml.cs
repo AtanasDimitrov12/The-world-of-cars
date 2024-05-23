@@ -68,31 +68,38 @@ namespace TheCarApp.Pages
 
         public async Task<IActionResult> OnPostLogin()
         {
-
-            if (_projectManager.PeopleManager.AuthenticateUser(Email.ToLower(), Password))
+            if (Email != null && Password != null)
             {
-                var claims = new List<Claim>
+                if (_projectManager.PeopleManager.AuthenticateUser(Email.ToLower(), Password))
+                {
+                    var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, Email.ToLower())
                 };
 
-                var claimsIdentity = new ClaimsIdentity(
-                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var claimsIdentity = new ClaimsIdentity(
+                        claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                var authProperties = new AuthenticationProperties
+                    var authProperties = new AuthenticationProperties
+                    {
+                        IsPersistent = true,
+                        ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
+                    };
+
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(claimsIdentity),
+                        authProperties);
+
+                    return RedirectToPage("/MarketPlace");
+                }
+                else
                 {
-                    IsPersistent = true,
-                    ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
-                };
-
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity),
-                    authProperties);
-
-                return RedirectToPage("/MarketPlace");
+                    ModelState.AddModelError("", "Login failed. Please check your email and password.");
+                    return Page();
+                }
             }
-            else
+            else 
             {
                 ModelState.AddModelError("", "Login failed. Please check your email and password.");
                 return Page();
