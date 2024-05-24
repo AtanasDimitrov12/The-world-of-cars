@@ -16,13 +16,24 @@ namespace TheCarApp.Pages
         private ProjectManager _projectManager = new ProjectManager();
 
         [BindProperty]
+        [Required(ErrorMessage = "Username is required.")]
+        [StringLength(10, ErrorMessage = "Username cannot be longer than 10 characters.")]
         public string Username { get; set; }
+
         [BindProperty]
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress(ErrorMessage = "Invalid email address format.")]
         public string Email { get; set; }
+
         [BindProperty]
+        [Required(ErrorMessage = "Password is required.")]
+        [StringLength(100, MinimumLength = 8, ErrorMessage = "Password must be at least 8 characters long.")]
         public string Password { get; set; }
+
         [BindProperty]
-        public string LicenseNumber{ get; set; }
+        [Required(ErrorMessage = "Driving license number is required.")]
+        [RegularExpression(@"^\d{9}$", ErrorMessage = "Driving license number must be exactly 9 digits.")]
+        public string LicenseNumber { get; set; }
 
         public SignUpPageModel()
         {
