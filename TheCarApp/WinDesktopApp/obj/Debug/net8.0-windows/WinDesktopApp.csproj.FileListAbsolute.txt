@@ -93,3 +93,6 @@ C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\
 C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Models.AddCarForm.resources
 C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Models.ModifyCarForm.resources
 C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Models.ViewCarForm.resources
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Models.AddCarForm.resources
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Models.ModifyCarForm.resources
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Models.ViewCarForm.resources

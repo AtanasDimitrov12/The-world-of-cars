@@ -350,11 +350,11 @@ namespace Database
                             {
                                 var rental = new RentACarDTO
                                 {
-                                    user = GetUserById(reader.GetInt32(reader.GetOrdinal("UserId"))),
-                                    car = GetCarById(reader.GetInt32(reader.GetOrdinal("CarId"))),
+                                    UserID = reader.GetInt32(reader.GetOrdinal("UserId")),
+                                    CarId = reader.GetInt32(reader.GetOrdinal("CarId")),
                                     StartDate = reader.GetDateTime(reader.GetOrdinal("StartDate")),
                                     ReturnDate = reader.GetDateTime(reader.GetOrdinal("EndDate")),
-                                    status = reader.GetString(reader.GetOrdinal("Status"))
+                                    Status = reader.GetString(reader.GetOrdinal("Status"))
                                 };
                                 rentals.Add(rental);
                             }
@@ -425,13 +425,15 @@ namespace Database
             {
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    var sql = @"SELECT Cars.Id, Cars.Brand, Cars.Model, Cars.FirstRegistration, Cars.Mileage, 
-                            Cars.Fuel, Cars.EngineSize, Cars.HorsePower, Cars.Gearbox, Cars.NumberOfSeats, 
-                            Cars.NumberOfDoors, Cars.Color, Cars.VIN, CarDescription.Description, 
-                            CarDescription.PricePerDay, Cars.CarStatus
-                            FROM Cars
-                            INNER JOIN CarDescription ON Cars.Id = CarDescription.CarId
-                            WHERE Cars.Id = @CarId";
+                    var sql = @"SELECT Cars.CarId, Cars.Brand, Cars.Model, Cars.FirstRegistration, Cars.Mileage, 
+                        Cars.Fuel, Cars.EngineSize, Cars.[Power], Cars.Gearbox, Cars.NumberOfSeats, 
+                        Cars.NumberOfDoors, Cars.Color, Cars.VIN, Cars.[Status], 
+                        CarDescription.[CarDescription], CarDescription.PricePerDay,
+                        ISNULL(CarViews.ViewCount, 0) AS ViewCount
+                        FROM Cars 
+                        INNER JOIN CarDescription ON Cars.CarId = CarDescription.CarId
+                        LEFT JOIN CarViews ON Cars.CarId = CarViews.CarId
+                        WHERE Cars.Id = @CarId;";
                     connection.Open();
 
                     using (var command = new SqlCommand(sql, connection))

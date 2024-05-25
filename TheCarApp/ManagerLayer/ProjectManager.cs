@@ -43,12 +43,12 @@ namespace ManagerLayer
             CarManager = new CarManager(DataAccess, CarDataWriter, CarDataRemover);
             NewsManager = new NewsManager(DataAccess, CarNewsDataWriter, CarNewsDataRemover);
             CommentsManager = new CommentsManager(DataAccess, CarNewsDataWriter, CarNewsDataRemover);
-            RentManager = new RentManager(DataAccess, PeopleDataWriter, PeopleDataRemover);  
             ExtraManager = new ExtraManager(DataAccess, CarDataWriter, CarDataRemover);
             PictureManager = new PictureManager(DataAccess, CarDataWriter, CarDataRemover);
             UserRepository = new UserRepository(DataAccess, PeopleDataWriter, PeopleDataRemover);
             AdministratorRepository = new AdministratorRepository(DataAccess, PeopleDataWriter, PeopleDataRemover);
             PeopleManager = new PeopleManager(UserRepository, AdministratorRepository);
+            RentManager = new RentManager(DataAccess, PeopleDataWriter, PeopleDataRemover, PeopleManager, CarManager);
             LoadAllData();
         }
 
@@ -56,9 +56,9 @@ namespace ManagerLayer
         { 
             CarManager.LoadCars();
             NewsManager.LoadNews();
-            RentManager.LoadRentals();
             UserRepository.LoadUsers();
             AdministratorRepository.LoadAdmins();
+            RentManager.LoadRentals();
         }
     }
 }
