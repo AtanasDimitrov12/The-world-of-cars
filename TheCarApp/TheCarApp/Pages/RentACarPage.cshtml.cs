@@ -3,12 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Entity_Layer;
 using Manager_Layer;
 using Microsoft.AspNetCore.Authorization;
-using Entity_Layer;
 using EntityLayout;
 using ManagerLayer;
-using Microsoft.AspNetCore.Identity;
-using InterfaceLayer;
-using ManagerLayer.Strategy;
 
 namespace TheCarApp.Pages
 {
@@ -20,23 +16,21 @@ namespace TheCarApp.Pages
         public Car Car { get; set; }
         public User user { get; set; }
         public string UserEmail { get; set; }
-        public decimal Price { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
+        public decimal PriceResult { get; set; }
+        public string ErrorMessage { get; set; }
 
         public RentACarPageModel(ProjectManager _projectManager)
         {
             projectManager = _projectManager;
         }
-    
 
-        public void OnGet(int carId)
+        public IActionResult OnGet(int carId)
         {
             Car = projectManager.CarManager.GetCarById(carId);
-            
+
             if (Car == null)
             {
-                RedirectToPage("/NotFound");
+                return RedirectToPage("/NotFound");
             }
             else
             {
@@ -45,71 +39,71 @@ namespace TheCarApp.Pages
             }
             UserEmail = User.Identity.Name;
             user = projectManager.PeopleManager.GetUser(UserEmail);
+
+            return Page();
         }
 
-
-
-        public IActionResult OnPostSubmitRental()
+        public IActionResult OnPostCalculatePrice(DateTime StartDate, DateTime EndDate)
         {
-            var startDateString = Request.Form["hiddenStartDate"];
-            var endDateString = Request.Form["hiddenEndDate"];
-
-            if (DateTime.TryParse(startDateString, out DateTime startDate) && DateTime.TryParse(endDateString, out DateTime endDate))
+            Car = projectManager.CarManager.GetCarById(int.Parse(RouteData.Values["CarId"].ToString()));
+            if (Car == null)
             {
-                if (user == null || Car == null)
-                {
-                    return new JsonResult(new { success = false, message = "User or car not found." });
-                }
-
-                if (endDate <= startDate)
-                {
-                    return new JsonResult(new { success = false, message = "End date must be after start date." });
-                }
-
-                try
-                {
-                    projectManager.RentManager.RentACar(user, Car, startDate, endDate);
-                    var data = new { success = true, message = "Success" };
-                    return new JsonResult(data);
-                }
-                catch (Exception ex)
-                {
-                    return new JsonResult(new { success = false, message = ex.Message });
-                }
-            }
-            else
-            {
-                return new JsonResult(new { success = false, message = "Invalid dates provided." });
-            }
-        }
-
-        public IActionResult OnPostCalculatePrice()
-        {
-            var startDateString = Request.Form["hiddenStartDate"];
-            var endDateString = Request.Form["hiddenEndDate"];
-
-            if (DateTime.TryParse(startDateString, out DateTime startDate) && DateTime.TryParse(endDateString, out DateTime endDate))
-            {
-                if (endDate <= startDate)
-                {
-                    ModelState.AddModelError("", "End date must be after start date.");
-                    return Page();
-                }
-
-                Start = startDate;
-                End = endDate;
-                Price = projectManager.RentManager.CalculatePrice(Car.PricePerDay, Start, End);
-
-                TempData["TotalPrice"] = Price;
-                return Page();
-                //return RedirectToPage("/RentACarPage/" + Car.Id);
-            }
-            else
-            {
-                ModelState.AddModelError("", "Invalid dates provided.");
+                ErrorMessage = "Car not found.";
                 return Page();
             }
+
+            if (EndDate <= StartDate)
+            {
+                ErrorMessage = "End date must be after start date.";
+                return Page();
+            }
+
+            try
+            {
+                PriceResult = projectManager.RentManager.CalculatePrice(Car.PricePerDay, StartDate, EndDate);
+                ErrorMessage = null;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Console.WriteLine("Error in OnPostCalculatePrice: " + ex.Message);
+                ErrorMessage = "An error occurred while calculating the price.";
+            }
+
+            return Page();
         }
 
+        public IActionResult OnPostRentCar(DateTime StartDate, DateTime EndDate)
+        {
+            Car = projectManager.CarManager.GetCarById(int.Parse(RouteData.Values["CarId"].ToString()));
+            if (Car == null)
+            {
+                ErrorMessage = "Car not found.";
+                return Page();
+            }
+
+            if (EndDate <= StartDate)
+            {
+                ErrorMessage = "End date must be after start date.";
+                return Page();
+            }
+
+            user = projectManager.PeopleManager.GetUser(User.Identity.Name);
+
+            try
+            {
+                projectManager.RentManager.RentACar(user, Car, StartDate, EndDate);
+                ErrorMessage = null;
+                return RedirectToPage("AccountPage"); // Redirect to a confirmation page
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Console.WriteLine("Error in OnPostRentCar: " + ex.Message);
+                ErrorMessage = "An error occurred while renting the car.";
+            }
+
+            return Page();
+        }
     }
 }

@@ -178,7 +178,7 @@ namespace DatabaseAccess
 
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@UserId", UserId);
-                cmd.Parameters.AddWithValue("@CarsId,", CarsId);
+                cmd.Parameters.AddWithValue("@CarsId", CarsId);
                 cmd.Parameters.AddWithValue("@StartDate", StartDate);
                 cmd.Parameters.AddWithValue("@EndDate", EndDate);
                 cmd.Parameters.AddWithValue("@Status", Status);

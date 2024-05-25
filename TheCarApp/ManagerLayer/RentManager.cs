@@ -39,7 +39,12 @@ namespace ManagerLayer
         {
             // Define peak season logic
             // Example: June to August is peak season
-            return startDate.Month >= 6 && startDate.Month <= 8;
+            if (startDate.Month >= 6 && startDate.Month <= 8)
+            { return true; }
+            else 
+            {
+                return false;
+            }
         }
 
         public decimal CalculatePrice(decimal BasePrice, DateTime startDate, DateTime endDate)
@@ -48,12 +53,12 @@ namespace ManagerLayer
             int days = (int)timeSpan.TotalDays;
             if (IsPeakSeason(startDate, endDate))
             {
-                _rentalStrategy = new StandardRentalStrategy();
+                _rentalStrategy = new PeakSeasonRentalStrategy();
                 return _rentalStrategy.CalculateRentalPrice(BasePrice, Convert.ToInt32(days));
             }
             else
             {
-                _rentalStrategy = new PeakSeasonRentalStrategy();
+                _rentalStrategy = new StandardRentalStrategy();
                 return _rentalStrategy.CalculateRentalPrice(BasePrice, Convert.ToInt32(days));
             }
         }
@@ -66,10 +71,7 @@ namespace ManagerLayer
 
                 RentACar rentACar = new RentACar(user, car, startDate, endDate, RentStatus.SCHEDULE);
                 rentalHistory.Add(rentACar);
-                TimeSpan daysRented = endDate - startDate;
-                rentACar.TotalPrice = _rentalStrategy.CalculateRentalPrice(rentACar.car.PricePerDay, daysRented.Days);
                 return "done";
-
 
             }
 
