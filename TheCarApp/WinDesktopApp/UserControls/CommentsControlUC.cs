@@ -129,5 +129,59 @@ namespace DesktopApp
             }
 
         }
+
+        private void RBASC_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(CBNews.Text))
+            {
+                foreach (CarNews news in newsManager.news)
+                {
+                    if (news.Title == CBNews.Text)
+                    {
+                        SortCommentsAscending(news.Comments);
+                    }
+                   
+                }
+            }
+            else
+            {
+                SortCommentsAscending(allComments);
+            }
+        }
+
+        private void RBDESC_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(CBNews.Text))
+            {
+                foreach (CarNews news in newsManager.news)
+                {
+                    if (news.Title == CBNews.Text)
+                    {
+                        SortCommentsDescending(news.Comments);
+                    }
+
+                }
+            }
+            else
+            {
+                SortCommentsDescending(allComments);
+            }
+        }
+
+        private void SortCommentsAscending(List<Comment> comments)
+        {
+
+            comments = comments.OrderBy(comm => comm.Date).ToList();
+
+            FillDataGridView(comments);
+        }
+
+        private void SortCommentsDescending(List<Comment> comments)
+        {
+
+            comments = comments.OrderByDescending(comm => comm.Date).ToList();
+
+            FillDataGridView(comments);
+        }
     }
 }

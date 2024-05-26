@@ -31,12 +31,14 @@
             groupBox1 = new GroupBox();
             BTNSearch = new Button();
             CBNews = new ComboBox();
-            groupBox2 = new GroupBox();
-            label1 = new Label();
             DGVComments = new DataGridView();
+            groupBox2 = new GroupBox();
+            RBASC = new RadioButton();
+            RBDESC = new RadioButton();
+            label4 = new Label();
             groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGVComments).BeginInit();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -76,32 +78,6 @@
             CBNews.Size = new Size(218, 26);
             CBNews.TabIndex = 0;
             // 
-            // groupBox2
-            // 
-            groupBox2.BackColor = Color.FromArgb(163, 177, 138);
-            groupBox2.Controls.Add(label1);
-            groupBox2.Font = new Font("Arial Rounded MT Bold", 12F);
-            groupBox2.Location = new Point(146, 258);
-            groupBox2.Margin = new Padding(4, 3, 4, 3);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(4, 3, 4, 3);
-            groupBox2.Size = new Size(254, 151);
-            groupBox2.TabIndex = 2;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Delete comment";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(34, 53);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(184, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Select and press the button";
-            label1.Click += label1_Click;
-            // 
             // DGVComments
             // 
             DGVComments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -111,21 +87,74 @@
             DGVComments.TabIndex = 3;
             DGVComments.CellContentClick += DGVComments_CellContentClick;
             // 
+            // groupBox2
+            // 
+            groupBox2.BackColor = Color.FromArgb(163, 177, 138);
+            groupBox2.Controls.Add(RBASC);
+            groupBox2.Controls.Add(RBDESC);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Font = new Font("Arial Rounded MT Bold", 12F);
+            groupBox2.Location = new Point(146, 251);
+            groupBox2.Margin = new Padding(4, 3, 4, 3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new Padding(4, 3, 4, 3);
+            groupBox2.Size = new Size(254, 148);
+            groupBox2.TabIndex = 24;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Show comments";
+            // 
+            // RBASC
+            // 
+            RBASC.AutoSize = true;
+            RBASC.Location = new Point(54, 91);
+            RBASC.Margin = new Padding(4, 3, 4, 3);
+            RBASC.Name = "RBASC";
+            RBASC.Size = new Size(61, 22);
+            RBASC.TabIndex = 16;
+            RBASC.TabStop = true;
+            RBASC.Text = "ASC";
+            RBASC.UseVisualStyleBackColor = true;
+            RBASC.CheckedChanged += RBASC_CheckedChanged;
+            // 
+            // RBDESC
+            // 
+            RBDESC.AutoSize = true;
+            RBDESC.Location = new Point(139, 91);
+            RBDESC.Margin = new Padding(4, 3, 4, 3);
+            RBDESC.Name = "RBDESC";
+            RBDESC.Size = new Size(72, 22);
+            RBDESC.TabIndex = 15;
+            RBDESC.TabStop = true;
+            RBDESC.Text = "DESC";
+            RBDESC.UseVisualStyleBackColor = true;
+            RBDESC.CheckedChanged += RBDESC_CheckedChanged;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Arial Rounded MT Bold", 12F);
+            label4.Location = new Point(79, 48);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(110, 18);
+            label4.TabIndex = 14;
+            label4.Text = "Sort by date:";
+            // 
             // CommentsControlUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(218, 215, 205);
-            Controls.Add(DGVComments);
             Controls.Add(groupBox2);
+            Controls.Add(DGVComments);
             Controls.Add(groupBox1);
             Margin = new Padding(4, 3, 4, 3);
             Name = "CommentsControlUC";
             Size = new Size(1160, 502);
             groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DGVComments).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)DGVComments).EndInit();
             ResumeLayout(false);
         }
 
@@ -134,8 +163,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button BTNSearch;
         private System.Windows.Forms.ComboBox CBNews;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label1;
         private DataGridView DGVComments;
+        private GroupBox groupBox2;
+        private RadioButton RBASC;
+        private RadioButton RBDESC;
+        private Label label4;
     }
 }
