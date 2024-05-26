@@ -32,8 +32,8 @@ namespace ManagerLayer
                 comment.Id = CommentId;
                 news.AddComment(comment);
                 return "done";
-            } 
-            catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
                 return ex.Message;
             }
@@ -44,8 +44,8 @@ namespace ManagerLayer
             try
             {
                 _dataRemover.RemoveComment(comment.Id);
-            news.RemoveComment(comment);
-            return "done";
+                news.RemoveComment(comment);
+                return "done";
             }
             catch (Exception ex)
             {

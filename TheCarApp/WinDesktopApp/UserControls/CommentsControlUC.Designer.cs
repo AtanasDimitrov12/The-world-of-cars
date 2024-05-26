@@ -31,12 +31,12 @@
             groupBox1 = new GroupBox();
             BTNSearch = new Button();
             CBNews = new ComboBox();
-            LBComments = new ListBox();
             groupBox2 = new GroupBox();
             label1 = new Label();
-            BTNDelete = new Button();
+            DGVComments = new DataGridView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DGVComments).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -45,7 +45,7 @@
             groupBox1.Controls.Add(BTNSearch);
             groupBox1.Controls.Add(CBNews);
             groupBox1.Font = new Font("Arial Rounded MT Bold", 12F);
-            groupBox1.Location = new Point(249, 84);
+            groupBox1.Location = new Point(146, 75);
             groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4, 3, 4, 3);
@@ -76,24 +76,12 @@
             CBNews.Size = new Size(218, 26);
             CBNews.TabIndex = 0;
             // 
-            // LBComments
-            // 
-            LBComments.Font = new Font("Arial Rounded MT Bold", 9.75F);
-            LBComments.FormattingEnabled = true;
-            LBComments.ItemHeight = 15;
-            LBComments.Location = new Point(540, 22);
-            LBComments.Margin = new Padding(4, 3, 4, 3);
-            LBComments.Name = "LBComments";
-            LBComments.Size = new Size(355, 439);
-            LBComments.TabIndex = 1;
-            // 
             // groupBox2
             // 
             groupBox2.BackColor = Color.FromArgb(163, 177, 138);
             groupBox2.Controls.Add(label1);
-            groupBox2.Controls.Add(BTNDelete);
             groupBox2.Font = new Font("Arial Rounded MT Bold", 12F);
-            groupBox2.Location = new Point(249, 254);
+            groupBox2.Location = new Point(146, 258);
             groupBox2.Margin = new Padding(4, 3, 4, 3);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(4, 3, 4, 3);
@@ -114,26 +102,22 @@
             label1.Text = "Select and press the button";
             label1.Click += label1_Click;
             // 
-            // BTNDelete
+            // DGVComments
             // 
-            BTNDelete.BackColor = Color.FromArgb(88, 129, 87);
-            BTNDelete.ForeColor = Color.White;
-            BTNDelete.Location = new Point(44, 90);
-            BTNDelete.Margin = new Padding(4, 3, 4, 3);
-            BTNDelete.Name = "BTNDelete";
-            BTNDelete.Size = new Size(168, 37);
-            BTNDelete.TabIndex = 1;
-            BTNDelete.Text = "Delete";
-            BTNDelete.UseVisualStyleBackColor = false;
-            BTNDelete.Click += BTNDelete_Click;
+            DGVComments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGVComments.Location = new Point(451, 75);
+            DGVComments.Name = "DGVComments";
+            DGVComments.Size = new Size(687, 339);
+            DGVComments.TabIndex = 3;
+            DGVComments.CellContentClick += DGVComments_CellContentClick;
             // 
             // CommentsControlUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(218, 215, 205);
+            Controls.Add(DGVComments);
             Controls.Add(groupBox2);
-            Controls.Add(LBComments);
             Controls.Add(groupBox1);
             Margin = new Padding(4, 3, 4, 3);
             Name = "CommentsControlUC";
@@ -141,6 +125,7 @@
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DGVComments).EndInit();
             ResumeLayout(false);
         }
 
@@ -149,9 +134,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button BTNSearch;
         private System.Windows.Forms.ComboBox CBNews;
-        private System.Windows.Forms.ListBox LBComments;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button BTNDelete;
+        private DataGridView DGVComments;
     }
 }

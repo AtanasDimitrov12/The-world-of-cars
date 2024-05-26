@@ -19,5 +19,6 @@ namespace InterfaceLayer
         bool VerifyPassword(string enteredPassword, string storedPass, string base64Salt);
         User GetUser(string Email);
         IEnumerable<Person> GetAllPeople();
+        List<User> GetAllUsers();
     }
 }
