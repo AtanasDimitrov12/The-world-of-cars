@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Entity_Layer
 {
@@ -61,7 +62,13 @@ namespace Entity_Layer
         public List<Comment> GetComments() 
         {
             return Comments; 
-        } 
+        }
+
+        public List<Comment> GetCommentsLastToNew()
+        {
+            var sortedComments = Comments.OrderByDescending(c => c.Date);
+            return sortedComments.ToList();
+        }
 
     }
 }

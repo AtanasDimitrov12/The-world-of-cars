@@ -27,6 +27,9 @@ namespace Manager_Layer
             this.RentStatus = Status;
         }
 
+        public RentACar()
+        { }
+
         public void ChangeStatus(RentStatus Status)
         {
             this.RentStatus = Status;

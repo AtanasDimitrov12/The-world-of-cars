@@ -1,0 +1,42 @@
+﻿@page "/RentConfirmation/{CarId:int}"
+@model TheCarApp.Pages.RentConfirmationModel
+@{
+    ViewData["Title"] = "Rent Confirmation";
+}
+<link rel="stylesheet" href="~/css/congratulations.css" asp-append-version="true" />
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Congratulations!</h1>
+                <span>You have successfully rented the car!</span>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="main-image-container">
+                    <img src="@("/pictures/" + Model.Car.Pictures.FirstOrDefault()?.PictureURL)" alt="@Model.Car.Brand" class="img-fluid wc-image" id="mainImage">
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="car-info">
+                    <h2>@Model.Car.Brand @Model.Car.Model</h2>
+                    <p><strong>Rental Period:</strong> @Model.RentalStartDate.ToShortDateString() - @Model.RentalEndDate.ToShortDateString()</p>
+                    <p><strong>Total Price:</strong> @Model.TotalPrice&#8364;</p>
+                </div>
+                <br>
+                <div class="congratulations">
+                    <h2>Congratulations!</h2>
+                    <p>Congratulations on renting the car! Please visit our office to sign the contract and complete the rental process.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
