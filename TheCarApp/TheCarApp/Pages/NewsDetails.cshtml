@@ -41,8 +41,6 @@
 <hr>
 <br>
 
-@* Comments should be sorted from newest on top to oldest on bottom *@
-
  <div class="comment-box">
         <h3>Add a comment:</h3>
         <form method="post" asp-page-handler="AddComment">
@@ -51,17 +49,17 @@
             </div>
             <input type="submit" value="Submit" class="comment-submit">
         </form>
-    </div>
-
+ </div>
 <div class="comments-section">
+    <br>
     <h3>Comments:</h3>
     <div class="comments-list">
-        @foreach (var comment in Model.news.GetComments())
+        @foreach (var comment in Model.news.GetCommentsLastToNew())
         {
             <div class="comment-card">
                 <div class="user-info">
                     <div class="user-name">@Model.projectManager.UserRepository.GetUserNameById(comment.UserId)</div>
-                    <div class="comment-date">@comment.Date.ToString("MMM dd, yyyy")</div>
+                    <div class="comment-date">@comment.Date.ToShortDateString()</div>
                 </div>
                 <div class="comment-content">@comment.Message</div>
             </div>
