@@ -30,7 +30,7 @@
         {
             groupBox2 = new GroupBox();
             BTNChangeAdminInfo = new Button();
-            LBLAdminUsername = new Label();
+            LBLNumOfRentals = new Label();
             label5 = new Label();
             groupBox1 = new GroupBox();
             RBDESC = new RadioButton();
@@ -39,7 +39,7 @@
             groupBox3 = new GroupBox();
             BTNSearchByUsername = new Button();
             label2 = new Label();
-            TBNewsTitle = new TextBox();
+            TBUsername = new TextBox();
             DGVRentals = new DataGridView();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -51,7 +51,7 @@
             // 
             groupBox2.BackColor = Color.FromArgb(163, 177, 138);
             groupBox2.Controls.Add(BTNChangeAdminInfo);
-            groupBox2.Controls.Add(LBLAdminUsername);
+            groupBox2.Controls.Add(LBLNumOfRentals);
             groupBox2.Controls.Add(label5);
             groupBox2.Font = new Font("Arial Rounded MT Bold", 12F);
             groupBox2.Location = new Point(47, 361);
@@ -73,16 +73,16 @@
             BTNChangeAdminInfo.Text = "Check rentals";
             BTNChangeAdminInfo.UseVisualStyleBackColor = false;
             // 
-            // LBLAdminUsername
+            // LBLNumOfRentals
             // 
-            LBLAdminUsername.AutoSize = true;
-            LBLAdminUsername.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LBLAdminUsername.Location = new Point(20, 42);
-            LBLAdminUsername.Name = "LBLAdminUsername";
-            LBLAdminUsername.Size = new Size(28, 18);
-            LBLAdminUsername.TabIndex = 12;
-            LBLAdminUsername.Text = "12";
-            LBLAdminUsername.Click += LBLAdminUsername_Click;
+            LBLNumOfRentals.AutoSize = true;
+            LBLNumOfRentals.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LBLNumOfRentals.Location = new Point(20, 42);
+            LBLNumOfRentals.Name = "LBLNumOfRentals";
+            LBLNumOfRentals.Size = new Size(28, 18);
+            LBLNumOfRentals.TabIndex = 12;
+            LBLNumOfRentals.Text = "12";
+            LBLNumOfRentals.Click += LBLAdminUsername_Click;
             // 
             // label5
             // 
@@ -149,7 +149,7 @@
             groupBox3.BackColor = Color.FromArgb(163, 177, 138);
             groupBox3.Controls.Add(BTNSearchByUsername);
             groupBox3.Controls.Add(label2);
-            groupBox3.Controls.Add(TBNewsTitle);
+            groupBox3.Controls.Add(TBUsername);
             groupBox3.Font = new Font("Arial Rounded MT Bold", 12F);
             groupBox3.Location = new Point(47, 195);
             groupBox3.Name = "groupBox3";
@@ -183,14 +183,14 @@
             label2.TabIndex = 20;
             label2.Text = "Search by User:";
             // 
-            // TBNewsTitle
+            // TBUsername
             // 
-            TBNewsTitle.Location = new Point(20, 61);
-            TBNewsTitle.Margin = new Padding(4, 3, 4, 3);
-            TBNewsTitle.Name = "TBNewsTitle";
-            TBNewsTitle.Size = new Size(172, 26);
-            TBNewsTitle.TabIndex = 21;
-            TBNewsTitle.TextChanged += TBNewsTitle_TextChanged;
+            TBUsername.Location = new Point(20, 61);
+            TBUsername.Margin = new Padding(4, 3, 4, 3);
+            TBUsername.Name = "TBUsername";
+            TBUsername.Size = new Size(172, 26);
+            TBUsername.TabIndex = 21;
+            TBUsername.TextChanged += TBNewsTitle_TextChanged;
             // 
             // DGVRentals
             // 
@@ -225,7 +225,7 @@
 
         private GroupBox groupBox2;
         private Button BTNChangeAdminInfo;
-        private Label LBLAdminUsername;
+        private Label LBLNumOfRentals;
         private Label label5;
         private GroupBox groupBox1;
         private GroupBox groupBox3;
@@ -234,7 +234,7 @@
         private Label label1;
         private Button BTNSearchByUsername;
         private Label label2;
-        private TextBox TBNewsTitle;
+        private TextBox TBUsername;
         private DataGridView DGVRentals;
     }
 }

@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,7 +25,7 @@ namespace WinDesktopApp.UserControls
             peopleManager = pm;
             this.rentManager = rentManager;
             InitializeGridView();
-            FillDataGridView();
+            FillDataGridView(rentManager.rentalHistory);
         }
 
         private void InitializeGridView()
@@ -54,11 +55,11 @@ namespace WinDesktopApp.UserControls
 
         }
 
-        private void FillDataGridView()
+        private void FillDataGridView(List<RentACar> rentals)
         {
             this.DGVRentals.Rows.Clear();
 
-            foreach (var rent in rentManager.rentalHistory)
+            foreach (var rent in rentals)
             {
                 string Car = $"{rent.car.Brand} {rent.car.Model}";
                 this.DGVRentals.Rows.Add(rent.user.Username, Car, rent.StartDate.ToShortDateString(), rent.ReturnDate.ToShortDateString(), rent.TotalPrice, rent.RentStatus);
@@ -78,7 +79,11 @@ namespace WinDesktopApp.UserControls
 
         private void BTNSearchByUsername_Click(object sender, EventArgs e)
         {
-
+            string Username = TBUsername.Text;
+            var filteredRentals = rentManager.rentalHistory
+                .Where(rent => Regex.IsMatch(rent.user.Username, Regex.Escape(Username), RegexOptions.IgnoreCase))
+                .ToList();
+            FillDataGridView(filteredRentals);
         }
     }
 }

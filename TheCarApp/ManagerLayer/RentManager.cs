@@ -73,7 +73,7 @@ namespace ManagerLayer
             {
                 writer.RentACar(rentACar.car.Id, rentACar.user.Id, rentACar.StartDate, rentACar.ReturnDate, rentACar.RentStatus.ToString());
 
-                
+
                 rentalHistory.Add(rentACar);
                 return "done";
 
@@ -126,12 +126,8 @@ namespace ManagerLayer
 
                     var rental = new RentACar(user, car, rentDTO.StartDate, rentDTO.ReturnDate, status);
                     rental.TotalPrice = CalculatePrice(car.PricePerDay, rentDTO.StartDate, rentDTO.ReturnDate);
-                    
+                    rentalHistory.Add(rental);
 
-                    if (rentalHistory != null)
-                    {
-                        rentalHistory.Add(rental);
-                    }
                 }
 
                 return "done";
