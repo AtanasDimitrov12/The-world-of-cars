@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ManagerLayer;
+using WinDesktopApp.UserControls;
 
 namespace DesktopApp
 {
@@ -17,9 +18,10 @@ namespace DesktopApp
         CarNewsUC carNewsUC;
         CarControlUC carControlUC;
         CommentsControlUC commentsControlUC;
+        RentalsUC rentalsUC;
         List<UserControl> userControls;
         ProjectManager projectManager;
-        
+
         public ControlPage()
         {
             InitializeComponent();
@@ -27,10 +29,11 @@ namespace DesktopApp
             adminInfoUC = new AdminInfoUC(projectManager.PeopleManager, projectManager.AdministratorRepository);
             carNewsUC = new CarNewsUC(projectManager.PeopleManager, projectManager.NewsManager);
             carControlUC = new CarControlUC(projectManager.PeopleManager, projectManager.CarManager, projectManager.ExtraManager, projectManager.PictureManager);
-            commentsControlUC = new CommentsControlUC(projectManager.NewsManager, projectManager.CommentsManager, projectManager.PeopleManager);    
-            userControls = new List<UserControl> { adminInfoUC, carNewsUC, carControlUC, commentsControlUC };
+            commentsControlUC = new CommentsControlUC(projectManager.NewsManager, projectManager.CommentsManager, projectManager.PeopleManager);
+            rentalsUC = new RentalsUC(projectManager.PeopleManager, projectManager.RentManager);
+            userControls = new List<UserControl> { adminInfoUC, carNewsUC, carControlUC, commentsControlUC, rentalsUC };
             this.Controls.Add(panel2);
-            AddUC(); 
+            AddUC();
         }
 
 
@@ -40,7 +43,7 @@ namespace DesktopApp
             {
                 control.Dock = DockStyle.Fill;
                 panel2.Controls.Add(control);
-                control.Hide(); 
+                control.Hide();
             }
         }
 
@@ -72,6 +75,12 @@ namespace DesktopApp
         {
             carControlUC.Show();
             carControlUC.BringToFront();
+        }
+
+        private void BTNRent_Click(object sender, EventArgs e)
+        {
+            rentalsUC.Show();
+            rentalsUC.BringToFront();
         }
     }
 }
