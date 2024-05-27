@@ -18,7 +18,7 @@ namespace WinDesktopApp.Models
             EnableControls();
         }
 
-        public void DisableControls() { /* Not needed for modify form */ }
+        public void DisableControls() { }
 
         public void EnableControls()
         {
@@ -32,7 +32,6 @@ namespace WinDesktopApp.Models
         {
             AddCar addCar = _addCarForm as AddCar;
             addCar.Show();
-            addCar.CarAdded += (s, e) => CarActionCompleted?.Invoke(this, e);
         }
 
         public void LoadCarData(Car car) => _addCarForm.LoadCarData();

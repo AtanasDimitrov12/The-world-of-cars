@@ -23,7 +23,7 @@ namespace WinDesktopApp.Models
             EnableControls();
         }
 
-        public void DisableControls() { /* Not needed for add form */ }
+        public void DisableControls() { }
 
         public void EnableControls()
         {
@@ -31,16 +31,13 @@ namespace WinDesktopApp.Models
             _addCarForm.BTNAddCarGet.Visible = true;
         }
 
-        public event EventHandler CarActionCompleted;
-
         public void ShowForm()
         {
             AddCar addCar = _addCarForm as AddCar;
             addCar.Show();
-            addCar.CarAdded += (s, e) => CarActionCompleted?.Invoke(this, e);
         }
 
-        public void LoadCarData(Car car) { /* Not needed for add form */ }
+        public void LoadCarData(Car car) { }
 
         public void LoadExtrasAndPictures(List<Extra> extras, List<Picture> pictures) => _addCarForm.LoadCB();
 
