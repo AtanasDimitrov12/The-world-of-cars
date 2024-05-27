@@ -15,4 +15,4 @@ namespace WinDesktopApp.Models
             return new AddCarForm(cm, em, picManager);
         }
     }
-}
+} 

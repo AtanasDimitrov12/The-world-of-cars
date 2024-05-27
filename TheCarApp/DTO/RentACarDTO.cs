@@ -9,10 +9,10 @@ namespace DTO
     public class RentACarDTO
     {
         public int Id { get; set; } 
-        public UserDTO user { get; set; }
-        public CarDTO car { get; set; }
+        public int UserID { get; set; }
+        public int CarId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime ReturnDate { get; set; }
-        public string status { get; set; }
+        public string Status { get; set; }
     }
 }

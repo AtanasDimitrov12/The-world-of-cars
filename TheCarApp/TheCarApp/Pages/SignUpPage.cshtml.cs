@@ -16,13 +16,24 @@ namespace TheCarApp.Pages
         private ProjectManager _projectManager = new ProjectManager();
 
         [BindProperty]
+        [Required(ErrorMessage = "Username is required.")]
+        [StringLength(10, ErrorMessage = "Username cannot be longer than 10 characters.")]
         public string Username { get; set; }
+
         [BindProperty]
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress(ErrorMessage = "Invalid email address format.")]
         public string Email { get; set; }
+
         [BindProperty]
+        [Required(ErrorMessage = "Password is required.")]
+        [StringLength(100, MinimumLength = 8, ErrorMessage = "Password must be at least 8 characters long.")]
         public string Password { get; set; }
+
         [BindProperty]
-        public string LicenseNumber{ get; set; }
+        [Required(ErrorMessage = "Driving license number is required.")]
+        [RegularExpression(@"^\d{9}$", ErrorMessage = "Driving license number must be exactly 9 digits.")]
+        public string LicenseNumber { get; set; }
 
         public SignUpPageModel()
         {
@@ -68,31 +79,38 @@ namespace TheCarApp.Pages
 
         public async Task<IActionResult> OnPostLogin()
         {
-
-            if (_projectManager.PeopleManager.AuthenticateUser(Email.ToLower(), Password))
+            if (Email != null && Password != null)
             {
-                var claims = new List<Claim>
+                if (_projectManager.PeopleManager.AuthenticateUser(Email.ToLower(), Password))
+                {
+                    var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, Email.ToLower())
                 };
 
-                var claimsIdentity = new ClaimsIdentity(
-                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var claimsIdentity = new ClaimsIdentity(
+                        claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                var authProperties = new AuthenticationProperties
+                    var authProperties = new AuthenticationProperties
+                    {
+                        IsPersistent = true,
+                        ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
+                    };
+
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(claimsIdentity),
+                        authProperties);
+
+                    return RedirectToPage("/MarketPlace");
+                }
+                else
                 {
-                    IsPersistent = true,
-                    ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
-                };
-
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity),
-                    authProperties);
-
-                return RedirectToPage("/MarketPlace");
+                    ModelState.AddModelError("", "Login failed. Please check your email and password.");
+                    return Page();
+                }
             }
-            else
+            else 
             {
                 ModelState.AddModelError("", "Login failed. Please check your email and password.");
                 return Page();

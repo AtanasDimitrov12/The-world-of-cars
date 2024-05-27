@@ -8,7 +8,7 @@ namespace InterfaceLayer
 {
     public interface ICarNewsDataRemover
     {
-        string RemoveNews(int NewsId);
-        string RemoveComment(int CommentId);
+        void RemoveNews(int NewsId);
+        void RemoveComment(int CommentId);
     }
 }

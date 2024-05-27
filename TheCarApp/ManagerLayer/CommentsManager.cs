@@ -25,45 +25,31 @@ namespace ManagerLayer
 
         public string AddComment(CarNews news, Comment comment)
         {
-            string Message = _dataWriter.AddComment(news.Id, comment.UserId, comment.Date, comment.Message);
-            if (Message == "done")
+            try
             {
-
-                string SearchID = _dataWriter.GetCommentId(comment.Date);
-                int CommentId;
-                if (int.TryParse(SearchID, out CommentId))
-                {
-                    comment.Id = CommentId;
-                    news.AddComment(comment);
-                    return "done";
-                }
-                else
-                {
-                    return SearchID;
-                }
+                _dataWriter.AddComment(news.Id, comment.UserId, comment.Date, comment.Message);
+                int CommentId = _dataWriter.GetCommentId(comment.Date);
+                comment.Id = CommentId;
+                news.AddComment(comment);
+                return "done";
             }
-            else
+            catch (Exception ex)
             {
-                return Message; 
+                return ex.Message;
             }
-            
         }
-
-        
 
         public string RemoveComment(CarNews news, Comment comment)
         {
-
-            string Message = _dataRemover.RemoveComment(comment.Id);
-            if (Message == "done")
+            try
             {
-
+                _dataRemover.RemoveComment(comment.Id);
                 news.RemoveComment(comment);
                 return "done";
             }
-            else
+            catch (Exception ex)
             {
-                return Message;
+                return ex.Message;
             }
         }
     }

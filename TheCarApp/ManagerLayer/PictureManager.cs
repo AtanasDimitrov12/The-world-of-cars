@@ -24,34 +24,37 @@ namespace ManagerLayer
             _dataAccess = dataAccess;
             _dataWriter = dataWriter;
             _dataRemover = dataRemover;
-            LoadPictures(); 
+            LoadPictures();
         }
         public string AddPicture(Picture pic)
         {
-            string Message = _dataWriter.AddPicture(pic.PictureURL);
-            if (Message == "done")
+            try
             {
+                _dataWriter.AddPicture(pic.PictureURL);
                 pictures.Add(pic);
                 return "done";
             }
-            else 
+            catch (Exception ex)
             {
-                return Message;
+                return ex.Message;
             }
+
+
         }
 
         public string RemovePicture(Picture pic)
         {
-            string Message = _dataRemover.RemovePicture(pic.Id);
-            if (Message == "done")
+            try
             {
+                _dataRemover.RemovePicture(pic.Id);
                 pictures.Remove(pic);
                 return "done";
             }
-            else
+            catch (Exception ex)
             {
-                return Message;
+                return ex.Message;
             }
+
         }
 
         public string LoadPictures()
@@ -73,7 +76,7 @@ namespace ManagerLayer
             {
                 return ex.Message;
             }
-            
+
         }
     }
 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WinDesktopApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e46ca9fd1b2aacfefb9d7be67022e5bb403cd1ef")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d8e56b69e43b01f2da11f32e0dd903b0dec2c85e")]
 [assembly: System.Reflection.AssemblyProductAttribute("WinDesktopApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WinDesktopApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

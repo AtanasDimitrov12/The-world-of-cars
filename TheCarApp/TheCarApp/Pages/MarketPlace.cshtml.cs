@@ -15,9 +15,29 @@ namespace TheCarApp.Pages
         public List<Car> Cars;
         public ProjectManager projectManager = new ProjectManager();
 
-        public void OnGet()
+        public void OnGet(string sort)
         {
-            Cars = projectManager.CarManager.GetCars(); // In the future it should display only the cars which status is "Available"
+            Cars = projectManager.CarManager.GetCars().Where(car => car.CarStatus == CarStatus.AVAILABLE).ToList();
+
+            switch (sort)
+            {
+                case "views_asc":
+                    Cars = Cars.OrderBy(car => car.Views).ToList();
+                    break;
+                case "views_desc":
+                    Cars = Cars.OrderByDescending(car => car.Views).ToList();
+                    break;
+                case "price_asc":
+                    Cars = Cars.OrderBy(car => car.PricePerDay).ToList();
+                    break;
+                case "price_desc":
+                    Cars = Cars.OrderByDescending(car => car.PricePerDay).ToList();
+                    break;
+                default:
+                    // Default sorting logic if any
+                    break;
+            }
         }
     }
 }
+

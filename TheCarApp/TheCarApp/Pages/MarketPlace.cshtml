@@ -20,6 +20,12 @@
     <div class="container">
         <div class="containerCV">
             <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-primary" onclick="window.location.href='?sort=views_asc'">Sort by Views ASC</button>
+                    <button class="btn btn-primary" onclick="window.location.href='?sort=views_desc'">Sort by Views DESC</button>
+                    <button class="btn btn-primary" onclick="window.location.href='?sort=price_asc'">Sort by Price ASC</button>
+                    <button class="btn btn-primary" onclick="window.location.href='?sort=price_desc'">Sort by Price DESC</button>
+                </div><br><br><br>
                 @foreach (var car in Model.Cars)
                 {
                     <div class="col-md-4">
@@ -34,14 +40,11 @@
                                         <span>Base price per day: @car.PricePerDay&#8364;</span>
                                     </div>
                                 </div>
-
-
                                 <p>
                                     <i class="fa fa-eye"></i> @car.Views <br>
                                     <i class="fa fa-dashboard"></i> @car.Mileage km <br>
                                     <i class="fa fa-cube"></i> @car.EngineSize cc <br>
                                     <i class="fa fa-cog"></i> @car.Gearbox
-                                    
                                 </p>
                                 <a href="/RentACarPage/@car.Id" class="filled-button">View More</a>
                             </div>
@@ -50,29 +53,6 @@
                 }
             </div>
         </div>
-
-        @*  <br>
-        <br>
-        *@
-        @* <nav>
-        <ul class="pagination pagination-lg justify-content-center">
-        <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">«</span>
-        <span class="sr-only">Previous</span>
-        </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">»</span>
-        <span class="sr-only">Next</span>
-        </a>
-        </li>
-        </ul>
-        </nav> *@
 
         <br>
         <br>

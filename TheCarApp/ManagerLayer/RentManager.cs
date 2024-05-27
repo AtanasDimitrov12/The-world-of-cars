@@ -23,23 +23,32 @@ namespace ManagerLayer
         private IPeopleDataWriter writer;
         private IPeopleDataRemover remover;
         private IDataAccess access;
+        private IPeopleManager peopleManager;
+        private ICarManager carManager;
 
-        public RentManager(IDataAccess dataAccess, IPeopleDataWriter dataWriter, IPeopleDataRemover dataRemover)
+        public RentManager(IDataAccess dataAccess, IPeopleDataWriter dataWriter, IPeopleDataRemover dataRemover, IPeopleManager pm, ICarManager carManager)
         {
             rentalHistory = new List<RentACar>();
             writer = dataWriter;
             remover = dataRemover;
             access = dataAccess;
+            peopleManager = pm;
+            this.carManager = carManager;
         }
 
 
-        
+
 
         public bool IsPeakSeason(DateTime startDate, DateTime endDate)
         {
             // Define peak season logic
             // Example: June to August is peak season
-            return startDate.Month >= 6 && startDate.Month <= 8;
+            if (startDate.Month >= 6 && startDate.Month <= 8)
+            { return true; }
+            else
+            {
+                return false;
+            }
         }
 
         public decimal CalculatePrice(decimal BasePrice, DateTime startDate, DateTime endDate)
@@ -48,12 +57,12 @@ namespace ManagerLayer
             int days = (int)timeSpan.TotalDays;
             if (IsPeakSeason(startDate, endDate))
             {
-                _rentalStrategy = new StandardRentalStrategy();
+                _rentalStrategy = new PeakSeasonRentalStrategy();
                 return _rentalStrategy.CalculateRentalPrice(BasePrice, Convert.ToInt32(days));
             }
-            else 
+            else
             {
-                _rentalStrategy = new PeakSeasonRentalStrategy();
+                _rentalStrategy = new StandardRentalStrategy();
                 return _rentalStrategy.CalculateRentalPrice(BasePrice, Convert.ToInt32(days));
             }
         }
@@ -62,19 +71,11 @@ namespace ManagerLayer
         {
             try
             {
-                string Message = writer.RentACar(car.Id, user.Id, startDate, endDate, RentStatus.SCHEDULE.ToString());
-                if (Message == "done")
-                {
-                    RentACar rentACar = new RentACar(user, car, startDate, endDate, RentStatus.SCHEDULE);
-                    rentalHistory.Add(rentACar);
-                    TimeSpan daysRented = endDate - startDate;
-                    rentACar.TotalPrice = _rentalStrategy.CalculateRentalPrice(rentACar.car.PricePerDay, daysRented.Days);
-                    return "done";
-                }
-                else
-                {
-                    return Message;
-                }
+                writer.RentACar(car.Id, user.Id, startDate, endDate, RentStatus.SCHEDULE.ToString());
+
+                RentACar rentACar = new RentACar(user, car, startDate, endDate, RentStatus.SCHEDULE);
+                rentalHistory.Add(rentACar);
+                return "done";
 
             }
 
@@ -99,28 +100,23 @@ namespace ManagerLayer
                     foreach (RentACarDTO rentDTO in loadedRentals)
                     {
                         RentStatus status;
-                        bool isValidArea = Enum.TryParse(rentDTO.status.ToUpper(), true, out status);
+                        bool isValidArea = Enum.TryParse(rentDTO.Status.ToUpper(), true, out status);
 
                         if (isValidArea)
                         {
-                            UserDTO userDTO = rentDTO.user;
-                            CarDTO carDTO = rentDTO.car;
-
-                            CarStatus carStatusCheck;
-                            bool isValidStatus = Enum.TryParse(carDTO.CarStatus.ToUpper(), true, out carStatusCheck);
-                            if (isValidStatus)
+                            foreach (User user in peopleManager.people)
                             {
-                                User loadUser = new User(userDTO.Id, userDTO.email, userDTO.password, userDTO.Username, userDTO.CreatedOn, userDTO._licenseNumber, userDTO.passSalt); // ne sum siguren dali veche ne trqbva da go vzimam ot sushtestvuvashtite users
-                                Car loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, carStatusCheck, carDTO.NumberOfSeats, carDTO.NumberOfDoors, carDTO.Views);
-
-                                RentACar loadRent = new RentACar(loadUser, loadCar, rentDTO.StartDate, rentDTO.ReturnDate, status);
-
-                                rentalHistory.Add(loadRent);
-
-                            }
-                            else
-                            {
-                                return $"Warning: {rentDTO.Id} has an invalid status assigned.";
+                                if (user.Id == rentDTO.UserID)
+                                {
+                                    foreach (Car car in carManager.GetCars())
+                                    {
+                                        if (car.Id == rentDTO.CarId)
+                                        {
+                                            RentACar loadRent = new RentACar(user, car, rentDTO.StartDate, rentDTO.ReturnDate, status);
+                                            rentalHistory.Add(loadRent);
+                                        }
+                                    }
+                                }
                             }
 
                         }

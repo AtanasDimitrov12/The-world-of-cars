@@ -136,5 +136,11 @@ namespace ManagerLayer
 
             return users.Cast<Person>().Concat(admins);
         }
+
+        public List<User> GetAllUsers()
+        { 
+            return _userRepository.GetAllUsers();
+        }
+
     }
 }

@@ -14,7 +14,7 @@ namespace InterfaceLayer
         string AddCar(Car car, List<Picture> pictures, List<Extra> extras);
         string RemoveCar(Car car);
         string ChangeCarStatus(Car car, string newStatus, CarStatus Status);
-        void RecordCarView(int carId);
+        string RecordCarView(int carId);
         string UpdateCar(Car car, List<Picture> pictures, List<Extra> extras);
         Car SearchForCar(int index);
         List<Car> GetCars();

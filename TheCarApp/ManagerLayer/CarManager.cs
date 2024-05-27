@@ -35,102 +35,102 @@ namespace Manager_Layer
 
         public string AddCar(Car car, List<Picture> pictures, List<Extra> extras)
         {
-            string Message = _dataWriter.AddCar(car.Brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
-            if (Message == "done")
+            try
             {
-                
-                string SearchID = _dataWriter.GetCarId(car.VIN);
-                int CarId;
-                if (int.TryParse(SearchID, out CarId))
+                _dataWriter.AddCar(car.Brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
+
+
+                int CarId = _dataWriter.GetCarId(car.VIN);
+                car.Id = CarId;
+                _dataWriter.AddCarDescription(car.Id, car.Description, car.PricePerDay);
+                foreach (Picture pic in pictures)
                 {
-                    car.Id = CarId;
-                    _dataWriter.AddCarDescription(car.Id, car.Description, car.PricePerDay);
-                    foreach (Picture pic in pictures)
-                    {
-                        _dataWriter.AddCarPictures(car.Id, pic.Id);
-                        car.AddPicture(pic);
-                    }
-                    foreach (Extra extra in extras)
-                    {
-                        _dataWriter.AddCarExtras(car.Id, extra.Id);
-                        car.AddExtra(extra);
-                    }
-                    cars.Add(car);
-                    return "done";
+                    _dataWriter.AddCarPictures(car.Id, pic.Id);
+                    car.AddPicture(pic);
                 }
-                else
+                foreach (Extra extra in extras)
                 {
-                    return SearchID;
+                    _dataWriter.AddCarExtras(car.Id, extra.Id);
+                    car.AddExtra(extra);
                 }
-            }
-            else { return Message; }
+                cars.Add(car);
+                return "done";
 
             }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
 
         public string UpdateCar(Car car, List<Picture> pictures, List<Extra> extras)
         {
-            string MessageCar = _dataWriter.UpdateCar(car);
-            if (MessageCar == "done")
+            try
             {
-                string MessageCarDesc = _dataWriter.UpdateCarDescription(car);
-                if (MessageCarDesc == "done")
-                { 
-                    string MessageRemovePics = _dataWriter.RemoveCarPictures(car.Id);
-                    if (MessageRemovePics == "done")
-                    { 
-                        string MessageRemoveExtras = _dataWriter.RemoveCarExtras(car.Id);
-                        if (MessageRemoveExtras == "done")
-                        {
-                            foreach (Picture pic in pictures)
-                            {
-                                _dataWriter.AddCarPictures(car.Id, pic.Id);
-                                car.AddPicture(pic);
-                            }
-                            foreach (Extra extra in extras)
-                            {
-                                _dataWriter.AddCarExtras(car.Id, extra.Id);
-                                car.AddExtra(extra);
-                            }
-                            return "done";
-                        }
-                        else { return MessageRemoveExtras; }
-                    }
-                    else { return MessageRemovePics; }
+                _dataWriter.UpdateCar(car);
+                _dataWriter.UpdateCarDescription(car);
+                _dataWriter.RemoveCarPictures(car.Id);
+                _dataWriter.RemoveCarExtras(car.Id);
+                foreach (Picture pic in pictures)
+                {
+                    _dataWriter.AddCarPictures(car.Id, pic.Id);
+                    car.AddPicture(pic);
                 }
-                else { return MessageCarDesc; }
+                foreach (Extra extra in extras)
+                {
+                    _dataWriter.AddCarExtras(car.Id, extra.Id);
+                    car.AddExtra(extra);
+                }
+                return "done";
             }
-            else { return MessageCar; }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
         }
 
         public string RemoveCar(Car car)
         {
-
-
-            string MessageCar = _dataRemover.RemoveCar(car.Id); ;
-            if (MessageCar == "done")
+            try
             {
+                _dataRemover.RemoveCar(car.Id); ;
                 cars.Remove(car);
                 return "done";
             }
-            else { return MessageCar; }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
         public string ChangeCarStatus(Car car, string newStatus, CarStatus Status)
         {
-            string MessageCar = _dataWriter.ChangeCarStatus(car, newStatus);
-            if (MessageCar == "done")
+            try
             {
+                _dataWriter.ChangeCarStatus(car, newStatus);
                 car.CarStatus = Status;
                 return "done";
             }
-            else { return MessageCar; }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
-        public void RecordCarView(int carId)
+        public string RecordCarView(int carId)
         {
-            _dataWriter.RecordCarView(carId);
-            Car car = GetCarById(carId);
-            car.Views = car.Views + 1;
+            try
+            {
+                _dataWriter.RecordCarView(carId);
+                Car car = GetCarById(carId);
+                car.Views = car.Views + 1;
+                return "done";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
         public Car SearchForCar(int index)
@@ -157,9 +157,9 @@ namespace Manager_Layer
             return cars;
         }
 
-        public Car GetCarById(int carId) 
+        public Car GetCarById(int carId)
         {
-            foreach (Car car in cars) 
+            foreach (Car car in cars)
             {
                 if (car.Id == carId)
                 {
@@ -210,7 +210,7 @@ namespace Manager_Layer
             {
                 return ex.Message;
             }
-            
+
         }
     }
 }

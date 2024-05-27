@@ -18,7 +18,7 @@ namespace DatabaseAccess
             connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
         }
 
-        public string AddCar(string Brand, string Model, DateTime FirstRegistration, int Mileage, string Fuel, int EngineSize, int HP, string Gearbox, int NumOfSeats, string NumOfDoors, string color, string VIN, string Status)
+        public void AddCar(string Brand, string Model, DateTime FirstRegistration, int Mileage, string Fuel, int EngineSize, int HP, string Gearbox, int NumOfSeats, string NumOfDoors, string color, string VIN, string Status)
         {
             int rows = -1;
             try
@@ -44,23 +44,23 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@Status", Status);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
 
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
 
         }
 
-        public string AddCarDescription(int CarId, string Description, decimal Price)
+        public void AddCarDescription(int CarId, string Description, decimal Price)
         {
             int rows = -1;
             try
@@ -76,22 +76,22 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@PricePerDay", Price);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
 
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string AddCarExtras(int CarId, int ExtraId)
+        public void AddCarExtras(int CarId, int ExtraId)
         {
             int rows = -1;
             try
@@ -106,21 +106,21 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@ExtraId", ExtraId);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string AddCarPictures(int CarId, int PictureId)
+        public void AddCarPictures(int CarId, int PictureId)
         {
             int rows = -1;
             try
@@ -135,34 +135,32 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@PictureId", PictureId);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string RecordCarView(int CarId)
+        public void RecordCarView(int CarId)
         {
             int rows = -1;
             try
             {
                 connectionString.Open();
-                // SQL query to increment the view count for a given car ID
                 var sql = "UPDATE [dbo].[CarViews] SET ViewCount = ViewCount + 1 WHERE CarId = @CarId;";
 
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@CarId", CarId);
 
                 rows = cmd.ExecuteNonQuery();
-                // If no rows were updated, it means the CarId was not found, so we insert it
                 if (rows == 0)
                 {
                     sql = "INSERT INTO [dbo].[CarViews] (CarId, ViewCount) VALUES (@CarId, 1);";
@@ -171,15 +169,15 @@ namespace DatabaseAccess
                     rows = cmd.ExecuteNonQuery();
                 }
 
-                return "done";
+                
             }
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally
             {
@@ -188,7 +186,7 @@ namespace DatabaseAccess
         }
 
 
-        public string UpdateCar(Car car)
+        public void UpdateCar(Car car)
         {
             int rows = -1;
             try
@@ -215,21 +213,21 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@CARID", car.Id);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string UpdateCarDescription(Car car)
+        public void UpdateCarDescription(Car car)
         {
             int rows = -1;
             try
@@ -246,22 +244,22 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@CARID", car.Id);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
 
         }
 
-        public string ChangeCarStatus(Car car, string Status)
+        public void ChangeCarStatus(Car car, string Status)
         {
             int rows = -1;
             try
@@ -277,22 +275,22 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@CARID", car.Id);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
 
         }
 
-        public string RemoveCarExtras(int CarId)
+        public void RemoveCarExtras(int CarId)
         {
             int rows = -1;
             try
@@ -305,21 +303,21 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@carId", CarId);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string RemoveCarPictures(int CarId)
+        public void RemoveCarPictures(int CarId)
         {
             int rows = -1;
             try
@@ -333,21 +331,21 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@carId", CarId);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string GetCarId(string VIN)
+        public int GetCarId(string VIN)
         {
             int carId = -1;
             try
@@ -365,23 +363,23 @@ namespace DatabaseAccess
                         carId = (int)reader["CarId"];
                     }
                 }
-                return $"{carId}";
             }
             catch (SqlException ex)
             {
-                return $"MSSQL error in GetCarId: {ex.Message}";
+                Console.WriteLine($"MSSQL error in GetCarId: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in GetCarId: {ex.Message}";
+                Console.WriteLine($"An error occurred in GetCarId: {ex.Message}");
             }
             finally
             {
                 connectionString.Close();
             }
+            return carId;
         }
 
-        public string AddExtra(string ExtraName)
+        public void AddExtra(string ExtraName)
         {
             int rows = -1;
             try
@@ -396,21 +394,21 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@ExtraName", ExtraName);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
 
-        public string AddPicture(string PictureURL)
+        public void AddPicture(string PictureURL)
         {
             int rows = -1;
             try
@@ -425,16 +423,16 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@PictureURL", PictureURL);
 
                 rows = cmd.ExecuteNonQuery();
-                return "done";
+                
             }
 
             catch (SqlException ex)
             {
-                return $"MSSQL error in this action: {ex.Message}";
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in this action: {ex.Message}";
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
         }
@@ -443,7 +441,7 @@ namespace DatabaseAccess
 
 
 
-        public string GetExtraId(string ExtraName)
+        public int GetExtraId(string ExtraName)
         {
             int ExtraId = -1;
             try
@@ -461,23 +459,23 @@ namespace DatabaseAccess
                         ExtraId = (int)reader["ExtraId"];
                     }
                 }
-                return $"{ExtraId}";
             }
             catch (SqlException ex)
             {
-                return $"MSSQL error in GetExtraId: {ex.Message}";
+                Console.WriteLine($"MSSQL error in GetExtraId: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in GetExtraId: {ex.Message}";
+                Console.WriteLine($"An error occurred in GetExtraId: {ex.Message}");
             }
             finally
             {
                 connectionString.Close();
             }
+            return ExtraId;
         }
 
-        public string GetPictureId(string PictureURL)
+        public int GetPictureId(string PictureURL)
         {
             int PictureId = -1;
             try
@@ -495,20 +493,20 @@ namespace DatabaseAccess
                         PictureId = (int)reader["PictureId"];
                     }
                 }
-                return $"{PictureId}";
             }
             catch (SqlException ex)
             {
-                return $"MSSQL error in GetPictureId: {ex.Message}";
+                Console.WriteLine($"MSSQL error in GetPictureId: {ex.Message}");
             }
             catch (Exception ex)
             {
-                return $"An error occurred in GetPictureId: {ex.Message}";
+                Console.WriteLine($"An error occurred in GetPictureId: {ex.Message}");
             }
             finally
             {
                 connectionString.Close();
             }
+            return PictureId;
         }
     }
 }
