@@ -14,6 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WinDesktopApp
-build_property.ProjectDir = C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\
+build_property.ProjectDir = C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

@@ -67,13 +67,13 @@ namespace ManagerLayer
             }
         }
 
-        public string RentACar(User user, Car car, DateTime startDate, DateTime endDate)
+        public string RentACar(RentACar rentACar)
         {
             try
             {
-                writer.RentACar(car.Id, user.Id, startDate, endDate, RentStatus.SCHEDULE.ToString());
+                writer.RentACar(rentACar.car.Id, rentACar.user.Id, rentACar.StartDate, rentACar.ReturnDate, rentACar.RentStatus.ToString());
 
-                RentACar rentACar = new RentACar(user, car, startDate, endDate, RentStatus.SCHEDULE);
+                
                 rentalHistory.Add(rentACar);
                 return "done";
 

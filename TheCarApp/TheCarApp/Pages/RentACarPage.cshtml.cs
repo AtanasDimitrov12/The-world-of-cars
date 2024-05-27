@@ -5,6 +5,7 @@ using Manager_Layer;
 using Microsoft.AspNetCore.Authorization;
 using EntityLayout;
 using ManagerLayer;
+using Entity_Layer.Enums;
 
 namespace TheCarApp.Pages
 {
@@ -92,9 +93,11 @@ namespace TheCarApp.Pages
 
             try
             {
-                projectManager.RentManager.RentACar(user, Car, StartDate, EndDate);
+                RentACar rentACar = new RentACar(user, Car, StartDate, EndDate, RentStatus.SCHEDULE);
+                projectManager.RentManager.RentACar(rentACar);
+                PriceResult = projectManager.RentManager.CalculatePrice(Car.PricePerDay, StartDate, EndDate);
                 ErrorMessage = null;
-                return RedirectToPage("AccountPage"); // Redirect to a confirmation page
+                return RedirectToPage("RentConfirmation", new { carId = Car.Id, rent = rentACar});
             }
             catch (Exception ex)
             {

@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\css\\Register.css"
     },
     {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\congratulations.css",
+      "PackagePath": "staticwebassets\\css\\congratulations.css"
+    },
+    {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\market.css",
       "PackagePath": "staticwebassets\\css\\market.css"
     },

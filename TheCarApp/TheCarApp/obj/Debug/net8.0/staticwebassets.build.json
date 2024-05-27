@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IGtC0Dz0O7FPfWnRHqceVDlkOWFA1+6Wd6Ofq856AsU=",
+  "Hash": "nsrF8cY9tVbrflsM2KKGH7TlZgRmH2UhneaG43jCqfs=",
   "Source": "TheCarApp",
   "BasePath": "_content/TheCarApp",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Account.css"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\congratulations.css",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "css/congratulations.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\congratulations.css"
     },
     {
       "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\Home.css",
