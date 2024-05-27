@@ -112,7 +112,7 @@
             // RBDESC
             // 
             RBDESC.AutoSize = true;
-            RBDESC.Location = new Point(119, 77);
+            RBDESC.Location = new Point(120, 77);
             RBDESC.Margin = new Padding(4, 3, 4, 3);
             RBDESC.Name = "RBDESC";
             RBDESC.Size = new Size(67, 22);
@@ -120,6 +120,7 @@
             RBDESC.TabStop = true;
             RBDESC.Text = "Desc";
             RBDESC.UseVisualStyleBackColor = true;
+            RBDESC.CheckedChanged += RBDESC_CheckedChanged;
             // 
             // RBASC
             // 
@@ -132,17 +133,18 @@
             RBASC.TabStop = true;
             RBASC.Text = "Asc";
             RBASC.UseVisualStyleBackColor = true;
+            RBASC.CheckedChanged += RBASC_CheckedChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial Rounded MT Bold", 12F);
-            label1.Location = new Point(55, 39);
+            label1.Location = new Point(32, 39);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(110, 18);
+            label1.Size = new Size(152, 18);
             label1.TabIndex = 17;
-            label1.Text = "Sort by date:";
+            label1.Text = "Sort by start date:";
             // 
             // groupBox3
             // 

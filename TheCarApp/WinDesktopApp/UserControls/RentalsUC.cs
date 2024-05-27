@@ -85,5 +85,15 @@ namespace WinDesktopApp.UserControls
                 .ToList();
             FillDataGridView(filteredRentals);
         }
+
+        private void RBASC_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RBDESC_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
