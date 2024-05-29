@@ -16,6 +16,12 @@
     <Compile Update="Forms\ChangeCarStatus.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\RequestedRentsUC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ViewRentals.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="UserControls\RentalsUC.cs">
       <SubType>UserControl</SubType>
     </Compile>

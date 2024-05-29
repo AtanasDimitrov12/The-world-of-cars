@@ -1,4 +1,5 @@
-﻿using Entity_Layer;
+﻿using DesktopApp;
+using Entity_Layer;
 using InterfaceLayer;
 using Manager_Layer;
 using ManagerLayer;
@@ -12,6 +13,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinDesktopApp.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WinDesktopApp.UserControls
 {
@@ -94,6 +97,70 @@ namespace WinDesktopApp.UserControls
         private void RBDESC_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void DGVRentals_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == DGVRentals.Columns["Modify"].Index && e.RowIndex >= 0)
+            {
+                if (e.RowIndex != -1)
+                {
+
+                    var Username = DGVRentals.Rows[e.RowIndex].Cells["Username"].Value.ToString();
+                    var StartDateString = DGVRentals.Rows[e.RowIndex].Cells["Start Date"].Value.ToString();
+                    var car = DGVRentals.Rows[e.RowIndex].Cells["Car"].Value.ToString();
+
+                    foreach (var selectedRental in rentManager.rentalHistory)
+                    {
+                        if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
+                        {
+                            ViewRentals modifyRent = new ViewRentals(selectedRental, rentManager, false);
+                            modifyRent.Show();
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (e.ColumnIndex == DGVRentals.Columns["Remove"].Index && e.RowIndex >= 0)
+            {
+                if (e.RowIndex != -1)
+                {
+                    var Username = DGVRentals.Rows[e.RowIndex].Cells["Username"].Value.ToString();
+                    var StartDateString = DGVRentals.Rows[e.RowIndex].Cells["Start Date"].Value.ToString();
+                    var car = DGVRentals.Rows[e.RowIndex].Cells["Car"].Value.ToString();
+
+                    foreach (var selectedRental in rentManager.rentalHistory)
+                    {
+                        if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
+                        {
+                            
+                            FillDataGridView(rentManager.rentalHistory);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (e.ColumnIndex == DGVRentals.Columns["View"].Index && e.RowIndex >= 0)
+            {
+                if (e.RowIndex != -1)
+                {
+                    var Username = DGVRentals.Rows[e.RowIndex].Cells["Username"].Value.ToString();
+                    var StartDateString = DGVRentals.Rows[e.RowIndex].Cells["Start Date"].Value.ToString();
+                    var car = DGVRentals.Rows[e.RowIndex].Cells["Car"].Value.ToString();
+
+                    foreach (var selectedRental in rentManager.rentalHistory)
+                    {
+                        if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
+                        {
+                            ViewRentals viewRent = new ViewRentals(selectedRental, rentManager, true);
+                            viewRent.Show();
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Entity_Layer.Enums
 {
     public enum RentStatus
     {
+        REQUESTED,
         SCHEDULE,
         ACTIVE,
         COMPLETED,
