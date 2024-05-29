@@ -73,7 +73,7 @@ namespace ManagerLayer
             {
                 writer.RentACar(rentACar.car.Id, rentACar.user.Id, rentACar.StartDate, rentACar.ReturnDate, rentACar.RentStatus.ToString());
 
-                
+
                 rentalHistory.Add(rentACar);
                 return "done";
 
@@ -94,46 +94,51 @@ namespace ManagerLayer
         {
             try
             {
-                var loadedRentals = access.GetRentals();
-                if (loadedRentals != null)
+                var loadedRentals = access?.GetRentals();
+                if (loadedRentals == null)
                 {
-                    foreach (RentACarDTO rentDTO in loadedRentals)
-                    {
-                        RentStatus status;
-                        bool isValidArea = Enum.TryParse(rentDTO.Status.ToUpper(), true, out status);
-
-                        if (isValidArea)
-                        {
-                            foreach (User user in peopleManager.people)
-                            {
-                                if (user.Id == rentDTO.UserID)
-                                {
-                                    foreach (Car car in carManager.GetCars())
-                                    {
-                                        if (car.Id == rentDTO.CarId)
-                                        {
-                                            RentACar loadRent = new RentACar(user, car, rentDTO.StartDate, rentDTO.ReturnDate, status);
-                                            rentalHistory.Add(loadRent);
-                                        }
-                                    }
-                                }
-                            }
-
-                        }
-                        else
-                        {
-                            return $"Warning: {rentDTO.Id} has an invalid area assigned.";
-                        }
-                    }
+                    return "No rentals to load.";
                 }
+
+                foreach (var rentDTO in loadedRentals)
+                {
+                    if (rentDTO == null)
+                    {
+                        continue;
+                    }
+
+                    if (!Enum.TryParse(rentDTO.Status.ToUpper(), true, out RentStatus status))
+                    {
+                        return $"Warning: {rentDTO.Id} has an invalid status assigned.";
+                    }
+
+                    var user = peopleManager.GetAllUsers().FirstOrDefault(u => u.Id == rentDTO.UserID);
+                    if (user == null)
+                    {
+                        continue;
+                    }
+
+                    var car = carManager?.GetCars()?.FirstOrDefault(c => c.Id == rentDTO.CarId);
+                    if (car == null)
+                    {
+                        continue;
+                    }
+
+                    var rental = new RentACar(user, car, rentDTO.StartDate, rentDTO.ReturnDate, status);
+                    rental.TotalPrice = CalculatePrice(car.PricePerDay, rentDTO.StartDate, rentDTO.ReturnDate);
+                    rentalHistory.Add(rental);
+
+                }
+
                 return "done";
             }
-            catch (ApplicationException ex)
+            catch (Exception ex) // Catch general exceptions for safety.
             {
-                return ex.Message;
+                // Log the exception here if necessary.
+                return $"Error: {ex.Message}";
             }
-
-
         }
+
+
     }
 }
