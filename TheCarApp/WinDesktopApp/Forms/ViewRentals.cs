@@ -16,11 +16,13 @@ namespace WinDesktopApp.Forms
     {
         RentACar rent;
         IRentManager manager;
+        bool IsView;
         public ViewRentals(RentACar rent, IRentManager rm, bool View)
         {
             InitializeComponent();
             this.rent = rent;
             manager = rm;
+            IsView = View;
             DisplayRentInfo(rent, View);
         }
 
@@ -31,18 +33,31 @@ namespace WinDesktopApp.Forms
             DTPStartDate.Value = rent.StartDate;
             DTPEndDate.Value = rent.ReturnDate;
             TBTotalPrice.Text = rent.TotalPrice.ToString();
-            if (View)
+            if (IsView)
             {
                 TBRentStatus.Text = rent.RentStatus.ToString();
                 CBRentStatus.Visible = false;
                 CBRentStatus.Enabled = false;
+                BTNUpdate.Text = "Close";
             }
-            else 
+            else
             {
                 TBRentStatus.Enabled = false;
                 TBRentStatus.Visible = false;
             }
-            
+
+        }
+
+        private void BTNUpdate_Click(object sender, EventArgs e)
+        {
+            if (IsView)
+            {
+                this.Close();
+            }
+            else 
+            {
+                manager.UpdateRental(rent);
+            }
         }
     }
 }

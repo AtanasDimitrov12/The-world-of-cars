@@ -75,6 +75,7 @@
             BTNChangeAdminInfo.TabIndex = 15;
             BTNChangeAdminInfo.Text = "Check rentals";
             BTNChangeAdminInfo.UseVisualStyleBackColor = false;
+            BTNChangeAdminInfo.Click += BTNChangeAdminInfo_Click;
             // 
             // LBLNumOfRentals
             // 
@@ -210,6 +211,7 @@
             DGVRentals.RowHeadersWidth = 51;
             DGVRentals.Size = new Size(816, 419);
             DGVRentals.TabIndex = 17;
+            DGVRentals.CellContentClick += DGVRentals_CellContentClick_1;
             // 
             // RentalsUC
             // 

@@ -75,19 +75,7 @@ namespace DesktopApp
             this.DGVCars.Columns[4].Width = 100;
             
 
-            var btnView = new DataGridViewButtonColumn();
-            btnView.Name = "View";
-            btnView.HeaderText = "View";
-            btnView.Text = "View";
-            btnView.UseColumnTextForButtonValue = true;
-            DGVCars.Columns.Add(btnView);
-
-            var btnModify = new DataGridViewButtonColumn();
-            btnModify.Name = "Modify";
-            btnModify.HeaderText = "Modify";
-            btnModify.Text = "Modify";
-            btnModify.UseColumnTextForButtonValue = true;
-            DGVCars.Columns.Add(btnModify);
+            
 
             var btnDelete = new DataGridViewButtonColumn();
             btnDelete.Name = "Delete";

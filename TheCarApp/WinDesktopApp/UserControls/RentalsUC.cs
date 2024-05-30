@@ -48,6 +48,14 @@ namespace WinDesktopApp.UserControls
             this.DGVRentals.Columns[5].Width = 100;
 
 
+
+            var btnModify = new DataGridViewButtonColumn();
+            btnModify.Name = "Modify";
+            btnModify.HeaderText = "Modify";
+            btnModify.Text = "Modify";
+            btnModify.UseColumnTextForButtonValue = true;
+            DGVRentals.Columns.Add(btnModify);
+
             var btnRemove = new DataGridViewButtonColumn();
             btnRemove.Name = "Remove";
             btnRemove.HeaderText = "Remove";
@@ -55,7 +63,12 @@ namespace WinDesktopApp.UserControls
             btnRemove.UseColumnTextForButtonValue = true;
             DGVRentals.Columns.Add(btnRemove);
 
-
+            var btnView = new DataGridViewButtonColumn();
+            btnView.Name = "View";
+            btnView.HeaderText = "View";
+            btnView.Text = "View";
+            btnView.UseColumnTextForButtonValue = true;
+            DGVRentals.Columns.Add(btnView);
         }
 
         private void FillDataGridView(List<RentACar> rentals)
@@ -99,7 +112,13 @@ namespace WinDesktopApp.UserControls
 
         }
 
-        private void DGVRentals_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        
+        private void BTNChangeAdminInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DGVRentals_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == DGVRentals.Columns["Modify"].Index && e.RowIndex >= 0)
             {
@@ -134,7 +153,7 @@ namespace WinDesktopApp.UserControls
                     {
                         if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
                         {
-                            
+
                             FillDataGridView(rentManager.rentalHistory);
                             break;
                         }

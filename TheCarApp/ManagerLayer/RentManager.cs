@@ -85,9 +85,15 @@ namespace ManagerLayer
             }
         }
 
-        public void UpdateRental(RentACar rental, RentStatus newStatus)
+        public void UpdateRentStatus(RentACar rental, RentStatus newStatus)
         {
             _rentalStrategy.UpdateRentalStatus(rental, newStatus);
+            UpdateRental(rental);
+        }
+
+        public void UpdateRental(RentACar rental)
+        {
+            writer.UpdateRent(rental);
         }
 
         public string LoadRentals()

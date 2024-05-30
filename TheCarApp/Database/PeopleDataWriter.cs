@@ -1,10 +1,14 @@
-﻿using InterfaceLayer;
+﻿using Entity_Layer;
+using EntityLayout;
+using InterfaceLayer;
+using Manager_Layer;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DatabaseAccess
 {
@@ -37,7 +41,7 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@Salt", Salt);
 
                 rows = cmd.ExecuteNonQuery();
-                
+
             }
 
             catch (SqlException ex)
@@ -46,7 +50,7 @@ namespace DatabaseAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");   
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
 
@@ -72,7 +76,7 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@PassSalt", PassSalt);
 
                 rows = cmd.ExecuteNonQuery();
-                
+
             }
 
             catch (SqlException ex)
@@ -109,7 +113,7 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@UserId", userId);
 
                 rowsAffected = cmd.ExecuteNonQuery();
-                
+
             }
             catch (SqlException ex)
             {
@@ -150,7 +154,7 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@AdminId", adminId);
 
                 rowsAffected = cmd.ExecuteNonQuery();
-                
+
             }
             catch (SqlException ex)
             {
@@ -184,7 +188,47 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@Status", Status);
 
                 rows = cmd.ExecuteNonQuery();
-                
+
+            }
+
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+            }
+            finally { connectionString.Close(); }
+        }
+
+        public void UpdateRent(RentACar rental)
+        {
+            int rows = -1;
+            try
+            {
+
+                connectionString.Open();
+                var sql = "UPDATE[dbo].[Rentals]" +
+                    "SET [UserId] = @UserId" +
+                    ",[CarId] = @CarId" +
+                    ",[StartDate] = @StartDate" +
+                    ",[EndDate] = @EndDate" +
+                    ",[Status] = @Status" +
+                    "WHERE [UserId] = @UserId AND [CarId] = @CarId AND [StartDate] = @StartDate";
+
+
+
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@UserId", rental.user.Id);
+                cmd.Parameters.AddWithValue("@CarId", rental.car.Id);
+                cmd.Parameters.AddWithValue("@StartDate", rental.StartDate);
+                cmd.Parameters.AddWithValue("@EndDate", rental.ReturnDate);
+                cmd.Parameters.AddWithValue("@Status", rental.RentStatus);
+
+                rows = cmd.ExecuteNonQuery();
+
             }
 
             catch (SqlException ex)
