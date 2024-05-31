@@ -29,6 +29,13 @@ namespace WinDesktopApp.UserControls
             this.rentManager = rentManager;
             InitializeGridView();
             FillDataGridView(rentManager.rentalHistory);
+            UpdateRequestedLabel();
+        }
+
+        private void UpdateRequestedLabel()
+        {
+            int RequestedRentals = rentManager.rentalHistory.Where(r => r.RentStatus == Entity_Layer.Enums.RentStatus.REQUESTED).Count();
+            LBLNumOfRentals.Text = RequestedRentals.ToString();
         }
 
         private void InitializeGridView()
@@ -47,7 +54,12 @@ namespace WinDesktopApp.UserControls
             this.DGVRentals.Columns[5].Name = "Status";
             this.DGVRentals.Columns[5].Width = 100;
 
-
+            var btnView = new DataGridViewButtonColumn();
+            btnView.Name = "View";
+            btnView.HeaderText = "View";
+            btnView.Text = "View";
+            btnView.UseColumnTextForButtonValue = true;
+            DGVRentals.Columns.Add(btnView);
 
             var btnModify = new DataGridViewButtonColumn();
             btnModify.Name = "Modify";
@@ -63,12 +75,7 @@ namespace WinDesktopApp.UserControls
             btnRemove.UseColumnTextForButtonValue = true;
             DGVRentals.Columns.Add(btnRemove);
 
-            var btnView = new DataGridViewButtonColumn();
-            btnView.Name = "View";
-            btnView.HeaderText = "View";
-            btnView.Text = "View";
-            btnView.UseColumnTextForButtonValue = true;
-            DGVRentals.Columns.Add(btnView);
+            
         }
 
         private void FillDataGridView(List<RentACar> rentals)
@@ -104,18 +111,30 @@ namespace WinDesktopApp.UserControls
 
         private void RBASC_CheckedChanged(object sender, EventArgs e)
         {
-
+            List<RentACar> rentals = rentManager.rentalHistory;
+            rentals = rentals.OrderBy(r => r.StartDate).ToList();
+            FillDataGridView(rentals);
         }
 
         private void RBDESC_CheckedChanged(object sender, EventArgs e)
         {
-
+            List<RentACar> rentals = rentManager.rentalHistory;
+            rentals = rentals.OrderByDescending(r => r.StartDate).ToList();
+            FillDataGridView(rentals);
         }
 
         
-        private void BTNChangeAdminInfo_Click(object sender, EventArgs e)
+        private void BTNCheckRentals_Click(object sender, EventArgs e)
         {
+            RequestedRentsUC checkRentals = new RequestedRentsUC(rentManager);
+            checkRentals.RentChanged += ChangeRent_RentChanged;
+            checkRentals.Show();
+        }
 
+        private void ChangeRent_RentChanged(object sender, EventArgs e)
+        {
+            FillDataGridView(rentManager.rentalHistory);
+            UpdateRequestedLabel();
         }
 
         private void DGVRentals_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -134,7 +153,9 @@ namespace WinDesktopApp.UserControls
                         if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
                         {
                             ViewRentals modifyRent = new ViewRentals(selectedRental, rentManager, false);
+                            modifyRent.RentChanged += ChangeRent_RentChanged;
                             modifyRent.Show();
+                            UpdateRequestedLabel();
                             break;
                         }
                     }
@@ -153,7 +174,7 @@ namespace WinDesktopApp.UserControls
                     {
                         if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
                         {
-
+                            rentManager.RemoveRent(selectedRental);
                             FillDataGridView(rentManager.rentalHistory);
                             break;
                         }

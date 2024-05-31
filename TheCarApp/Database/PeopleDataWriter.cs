@@ -209,12 +209,12 @@ namespace DatabaseAccess
             {
 
                 connectionString.Open();
-                var sql = "UPDATE[dbo].[Rentals]" +
-                    "SET [UserId] = @UserId" +
-                    ",[CarId] = @CarId" +
-                    ",[StartDate] = @StartDate" +
-                    ",[EndDate] = @EndDate" +
-                    ",[Status] = @Status" +
+                var sql = "UPDATE[dbo].[Rentals] " +
+                    "SET [UserId] = @UserId " +
+                    ",[CarId] = @CarId " +
+                    ",[StartDate] = @StartDate " +
+                    ",[EndDate] = @EndDate " +
+                    ",[Status] = @Status " +
                     "WHERE [UserId] = @UserId AND [CarId] = @CarId AND [StartDate] = @StartDate";
 
 
@@ -225,7 +225,7 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@CarId", rental.car.Id);
                 cmd.Parameters.AddWithValue("@StartDate", rental.StartDate);
                 cmd.Parameters.AddWithValue("@EndDate", rental.ReturnDate);
-                cmd.Parameters.AddWithValue("@Status", rental.RentStatus);
+                cmd.Parameters.AddWithValue("@Status", rental.RentStatus.ToString());
 
                 rows = cmd.ExecuteNonQuery();
 

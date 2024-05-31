@@ -93,7 +93,7 @@ namespace TheCarApp.Pages
 
             try
             {
-                RentACar rentACar = new RentACar(user, Car, StartDate, EndDate, RentStatus.SCHEDULE);
+                RentACar rentACar = new RentACar(user, Car, StartDate, EndDate, RentStatus.REQUESTED);
                 projectManager.RentManager.RentACar(rentACar);
                 PriceResult = projectManager.RentManager.CalculatePrice(Car.PricePerDay, StartDate, EndDate);
                 ErrorMessage = null;

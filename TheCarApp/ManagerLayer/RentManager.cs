@@ -96,6 +96,12 @@ namespace ManagerLayer
             writer.UpdateRent(rental);
         }
 
+        public void RemoveRent(RentACar rental)
+        {
+            remover.RemoveRental(rental);
+            rentalHistory.Remove(rental);
+        }
+
         public string LoadRentals()
         {
             try

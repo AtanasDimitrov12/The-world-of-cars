@@ -1,4 +1,5 @@
-﻿using InterfaceLayer;
+﻿using Entity_Layer.Enums;
+using InterfaceLayer;
 using Manager_Layer;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace WinDesktopApp.Forms
         RentACar rent;
         IRentManager manager;
         bool IsView;
+        public event EventHandler RentChanged;
         public ViewRentals(RentACar rent, IRentManager rm, bool View)
         {
             InitializeComponent();
@@ -42,6 +44,10 @@ namespace WinDesktopApp.Forms
             }
             else
             {
+                foreach (var status in Enum.GetValues(typeof(RentStatus)))
+                {
+                    CBRentStatus.Items.Add(status.ToString().ToLower());
+                }
                 TBRentStatus.Enabled = false;
                 TBRentStatus.Visible = false;
             }
@@ -54,9 +60,33 @@ namespace WinDesktopApp.Forms
             {
                 this.Close();
             }
-            else 
+            else
             {
-                manager.UpdateRental(rent);
+                if (CBRentStatus.SelectedItem != null)
+                {
+                    if (rent.user.Username == TBUsername.Text && $"{rent.car.Brand} {rent.car.Model}" == TBCar.Text)
+                    {
+                        RentStatus newStatus;
+                        if (Enum.TryParse<RentStatus>(CBRentStatus.Text, true, out newStatus))
+                        {
+                            rent.StartDate = DTPStartDate.Value;
+                            rent.ReturnDate = DTPEndDate.Value;
+                            rent.TotalPrice = manager.CalculatePrice(rent.car.PricePerDay, DTPStartDate.Value, DTPEndDate.Value);
+                            manager.UpdateRentStatus(rent, newStatus);
+                            RentChanged?.Invoke(this, EventArgs.Empty);
+                            this.Close();
+                        }
+                    }
+                    else 
+                    {
+                        MessageBox.Show("User and car information cannot be changed!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please first select Rent Status first!");
+                }
+
             }
         }
     }

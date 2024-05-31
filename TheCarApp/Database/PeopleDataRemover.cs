@@ -1,4 +1,5 @@
 ﻿using InterfaceLayer;
+using Manager_Layer;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -55,15 +56,17 @@ namespace DatabaseAccess
             finally { connectionString.Close(); }
         }
 
-        public void RemoveRental(int RentalId)
+        public void RemoveRental(RentACar rent)
         {
             int rows = -1;
             try
             {
                 connectionString.Open();
-                var sql = "DELETE FROM [dbo].[Rentals] WHERE [RentalId] = @RentalId";
+                var sql = "DELETE FROM [dbo].[Rentals] WHERE [UserId] = @UserId AND [CarId] = @CarId AND [StartDate] = @StartDate";
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@RentalId", RentalId);
+                cmd.Parameters.AddWithValue("@UserId", rent.user.Id);
+                cmd.Parameters.AddWithValue("@CarId", rent.car.Id);
+                cmd.Parameters.AddWithValue("@StartDate", rent.StartDate);
                 rows = cmd.ExecuteNonQuery();
 
             }

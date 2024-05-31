@@ -18,12 +18,18 @@ namespace WinDesktopApp.Forms
     {
         IRentManager rentManager;
         List<RentACar> rentals;
+        public event EventHandler RentChanged;
         public RequestedRentsUC(IRentManager rm)
         {
             InitializeComponent();
             rentManager = rm;
-            rentals = rentManager.rentalHistory.Where(rent => rent.RentStatus == RentStatus.REQUESTED).ToList();
             InitializeGridView();
+            UpdateDGV();
+        }
+
+        private void UpdateDGV()
+        {
+            rentals = rentManager.rentalHistory.Where(rent => rent.RentStatus == RentStatus.REQUESTED).ToList();
             FillDataGridView(rentals);
         }
 
@@ -44,26 +50,20 @@ namespace WinDesktopApp.Forms
             this.DGVRequestRents.Columns[5].Width = 100;
 
 
-            var btnView = new DataGridViewButtonColumn();
-            btnView.Name = "View";
-            btnView.HeaderText = "View";
-            btnView.Text = "View";
-            btnView.UseColumnTextForButtonValue = true;
-            DGVRequestRents.Columns.Add(btnView);
+            var btnApprove = new DataGridViewButtonColumn();
+            btnApprove.Name = "Approve";
+            btnApprove.HeaderText = "Approve";
+            btnApprove.Text = "Approve";
+            btnApprove.UseColumnTextForButtonValue = true;
+            DGVRequestRents.Columns.Add(btnApprove);
 
-            var btnModify = new DataGridViewButtonColumn();
-            btnModify.Name = "Modify";
-            btnModify.HeaderText = "Modify";
-            btnModify.Text = "Modify";
-            btnModify.UseColumnTextForButtonValue = true;
-            DGVRequestRents.Columns.Add(btnModify);
 
-            var btnRemove = new DataGridViewButtonColumn();
-            btnRemove.Name = "Remove";
-            btnRemove.HeaderText = "Remove";
-            btnRemove.Text = "Remove";
-            btnRemove.UseColumnTextForButtonValue = true;
-            DGVRequestRents.Columns.Add(btnRemove);
+            var btnCancel = new DataGridViewButtonColumn();
+            btnCancel.Name = "Cancel";
+            btnCancel.HeaderText = "Cancel";
+            btnCancel.Text = "Cancel";
+            btnCancel.UseColumnTextForButtonValue = true;
+            DGVRequestRents.Columns.Add(btnCancel);
 
 
         }
@@ -78,6 +78,59 @@ namespace WinDesktopApp.Forms
                 this.DGVRequestRents.Rows.Add(rent.user.Username, Car, rent.StartDate.ToShortDateString(), rent.ReturnDate.ToShortDateString(), rent.TotalPrice, rent.RentStatus);
 
             }
+        }
+
+
+
+        private void DGVRequestRents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == DGVRequestRents.Columns["Approve"].Index && e.RowIndex >= 0)
+            {
+                if (e.RowIndex != -1)
+                {
+
+                    var Username = DGVRequestRents.Rows[e.RowIndex].Cells["Username"].Value.ToString();
+                    var StartDateString = DGVRequestRents.Rows[e.RowIndex].Cells["Start Date"].Value.ToString();
+                    var car = DGVRequestRents.Rows[e.RowIndex].Cells["Car"].Value.ToString();
+
+                    foreach (var selectedRental in rentManager.rentalHistory)
+                    {
+                        if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
+                        {
+                            rentManager.UpdateRentStatus(selectedRental, RentStatus.SCHEDULE);
+                            RentChanged?.Invoke(this, EventArgs.Empty);
+                            UpdateDGV();
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (e.ColumnIndex == DGVRequestRents.Columns["Cancel"].Index && e.RowIndex >= 0)
+            {
+                if (e.RowIndex != -1)
+                {
+                    var Username = DGVRequestRents.Rows[e.RowIndex].Cells["Username"].Value.ToString();
+                    var StartDateString = DGVRequestRents.Rows[e.RowIndex].Cells["Start Date"].Value.ToString();
+                    var car = DGVRequestRents.Rows[e.RowIndex].Cells["Car"].Value.ToString();
+
+                    foreach (var selectedRental in rentManager.rentalHistory)
+                    {
+                        if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
+                        {
+                            rentManager.UpdateRentStatus(selectedRental, RentStatus.CANCELLED);
+                            RentChanged?.Invoke(this, EventArgs.Empty);
+                            UpdateDGV();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BTNClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

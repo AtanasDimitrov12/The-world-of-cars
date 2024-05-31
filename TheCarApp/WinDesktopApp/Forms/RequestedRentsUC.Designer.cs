@@ -29,26 +29,45 @@
         private void InitializeComponent()
         {
             DGVRequestRents = new DataGridView();
+            BTNClose = new Button();
             ((System.ComponentModel.ISupportInitialize)DGVRequestRents).BeginInit();
             SuspendLayout();
             // 
             // DGVRequestRents
             // 
             DGVRequestRents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVRequestRents.Location = new Point(39, 32);
+            DGVRequestRents.Location = new Point(34, 24);
+            DGVRequestRents.Margin = new Padding(3, 2, 3, 2);
             DGVRequestRents.Name = "DGVRequestRents";
             DGVRequestRents.RowHeadersWidth = 51;
-            DGVRequestRents.Size = new Size(925, 426);
+            DGVRequestRents.Size = new Size(809, 320);
             DGVRequestRents.TabIndex = 0;
+            DGVRequestRents.CellContentClick += DGVRequestRents_CellContentClick;
             // 
-            // RequstedRentsUC
+            // BTNClose
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            BTNClose.BackColor = Color.FromArgb(88, 129, 87);
+            BTNClose.Font = new Font("Arial Rounded MT Bold", 10.2F);
+            BTNClose.ForeColor = Color.White;
+            BTNClose.Location = new Point(374, 368);
+            BTNClose.Margin = new Padding(3, 2, 3, 2);
+            BTNClose.Name = "BTNClose";
+            BTNClose.Size = new Size(132, 40);
+            BTNClose.TabIndex = 19;
+            BTNClose.Text = "Close";
+            BTNClose.UseVisualStyleBackColor = false;
+            BTNClose.Click += BTNClose_Click;
+            // 
+            // RequestedRentsUC
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(218, 215, 205);
-            ClientSize = new Size(994, 489);
+            ClientSize = new Size(870, 428);
+            Controls.Add(BTNClose);
             Controls.Add(DGVRequestRents);
-            Name = "RequstedRentsUC";
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "RequestedRentsUC";
             Text = "RequstedRentsUC";
             ((System.ComponentModel.ISupportInitialize)DGVRequestRents).EndInit();
             ResumeLayout(false);
@@ -57,5 +76,6 @@
         #endregion
 
         private DataGridView DGVRequestRents;
+        private Button BTNClose;
     }
 }
