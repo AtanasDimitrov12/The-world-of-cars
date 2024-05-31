@@ -17,7 +17,8 @@ namespace InterfaceLayer
         bool IsPeakSeason(DateTime startDate, DateTime endDate);
         decimal CalculatePrice(decimal BasePrice, DateTime startDate, DateTime endDate);
         string RentACar(RentACar rentACar);
-        void UpdateRental(RentACar rental, RentStatus newStatus);
+        void UpdateRentStatus(RentACar rental, RentStatus newStatus);
+        void UpdateRental(RentACar rental);
         string LoadRentals();
     }
 }
