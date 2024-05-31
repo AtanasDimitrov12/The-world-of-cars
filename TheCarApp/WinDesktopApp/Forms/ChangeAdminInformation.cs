@@ -21,35 +21,58 @@ namespace WinDesktopApp.Forms
         Administrator Admin;
         IPeopleManager Manager;
         public event EventHandler InfoChanged;
+
+        private string initialEmail;
+        private string initialUsername;
+        private string initialPhoneNumber;
+        private string initialPassword;
         public ChangeAdminInformation(Administrator adm, IPeopleManager pm)
         {
             InitializeComponent();
             Admin = adm;
             Manager = pm;
             DisplayAdminInfo();
+
+            // Store initial values
+            initialEmail = Admin.Email;
+            initialUsername = Admin.Username;
+            initialPhoneNumber = Admin.PhoneNumber;
+            initialPassword = ""; // Assuming password is not displayed for security reasons
+
+            // Add event handlers for text changed events
+            TBAdminEmail.TextChanged += AdminInfoChanged;
+            TBAdminUsername.TextChanged += AdminInfoChanged;
+            TBAdminPhoneNumber.TextChanged += AdminInfoChanged;
+            TBAdminPassword.TextChanged += AdminInfoChanged;
+
+            // Disable the button initially
+            BTNUpdateAdminInfo.Enabled = false;
+        }
+        private void AdminInfoChanged(object sender, EventArgs e)
+        {
+            // Enable the button if any textbox value has changed
+            BTNUpdateAdminInfo.Enabled = HasAdminInfoChanged();
+        }
+        private bool HasAdminInfoChanged()
+        {
+            return TBAdminEmail.Text != initialEmail ||
+                   TBAdminUsername.Text != initialUsername ||
+                   TBAdminPhoneNumber.Text != initialPhoneNumber ||
+                   TBAdminPassword.Text != initialPassword;
         }
 
         public void DisplayAdminInfo()
         {
             TBAdminEmail.Text = Admin.Email;
-            //TBAdminPassword.Text = Admin.Password;
             TBAdminUsername.Text = Admin.Username;
             TBAdminPhoneNumber.Text = Admin.PhoneNumber;
         }
+
+
         private void BTNUpdateAdminInfo_Click(object sender, EventArgs e)
         {
-            //CheckValidity(TBAdminEmail.Text, TBAdminPassword.Text, TBAdminUsername.Text, TBAdminPhoneNumber.Text);
-            //Manager.RemovePerson(Admin);
-            //DateTime dateTime = DateTime.Now;
-
-            //Administrator adm = new Administrator(2, TBAdminEmail.Text, TBAdminPassword.Text, TBAdminUsername.Text, dateTime, TBAdminPhoneNumber.Text, "");
-            //adm.CreatedOn = dateTime;
-            //Manager.AddPerson(adm);
-
-            if(TBAdminPassword.Text != "")
+            if (TBAdminPassword.Text != "")
             {
-
-
                 if (CheckValidity(TBAdminEmail.Text, TBAdminPassword.Text, TBAdminUsername.Text, TBAdminPhoneNumber.Text))
                 {
                     Admin.Email = TBAdminEmail.Text;
@@ -72,10 +95,7 @@ namespace WinDesktopApp.Forms
                         MessageBox.Show(message);
                     }
                 }
-
-                
             }
-
             else
             {
                 if (CheckValidity(TBAdminEmail.Text, Admin.Password, TBAdminUsername.Text, TBAdminPhoneNumber.Text))
@@ -95,7 +115,6 @@ namespace WinDesktopApp.Forms
                     }
                 }
             }
-
         }
 
         public bool CheckValidity(string email, string password, string username, string phoneNumber)
