@@ -153,9 +153,12 @@
                             <button type="submit" class="filled-button" formaction="/RentACarPage/@Model.Car.Id?handler=CalculatePrice">Calculate Price</button>
                             <button type="submit" class="filled-button" formaction="/RentACarPage/@Model.Car.Id?handler=RentCar">Rent your car!</button>
                         </li>
-                        @if (Model.ErrorMessage != null)
+                        
+                        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
                         {
-                            <div id="error" style="color: red;">@Model.ErrorMessage</div>
+                            <div class="alert alert-danger">
+                                @Model.ErrorMessage
+                            </div>
                         }
                     </div>
                 </form>

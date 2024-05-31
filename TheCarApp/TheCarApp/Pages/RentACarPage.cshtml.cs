@@ -91,13 +91,20 @@ namespace TheCarApp.Pages
 
             user = projectManager.PeopleManager.GetUser(User.Identity.Name);
 
+            // Check for overlapping rentals
+            if (!projectManager.RentManager.IsCarAvailable(Car.Id, StartDate, EndDate))
+            {
+                ErrorMessage = "The car is already rented for the selected period.";
+                return Page();
+            }
+
             try
             {
                 RentACar rentACar = new RentACar(user, Car, StartDate, EndDate, RentStatus.REQUESTED);
                 projectManager.RentManager.RentACar(rentACar);
                 PriceResult = projectManager.RentManager.CalculatePrice(Car.PricePerDay, StartDate, EndDate);
                 ErrorMessage = null;
-                return RedirectToPage("RentConfirmation", new { carId = Car.Id, rent = rentACar});
+                return RedirectToPage("RentConfirmation", new { carId = Car.Id, rent = rentACar });
             }
             catch (Exception ex)
             {
@@ -108,5 +115,6 @@ namespace TheCarApp.Pages
 
             return Page();
         }
+
     }
 }

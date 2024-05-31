@@ -102,6 +102,22 @@ namespace ManagerLayer
             rentalHistory.Remove(rental);
         }
 
+        public bool IsCarAvailable(int carId, DateTime startDate, DateTime endDate)
+        {
+            foreach (var rent in rentalHistory)
+            {
+                if (rent.car.Id == carId)
+                {
+                    if (rent.StartDate >= startDate && rent.StartDate <= endDate && rent.ReturnDate >= startDate && rent.ReturnDate <= endDate)
+                    { 
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+
         public string LoadRentals()
         {
             try
