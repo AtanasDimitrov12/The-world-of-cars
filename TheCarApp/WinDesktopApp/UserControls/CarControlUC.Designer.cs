@@ -181,7 +181,7 @@
             DGVCars.Margin = new Padding(3, 2, 3, 2);
             DGVCars.Name = "DGVCars";
             DGVCars.RowHeadersWidth = 51;
-            DGVCars.Size = new Size(927, 328);
+            DGVCars.Size = new Size(998, 328);
             DGVCars.TabIndex = 26;
             DGVCars.CellContentClick += DGVCars_CellContentClick;
             // 
@@ -196,7 +196,7 @@
             Controls.Add(groupBox2);
             Margin = new Padding(4, 3, 4, 3);
             Name = "CarControlUC";
-            Size = new Size(1221, 538);
+            Size = new Size(1288, 538);
             groupBox1.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();

@@ -4,12 +4,89 @@
     ViewData["Title"] = "Rent a car";
 }
 <link rel="stylesheet" href="~/css/rent.css" asp-append-version="true" />
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+
     function updateMainImage(element) {
         var mainImage = document.getElementById('mainImage');
         mainImage.src = element.src;
     }
+
+    var rentedPeriods = @Html.Raw(Json.Serialize(Model.RentedPeriods));
+
+    function getRentedDates() {
+        let rentedDates = [];
+        rentedPeriods.forEach(period => {
+            let currentDate = new Date(period.startDate);
+            const endDate = new Date(period.endDate);
+
+            while (currentDate <= endDate) {
+                rentedDates.push(new Date(currentDate));
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+        });
+        return rentedDates;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const rentedDates = getRentedDates();
+
+        function highlightRentedDates(date, classNames) {
+            for (let rentedDate of rentedDates) {
+                if (date.getTime() === rentedDate.getTime()) {
+                    return "rented-date";
+                }
+            }
+            return "";
+        }
+
+        flatpickr("#startDate, #endDate", {
+            dateFormat: "Y-m-d",
+            disable: rentedDates,
+            onDayCreate: function (dObj, dStr, fp, dayElem) {
+                if (highlightRentedDates(dayElem.dateObj)) {
+                    dayElem.classList.add("rented-date");
+                }
+            }
+        });
+    });
+
+    function calculatePrice() {
+        var startDate = $('#startDate').val();
+        var endDate = $('#endDate').val();
+        var carId = @Model.Car.Id;
+
+        $.ajax({
+            type: 'POST',
+            url: `/RentACarPage/${carId}?handler=CalculatePrice`,
+            data: {
+                StartDate: startDate,
+                EndDate: endDate,
+                __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+            },
+            success: function (result) {
+                $('#totalPrice').text(result.price + '€');
+                if (result.errorMessage) {
+                    $('.alert-danger').text(result.errorMessage).show();
+                } else {
+                    $('.alert-danger').hide();
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+                $('.alert-danger').text('An error occurred while calculating the price.').show();
+            }
+        });
+    }
 </script>
+
+<style>
+    .rented-date {
+        background-color: red !important;
+        color: white !important;
+    }
+</style>
 
 <div class="page-heading header-text">
     <div class="container">
@@ -150,10 +227,10 @@
                             </div>
                         </li>
                         <li class="list-group-item">
-                            <button type="submit" class="filled-button" formaction="/RentACarPage/@Model.Car.Id?handler=CalculatePrice">Calculate Price</button>
+                            <button type="button" class="filled-button" onclick="calculatePrice()">Calculate Price</button>
                             <button type="submit" class="filled-button" formaction="/RentACarPage/@Model.Car.Id?handler=RentCar">Rent your car!</button>
                         </li>
-                        
+
                         @if (!string.IsNullOrEmpty(Model.ErrorMessage))
                         {
                             <div class="alert alert-danger">

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
+            BTNRent = new Button();
             BTNComments = new Button();
             BTNCarControl = new Button();
             BTNCarNews = new Button();
@@ -36,7 +37,6 @@
             panel1 = new Panel();
             panel2 = new Panel();
             label1 = new Label();
-            BTNRent = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -62,6 +62,20 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.Size = new Size(241, 384);
             tableLayoutPanel1.TabIndex = 1;
+            // 
+            // BTNRent
+            // 
+            BTNRent.BackColor = Color.FromArgb(163, 177, 138);
+            BTNRent.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BTNRent.ForeColor = Color.White;
+            BTNRent.Location = new Point(4, 307);
+            BTNRent.Margin = new Padding(4, 3, 4, 3);
+            BTNRent.Name = "BTNRent";
+            BTNRent.Size = new Size(232, 70);
+            BTNRent.TabIndex = 4;
+            BTNRent.Text = "Rent Control";
+            BTNRent.UseVisualStyleBackColor = false;
+            BTNRent.Click += BTNRent_Click;
             // 
             // BTNComments
             // 
@@ -135,40 +149,27 @@
             panel2.Location = new Point(245, 0);
             panel2.Margin = new Padding(4, 3, 4, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1207, 517);
+            panel2.Size = new Size(1280, 517);
             panel2.TabIndex = 3;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial Rounded MT Bold", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(381, 125);
+            label1.Location = new Point(484, 120);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(387, 37);
             label1.TabIndex = 0;
             label1.Text = "Welcome to admin page";
-            // 
-            // BTNRent
-            // 
-            BTNRent.BackColor = Color.FromArgb(163, 177, 138);
-            BTNRent.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BTNRent.ForeColor = Color.White;
-            BTNRent.Location = new Point(4, 307);
-            BTNRent.Margin = new Padding(4, 3, 4, 3);
-            BTNRent.Name = "BTNRent";
-            BTNRent.Size = new Size(232, 70);
-            BTNRent.TabIndex = 4;
-            BTNRent.Text = "Rent Control";
-            BTNRent.UseVisualStyleBackColor = false;
-            BTNRent.Click += BTNRent_Click;
+            label1.Click += label1_Click;
             // 
             // ControlPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(218, 215, 205);
-            ClientSize = new Size(1453, 518);
+            ClientSize = new Size(1527, 518);
             Controls.Add(panel2);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
