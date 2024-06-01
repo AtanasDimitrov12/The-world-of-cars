@@ -26,6 +26,7 @@ namespace DesktopApp
         List<Extra> extras;
         List<Picture> pictures;
         bool Modify = false;
+        bool IsView;
         Car carData;
         public event EventHandler CarAdded;
         public Button BTNAddCarGet { get; }
@@ -35,7 +36,6 @@ namespace DesktopApp
         public Button BTNAddPicturesGet { get; }
         public Button BTNRemovePictureGet { get; }
         public Button BTNRemoveExtraGet { get; }
-        public Button BTNCloseGet { get; }
         public AddCar(Car car, ICarManager cm, IExtraManager em, IPictureManager picManager, bool View)
         {
             InitializeComponent();
@@ -44,6 +44,7 @@ namespace DesktopApp
             extraManager = em;
             extras = new List<Extra>();
             pictures = new List<Picture>();
+            IsView = View;
             LoadCB();
             carData = car;
             BTNAddCarGet = BTNAddCar;
@@ -53,38 +54,8 @@ namespace DesktopApp
             BTNAddPicturesGet = BTNAddPics;
             BTNRemoveExtraGet = BTNRemoveExtra;
             BTNRemovePictureGet = BTNRemovePicture;
-            BTNCloseGet = BTNClose;
 
 
-            if (carData != null)
-            {
-                Modify = true;
-                LoadCarData();
-                BTNAddCar.Text = "Update Car";
-            }
-
-            if (View)
-            {
-                BTNAddCar.Enabled = false;
-                BTNAddCar.Visible = false;
-                BTNAddExtra.Enabled = false;
-                BTNAddExtra.Visible = false;
-                BTNAddPics.Enabled = false;
-                BTNAddPics.Visible = false;
-                BTNAddPicture.Enabled = false;
-                BTNAddPicture.Visible = false;
-                BTNAddExtras.Enabled = false;
-                BTNAddExtras.Visible = false;
-                BTNRemoveExtra.Enabled = false;
-                BTNRemoveExtra.Visible = false;
-                BTNRemovePicture.Enabled = false;
-                BTNRemovePicture.Visible = false;
-            }
-            else
-            { 
-                BTNClose.Enabled = false;
-                BTNClose.Visible = false;
-            }
 
         }
 
@@ -148,14 +119,36 @@ namespace DesktopApp
 
         private void BTNAddCar_Click(object sender, EventArgs e)
         {
-            try
+            if (IsView)
             {
-                if (!Modify)
+                this.Close();
+            }
+            else
+            {
+                try
                 {
-                    Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), TBCarFuel.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), TBCarColor.Text, TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text, 0);
-                    if (pictures.Count != 0)
+                    if (!Modify)
                     {
-                        string ReturnMessage = manager.AddCar(car, pictures, extras);
+                        Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), TBCarFuel.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), TBCarColor.Text, TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text, 0);
+                        if (pictures.Count != 0)
+                        {
+                            string ReturnMessage = manager.AddCar(car, pictures, extras);
+                            if (ReturnMessage == "done")
+                            {
+                                CarAdded?.Invoke(this, EventArgs.Empty);
+                                this.Close();
+                            }
+                            else { MessageBox.Show(ReturnMessage); }
+                        }
+                        else
+                        {
+                            MessageBox.Show("You should first add pictures!");
+                        }
+                    }
+                    else
+                    {
+                        UpdateCarData();
+                        string ReturnMessage = manager.UpdateCar(carData, pictures, extras);
                         if (ReturnMessage == "done")
                         {
                             CarAdded?.Invoke(this, EventArgs.Empty);
@@ -163,29 +156,13 @@ namespace DesktopApp
                         }
                         else { MessageBox.Show(ReturnMessage); }
                     }
-                    else
-                    {
-                        MessageBox.Show("You should first add pictures!");
-                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    UpdateCarData();
-                    string ReturnMessage = manager.UpdateCar(carData, pictures, extras);
-                    if (ReturnMessage == "done")
-                    {
-                        CarAdded?.Invoke(this, EventArgs.Empty);
-                        this.Close();
-                    }
-                    else { MessageBox.Show(ReturnMessage); }
+                    MessageBox.Show("Type each data first " + ex.Message);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Type each data first " + ex.Message);
-            }
 
-
+            }
         }
 
         private void UpdateCarData()

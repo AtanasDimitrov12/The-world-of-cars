@@ -21,12 +21,12 @@ namespace WinDesktopApp.Models
             _addCarForm = new AddCar(car, cm, em, picManager, true);
             _addCarForm.BTNAddCarGet.Click += OnAddCarClicked;
             DisableControls();
+            LoadCarData(car);
         }
 
         public void DisableControls()
         {
-            _addCarForm.BTNAddCarGet.Enabled = false;
-            _addCarForm.BTNAddCarGet.Visible = false;
+            _addCarForm.BTNAddCarGet.Text = "Close";
             _addCarForm.BTNAddExtraGet.Enabled = false;
             _addCarForm.BTNAddExtraGet.Visible = false;
             _addCarForm.BTNAddPicturesGet.Enabled = false;
