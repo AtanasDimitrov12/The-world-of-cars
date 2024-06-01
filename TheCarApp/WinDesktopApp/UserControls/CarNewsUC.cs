@@ -30,7 +30,8 @@ namespace DesktopApp
             News = newsManager.news;
             InitializeGridView();
             FillDataGridView(News);
-            
+            this.DGVNews.CellPainting += DGVNews_CellPainting;
+
         }
 
         private void BTNAddNews_Click(object sender, EventArgs e)
@@ -47,6 +48,8 @@ namespace DesktopApp
 
         private void InitializeGridView()
         {
+            Font gridFont = new Font("Arial Rounded MT Bold", 10);
+
             this.DGVNews.ColumnCount = 3;
             this.DGVNews.Columns[0].Name = "Title";
             this.DGVNews.Columns[0].Width = 180;
@@ -54,6 +57,14 @@ namespace DesktopApp
             this.DGVNews.Columns[1].Width = 130;
             this.DGVNews.Columns[2].Name = "Date";
             this.DGVNews.Columns[2].Width = 150;
+
+
+            var btnView = new DataGridViewButtonColumn();
+            btnView.Name = "View";
+            btnView.HeaderText = "View";
+            btnView.Text = "View";
+            btnView.UseColumnTextForButtonValue = true;
+            DGVNews.Columns.Add(btnView);
 
             var btnModify = new DataGridViewButtonColumn();
             btnModify.Name = "Modify";
@@ -70,13 +81,82 @@ namespace DesktopApp
             btnDelete.UseColumnTextForButtonValue = true;
             DGVNews.Columns.Add(btnDelete);
 
-            var btnView = new DataGridViewButtonColumn();
-            btnView.Name = "View";
-            btnView.HeaderText = "View";
-            btnView.Text = "View";
-            btnView.UseColumnTextForButtonValue = true;
-            DGVNews.Columns.Add(btnView);
+
+            DGVNews.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGVNews.ColumnHeadersDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#344E41");
+            DGVNews.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DGVNews.ColumnHeadersDefaultCellStyle.Font = new Font(gridFont, FontStyle.Bold);
+            DGVNews.EnableHeadersVisualStyles = false;
+            DGVNews.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DGVNews.DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#588157");
+            DGVNews.DefaultCellStyle.SelectionForeColor = Color.White;
+            DGVNews.BackgroundColor = ColorTranslator.FromHtml("#DAD7CD");
+            DGVNews.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#A3B18A");
+            DGVNews.DefaultCellStyle.Font = gridFont;
+            DGVNews.ColumnHeadersDefaultCellStyle.Font = gridFont;
+            DGVNews.RowHeadersDefaultCellStyle.Font = gridFont;
+
         }
+
+        private void DGVNews_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                if (DGVNews.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+                {
+                    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                    var buttonRect = e.CellBounds;
+                    var buttonColor = Color.White; // Default color
+                    var textColor = Color.Black; // Default text color
+
+                    if (e.ColumnIndex == DGVNews.Columns["View"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#3A5A40");
+                        //buttonColor = ColorTranslator.FromHtml("#588157");
+                        textColor = Color.White;
+                        //buttonColor = ColorTranslator.FromHtml("#A3B18A");
+                    }
+                    else if (e.ColumnIndex == DGVNews.Columns["Modify"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#588157");
+                        textColor = Color.White;
+                    }
+                    else if (e.ColumnIndex == DGVNews.Columns["Delete"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#3A5A40");
+                        textColor = Color.White;
+                    }
+
+                    var adjustedRect = new Rectangle(buttonRect.X + 1, buttonRect.Y + 1, buttonRect.Width - 2, buttonRect.Height - 2);
+
+                    using (Brush brush = new SolidBrush(buttonColor))
+                    {
+                        e.Graphics.FillRectangle(brush, adjustedRect);
+                    }
+
+                    var buttonText = (string)e.FormattedValue;
+                    var textSize = TextRenderer.MeasureText(buttonText, e.CellStyle.Font);
+                    var textLocation = new Point(
+                        e.CellBounds.Left + (e.CellBounds.Width - textSize.Width) / 2,
+                        e.CellBounds.Top + (e.CellBounds.Height - textSize.Height) / 2);
+
+                    TextRenderer.DrawText(e.Graphics, buttonText, e.CellStyle.Font, textLocation, textColor);
+
+                    e.Graphics.DrawRectangle(Pens.Black, adjustedRect);
+
+                    if ((e.State & DataGridViewElementStates.Selected) != 0 || (e.State & DataGridViewElementStates.Displayed) != 0)
+                    {
+                        var hoverRect = new Rectangle(adjustedRect.X - 1, adjustedRect.Y - 1, adjustedRect.Width + 2, adjustedRect.Height + 2);
+                        e.Graphics.DrawRectangle(Pens.DarkGray, hoverRect);
+                    }
+
+                    e.Handled = true;
+                }
+            }
+        }
+
+        
 
         private void FillDataGridView(List<CarNews> news)
         {

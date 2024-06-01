@@ -39,10 +39,13 @@ namespace DesktopApp
             }
             InitializeGridView();
             FillDataGridView(allComments);
+            this.DGVComments.CellPainting += DGVComments_CellPainting;
         }
 
         private void InitializeGridView()
         {
+            Font gridFont = new Font("Arial Rounded MT Bold", 10);
+
             this.DGVComments.ColumnCount = 3;
             this.DGVComments.Columns[0].Name = "Member";
             this.DGVComments.Columns[0].Width = 100;
@@ -59,7 +62,66 @@ namespace DesktopApp
             btnDelete.UseColumnTextForButtonValue = true;
             DGVComments.Columns.Add(btnDelete);
 
+            DGVComments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGVComments.ColumnHeadersDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#344E41");
+            DGVComments.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DGVComments.ColumnHeadersDefaultCellStyle.Font = new Font(gridFont, FontStyle.Bold);
+            DGVComments.EnableHeadersVisualStyles = false;
+            DGVComments.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DGVComments.DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#588157");
+            DGVComments.DefaultCellStyle.SelectionForeColor = Color.White;
+            DGVComments.BackgroundColor = ColorTranslator.FromHtml("#DAD7CD");
+            DGVComments.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#A3B18A");
+            DGVComments.DefaultCellStyle.Font = gridFont;
+            DGVComments.ColumnHeadersDefaultCellStyle.Font = gridFont;
+            DGVComments.RowHeadersDefaultCellStyle.Font = gridFont;
+        }
 
+        private void DGVComments_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                if (DGVComments.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+                {
+                    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                    var buttonRect = e.CellBounds;
+                    var buttonColor = Color.White; // Default color
+                    var textColor = Color.Black; // Default text color
+
+                    
+                    if (e.ColumnIndex == DGVComments.Columns["Delete"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#3A5A40");
+                        textColor = Color.White;
+                    }
+
+                    var adjustedRect = new Rectangle(buttonRect.X + 1, buttonRect.Y + 1, buttonRect.Width - 2, buttonRect.Height - 2);
+
+                    using (Brush brush = new SolidBrush(buttonColor))
+                    {
+                        e.Graphics.FillRectangle(brush, adjustedRect);
+                    }
+
+                    var buttonText = (string)e.FormattedValue;
+                    var textSize = TextRenderer.MeasureText(buttonText, e.CellStyle.Font);
+                    var textLocation = new Point(
+                        e.CellBounds.Left + (e.CellBounds.Width - textSize.Width) / 2,
+                        e.CellBounds.Top + (e.CellBounds.Height - textSize.Height) / 2);
+
+                    TextRenderer.DrawText(e.Graphics, buttonText, e.CellStyle.Font, textLocation, textColor);
+
+                    e.Graphics.DrawRectangle(Pens.Black, adjustedRect);
+
+                    if ((e.State & DataGridViewElementStates.Selected) != 0 || (e.State & DataGridViewElementStates.Displayed) != 0)
+                    {
+                        var hoverRect = new Rectangle(adjustedRect.X - 1, adjustedRect.Y - 1, adjustedRect.Width + 2, adjustedRect.Height + 2);
+                        e.Graphics.DrawRectangle(Pens.DarkGray, hoverRect);
+                    }
+
+                    e.Handled = true;
+                }
+            }
         }
 
         private void FillDataGridView(List<Comment> comments)

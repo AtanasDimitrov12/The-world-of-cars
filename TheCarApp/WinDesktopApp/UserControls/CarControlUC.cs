@@ -35,7 +35,7 @@ namespace DesktopApp
             FillDataGridView(carManager.GetCars());
             this.DGVCars.CellPainting += DGVCars_CellPainting;
             this.DGVCars.CellFormatting += DGVCars_CellFormatting;
-            //this.DGVCars.RowPrePaint += DGVCars_RowPrePaint;
+            this.DGVCars.RowPrePaint += DGVCars_RowPrePaint;
 
         }
 
@@ -77,7 +77,8 @@ namespace DesktopApp
 
                     if (e.ColumnIndex == DGVCars.Columns["View"].Index)
                     {
-                        buttonColor = ColorTranslator.FromHtml("#588157");
+                        buttonColor = ColorTranslator.FromHtml("#3A5A40");
+                        //buttonColor = ColorTranslator.FromHtml("#588157");
                         textColor = Color.White;
                         //buttonColor = ColorTranslator.FromHtml("#A3B18A");
                     }

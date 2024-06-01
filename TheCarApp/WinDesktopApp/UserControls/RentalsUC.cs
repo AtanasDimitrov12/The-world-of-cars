@@ -30,6 +30,7 @@ namespace WinDesktopApp.UserControls
             InitializeGridView();
             FillDataGridView(rentManager.rentalHistory);
             UpdateRequestedLabel();
+            this.DGVRentals.CellPainting += DGVRentals_CellPainting;
         }
 
         private void UpdateRequestedLabel()
@@ -40,6 +41,8 @@ namespace WinDesktopApp.UserControls
 
         private void InitializeGridView()
         {
+            Font gridFont = new Font("Arial Rounded MT Bold", 10);
+
             this.DGVRentals.ColumnCount = 6;
             this.DGVRentals.Columns[0].Name = "Username";
             this.DGVRentals.Columns[0].Width = 100;
@@ -75,7 +78,78 @@ namespace WinDesktopApp.UserControls
             btnRemove.UseColumnTextForButtonValue = true;
             DGVRentals.Columns.Add(btnRemove);
 
-            
+            DGVRentals.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGVRentals.ColumnHeadersDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#344E41");
+            DGVRentals.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DGVRentals.ColumnHeadersDefaultCellStyle.Font = new Font(gridFont, FontStyle.Bold);
+            DGVRentals.EnableHeadersVisualStyles = false;
+            DGVRentals.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DGVRentals.DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#588157");
+            DGVRentals.DefaultCellStyle.SelectionForeColor = Color.White;
+            DGVRentals.BackgroundColor = ColorTranslator.FromHtml("#DAD7CD");
+            DGVRentals.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#A3B18A");
+            DGVRentals.DefaultCellStyle.Font = gridFont;
+            DGVRentals.ColumnHeadersDefaultCellStyle.Font = gridFont;
+            DGVRentals.RowHeadersDefaultCellStyle.Font = gridFont;
+
+        }
+
+        private void DGVRentals_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                if (DGVRentals.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+                {
+                    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                    var buttonRect = e.CellBounds;
+                    var buttonColor = Color.White; // Default color
+                    var textColor = Color.Black; // Default text color
+
+                    if (e.ColumnIndex == DGVRentals.Columns["View"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#3A5A40");
+                        //buttonColor = ColorTranslator.FromHtml("#588157");
+                        textColor = Color.White;
+                        //buttonColor = ColorTranslator.FromHtml("#A3B18A");
+                    }
+                    else if (e.ColumnIndex == DGVRentals.Columns["Modify"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#588157");
+                        textColor = Color.White;
+                    }
+                    else if (e.ColumnIndex == DGVRentals.Columns["Remove"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#3A5A40");
+                        textColor = Color.White;
+                    }
+
+                    var adjustedRect = new Rectangle(buttonRect.X + 1, buttonRect.Y + 1, buttonRect.Width - 2, buttonRect.Height - 2);
+
+                    using (Brush brush = new SolidBrush(buttonColor))
+                    {
+                        e.Graphics.FillRectangle(brush, adjustedRect);
+                    }
+
+                    var buttonText = (string)e.FormattedValue;
+                    var textSize = TextRenderer.MeasureText(buttonText, e.CellStyle.Font);
+                    var textLocation = new Point(
+                        e.CellBounds.Left + (e.CellBounds.Width - textSize.Width) / 2,
+                        e.CellBounds.Top + (e.CellBounds.Height - textSize.Height) / 2);
+
+                    TextRenderer.DrawText(e.Graphics, buttonText, e.CellStyle.Font, textLocation, textColor);
+
+                    e.Graphics.DrawRectangle(Pens.Black, adjustedRect);
+
+                    if ((e.State & DataGridViewElementStates.Selected) != 0 || (e.State & DataGridViewElementStates.Displayed) != 0)
+                    {
+                        var hoverRect = new Rectangle(adjustedRect.X - 1, adjustedRect.Y - 1, adjustedRect.Width + 2, adjustedRect.Height + 2);
+                        e.Graphics.DrawRectangle(Pens.DarkGray, hoverRect);
+                    }
+
+                    e.Handled = true;
+                }
+            }
         }
 
         private void FillDataGridView(List<RentACar> rentals)
