@@ -33,6 +33,10 @@ namespace DesktopApp
             this.pictureManager = picM;
             InitializeGridView();
             FillDataGridView(carManager.GetCars());
+            this.DGVCars.CellPainting += DGVCars_CellPainting;
+            this.DGVCars.CellFormatting += DGVCars_CellFormatting;
+            this.DGVCars.RowPrePaint += DGVCars_RowPrePaint;
+
         }
 
         private void BTNAddCar_Click(object sender, EventArgs e)
@@ -59,23 +63,133 @@ namespace DesktopApp
             FillDataGridView(carManager.GetCarsASC());
         }
 
+        private void DGVCars_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                if (DGVCars.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+                {
+                    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                    var buttonRect = e.CellBounds;
+                    var buttonColor = Color.White; // Default color
+                    var textColor = Color.Black; // Default text color
+
+                    if (e.ColumnIndex == DGVCars.Columns["View"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#3A5A40");
+                        //buttonColor = ColorTranslator.FromHtml("#588157");
+                        textColor = Color.White;
+                        //buttonColor = ColorTranslator.FromHtml("#A3B18A");
+                    }
+                    else if (e.ColumnIndex == DGVCars.Columns["Modify"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#588157");
+                        textColor = Color.White;
+                    }
+                    else if (e.ColumnIndex == DGVCars.Columns["Delete"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#3A5A40");
+                        textColor = Color.White;
+                    }
+                    else if (e.ColumnIndex == DGVCars.Columns["Change Status"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#588157");
+                        //buttonColor = ColorTranslator.FromHtml("#344E41");
+                        textColor = Color.White;
+                    }
+
+                    var adjustedRect = new Rectangle(buttonRect.X + 1, buttonRect.Y + 1, buttonRect.Width - 2, buttonRect.Height - 2);
+
+                    using (Brush brush = new SolidBrush(buttonColor))
+                    {
+                        e.Graphics.FillRectangle(brush, adjustedRect);
+                    }
+
+                    var buttonText = (string)e.FormattedValue;
+                    var textSize = TextRenderer.MeasureText(buttonText, e.CellStyle.Font);
+                    var textLocation = new Point(
+                        e.CellBounds.Left + (e.CellBounds.Width - textSize.Width) / 2,
+                        e.CellBounds.Top + (e.CellBounds.Height - textSize.Height) / 2);
+
+                    TextRenderer.DrawText(e.Graphics, buttonText, e.CellStyle.Font, textLocation, textColor);
+
+                    e.Graphics.DrawRectangle(Pens.Black, adjustedRect);
+
+                    if ((e.State & DataGridViewElementStates.Selected) != 0 || (e.State & DataGridViewElementStates.Displayed) != 0)
+                    {
+                        var hoverRect = new Rectangle(adjustedRect.X - 1, adjustedRect.Y - 1, adjustedRect.Width + 2, adjustedRect.Height + 2);
+                        e.Graphics.DrawRectangle(Pens.DarkGray, hoverRect);
+                    }
+
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void DGVCars_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                if (DGVCars.Columns[e.ColumnIndex].Name == "Status")
+                {
+                    // Check if the cell value is null
+                    if (e.Value != null)
+                    {
+                        string status = e.Value.ToString();
+                        if (status == "AVAILABLE")
+                        {
+                            //e.CellStyle.BackColor = ColorTranslator.FromHtml("#588157");
+                        }
+                        else if (status == "UNAVAILABLE")
+                        {
+                            //e.CellStyle.BackColor = ColorTranslator.FromHtml("#3A5A40");
+                        }
+                    }
+                }
+            }
+        }
+
+        private void DGVCars_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            if ((e.State & DataGridViewElementStates.Selected) == DataGridViewElementStates.Selected)
+            {
+                var row = DGVCars.Rows[e.RowIndex];
+                row.DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#3A5A40");
+                row.DefaultCellStyle.SelectionForeColor = Color.White;
+            }
+        }
+
 
         private void InitializeGridView()
         {
+            Font gridFont = new Font("Arial Rounded MT Bold", 10);
+
             this.DGVCars.ColumnCount = 5;
             this.DGVCars.Columns[0].Name = "Brand";
             this.DGVCars.Columns[0].Width = 100;
             this.DGVCars.Columns[1].Name = "Model";
             this.DGVCars.Columns[1].Width = 100;
             this.DGVCars.Columns[2].Name = "Year";
-            this.DGVCars.Columns[2].Width = 100;
+            this.DGVCars.Columns[2].Width = 80;
             this.DGVCars.Columns[3].Name = "VIN";
-            this.DGVCars.Columns[3].Width = 110;
+            this.DGVCars.Columns[3].Width = 100;
             this.DGVCars.Columns[4].Name = "Status";
             this.DGVCars.Columns[4].Width = 100;
-            
 
-            
+            var btnView = new DataGridViewButtonColumn();
+            btnView.Name = "View";
+            btnView.HeaderText = "View";
+            btnView.Text = "View";
+            btnView.UseColumnTextForButtonValue = true;
+            DGVCars.Columns.Add(btnView);
+
+            var btnModify = new DataGridViewButtonColumn();
+            btnModify.Name = "Modify";
+            btnModify.HeaderText = "Modify";
+            btnModify.Text = "Modify";
+            btnModify.UseColumnTextForButtonValue = true;
+            DGVCars.Columns.Add(btnModify);
 
             var btnDelete = new DataGridViewButtonColumn();
             btnDelete.Name = "Delete";
@@ -91,7 +205,19 @@ namespace DesktopApp
             btnStatus.UseColumnTextForButtonValue = true;
             DGVCars.Columns.Add(btnStatus);
 
-            
+            DGVCars.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGVCars.ColumnHeadersDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#344E41");
+            DGVCars.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DGVCars.ColumnHeadersDefaultCellStyle.Font = new Font(gridFont, FontStyle.Bold);
+            DGVCars.EnableHeadersVisualStyles = false;
+            DGVCars.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DGVCars.DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#588157");
+            DGVCars.DefaultCellStyle.SelectionForeColor = Color.White;
+            DGVCars.BackgroundColor = ColorTranslator.FromHtml("#DAD7CD");
+            DGVCars.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#A3B18A");
+            DGVCars.DefaultCellStyle.Font = gridFont;
+            DGVCars.ColumnHeadersDefaultCellStyle.Font = gridFont;
+            DGVCars.RowHeadersDefaultCellStyle.Font = gridFont;
         }
 
         private void FillDataGridView(List<Car> cars)

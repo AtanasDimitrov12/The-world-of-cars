@@ -27,6 +27,27 @@
                     <p>@Model.user.CreatedOn.ToString("MMMM dd, yyyy")</p>
                 </div>
                 <div class="col-md-6 mb-3">
+                    <h5>Num. of rentals :</h5>
+                    <p>@Model.Rentals.ToString()</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Unlocked discount:</h5>
+                    @{
+                        if (Model.Rentals < 10)
+                        {
+                            <p>You need to do @(10 - Model.Rentals) more rentals to unlock a discount.</p>
+                        }
+                        else if (Model.Rentals >= 10 && Model.Rentals < 25)
+                        {
+                            <p>Your discount is 5%. After @(25 - Model.Rentals) more rentals, you will unlock a bigger discount.</p>
+                        }
+                        else if (Model.Rentals >= 25)
+                        {
+                            <p>Your discount is 10%.</p>
+                        }
+                    }
+                </div>
+                <div class="col-md-6 mb-3">
                     <form method="post" asp-page-handler="Logout">
                         <button type="submit" class="btn btn-warning">Log out</button>
                     </form>
@@ -42,30 +63,26 @@
                         <th>Pickup Date</th>
                         <th>Return Date</th>
                         <th>Rent Status</th>
+                        <th>Total Price</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>BMW</td>
-                        <td>320i</td>
-                        <td>12.05.2004</td>
-                        <td>18.05.2004</td>
-                        <td>Completed</td>                    
-                    </tr>
-                    @* @foreach (var rental in Model.Rentals) *@
-                    @* { *@
-                    @* <tr>
-                    <td>@rental.CarId</td>
-                    <td>@rental.Brand</td>
-                    <td>@rental.Model</td>
-                    <td>@rental.PickupDate.ToString("MMMM dd, yyyy")</td>
-                    <td>@rental.ReturnDate.ToString("MMMM dd, yyyy")</td>
-                    </tr> *@
-                    @* } *@
+
+                    @foreach (var rent in @Model.rentals)
+                    {
+                        <tr>
+                            <td>@rent.car.Id</td>
+                            <td>@rent.car.Brand</td>
+                            <td>@rent.car.Model</td>
+                            <td>@rent.StartDate.ToShortDateString()</td>
+                            <td>@rent.ReturnDate.ToShortDateString()</td>
+                            <td>@rent.RentStatus.ToString()</td>
+                            <td>@rent.TotalPrice.ToString()</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
-            
+
         </div>
     </div>
 </div>

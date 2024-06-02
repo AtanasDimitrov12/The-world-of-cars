@@ -19,6 +19,7 @@ namespace TheCarApp.Pages
         public string UserEmail { get; set; }
         public decimal PriceResult { get; set; }
         public string ErrorMessage { get; set; }
+        public List<RentACar> RentedPeriods { get; set; }
 
         public RentACarPageModel(ProjectManager _projectManager)
         {
@@ -37,6 +38,7 @@ namespace TheCarApp.Pages
             {
                 // Record the view
                 projectManager.CarManager.RecordCarView(carId);
+                RentedPeriods = projectManager.RentManager.GetRentedPeriods(carId);
             }
             UserEmail = User.Identity.Name;
             user = projectManager.PeopleManager.GetUser(UserEmail);
@@ -44,34 +46,39 @@ namespace TheCarApp.Pages
             return Page();
         }
 
-        public IActionResult OnPostCalculatePrice(DateTime StartDate, DateTime EndDate)
+        public JsonResult OnPostCalculatePrice(DateTime StartDate, DateTime EndDate)
         {
             Car = projectManager.CarManager.GetCarById(int.Parse(RouteData.Values["CarId"].ToString()));
             if (Car == null)
             {
                 ErrorMessage = "Car not found.";
-                return Page();
+                return new JsonResult(new { errorMessage = "Car not found." });
             }
 
             if (EndDate <= StartDate)
             {
                 ErrorMessage = "End date must be after start date.";
-                return Page();
+                return new JsonResult(new { errorMessage = "End date must be after start date." });
             }
+
+            if (StartDate < DateTime.Now)
+            {
+                ErrorMessage = "Start date must be after today.";
+                return new JsonResult(new { errorMessage = "Start date must be after today." });
+            }
+        
 
             try
             {
                 PriceResult = projectManager.RentManager.CalculatePrice(Car.PricePerDay, StartDate, EndDate);
-                ErrorMessage = null;
+                return new JsonResult(new { price = PriceResult });
             }
             catch (Exception ex)
             {
                 // Log the exception
                 Console.WriteLine("Error in OnPostCalculatePrice: " + ex.Message);
-                ErrorMessage = "An error occurred while calculating the price.";
+                return new JsonResult(new { errorMessage = "An error occurred while calculating the price." });
             }
-
-            return Page();
         }
 
         public IActionResult OnPostRentCar(DateTime StartDate, DateTime EndDate)
@@ -89,15 +96,28 @@ namespace TheCarApp.Pages
                 return Page();
             }
 
+            if (StartDate < DateTime.Now)
+            {
+                ErrorMessage = "Start date must be after today.";
+                return Page();
+            }
+
             user = projectManager.PeopleManager.GetUser(User.Identity.Name);
+
+            // Check for overlapping rentals
+            if (!projectManager.RentManager.IsCarAvailable(Car.Id, StartDate, EndDate))
+            {
+                ErrorMessage = "The car is already rented for the selected period.";
+                return Page();
+            }
 
             try
             {
-                RentACar rentACar = new RentACar(user, Car, StartDate, EndDate, RentStatus.SCHEDULE);
+                RentACar rentACar = new RentACar(user, Car, StartDate, EndDate, RentStatus.REQUESTED);
                 projectManager.RentManager.RentACar(rentACar);
                 PriceResult = projectManager.RentManager.CalculatePrice(Car.PricePerDay, StartDate, EndDate);
                 ErrorMessage = null;
-                return RedirectToPage("RentConfirmation", new { carId = Car.Id, rent = rentACar});
+                return RedirectToPage("RentConfirmation", new { carId = Car.Id, rent = rentACar });
             }
             catch (Exception ex)
             {

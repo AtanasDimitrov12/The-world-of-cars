@@ -86,6 +86,11 @@ body {
         color: #a4c639;
     }
 
+.rented-date a {
+    background-color: red !important;
+    color: white !important;
+}
+
 
 /* Modal (background) */
 .modal {

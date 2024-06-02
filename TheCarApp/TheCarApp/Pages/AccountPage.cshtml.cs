@@ -16,15 +16,20 @@ namespace TheCarApp.Pages
         public User user { get; set; }
         public List<RentACar> rentals { get; set; }
         public string UserEmail { get; set; }
+        public int Rentals { get; set; }
 
         public void OnGet()
         {
             UserEmail = User.Identity.Name;
             user = _projectManager.PeopleManager.GetUser(UserEmail);
-            
 
-            //rentals.Add();
-            
+            rentals = _projectManager.RentManager.rentalHistory
+                   .Where(rental => rental.user.Id == user.Id)
+                   .ToList();
+
+            Rentals = rentals.Count;
+
+
         }
 
         public async Task<IActionResult> OnPostLogout()

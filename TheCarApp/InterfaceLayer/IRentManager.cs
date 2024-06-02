@@ -19,6 +19,9 @@ namespace InterfaceLayer
         string RentACar(RentACar rentACar);
         void UpdateRentStatus(RentACar rental, RentStatus newStatus);
         void UpdateRental(RentACar rental);
+        void RemoveRent(RentACar rental);
+        bool IsCarAvailable(int carId, DateTime startDate, DateTime endDate);
+        List<RentACar> GetRentedPeriods(int carId);
         string LoadRentals();
     }
 }

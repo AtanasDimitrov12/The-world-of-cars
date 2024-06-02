@@ -16,6 +16,7 @@ namespace WinDesktopApp.Models
             _addCarForm = new AddCar(car, cm, em, picManager, false);
             _addCarForm.BTNAddCarGet.Click += OnAddCarClicked;
             EnableControls();
+            LoadCarData(car);
         }
 
         public void DisableControls() { }

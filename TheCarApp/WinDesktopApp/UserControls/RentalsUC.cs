@@ -29,10 +29,20 @@ namespace WinDesktopApp.UserControls
             this.rentManager = rentManager;
             InitializeGridView();
             FillDataGridView(rentManager.rentalHistory);
+            UpdateRequestedLabel();
+            this.DGVRentals.CellPainting += DGVRentals_CellPainting;
+        }
+
+        private void UpdateRequestedLabel()
+        {
+            int RequestedRentals = rentManager.rentalHistory.Where(r => r.RentStatus == Entity_Layer.Enums.RentStatus.REQUESTED).Count();
+            LBLNumOfRentals.Text = RequestedRentals.ToString();
         }
 
         private void InitializeGridView()
         {
+            Font gridFont = new Font("Arial Rounded MT Bold", 10);
+
             this.DGVRentals.ColumnCount = 6;
             this.DGVRentals.Columns[0].Name = "Username";
             this.DGVRentals.Columns[0].Width = 100;
@@ -47,7 +57,12 @@ namespace WinDesktopApp.UserControls
             this.DGVRentals.Columns[5].Name = "Status";
             this.DGVRentals.Columns[5].Width = 100;
 
-
+            var btnView = new DataGridViewButtonColumn();
+            btnView.Name = "View";
+            btnView.HeaderText = "View";
+            btnView.Text = "View";
+            btnView.UseColumnTextForButtonValue = true;
+            DGVRentals.Columns.Add(btnView);
 
             var btnModify = new DataGridViewButtonColumn();
             btnModify.Name = "Modify";
@@ -63,12 +78,78 @@ namespace WinDesktopApp.UserControls
             btnRemove.UseColumnTextForButtonValue = true;
             DGVRentals.Columns.Add(btnRemove);
 
-            var btnView = new DataGridViewButtonColumn();
-            btnView.Name = "View";
-            btnView.HeaderText = "View";
-            btnView.Text = "View";
-            btnView.UseColumnTextForButtonValue = true;
-            DGVRentals.Columns.Add(btnView);
+            DGVRentals.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGVRentals.ColumnHeadersDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#344E41");
+            DGVRentals.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DGVRentals.ColumnHeadersDefaultCellStyle.Font = new Font(gridFont, FontStyle.Bold);
+            DGVRentals.EnableHeadersVisualStyles = false;
+            DGVRentals.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DGVRentals.DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#588157");
+            DGVRentals.DefaultCellStyle.SelectionForeColor = Color.White;
+            DGVRentals.BackgroundColor = ColorTranslator.FromHtml("#DAD7CD");
+            DGVRentals.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#A3B18A");
+            DGVRentals.DefaultCellStyle.Font = gridFont;
+            DGVRentals.ColumnHeadersDefaultCellStyle.Font = gridFont;
+            DGVRentals.RowHeadersDefaultCellStyle.Font = gridFont;
+
+        }
+
+        private void DGVRentals_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                if (DGVRentals.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+                {
+                    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                    var buttonRect = e.CellBounds;
+                    var buttonColor = Color.White; // Default color
+                    var textColor = Color.Black; // Default text color
+
+                    if (e.ColumnIndex == DGVRentals.Columns["View"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#3A5A40");
+                        //buttonColor = ColorTranslator.FromHtml("#588157");
+                        textColor = Color.White;
+                        //buttonColor = ColorTranslator.FromHtml("#A3B18A");
+                    }
+                    else if (e.ColumnIndex == DGVRentals.Columns["Modify"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#588157");
+                        textColor = Color.White;
+                    }
+                    else if (e.ColumnIndex == DGVRentals.Columns["Remove"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#3A5A40");
+                        textColor = Color.White;
+                    }
+
+                    var adjustedRect = new Rectangle(buttonRect.X + 1, buttonRect.Y + 1, buttonRect.Width - 2, buttonRect.Height - 2);
+
+                    using (Brush brush = new SolidBrush(buttonColor))
+                    {
+                        e.Graphics.FillRectangle(brush, adjustedRect);
+                    }
+
+                    var buttonText = (string)e.FormattedValue;
+                    var textSize = TextRenderer.MeasureText(buttonText, e.CellStyle.Font);
+                    var textLocation = new Point(
+                        e.CellBounds.Left + (e.CellBounds.Width - textSize.Width) / 2,
+                        e.CellBounds.Top + (e.CellBounds.Height - textSize.Height) / 2);
+
+                    TextRenderer.DrawText(e.Graphics, buttonText, e.CellStyle.Font, textLocation, textColor);
+
+                    e.Graphics.DrawRectangle(Pens.Black, adjustedRect);
+
+                    if ((e.State & DataGridViewElementStates.Selected) != 0 || (e.State & DataGridViewElementStates.Displayed) != 0)
+                    {
+                        var hoverRect = new Rectangle(adjustedRect.X - 1, adjustedRect.Y - 1, adjustedRect.Width + 2, adjustedRect.Height + 2);
+                        e.Graphics.DrawRectangle(Pens.DarkGray, hoverRect);
+                    }
+
+                    e.Handled = true;
+                }
+            }
         }
 
         private void FillDataGridView(List<RentACar> rentals)
@@ -104,18 +185,30 @@ namespace WinDesktopApp.UserControls
 
         private void RBASC_CheckedChanged(object sender, EventArgs e)
         {
-
+            List<RentACar> rentals = rentManager.rentalHistory;
+            rentals = rentals.OrderBy(r => r.StartDate).ToList();
+            FillDataGridView(rentals);
         }
 
         private void RBDESC_CheckedChanged(object sender, EventArgs e)
         {
-
+            List<RentACar> rentals = rentManager.rentalHistory;
+            rentals = rentals.OrderByDescending(r => r.StartDate).ToList();
+            FillDataGridView(rentals);
         }
 
         
-        private void BTNChangeAdminInfo_Click(object sender, EventArgs e)
+        private void BTNCheckRentals_Click(object sender, EventArgs e)
         {
+            RequestedRentsUC checkRentals = new RequestedRentsUC(rentManager);
+            checkRentals.RentChanged += ChangeRent_RentChanged;
+            checkRentals.Show();
+        }
 
+        private void ChangeRent_RentChanged(object sender, EventArgs e)
+        {
+            FillDataGridView(rentManager.rentalHistory);
+            UpdateRequestedLabel();
         }
 
         private void DGVRentals_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -134,7 +227,9 @@ namespace WinDesktopApp.UserControls
                         if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
                         {
                             ViewRentals modifyRent = new ViewRentals(selectedRental, rentManager, false);
+                            modifyRent.RentChanged += ChangeRent_RentChanged;
                             modifyRent.Show();
+                            UpdateRequestedLabel();
                             break;
                         }
                     }
@@ -153,7 +248,7 @@ namespace WinDesktopApp.UserControls
                     {
                         if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
                         {
-
+                            rentManager.RemoveRent(selectedRental);
                             FillDataGridView(rentManager.rentalHistory);
                             break;
                         }

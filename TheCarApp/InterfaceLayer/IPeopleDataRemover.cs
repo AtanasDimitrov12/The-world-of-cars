@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manager_Layer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,6 @@ namespace InterfaceLayer
     {
         void RemoveUser(int UserId);
         void RemoveAdmin(int AdminId);
-        void RemoveRental(int RentalId);
+        void RemoveRental(RentACar rent);
     }
 }

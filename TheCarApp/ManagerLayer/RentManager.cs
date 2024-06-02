@@ -96,6 +96,40 @@ namespace ManagerLayer
             writer.UpdateRent(rental);
         }
 
+        public void RemoveRent(RentACar rental)
+        {
+            remover.RemoveRental(rental);
+            rentalHistory.Remove(rental);
+        }
+
+        public List<RentACar> GetRentedPeriods(int carId)
+        {
+            var rentedPeriods = rentalHistory
+                .Where(r => r.car.Id == carId) //RentStatus.Canceled?
+                .ToList();
+
+            return rentedPeriods;
+        }
+        public bool IsCarAvailable(int carId, DateTime startDate, DateTime endDate)
+        {
+            foreach (var rent in rentalHistory)
+            {
+                if (rent.car.Id == carId)
+                {
+                    // Check if the rental period overlaps with the requested period
+                    if (!(rent.StartDate > startDate && rent.StartDate <= endDate && rent.ReturnDate >= startDate && rent.ReturnDate <= endDate))
+                    {
+                        // Overlapping period found
+                        return false;
+                    }
+                }
+            }
+            // No overlapping periods found
+            return true;
+        }
+
+
+
         public string LoadRentals()
         {
             try
