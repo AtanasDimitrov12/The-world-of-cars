@@ -317,6 +317,26 @@
       "PackagePath": "staticwebassets\\pictures\\Mazda.jpg"
     },
     {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra.jpg",
+      "PackagePath": "staticwebassets\\pictures\\Opel_Astra.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra1.jpg",
+      "PackagePath": "staticwebassets\\pictures\\Opel_Astra1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra2.jpg",
+      "PackagePath": "staticwebassets\\pictures\\Opel_Astra2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra3.jpg",
+      "PackagePath": "staticwebassets\\pictures\\Opel_Astra3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra4.jpg",
+      "PackagePath": "staticwebassets\\pictures\\Opel_Astra4.jpg"
+    },
+    {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Porsche.jpg",
       "PackagePath": "staticwebassets\\pictures\\Porsche.jpg"
     },
