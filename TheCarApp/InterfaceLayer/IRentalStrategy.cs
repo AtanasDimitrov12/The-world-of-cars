@@ -10,7 +10,7 @@ namespace InterfaceLayer
 {
     public interface IRentalStrategy
     {
-        decimal CalculateRentalPrice(decimal BasePriceOfCar, int daysRented);
+        decimal CalculateRentalPrice(decimal BasePriceOfCar, int daysRented, int Discount);
         void UpdateRentalStatus(RentACar rental, RentStatus status);
     }
 }

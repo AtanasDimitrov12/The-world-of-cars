@@ -51,20 +51,48 @@ namespace ManagerLayer
             }
         }
 
-        public decimal CalculatePrice(decimal BasePrice, DateTime startDate, DateTime endDate)
+        public decimal CalculatePrice(User user, decimal BasePrice, DateTime startDate, DateTime endDate)
         {
             TimeSpan timeSpan = endDate - startDate;
             int days = (int)timeSpan.TotalDays;
+            int Discount = CheckForDiscount(user);
             if (IsPeakSeason(startDate, endDate))
             {
                 _rentalStrategy = new PeakSeasonRentalStrategy();
-                return _rentalStrategy.CalculateRentalPrice(BasePrice, Convert.ToInt32(days));
+                return _rentalStrategy.CalculateRentalPrice(BasePrice, Convert.ToInt32(days), Discount);
             }
             else
             {
                 _rentalStrategy = new StandardRentalStrategy();
-                return _rentalStrategy.CalculateRentalPrice(BasePrice, Convert.ToInt32(days));
+                return _rentalStrategy.CalculateRentalPrice(BasePrice, Convert.ToInt32(days), Discount);
             }
+        }
+
+        public int CheckForDiscount(User user) 
+        {
+            if (user == null)
+            { 
+                return 0;
+            }
+            int NumOfRents = 0;
+            int Discount = 0;
+            foreach (var rent in rentalHistory)
+            {
+                if (rent.user == user)
+                { 
+                    NumOfRents++;
+                }
+            }
+
+            if (Discount >= 10 && Discount < 25)
+            {
+                Discount = 5;
+            }
+            else if (Discount >= 25)
+            {
+                Discount = 10;
+            }
+            return Discount;
         }
 
         public string RentACar(RentACar rentACar)
@@ -116,15 +144,14 @@ namespace ManagerLayer
             {
                 if (rent.car.Id == carId)
                 {
-                    // Check if the rental period overlaps with the requested period
+                    
                     if (!(rent.StartDate > startDate && rent.StartDate <= endDate && rent.ReturnDate >= startDate && rent.ReturnDate <= endDate))
                     {
-                        // Overlapping period found
+                       
                         return false;
                     }
                 }
             }
-            // No overlapping periods found
             return true;
         }
 
@@ -165,16 +192,15 @@ namespace ManagerLayer
                     }
 
                     var rental = new RentACar(user, car, rentDTO.StartDate, rentDTO.ReturnDate, status);
-                    rental.TotalPrice = CalculatePrice(car.PricePerDay, rentDTO.StartDate, rentDTO.ReturnDate);
+                    rental.TotalPrice = CalculatePrice(user, car.PricePerDay, rentDTO.StartDate, rentDTO.ReturnDate);
                     rentalHistory.Add(rental);
 
                 }
 
                 return "done";
             }
-            catch (Exception ex) // Catch general exceptions for safety.
+            catch (Exception ex) 
             {
-                // Log the exception here if necessary.
                 return $"Error: {ex.Message}";
             }
         }

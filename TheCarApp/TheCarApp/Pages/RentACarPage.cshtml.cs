@@ -70,7 +70,7 @@ namespace TheCarApp.Pages
 
             try
             {
-                PriceResult = projectManager.RentManager.CalculatePrice(Car.PricePerDay, StartDate, EndDate);
+                PriceResult = projectManager.RentManager.CalculatePrice(user, Car.PricePerDay, StartDate, EndDate);
                 return new JsonResult(new { price = PriceResult });
             }
             catch (Exception ex)
@@ -115,7 +115,7 @@ namespace TheCarApp.Pages
             {
                 RentACar rentACar = new RentACar(user, Car, StartDate, EndDate, RentStatus.REQUESTED);
                 projectManager.RentManager.RentACar(rentACar);
-                PriceResult = projectManager.RentManager.CalculatePrice(Car.PricePerDay, StartDate, EndDate);
+                PriceResult = projectManager.RentManager.CalculatePrice(user, Car.PricePerDay, StartDate, EndDate);
                 ErrorMessage = null;
                 return RedirectToPage("RentConfirmation", new { carId = Car.Id, rent = rentACar });
             }
