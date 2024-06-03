@@ -49,7 +49,7 @@ namespace DesktopApp
 
         private void BTNAdd_Click(object sender, EventArgs e)
         {
-            if (!Modify)
+            if (!Modify && !View)
             {
                 DateTime dateTime = DateTime.Now;
                 CarNews news = new CarNews(RTBNewsDescription.Text, dateTime, TBNewsImageURL.Text, TBNewsTitle.Text, TBNewsAuthor.Text, RTBNewsIntro.Text);
@@ -62,11 +62,11 @@ namespace DesktopApp
                 }
                 else { MessageBox.Show(ReturnMessage); }
             }
-            if (View)
+            else if (View)
             {
                 this.Close();
             }
-            else
+            else if (Modify == true)
             {
                 newsData.Author = TBNewsAuthor.Text;
                 newsData.Title = TBNewsTitle.Text;
