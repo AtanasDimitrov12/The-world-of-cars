@@ -15,7 +15,8 @@ namespace InterfaceLayer
         List<RentACar> rentalHistory { get; set; }
 
         bool IsPeakSeason(DateTime startDate, DateTime endDate);
-        decimal CalculatePrice(decimal BasePrice, DateTime startDate, DateTime endDate);
+        decimal CalculatePrice(User user, decimal BasePrice, DateTime startDate, DateTime endDate);
+        int CheckForDiscount(User user);
         string RentACar(RentACar rentACar);
         void UpdateRentStatus(RentACar rental, RentStatus newStatus);
         void UpdateRental(RentACar rental);

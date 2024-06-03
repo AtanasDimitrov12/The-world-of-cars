@@ -71,7 +71,7 @@ namespace WinDesktopApp.Forms
                         {
                             rent.StartDate = DTPStartDate.Value;
                             rent.ReturnDate = DTPEndDate.Value;
-                            rent.TotalPrice = manager.CalculatePrice(rent.car.PricePerDay, DTPStartDate.Value, DTPEndDate.Value);
+                            rent.TotalPrice = manager.CalculatePrice(null, rent.car.PricePerDay, DTPStartDate.Value, DTPEndDate.Value);
                             manager.UpdateRentStatus(rent, newStatus);
                             RentChanged?.Invoke(this, EventArgs.Empty);
                             this.Close();

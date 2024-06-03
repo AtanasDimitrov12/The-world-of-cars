@@ -17,7 +17,7 @@ namespace TheCarApp.Pages
 
         public void OnGet(string sort)
         {
-            Cars = projectManager.CarManager.GetCars().Where(car => car.CarStatus == CarStatus.AVAILABLE).ToList();
+            Cars = projectManager.CarManager.GetCars();
 
             switch (sort)
             {

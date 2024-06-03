@@ -61,7 +61,7 @@ namespace Database
                                     Description = reader.GetString(reader.GetOrdinal("CarDescription")),
                                     PricePerDay = Convert.ToDecimal(reader.GetDouble(reader.GetOrdinal("PricePerDay"))),
                                     CarStatus = reader.GetString(reader.GetOrdinal("Status")),
-                                    Views = reader.GetInt32(reader.GetOrdinal("ViewCount")) 
+                                    Views = reader.GetInt32(reader.GetOrdinal("ViewCount"))
                                 };
                                 carsDTO.Add(carDTO);
                             }
@@ -497,8 +497,11 @@ namespace Database
             {
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    var sql = @"SELECT UserId, Username, Email, PasswordHash, LicenseNumber, CreatedOn, Salt 
-                        FROM [dbi530410_carapp].[dbo].[Users]";
+                    var sql = @"SELECT u.UserId, u.Username, u.Email, u.PasswordHash, u.LicenseNumber, u.CreatedOn, u.Salt, upp.FilePath 
+                              FROM [dbi530410_carapp].[dbo].[Users] u
+                              INNER JOIN [dbi530410_carapp].[dbo].[UserProfilePictures] upp
+                              ON u.UserId = upp.UserId";
+
                     connection.Open();
 
                     using (var command = new SqlCommand(sql, connection))
@@ -515,7 +518,8 @@ namespace Database
                                     passSalt = reader.IsDBNull(reader.GetOrdinal("Salt")) ? null : reader.GetString(reader.GetOrdinal("Salt")),
                                     Username = reader.IsDBNull(reader.GetOrdinal("Username")) ? null : reader.GetString(reader.GetOrdinal("Username")),
                                     CreatedOn = reader.GetDateTime(reader.GetOrdinal("CreatedOn")),
-                                    _licenseNumber = reader.GetInt32(reader.GetOrdinal("LicenseNumber"))
+                                    _licenseNumber = reader.GetInt32(reader.GetOrdinal("LicenseNumber")),
+                                    ProfilePicturePath = reader.GetString(reader.GetOrdinal("FilePath"))
                                 };
                                 users.Add(user);
                             }
@@ -562,7 +566,7 @@ namespace Database
                                     CreatedOn = reader.GetDateTime(reader.GetOrdinal("CreatedOn")),
                                     _phoneNumber = reader.IsDBNull(reader.GetOrdinal("PhoneNumber")) ? null : reader.GetString(reader.GetOrdinal("PhoneNumber")),
                                     passSalt = reader.IsDBNull(reader.GetOrdinal("PassSalt")) ? null : reader.GetString(reader.GetOrdinal("PassSalt"))
-                                    
+
                                 };
                                 administrators.Add(administrator);
                             }

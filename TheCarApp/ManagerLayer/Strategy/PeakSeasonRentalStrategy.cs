@@ -11,10 +11,11 @@ namespace ManagerLayer.Strategy
 {
     public class PeakSeasonRentalStrategy : IRentalStrategy
     {
-        public decimal CalculateRentalPrice(decimal BasePriceOfCar, int daysRented)
+        public decimal CalculateRentalPrice(decimal BasePriceOfCar, int daysRented, int Discount)
         {
             // Increased pricing during peak season
-            return (BasePriceOfCar * 1.2m) * daysRented; // 20% more
+            decimal Price = (BasePriceOfCar * 1.2m) * daysRented; // 20% more
+            return Price - Price*Discount;
         }
 
 
