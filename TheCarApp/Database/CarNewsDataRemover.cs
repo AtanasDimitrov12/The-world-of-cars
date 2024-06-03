@@ -10,11 +10,11 @@ namespace DatabaseAccess
 {
     public class CarNewsDataRemover : ICarNewsDataRemover
     {
-        private SqlConnection connectionString;
+        private readonly SqlConnection connectionString;
 
         public CarNewsDataRemover()
         {
-            connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
+            connectionString = DatabaseConnection.connectionString;
         }
 
         public void RemoveNews(int NewsId)

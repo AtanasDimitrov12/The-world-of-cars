@@ -11,11 +11,11 @@ namespace DatabaseAccess
 {
     public class CarNewsDataWriter : ICarNewsDataWriter
     {
-        private SqlConnection connectionString;
+        private readonly SqlConnection connectionString;
 
         public CarNewsDataWriter()
         {
-            connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
+            connectionString = DatabaseConnection.connectionString;
         }
 
         public void AddCarNews(string Author, string Title, DateTime DatePosted, string NewsDescription, string ImageURL, string Intro)

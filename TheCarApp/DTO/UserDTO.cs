@@ -15,5 +15,6 @@ namespace DTO
         public string Username { get; set; }
         public DateTime CreatedOn { get; set; }
         public int _licenseNumber { get; set; }
+        public string ProfilePicturePath { get; set; }
     }
 }

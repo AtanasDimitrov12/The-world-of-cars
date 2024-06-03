@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data.SqlClient;
 using System.Security.Claims;
 
 namespace TheCarApp.Pages
@@ -12,11 +13,14 @@ namespace TheCarApp.Pages
     [Authorize]
     public class AccountPageModel : PageModel
     {
-        private ProjectManager _projectManager = new ProjectManager();  
+        private ProjectManager _projectManager = new ProjectManager();
         public User user { get; set; }
         public List<RentACar> rentals { get; set; }
         public string UserEmail { get; set; }
         public int Rentals { get; set; }
+        [BindProperty]
+        public IFormFile ProfilePicture { get; set; }
+
 
         public void OnGet()
         {
@@ -31,6 +35,30 @@ namespace TheCarApp.Pages
 
 
         }
+
+        public async Task<IActionResult> OnPostUploadProfilePicture()
+        {
+            UserEmail = User.Identity.Name;
+            user = _projectManager.PeopleManager.GetUser(UserEmail);
+
+            if (ProfilePicture != null && ProfilePicture.Length > 0)
+            {
+                var fileName = Path.GetFileName(ProfilePicture.FileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pictures", "profile_pictures", fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await ProfilePicture.CopyToAsync(fileStream);
+                }
+
+                var relativeFilePath = $"/pictures/profile_pictures/{fileName}";
+
+                _projectManager.UserRepository.UploadProfilePicture(user, relativeFilePath);
+            }
+
+            return RedirectToPage();
+        }
+
 
         public async Task<IActionResult> OnPostLogout()
         {

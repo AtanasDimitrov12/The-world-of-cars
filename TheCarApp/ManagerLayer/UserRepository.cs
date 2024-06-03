@@ -31,6 +31,7 @@ namespace Repositories
             try
             {
                 writer.AddUser(user.Username, user.Email, user.Password, user.LicenseNumber, user.CreatedOn, user.PassSalt);
+                writer.UploadProfilePicture(user, user.ProfilePicturePath);
                 users.Add(user);
                 return "done";
             }
@@ -39,6 +40,21 @@ namespace Repositories
                 return ex.Message;
             }
             
+            
+        }
+
+        public string UploadProfilePicture(User user, string relativeFilePath)
+        {
+            try 
+            {
+                remover.RemoveProfilePicture(user.Id);
+                writer.UploadProfilePicture(user, relativeFilePath);
+                return "done";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
             
         }
 
@@ -97,7 +113,7 @@ namespace Repositories
                 {
                     foreach (UserDTO userDTO in access.GetUsers())
                     {
-                        User user = new User(userDTO.Id, userDTO.email, userDTO.password, userDTO.Username, userDTO.CreatedOn, userDTO._licenseNumber, userDTO.passSalt);
+                        User user = new User(userDTO.Id, userDTO.email, userDTO.password, userDTO.Username, userDTO.CreatedOn, userDTO._licenseNumber, userDTO.passSalt, userDTO.ProfilePicturePath);
                         users.Add(user);
                     }
                 }

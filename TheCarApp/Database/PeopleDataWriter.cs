@@ -3,6 +3,7 @@ using EntityLayout;
 using InterfaceLayer;
 using Manager_Layer;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -14,11 +15,11 @@ namespace DatabaseAccess
 {
     public class PeopleDataWriter : IPeopleDataWriter
     {
-        private SqlConnection connectionString;
+        private readonly SqlConnection connectionString;
 
         public PeopleDataWriter()
         {
-            connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
+            connectionString = DatabaseConnection.connectionString;
         }
 
         public void AddUser(string Username, string email, string password, int LicenseNumber, DateTime CreatedOn, string Salt)
@@ -41,6 +42,37 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@Salt", Salt);
 
                 rows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+            }
+            finally { connectionString.Close(); }
+
+        }
+
+        public void UploadProfilePicture(User user, string relativeFilePath)
+        {
+            int rows = -1;
+            try
+            {
+
+                connectionString.Open();
+                var sql = "INSERT INTO UserProfilePictures (UserId, FilePath, UploadedOn) VALUES (@UserId, @FilePath, @UploadedOn)";
+
+
+                var command = new SqlCommand(sql, connectionString);
+                command.Parameters.AddWithValue("@UserId", user.Id);
+                command.Parameters.AddWithValue("@FilePath", relativeFilePath);
+                command.Parameters.AddWithValue("@UploadedOn", DateTime.Now);
+
+                rows = command.ExecuteNonQuery();
 
             }
 

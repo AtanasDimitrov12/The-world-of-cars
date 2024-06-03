@@ -11,11 +11,11 @@ namespace DatabaseAccess
 {
     public class CarDataWriter : ICarDataWriter
     {
-        private SqlConnection connectionString;
+        private readonly SqlConnection connectionString;
 
         public CarDataWriter()
         {
-            connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
+            connectionString = DatabaseConnection.connectionString;
         }
 
         public void AddCar(string Brand, string Model, DateTime FirstRegistration, int Mileage, string Fuel, int EngineSize, int HP, string Gearbox, int NumOfSeats, string NumOfDoors, string color, string VIN, string Status)

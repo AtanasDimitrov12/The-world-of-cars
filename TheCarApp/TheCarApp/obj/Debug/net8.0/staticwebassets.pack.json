@@ -317,6 +317,10 @@
       "PackagePath": "staticwebassets\\pictures\\Mazda.jpg"
     },
     {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\NewsElectricAuto.jpg",
+      "PackagePath": "staticwebassets\\pictures\\NewsElectricAuto.jpg"
+    },
+    {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra.jpg",
       "PackagePath": "staticwebassets\\pictures\\Opel_Astra.jpg"
     },
@@ -367,6 +371,22 @@
     {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\opel.jpg",
       "PackagePath": "staticwebassets\\pictures\\opel.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\436283195_3573747766208765_932864016596974853_n.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\436283195_3573747766208765_932864016596974853_n.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\AtanasProfilePic.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\AtanasProfilePic.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\blank-profile-picture.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\blank-profile-picture.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\car.png",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\car.png"
     },
     {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\rentCar.jpg",

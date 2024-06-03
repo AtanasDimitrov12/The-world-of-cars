@@ -51,7 +51,7 @@ namespace TheCarApp.Pages
                 return Page(); 
             }
 
-            var newUser = new User(0, Email,Password, Username, DateTime.Now, int.Parse(LicenseNumber), null);
+            var newUser = new User(0, Email,Password, Username, DateTime.Now, int.Parse(LicenseNumber), null, "/pictures/profile_pictures/blank-profile-picture.jpg");
             _projectManager.PeopleManager.AddPerson(newUser); 
             var claims = new List<Claim>
                 {

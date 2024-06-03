@@ -8,7 +8,16 @@
 <div class="flex-container">
     <div class="main-banner header-text" id="top">
         <div class="container pt-5">
-            <h1 class="text-center mb-4">Account Details</h1> <br>
+            <h1 class="text-center mb-4">Account Details</h1>
+            @if (!string.IsNullOrEmpty(Model.user.ProfilePicturePath))
+            {
+                <div class="text-center mb-4 profile-picture-wrapper">
+                    <img src="@Model.user.ProfilePicturePath" alt="Profile Picture" class="profile-picture">
+                    <div class="profile-picture-overlay">
+                        <label for="profilePicture" class="edit-label">Edit</label>
+                    </div>
+                </div>
+            }
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <h5>Username:</h5>
@@ -47,13 +56,18 @@
                         }
                     }
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-12 mb-3 text-center">
                     <form method="post" asp-page-handler="Logout">
-                        <button type="submit" class="btn btn-warning">Log out</button>
+                        <button type="submit" class="btn btn-warning logout-button">Log Out</button>
                     </form>
                 </div>
             </div>
-            <h2 class="text-center my-4">Rental History</h2>
+            <form method="post" enctype="multipart/form-data" asp-page-handler="UploadProfilePicture">
+                <div class="form-group">
+                    <input type="file" class="form-control-file d-none" id="profilePicture" name="ProfilePicture" onchange="this.form.submit()">
+                </div>
+            </form>
+            <h7 class="text-center my-4">Rental History</h7>
             <table class="table">
                 <thead>
                     <tr>
@@ -67,7 +81,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     @foreach (var rent in @Model.rentals)
                     {
                         <tr>
@@ -82,7 +95,6 @@
                     }
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>

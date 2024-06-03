@@ -5,7 +5,6 @@
 }
 <link rel="stylesheet" href="~/css/market.css" asp-append-version="true" />
 
-
 <div class="container">
     <div class="page-heading header-text">
         <div class="row">
@@ -20,29 +19,22 @@
 <div class="single-services">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <section class='tabs-content'>
-                    @foreach (var news in Model.News)
-                    {
-                        <article id='tabs-1'>
-                            <img src="/pictures/@news.ImageURL" alt="News Profile Picture">
-                                <h4><a href="/NewsDetails/@news.Id">@news.Title</a></h4>
-                            <div style="margin-bottom:10px;">
-                                            <span>@news.Author &nbsp;|&nbsp; @news.ReleaseDate &nbsp;|&nbsp; @news.Comments.Count comments</span>
+            @foreach (var news in Model.News)
+            {
+                <div class="col-md-6 mb-4">
+                    <div class="news-card">
+                        <img src="/pictures/@news.ImageURL" alt="News Profile Picture" class="img-fluid">
+                        <div class="news-content">
+                            <h4><a href="/NewsDetails/@news.Id">@news.Title</a></h4>
+                            <div class="news-meta">
+                                <span>@news.Author &nbsp;|&nbsp; @news.ReleaseDate.ToString("MMMM dd, yyyy") &nbsp;|&nbsp; @news.Comments.Count comments</span>
                             </div>
-                                <p>@news.ShortIntro</p>
-                            <br>
-                            <div>
-                                    <a href="/NewsDetails/@news.Id" class="filled-button">Continue Reading</a>
-                            </div>
-                        </article>
-
-                        <br>
-                        <br>
-                        <br>
-                    }
-                </section>
-            </div>
+                            <p>@news.ShortIntro</p>
+                            <a href="/NewsDetails/@news.Id" class="filled-button">Continue Reading</a>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>

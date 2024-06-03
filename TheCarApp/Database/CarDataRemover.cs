@@ -10,11 +10,11 @@ namespace DatabaseAccess
 {
     public class CarDataRemover : ICarDataRemover
     {
-        private SqlConnection connectionString;
+        private readonly SqlConnection connectionString;
 
         public CarDataRemover()
         {
-            connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
+            connectionString = DatabaseConnection.connectionString;
         }
 
         public void RemoveCar(int CarId)
@@ -145,7 +145,7 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@PicId", PicId);
                 rows = cmd.ExecuteNonQuery();
 
-                
+
             }
             catch (Exception ex)
             {

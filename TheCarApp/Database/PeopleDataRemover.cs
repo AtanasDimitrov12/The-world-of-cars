@@ -11,11 +11,11 @@ namespace DatabaseAccess
 {
     public class PeopleDataRemover : IPeopleDataRemover
     {
-        private SqlConnection connectionString;
+        private readonly SqlConnection connectionString;
 
         public PeopleDataRemover()
         {
-            connectionString = new SqlConnection("Server=mssqlstud.fhict.local;Database=dbi530410_carapp;User Id=dbi530410_carapp;Password=Fontyspass;TrustServerCertificate=True;");
+            connectionString = DatabaseConnection.connectionString;
         }
 
         public void RemoveUser(int UserId)
@@ -25,6 +25,25 @@ namespace DatabaseAccess
             {
                 connectionString.Open();
                 var sql = "DELETE FROM [dbo].[Users] WHERE [UserId] = @UserId";
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@UserId", UserId);
+                rows = cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+            finally { connectionString.Close(); }
+        }
+
+        public void RemoveProfilePicture(int UserId)
+        {
+            int rows = -1;
+            try
+            {
+                connectionString.Open();
+                var sql = "DELETE FROM [dbo].[UserProfilePictures] WHERE [UserId] = @UserId";
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@UserId", UserId);
                 rows = cmd.ExecuteNonQuery();

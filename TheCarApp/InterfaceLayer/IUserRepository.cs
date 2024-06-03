@@ -10,6 +10,7 @@ namespace InterfaceLayer
     public interface IUserRepository
     {
         string AddUser(User user);
+        string UploadProfilePicture(User user, string relativeFilePath);
         string RemoveUser(User user);
         string UpdateUser(User user);
         string GetUserNameById(int UserID);

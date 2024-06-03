@@ -10,6 +10,7 @@ namespace InterfaceLayer
     public interface IPeopleDataRemover
     {
         void RemoveUser(int UserId);
+        void RemoveProfilePicture(int UserId);
         void RemoveAdmin(int AdminId);
         void RemoveRental(RentACar rent);
     }
