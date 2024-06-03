@@ -8,6 +8,7 @@ using DatabaseAccess;
 using Database;
 using Entity_Layer;
 using DTO;
+using System.Xml.Linq;
 
 namespace Repositories
 {
@@ -55,7 +56,20 @@ namespace Repositories
             {
                 return ex.Message;
             }
-            
+        }
+
+        public string GetProfilePicPathById(int UserId)
+        {
+            string Path = "";
+            foreach (var user in users)
+            {
+                if (user.Id == UserId)
+                { 
+                    Path = user.ProfilePicturePath;
+                    break;
+                }
+            }
+            return Path;
         }
 
         public string RemoveUser(User user)
