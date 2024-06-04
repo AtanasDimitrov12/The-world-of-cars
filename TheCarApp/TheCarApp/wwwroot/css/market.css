@@ -373,7 +373,8 @@ img.img-fluid {
     }
 }
 
-.comment-box, .post-comment .list {
+.comment-box,
+.post-comment .list {
     border-radius: 6px;
     box-shadow: 2px 2px 2px #0002;
 }
@@ -488,19 +489,12 @@ img.img-fluid {
     margin-right: 10px;
 }
 
-
 @media screen and (max-width: 660px) {
     .comment-section {
         width: 100%;
     }
 }
 
-.img-fluid {
-    width: 100%; /* Ensures responsiveness */
-    cursor: pointer; /* Indicates that the image is clickable */
-}
-
-/* Search bar styling */
 .search-bar {
     text-align: center;
     margin-top: 20px;
@@ -576,4 +570,50 @@ img.img-fluid {
 
         .pagination a:hover {
             background-color: #ddd;
+        }
+
+.img-fluid {
+    width: 100%;
+    cursor: pointer;
+}
+
+.sort-filter-menu {
+    display: none;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+}
+
+    .sort-filter-menu .form-group {
+        display: inline-block;
+        margin: 10px;
+    }
+
+    .sort-filter-menu label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .sort-filter-menu input,
+    .sort-filter-menu select {
+        width: 150px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .sort-filter-menu button {
+        margin-top: 10px;
+        background-color: #a4c639;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+    }
+
+        .sort-filter-menu button:hover {
+            background-color: #8cae3e;
         }
