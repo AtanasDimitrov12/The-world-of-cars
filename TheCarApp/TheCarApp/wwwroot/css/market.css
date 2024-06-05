@@ -110,7 +110,13 @@ img.img-fluid {
 .col-md-4 {
     padding: 15px;
 }
-
+.center {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
 .car-header {
     display: flex;
     justify-content: space-between;
@@ -201,7 +207,14 @@ img.img-fluid {
         background-color: #6c757d;
     }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
 .filled-button {
+    justify-content: center;
     background-color: #a4c639;
     color: #fff;
     font-size: 13px;
@@ -209,7 +222,7 @@ img.img-fluid {
     font-weight: 700;
     padding: 12px 30px;
     border-radius: 30px;
-    display: inline-block;
+    margin: 0 10px; /* Add some margin between buttons if necessary */
     transition: all 0.3s;
 }
 
@@ -217,6 +230,7 @@ img.img-fluid {
         background-color: #fff;
         color: #a4c639;
     }
+
 
 .tabs-content {
     margin-top: 30px;
@@ -281,7 +295,7 @@ img.img-fluid {
         margin-bottom: 20px;
     }
 
-    .single-services .filled-button {
+    /*.single-services .filled-button {
         background-color: #a4c639;
         color: #fff;
         font-size: 13px;
@@ -291,12 +305,14 @@ img.img-fluid {
         border-radius: 30px;
         display: inline-block;
         transition: all 0.3s;
+        position: center;
+        left: 50%;
     }
 
         .single-services .filled-button:hover {
             background-color: #fff;
             color: #a4c639;
-        }
+        }*/
 
     .single-services .col-md-8 {
         margin: 0 auto;
@@ -578,6 +594,8 @@ img.img-fluid {
 }
 
 .sort-filter-menu {
+    position: center;
+    left: 50%;
     display: none;
     margin-bottom: 20px;
     padding: 10px;

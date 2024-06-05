@@ -12,6 +12,7 @@ namespace InterfaceLayer
         List<Extra> extras { get; set; }
         string AddExtra(Extra extra);
         string RemoveExtra(Extra extra);
+        int GetExtraId(string Extra);
         string LoadExtra();
     }
 

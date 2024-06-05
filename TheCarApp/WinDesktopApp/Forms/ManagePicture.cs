@@ -34,6 +34,7 @@ namespace WinDesktopApp.Forms
         {
             Picture pic = new Picture(TBPictureURL.Text);
             string ReturnMessage = manager.AddPicture(pic);
+            pic.Id = manager.GetPicId(pic.PictureURL);
             if (ReturnMessage == "done")
             {
                 PicAdded?.Invoke(this, EventArgs.Empty);

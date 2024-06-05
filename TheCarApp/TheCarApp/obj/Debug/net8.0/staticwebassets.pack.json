@@ -277,6 +277,38 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiA5.jpg",
+      "PackagePath": "staticwebassets\\pictures\\AudiA5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiA52.jpg",
+      "PackagePath": "staticwebassets\\pictures\\AudiA52.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiA53.jpg",
+      "PackagePath": "staticwebassets\\pictures\\AudiA53.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiA54.jpg",
+      "PackagePath": "staticwebassets\\pictures\\AudiA54.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiQ7.jpg",
+      "PackagePath": "staticwebassets\\pictures\\AudiQ7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiQ72.jpg",
+      "PackagePath": "staticwebassets\\pictures\\AudiQ72.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiQ73.jpg",
+      "PackagePath": "staticwebassets\\pictures\\AudiQ73.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiQ74.jpg",
+      "PackagePath": "staticwebassets\\pictures\\AudiQ74.jpg"
+    },
+    {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMW2.jpg",
       "PackagePath": "staticwebassets\\pictures\\BMW2.jpg"
     },
@@ -285,12 +317,44 @@
       "PackagePath": "staticwebassets\\pictures\\BMW3.jpg"
     },
     {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWX5.jpg",
+      "PackagePath": "staticwebassets\\pictures\\BMWX5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWX52.jpg",
+      "PackagePath": "staticwebassets\\pictures\\BMWX52.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWX53.jpg",
+      "PackagePath": "staticwebassets\\pictures\\BMWX53.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWX54.jpg",
+      "PackagePath": "staticwebassets\\pictures\\BMWX54.jpg"
+    },
+    {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWZ4.jpg",
       "PackagePath": "staticwebassets\\pictures\\BMWZ4.jpg"
     },
     {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Dacia.jpg",
       "PackagePath": "staticwebassets\\pictures\\Dacia.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\DaciaDuster.jpg",
+      "PackagePath": "staticwebassets\\pictures\\DaciaDuster.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\DaciaDuster2.jpeg",
+      "PackagePath": "staticwebassets\\pictures\\DaciaDuster2.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\DaciaDuster3.jpg",
+      "PackagePath": "staticwebassets\\pictures\\DaciaDuster3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\DaciaDuster4.jpg",
+      "PackagePath": "staticwebassets\\pictures\\DaciaDuster4.jpg"
     },
     {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Fiat500X.jpg",

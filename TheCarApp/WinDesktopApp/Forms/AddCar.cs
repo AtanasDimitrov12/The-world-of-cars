@@ -55,7 +55,10 @@ namespace DesktopApp
             BTNRemoveExtraGet = BTNRemoveExtra;
             BTNRemovePictureGet = BTNRemovePicture;
 
-
+            if (car != null)
+            {
+                Modify = true;
+            }
 
         }
 
@@ -127,7 +130,7 @@ namespace DesktopApp
             {
                 try
                 {
-                    if (Modify)
+                    if (!Modify)
                     {
                         Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), TBCarFuel.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), TBCarColor.Text, TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text, 0);
                         if (pictures.Count != 0)

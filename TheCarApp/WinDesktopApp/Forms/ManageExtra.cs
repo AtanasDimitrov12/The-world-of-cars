@@ -32,6 +32,7 @@ namespace WinDesktopApp.Forms
         {
             Extra extra = new Extra(RTBExtraName.Text);
             string ReturnMessage = manager.AddExtra(extra);
+            extra.Id = manager.GetExtraId(extra.ExtraName);
             if (ReturnMessage == "done")
             {
                 ExtraAdded?.Invoke(this, EventArgs.Empty);

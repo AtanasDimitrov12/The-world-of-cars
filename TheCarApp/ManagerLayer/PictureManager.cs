@@ -78,6 +78,11 @@ namespace ManagerLayer
             }
 
         }
+
+        public int GetPicId(string URL)
+        { 
+            return _dataWriter.GetPictureId(URL);
+        }
     }
 
 }

@@ -107,14 +107,13 @@
                     <img src="@("/pictures/" + Model.Car.Pictures.FirstOrDefault()?.PictureURL)" alt="@Model.Car.Brand" class="img-fluid wc-image" id="mainImage">
                 </div>
                 <br>
-                <div class="row">
+                <div class="thumbnail-container">
                     @foreach (var pic in Model.Car.Pictures)
                     {
-                        <div class="col-sm-4 col-6">
-                            <div>
+                        <div class="thumbnail">
+                            <div class="img-wrapper">
                                 <img src="/pictures/@pic.PictureURL" alt="Car's pictures" class="img-fluid" onclick="updateMainImage(this)">
                             </div>
-                            <br>
                         </div>
                     }
                 </div>

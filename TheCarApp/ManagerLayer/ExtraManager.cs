@@ -56,6 +56,11 @@ namespace ManagerLayer
             }
         }
 
+        public int GetExtraId(string Extra)
+        { 
+            return _dataWriter.GetExtraId(Extra);
+        }
+
         public string LoadExtra()
         {
             List<ExtraDTO> loadExtras;

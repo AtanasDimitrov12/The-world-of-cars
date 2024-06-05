@@ -1,4 +1,5 @@
-﻿using EntityLayout;
+﻿using Entity_Layer;
+using EntityLayout;
 using InterfaceLayer;
 using System;
 using System.Collections.Generic;
@@ -148,6 +149,8 @@ namespace DatabaseAccess
             }
             finally { connectionString.Close(); }
         }
+
+        
 
         public void RecordCarView(int CarId)
         {
