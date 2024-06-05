@@ -14,6 +14,13 @@
             </div>
         </div>
     </div>
+    <div class="search-bar mt-4 mb-4">
+        <form method="get">
+            <input type="text" name="searchQuery" placeholder="Search news..." value="@Model.SearchQuery" class="search-input">
+            <button type="submit" class="btn btn-primary search-btn">Search</button>
+            <button type="button" onclick="showAllNews()" class="btn btn-secondary show-all-btn @((Model.AllNewsDisplayed ? "disabled" : ""))">Show All News</button>
+        </form>
+    </div>
 </div>
 
 <div class="single-services">
@@ -23,7 +30,7 @@
             {
                 <div class="col-md-6 mb-4">
                     <div class="news-card">
-                        <img src="/pictures/@news.ImageURL" alt="News Profile Picture" class="img-fluid">
+                        <img src="/pictures/News_Pictures/@news.ImageURL" alt="News Profile Picture" class="img-fluid">
                         <div class="news-content">
                             <h4><a href="/NewsDetails/@news.Id">@news.Title</a></h4>
                             <div class="news-meta">
@@ -36,5 +43,28 @@
                 </div>
             }
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pagination">
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <a asp-page="./CarNews" asp-route-pageNumber="@i" class="@(i == Model.CurrentPage ? "active" : "")">@i</a>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        function showAllNews() {
+            var showAllButton = document.querySelector('.show-all-btn');
+            if (showAllButton.classList.contains('disabled')) {
+                alert('All news are already displayed.');
+            } else {
+                window.location.href = '/CarNews';
+            }
+        }
+    </script>
+}

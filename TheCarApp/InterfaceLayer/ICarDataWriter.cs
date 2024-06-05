@@ -13,6 +13,7 @@ namespace InterfaceLayer
         void AddCarDescription(int CarId, string Description, decimal Price);
         void AddCarExtras(int CarId, int ExtraId);
         void AddCarPictures(int CarId, int PictureId);
+        
         void RecordCarView(int CarId);
         void UpdateCar(Car car);
         void UpdateCarDescription(Car car);

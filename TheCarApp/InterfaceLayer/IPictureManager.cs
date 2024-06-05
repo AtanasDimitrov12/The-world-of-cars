@@ -12,6 +12,7 @@ namespace InterfaceLayer
         List<Picture> pictures { get; set; }
         string AddPicture(Picture picture);
         string RemovePicture(Picture picture);
+        int GetPicId(string URL);
     }
 
 }

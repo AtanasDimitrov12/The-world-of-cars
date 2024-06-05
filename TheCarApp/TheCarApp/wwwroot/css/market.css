@@ -12,9 +12,8 @@ body {
     .container h1 {
         text-align: center;
         font-size: 36px;
-        color: white; 
+        color: white;
     }
-
 
     .container h3 {
         margin-bottom: 15px;
@@ -37,38 +36,39 @@ body {
 
 .more-info .about-info .row > div {
     display: flex;
-    align-items: flex-start; 
+    align-items: flex-start;
 }
 
 .more-info .about-info .col-md-8 {
-    padding-right: 20px; 
+    padding-right: 20px;
 }
 
 img.img-fluid {
-    width: 100%; 
+    width: 100%;
     height: auto;
-    width: 600px; 
+    width: 600px;
 }
 
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
     img.img-fluid {
-        max-width: 800px; 
+        max-width: 800px;
     }
 }
 
 @media (min-width: 1200px) {
     img.img-fluid {
-        max-width: 1000px; 
+        max-width: 1000px;
     }
 }
+
 .page-heading {
     width: 100vw;
     height: 0vw;
     position: relative;
     text-align: center;
-    background: url(/pictures/Marketplace.jpg) no-repeat center/cover; 
+    background: url(/pictures/Marketplace.jpg) no-repeat center/cover;
     padding: 230px 0;
-    color: white; 
+    color: white;
     z-index: 4;
     margin-left: calc(-50vw + 50%);
 }
@@ -80,8 +80,8 @@ img.img-fluid {
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5); 
-        z-index: -1; 
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
     }
 
     .page-heading h1 {
@@ -98,18 +98,24 @@ img.img-fluid {
         display: block;
     }
 
-
 .services {
     margin-top: 80px;
 }
 
-row {
-    margin-top: 15px; 
-    margin-bottom: 15px; 
+.row {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .col-md-4 {
-    padding: 15px; 
+    padding: 15px;
+}
+.center {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 .car-header {
     display: flex;
@@ -136,18 +142,16 @@ row {
     color: #333;
 }
 
-
-
 .service-item img {
     width: 100%;
-    max-height: 250px; 
+    max-height: 250px;
     object-fit: cover;
     overflow: hidden;
 }
 
 .service-item .down-content {
     background-color: #f7f7f7;
-    padding: 30px; 
+    padding: 30px;
     min-height: 200px;
 }
 
@@ -182,8 +186,35 @@ row {
         background-color: #a4c639;
     }
 
+.btn-secondary {
+    border-color: #6c757d;
+    background-color: #6c757d;
+    color: #fff;
+    margin-left: 10px;
+}
+
+    .btn-secondary.disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus,
+    .btn-secondary:active,
+    .btn-secondary:active:focus {
+        opacity: 0.6;
+        border-color: #6c757d;
+        background-color: #6c757d;
+    }
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
 
 .filled-button {
+    justify-content: center;
     background-color: #a4c639;
     color: #fff;
     font-size: 13px;
@@ -191,7 +222,7 @@ row {
     font-weight: 700;
     padding: 12px 30px;
     border-radius: 30px;
-    display: inline-block;
+    margin: 0 10px; /* Add some margin between buttons if necessary */
     transition: all 0.3s;
 }
 
@@ -239,7 +270,7 @@ row {
 
     .single-services img {
         max-width: 100%;
-        height: 400px; 
+        height: 400px;
         object-fit: cover;
     }
 
@@ -264,7 +295,7 @@ row {
         margin-bottom: 20px;
     }
 
-    .single-services .filled-button {
+    /*.single-services .filled-button {
         background-color: #a4c639;
         color: #fff;
         font-size: 13px;
@@ -274,12 +305,14 @@ row {
         border-radius: 30px;
         display: inline-block;
         transition: all 0.3s;
+        position: center;
+        left: 50%;
     }
 
         .single-services .filled-button:hover {
             background-color: #fff;
             color: #a4c639;
-        }
+        }*/
 
     .single-services .col-md-8 {
         margin: 0 auto;
@@ -331,7 +364,6 @@ row {
         margin-bottom: 20px;
     }
 
-
 @media (max-width: 768px) {
     .news-card {
         margin-bottom: 30px;
@@ -357,10 +389,9 @@ row {
     }
 }
 
-
-
-.comment-box, .post-comment .list {
-    border-radius:6px;
+.comment-box,
+.post-comment .list {
+    border-radius: 6px;
     box-shadow: 2px 2px 2px #0002;
 }
 
@@ -392,10 +423,11 @@ row {
 }
 
     .post-comment .list .user {
-    display: flex;
-    padding: 8px;
-    overflow: hidden;
+        display: flex;
+        padding: 8px;
+        overflow: hidden;
     }
+
 .comment-card:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
@@ -426,56 +458,180 @@ row {
 }
 
 .comment-box {
-    padding:10px;
-    overflow:hidden;
+    padding: 10px;
+    overflow: hidden;
 }
 
     .comment-box .user {
-        display:flex;
+        display: flex;
         width: min-content;
     }
 
     .comment-box .text-area {
         background: #eee;
         width: -webkit-fill-available;
-        height:100px;
+        height: 100px;
         margin: 10px 0;
-        padding:10px;
+        padding: 10px;
         resize: inherit;
         border-radius: 5px;
-        border:none;
+        border: none;
         box-shadow: 0 0 0 1px #0003;
     }
 
         .comment-box .text-area:focus-visible {
-            box-shadow:inset 0 0 0 2px #009cff;
-            outline:none;
+            box-shadow: inset 0 0 0 2px #009cff;
+            outline: none;
         }
 
     .comment-box .comment-submit {
-        float:right;
-        padding:6px 10px;
+        float: right;
+        padding: 6px 10px;
         border: none;
-        background: #009cff; /* Цвета на бутона */
+        background: #009cff;
         color: #eee;
-        cursor:pointer;
+        cursor: pointer;
         border-radius: 3px;
-
     }
 
         .comment-box .comment-submit:hover {
             background: #009cff;
         }
 
+.comment-profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
 @media screen and (max-width: 660px) {
     .comment-section {
-    width:100%;
+        width: 100%;
     }
 }
 
-.img-fluid {
-    width: 100%; /* Ensures responsiveness */
-    cursor: pointer; /* Indicates that the image is clickable */
+.search-bar {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
+.search-input {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+    outline: none;
+}
 
+    .search-input:focus {
+        border-color: #a4c639;
+        box-shadow: 0 0 5px rgba(164, 198, 57, 0.5);
+    }
+
+.search-btn,
+.show-all-btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.search-btn {
+    background-color: #a4c639;
+    border: none;
+    color: white;
+}
+
+    .search-btn:hover {
+        background-color: #8cae3e;
+    }
+
+.show-all-btn {
+    background-color: #6c757d;
+    border: none;
+    color: white;
+}
+
+    .show-all-btn:hover {
+        background-color: #5a6268;
+    }
+
+    .show-all-btn.disabled {
+        cursor: not-allowed;
+    }
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+    .pagination a {
+        display: inline-block;
+        padding: 10px 15px;
+        margin: 0 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #333;
+    }
+
+        .pagination a.active {
+            background-color: #a4c639;
+            color: #fff;
+            border-color: #a4c639;
+        }
+
+        .pagination a:hover {
+            background-color: #ddd;
+        }
+
+.img-fluid {
+    width: 100%;
+    cursor: pointer;
+}
+
+.sort-filter-menu {
+    position: center;
+    left: 50%;
+    display: none;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+}
+
+    .sort-filter-menu .form-group {
+        display: inline-block;
+        margin: 10px;
+    }
+
+    .sort-filter-menu label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .sort-filter-menu input,
+    .sort-filter-menu select {
+        width: 150px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .sort-filter-menu button {
+        margin-top: 10px;
+        background-color: #a4c639;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+    }
+
+        .sort-filter-menu button:hover {
+            background-color: #8cae3e;
+        }

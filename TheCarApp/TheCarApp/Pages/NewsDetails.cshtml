@@ -29,7 +29,7 @@
 
             </div>
             <div class="col-md-6">
-                <img src="~/pictures/@Model.news.ImageURL" alt="News Picture" class="img-fluid custom-img-large">
+                <img src="~/pictures/News_Pictures/@Model.news.ImageURL" alt="News Picture" class="img-fluid custom-img-large">
             </div>
             <br>
             <h5>News Description:</h5>
@@ -58,6 +58,7 @@
         {
             <div class="comment-card">
                 <div class="user-info">
+                    <img src="@Model.projectManager.UserRepository.GetProfilePicPathById(comment.UserId)" alt="User Profile Picture" class="comment-profile-picture">
                     <div class="user-name">@Model.projectManager.UserRepository.GetUserNameById(comment.UserId)</div>
                     <div class="comment-date">@comment.Date.ToShortDateString()</div>
                 </div>
@@ -66,4 +67,5 @@
         }
     </div>
 </div>
+
 

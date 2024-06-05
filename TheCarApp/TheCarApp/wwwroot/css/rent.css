@@ -44,7 +44,6 @@ body {
     cursor: pointer; /* Indicates that the image is clickable */
 }
 
-
 .services h4 {
     color: black;
     font-weight: 550;
@@ -78,7 +77,6 @@ body {
     border: none; /* Ensure no default borders */
     cursor: pointer; /* Makes it clear the button is clickable */
     transition: all 0.3s; /* Smooth transition for hover effects */
-
 }
 
     .filled-button:hover {
@@ -90,7 +88,6 @@ body {
     background-color: red !important;
     color: white !important;
 }
-
 
 /* Modal (background) */
 .modal {
@@ -129,3 +126,42 @@ body {
         text-decoration: none;
         cursor: pointer;
     }
+
+.thumbnail-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.thumbnail {
+    flex: 1 1 30%;
+    max-width: 30%;
+    position: relative;
+    padding-bottom: 20%; 
+    cursor: pointer;
+    overflow: hidden;
+}
+
+    .thumbnail .img-wrapper {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .thumbnail img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+
+        .thumbnail img:hover {
+            transform: scale(1.05);
+        }

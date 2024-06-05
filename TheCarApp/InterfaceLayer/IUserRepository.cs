@@ -11,6 +11,7 @@ namespace InterfaceLayer
     {
         string AddUser(User user);
         string UploadProfilePicture(User user, string relativeFilePath);
+        string GetProfilePicPathById(int UserId);
         string RemoveUser(User user);
         string UpdateUser(User user);
         string GetUserNameById(int UserID);
