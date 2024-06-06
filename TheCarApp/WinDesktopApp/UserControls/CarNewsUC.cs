@@ -22,6 +22,7 @@ namespace DesktopApp
         IPeopleManager peopleManager;
         INewsManager newsManager;
         List<CarNews> News;
+        public AdminInfoUC admInfo { get; set; }
         public CarNewsUC(IPeopleManager pm, INewsManager nw)
         {
             InitializeComponent();
@@ -43,7 +44,8 @@ namespace DesktopApp
 
         private void AddNews_NewsAdded(object sender, EventArgs e)
         {
-            FillDataGridView(News); 
+            FillDataGridView(News);
+            admInfo.DisplayDataInfo();
         }
 
         private void InitializeGridView()
@@ -225,6 +227,7 @@ namespace DesktopApp
                         {
                             newsManager.DeleteNews(selectedNews);
                             FillDataGridView(newsManager.news);
+                            admInfo.DisplayDataInfo();
                             break;
                         }
                     }

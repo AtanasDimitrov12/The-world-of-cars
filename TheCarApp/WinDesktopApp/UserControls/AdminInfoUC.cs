@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Entity_Layer;
 using InterfaceLayer;
 using WinDesktopApp.Forms;
+using Manager_Layer;
 
 namespace DesktopApp
 {
@@ -19,32 +20,38 @@ namespace DesktopApp
         IPeopleManager manager;
         IAdministratorRepository administratorRepository;
         ICarManager carManager;
-        IRentManager rentManager;    
+        IRentManager rentManager;
+        INewsManager newsManager;
         List<Administrator> admins;
-        public AdminInfoUC(IPeopleManager pm, IAdministratorRepository administratorRepository, ICarManager cm, IRentManager rm)
+        public AdminInfoUC(IPeopleManager pm, IAdministratorRepository administratorRepository, ICarManager cm, IRentManager rm, INewsManager nm)
         {
             InitializeComponent();
             manager = pm;
             this.administratorRepository = administratorRepository;
             this.carManager = cm;
             this.rentManager = rm;
+            this.newsManager = nm;
             admins = administratorRepository.GetAllAdministrators();
             DisplayAdminInfo();
             DisplayDataInfo();
         }
+
         public void DisplayDataInfo()
-        { 
+        {
             LBLCars.Text = carManager.GetCars().Count.ToString();
             LBLUsers.Text = manager.GetAllUsers().Count.ToString();
-            LBLRentals.Text = rentManager.rentalHistory.Count.ToString();   
+            LBLRentals.Text = rentManager.rentalHistory.Count.ToString();
+            LBLNews.Text = newsManager.news.Count.ToString();   
         }
 
         public void DisplayAdminInfo()
-        { 
+        {
             LBLAdminEmail.Text = admins[0].Email;
             LBLAdminUsername.Text = admins[0].Username;
             LBLAdminPhoneNumber.Text = admins[0].PhoneNumber;
+            
         }
+
         private void BTNChangeAdminInfo_Click(object sender, EventArgs e)
         {
             ChangeAdminInformation ChangeInfo = new ChangeAdminInformation(admins[0], manager);
@@ -57,6 +64,11 @@ namespace DesktopApp
         private void ChangeInfo_InfoChanged(object sender, EventArgs e)
         {
             DisplayAdminInfo();
+        }
+
+        private void AddCar_CarAdded(object sender, EventArgs e)
+        {
+            DisplayDataInfo();
         }
     }
 }

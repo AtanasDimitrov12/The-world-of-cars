@@ -40,12 +40,14 @@
             LBLCars = new Label();
             label8 = new Label();
             groupBox3 = new GroupBox();
-            LBLUsers = new Label();
-            label2 = new Label();
             LBLRentals = new Label();
             label9 = new Label();
+            LBLUsers = new Label();
+            label2 = new Label();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            LBLNews = new Label();
+            label4 = new Label();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -153,6 +155,8 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.FromArgb(163, 177, 138);
+            groupBox1.Controls.Add(LBLNews);
+            groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(LBLCars);
             groupBox1.Controls.Add(label8);
             groupBox1.Font = new Font("Arial Rounded MT Bold", 12F);
@@ -163,13 +167,13 @@
             groupBox1.Size = new Size(379, 267);
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Cars";
+            groupBox1.Text = "Cars and news";
             // 
             // LBLCars
             // 
             LBLCars.AutoSize = true;
             LBLCars.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LBLCars.Location = new Point(210, 123);
+            LBLCars.Location = new Point(210, 105);
             LBLCars.Name = "LBLCars";
             LBLCars.Size = new Size(60, 20);
             LBLCars.TabIndex = 12;
@@ -179,7 +183,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Arial Rounded MT Bold", 12F);
-            label8.Location = new Point(31, 119);
+            label8.Location = new Point(31, 101);
             label8.Margin = new Padding(5, 0, 5, 0);
             label8.Name = "label8";
             label8.Size = new Size(171, 23);
@@ -203,27 +207,6 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "User and rentals";
             // 
-            // LBLUsers
-            // 
-            LBLUsers.AutoSize = true;
-            LBLUsers.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LBLUsers.Location = new Point(223, 101);
-            LBLUsers.Name = "LBLUsers";
-            LBLUsers.Size = new Size(60, 20);
-            LBLUsers.TabIndex = 12;
-            LBLUsers.Text = "label1";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial Rounded MT Bold", 12F);
-            label2.Location = new Point(30, 98);
-            label2.Margin = new Padding(5, 0, 5, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(182, 23);
-            label2.TabIndex = 10;
-            label2.Text = "Number of Users:";
-            // 
             // LBLRentals
             // 
             LBLRentals.AutoSize = true;
@@ -245,6 +228,27 @@
             label9.TabIndex = 13;
             label9.Text = "Number of Rentals:";
             // 
+            // LBLUsers
+            // 
+            LBLUsers.AutoSize = true;
+            LBLUsers.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LBLUsers.Location = new Point(223, 101);
+            LBLUsers.Name = "LBLUsers";
+            LBLUsers.Size = new Size(60, 20);
+            LBLUsers.TabIndex = 12;
+            LBLUsers.Text = "label1";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Arial Rounded MT Bold", 12F);
+            label2.Location = new Point(30, 98);
+            label2.Margin = new Padding(5, 0, 5, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(182, 23);
+            label2.TabIndex = 10;
+            label2.Text = "Number of Users:";
+            // 
             // pictureBox1
             // 
             pictureBox1.Image = WinDesktopApp.Properties.Resources.car_removebg_preview;
@@ -264,6 +268,27 @@
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 19;
             pictureBox2.TabStop = false;
+            // 
+            // LBLNews
+            // 
+            LBLNews.AutoSize = true;
+            LBLNews.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LBLNews.Location = new Point(210, 152);
+            LBLNews.Name = "LBLNews";
+            LBLNews.Size = new Size(60, 20);
+            LBLNews.TabIndex = 14;
+            LBLNews.Text = "label4";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Arial Rounded MT Bold", 12F);
+            label4.Location = new Point(31, 148);
+            label4.Margin = new Padding(5, 0, 5, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(178, 23);
+            label4.TabIndex = 13;
+            label4.Text = "Number of News:";
             // 
             // AdminInfoUC
             // 
@@ -308,5 +333,7 @@
         private Label label2;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Label LBLNews;
+        private Label label4;
     }
 }

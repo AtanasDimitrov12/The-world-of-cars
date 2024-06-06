@@ -23,7 +23,8 @@ namespace DesktopApp
         ICarManager carManager;
         IExtraManager extraManager;
         IPictureManager pictureManager;
-        
+        public AdminInfoUC admInfo { get; set; }
+
         public CarControlUC(IPeopleManager pm, ICarManager cm, IExtraManager em, IPictureManager picM)
         {
             InitializeComponent();
@@ -49,7 +50,8 @@ namespace DesktopApp
 
         private void AddCar_CarAdded(object sender, EventArgs e)
         {
-            FillDataGridView(carManager.GetCars()); 
+            FillDataGridView(carManager.GetCars());
+            admInfo.DisplayDataInfo();
         }
 
 
@@ -259,6 +261,7 @@ namespace DesktopApp
                     {
                         carManager.RemoveCar(selectedCar);
                         FillDataGridView(carManager.GetCars());
+                        admInfo.DisplayDataInfo();
                         return;
                     }
                     else if (e.ColumnIndex == DGVCars.Columns["Change Status"].Index)

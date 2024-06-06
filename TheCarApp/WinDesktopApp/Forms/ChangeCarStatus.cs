@@ -30,16 +30,19 @@ namespace WinDesktopApp.Forms
             LBLCurrentStatus.Text = car.CarStatus.ToString().ToLower();
             foreach (var status in Enum.GetValues(typeof(CarStatus)))
             {
-                CBChangeStatus.Items.Add(status.ToString().ToLower());
+                string statusStr = status.ToString();
+                string capitalizedStatus = char.ToUpper(statusStr[0]) + statusStr.Substring(1).ToLower();
+                CBChangeStatus.Items.Add(capitalizedStatus);
             }
+
         }
 
         private void BTNUpdate_Click(object sender, EventArgs e)
         {
             CarStatus newStatus;
-            if (Enum.TryParse<CarStatus>(CBChangeStatus.Text, true, out newStatus))
+            if (Enum.TryParse<CarStatus>(CBChangeStatus.Text.ToUpper(), true, out newStatus))
             { 
-                manager.ChangeCarStatus(car, CBChangeStatus.Text, newStatus);
+                manager.ChangeCarStatus(car, CBChangeStatus.Text.ToUpper(), newStatus);
                 StatusChanged?.Invoke(this, EventArgs.Empty);
                 this.Close();
             }
