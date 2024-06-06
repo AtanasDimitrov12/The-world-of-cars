@@ -138,16 +138,16 @@ namespace ManagerLayer
 
             return rentedPeriods;
         }
+
         public bool IsCarAvailable(int carId, DateTime startDate, DateTime endDate)
         {
             foreach (var rent in rentalHistory)
             {
                 if (rent.car.Id == carId)
                 {
-                    
-                    if (!(rent.StartDate > startDate && rent.StartDate <= endDate && rent.ReturnDate >= startDate && rent.ReturnDate <= endDate))
+
+                    if (startDate < rent.ReturnDate && endDate > rent.StartDate)
                     {
-                       
                         return false;
                     }
                 }

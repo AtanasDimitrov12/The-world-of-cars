@@ -18,14 +18,25 @@ namespace DesktopApp
     {
         IPeopleManager manager;
         IAdministratorRepository administratorRepository;
+        ICarManager carManager;
+        IRentManager rentManager;    
         List<Administrator> admins;
-        public AdminInfoUC(IPeopleManager pm, IAdministratorRepository administratorRepository)
+        public AdminInfoUC(IPeopleManager pm, IAdministratorRepository administratorRepository, ICarManager cm, IRentManager rm)
         {
             InitializeComponent();
             manager = pm;
             this.administratorRepository = administratorRepository;
+            this.carManager = cm;
+            this.rentManager = rm;
             admins = administratorRepository.GetAllAdministrators();
             DisplayAdminInfo();
+            DisplayDataInfo();
+        }
+        public void DisplayDataInfo()
+        { 
+            LBLCars.Text = carManager.GetCars().Count.ToString();
+            LBLUsers.Text = manager.GetAllUsers().Count.ToString();
+            LBLRentals.Text = rentManager.rentalHistory.Count.ToString();   
         }
 
         public void DisplayAdminInfo()

@@ -306,5 +306,16 @@ namespace DesktopApp
         {
             this.Close();
         }
+
+        private void TBCarBrand_TextChanged(object sender, EventArgs e)
+        {
+            const int maxLength = 50;
+            if (TBCarBrand.Text.Length > maxLength)
+            {
+                MessageBox.Show("Input is too long. Please enter a maximum of 50 characters.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TBCarBrand.Text = TBCarBrand.Text.Substring(0, maxLength);
+                TBCarBrand.SelectionStart = TBCarBrand.Text.Length;
+            }
+        }
     }
 }

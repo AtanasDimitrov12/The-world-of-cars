@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DTO;
 using Entity_Layer;
 using InterfaceLayer;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DesktopApp
 {
@@ -39,7 +40,7 @@ namespace DesktopApp
         }
 
         private void LoadNewsData()
-        { 
+        {
             TBNewsTitle.Text = newsData.Title;
             TBNewsAuthor.Text = newsData.Author;
             RTBNewsIntro.Text = newsData.ShortIntro;
@@ -82,7 +83,31 @@ namespace DesktopApp
                 }
                 else { MessageBox.Show(ReturnMessage); }
             }
-            
+
         }
+
+        private void TBNewsTitle_TextChanged(object sender, EventArgs e)
+        {
+            const int maxLength = 50;
+            if (TBNewsTitle.Text.Length > maxLength)
+            {
+                MessageBox.Show("Input is too long. Please enter a maximum of 50 characters.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TBNewsTitle.Text = TBNewsTitle.Text.Substring(0, maxLength);
+                TBNewsTitle.SelectionStart = TBNewsTitle.Text.Length;
+            }
+        }
+
+
+        private void TBNewsAuthor_TextChanged_1(object sender, EventArgs e)
+        {
+            const int maxLength = 50;
+            if (TBNewsAuthor.Text.Length > maxLength)
+            {
+                MessageBox.Show("Input is too long. Please enter a maximum of 50 characters.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TBNewsAuthor.Text = TBNewsAuthor.Text.Substring(0, maxLength);
+                TBNewsAuthor.SelectionStart = TBNewsAuthor.Text.Length;
+            }
+        }
+
     }
 }
