@@ -36,7 +36,7 @@ namespace WinDesktopApp.Forms
             {
                 MessageBox.Show("Entered password is different from the stored one! Try again.");
                 TBAdminPass.Clear();
-                ChangeAdmInfo.Show();
+                //ChangeAdmInfo.Show();
             }
         }
     }

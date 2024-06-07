@@ -62,13 +62,7 @@ namespace DesktopApp
                 Modify = true;
                 LoadCarData();
             }
-
-
         }
-
-        
-
-       
 
         public void LoadCarData()
         {
