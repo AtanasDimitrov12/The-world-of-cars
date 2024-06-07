@@ -25,7 +25,7 @@ namespace DesktopApp
         IExtraManager extraManager;
         List<Extra> extras;
         List<Picture> pictures;
-        bool Modify = false;
+        bool Modify;
         bool IsView;
         Car carData;
         public event EventHandler CarAdded;
@@ -36,6 +36,7 @@ namespace DesktopApp
         public Button BTNAddPicturesGet { get; }
         public Button BTNRemovePictureGet { get; }
         public Button BTNRemoveExtraGet { get; }
+
         public AddCar(Car car, ICarManager cm, IExtraManager em, IPictureManager picManager, bool View)
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace DesktopApp
             extras = new List<Extra>();
             pictures = new List<Picture>();
             IsView = View;
+            Modify = false;
             LoadCB();
             carData = car;
             BTNAddCarGet = BTNAddCar;
@@ -55,12 +57,18 @@ namespace DesktopApp
             BTNRemoveExtraGet = BTNRemoveExtra;
             BTNRemovePictureGet = BTNRemovePicture;
 
-            if (car != null)
+            if (carData != null)
             {
                 Modify = true;
+                LoadCarData();
             }
 
+
         }
+
+        
+
+       
 
         public void LoadCarData()
         {
@@ -119,7 +127,6 @@ namespace DesktopApp
             }
         }
 
-
         private void BTNAddCar_Click(object sender, EventArgs e)
         {
             if (IsView)
@@ -130,6 +137,21 @@ namespace DesktopApp
             {
                 try
                 {
+                    if (string.IsNullOrEmpty(TBCarBrand.Text) ||
+                        string.IsNullOrEmpty(TBCarModel.Text) ||
+                        string.IsNullOrEmpty(TBCarFuel.Text) ||
+                        CBCarGearbox.SelectedItem == null ||
+                        string.IsNullOrEmpty(TBCarColor.Text) ||
+                        string.IsNullOrEmpty(TBCarVIN.Text) ||
+                        string.IsNullOrEmpty(RTBCarDescription.Text) ||
+                        string.IsNullOrEmpty(TBCarPrice.Text) ||
+                        string.IsNullOrEmpty(TBCarNumOfSeats.Text) ||
+                        string.IsNullOrEmpty(TBCarNumOfDoors.Text))
+                    {
+                        MessageBox.Show("All fields must be filled in.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     if (!Modify)
                     {
                         Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), TBCarFuel.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), TBCarColor.Text, TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text, 0);
@@ -141,11 +163,14 @@ namespace DesktopApp
                                 CarAdded?.Invoke(this, EventArgs.Empty);
                                 this.Close();
                             }
-                            else { MessageBox.Show(ReturnMessage); }
+                            else
+                            {
+                                MessageBox.Show(ReturnMessage);
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("You should first add pictures!");
+                            MessageBox.Show("You should first add pictures!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
@@ -157,14 +182,16 @@ namespace DesktopApp
                             CarAdded?.Invoke(this, EventArgs.Empty);
                             this.Close();
                         }
-                        else { MessageBox.Show(ReturnMessage); }
+                        else
+                        {
+                            MessageBox.Show(ReturnMessage, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Type each data first " + ex.Message);
+                    MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
             }
         }
 
@@ -196,16 +223,14 @@ namespace DesktopApp
                 }
                 else
                 {
-                    MessageBox.Show("This extra is already added to that car!");
+                    MessageBox.Show("This extra is already added to that car!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
             }
             else
             {
                 extras.Add(extraManager.extras[Index]);
             }
             AddToLB();
-
         }
 
         private void BTNRemoveExtra_Click(object sender, EventArgs e)
@@ -223,7 +248,7 @@ namespace DesktopApp
             }
             else
             {
-                MessageBox.Show("No item is selected.");
+                MessageBox.Show("No item is selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             AddToLB();
         }
@@ -239,9 +264,8 @@ namespace DesktopApp
                 }
                 else
                 {
-                    MessageBox.Show("This picture is already added to that car!");
+                    MessageBox.Show("This picture is already added to that car!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
             }
             else
             {
@@ -267,9 +291,8 @@ namespace DesktopApp
                 }
                 else
                 {
-                    MessageBox.Show("No item is selected.");
+                    MessageBox.Show("No item is selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
             }
             catch (Exception ex)
             {

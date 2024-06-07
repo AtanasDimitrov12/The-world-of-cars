@@ -33,24 +33,20 @@ namespace WinDesktopApp.Forms
             Manager = pm;
             DisplayAdminInfo();
 
-            // Store initial values
             initialEmail = Admin.Email;
             initialUsername = Admin.Username;
             initialPhoneNumber = Admin.PhoneNumber;
-            initialPassword = ""; // Assuming password is not displayed for security reasons
+            initialPassword = ""; 
 
-            // Add event handlers for text changed events
             TBAdminEmail.TextChanged += AdminInfoChanged;
             TBAdminUsername.TextChanged += AdminInfoChanged;
             TBAdminPhoneNumber.TextChanged += AdminInfoChanged;
             TBAdminPassword.TextChanged += AdminInfoChanged;
 
-            // Disable the button initially
             BTNUpdateAdminInfo.Enabled = false;
         }
         private void AdminInfoChanged(object sender, EventArgs e)
         {
-            // Enable the button if any textbox value has changed
             BTNUpdateAdminInfo.Enabled = HasAdminInfoChanged();
         }
         private bool HasAdminInfoChanged()
@@ -150,14 +146,12 @@ namespace WinDesktopApp.Forms
 
         private bool IsValidEmail(string email)
         {
-            // Use a regular expression to validate the email format
             string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return Regex.IsMatch(email, emailPattern);
         }
 
         private bool IsValidPhoneNumber(string phoneNumber)
         {
-            // Check if the phone number contains only digits
             return phoneNumber.All(char.IsDigit);
         }
     }

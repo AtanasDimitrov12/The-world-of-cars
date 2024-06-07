@@ -233,9 +233,16 @@ namespace DesktopApp
 
         private void BTNSearch_Click(object sender, EventArgs e)
         {
-            int year = int.Parse(TBSearchByYear.Text);
-            var filteredCars = carManager.GetCars().Where(car => car.FirstRegistration.Year == year).ToList();
-            FillDataGridView(filteredCars);
+            try
+            {
+                int year = int.Parse(TBSearchByYear.Text);
+                var filteredCars = carManager.GetCars().Where(car => car.FirstRegistration.Year == year).ToList();
+                FillDataGridView(filteredCars);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void DGVCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
