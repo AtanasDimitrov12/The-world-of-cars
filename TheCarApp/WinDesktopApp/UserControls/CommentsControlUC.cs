@@ -86,10 +86,10 @@ namespace DesktopApp
                     e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
                     var buttonRect = e.CellBounds;
-                    var buttonColor = Color.White; 
-                    var textColor = Color.Black; 
+                    var buttonColor = Color.White;
+                    var textColor = Color.Black;
 
-                    
+
                     if (e.ColumnIndex == DGVComments.Columns["Delete"].Index)
                     {
                         buttonColor = ColorTranslator.FromHtml("#3A5A40");
@@ -167,11 +167,11 @@ namespace DesktopApp
                 }
                 FillDataGridView(comments);
             }
-            else 
+            else
             {
                 FillDataGridView(allComments);
             }
-            
+
         }
 
         private void DGVComments_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -210,7 +210,7 @@ namespace DesktopApp
                     {
                         SortCommentsAscending(news.Comments);
                     }
-                   
+
                 }
             }
             else
@@ -252,6 +252,11 @@ namespace DesktopApp
             comments = comments.OrderByDescending(comm => comm.Date).ToList();
 
             FillDataGridView(comments);
+        }
+
+        private void BTNShowAll_Click(object sender, EventArgs e)
+        {
+            FillDataGridView(allComments);
         }
     }
 }

@@ -51,6 +51,10 @@ namespace Entity_Layer
         {
             try
             {
+                foreach (var comm in carnews.Comments)
+                {
+                    _dataRemover.RemoveComment(comm.Id);
+                }
                 _dataRemover.RemoveNews(carnews.Id);
                 news.Remove(carnews);
                 return "done";

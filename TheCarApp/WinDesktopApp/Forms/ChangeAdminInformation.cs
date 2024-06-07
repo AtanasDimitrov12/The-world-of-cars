@@ -84,6 +84,7 @@ namespace WinDesktopApp.Forms
                     if (message == "done")
                     {
                         InfoChanged?.Invoke(this, EventArgs.Empty);
+                        MessageBox.Show("You successfully update the admin's information!");
                         this.Close();
                     }
                     else
@@ -103,6 +104,7 @@ namespace WinDesktopApp.Forms
                     if (message == "done")
                     {
                         InfoChanged?.Invoke(this, EventArgs.Empty);
+                        MessageBox.Show("You successfully update the admin's information!");
                         this.Close();
                     }
                     else

@@ -131,64 +131,63 @@ h2 {
 }
 
 header {
-    position: fixed; /* Keeps the navbar at the top */
+    position: fixed; 
     top: 0;
-    z-index: 9999; /* Ensures navbar is above other content */
+    z-index: 9999; 
     width: 100%;
-    background-color: rgba(255, 255, 255, 0); /* Light background with opacity */
-    transition: all 0.3s ease-in-out; /* Ensures background is transparent initially */
+    background-color: rgba(255, 255, 255, 0); 
+    transition: all 0.3s ease-in-out; 
 }
 
 header.scrolled {
-    background-color: rgba(0,0,0,0.9); /* Changes background on scroll */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.9); /* Adds shadow for better visibility */
-    colo
+    background-color: rgba(0,0,0,0.9); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.9); 
+    
 }
 
 .navbar {
     display: flex;
     max-width: 1200px;
-    justify-content: space-between; /* Distributes space between navbar items */
-    align-items: center; /* Vertically centers navbar items */
-    padding: 1rem 2rem; /* Adjusts padding for visual spacing */
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 1rem 2rem; 
 }
 
     .navbar a.nav-link {
         color: white;
         text-decoration: none;
-        padding: 0.5rem 1rem; /* Provides padding around navbar links */
+        padding: 0.5rem 1rem; 
         transition: color 0.3s ease-in-out;
     }
 
 
         .navbar a.nav-link:hover,
         .navbar a.nav-link.active {
-            color: #a4c639; /* Changes link color on hover/active */
-            border-bottom: 3px solid #a4c639; /* Adds a bottom border on hover/active */
+            color: #a4c639; 
+            border-bottom: 3px solid #a4c639; 
         }
 
 .header.scrolled {
-    padding: 10px 0; /* Reduces padding when scrolled */
-    background-color: rgba(255, 255, 255, 0.95); /* Slightly increases opacity */
+    padding: 10px 0; 
+    background-color: rgba(255, 255, 255, 0.95); 
 }
 
-/* Adjustments for mobile screens */
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column; /* Stacks navbar items vertically on small screens */
+        flex-direction: column; 
     }
 
     .navbar-toggler {
-        display: block; /* Ensures toggler is visible on small screens */
+        display: block; 
     }
 
     .navbar-collapse {
-        display: none; /* Hides navbar links initially on small screens */
+        display: none; 
     }
 
         .navbar-collapse.active {
-            display: flex; /* Shows navbar links when toggler is clicked */
-            flex-direction: column; /* Stacks links vertically */
+            display: flex; 
+            flex-direction: column; 
         }
 }
 
@@ -217,7 +216,7 @@ header.scrolled {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0,5); /* Adjust the opacity as needed */
+        background-color: rgba(0, 0, 0, 0,5); 
     }
 
 .backgroundImage {
@@ -304,12 +303,15 @@ footer {
     z-index: 999;
 }
 
-.footer h5 {
-    color: white;
+.footer h4 {
+    font-size: 18px;
+    color: white !important;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-.footer p {
+.footer p2 {
+    color: white !important;
     margin-bottom: 5px;
 }
 

@@ -58,11 +58,13 @@ namespace DesktopApp
         private void RBAsc_CheckedChanged(object sender, EventArgs e)
         {
             FillDataGridView(carManager.GetCarsDESC());
+            TBSearchByYear.Clear();
         }
 
         private void RBDesc_CheckedChanged(object sender, EventArgs e)
         {
             FillDataGridView(carManager.GetCarsASC());
+            TBSearchByYear.Clear();
         }
 
         private void DGVCars_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -235,9 +237,16 @@ namespace DesktopApp
         {
             try
             {
-                int year = int.Parse(TBSearchByYear.Text);
-                var filteredCars = carManager.GetCars().Where(car => car.FirstRegistration.Year == year).ToList();
-                FillDataGridView(filteredCars);
+                if (TBSearchByYear.Text == "")
+                {
+                    FillDataGridView(carManager.GetCars());
+                }
+                else
+                {
+                    int year = int.Parse(TBSearchByYear.Text);
+                    var filteredCars = carManager.GetCars().Where(car => car.FirstRegistration.Year == year).ToList();
+                    FillDataGridView(filteredCars);
+                }
             }
             catch (Exception ex)
             {
@@ -282,7 +291,7 @@ namespace DesktopApp
                     if (factory != null)
                     {
                         var carForm = factory.CreateCarForm(selectedCar, carManager, extraManager, pictureManager);
-                        carForm.AddCarClicked += AddCar_CarAdded; 
+                        carForm.AddCarClicked += AddCar_CarAdded;
                         carForm.ShowForm();
                     }
                 }
@@ -291,6 +300,11 @@ namespace DesktopApp
 
 
         private void ChangeCarStatus_StatusChanged(object sender, EventArgs e)
+        {
+            FillDataGridView(carManager.GetCars());
+        }
+
+        private void BTNShowAll_Click(object sender, EventArgs e)
         {
             FillDataGridView(carManager.GetCars());
         }

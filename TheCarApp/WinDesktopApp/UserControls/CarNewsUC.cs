@@ -158,7 +158,7 @@ namespace DesktopApp
             }
         }
 
-        
+
 
         private void FillDataGridView(List<CarNews> news)
         {
@@ -181,7 +181,7 @@ namespace DesktopApp
             FillDataGridView(News);
         }
 
-        
+
 
         private void BTNSearchByTitle_Click(object sender, EventArgs e)
         {
@@ -207,6 +207,7 @@ namespace DesktopApp
                         if (selectedNews.Title == newsTitle && selectedNews.Author == newsAuthor)
                         {
                             AddNews addNews = new AddNews(selectedNews, newsManager, false);
+                            addNews.NewsAdded += AddNews_NewsAdded;
                             addNews.Show();
                             break;
                         }
@@ -252,6 +253,11 @@ namespace DesktopApp
                     }
                 }
             }
+        }
+
+        private void BTNShowAll_Click(object sender, EventArgs e)
+        {
+            FillDataGridView(newsManager.news);
         }
     }
 }
