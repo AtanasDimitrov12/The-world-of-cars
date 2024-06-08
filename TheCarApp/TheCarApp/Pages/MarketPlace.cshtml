@@ -22,12 +22,13 @@
             <button id="sortButton" class="filled-button">Sort</button>
             <button id="filterButton" class="filled-button">Filter</button>
         </div>
-        <div id="sortMenu" class="sort-filter-menu" style="display:none;">
-            <button class="filled-button" onclick="window.location.href='?sort=views_asc'">Sort by Views ASC</button>
-            <button class="filled-button" onclick="window.location.href='?sort=views_desc'">Sort by Views DESC</button>
-            <button class="filled-button" onclick="window.location.href='?sort=price_asc'">Sort by Price ASC</button>
-            <button class="filled-button" onclick="window.location.href='?sort=price_desc'">Sort by Price DESC</button>
+        <div id="sortMenu" class="sort-filter-menu">
+            <button class="filled-button filled-buttonSORT" onclick="window.location.href='?sort=views_asc'">Sort by Views ASC</button>
+            <button class="filled-button filled-buttonSORT" onclick="window.location.href='?sort=views_desc'">Sort by Views DESC</button>
+            <button class="filled-button filled-buttonSORT" onclick="window.location.href='?sort=price_asc'">Sort by Price ASC</button>
+            <button class="filled-button filled-buttonSORT" onclick="window.location.href='?sort=price_desc'">Sort by Price DESC</button>
         </div>
+
         <div id="filterMenu" class="sort-filter-menu">
             <form method="get" class="filter-form">
                 <div class="form-group">
@@ -63,7 +64,9 @@
                         }
                     </select>
                 </div>
-                <button type="submit">Apply Filters</button>
+                <div class="text-center mb-4 button-container">
+                    <button type="submit" class="filled-button">Apply Filters</button>
+                </div>
             </form>
         </div>
         <div class="containerCV">

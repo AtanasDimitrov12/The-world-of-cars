@@ -80,6 +80,8 @@ namespace DesktopApp
             TBCarNumOfSeats.Text = carData.NumberOfSeats.ToString();
             TBCarNumOfDoors.Text = carData.NumberOfDoors;
 
+            pictures.Clear();
+            extras.Clear();
             foreach (var picture in carData.Pictures)
             {
                 pictures.Add(picture);
