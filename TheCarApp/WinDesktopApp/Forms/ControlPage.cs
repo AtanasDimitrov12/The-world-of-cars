@@ -29,7 +29,7 @@ namespace DesktopApp
             projectManager = new ProjectManager();
             adminInfoUC = new AdminInfoUC(projectManager.PeopleManager, projectManager.AdministratorRepository, projectManager.CarManager, projectManager.RentManager, projectManager.NewsManager);
             carNewsUC = new CarNewsUC(projectManager.PeopleManager, projectManager.NewsManager);
-            carControlUC = new CarControlUC(projectManager.PeopleManager, projectManager.CarManager, projectManager.ExtraManager, projectManager.PictureManager);
+            carControlUC = new CarControlUC(projectManager.RentManager, projectManager.CarManager, projectManager.ExtraManager, projectManager.PictureManager);
             commentsControlUC = new CommentsControlUC(projectManager.NewsManager, projectManager.CommentsManager, projectManager.PeopleManager);
             rentalsUC = new RentalsUC(projectManager.PeopleManager, projectManager.RentManager);
             userControls = new List<UserControl> { adminInfoUC, carNewsUC, carControlUC, commentsControlUC, rentalsUC };

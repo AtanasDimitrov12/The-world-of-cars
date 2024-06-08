@@ -78,7 +78,7 @@ namespace ManagerLayer
             int Discount = 0;
             foreach (var rent in rentalHistory)
             {
-                if (rent.user == user)
+                if (rent.user == user && rent.RentStatus != RentStatus.CANCELLED)
                 { 
                     NumOfRents++;
                 }
@@ -133,11 +133,12 @@ namespace ManagerLayer
         public List<RentACar> GetRentedPeriods(int carId)
         {
             var rentedPeriods = rentalHistory
-                .Where(r => r.car.Id == carId) //RentStatus.Canceled?
+                .Where(r => r.car.Id == carId && r.RentStatus != RentStatus.CANCELLED)
                 .ToList();
 
             return rentedPeriods;
         }
+
 
         public bool IsCarAvailable(int carId, DateTime startDate, DateTime endDate)
         {

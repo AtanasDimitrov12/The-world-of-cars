@@ -19,16 +19,16 @@ namespace DesktopApp
 {
     public partial class CarControlUC : UserControl
     {
-        IPeopleManager peopleManager;
+        IRentManager rentManager;
         ICarManager carManager;
         IExtraManager extraManager;
         IPictureManager pictureManager;
         public AdminInfoUC admInfo { get; set; }
 
-        public CarControlUC(IPeopleManager pm, ICarManager cm, IExtraManager em, IPictureManager picM)
+        public CarControlUC(IRentManager rm, ICarManager cm, IExtraManager em, IPictureManager picM)
         {
             InitializeComponent();
-            this.peopleManager = pm;
+            this.rentManager = rm;
             this.carManager = cm;
             this.extraManager = em;
             this.pictureManager = picM;
@@ -275,10 +275,30 @@ namespace DesktopApp
                     }
                     else if (e.ColumnIndex == DGVCars.Columns["Delete"].Index)
                     {
-                        carManager.RemoveCar(selectedCar);
-                        FillDataGridView(carManager.GetCars());
-                        admInfo.DisplayDataInfo();
-                        return;
+                        DialogResult result = MessageBox.Show(
+        "Are you sure you want to delete that car? If you delete it, it will affect users' rentals.",
+        "Confirmation",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Warning);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            foreach (var rent in rentManager.rentalHistory)
+                            {
+                                if (rent.car.Id == selectedCar.Id)
+                                {
+                                    rentManager.RemoveRent(rent);
+                                }
+                            }
+                            carManager.RemoveCar(selectedCar);
+                            FillDataGridView(carManager.GetCars());
+                            admInfo.DisplayDataInfo();
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Deletion canceled.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                     else if (e.ColumnIndex == DGVCars.Columns["Change Status"].Index)
                     {

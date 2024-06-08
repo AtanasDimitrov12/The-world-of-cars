@@ -23,6 +23,7 @@ namespace WinDesktopApp.Forms
             this.ChangeAdmInfo = ChangeInfo;
             this.Admin = administrator;
             Manager = pm;
+            TBAdminPass.PasswordChar = '*';
         }
 
         private void BTNCheckPass_Click(object sender, EventArgs e)

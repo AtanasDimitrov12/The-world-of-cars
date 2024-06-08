@@ -226,10 +226,23 @@ namespace DesktopApp
                     {
                         if (selectedNews.Title == newsTitle && selectedNews.Author == newsAuthor)
                         {
-                            newsManager.DeleteNews(selectedNews);
-                            FillDataGridView(newsManager.news);
-                            admInfo.DisplayDataInfo();
-                            break;
+                            DialogResult result = MessageBox.Show(
+        "Are you sure you want to delete that news?",
+        "Confirmation",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Warning);
+
+                            if (result == DialogResult.Yes)
+                            {
+                                newsManager.DeleteNews(selectedNews);
+                                FillDataGridView(newsManager.news);
+                                admInfo.DisplayDataInfo();
+                                break;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Deletion canceled.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                     }
                 }

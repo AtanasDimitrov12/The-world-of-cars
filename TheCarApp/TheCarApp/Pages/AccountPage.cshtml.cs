@@ -31,7 +31,9 @@ namespace TheCarApp.Pages
                    .Where(rental => rental.user.Id == user.Id)
                    .ToList();
 
-            Rentals = rentals.Count;
+            Rentals = _projectManager.RentManager.rentalHistory
+                   .Where(rental => rental.user.Id == user.Id && rental.RentStatus != Entity_Layer.Enums.RentStatus.CANCELLED && rental.RentStatus != Entity_Layer.Enums.RentStatus.REQUESTED)
+                   .ToList().Count;
 
 
         }
