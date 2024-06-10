@@ -62,7 +62,7 @@ namespace TheCarApp.Pages
 
                 var relativeFilePath = $"/pictures/profile_pictures/{fileName}";
 
-                _projectManager.UserRepository.UploadProfilePicture(user, relativeFilePath);
+                _projectManager.UserRepository.UploadProfilePicture(user, relativeFilePath, out string Errormessage);
             }
 
             return RedirectToPage();

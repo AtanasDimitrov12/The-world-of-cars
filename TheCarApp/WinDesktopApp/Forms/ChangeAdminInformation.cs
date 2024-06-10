@@ -1,5 +1,6 @@
 ﻿using Entity_Layer;
 using InterfaceLayer;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,21 +76,20 @@ namespace WinDesktopApp.Forms
                     Admin.Password = TBAdminPassword.Text;
                     Admin.Username = TBAdminUsername.Text;
                     Admin.PhoneNumber = TBAdminPhoneNumber.Text;
-                    string hash;
-                    string salt;
-                    (hash, salt) = Manager.HashPassword(Admin.Password);
+                    //string hash;
+                    //string salt;
+                    var (hash, salt) = Manager.HashPassword(Admin.Password);
                     Admin.Password = hash;
                     Admin.PassSalt = salt;
-                    string message = Manager.UpdatePerson(Admin);
-                    if (message == "done")
-                    {
+                    if (Manager.UpdatePerson(Admin, out string ErrorMessage))
+                    { 
                         InfoChanged?.Invoke(this, EventArgs.Empty);
                         MessageBox.Show("You successfully update the admin's information!");
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show(message);
+                        MessageBox.Show(ErrorMessage);
                     }
                 }
             }
@@ -100,8 +100,7 @@ namespace WinDesktopApp.Forms
                     Admin.Email = TBAdminEmail.Text;
                     Admin.Username = TBAdminUsername.Text;
                     Admin.PhoneNumber = TBAdminPhoneNumber.Text;
-                    string message = Manager.UpdatePerson(Admin);
-                    if (message == "done")
+                    if (Manager.UpdatePerson(Admin, out string ErrorMessage))
                     {
                         InfoChanged?.Invoke(this, EventArgs.Empty);
                         MessageBox.Show("You successfully update the admin's information!");
@@ -109,7 +108,7 @@ namespace WinDesktopApp.Forms
                     }
                     else
                     {
-                        MessageBox.Show(message);
+                        MessageBox.Show(ErrorMessage);
                     }
                 }
             }

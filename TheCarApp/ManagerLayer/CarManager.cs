@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 using Database;
 using DatabaseAccess;
 using DTO;
@@ -12,9 +9,6 @@ using Entity_Layer.Enums;
 using Entity_Layer.Interfaces;
 using EntityLayout;
 using InterfaceLayer;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-
 
 namespace Manager_Layer
 {
@@ -33,109 +27,124 @@ namespace Manager_Layer
             _dataRemover = dataRemover;
         }
 
-        public string AddCar(Car car, List<Picture> pictures, List<Extra> extras)
+        public bool AddCar(Car car, List<Picture> pictures, List<Extra> extras, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 _dataWriter.AddCar(car.Brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
 
-
-                int CarId = _dataWriter.GetCarId(car.VIN);
-                car.Id = CarId;
+                int carId = _dataWriter.GetCarId(car.VIN);
+                car.Id = carId;
                 _dataWriter.AddCarDescription(car.Id, car.Description, car.PricePerDay);
-                foreach (Picture pic in pictures)
+                foreach (var pic in pictures)
                 {
                     _dataWriter.AddCarPictures(car.Id, pic.Id);
                     car.AddPicture(pic);
                 }
-                foreach (Extra extra in extras)
+                foreach (var extra in extras)
                 {
                     _dataWriter.AddCarExtras(car.Id, extra.Id);
                     car.AddExtra(extra);
                 }
                 cars.Add(car);
-                return "done";
-
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
         }
 
-        public string UpdateCar(Car car, List<Picture> pictures, List<Extra> extras)
+        public bool UpdateCar(Car car, List<Picture> pictures, List<Extra> extras, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 _dataWriter.UpdateCar(car);
                 _dataWriter.UpdateCarDescription(car);
                 _dataWriter.RemoveCarPictures(car.Id);
                 _dataWriter.RemoveCarExtras(car.Id);
-                foreach (Picture pic in pictures)
+                foreach (var pic in pictures)
                 {
                     _dataWriter.AddCarPictures(car.Id, pic.Id);
                     car.AddPicture(pic);
                 }
-                foreach (Extra extra in extras)
+                foreach (var extra in extras)
                 {
                     _dataWriter.AddCarExtras(car.Id, extra.Id);
                     car.AddExtra(extra);
                 }
-                return "done";
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
-
         }
 
-        public string RemoveCar(Car car)
+        public bool RemoveCar(Car car, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
-                _dataRemover.RemoveCar(car.Id); ;
+                _dataRemover.RemoveCar(car.Id);
                 cars.Remove(car);
-                return "done";
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
         }
 
-        public string ChangeCarStatus(Car car, string newStatus, CarStatus Status)
+        public bool ChangeCarStatus(Car car, string newStatus, CarStatus status, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 _dataWriter.ChangeCarStatus(car, newStatus);
-                car.CarStatus = Status;
-                return "done";
+                car.CarStatus = status;
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
         }
 
-        public string RecordCarView(int carId)
+        public bool RecordCarView(int carId, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 _dataWriter.RecordCarView(carId);
-                Car car = GetCarById(carId);
-                car.Views = car.Views + 1;
-                return "done";
+                var car = GetCarById(carId);
+                if (car != null)
+                {
+                    car.Views++;
+                    return true;
+                }
+                else
+                {
+                    errorMessage = "Car not found";
+                    return false;
+                }
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
         }
 
         public Car SearchForCar(int index)
         {
-            return cars[index];
+            return cars.ElementAtOrDefault(index);
         }
 
         public List<Car> GetCars()
@@ -145,72 +154,62 @@ namespace Manager_Layer
 
         public List<Car> GetCarsASC()
         {
-            AscendingBrandComparer asc = new AscendingBrandComparer();
+            var asc = new AscendingBrandComparer();
             cars.Sort(asc);
             return cars;
         }
 
         public List<Car> GetCarsDESC()
         {
-            DescendingBrandComparer desc = new DescendingBrandComparer();
+            var desc = new DescendingBrandComparer();
             cars.Sort(desc);
             return cars;
         }
 
         public Car GetCarById(int carId)
         {
-            foreach (Car car in cars)
-            {
-                if (car.Id == carId)
-                {
-                    return car;
-                }
-            }
-            return null;
+            return cars.FirstOrDefault(car => car.Id == carId);
         }
 
-        public string LoadCars()
+        public bool LoadCars(out string errorMessage)
         {
-            List<CarDTO> loadedCars;
+            errorMessage = string.Empty;
             try
             {
-                loadedCars = _dataAccess.GetCars();
+                var loadedCars = _dataAccess.GetCars();
                 if (loadedCars != null)
                 {
-                    foreach (CarDTO carDTO in loadedCars)
+                    foreach (var carDTO in loadedCars)
                     {
-                        CarStatus status;
-                        bool isValidArea = Enum.TryParse(carDTO.CarStatus.ToUpper(), true, out status);
-
-                        if (isValidArea)
+                        if (Enum.TryParse(carDTO.CarStatus, true, out CarStatus status))
                         {
-                            Car loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, status, carDTO.NumberOfSeats, carDTO.NumberOfDoors, carDTO.Views);
+                            var loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, status, carDTO.NumberOfSeats, carDTO.NumberOfDoors, carDTO.Views);
 
-                            foreach (ExtraDTO extraDTO in carDTO.CarExtras)
+                            foreach (var extraDTO in carDTO.CarExtras)
                             {
-                                Extra extra = new Extra(extraDTO.extraName, extraDTO.Id);
+                                var extra = new Extra(extraDTO.extraName, extraDTO.Id);
                                 loadCar.AddExtra(extra);
                             }
-                            foreach (PictureDTO picDTO in carDTO.Pictures)
+                            foreach (var picDTO in carDTO.Pictures)
                             {
-                                Picture pic = new Picture(picDTO.Id, picDTO.PictureURL);
+                                var pic = new Picture(picDTO.Id, picDTO.PictureURL);
                                 loadCar.AddPicture(pic);
                             }
                             cars.Add(loadCar);
                         }
                         else
                         {
-                            return $"Warning: {carDTO.Id} has an invalid status assigned.";
+                            errorMessage = $"Warning: {carDTO.Id} has an invalid status assigned.";
                         }
                     }
                 }
-                return "done";
+                return true;
             }
-            catch (ApplicationException ex)
+            catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
-
         }
     }
 }

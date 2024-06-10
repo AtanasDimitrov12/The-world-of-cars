@@ -52,7 +52,7 @@ namespace TheCarApp.Pages
             }
 
             var newUser = new User(0, Email,Password, Username, DateTime.Now, int.Parse(LicenseNumber), null, "/pictures/profile_pictures/blank-profile-picture.jpg");
-            _projectManager.PeopleManager.AddPerson(newUser); 
+            _projectManager.PeopleManager.AddPerson(newUser, out string ErrorMessage); // display
             var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, Email)
@@ -81,7 +81,7 @@ namespace TheCarApp.Pages
         {
             if (Email != null && Password != null)
             {
-                if (_projectManager.PeopleManager.AuthenticateUser(Email.ToLower(), Password))
+                if (_projectManager.PeopleManager.AuthenticateUser(Email.ToLower(), Password, out string Errormessage))
                 {
                     var claims = new List<Claim>
                 {

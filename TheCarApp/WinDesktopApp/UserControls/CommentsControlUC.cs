@@ -189,9 +189,16 @@ namespace DesktopApp
                         {
                             if (comm.Message == Comment)
                             {
-                                commentsManager.RemoveComment(news, comm);
-                                DisplayComments(CBNews.Text);
-                                break;
+                                if (commentsManager.RemoveComment(news, comm, out string errorMessage))
+                                {
+                                    MessageBox.Show("You successfully delete that comment!");
+                                    DisplayComments(CBNews.Text);
+                                    break;
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"Failed to remove comment: {errorMessage}");
+                                }
                             }
                         }
                     }

@@ -37,7 +37,7 @@ namespace TheCarApp.Pages
             else
             {
                 // Record the view
-                projectManager.CarManager.RecordCarView(carId);
+                projectManager.CarManager.RecordCarView(carId, out string ErrorMessage);
                 RentedPeriods = projectManager.RentManager.GetRentedPeriods(carId);
             }
             UserEmail = User.Identity.Name;

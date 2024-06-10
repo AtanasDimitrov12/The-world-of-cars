@@ -5,10 +5,6 @@ using EntityLayout;
 using InterfaceLayer;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace ManagerLayer
 {
@@ -25,48 +21,52 @@ namespace ManagerLayer
             this._dataAccess = dataAccess;
             _dataWriter = dataWriter;
             _dataRemover = dataRemover;
-            LoadExtra();
+            LoadExtra(out _); // Initialize extras list
         }
-        public string AddExtra(Extra extra)
+
+        public bool AddExtra(Extra extra, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 _dataWriter.AddExtra(extra.ExtraName);
                 extras.Add(extra);
-                return "done";
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
-
         }
 
-        public string RemoveExtra(Extra extra)
+        public bool RemoveExtra(Extra extra, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 _dataRemover.RemoveExtra(extra.Id);
-                extras.Remove(extra);// Need to get extra Id from DB after added a new one
-                return "done";
+                extras.Remove(extra);
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
         }
 
-        public int GetExtraId(string Extra)
-        { 
-            return _dataWriter.GetExtraId(Extra);
+        public int GetExtraId(string extraName)
+        {
+            return _dataWriter.GetExtraId(extraName);
         }
 
-        public string LoadExtra()
+        public bool LoadExtra(out string errorMessage)
         {
-            List<ExtraDTO> loadExtras;
+            errorMessage = string.Empty;
             try
             {
-                loadExtras = _dataAccess.GetAllExtras();
+                var loadExtras = _dataAccess.GetAllExtras();
                 if (loadExtras != null)
                 {
                     foreach (ExtraDTO ex in loadExtras)
@@ -75,13 +75,13 @@ namespace ManagerLayer
                         extras.Add(extra);
                     }
                 }
-                return "done";
+                return true;
             }
-            catch (ApplicationException ex)
+            catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
-
         }
     }
 }

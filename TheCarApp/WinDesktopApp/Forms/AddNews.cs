@@ -108,15 +108,18 @@ namespace DesktopApp
 
 
                 CarNews news = new CarNews(RTBNewsDescription.Text, dateTime, fileName, TBNewsTitle.Text, TBNewsAuthor.Text, RTBNewsIntro.Text);
-                string ReturnMessage = NewsManager.AddNews(news);
-                if (ReturnMessage == "done")
+                if (NewsManager.AddNews(news, out string addNewsError))
                 {
                     MessageBox.Show("You successfully added this news!");
                     NewsAdded?.Invoke(this, EventArgs.Empty);
                     ClearPictureBoxImage();
                     this.Close();
                 }
-                else { MessageBox.Show(ReturnMessage); }
+                else
+                {
+                    MessageBox.Show($"Failed to add news: {addNewsError}");
+                }
+                
             }
             else if (IsView)
             {
@@ -163,8 +166,7 @@ namespace DesktopApp
                     newsData.ShortIntro = RTBNewsIntro.Text;
                     newsData.NewsDescription = RTBNewsDescription.Text;
                     newsData.ImageURL = fileName;
-                    string ReturnMessage = NewsManager.UpdateNews(newsData);
-                    if (ReturnMessage == "done")
+                    if (NewsManager.UpdateNews(newsData, out string updateNewsError))
                     {
                         MessageBox.Show("You successfully updated this news!");
                         NewsAdded?.Invoke(this, EventArgs.Empty);
@@ -173,7 +175,7 @@ namespace DesktopApp
                     }
                     else
                     {
-                        MessageBox.Show(ReturnMessage);
+                        MessageBox.Show($"Failed to update news: {updateNewsError}");
                     }
                 }
                 else

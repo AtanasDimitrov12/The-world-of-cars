@@ -56,7 +56,7 @@ namespace TheCarApp.Pages
             {
                 NewComment.UserId = user.Id;
                 NewComment.Date = date;
-                projectManager.CommentsManager.AddComment(news, NewComment);
+                projectManager.CommentsManager.AddComment(news, NewComment, out string errorMessage); // Display error message
             }
 
             

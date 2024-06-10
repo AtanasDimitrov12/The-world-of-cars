@@ -10,10 +10,10 @@ namespace InterfaceLayer
     public interface IExtraManager
     {
         List<Extra> extras { get; set; }
-        string AddExtra(Extra extra);
-        string RemoveExtra(Extra extra);
-        int GetExtraId(string Extra);
-        string LoadExtra();
+        bool AddExtra(Extra extra, out string errorMessage);
+        bool RemoveExtra(Extra extra, out string errorMessage);
+        int GetExtraId(string extraName);
+        bool LoadExtra(out string errorMessage);
     }
 
 }

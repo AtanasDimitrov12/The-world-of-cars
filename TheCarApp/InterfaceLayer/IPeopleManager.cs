@@ -11,13 +11,13 @@ namespace InterfaceLayer
     {
         List<Person> people { get; set; }
 
-        string AddPerson(Person person);
-        (string Hash, string Salt) HashPassword(string password);
-        string RemovePerson(Person person);
-        string UpdatePerson(Person person);
-        bool AuthenticateUser(string Email, string Password);
+        bool AddPerson(Person person, out string errorMessage);
+        bool RemovePerson(Person person, out string errorMessage);
+        bool UpdatePerson(Person person, out string errorMessage);
+        bool AuthenticateUser(string userEmail, string userPass, out string errorMessage);
+        public (string Hash, string Salt) HashPassword(string password);
         bool VerifyPassword(string enteredPassword, string storedPass, string base64Salt);
-        User GetUser(string Email);
+        User GetUser(string email);
         IEnumerable<Person> GetAllPeople();
         List<User> GetAllUsers();
     }

@@ -1502,7 +1502,7 @@ if (Start == "Start")
             comment.UserId = users[randomUser].Id;
             comment.Date = DateTime.Now;
 
-            cm.AddComment(n, comment);
+            cm.AddComment(n, comment, out string Errormessage);
         }
     }
 

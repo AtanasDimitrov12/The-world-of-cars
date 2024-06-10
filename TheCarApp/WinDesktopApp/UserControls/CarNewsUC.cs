@@ -235,10 +235,16 @@ namespace DesktopApp
 
                             if (result == DialogResult.Yes)
                             {
-                                newsManager.DeleteNews(selectedNews);
-                                FillDataGridView(newsManager.news);
-                                admInfo.DisplayDataInfo();
-                                break;
+                                if (newsManager.DeleteNews(selectedNews, out string errorMessage))
+                                {
+                                    FillDataGridView(newsManager.news);
+                                    admInfo.DisplayDataInfo();
+                                    break;
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"Failed to delete that news: {errorMessage}");
+                                }
                             }
                             else
                             {

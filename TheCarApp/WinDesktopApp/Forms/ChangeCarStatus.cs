@@ -41,10 +41,18 @@ namespace WinDesktopApp.Forms
         {
             CarStatus newStatus;
             if (Enum.TryParse<CarStatus>(CBChangeStatus.Text.ToUpper(), true, out newStatus))
-            { 
-                manager.ChangeCarStatus(car, CBChangeStatus.Text.ToUpper(), newStatus);
-                StatusChanged?.Invoke(this, EventArgs.Empty);
-                this.Close();
+            {
+                if (manager.ChangeCarStatus(car, CBChangeStatus.Text.ToUpper(), newStatus, out string updateCarError))
+                {
+                    Console.WriteLine("Car updated successfully.");
+                    StatusChanged?.Invoke(this, EventArgs.Empty);
+                    this.Close();
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to update car: {updateCarError}");
+                }
+                
             }
         }
     }

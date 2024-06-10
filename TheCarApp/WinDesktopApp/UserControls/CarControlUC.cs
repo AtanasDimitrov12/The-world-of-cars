@@ -290,10 +290,18 @@ namespace DesktopApp
                                     rentManager.RemoveRent(rent);
                                 }
                             }
-                            carManager.RemoveCar(selectedCar);
-                            FillDataGridView(carManager.GetCars());
-                            admInfo.DisplayDataInfo();
-                            return;
+                            if (carManager.RemoveCar(selectedCar, out string updateCarError))
+                            {
+                                MessageBox.Show("Car removed successfully.");
+                                FillDataGridView(carManager.GetCars());
+                                admInfo.DisplayDataInfo();
+                                return;
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Failed to update car: {updateCarError}");
+                            }
+                            
                         }
                         else
                         {
