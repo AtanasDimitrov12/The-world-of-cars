@@ -11,16 +11,17 @@ namespace InterfaceLayer
 {
     public interface ICarManager
     {
-        string AddCar(Car car, List<Picture> pictures, List<Extra> extras);
-        string RemoveCar(Car car);
-        string ChangeCarStatus(Car car, string newStatus, CarStatus Status);
-        string RecordCarView(int carId);
-        string UpdateCar(Car car, List<Picture> pictures, List<Extra> extras);
+        bool AddCar(Car car, List<Picture> pictures, List<Extra> extras, out string errorMessage);
+        bool RemoveCar(Car car, out string errorMessage);
+        bool ChangeCarStatus(Car car, string newStatus, CarStatus Status, out string errorMessage);
+        bool RecordCarView(int carId, out string errorMessage);
+        bool UpdateCar(Car car, List<Picture> pictures, List<Extra> extras, out string errorMessage);
         Car SearchForCar(int index);
         List<Car> GetCars();
         List<Car> GetCarsASC();
         List<Car> GetCarsDESC();
         Car GetCarById(int carId);
-        string LoadCars();
+        bool LoadCars(out string errorMessage);
     }
 }
+

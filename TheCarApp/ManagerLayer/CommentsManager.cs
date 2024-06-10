@@ -3,10 +3,6 @@ using Entity_Layer;
 using EntityLayout;
 using InterfaceLayer;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ManagerLayer
 {
@@ -23,33 +19,37 @@ namespace ManagerLayer
             _dataRemover = dataRemover;
         }
 
-        public string AddComment(CarNews news, Comment comment)
+        public bool AddComment(CarNews news, Comment comment, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 _dataWriter.AddComment(news.Id, comment.UserId, comment.Date, comment.Message);
-                int CommentId = _dataWriter.GetCommentId(comment.Date);
-                comment.Id = CommentId;
+                int commentId = _dataWriter.GetCommentId(comment.Date);
+                comment.Id = commentId;
                 news.AddComment(comment);
-                return "done";
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
         }
 
-        public string RemoveComment(CarNews news, Comment comment)
+        public bool RemoveComment(CarNews news, Comment comment, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 _dataRemover.RemoveComment(comment.Id);
                 news.RemoveComment(comment);
-                return "done";
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
         }
     }

@@ -39,6 +39,7 @@
             BTNAddNews = new Button();
             groupBox1 = new GroupBox();
             DGVNews = new DataGridView();
+            BTNShowAll = new Button();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -52,11 +53,11 @@
             groupBox2.Controls.Add(RBASC);
             groupBox2.Controls.Add(label4);
             groupBox2.Font = new Font("Arial Rounded MT Bold", 9.75F);
-            groupBox2.Location = new Point(14, 17);
-            groupBox2.Margin = new Padding(4, 3, 4, 3);
+            groupBox2.Location = new Point(16, 23);
+            groupBox2.Margin = new Padding(5, 4, 5, 4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(4, 3, 4, 3);
-            groupBox2.Size = new Size(210, 96);
+            groupBox2.Padding = new Padding(5, 4, 5, 4);
+            groupBox2.Size = new Size(240, 128);
             groupBox2.TabIndex = 18;
             groupBox2.TabStop = false;
             groupBox2.Text = "Show news";
@@ -64,10 +65,10 @@
             // RBDESC
             // 
             RBDESC.AutoSize = true;
-            RBDESC.Location = new Point(118, 53);
-            RBDESC.Margin = new Padding(4, 3, 4, 3);
+            RBDESC.Location = new Point(135, 71);
+            RBDESC.Margin = new Padding(5, 4, 5, 4);
             RBDESC.Name = "RBDESC";
-            RBDESC.Size = new Size(58, 19);
+            RBDESC.Size = new Size(72, 24);
             RBDESC.TabIndex = 16;
             RBDESC.TabStop = true;
             RBDESC.Text = "Desc";
@@ -77,10 +78,10 @@
             // RBASC
             // 
             RBASC.AutoSize = true;
-            RBASC.Location = new Point(31, 53);
-            RBASC.Margin = new Padding(4, 3, 4, 3);
+            RBASC.Location = new Point(35, 71);
+            RBASC.Margin = new Padding(5, 4, 5, 4);
             RBASC.Name = "RBASC";
-            RBASC.Size = new Size(49, 19);
+            RBASC.Size = new Size(61, 24);
             RBASC.TabIndex = 15;
             RBASC.TabStop = true;
             RBASC.Text = "Asc";
@@ -91,10 +92,10 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Arial Rounded MT Bold", 12F);
-            label4.Location = new Point(36, 27);
-            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Location = new Point(41, 36);
+            label4.Margin = new Padding(5, 0, 5, 0);
             label4.Name = "label4";
-            label4.Size = new Size(110, 18);
+            label4.Size = new Size(135, 23);
             label4.TabIndex = 14;
             label4.Text = "Sort by date:";
             // 
@@ -105,11 +106,11 @@
             groupBox3.Controls.Add(TBNewsTitle);
             groupBox3.Controls.Add(label5);
             groupBox3.Font = new Font("Arial Rounded MT Bold", 9.75F);
-            groupBox3.Location = new Point(14, 136);
-            groupBox3.Margin = new Padding(4, 3, 4, 3);
+            groupBox3.Location = new Point(16, 181);
+            groupBox3.Margin = new Padding(5, 4, 5, 4);
             groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(4, 3, 4, 3);
-            groupBox3.Size = new Size(210, 158);
+            groupBox3.Padding = new Padding(5, 4, 5, 4);
+            groupBox3.Size = new Size(240, 211);
             groupBox3.TabIndex = 19;
             groupBox3.TabStop = false;
             groupBox3.Text = "Search news";
@@ -119,10 +120,10 @@
             BTNSearchByTitle.BackColor = Color.FromArgb(88, 129, 87);
             BTNSearchByTitle.Font = new Font("Arial Rounded MT Bold", 12F);
             BTNSearchByTitle.ForeColor = Color.White;
-            BTNSearchByTitle.Location = new Point(31, 95);
-            BTNSearchByTitle.Margin = new Padding(4, 3, 4, 3);
+            BTNSearchByTitle.Location = new Point(35, 127);
+            BTNSearchByTitle.Margin = new Padding(5, 4, 5, 4);
             BTNSearchByTitle.Name = "BTNSearchByTitle";
-            BTNSearchByTitle.Size = new Size(146, 50);
+            BTNSearchByTitle.Size = new Size(167, 67);
             BTNSearchByTitle.TabIndex = 19;
             BTNSearchByTitle.Text = "Search";
             BTNSearchByTitle.UseVisualStyleBackColor = false;
@@ -130,20 +131,20 @@
             // 
             // TBNewsTitle
             // 
-            TBNewsTitle.Location = new Point(48, 65);
-            TBNewsTitle.Margin = new Padding(4, 3, 4, 3);
+            TBNewsTitle.Location = new Point(55, 87);
+            TBNewsTitle.Margin = new Padding(5, 4, 5, 4);
             TBNewsTitle.Name = "TBNewsTitle";
-            TBNewsTitle.Size = new Size(116, 23);
+            TBNewsTitle.Size = new Size(132, 26);
             TBNewsTitle.TabIndex = 18;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Arial Rounded MT Bold", 12F);
-            label5.Location = new Point(36, 30);
-            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Location = new Point(41, 40);
+            label5.Margin = new Padding(5, 0, 5, 0);
             label5.Name = "label5";
-            label5.Size = new Size(128, 18);
+            label5.Size = new Size(156, 23);
             label5.TabIndex = 17;
             label5.Text = "Search by title:";
             // 
@@ -152,10 +153,10 @@
             BTNAddNews.BackColor = Color.FromArgb(88, 129, 87);
             BTNAddNews.Font = new Font("Arial Rounded MT Bold", 12F);
             BTNAddNews.ForeColor = Color.White;
-            BTNAddNews.Location = new Point(31, 55);
-            BTNAddNews.Margin = new Padding(4, 3, 4, 3);
+            BTNAddNews.Location = new Point(35, 108);
+            BTNAddNews.Margin = new Padding(5, 4, 5, 4);
             BTNAddNews.Name = "BTNAddNews";
-            BTNAddNews.Size = new Size(146, 44);
+            BTNAddNews.Size = new Size(167, 59);
             BTNAddNews.TabIndex = 20;
             BTNAddNews.Text = "Add news";
             BTNAddNews.UseVisualStyleBackColor = false;
@@ -164,13 +165,14 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.FromArgb(163, 177, 138);
+            groupBox1.Controls.Add(BTNShowAll);
             groupBox1.Controls.Add(BTNAddNews);
             groupBox1.Font = new Font("Arial Rounded MT Bold", 9.75F);
-            groupBox1.Location = new Point(14, 328);
-            groupBox1.Margin = new Padding(4, 3, 4, 3);
+            groupBox1.Location = new Point(16, 437);
+            groupBox1.Margin = new Padding(5, 4, 5, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 3, 4, 3);
-            groupBox1.Size = new Size(210, 134);
+            groupBox1.Padding = new Padding(5, 4, 5, 4);
+            groupBox1.Size = new Size(240, 179);
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
             groupBox1.Text = "Actions";
@@ -178,26 +180,39 @@
             // DGVNews
             // 
             DGVNews.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVNews.Location = new Point(277, 104);
-            DGVNews.Margin = new Padding(3, 2, 3, 2);
+            DGVNews.Location = new Point(317, 139);
             DGVNews.Name = "DGVNews";
             DGVNews.RowHeadersWidth = 51;
-            DGVNews.Size = new Size(802, 240);
+            DGVNews.Size = new Size(917, 320);
             DGVNews.TabIndex = 22;
             DGVNews.CellContentClick += DGVNews_CellContentClick;
             // 
+            // BTNShowAll
+            // 
+            BTNShowAll.BackColor = Color.FromArgb(88, 129, 87);
+            BTNShowAll.Font = new Font("Arial Rounded MT Bold", 12F);
+            BTNShowAll.ForeColor = Color.White;
+            BTNShowAll.Location = new Point(35, 41);
+            BTNShowAll.Margin = new Padding(5, 4, 5, 4);
+            BTNShowAll.Name = "BTNShowAll";
+            BTNShowAll.Size = new Size(167, 59);
+            BTNShowAll.TabIndex = 21;
+            BTNShowAll.Text = "Show all";
+            BTNShowAll.UseVisualStyleBackColor = false;
+            BTNShowAll.Click += BTNShowAll_Click;
+            // 
             // CarNewsUC
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(218, 215, 205);
             Controls.Add(DGVNews);
             Controls.Add(groupBox1);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
-            Margin = new Padding(4, 3, 4, 3);
+            Margin = new Padding(5, 4, 5, 4);
             Name = "CarNewsUC";
-            Size = new Size(1160, 500);
+            Size = new Size(1326, 667);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
@@ -219,5 +234,6 @@
         private System.Windows.Forms.Button BTNAddNews;
         private System.Windows.Forms.GroupBox groupBox1;
         private DataGridView DGVNews;
+        private Button BTNShowAll;
     }
 }

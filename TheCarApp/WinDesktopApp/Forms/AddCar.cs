@@ -25,7 +25,7 @@ namespace DesktopApp
         IExtraManager extraManager;
         List<Extra> extras;
         List<Picture> pictures;
-        bool Modify = false;
+        bool Modify;
         bool IsView;
         Car carData;
         public event EventHandler CarAdded;
@@ -36,6 +36,7 @@ namespace DesktopApp
         public Button BTNAddPicturesGet { get; }
         public Button BTNRemovePictureGet { get; }
         public Button BTNRemoveExtraGet { get; }
+
         public AddCar(Car car, ICarManager cm, IExtraManager em, IPictureManager picManager, bool View)
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace DesktopApp
             extras = new List<Extra>();
             pictures = new List<Picture>();
             IsView = View;
+            Modify = false;
             LoadCB();
             carData = car;
             BTNAddCarGet = BTNAddCar;
@@ -55,11 +57,11 @@ namespace DesktopApp
             BTNRemoveExtraGet = BTNRemoveExtra;
             BTNRemovePictureGet = BTNRemovePicture;
 
-            if (car != null)
+            if (carData != null)
             {
                 Modify = true;
+                LoadCarData();
             }
-
         }
 
         public void LoadCarData()
@@ -78,6 +80,8 @@ namespace DesktopApp
             TBCarNumOfSeats.Text = carData.NumberOfSeats.ToString();
             TBCarNumOfDoors.Text = carData.NumberOfDoors;
 
+            pictures.Clear();
+            extras.Clear();
             foreach (var picture in carData.Pictures)
             {
                 pictures.Add(picture);
@@ -119,7 +123,6 @@ namespace DesktopApp
             }
         }
 
-
         private void BTNAddCar_Click(object sender, EventArgs e)
         {
             if (IsView)
@@ -130,41 +133,59 @@ namespace DesktopApp
             {
                 try
                 {
+                    if (string.IsNullOrEmpty(TBCarBrand.Text) ||
+                        string.IsNullOrEmpty(TBCarModel.Text) ||
+                        string.IsNullOrEmpty(TBCarFuel.Text) ||
+                        CBCarGearbox.SelectedItem == null ||
+                        string.IsNullOrEmpty(TBCarColor.Text) ||
+                        string.IsNullOrEmpty(TBCarVIN.Text) ||
+                        string.IsNullOrEmpty(RTBCarDescription.Text) ||
+                        string.IsNullOrEmpty(TBCarPrice.Text) ||
+                        string.IsNullOrEmpty(TBCarNumOfSeats.Text) ||
+                        string.IsNullOrEmpty(TBCarNumOfDoors.Text))
+                    {
+                        MessageBox.Show("All fields must be filled in.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     if (!Modify)
                     {
                         Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), TBCarFuel.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), TBCarColor.Text, TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text, 0);
                         if (pictures.Count != 0)
                         {
-                            string ReturnMessage = manager.AddCar(car, pictures, extras);
-                            if (ReturnMessage == "done")
+                            if (manager.AddCar(car, pictures, extras, out string addCarError))
                             {
                                 CarAdded?.Invoke(this, EventArgs.Empty);
                                 this.Close();
                             }
-                            else { MessageBox.Show(ReturnMessage); }
+                            else
+                            {
+                                MessageBox.Show($"Failed to add car: {addCarError}");
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("You should first add pictures!");
+                            MessageBox.Show("You should first add pictures!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
                     {
                         UpdateCarData();
-                        string ReturnMessage = manager.UpdateCar(carData, pictures, extras);
-                        if (ReturnMessage == "done")
+                        if (manager.UpdateCar(carData, pictures, extras, out string updateCarError))
                         {
                             CarAdded?.Invoke(this, EventArgs.Empty);
                             this.Close();
                         }
-                        else { MessageBox.Show(ReturnMessage); }
+                        else
+                        {
+                            MessageBox.Show($"Failed to update car: {updateCarError}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Type each data first " + ex.Message);
+                    MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
             }
         }
 
@@ -196,16 +217,14 @@ namespace DesktopApp
                 }
                 else
                 {
-                    MessageBox.Show("This extra is already added to that car!");
+                    MessageBox.Show("This extra is already added to that car!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
             }
             else
             {
                 extras.Add(extraManager.extras[Index]);
             }
             AddToLB();
-
         }
 
         private void BTNRemoveExtra_Click(object sender, EventArgs e)
@@ -223,7 +242,7 @@ namespace DesktopApp
             }
             else
             {
-                MessageBox.Show("No item is selected.");
+                MessageBox.Show("No item is selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             AddToLB();
         }
@@ -239,9 +258,8 @@ namespace DesktopApp
                 }
                 else
                 {
-                    MessageBox.Show("This picture is already added to that car!");
+                    MessageBox.Show("This picture is already added to that car!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
             }
             else
             {
@@ -267,9 +285,8 @@ namespace DesktopApp
                 }
                 else
                 {
-                    MessageBox.Show("No item is selected.");
+                    MessageBox.Show("No item is selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
             }
             catch (Exception ex)
             {
@@ -305,6 +322,17 @@ namespace DesktopApp
         private void BTNClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void TBCarBrand_TextChanged(object sender, EventArgs e)
+        {
+            const int maxLength = 50;
+            if (TBCarBrand.Text.Length > maxLength)
+            {
+                MessageBox.Show("Input is too long. Please enter a maximum of 50 characters.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TBCarBrand.Text = TBCarBrand.Text.Substring(0, maxLength);
+                TBCarBrand.SelectionStart = TBCarBrand.Text.Length;
+            }
         }
     }
 }

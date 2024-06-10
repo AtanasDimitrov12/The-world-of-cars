@@ -21,19 +21,23 @@ namespace DesktopApp
         RentalsUC rentalsUC;
         List<UserControl> userControls;
         ProjectManager projectManager;
+        
 
         public ControlPage()
         {
             InitializeComponent();
             projectManager = new ProjectManager();
-            adminInfoUC = new AdminInfoUC(projectManager.PeopleManager, projectManager.AdministratorRepository);
+            adminInfoUC = new AdminInfoUC(projectManager.PeopleManager, projectManager.AdministratorRepository, projectManager.CarManager, projectManager.RentManager, projectManager.NewsManager);
             carNewsUC = new CarNewsUC(projectManager.PeopleManager, projectManager.NewsManager);
-            carControlUC = new CarControlUC(projectManager.PeopleManager, projectManager.CarManager, projectManager.ExtraManager, projectManager.PictureManager);
+            carControlUC = new CarControlUC(projectManager.RentManager, projectManager.CarManager, projectManager.ExtraManager, projectManager.PictureManager);
             commentsControlUC = new CommentsControlUC(projectManager.NewsManager, projectManager.CommentsManager, projectManager.PeopleManager);
             rentalsUC = new RentalsUC(projectManager.PeopleManager, projectManager.RentManager);
             userControls = new List<UserControl> { adminInfoUC, carNewsUC, carControlUC, commentsControlUC, rentalsUC };
             this.Controls.Add(panel2);
             AddUC();
+
+            carControlUC.admInfo = adminInfoUC;
+            carNewsUC.admInfo = adminInfoUC;
         }
 
 

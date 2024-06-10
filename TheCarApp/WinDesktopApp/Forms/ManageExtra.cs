@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using InterfaceLayer;
+using System.Text.RegularExpressions;
 
 namespace WinDesktopApp.Forms
 {
@@ -26,24 +27,78 @@ namespace WinDesktopApp.Forms
             InitializeGridView();
             FillDataGridView(manager.extras);
             this.DGVExtras.CellClick += DGVExtras_CellContentClick;
+            this.DGVExtras.CellPainting += DGVExtras_CellPainting;
         }
+
+        private void DGVExtras_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                if (DGVExtras.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+                {
+                    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                    var buttonRect = e.CellBounds;
+                    var buttonColor = Color.White;
+                    var textColor = Color.Black;
+
+
+                    if (e.ColumnIndex == DGVExtras.Columns["Delete"].Index)
+                    {
+                        buttonColor = ColorTranslator.FromHtml("#3A5A40");
+                        textColor = Color.White;
+                    }
+
+                    var adjustedRect = new Rectangle(buttonRect.X + 1, buttonRect.Y + 1, buttonRect.Width - 2, buttonRect.Height - 2);
+
+                    using (Brush brush = new SolidBrush(buttonColor))
+                    {
+                        e.Graphics.FillRectangle(brush, adjustedRect);
+                    }
+
+                    var buttonText = (string)e.FormattedValue;
+                    var textSize = TextRenderer.MeasureText(buttonText, e.CellStyle.Font);
+                    var textLocation = new Point(
+                        e.CellBounds.Left + (e.CellBounds.Width - textSize.Width) / 2,
+                        e.CellBounds.Top + (e.CellBounds.Height - textSize.Height) / 2);
+
+                    TextRenderer.DrawText(e.Graphics, buttonText, e.CellStyle.Font, textLocation, textColor);
+
+                    e.Graphics.DrawRectangle(Pens.Black, adjustedRect);
+
+                    if ((e.State & DataGridViewElementStates.Selected) != 0 || (e.State & DataGridViewElementStates.Displayed) != 0)
+                    {
+                        var hoverRect = new Rectangle(adjustedRect.X - 1, adjustedRect.Y - 1, adjustedRect.Width + 2, adjustedRect.Height + 2);
+                        e.Graphics.DrawRectangle(Pens.DarkGray, hoverRect);
+                    }
+
+                    e.Handled = true;
+                }
+            }
+        }
+
 
         private void BTNAddExtra_Click(object sender, EventArgs e)
         {
             Extra extra = new Extra(RTBExtraName.Text);
-            string ReturnMessage = manager.AddExtra(extra);
-            extra.Id = manager.GetExtraId(extra.ExtraName);
-            if (ReturnMessage == "done")
+            if (manager.AddExtra(extra, out string addExtraError))
             {
+                extra.Id = manager.GetExtraId(extra.ExtraName);
+           
                 ExtraAdded?.Invoke(this, EventArgs.Empty);
                 FillDataGridView(manager.extras);
-                RTBExtraName.Clear();   
+                RTBExtraName.Clear();
             }
-            else { MessageBox.Show(ReturnMessage); }
+            else 
+            {
+                MessageBox.Show($"Failed to add extra: {addExtraError}");
+            }
         }
 
         private void InitializeGridView()
         {
+            Font gridFont = new Font("Arial Rounded MT Bold", 10);
+
             this.DGVExtras.ColumnCount = 2;
             this.DGVExtras.Columns[0].Name = "ID";
             this.DGVExtras.Columns[0].Width = 50;
@@ -57,6 +112,20 @@ namespace WinDesktopApp.Forms
             btnDelete.Text = "Delete";
             btnDelete.UseColumnTextForButtonValue = true;
             DGVExtras.Columns.Add(btnDelete);
+
+            DGVExtras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGVExtras.ColumnHeadersDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#344E41");
+            DGVExtras.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DGVExtras.ColumnHeadersDefaultCellStyle.Font = new Font(gridFont, FontStyle.Bold);
+            DGVExtras.EnableHeadersVisualStyles = false;
+            DGVExtras.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DGVExtras.DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#588157");
+            DGVExtras.DefaultCellStyle.SelectionForeColor = Color.White;
+            DGVExtras.BackgroundColor = ColorTranslator.FromHtml("#DAD7CD");
+            DGVExtras.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#A3B18A");
+            DGVExtras.DefaultCellStyle.Font = gridFont;
+            DGVExtras.ColumnHeadersDefaultCellStyle.Font = gridFont;
+            DGVExtras.RowHeadersDefaultCellStyle.Font = gridFont;
         }
 
         private void FillDataGridView(List<Extra> extras)
@@ -80,13 +149,28 @@ namespace WinDesktopApp.Forms
                     {
                         if (selectedExtras.Id == extraId)
                         {
-                            manager.RemoveExtra(selectedExtras);
-                            FillDataGridView(manager.extras);
-                            break;
+                            if (manager.RemoveExtra(selectedExtras, out string removeExtraError))
+                            {
+                                FillDataGridView(manager.extras);
+                                break;
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Failed to remove extra: {removeExtraError}");
+                            }
                         }
                     }
                 }
             }
+        }
+
+        private void BTNSearch_Click(object sender, EventArgs e)
+        {
+            string extraName = TBSearch.Text;
+            var filteredExtras = manager.extras
+                .Where(extra => Regex.IsMatch(extra.ExtraName, Regex.Escape(extraName), RegexOptions.IgnoreCase))
+                .ToList();
+            FillDataGridView(filteredExtras);
         }
     }
 }

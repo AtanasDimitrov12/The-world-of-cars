@@ -25,12 +25,14 @@ namespace TheCarApp.Pages
 
         public void OnGet(int NewsId)
         {
-            news = projectManager.NewsManager.GetNewsById(NewsId); 
+            news = projectManager.NewsManager.GetNewsById(NewsId);
             if (news == null)
             {
                 RedirectToPage("/NotFound");
             }
+            ViewData["NewsId"] = news.Id; // Add this line
         }
+
 
         public async Task<IActionResult> OnPostAddComment(int NewsId)
         {
@@ -54,7 +56,7 @@ namespace TheCarApp.Pages
             {
                 NewComment.UserId = user.Id;
                 NewComment.Date = date;
-                projectManager.CommentsManager.AddComment(news, NewComment);
+                projectManager.CommentsManager.AddComment(news, NewComment, out string errorMessage); // Display error message
             }
 
             

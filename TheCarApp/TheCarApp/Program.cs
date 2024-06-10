@@ -1,12 +1,7 @@
 using InterfaceLayer;
-using ManagerLayer;
 using ManagerLayer.Strategy;
-using Microsoft.AspNetCore.Authentication;
+using ManagerLayer;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +13,8 @@ builder.Services.AddSingleton<IRentalStrategyFactory, RentalStrategyFactory>();
 
 builder.Services.AddRazorPages();
 builder.Services.AddLogging(); // Add logging services
+
+builder.Services.AddControllers(); // Add this line to include controllers
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -48,5 +45,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapControllers(); // Add this line to map controllers
 
 app.Run();

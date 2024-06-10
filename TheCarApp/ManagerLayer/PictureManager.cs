@@ -5,9 +5,6 @@ using Entity_Layer;
 using InterfaceLayer;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ManagerLayer
 {
@@ -24,65 +21,67 @@ namespace ManagerLayer
             _dataAccess = dataAccess;
             _dataWriter = dataWriter;
             _dataRemover = dataRemover;
-            LoadPictures();
+            LoadPictures(out _); 
         }
-        public string AddPicture(Picture pic)
+
+        public bool AddPicture(Picture pic, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 _dataWriter.AddPicture(pic.PictureURL);
                 pictures.Add(pic);
-                return "done";
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
-
-
         }
 
-        public string RemovePicture(Picture pic)
+        public bool RemovePicture(Picture pic, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 _dataRemover.RemovePicture(pic.Id);
                 pictures.Remove(pic);
-                return "done";
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
-
         }
 
-        public string LoadPictures()
+        public bool LoadPictures(out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
-                var LoadedPics = _dataAccess.GetAllExtras();
-                if (LoadedPics != null)
+                var loadedPics = _dataAccess.GetAllPictures();
+                if (loadedPics != null)
                 {
-                    foreach (PictureDTO pic in _dataAccess.GetAllPictures())
+                    foreach (PictureDTO pic in loadedPics)
                     {
                         Picture picture = new Picture(pic.Id, pic.PictureURL);
                         pictures.Add(picture);
                     }
                 }
-                return "done";
+                return true;
             }
-            catch (ApplicationException ex)
+            catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
-
         }
 
         public int GetPicId(string URL)
-        { 
+        {
             return _dataWriter.GetPictureId(URL);
         }
     }
-
 }

@@ -2,21 +2,17 @@
 using DatabaseAccess;
 using DTO;
 using Entity_Layer;
-using EntityLayout;
 using InterfaceLayer;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repositories
 {
     public class AdministratorRepository : IAdministratorRepository
     {
-        private IPeopleDataWriter writer;
-        private IPeopleDataRemover remover;
-        private IDataAccess access;
+        private readonly IPeopleDataWriter writer;
+        private readonly IPeopleDataRemover remover;
+        private readonly IDataAccess access;
         public List<Administrator> admins;
 
         public AdministratorRepository(IDataAccess dataAccess, IPeopleDataWriter dataWriter, IPeopleDataRemover dataRemover)
@@ -27,74 +23,79 @@ namespace Repositories
             admins = new List<Administrator>();
         }
 
-        public string AddAdmin(Administrator admin)
+        public bool AddAdmin(Administrator admin, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 writer.AddAdmin(admin.Username, admin.Email, admin.Password, admin.PhoneNumber, admin.CreatedOn, admin.PassSalt);
-
                 admins.Add(admin);
-                return "done";
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
         }
 
-        public string RemoveAdmin(Administrator admin)
+        public bool RemoveAdmin(Administrator admin, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 remover.RemoveAdmin(admin.Id);
                 admins.Remove(admin);
-                return "done";
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
         }
-        public string UpdateAdmin(Administrator admin)
+
+        public bool UpdateAdmin(Administrator admin, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
-                writer.UpdateAdministration(admin.Id, admin.Username, admin.Email, admin.Password, admin.PhoneNumber, admin.CreatedOn, admin.PassSalt); ;
-                return "done";
+                writer.UpdateAdministration(admin.Id, admin.Username, admin.Email, admin.Password, admin.PhoneNumber, admin.CreatedOn, admin.PassSalt);
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
         }
+
         public List<Administrator> GetAllAdministrators()
         {
             return admins;
         }
 
-        public string LoadAdmins()
+        public bool LoadAdmins(out string errorMessage)
         {
-            List<AdministratorDTO> loadAdmins;
+            errorMessage = string.Empty;
             try
             {
-                loadAdmins = access.GetAdministrators();
+                var loadAdmins = access.GetAdministrators();
                 if (loadAdmins != null)
                 {
                     foreach (AdministratorDTO adminDTO in loadAdmins)
                     {
-                        Administrator admin = new Administrator(adminDTO.Id, adminDTO.email, adminDTO.password, adminDTO.Username, adminDTO.CreatedOn, adminDTO._phoneNumber, adminDTO.passSalt);
+                        var admin = new Administrator(adminDTO.Id, adminDTO.email, adminDTO.password, adminDTO.Username, adminDTO.CreatedOn, adminDTO._phoneNumber, adminDTO.passSalt);
                         admins.Add(admin);
                     }
                 }
-                return "done";
+                return true;
             }
-            catch (ApplicationException ex)
+            catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
-
         }
     }
-
-
 }

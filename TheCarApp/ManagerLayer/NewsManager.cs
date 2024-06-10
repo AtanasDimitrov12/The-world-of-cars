@@ -7,10 +7,7 @@ using InterfaceLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Entity_Layer.Interfaces;
-using System.Xml.Linq;
 
 namespace Entity_Layer
 {
@@ -29,66 +26,67 @@ namespace Entity_Layer
             _dataRemover = dataRemover;
         }
 
-        public string AddNews(CarNews carnews)
+        public bool AddNews(CarNews carnews, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 _dataWriter.AddCarNews(carnews.Author, carnews.Title, carnews.ReleaseDate, carnews.NewsDescription, carnews.ImageURL, carnews.ShortIntro);
                 int NewsId = _dataWriter.GetNewsId(carnews.Title);
                 carnews.Id = NewsId;
                 news.Add(carnews);
-                return "done";
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
-
-
         }
 
-        public string DeleteNews(CarNews carnews)
+        public bool DeleteNews(CarNews carnews, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
+                foreach (var comm in carnews.Comments)
+                {
+                    _dataRemover.RemoveComment(comm.Id);
+                }
                 _dataRemover.RemoveNews(carnews.Id);
                 news.Remove(carnews);
-                return "done";
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
         }
 
-        public string UpdateNews(CarNews news)
+        public bool UpdateNews(CarNews news, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 _dataWriter.UpdateNews(news);
-                return "done";
+                return true;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
-
         }
 
         public CarNews GetNewsById(int id)
         {
-            foreach (var News in news)
-            {
-                if (News.Id == id)
-                {
-                    return News;
-                }
-            }
-            return null;
+            return news.FirstOrDefault(n => n.Id == id);
         }
 
-        public string LoadNews()
+        public bool LoadNews(out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
                 var carNewsList = _dataAccess.GetCarNews();
@@ -101,13 +99,13 @@ namespace Entity_Layer
                         news.Add(loadnews);
                     }
                 }
-                return "done";
+                return true;
             }
-            catch (ApplicationException ex)
+            catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
-
         }
     }
 }

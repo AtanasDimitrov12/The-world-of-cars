@@ -9,13 +9,13 @@ namespace InterfaceLayer
 {
     public interface IUserRepository
     {
-        string AddUser(User user);
-        string UploadProfilePicture(User user, string relativeFilePath);
-        string GetProfilePicPathById(int UserId);
-        string RemoveUser(User user);
-        string UpdateUser(User user);
-        string GetUserNameById(int UserID);
+        bool AddUser(User user, out string errorMessage);
+        bool UploadProfilePicture(User user, string relativeFilePath, out string errorMessage);
+        string GetProfilePicPathById(int userId);
+        bool RemoveUser(User user, out string errorMessage);
+        bool UpdateUser(User user, out string errorMessage);
+        string GetUserNameById(int userId);
         List<User> GetAllUsers();
-        string LoadUsers();
+        bool LoadUsers(out string errorMessage);
     }
 }

@@ -9,7 +9,7 @@ namespace Entity_Layer.Enums
     public enum CarStatus
     {
         AVAILABLE,
-        RENTED,
+        UNAVAILABLE,
         MAINTENANCE
     }
 }

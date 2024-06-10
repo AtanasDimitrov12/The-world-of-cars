@@ -5,5 +5,19 @@ C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\ne
 C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\TheCarApp.deps.json
 C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\TheCarApp.runtimeconfig.json
 C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\TheCarApp.pdb
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\System.Data.SqlClient.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\runtimes\win-arm64\native\sni.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\runtimes\win-x64\native\sni.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\runtimes\win-x86\native\sni.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\DatabaseAccess.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\DTO.dll
 C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\Entity Layer.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\InterfaceLayer.dll
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\ManagerLayer.dll
 C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\Entity Layer.pdb
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\ManagerLayer.pdb
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\DatabaseAccess.pdb
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\DTO.pdb
+C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\TheCarApp\obj\Release\net8.0\PubTmp\Out\InterfaceLayer.pdb

@@ -37,7 +37,7 @@ namespace TheCarApp.Pages
             else
             {
                 // Record the view
-                projectManager.CarManager.RecordCarView(carId);
+                projectManager.CarManager.RecordCarView(carId, out string ErrorMessage);
                 RentedPeriods = projectManager.RentManager.GetRentedPeriods(carId);
             }
             UserEmail = User.Identity.Name;
@@ -117,7 +117,7 @@ namespace TheCarApp.Pages
                 projectManager.RentManager.RentACar(rentACar);
                 PriceResult = projectManager.RentManager.CalculatePrice(user, Car.PricePerDay, StartDate, EndDate);
                 ErrorMessage = null;
-                return RedirectToPage("RentConfirmation", new { carId = Car.Id, rent = rentACar });
+                return RedirectToPage("RentConfirmation", new { carId = Car.Id, Start = StartDate, End = EndDate, Price = PriceResult });
             }
             catch (Exception ex)
             {

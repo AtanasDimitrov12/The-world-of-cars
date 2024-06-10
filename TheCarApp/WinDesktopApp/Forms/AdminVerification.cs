@@ -23,6 +23,7 @@ namespace WinDesktopApp.Forms
             this.ChangeAdmInfo = ChangeInfo;
             this.Admin = administrator;
             Manager = pm;
+            TBAdminPass.PasswordChar = '*';
         }
 
         private void BTNCheckPass_Click(object sender, EventArgs e)
@@ -36,7 +37,7 @@ namespace WinDesktopApp.Forms
             {
                 MessageBox.Show("Entered password is different from the stored one! Try again.");
                 TBAdminPass.Clear();
-                ChangeAdmInfo.Show();
+                //ChangeAdmInfo.Show();
             }
         }
     }

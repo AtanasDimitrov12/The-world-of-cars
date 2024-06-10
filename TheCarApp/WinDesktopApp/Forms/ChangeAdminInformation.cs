@@ -1,5 +1,6 @@
 ﻿using Entity_Layer;
 using InterfaceLayer;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,24 +34,20 @@ namespace WinDesktopApp.Forms
             Manager = pm;
             DisplayAdminInfo();
 
-            // Store initial values
             initialEmail = Admin.Email;
             initialUsername = Admin.Username;
             initialPhoneNumber = Admin.PhoneNumber;
-            initialPassword = ""; // Assuming password is not displayed for security reasons
+            initialPassword = ""; 
 
-            // Add event handlers for text changed events
             TBAdminEmail.TextChanged += AdminInfoChanged;
             TBAdminUsername.TextChanged += AdminInfoChanged;
             TBAdminPhoneNumber.TextChanged += AdminInfoChanged;
             TBAdminPassword.TextChanged += AdminInfoChanged;
 
-            // Disable the button initially
             BTNUpdateAdminInfo.Enabled = false;
         }
         private void AdminInfoChanged(object sender, EventArgs e)
         {
-            // Enable the button if any textbox value has changed
             BTNUpdateAdminInfo.Enabled = HasAdminInfoChanged();
         }
         private bool HasAdminInfoChanged()
@@ -79,20 +76,20 @@ namespace WinDesktopApp.Forms
                     Admin.Password = TBAdminPassword.Text;
                     Admin.Username = TBAdminUsername.Text;
                     Admin.PhoneNumber = TBAdminPhoneNumber.Text;
-                    string hash;
-                    string salt;
-                    (hash, salt) = Manager.HashPassword(Admin.Password);
+                    //string hash;
+                    //string salt;
+                    var (hash, salt) = Manager.HashPassword(Admin.Password);
                     Admin.Password = hash;
                     Admin.PassSalt = salt;
-                    string message = Manager.UpdatePerson(Admin);
-                    if (message == "done")
-                    {
+                    if (Manager.UpdatePerson(Admin, out string ErrorMessage))
+                    { 
                         InfoChanged?.Invoke(this, EventArgs.Empty);
+                        MessageBox.Show("You successfully update the admin's information!");
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show(message);
+                        MessageBox.Show(ErrorMessage);
                     }
                 }
             }
@@ -103,15 +100,15 @@ namespace WinDesktopApp.Forms
                     Admin.Email = TBAdminEmail.Text;
                     Admin.Username = TBAdminUsername.Text;
                     Admin.PhoneNumber = TBAdminPhoneNumber.Text;
-                    string message = Manager.UpdatePerson(Admin);
-                    if (message == "done")
+                    if (Manager.UpdatePerson(Admin, out string ErrorMessage))
                     {
                         InfoChanged?.Invoke(this, EventArgs.Empty);
+                        MessageBox.Show("You successfully update the admin's information!");
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show(message);
+                        MessageBox.Show(ErrorMessage);
                     }
                 }
             }
@@ -150,14 +147,12 @@ namespace WinDesktopApp.Forms
 
         private bool IsValidEmail(string email)
         {
-            // Use a regular expression to validate the email format
             string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return Regex.IsMatch(email, emailPattern);
         }
 
         private bool IsValidPhoneNumber(string phoneNumber)
         {
-            // Check if the phone number contains only digits
             return phoneNumber.All(char.IsDigit);
         }
     }

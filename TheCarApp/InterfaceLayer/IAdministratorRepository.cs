@@ -9,10 +9,10 @@ namespace InterfaceLayer
 {
     public interface IAdministratorRepository
     {
-        string AddAdmin(Administrator admin);
-        string RemoveAdmin(Administrator admin);
-        string UpdateAdmin(Administrator admin);
+        bool AddAdmin(Administrator admin, out string errorMessage);
+        bool RemoveAdmin(Administrator admin, out string errorMessage);
+        bool UpdateAdmin(Administrator admin, out string errorMessage);
         List<Administrator> GetAllAdministrators();
-        string LoadAdmins();
+        bool LoadAdmins(out string errorMessage);
     }
 }

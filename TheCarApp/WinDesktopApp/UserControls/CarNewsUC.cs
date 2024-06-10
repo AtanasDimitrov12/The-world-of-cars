@@ -22,6 +22,7 @@ namespace DesktopApp
         IPeopleManager peopleManager;
         INewsManager newsManager;
         List<CarNews> News;
+        public AdminInfoUC admInfo { get; set; }
         public CarNewsUC(IPeopleManager pm, INewsManager nw)
         {
             InitializeComponent();
@@ -43,7 +44,8 @@ namespace DesktopApp
 
         private void AddNews_NewsAdded(object sender, EventArgs e)
         {
-            FillDataGridView(News); 
+            FillDataGridView(News);
+            admInfo.DisplayDataInfo();
         }
 
         private void InitializeGridView()
@@ -156,7 +158,7 @@ namespace DesktopApp
             }
         }
 
-        
+
 
         private void FillDataGridView(List<CarNews> news)
         {
@@ -179,7 +181,7 @@ namespace DesktopApp
             FillDataGridView(News);
         }
 
-        
+
 
         private void BTNSearchByTitle_Click(object sender, EventArgs e)
         {
@@ -205,6 +207,8 @@ namespace DesktopApp
                         if (selectedNews.Title == newsTitle && selectedNews.Author == newsAuthor)
                         {
                             AddNews addNews = new AddNews(selectedNews, newsManager, false);
+                            addNews.NewsAdded += AddNews_NewsAdded;
+                            
                             addNews.Show();
                             break;
                         }
@@ -223,9 +227,29 @@ namespace DesktopApp
                     {
                         if (selectedNews.Title == newsTitle && selectedNews.Author == newsAuthor)
                         {
-                            newsManager.DeleteNews(selectedNews);
-                            FillDataGridView(newsManager.news);
-                            break;
+                            DialogResult result = MessageBox.Show(
+        "Are you sure you want to delete that news?",
+        "Confirmation",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Warning);
+
+                            if (result == DialogResult.Yes)
+                            {
+                                if (newsManager.DeleteNews(selectedNews, out string errorMessage))
+                                {
+                                    FillDataGridView(newsManager.news);
+                                    admInfo.DisplayDataInfo();
+                                    break;
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"Failed to delete that news: {errorMessage}");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Deletion canceled.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                     }
                 }
@@ -249,6 +273,11 @@ namespace DesktopApp
                     }
                 }
             }
+        }
+
+        private void BTNShowAll_Click(object sender, EventArgs e)
+        {
+            FillDataGridView(newsManager.news);
         }
     }
 }

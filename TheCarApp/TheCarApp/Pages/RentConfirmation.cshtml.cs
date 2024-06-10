@@ -23,13 +23,13 @@ namespace TheCarApp.Pages
         public decimal TotalPrice { get; set; }
         public RentACar rent { get; set; }
 
-        public void OnGet(int carId, RentACar rent)
+        public void OnGet(int carId, DateTime Start, DateTime End, decimal Price)
         {
             this.rent = rent;
             Car = _carManager.GetCarById(carId);;
-            RentalStartDate = rent.StartDate;
-            RentalEndDate = rent.ReturnDate;
-            TotalPrice = rent.TotalPrice;
+            RentalStartDate = Start;
+            RentalEndDate = End;
+            TotalPrice = Price;
         }
     }
 }

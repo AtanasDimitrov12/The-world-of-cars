@@ -54,10 +54,10 @@ namespace ManagerLayer
 
         public void LoadAllData()
         { 
-            CarManager.LoadCars();
-            NewsManager.LoadNews();
-            UserRepository.LoadUsers();
-            AdministratorRepository.LoadAdmins();
+            CarManager.LoadCars(out string CarerrorMessage);
+            NewsManager.LoadNews(out string NewsErrorMessage);
+            UserRepository.LoadUsers(out string UserErrorMessage);
+            AdministratorRepository.LoadAdmins(out string AdminErrorMessage);
             RentManager.LoadRentals();
         }
     }

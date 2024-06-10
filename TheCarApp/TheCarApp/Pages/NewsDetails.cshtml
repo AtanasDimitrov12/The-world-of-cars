@@ -5,8 +5,6 @@
     <link rel="stylesheet" href="~/css/market.css" asp-append-version="true" />
 }
 
-
-
 <div class="page-heading header-text">
     <div class="container">
         <div class="row">
@@ -41,31 +39,57 @@
 <hr>
 <br>
 
- <div class="comment-box">
-        <h3>Add a comment:</h3>
-        <form method="post" asp-page-handler="AddComment">
-            <div class="form-group">
-                <input asp-for="NewComment.Message" class="text-area" placeholder="Enter your comment" required />
-            </div>
-            <input type="submit" value="Submit" class="comment-submit">
-        </form>
- </div>
+<div class="comment-box">
+    <h3>Add a comment:</h3>
+    <form method="post" asp-page-handler="AddComment">
+        <div class="form-group">
+            <input asp-for="NewComment.Message" class="text-area" placeholder="Enter your comment" required />
+        </div>
+        <input type="submit" value="Submit" class="filled-button">
+    </form>
+</div>
 <div class="comments-section">
     <br>
     <h3>Comments:</h3>
-    <div class="comments-list">
-        @foreach (var comment in Model.news.GetCommentsLastToNew())
-        {
-            <div class="comment-card">
-                <div class="user-info">
-                    <img src="@Model.projectManager.UserRepository.GetProfilePicPathById(comment.UserId)" alt="User Profile Picture" class="comment-profile-picture">
-                    <div class="user-name">@Model.projectManager.UserRepository.GetUserNameById(comment.UserId)</div>
-                    <div class="comment-date">@comment.Date.ToShortDateString()</div>
-                </div>
-                <div class="comment-content">@comment.Message</div>
-            </div>
-        }
+    <div class="comments-list" id="commentsList">
+        <!-- Comments will be loaded here -->
     </div>
+    <button id="loadMoreButton" class="filled-button" onclick="loadMoreComments()">Load More Comments</button>
 </div>
 
+<script>
+    let currentPage = 1;
+    const commentsPerPage = 10;
+    const newsId = @Model.news.Id;
 
+    document.addEventListener("DOMContentLoaded", function () {
+        loadMoreComments();
+    });
+
+    function loadMoreComments() {
+        fetch(`/api/comments/${newsId}?page=${currentPage}&pageSize=${commentsPerPage}`)
+            .then(response => response.json())
+            .then(data => {
+                const commentsList = document.getElementById('commentsList');
+                data.comments.forEach(comment => {
+                    const commentCard = document.createElement('div');
+                    commentCard.className = 'comment-card';
+                    commentCard.innerHTML = `
+                            <div class="user-info">
+                                <img src="${comment.profilePic}" alt="User Profile Picture" class="comment-profile-picture">
+                                <div class="user-name">${comment.userName}</div>
+                                <div class="comment-date">${new Date(comment.date).toLocaleDateString()}</div>
+                            </div>
+                            <div class="comment-content">${comment.message}</div>
+                        `;
+                    commentsList.appendChild(commentCard);
+                });
+                if (data.hasMore) {
+                    currentPage++;
+                } else {
+                    document.getElementById('loadMoreButton').style.display = 'none';
+                }
+            })
+            .catch(error => console.error('Error loading comments:', error));
+    }
+</script>

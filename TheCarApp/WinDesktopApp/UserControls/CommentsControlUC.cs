@@ -86,10 +86,10 @@ namespace DesktopApp
                     e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
                     var buttonRect = e.CellBounds;
-                    var buttonColor = Color.White; // Default color
-                    var textColor = Color.Black; // Default text color
+                    var buttonColor = Color.White;
+                    var textColor = Color.Black;
 
-                    
+
                     if (e.ColumnIndex == DGVComments.Columns["Delete"].Index)
                     {
                         buttonColor = ColorTranslator.FromHtml("#3A5A40");
@@ -153,17 +153,25 @@ namespace DesktopApp
         private void DisplayComments(string NewsTitle)
         {
             List<Comment> comments = new List<Comment>();
-            foreach (CarNews news in newsManager.news)
+            if (NewsTitle != "")
             {
-                if (news.Title == NewsTitle)
+                foreach (CarNews news in newsManager.news)
                 {
-                    foreach (Comment comm in news.Comments)
+                    if (news.Title == NewsTitle)
                     {
-                        comments.Add(comm);
+                        foreach (Comment comm in news.Comments)
+                        {
+                            comments.Add(comm);
+                        }
                     }
                 }
+                FillDataGridView(comments);
             }
-            FillDataGridView(comments);
+            else
+            {
+                FillDataGridView(allComments);
+            }
+
         }
 
         private void DGVComments_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -181,9 +189,16 @@ namespace DesktopApp
                         {
                             if (comm.Message == Comment)
                             {
-                                commentsManager.RemoveComment(news, comm);
-                                DisplayComments(CBNews.Text);
-                                break;
+                                if (commentsManager.RemoveComment(news, comm, out string errorMessage))
+                                {
+                                    MessageBox.Show("You successfully delete that comment!");
+                                    DisplayComments(CBNews.Text);
+                                    break;
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"Failed to remove comment: {errorMessage}");
+                                }
                             }
                         }
                     }
@@ -202,7 +217,7 @@ namespace DesktopApp
                     {
                         SortCommentsAscending(news.Comments);
                     }
-                   
+
                 }
             }
             else
@@ -244,6 +259,11 @@ namespace DesktopApp
             comments = comments.OrderByDescending(comm => comm.Date).ToList();
 
             FillDataGridView(comments);
+        }
+
+        private void BTNShowAll_Click(object sender, EventArgs e)
+        {
+            FillDataGridView(allComments);
         }
     }
 }

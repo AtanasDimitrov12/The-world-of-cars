@@ -19,15 +19,16 @@ namespace DesktopApp
 {
     public partial class CarControlUC : UserControl
     {
-        IPeopleManager peopleManager;
+        IRentManager rentManager;
         ICarManager carManager;
         IExtraManager extraManager;
         IPictureManager pictureManager;
-        
-        public CarControlUC(IPeopleManager pm, ICarManager cm, IExtraManager em, IPictureManager picM)
+        public AdminInfoUC admInfo { get; set; }
+
+        public CarControlUC(IRentManager rm, ICarManager cm, IExtraManager em, IPictureManager picM)
         {
             InitializeComponent();
-            this.peopleManager = pm;
+            this.rentManager = rm;
             this.carManager = cm;
             this.extraManager = em;
             this.pictureManager = picM;
@@ -49,18 +50,21 @@ namespace DesktopApp
 
         private void AddCar_CarAdded(object sender, EventArgs e)
         {
-            FillDataGridView(carManager.GetCars()); 
+            FillDataGridView(carManager.GetCars());
+            admInfo.DisplayDataInfo();
         }
 
 
         private void RBAsc_CheckedChanged(object sender, EventArgs e)
         {
             FillDataGridView(carManager.GetCarsDESC());
+            TBSearchByYear.Clear();
         }
 
         private void RBDesc_CheckedChanged(object sender, EventArgs e)
         {
             FillDataGridView(carManager.GetCarsASC());
+            TBSearchByYear.Clear();
         }
 
         private void DGVCars_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -231,9 +235,23 @@ namespace DesktopApp
 
         private void BTNSearch_Click(object sender, EventArgs e)
         {
-            int year = int.Parse(TBSearchByYear.Text);
-            var filteredCars = carManager.GetCars().Where(car => car.FirstRegistration.Year == year).ToList();
-            FillDataGridView(filteredCars);
+            try
+            {
+                if (TBSearchByYear.Text == "")
+                {
+                    FillDataGridView(carManager.GetCars());
+                }
+                else
+                {
+                    int year = int.Parse(TBSearchByYear.Text);
+                    var filteredCars = carManager.GetCars().Where(car => car.FirstRegistration.Year == year).ToList();
+                    FillDataGridView(filteredCars);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void DGVCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -257,9 +275,38 @@ namespace DesktopApp
                     }
                     else if (e.ColumnIndex == DGVCars.Columns["Delete"].Index)
                     {
-                        carManager.RemoveCar(selectedCar);
-                        FillDataGridView(carManager.GetCars());
-                        return;
+                        DialogResult result = MessageBox.Show(
+        "Are you sure you want to delete that car? If you delete it, it will affect users' rentals.",
+        "Confirmation",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Warning);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            foreach (var rent in rentManager.rentalHistory)
+                            {
+                                if (rent.car.Id == selectedCar.Id)
+                                {
+                                    rentManager.RemoveRent(rent);
+                                }
+                            }
+                            if (carManager.RemoveCar(selectedCar, out string updateCarError))
+                            {
+                                MessageBox.Show("Car removed successfully.");
+                                FillDataGridView(carManager.GetCars());
+                                admInfo.DisplayDataInfo();
+                                return;
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Failed to update car: {updateCarError}");
+                            }
+                            
+                        }
+                        else
+                        {
+                            MessageBox.Show("Deletion canceled.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                     else if (e.ColumnIndex == DGVCars.Columns["Change Status"].Index)
                     {
@@ -272,7 +319,7 @@ namespace DesktopApp
                     if (factory != null)
                     {
                         var carForm = factory.CreateCarForm(selectedCar, carManager, extraManager, pictureManager);
-                        carForm.AddCarClicked += AddCar_CarAdded; 
+                        carForm.AddCarClicked += AddCar_CarAdded;
                         carForm.ShowForm();
                     }
                 }
@@ -281,6 +328,11 @@ namespace DesktopApp
 
 
         private void ChangeCarStatus_StatusChanged(object sender, EventArgs e)
+        {
+            FillDataGridView(carManager.GetCars());
+        }
+
+        private void BTNShowAll_Click(object sender, EventArgs e)
         {
             FillDataGridView(carManager.GetCars());
         }
