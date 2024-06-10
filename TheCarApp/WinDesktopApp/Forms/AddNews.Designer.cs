@@ -104,10 +104,10 @@
             // 
             // TBNewsAuthor
             // 
-            TBNewsAuthor.Location = new Point(151, 93);
+            TBNewsAuthor.Location = new Point(131, 94);
             TBNewsAuthor.Margin = new Padding(5);
             TBNewsAuthor.Name = "TBNewsAuthor";
-            TBNewsAuthor.Size = new Size(178, 26);
+            TBNewsAuthor.Size = new Size(214, 26);
             TBNewsAuthor.TabIndex = 15;
             TBNewsAuthor.TextChanged += TBNewsAuthor_TextChanged_1;
             // 
@@ -178,10 +178,10 @@
             // 
             // TBNewsTitle
             // 
-            TBNewsTitle.Location = new Point(151, 45);
+            TBNewsTitle.Location = new Point(131, 45);
             TBNewsTitle.Margin = new Padding(5);
             TBNewsTitle.Name = "TBNewsTitle";
-            TBNewsTitle.Size = new Size(178, 26);
+            TBNewsTitle.Size = new Size(214, 26);
             TBNewsTitle.TabIndex = 8;
             TBNewsTitle.TextChanged += TBNewsTitle_TextChanged;
             // 

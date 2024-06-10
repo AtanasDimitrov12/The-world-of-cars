@@ -35,7 +35,8 @@ namespace DesktopApp
             {
                 Modify = true;
                 LoadNewsData();
-                BTNAdd.Text = "Update Car";
+                BTNAdd.Text = "Update News";
+                groupBox1.Text = "Update News";
             }
             if (View)
             {
@@ -50,21 +51,20 @@ namespace DesktopApp
             RTBNewsIntro.Text = newsData.ShortIntro;
             RTBNewsDescription.Text = newsData.NewsDescription;
 
-            // Clear the existing image from the PictureBox
-            ClearPictureBoxImage(pictureBoxNewsImage);
+            ClearPictureBoxImage();
 
             try
             {
-                // Get the base directory of the application
                 var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                // Navigate up to the root directory of the project
                 var projectRootDirectory = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\..\..\.."));
-                // Combine the project root directory with the relative path to the News_Pictures folder
                 var imagePath = Path.Combine(projectRootDirectory, "TheCarApp", "TheCarApp", "wwwroot", "pictures", "News_Pictures", newsData.ImageURL);
 
                 if (File.Exists(imagePath))
                 {
-                    pictureBoxNewsImage.Image = Image.FromFile(imagePath);
+                    using (var imgStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+                    {
+                        pictureBoxNewsImage.Image = Image.FromStream(imgStream);
+                    }
                 }
                 else
                 {
@@ -81,15 +81,16 @@ namespace DesktopApp
             }
         }
 
-        // Method to clear the PictureBox image
-        private void ClearPictureBoxImage(PictureBox pictureBox)
+
+        public void ClearPictureBoxImage()
         {
-            if (pictureBox.Image != null)
+            if (pictureBoxNewsImage.Image != null)
             {
-                pictureBox.Image.Dispose();
-                pictureBox.Image = null;
+                pictureBoxNewsImage.Image.Dispose();
+                pictureBoxNewsImage.Image = null;
             }
         }
+
 
 
 
@@ -112,40 +113,87 @@ namespace DesktopApp
                 {
                     MessageBox.Show("You successfully added this news!");
                     NewsAdded?.Invoke(this, EventArgs.Empty);
-                    ClearPictureBoxImage(pictureBoxNewsImage);
+                    ClearPictureBoxImage();
                     this.Close();
                 }
                 else { MessageBox.Show(ReturnMessage); }
             }
             else if (IsView)
             {
-                ClearPictureBoxImage(pictureBoxNewsImage);
+                ClearPictureBoxImage();
                 this.Close();
             }
             else if (Modify == true)
             {
-                string fileName = Path.GetFileName(selectedImagePath);
+                string fileName = null;
 
-                var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                var projectRootDirectory = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\..\..\.."));
-                var newImagePath = Path.Combine(projectRootDirectory, "TheCarApp", "TheCarApp", "wwwroot", "pictures", "News_Pictures", fileName);
+                bool hasChanged = false;
 
-
-                newsData.Author = TBNewsAuthor.Text;
-                newsData.Title = TBNewsTitle.Text;
-                newsData.ShortIntro = RTBNewsIntro.Text;
-                newsData.NewsDescription = RTBNewsDescription.Text;
-                newsData.ImageURL = fileName;
-                string ReturnMessage = NewsManager.UpdateNews(newsData);
-                if (ReturnMessage == "done")
+                if (!string.IsNullOrEmpty(selectedImagePath))
                 {
-                    MessageBox.Show("You successfully updated this news!");
-                    NewsAdded?.Invoke(this, EventArgs.Empty);
-                    ClearPictureBoxImage(pictureBoxNewsImage);
-                    this.Close();
+                    fileName = Path.GetFileName(selectedImagePath);
+                    var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                    var projectRootDirectory = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\..\..\.."));
+                    var newImagePath = Path.Combine(projectRootDirectory, "TheCarApp", "TheCarApp", "wwwroot", "pictures", "News_Pictures", fileName);
+
+                    if (selectedImagePath != null && File.Exists(selectedImagePath))
+                    {
+                        File.Copy(selectedImagePath, newImagePath, true);
+                        hasChanged = true; 
+                    }
                 }
-                else { MessageBox.Show(ReturnMessage); }
+                else
+                {
+                    fileName = newsData.ImageURL; 
+                }
+
+                if (TBNewsAuthor.Text != newsData.Author ||
+                    TBNewsTitle.Text != newsData.Title ||
+                    RTBNewsIntro.Text != newsData.ShortIntro ||
+                    RTBNewsDescription.Text != newsData.NewsDescription ||
+                    fileName != newsData.ImageURL)
+                {
+                    hasChanged = true;
+                }
+
+                if (hasChanged)
+                {
+                    newsData.Author = TBNewsAuthor.Text;
+                    newsData.Title = TBNewsTitle.Text;
+                    newsData.ShortIntro = RTBNewsIntro.Text;
+                    newsData.NewsDescription = RTBNewsDescription.Text;
+                    newsData.ImageURL = fileName;
+                    string ReturnMessage = NewsManager.UpdateNews(newsData);
+                    if (ReturnMessage == "done")
+                    {
+                        MessageBox.Show("You successfully updated this news!");
+                        NewsAdded?.Invoke(this, EventArgs.Empty);
+                        ClearPictureBoxImage();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(ReturnMessage);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No changes were made to the news item.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult result = MessageBox.Show(
+        "Do you want to close the form?",
+        "Confirmation",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        ClearPictureBoxImage();
+                        this.Close();
+                    }
+                }
             }
+
+
         }
 
 
@@ -191,7 +239,6 @@ namespace DesktopApp
                     var fileName = Path.GetFileName(selectedImagePath);
                     var fileExtension = Path.GetExtension(fileName).ToLower();
 
-                    // Check if the file is of the allowed types
                     var allowedExtensions = new[] { ".png", ".jpg", ".jpeg" };
                     if (!allowedExtensions.Contains(fileExtension))
                     {
@@ -199,32 +246,22 @@ namespace DesktopApp
                         return;
                     }
 
-                    // Get the base directory of the application
                     var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                    // Navigate up to the root directory of the project
                     var projectRootDirectory = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\..\..\.."));
-                    // Combine the project root directory with the relative path to the News_Pictures folder
                     var webAppDirectory = Path.Combine(projectRootDirectory, "TheCarApp", "TheCarApp", "wwwroot", "pictures", "News_Pictures");
                     var newImagePath = Path.Combine(webAppDirectory, fileName);
 
-                    // Print the path to verify
-                    Console.WriteLine(newImagePath);  // This will show the correct single backslash path
-
                     try
                     {
-                        // Ensure the directory exists
                         if (!Directory.Exists(webAppDirectory))
                         {
                             Directory.CreateDirectory(webAppDirectory);
                         }
 
-                        // Copy the file to the new path
                         File.Copy(selectedImagePath, newImagePath, true);
 
-                        // Display the image in the PictureBox
                         pictureBoxNewsImage.Image = Image.FromFile(newImagePath);
 
-                        // Optionally, you can store the relative path if needed
                         var relativeFilePath = $"/pictures/News_Pictures/{fileName}";
                         MessageBox.Show($"Image successfully uploaded to: {relativeFilePath}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

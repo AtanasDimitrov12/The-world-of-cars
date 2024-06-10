@@ -208,6 +208,7 @@ namespace DesktopApp
                         {
                             AddNews addNews = new AddNews(selectedNews, newsManager, false);
                             addNews.NewsAdded += AddNews_NewsAdded;
+                            
                             addNews.Show();
                             break;
                         }
