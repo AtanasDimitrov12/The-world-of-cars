@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            label5 = new Label();
-            TBNewsImageURL = new TextBox();
+            pictureBoxNewsImage = new PictureBox();
+            btnBrowseImage = new Button();
             label4 = new Label();
             TBNewsAuthor = new TextBox();
             BTNAdd = new Button();
@@ -41,12 +41,13 @@
             label2 = new Label();
             TBNewsTitle = new TextBox();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxNewsImage).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(TBNewsImageURL);
+            groupBox1.Controls.Add(pictureBoxNewsImage);
+            groupBox1.Controls.Add(btnBrowseImage);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(TBNewsAuthor);
             groupBox1.Controls.Add(BTNAdd);
@@ -61,29 +62,34 @@
             groupBox1.Margin = new Padding(5);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(5);
-            groupBox1.Size = new Size(797, 372);
+            groupBox1.Size = new Size(1067, 486);
             groupBox1.TabIndex = 18;
             groupBox1.TabStop = false;
             groupBox1.Text = "Add new news";
+            groupBox1.Enter += groupBox1_Enter;
             // 
-            // label5
+            // pictureBoxNewsImage
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Arial Rounded MT Bold", 12F);
-            label5.Location = new Point(11, 145);
-            label5.Margin = new Padding(5, 0, 5, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(123, 23);
-            label5.TabIndex = 18;
-            label5.Text = "Image URL:";
+            pictureBoxNewsImage.Location = new Point(270, 307);
+            pictureBoxNewsImage.Name = "pictureBoxNewsImage";
+            pictureBoxNewsImage.Size = new Size(267, 159);
+            pictureBoxNewsImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxNewsImage.TabIndex = 18;
+            pictureBoxNewsImage.TabStop = false;
             // 
-            // TBNewsImageURL
+            // btnBrowseImage
             // 
-            TBNewsImageURL.Location = new Point(151, 145);
-            TBNewsImageURL.Margin = new Padding(5);
-            TBNewsImageURL.Name = "TBNewsImageURL";
-            TBNewsImageURL.Size = new Size(351, 26);
-            TBNewsImageURL.TabIndex = 17;
+            btnBrowseImage.BackColor = Color.FromArgb(88, 129, 87);
+            btnBrowseImage.Font = new Font("Arial Rounded MT Bold", 12F);
+            btnBrowseImage.ForeColor = Color.White;
+            btnBrowseImage.Location = new Point(11, 344);
+            btnBrowseImage.Margin = new Padding(5);
+            btnBrowseImage.Name = "btnBrowseImage";
+            btnBrowseImage.Size = new Size(164, 72);
+            btnBrowseImage.TabIndex = 17;
+            btnBrowseImage.Text = "Add picture";
+            btnBrowseImage.UseVisualStyleBackColor = false;
+            btnBrowseImage.Click += btnBrowseImage_Click;
             // 
             // label4
             // 
@@ -110,7 +116,7 @@
             BTNAdd.BackColor = Color.FromArgb(88, 129, 87);
             BTNAdd.Font = new Font("Arial Rounded MT Bold", 12F);
             BTNAdd.ForeColor = Color.White;
-            BTNAdd.Location = new Point(643, 213);
+            BTNAdd.Location = new Point(894, 344);
             BTNAdd.Margin = new Padding(5);
             BTNAdd.Name = "BTNAdd";
             BTNAdd.Size = new Size(143, 132);
@@ -121,10 +127,10 @@
             // 
             // RTBNewsDescription
             // 
-            RTBNewsDescription.Location = new Point(131, 213);
+            RTBNewsDescription.Location = new Point(131, 154);
             RTBNewsDescription.Margin = new Padding(5);
             RTBNewsDescription.Name = "RTBNewsDescription";
-            RTBNewsDescription.Size = new Size(471, 129);
+            RTBNewsDescription.Size = new Size(897, 129);
             RTBNewsDescription.TabIndex = 13;
             RTBNewsDescription.Text = "";
             // 
@@ -132,7 +138,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Arial Rounded MT Bold", 12F);
-            label3.Location = new Point(11, 249);
+            label3.Location = new Point(11, 190);
             label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
             label3.Size = new Size(70, 23);
@@ -144,7 +150,7 @@
             RTBNewsIntro.Location = new Point(523, 32);
             RTBNewsIntro.Margin = new Padding(5);
             RTBNewsIntro.Name = "RTBNewsIntro";
-            RTBNewsIntro.Size = new Size(261, 109);
+            RTBNewsIntro.Size = new Size(505, 109);
             RTBNewsIntro.TabIndex = 11;
             RTBNewsIntro.Text = "";
             // 
@@ -184,13 +190,14 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(218, 215, 205);
-            ClientSize = new Size(833, 411);
+            ClientSize = new Size(1097, 519);
             Controls.Add(groupBox1);
             Margin = new Padding(5);
             Name = "AddNews";
             Text = "AddNews";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxNewsImage).EndInit();
             ResumeLayout(false);
         }
 
@@ -204,9 +211,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TBNewsTitle;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox TBNewsImageURL;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TBNewsAuthor;
+        private PictureBox pictureBoxNewsImage;
+        private Button btnBrowseImage;
     }
 }

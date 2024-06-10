@@ -21,7 +21,6 @@ namespace TheCarApp.Pages
         [BindProperty]
         public IFormFile ProfilePicture { get; set; }
 
-
         public void OnGet()
         {
             UserEmail = User.Identity.Name;
@@ -34,8 +33,6 @@ namespace TheCarApp.Pages
             Rentals = _projectManager.RentManager.rentalHistory
                    .Where(rental => rental.user.Id == user.Id && rental.RentStatus != Entity_Layer.Enums.RentStatus.CANCELLED && rental.RentStatus != Entity_Layer.Enums.RentStatus.REQUESTED)
                    .ToList().Count;
-
-
         }
 
         public async Task<IActionResult> OnPostUploadProfilePicture()
@@ -46,6 +43,16 @@ namespace TheCarApp.Pages
             if (ProfilePicture != null && ProfilePicture.Length > 0)
             {
                 var fileName = Path.GetFileName(ProfilePicture.FileName);
+                var fileExtension = Path.GetExtension(fileName).ToLower();
+
+                // Check if the file is of the allowed types
+                var allowedExtensions = new[] { ".png", ".jpg", ".jpeg" };
+                if (!allowedExtensions.Contains(fileExtension))
+                {
+                    ModelState.AddModelError(string.Empty, "Only PNG, JPG, and JPEG files are allowed.");
+                    return Page();
+                }
+
                 var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pictures", "profile_pictures", fileName);
 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
@@ -61,11 +68,10 @@ namespace TheCarApp.Pages
             return RedirectToPage();
         }
 
-
         public async Task<IActionResult> OnPostLogout()
         {
-            await HttpContext.SignOutAsync(); 
-            return RedirectToPage("/Index"); 
+            await HttpContext.SignOutAsync();
+            return RedirectToPage("/Index");
         }
     }
 }

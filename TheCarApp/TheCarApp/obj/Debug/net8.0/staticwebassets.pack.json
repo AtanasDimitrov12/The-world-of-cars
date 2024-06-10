@@ -393,6 +393,18 @@
       "PackagePath": "staticwebassets\\pictures\\MbCclass4.jpg"
     },
     {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\2.jpg",
+      "PackagePath": "staticwebassets\\pictures\\News_Pictures\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\20230727103137.png",
+      "PackagePath": "staticwebassets\\pictures\\News_Pictures\\20230727103137.png"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\377120911_205201482395595_7544787983719462834_n.png",
+      "PackagePath": "staticwebassets\\pictures\\News_Pictures\\377120911_205201482395595_7544787983719462834_n.png"
+    },
+    {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AcuraSUV.jpg",
       "PackagePath": "staticwebassets\\pictures\\News_Pictures\\AcuraSUV.jpg"
     },
