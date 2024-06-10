@@ -18,8 +18,7 @@ namespace InterfaceLayer
         void UpdateCar(Car car);
         void UpdateCarDescription(Car car);
         void ChangeCarStatus(Car car, string Status);
-        void RemoveCarExtras(int CarId);
-        void RemoveCarPictures(int CarId);
+        
         int GetCarId(string VIN);
         void AddExtra(string ExtraName);
         void AddPicture(string PictureURL);
