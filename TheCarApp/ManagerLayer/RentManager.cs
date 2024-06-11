@@ -18,7 +18,7 @@ namespace ManagerLayer
 {
     public class RentManager : IRentManager
     {
-        private IRentalStrategy _rentalStrategy;
+        private IRentalStrategyFactory _rentalStrategy;
         public List<RentACar> rentalHistory { get; set; }
         private IPeopleDataWriter writer;
         private IPeopleDataRemover remover;
@@ -39,33 +39,26 @@ namespace ManagerLayer
 
 
 
-        public bool IsPeakSeason(DateTime startDate, DateTime endDate)
-        {
-            // Define peak season logic
-            // Example: June to August is peak season
-            if (startDate.Month >= 6 && startDate.Month <= 8)
-            { return true; }
-            else
-            {
-                return false;
-            }
-        }
+        //public bool IsPeakSeason(DateTime startDate, DateTime endDate)
+        //{
+        //    // Define peak season logic
+        //    // Example: June to August is peak season
+        //    if (startDate.Month >= 6 && startDate.Month <= 8)
+        //    { return true; }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
         public decimal CalculatePrice(User user, decimal BasePrice, DateTime startDate, DateTime endDate)
         {
             TimeSpan timeSpan = endDate - startDate;
             int days = (int)timeSpan.TotalDays;
             int Discount = CheckForDiscount(user);
-            if (IsPeakSeason(startDate, endDate))
-            {
-                _rentalStrategy = new PeakSeasonRentalStrategy();
-                return _rentalStrategy.CalculateRentalPrice(BasePrice, Convert.ToInt32(days), Discount);
-            }
-            else
-            {
-                _rentalStrategy = new StandardRentalStrategy();
-                return _rentalStrategy.CalculateRentalPrice(BasePrice, Convert.ToInt32(days), Discount);
-            }
+            _rentalStrategy = new RentalStrategyFactory();
+            return _rentalStrategy.GetRentalStrategy(startDate, endDate).CalculateRentalPrice(BasePrice, Convert.ToInt32(days), Discount);
+            
         }
 
         public int CheckForDiscount(User user) 
@@ -115,7 +108,7 @@ namespace ManagerLayer
 
         public void UpdateRentStatus(RentACar rental, RentStatus newStatus)
         {
-            _rentalStrategy.UpdateRentalStatus(rental, newStatus);
+            _rentalStrategy.GetRentalStrategy(rental.StartDate, rental.ReturnDate).UpdateRentalStatus(rental, newStatus);
             UpdateRental(rental);
         }
 

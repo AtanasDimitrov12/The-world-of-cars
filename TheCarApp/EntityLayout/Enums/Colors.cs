@@ -10,7 +10,26 @@ namespace Entity_Layer.Enums
     {
         BLACK,
         BLUE,
-        RED, 
-        WHITE
+        RED,
+        WHITE,
+        GREEN,
+        YELLOW,
+        ORANGE,
+        PURPLE,
+        PINK,
+        BROWN,
+        GRAY,
+        CYAN,
+        MAGENTA,
+        MAROON,
+        NAVY,
+        LIME,
+        OLIVE,
+        TEAL,
+        AQUA,
+        SILVER,
+        GOLD,
+        BRONZE,
+        VIOLET
     }
 }
