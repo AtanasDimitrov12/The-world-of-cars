@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SHNNOZQpV7mpA+QRHIhPEbi0VgM5SITn0Vr7O49EpX0=",
+  "Hash": "mr1DqRRDPqA7S7etkJ9b2lBBVbd/1yc1eiN2OpzbGdY=",
   "Source": "TheCarApp",
   "BasePath": "_content/TheCarApp",
   "Mode": "Default",
@@ -2031,6 +2031,25 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\AcuraSUV.jpg"
     },
     {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AtanasProfilePic.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/News_Pictures/AtanasProfilePic.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\AtanasProfilePic.jpg"
+    },
+    {
       "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AudiA4.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
@@ -2257,6 +2276,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\ExpensiveSteelNews.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\FontysLogo.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/News_Pictures/FontysLogo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\FontysLogo.jpg"
     },
     {
       "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\FordExplorer.jpg",

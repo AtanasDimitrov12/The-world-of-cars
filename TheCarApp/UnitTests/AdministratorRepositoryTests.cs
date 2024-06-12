@@ -29,7 +29,7 @@ namespace UnitTests
         [TestMethod]
         public void AddAdmin_WhenAdminIsAdded_ReturnsTrue()
         {
-            var admin = new Administrator(1, "admin@example.com", "password", "adminname", DateTime.Now, "1234567890", "salt");
+            var admin = new Administrator(1, "admin@example.com", "password", "adminName", DateTime.Now, "1234567890", "salt");
             string errorMessage = string.Empty;
             _mockDataWriter.Setup(m => m.AddAdmin(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DateTime>(), It.IsAny<string>())).Verifiable();
 
@@ -43,7 +43,7 @@ namespace UnitTests
         [TestMethod]
         public void RemoveAdmin_WhenAdminIsRemoved_ReturnsTrue()
         {
-            var admin = new Administrator(1, "admin@example.com", "password", "adminname", DateTime.Now, "1234567890", "salt");
+            var admin = new Administrator(1, "admin@example.com", "password", "adminName", DateTime.Now, "1234567890", "salt");
             string errorMessage = string.Empty;
             _mockDataRemover.Setup(m => m.RemoveAdmin(It.IsAny<int>())).Verifiable();
 
@@ -57,7 +57,7 @@ namespace UnitTests
         [TestMethod]
         public void UpdateAdmin_WhenAdminIsUpdated_ReturnsTrue()
         {
-            var admin = new Administrator(1, "admin@example.com", "password", "adminname", DateTime.Now, "1234567890", "salt");
+            var admin = new Administrator(1, "admin@example.com", "password", "adminName", DateTime.Now, "1234567890", "salt");
             string errorMessage = string.Empty;
             _mockDataWriter.Setup(m => m.UpdateAdministration(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DateTime>(), It.IsAny<string>())).Verifiable();
 
@@ -73,8 +73,8 @@ namespace UnitTests
         {
             var adminList = new List<Administrator>
             {
-                new Administrator(1, "admin1@example.com", "password", "adminname1", DateTime.Now, "1234567890", "salt"),
-                new Administrator(2, "admin2@example.com", "password", "adminname2", DateTime.Now, "1234567890", "salt")
+                new Administrator(1, "admin1@example.com", "password", "adminName1", DateTime.Now, "1234567890", "salt"),
+                new Administrator(2, "admin2@example.com", "password", "adminName2", DateTime.Now, "1234567890", "salt")
             };
             foreach (var admin in adminList)
             {
@@ -91,8 +91,8 @@ namespace UnitTests
         {
             var adminDTOList = new List<AdministratorDTO>
             {
-                new AdministratorDTO { Id = 1, email = "admin1@example.com", password = "password", Username = "adminname1", CreatedOn = DateTime.Now, _phoneNumber = "1234567890", passSalt = "salt" },
-                new AdministratorDTO { Id = 2, email = "admin2@example.com", password = "password", Username = "adminname2", CreatedOn = DateTime.Now, _phoneNumber = "1234567890", passSalt = "salt" }
+                new AdministratorDTO { Id = 1, email = "admin1@example.com", password = "password", Username = "adminName1", CreatedOn = DateTime.Now, _phoneNumber = "1234567890", passSalt = "salt" },
+                new AdministratorDTO { Id = 2, email = "admin2@example.com", password = "password", Username = "adminName2", CreatedOn = DateTime.Now, _phoneNumber = "1234567890", passSalt = "salt" }
             };
             _mockDataAccess.Setup(m => m.GetAdministrators()).Returns(adminDTOList);
 
