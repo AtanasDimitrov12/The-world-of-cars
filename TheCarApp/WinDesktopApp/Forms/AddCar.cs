@@ -208,23 +208,30 @@ namespace DesktopApp
 
         private void BTNAddExtra_Click(object sender, EventArgs e)
         {
-            int Index = CBCarExtras.SelectedIndex;
-            if (extras.Count > 0)
+            if (CBCarExtras.Text != "")
             {
-                if (!extras.Contains(extraManager.extras[Index]))
+                int Index = CBCarExtras.SelectedIndex;
+                if (extras.Count > 0)
                 {
-                    extras.Add(extraManager.extras[Index]);
+                    if (!extras.Contains(extraManager.extras[Index]))
+                    {
+                        extras.Add(extraManager.extras[Index]);
+                    }
+                    else
+                    {
+                        MessageBox.Show("This extra is already added to that car!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("This extra is already added to that car!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    extras.Add(extraManager.extras[Index]);
                 }
+                AddToLB();
             }
-            else
+            else 
             {
-                extras.Add(extraManager.extras[Index]);
+                MessageBox.Show("First, you need to choose an extra to add!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            AddToLB();
         }
 
         private void BTNRemoveExtra_Click(object sender, EventArgs e)
@@ -249,23 +256,30 @@ namespace DesktopApp
 
         private void BTNAddPicture_Click(object sender, EventArgs e)
         {
-            int Index = CBPictureURL.SelectedIndex;
-            if (pictures.Count > 0)
+            if (CBPictureURL.Text != "")
             {
-                if (!pictures.Contains(pictureManager.pictures[Index]))
+                int Index = CBPictureURL.SelectedIndex;
+                if (pictures.Count > 0)
                 {
-                    pictures.Add(pictureManager.pictures[Index]);
+                    if (!pictures.Contains(pictureManager.pictures[Index]))
+                    {
+                        pictures.Add(pictureManager.pictures[Index]);
+                    }
+                    else
+                    {
+                        MessageBox.Show("This picture is already added to that car!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("This picture is already added to that car!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    pictures.Add(pictureManager.pictures[Index]);
                 }
+                AddToLB();
             }
-            else
+            else 
             {
-                pictures.Add(pictureManager.pictures[Index]);
+                MessageBox.Show("First, you need to choose a picture to add!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            AddToLB();
         }
 
         private void BTNRemovePicture_Click(object sender, EventArgs e)

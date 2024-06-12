@@ -1,6 +1,8 @@
 ﻿using Entity_Layer.Enums;
+using EntityLayout;
 using InterfaceLayer;
 using Manager_Layer;
+using ManagerLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +31,7 @@ namespace WinDesktopApp.Forms
             CheckForView();
         }
 
-        public void CheckForView() 
+        public void CheckForView()
         {
             if (IsView)
             {
@@ -46,6 +48,9 @@ namespace WinDesktopApp.Forms
             DTPStartDate.Value = rent.StartDate;
             DTPEndDate.Value = rent.ReturnDate;
             TBTotalPrice.Text = rent.TotalPrice.ToString();
+            TBCar.Enabled = false;
+            TBUsername.Enabled = false;
+            TBTotalPrice.Enabled = false;
             if (IsView)
             {
                 TBRentStatus.Text = rent.RentStatus.ToString();
@@ -76,7 +81,7 @@ namespace WinDesktopApp.Forms
                     {
                         rent.StartDate = DTPStartDate.Value;
                         rent.ReturnDate = DTPEndDate.Value;
-                        rent.TotalPrice = manager.CalculatePrice(null, rent.car.PricePerDay, DTPStartDate.Value, DTPEndDate.Value);
+                        rent.TotalPrice = manager.CalculatePrice(rent.user, rent.car.PricePerDay, DTPStartDate.Value, DTPEndDate.Value);
                         manager.UpdateRentStatus(rent, newStatus);
                         RentChanged?.Invoke(this, EventArgs.Empty);
                         this.Close();
@@ -98,6 +103,34 @@ namespace WinDesktopApp.Forms
         private void BTNClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void DTPStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            CalculateTotalPrice();
+        }
+
+        private void DTPEndDate_ValueChanged(object sender, EventArgs e)
+        {
+            CalculateTotalPrice();
+        }
+
+        public void CalculateTotalPrice()
+        {
+            if (DTPEndDate.Value <= DTPStartDate.Value)
+            {
+                MessageBox.Show("End date must be after start date.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+
+            try
+            {
+                TBTotalPrice.Text = manager.CalculatePrice(rent.user, rent.car.PricePerDay, DTPStartDate.Value, DTPEndDate.Value).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in OnPostCalculatePrice: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
