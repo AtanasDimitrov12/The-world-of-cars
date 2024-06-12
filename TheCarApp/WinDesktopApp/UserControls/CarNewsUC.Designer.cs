@@ -38,8 +38,8 @@
             label5 = new Label();
             BTNAddNews = new Button();
             groupBox1 = new GroupBox();
-            DGVNews = new DataGridView();
             BTNShowAll = new Button();
+            DGVNews = new DataGridView();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -120,10 +120,10 @@
             BTNSearchByTitle.BackColor = Color.FromArgb(88, 129, 87);
             BTNSearchByTitle.Font = new Font("Arial Rounded MT Bold", 12F);
             BTNSearchByTitle.ForeColor = Color.White;
-            BTNSearchByTitle.Location = new Point(35, 127);
+            BTNSearchByTitle.Location = new Point(35, 132);
             BTNSearchByTitle.Margin = new Padding(5, 4, 5, 4);
             BTNSearchByTitle.Name = "BTNSearchByTitle";
-            BTNSearchByTitle.Size = new Size(167, 67);
+            BTNSearchByTitle.Size = new Size(167, 59);
             BTNSearchByTitle.TabIndex = 19;
             BTNSearchByTitle.Text = "Search";
             BTNSearchByTitle.UseVisualStyleBackColor = false;
@@ -131,10 +131,10 @@
             // 
             // TBNewsTitle
             // 
-            TBNewsTitle.Location = new Point(55, 87);
+            TBNewsTitle.Location = new Point(35, 87);
             TBNewsTitle.Margin = new Padding(5, 4, 5, 4);
             TBNewsTitle.Name = "TBNewsTitle";
-            TBNewsTitle.Size = new Size(132, 26);
+            TBNewsTitle.Size = new Size(167, 26);
             TBNewsTitle.TabIndex = 18;
             // 
             // label5
@@ -177,16 +177,6 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Actions";
             // 
-            // DGVNews
-            // 
-            DGVNews.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVNews.Location = new Point(317, 139);
-            DGVNews.Name = "DGVNews";
-            DGVNews.RowHeadersWidth = 51;
-            DGVNews.Size = new Size(917, 320);
-            DGVNews.TabIndex = 22;
-            DGVNews.CellContentClick += DGVNews_CellContentClick;
-            // 
             // BTNShowAll
             // 
             BTNShowAll.BackColor = Color.FromArgb(88, 129, 87);
@@ -201,6 +191,16 @@
             BTNShowAll.UseVisualStyleBackColor = false;
             BTNShowAll.Click += BTNShowAll_Click;
             // 
+            // DGVNews
+            // 
+            DGVNews.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGVNews.Location = new Point(317, 139);
+            DGVNews.Name = "DGVNews";
+            DGVNews.RowHeadersWidth = 51;
+            DGVNews.Size = new Size(917, 320);
+            DGVNews.TabIndex = 22;
+            DGVNews.CellContentClick += DGVNews_CellContentClick;
+            // 
             // CarNewsUC
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -212,7 +212,7 @@
             Controls.Add(groupBox2);
             Margin = new Padding(5, 4, 5, 4);
             Name = "CarNewsUC";
-            Size = new Size(1326, 667);
+            Size = new Size(1463, 689);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);

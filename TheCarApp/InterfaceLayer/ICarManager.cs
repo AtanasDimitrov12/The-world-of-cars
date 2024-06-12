@@ -1,4 +1,5 @@
-﻿using Entity_Layer;
+﻿using DTO;
+using Entity_Layer;
 using Entity_Layer.Enums;
 using EntityLayout;
 using System;
@@ -21,6 +22,7 @@ namespace InterfaceLayer
         List<Car> GetCarsASC();
         List<Car> GetCarsDESC();
         Car GetCarById(int carId);
+        Car MapCarDtoToCar(CarDTO carDTO);
         bool LoadCars(out string errorMessage);
     }
 }

@@ -3,6 +3,7 @@ using DatabaseAccess;
 using Entity_Layer;
 using InterfaceLayer;
 using Manager_Layer;
+using ManagerLayer.Strategy;
 using Repositories;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace ManagerLayer
         public ICarDataRemover CarDataRemover { get; set; }
         public ICarNewsDataRemover CarNewsDataRemover { get; set; }
         public IPeopleDataRemover PeopleDataRemover { get; set; }
+        public IRentalStrategyFactory rentalStrategyFactory { get; set; }
 
         public ProjectManager()
         {
@@ -40,6 +42,7 @@ namespace ManagerLayer
             CarDataRemover = new CarDataRemover();
             CarNewsDataRemover = new CarNewsDataRemover();
             PeopleDataRemover = new PeopleDataRemover();
+            rentalStrategyFactory = new RentalStrategyFactory();
             CarManager = new CarManager(DataAccess, CarDataWriter, CarDataRemover);
             NewsManager = new NewsManager(DataAccess, CarNewsDataWriter, CarNewsDataRemover);
             CommentsManager = new CommentsManager(DataAccess, CarNewsDataWriter, CarNewsDataRemover);
@@ -48,7 +51,7 @@ namespace ManagerLayer
             UserRepository = new UserRepository(DataAccess, PeopleDataWriter, PeopleDataRemover);
             AdministratorRepository = new AdministratorRepository(DataAccess, PeopleDataWriter, PeopleDataRemover);
             PeopleManager = new PeopleManager(UserRepository, AdministratorRepository);
-            RentManager = new RentManager(DataAccess, PeopleDataWriter, PeopleDataRemover, PeopleManager, CarManager);
+            RentManager = new RentManager(DataAccess, PeopleDataWriter, PeopleDataRemover, PeopleManager, CarManager, rentalStrategyFactory);
             LoadAllData();
         }
 

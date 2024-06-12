@@ -1,4 +1,5 @@
-﻿using Entity_Layer;
+﻿using DTO;
+using Entity_Layer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace InterfaceLayer
         bool DeleteNews(CarNews carnews, out string errorMessage);
         bool UpdateNews(CarNews news, out string errorMessage);
         CarNews GetNewsById(int id);
+        CarNews MapCarNewsDtoToCarNews(CarNewsDTO newsDTO);
         bool LoadNews(out string errorMessage);
     }
 }

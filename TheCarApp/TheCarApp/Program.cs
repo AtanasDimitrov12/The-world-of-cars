@@ -5,16 +5,15 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
 builder.Services.AddScoped<ProjectManager, ProjectManager>();
 builder.Services.AddTransient<StandardRentalStrategy>();
 builder.Services.AddTransient<PeakSeasonRentalStrategy>();
 builder.Services.AddSingleton<IRentalStrategyFactory, RentalStrategyFactory>();
 
 builder.Services.AddRazorPages();
-builder.Services.AddLogging(); // Add logging services
+builder.Services.AddLogging(); 
 
-builder.Services.AddControllers(); // Add this line to include controllers
+builder.Services.AddControllers();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -29,7 +28,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
@@ -45,6 +43,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
-app.MapControllers(); // Add this line to map controllers
+app.MapControllers();
 
 app.Run();

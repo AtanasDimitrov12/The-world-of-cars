@@ -48,11 +48,11 @@ namespace DesktopApp
 
             this.DGVComments.ColumnCount = 3;
             this.DGVComments.Columns[0].Name = "Member";
-            this.DGVComments.Columns[0].Width = 100;
+            this.DGVComments.Columns[0].Width = 50;
             this.DGVComments.Columns[1].Name = "Date";
-            this.DGVComments.Columns[1].Width = 100;
+            this.DGVComments.Columns[1].Width = 50;
             this.DGVComments.Columns[2].Name = "Comment";
-            this.DGVComments.Columns[2].Width = 350;
+            this.DGVComments.Columns[2].Width = 450;
 
 
             var btnDelete = new DataGridViewButtonColumn();
@@ -134,7 +134,7 @@ namespace DesktopApp
             {
                 if (userDictionary.TryGetValue(comment.UserId, out string username))
                 {
-                    this.DGVComments.Rows.Add(username, comment.Date.ToShortDateString(), comment.Message);
+                    this.DGVComments.Rows.Add(username, comment.Date, comment.Message);
                 }
             }
         }

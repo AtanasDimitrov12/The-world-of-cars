@@ -118,8 +118,8 @@ namespace ManagerLayer
         public bool VerifyPassword(string enteredPassword, string storedPass, string base64Salt)
         {
             byte[] salt = Convert.FromBase64String(base64Salt);
-            var pbkdf2 = new Rfc2898DeriveBytes(enteredPassword, salt, 10000);
-            byte[] hash = pbkdf2.GetBytes(20);
+            var pbkdf2 = new Rfc2898DeriveBytes(enteredPassword, salt, iterations, hashAlgorithm);
+            byte[] hash = pbkdf2.GetBytes(keySize);
 
             return Convert.ToBase64String(hash) == storedPass;
         }

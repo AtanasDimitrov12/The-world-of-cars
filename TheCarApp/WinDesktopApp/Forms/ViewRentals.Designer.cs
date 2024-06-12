@@ -43,6 +43,7 @@
             label2 = new Label();
             label1 = new Label();
             BTNUpdate = new Button();
+            BTNClose = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -67,7 +68,7 @@
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(853, 340);
+            groupBox1.Size = new Size(1049, 340);
             groupBox1.TabIndex = 17;
             groupBox1.TabStop = false;
             groupBox1.Text = "Show rental";
@@ -75,14 +76,14 @@
             // CBRentStatus
             // 
             CBRentStatus.FormattingEnabled = true;
-            CBRentStatus.Location = new Point(554, 237);
+            CBRentStatus.Location = new Point(675, 237);
             CBRentStatus.Name = "CBRentStatus";
-            CBRentStatus.Size = new Size(187, 31);
+            CBRentStatus.Size = new Size(354, 31);
             CBRentStatus.TabIndex = 29;
             // 
             // TBRentStatus
             // 
-            TBRentStatus.Location = new Point(554, 237);
+            TBRentStatus.Location = new Point(675, 237);
             TBRentStatus.Name = "TBRentStatus";
             TBRentStatus.Size = new Size(187, 31);
             TBRentStatus.TabIndex = 28;
@@ -91,17 +92,18 @@
             // 
             TBTotalPrice.Location = new Point(145, 237);
             TBTotalPrice.Name = "TBTotalPrice";
-            TBTotalPrice.Size = new Size(187, 31);
+            TBTotalPrice.Size = new Size(354, 31);
             TBTotalPrice.TabIndex = 27;
             // 
             // DTPEndDate
             // 
             DTPEndDate.CalendarFont = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DTPEndDate.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DTPEndDate.Location = new Point(554, 144);
+            DTPEndDate.Location = new Point(675, 142);
             DTPEndDate.Name = "DTPEndDate";
-            DTPEndDate.Size = new Size(187, 31);
+            DTPEndDate.Size = new Size(354, 31);
             DTPEndDate.TabIndex = 26;
+            DTPEndDate.ValueChanged += DTPEndDate_ValueChanged;
             // 
             // DTPStartDate
             // 
@@ -109,28 +111,29 @@
             DTPStartDate.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DTPStartDate.Location = new Point(145, 144);
             DTPStartDate.Name = "DTPStartDate";
-            DTPStartDate.Size = new Size(187, 31);
+            DTPStartDate.Size = new Size(354, 31);
             DTPStartDate.TabIndex = 25;
+            DTPStartDate.ValueChanged += DTPStartDate_ValueChanged;
             // 
             // TBCar
             // 
-            TBCar.Location = new Point(554, 65);
+            TBCar.Location = new Point(675, 62);
             TBCar.Name = "TBCar";
-            TBCar.Size = new Size(187, 31);
+            TBCar.Size = new Size(354, 31);
             TBCar.TabIndex = 24;
             // 
             // TBUsername
             // 
             TBUsername.Location = new Point(145, 62);
             TBUsername.Name = "TBUsername";
-            TBUsername.Size = new Size(187, 31);
+            TBUsername.Size = new Size(354, 31);
             TBUsername.TabIndex = 23;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Arial Rounded MT Bold", 12F);
-            label6.Location = new Point(419, 237);
+            label6.Location = new Point(540, 237);
             label6.Margin = new Padding(5, 0, 5, 0);
             label6.Name = "label6";
             label6.Size = new Size(128, 23);
@@ -152,7 +155,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Arial Rounded MT Bold", 12F);
-            label4.Location = new Point(419, 148);
+            label4.Location = new Point(540, 148);
             label4.Margin = new Padding(5, 0, 5, 0);
             label4.Name = "label4";
             label4.Size = new Size(105, 23);
@@ -174,7 +177,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Arial Rounded MT Bold", 12F);
-            label2.Location = new Point(419, 65);
+            label2.Location = new Point(540, 65);
             label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
             label2.Size = new Size(94, 23);
@@ -197,7 +200,7 @@
             BTNUpdate.BackColor = Color.FromArgb(88, 129, 87);
             BTNUpdate.Font = new Font("Arial Rounded MT Bold", 10.2F);
             BTNUpdate.ForeColor = Color.White;
-            BTNUpdate.Location = new Point(397, 392);
+            BTNUpdate.Location = new Point(311, 392);
             BTNUpdate.Name = "BTNUpdate";
             BTNUpdate.Size = new Size(151, 53);
             BTNUpdate.TabIndex = 18;
@@ -205,12 +208,26 @@
             BTNUpdate.UseVisualStyleBackColor = false;
             BTNUpdate.Click += BTNUpdate_Click;
             // 
+            // BTNClose
+            // 
+            BTNClose.BackColor = Color.FromArgb(88, 129, 87);
+            BTNClose.Font = new Font("Arial Rounded MT Bold", 10.2F);
+            BTNClose.ForeColor = Color.White;
+            BTNClose.Location = new Point(500, 392);
+            BTNClose.Name = "BTNClose";
+            BTNClose.Size = new Size(151, 53);
+            BTNClose.TabIndex = 19;
+            BTNClose.Text = "Close";
+            BTNClose.UseVisualStyleBackColor = false;
+            BTNClose.Click += BTNClose_Click;
+            // 
             // ViewRentals
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(218, 215, 205);
-            ClientSize = new Size(933, 457);
+            ClientSize = new Size(1121, 457);
+            Controls.Add(BTNClose);
             Controls.Add(BTNUpdate);
             Controls.Add(groupBox1);
             Name = "ViewRentals";
@@ -237,5 +254,6 @@
         private TextBox TBTotalPrice;
         private DateTimePicker DTPEndDate;
         private Button BTNUpdate;
+        private Button BTNClose;
     }
 }
