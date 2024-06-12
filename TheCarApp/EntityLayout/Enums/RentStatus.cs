@@ -10,7 +10,6 @@ namespace Entity_Layer.Enums
     {
         REQUESTED,
         SCHEDULE,
-        ACTIVE,
         COMPLETED,
         CANCELLED
     }

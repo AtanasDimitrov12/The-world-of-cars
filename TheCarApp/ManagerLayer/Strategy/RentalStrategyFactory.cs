@@ -9,26 +9,30 @@ namespace ManagerLayer.Strategy
 {
     public class RentalStrategyFactory : IRentalStrategyFactory
     {
-        private readonly IServiceProvider _serviceProvider;
+        private IRentalStrategy rentalStrategy;
 
-        public RentalStrategyFactory(IServiceProvider serviceProvider)
+        public RentalStrategyFactory()
         {
-            _serviceProvider = serviceProvider;
+
         }
 
         public IRentalStrategy GetRentalStrategy(DateTime startDate, DateTime endDate)
         {
             if (IsPeakSeason(startDate, endDate))
             {
-                return _serviceProvider.GetService(typeof(PeakSeasonRentalStrategy)) as PeakSeasonRentalStrategy;
+                rentalStrategy = new PeakSeasonRentalStrategy();
             }
-            return _serviceProvider.GetService(typeof(StandardRentalStrategy)) as StandardRentalStrategy;
+            else
+            {
+                rentalStrategy = new StandardRentalStrategy();
+            }
+            return rentalStrategy;
         }
 
         private static bool IsPeakSeason(DateTime startDate, DateTime endDate)
         {
             // Define peak season logic
-            // Example: June to August is peak season
+            // June to August is peak season
             return startDate.Month >= 6 && startDate.Month <= 8;
         }
     }
