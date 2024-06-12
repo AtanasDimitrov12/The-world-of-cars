@@ -83,7 +83,7 @@ namespace WinDesktopApp.Forms
 
         private void BTNAddPicture_Click(object sender, EventArgs e)
         {
-            
+
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "c:\\";
@@ -217,6 +217,11 @@ namespace WinDesktopApp.Forms
                 .Where(pic => Regex.IsMatch(pic.PictureURL, Regex.Escape(url), RegexOptions.IgnoreCase))
                 .ToList();
             FillDataGridView(filteredPics);
+        }
+
+        private void BTNClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

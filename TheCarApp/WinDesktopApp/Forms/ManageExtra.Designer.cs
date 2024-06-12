@@ -33,9 +33,10 @@
             label1 = new Label();
             DGVExtras = new DataGridView();
             groupBox1 = new GroupBox();
-            label2 = new Label();
-            TBSearch = new TextBox();
             BTNSearch = new Button();
+            TBSearch = new TextBox();
+            label2 = new Label();
+            BTNClose = new Button();
             ((System.ComponentModel.ISupportInitialize)DGVExtras).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -44,10 +45,9 @@
             // 
             BTNAddExtra.BackColor = Color.FromArgb(88, 129, 87);
             BTNAddExtra.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNAddExtra.Location = new Point(87, 358);
-            BTNAddExtra.Margin = new Padding(3, 4, 3, 4);
+            BTNAddExtra.Location = new Point(76, 268);
             BTNAddExtra.Name = "BTNAddExtra";
-            BTNAddExtra.Size = new Size(181, 50);
+            BTNAddExtra.Size = new Size(158, 38);
             BTNAddExtra.TabIndex = 0;
             BTNAddExtra.Text = "Add";
             BTNAddExtra.UseVisualStyleBackColor = false;
@@ -55,10 +55,9 @@
             // 
             // RTBExtraName
             // 
-            RTBExtraName.Location = new Point(22, 264);
-            RTBExtraName.Margin = new Padding(3, 4, 3, 4);
+            RTBExtraName.Location = new Point(19, 198);
             RTBExtraName.Name = "RTBExtraName";
-            RTBExtraName.Size = new Size(290, 74);
+            RTBExtraName.Size = new Size(254, 56);
             RTBExtraName.TabIndex = 1;
             RTBExtraName.Text = "";
             // 
@@ -66,19 +65,20 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial Rounded MT Bold", 12F);
-            label1.Location = new Point(87, 219);
+            label1.Location = new Point(76, 164);
             label1.Name = "label1";
-            label1.Size = new Size(156, 23);
+            label1.Size = new Size(127, 18);
             label1.TabIndex = 2;
             label1.Text = "Type the extra:";
             // 
             // DGVExtras
             // 
             DGVExtras.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVExtras.Location = new Point(421, 45);
+            DGVExtras.Location = new Point(368, 34);
+            DGVExtras.Margin = new Padding(3, 2, 3, 2);
             DGVExtras.Name = "DGVExtras";
             DGVExtras.RowHeadersWidth = 51;
-            DGVExtras.Size = new Size(491, 415);
+            DGVExtras.Size = new Size(430, 311);
             DGVExtras.TabIndex = 3;
             // 
             // groupBox1
@@ -90,51 +90,67 @@
             groupBox1.Controls.Add(BTNAddExtra);
             groupBox1.Controls.Add(RTBExtraName);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(12, 45);
+            groupBox1.Location = new Point(10, 34);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(343, 415);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(300, 311);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Add new Extra";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial Rounded MT Bold", 12F);
-            label2.Location = new Point(92, 34);
-            label2.Name = "label2";
-            label2.Size = new Size(141, 23);
-            label2.TabIndex = 3;
-            label2.Text = "Search extra:";
-            // 
-            // TBSearch
-            // 
-            TBSearch.Location = new Point(22, 72);
-            TBSearch.Name = "TBSearch";
-            TBSearch.Size = new Size(290, 27);
-            TBSearch.TabIndex = 4;
             // 
             // BTNSearch
             // 
             BTNSearch.BackColor = Color.FromArgb(88, 129, 87);
             BTNSearch.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNSearch.Location = new Point(87, 120);
+            BTNSearch.Location = new Point(76, 90);
+            BTNSearch.Margin = new Padding(3, 2, 3, 2);
             BTNSearch.Name = "BTNSearch";
-            BTNSearch.Size = new Size(181, 50);
+            BTNSearch.Size = new Size(158, 38);
             BTNSearch.TabIndex = 5;
             BTNSearch.Text = "Search";
             BTNSearch.UseVisualStyleBackColor = false;
             BTNSearch.Click += BTNSearch_Click;
             // 
+            // TBSearch
+            // 
+            TBSearch.Location = new Point(19, 54);
+            TBSearch.Margin = new Padding(3, 2, 3, 2);
+            TBSearch.Name = "TBSearch";
+            TBSearch.Size = new Size(254, 23);
+            TBSearch.TabIndex = 4;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Arial Rounded MT Bold", 12F);
+            label2.Location = new Point(80, 26);
+            label2.Name = "label2";
+            label2.Size = new Size(116, 18);
+            label2.TabIndex = 3;
+            label2.Text = "Search extra:";
+            // 
+            // BTNClose
+            // 
+            BTNClose.BackColor = Color.FromArgb(88, 129, 87);
+            BTNClose.Font = new Font("Arial Rounded MT Bold", 12F);
+            BTNClose.Location = new Point(368, 375);
+            BTNClose.Name = "BTNClose";
+            BTNClose.Size = new Size(158, 43);
+            BTNClose.TabIndex = 6;
+            BTNClose.Text = "Close";
+            BTNClose.UseVisualStyleBackColor = false;
+            BTNClose.Click += BTNClose_Click;
+            // 
             // AddExtra
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(218, 215, 205);
-            ClientSize = new Size(967, 493);
+            ClientSize = new Size(846, 430);
+            Controls.Add(BTNClose);
             Controls.Add(groupBox1);
             Controls.Add(DGVExtras);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "AddExtra";
             Text = "AddExtra";
             ((System.ComponentModel.ISupportInitialize)DGVExtras).EndInit();
@@ -153,5 +169,6 @@
         private Button BTNSearch;
         private TextBox TBSearch;
         private Label label2;
+        private Button BTNClose;
     }
 }

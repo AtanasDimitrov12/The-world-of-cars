@@ -84,12 +84,12 @@ namespace WinDesktopApp.Forms
             if (manager.AddExtra(extra, out string addExtraError))
             {
                 extra.Id = manager.GetExtraId(extra.ExtraName);
-           
+
                 ExtraAdded?.Invoke(this, EventArgs.Empty);
                 FillDataGridView(manager.extras);
                 RTBExtraName.Clear();
             }
-            else 
+            else
             {
                 MessageBox.Show($"Failed to add extra: {addExtraError}");
             }
@@ -171,6 +171,11 @@ namespace WinDesktopApp.Forms
                 .Where(extra => Regex.IsMatch(extra.ExtraName, Regex.Escape(extraName), RegexOptions.IgnoreCase))
                 .ToList();
             FillDataGridView(filteredExtras);
+        }
+
+        private void BTNClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

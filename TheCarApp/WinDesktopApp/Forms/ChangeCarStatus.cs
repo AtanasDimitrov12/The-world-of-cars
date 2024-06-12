@@ -24,10 +24,7 @@ namespace WinDesktopApp.Forms
             InitializeComponent();
             manager = cm;
             car = SelectedCar;
-            LBLBrand.Text = car.Brand;
-            LBLModel.Text = car.Model;
-            LBLYear.Text = car.FirstRegistration.ToShortDateString();
-            LBLCurrentStatus.Text = car.CarStatus.ToString().ToLower();
+            DisplayInfo();
             foreach (var status in Enum.GetValues(typeof(CarStatus)))
             {
                 string statusStr = status.ToString();
@@ -35,6 +32,18 @@ namespace WinDesktopApp.Forms
                 CBChangeStatus.Items.Add(capitalizedStatus);
             }
 
+        }
+
+        private void DisplayInfo()
+        {
+            TBBrand.Text = car.Brand;
+            TBBrand.Enabled = false;
+            TBModel.Text = car.Model;
+            TBModel.Enabled = false;
+            TBYear.Text = car.FirstRegistration.ToShortDateString();
+            TBModel.Enabled = false;
+            TBStatus.Text = car.CarStatus.ToString().ToLower();
+            TBStatus.Enabled = false;
         }
 
         private void BTNUpdate_Click(object sender, EventArgs e)
@@ -52,8 +61,13 @@ namespace WinDesktopApp.Forms
                 {
                     Console.WriteLine($"Failed to update car: {updateCarError}");
                 }
-                
+
             }
+        }
+
+        private void BTNClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
