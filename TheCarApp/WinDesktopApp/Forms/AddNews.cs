@@ -85,7 +85,6 @@ namespace DesktopApp
             }
         }
 
-
         public void ClearPictureBoxImage()
         {
             if (pictureBoxNewsImage.Image != null)
@@ -95,41 +94,58 @@ namespace DesktopApp
             }
         }
 
-
-
-
+        private bool AreFieldsNotEmpty()
+        {
+            if (string.IsNullOrEmpty(TBNewsTitle.Text) ||
+                string.IsNullOrEmpty(TBNewsAuthor.Text) ||
+                string.IsNullOrEmpty(RTBNewsIntro.Text) ||
+                string.IsNullOrEmpty(RTBNewsDescription.Text) ||
+                pictureBoxNewsImage.Image == null)
+            {
+                MessageBox.Show("All fields must be filled out, and an image must be selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
 
         private void BTNAdd_Click(object sender, EventArgs e)
         {
+            if (!AreFieldsNotEmpty())
+            {
+                return;
+            }
+
             if (!Modify && !IsView)
             {
-                DateTime dateTime = DateTime.Now;
-                string fileName = Path.GetFileName(selectedImagePath);
-
-                var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                var projectRootDirectory = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\..\..\.."));
-                var newImagePath = Path.Combine(projectRootDirectory, "TheCarApp", "TheCarApp", "wwwroot", "pictures", "News_Pictures", fileName);
-
-
-                CarNews news = new CarNews(RTBNewsDescription.Text, dateTime, fileName, TBNewsTitle.Text, TBNewsAuthor.Text, RTBNewsIntro.Text);
-                if (NewsManager.AddNews(news, out string addNewsError))
+                try
                 {
-                    MessageBox.Show("You successfully added this news!");
-                    NewsAdded?.Invoke(this, EventArgs.Empty);
-                    ClearPictureBoxImage();
-                    this.Close();
+                    DateTime dateTime = DateTime.Now;
+                    string fileName = Path.GetFileName(selectedImagePath);
+
+                    var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                    var projectRootDirectory = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\..\..\.."));
+                    var newImagePath = Path.Combine(projectRootDirectory, "TheCarApp", "TheCarApp", "wwwroot", "pictures", "News_Pictures", fileName);
+
+
+                    CarNews news = new CarNews(RTBNewsDescription.Text, dateTime, fileName, TBNewsTitle.Text, TBNewsAuthor.Text, RTBNewsIntro.Text);
+                    if (NewsManager.AddNews(news, out string addNewsError))
+                    {
+                        MessageBox.Show("You successfully added this news!");
+                        NewsAdded?.Invoke(this, EventArgs.Empty);
+                        ClearPictureBoxImage();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Failed to add news: {addNewsError}");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show($"Failed to add news: {addNewsError}");
+                    MessageBox.Show($"You need first to properly add picture. " + ex.Message);
                 }
 
             }
-            //else if (IsView)
-            //{
-            //    ClearPictureBoxImage();
-            //    this.Close();
-            //}
             else if (Modify == true)
             {
                 string fileName = null;
@@ -186,10 +202,10 @@ namespace DesktopApp
                 {
                     MessageBox.Show("No changes were made to the news item.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DialogResult result = MessageBox.Show(
-        "Do you want to close the form?",
-        "Confirmation",
-        MessageBoxButtons.YesNo,
-        MessageBoxIcon.Warning);
+                        "Do you want to close the form?",
+                        "Confirmation",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
 
                     if (result == DialogResult.Yes)
                     {
@@ -198,10 +214,7 @@ namespace DesktopApp
                     }
                 }
             }
-
-
         }
-
 
         private void TBNewsTitle_TextChanged(object sender, EventArgs e)
         {
