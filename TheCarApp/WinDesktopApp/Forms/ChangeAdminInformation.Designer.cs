@@ -137,10 +137,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.logo_transparent;
-            pictureBox1.Location = new Point(512, 16);
+            pictureBox1.Location = new Point(501, 16);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(383, 405);
+            pictureBox1.Size = new Size(430, 405);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 23;
             pictureBox1.TabStop = false;
