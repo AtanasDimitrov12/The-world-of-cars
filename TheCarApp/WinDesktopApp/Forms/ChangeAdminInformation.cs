@@ -37,7 +37,7 @@ namespace WinDesktopApp.Forms
             initialEmail = Admin.Email;
             initialUsername = Admin.Username;
             initialPhoneNumber = Admin.PhoneNumber;
-            initialPassword = ""; 
+            initialPassword = "";
 
             TBAdminEmail.TextChanged += AdminInfoChanged;
             TBAdminUsername.TextChanged += AdminInfoChanged;
@@ -82,7 +82,7 @@ namespace WinDesktopApp.Forms
                     Admin.Password = hash;
                     Admin.PassSalt = salt;
                     if (Manager.UpdatePerson(Admin, out string ErrorMessage))
-                    { 
+                    {
                         InfoChanged?.Invoke(this, EventArgs.Empty);
                         MessageBox.Show("You successfully update the admin's information!");
                         this.Close();
@@ -154,6 +154,11 @@ namespace WinDesktopApp.Forms
         private bool IsValidPhoneNumber(string phoneNumber)
         {
             return phoneNumber.All(char.IsDigit);
+        }
+
+        private void BTNClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
