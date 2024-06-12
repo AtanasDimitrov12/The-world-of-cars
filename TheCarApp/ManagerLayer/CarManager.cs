@@ -64,8 +64,8 @@ namespace Manager_Layer
             {
                 _dataWriter.UpdateCar(car);
                 _dataWriter.UpdateCarDescription(car);
-                _dataWriter.RemoveCarPictures(car.Id);
-                _dataWriter.RemoveCarExtras(car.Id);
+                _dataRemover.RemoveCarPictures(car.Id);
+                _dataRemover.RemoveCarExtras(car.Id);
                 foreach (var pic in pictures)
                 {
                     _dataWriter.AddCarPictures(car.Id, pic.Id);
