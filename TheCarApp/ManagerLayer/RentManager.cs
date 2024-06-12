@@ -26,7 +26,7 @@ namespace ManagerLayer
         private IPeopleManager peopleManager;
         private ICarManager carManager;
 
-        public RentManager(IDataAccess dataAccess, IPeopleDataWriter dataWriter, IPeopleDataRemover dataRemover, IPeopleManager pm, ICarManager carManager)
+        public RentManager(IDataAccess dataAccess, IPeopleDataWriter dataWriter, IPeopleDataRemover dataRemover, IPeopleManager pm, ICarManager carManager, IRentalStrategyFactory rentalStrategyFactory)
         {
             rentalHistory = new List<RentACar>();
             writer = dataWriter;
@@ -34,7 +34,9 @@ namespace ManagerLayer
             access = dataAccess;
             peopleManager = pm;
             this.carManager = carManager;
+            _rentalStrategy = rentalStrategyFactory;
         }
+
 
 
 
@@ -61,10 +63,10 @@ namespace ManagerLayer
             
         }
 
-        public int CheckForDiscount(User user) 
+        public int CheckForDiscount(User user)
         {
             if (user == null)
-            { 
+            {
                 return 0;
             }
             int NumOfRents = 0;
@@ -72,16 +74,16 @@ namespace ManagerLayer
             foreach (var rent in rentalHistory)
             {
                 if (rent.user == user && rent.RentStatus != RentStatus.CANCELLED)
-                { 
+                {
                     NumOfRents++;
                 }
             }
 
-            if (Discount >= 10 && Discount < 25)
+            if (NumOfRents >= 10 && NumOfRents < 25)
             {
                 Discount = 5;
             }
-            else if (Discount >= 25)
+            else if (NumOfRents >= 25)
             {
                 Discount = 10;
             }

@@ -205,7 +205,7 @@ namespace DesktopApp
             var btnStatus = new DataGridViewButtonColumn();
             btnStatus.Name = "Change Status";
             btnStatus.HeaderText = "Change Status";
-            btnStatus.Text = "Change Status";
+            btnStatus.Text = "Change";
             btnStatus.UseColumnTextForButtonValue = true;
             DGVCars.Columns.Add(btnStatus);
 

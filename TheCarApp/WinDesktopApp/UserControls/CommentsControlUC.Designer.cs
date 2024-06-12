@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            BTNShowAll = new Button();
             BTNSearch = new Button();
             CBNews = new ComboBox();
             DGVComments = new DataGridView();
@@ -36,7 +37,6 @@
             RBASC = new RadioButton();
             RBDESC = new RadioButton();
             label4 = new Label();
-            BTNShowAll = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGVComments).BeginInit();
             groupBox2.SuspendLayout();
@@ -49,7 +49,7 @@
             groupBox1.Controls.Add(BTNSearch);
             groupBox1.Controls.Add(CBNews);
             groupBox1.Font = new Font("Arial Rounded MT Bold", 12F);
-            groupBox1.Location = new Point(167, 80);
+            groupBox1.Location = new Point(59, 80);
             groupBox1.Margin = new Padding(5, 4, 5, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(5, 4, 5, 4);
@@ -58,14 +58,27 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Search per news";
             // 
+            // BTNShowAll
+            // 
+            BTNShowAll.BackColor = Color.FromArgb(88, 129, 87);
+            BTNShowAll.ForeColor = Color.White;
+            BTNShowAll.Location = new Point(64, 186);
+            BTNShowAll.Margin = new Padding(5, 4, 5, 4);
+            BTNShowAll.Name = "BTNShowAll";
+            BTNShowAll.Size = new Size(167, 59);
+            BTNShowAll.TabIndex = 2;
+            BTNShowAll.Text = "Show all";
+            BTNShowAll.UseVisualStyleBackColor = false;
+            BTNShowAll.Click += BTNShowAll_Click;
+            // 
             // BTNSearch
             // 
             BTNSearch.BackColor = Color.FromArgb(88, 129, 87);
             BTNSearch.ForeColor = Color.White;
-            BTNSearch.Location = new Point(50, 120);
+            BTNSearch.Location = new Point(64, 119);
             BTNSearch.Margin = new Padding(5, 4, 5, 4);
             BTNSearch.Name = "BTNSearch";
-            BTNSearch.Size = new Size(192, 49);
+            BTNSearch.Size = new Size(167, 59);
             BTNSearch.TabIndex = 1;
             BTNSearch.Text = "Search";
             BTNSearch.UseVisualStyleBackColor = false;
@@ -83,11 +96,11 @@
             // DGVComments
             // 
             DGVComments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVComments.Location = new Point(508, 80);
+            DGVComments.Location = new Point(387, 80);
             DGVComments.Margin = new Padding(3, 4, 3, 4);
             DGVComments.Name = "DGVComments";
             DGVComments.RowHeadersWidth = 51;
-            DGVComments.Size = new Size(785, 493);
+            DGVComments.Size = new Size(997, 493);
             DGVComments.TabIndex = 3;
             DGVComments.CellContentClick += DGVComments_CellContentClick;
             // 
@@ -98,7 +111,7 @@
             groupBox2.Controls.Add(RBDESC);
             groupBox2.Controls.Add(label4);
             groupBox2.Font = new Font("Arial Rounded MT Bold", 12F);
-            groupBox2.Location = new Point(167, 376);
+            groupBox2.Location = new Point(59, 376);
             groupBox2.Margin = new Padding(5, 4, 5, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(5, 4, 5, 4);
@@ -144,19 +157,6 @@
             label4.TabIndex = 14;
             label4.Text = "Sort by date:";
             // 
-            // BTNShowAll
-            // 
-            BTNShowAll.BackColor = Color.FromArgb(88, 129, 87);
-            BTNShowAll.ForeColor = Color.White;
-            BTNShowAll.Location = new Point(50, 186);
-            BTNShowAll.Margin = new Padding(5, 4, 5, 4);
-            BTNShowAll.Name = "BTNShowAll";
-            BTNShowAll.Size = new Size(192, 49);
-            BTNShowAll.TabIndex = 2;
-            BTNShowAll.Text = "Show all";
-            BTNShowAll.UseVisualStyleBackColor = false;
-            BTNShowAll.Click += BTNShowAll_Click;
-            // 
             // CommentsControlUC
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -167,7 +167,7 @@
             Controls.Add(groupBox1);
             Margin = new Padding(5, 4, 5, 4);
             Name = "CommentsControlUC";
-            Size = new Size(1326, 669);
+            Size = new Size(1463, 689);
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DGVComments).EndInit();
             groupBox2.ResumeLayout(false);

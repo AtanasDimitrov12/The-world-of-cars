@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            BTNShowAll = new Button();
             BTNAddCar = new Button();
             groupBox3 = new GroupBox();
             TBSearchByYear = new TextBox();
@@ -39,7 +40,6 @@
             RBAsc = new RadioButton();
             label4 = new Label();
             DGVCars = new DataGridView();
-            BTNShowAll = new Button();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -52,7 +52,7 @@
             groupBox1.Controls.Add(BTNShowAll);
             groupBox1.Controls.Add(BTNAddCar);
             groupBox1.Font = new Font("Arial Rounded MT Bold", 9.75F);
-            groupBox1.Location = new Point(18, 489);
+            groupBox1.Location = new Point(18, 464);
             groupBox1.Margin = new Padding(5, 4, 5, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(5, 4, 5, 4);
@@ -60,6 +60,20 @@
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
             groupBox1.Text = "Actions";
+            // 
+            // BTNShowAll
+            // 
+            BTNShowAll.BackColor = Color.FromArgb(88, 129, 87);
+            BTNShowAll.Font = new Font("Arial Rounded MT Bold", 12F);
+            BTNShowAll.ForeColor = Color.White;
+            BTNShowAll.Location = new Point(35, 41);
+            BTNShowAll.Margin = new Padding(5, 4, 5, 4);
+            BTNShowAll.Name = "BTNShowAll";
+            BTNShowAll.Size = new Size(167, 59);
+            BTNShowAll.TabIndex = 21;
+            BTNShowAll.Text = "Show all";
+            BTNShowAll.UseVisualStyleBackColor = false;
+            BTNShowAll.Click += BTNShowAll_Click;
             // 
             // BTNAddCar
             // 
@@ -69,7 +83,7 @@
             BTNAddCar.Location = new Point(35, 116);
             BTNAddCar.Margin = new Padding(5, 4, 5, 4);
             BTNAddCar.Name = "BTNAddCar";
-            BTNAddCar.Size = new Size(167, 67);
+            BTNAddCar.Size = new Size(167, 59);
             BTNAddCar.TabIndex = 20;
             BTNAddCar.Text = "Add car";
             BTNAddCar.UseVisualStyleBackColor = false;
@@ -82,7 +96,7 @@
             groupBox3.Controls.Add(BTNSearch);
             groupBox3.Controls.Add(label5);
             groupBox3.Font = new Font("Arial Rounded MT Bold", 9.75F);
-            groupBox3.Location = new Point(18, 236);
+            groupBox3.Location = new Point(18, 211);
             groupBox3.Margin = new Padding(5, 4, 5, 4);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(5, 4, 5, 4);
@@ -107,7 +121,7 @@
             BTNSearch.Location = new Point(35, 127);
             BTNSearch.Margin = new Padding(5, 4, 5, 4);
             BTNSearch.Name = "BTNSearch";
-            BTNSearch.Size = new Size(167, 67);
+            BTNSearch.Size = new Size(167, 59);
             BTNSearch.TabIndex = 19;
             BTNSearch.Text = "Search";
             BTNSearch.UseVisualStyleBackColor = false;
@@ -131,7 +145,7 @@
             groupBox2.Controls.Add(RBAsc);
             groupBox2.Controls.Add(label4);
             groupBox2.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(18, 55);
+            groupBox2.Location = new Point(18, 30);
             groupBox2.Margin = new Padding(5, 4, 5, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(5, 4, 5, 4);
@@ -180,26 +194,12 @@
             // DGVCars
             // 
             DGVCars.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVCars.Location = new Point(285, 137);
+            DGVCars.Location = new Point(285, 98);
             DGVCars.Name = "DGVCars";
             DGVCars.RowHeadersWidth = 51;
-            DGVCars.Size = new Size(1141, 437);
+            DGVCars.Size = new Size(1141, 482);
             DGVCars.TabIndex = 26;
             DGVCars.CellContentClick += DGVCars_CellContentClick;
-            // 
-            // BTNShowAll
-            // 
-            BTNShowAll.BackColor = Color.FromArgb(88, 129, 87);
-            BTNShowAll.Font = new Font("Arial Rounded MT Bold", 12F);
-            BTNShowAll.ForeColor = Color.White;
-            BTNShowAll.Location = new Point(35, 41);
-            BTNShowAll.Margin = new Padding(5, 4, 5, 4);
-            BTNShowAll.Name = "BTNShowAll";
-            BTNShowAll.Size = new Size(167, 67);
-            BTNShowAll.TabIndex = 21;
-            BTNShowAll.Text = "Show all";
-            BTNShowAll.UseVisualStyleBackColor = false;
-            BTNShowAll.Click += BTNShowAll_Click;
             // 
             // CarControlUC
             // 
@@ -212,7 +212,7 @@
             Controls.Add(groupBox2);
             Margin = new Padding(5, 4, 5, 4);
             Name = "CarControlUC";
-            Size = new Size(1472, 717);
+            Size = new Size(1463, 689);
             groupBox1.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();

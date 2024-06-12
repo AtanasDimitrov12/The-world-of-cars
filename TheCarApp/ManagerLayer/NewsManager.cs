@@ -84,6 +84,12 @@ namespace Entity_Layer
             return news.FirstOrDefault(n => n.Id == id);
         }
 
+        public CarNews MapCarNewsDtoToCarNews(CarNewsDTO newsDTO)
+        {
+            var comments = newsDTO.comments.Select(comment => new Comment(comment.Id, comment.UserId, comment.Date, comment.Content)).ToList();
+            return new CarNews(newsDTO.Id, newsDTO.NewsDescription, newsDTO.ReleaseDate, newsDTO.ImageURL, newsDTO.Title, newsDTO.Author, newsDTO.ShortIntro, comments);
+        }
+
         public bool LoadNews(out string errorMessage)
         {
             errorMessage = string.Empty;

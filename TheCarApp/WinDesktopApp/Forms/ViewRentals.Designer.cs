@@ -43,6 +43,7 @@
             label2 = new Label();
             label1 = new Label();
             BTNUpdate = new Button();
+            BTNClose = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -197,7 +198,7 @@
             BTNUpdate.BackColor = Color.FromArgb(88, 129, 87);
             BTNUpdate.Font = new Font("Arial Rounded MT Bold", 10.2F);
             BTNUpdate.ForeColor = Color.White;
-            BTNUpdate.Location = new Point(397, 392);
+            BTNUpdate.Location = new Point(311, 392);
             BTNUpdate.Name = "BTNUpdate";
             BTNUpdate.Size = new Size(151, 53);
             BTNUpdate.TabIndex = 18;
@@ -205,12 +206,26 @@
             BTNUpdate.UseVisualStyleBackColor = false;
             BTNUpdate.Click += BTNUpdate_Click;
             // 
+            // BTNClose
+            // 
+            BTNClose.BackColor = Color.FromArgb(88, 129, 87);
+            BTNClose.Font = new Font("Arial Rounded MT Bold", 10.2F);
+            BTNClose.ForeColor = Color.White;
+            BTNClose.Location = new Point(500, 392);
+            BTNClose.Name = "BTNClose";
+            BTNClose.Size = new Size(151, 53);
+            BTNClose.TabIndex = 19;
+            BTNClose.Text = "Close";
+            BTNClose.UseVisualStyleBackColor = false;
+            BTNClose.Click += BTNClose_Click;
+            // 
             // ViewRentals
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(218, 215, 205);
             ClientSize = new Size(933, 457);
+            Controls.Add(BTNClose);
             Controls.Add(BTNUpdate);
             Controls.Add(groupBox1);
             Name = "ViewRentals";
@@ -237,5 +252,6 @@
         private TextBox TBTotalPrice;
         private DateTimePicker DTPEndDate;
         private Button BTNUpdate;
+        private Button BTNClose;
     }
 }

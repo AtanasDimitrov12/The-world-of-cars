@@ -36,6 +36,7 @@ namespace DesktopApp
             this.Controls.Add(panel2);
             AddUC();
 
+
             carControlUC.admInfo = adminInfoUC;
             carNewsUC.admInfo = adminInfoUC;
         }

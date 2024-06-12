@@ -37,10 +37,14 @@ namespace DesktopApp
                 LoadNewsData();
                 BTNAdd.Text = "Update News";
                 groupBox1.Text = "Update News";
+                btnBrowseImage.Text = "Change picture";
             }
             if (View)
             {
-                BTNAdd.Text = "Close";
+                BTNAdd.Enabled = false;
+                BTNAdd.Visible = false;
+                btnBrowseImage.Enabled = false;
+                btnBrowseImage.Visible = false;
             }
         }
 
@@ -119,13 +123,13 @@ namespace DesktopApp
                 {
                     MessageBox.Show($"Failed to add news: {addNewsError}");
                 }
-                
+
             }
-            else if (IsView)
-            {
-                ClearPictureBoxImage();
-                this.Close();
-            }
+            //else if (IsView)
+            //{
+            //    ClearPictureBoxImage();
+            //    this.Close();
+            //}
             else if (Modify == true)
             {
                 string fileName = null;
@@ -142,12 +146,12 @@ namespace DesktopApp
                     if (selectedImagePath != null && File.Exists(selectedImagePath))
                     {
                         File.Copy(selectedImagePath, newImagePath, true);
-                        hasChanged = true; 
+                        hasChanged = true;
                     }
                 }
                 else
                 {
-                    fileName = newsData.ImageURL; 
+                    fileName = newsData.ImageURL;
                 }
 
                 if (TBNewsAuthor.Text != newsData.Author ||
@@ -275,6 +279,14 @@ namespace DesktopApp
             }
         }
 
+        private void pictureBoxNewsImage_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void BTNClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

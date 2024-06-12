@@ -37,6 +37,8 @@
             label5 = new Label();
             label3 = new Label();
             groupBox1 = new GroupBox();
+            LBLNews = new Label();
+            label4 = new Label();
             LBLCars = new Label();
             label8 = new Label();
             groupBox3 = new GroupBox();
@@ -46,8 +48,6 @@
             label2 = new Label();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
-            LBLNews = new Label();
-            label4 = new Label();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -66,7 +66,7 @@
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label3);
             groupBox2.Font = new Font("Arial Rounded MT Bold", 12F);
-            groupBox2.Location = new Point(481, 45);
+            groupBox2.Location = new Point(551, 53);
             groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 4, 3, 4);
@@ -93,7 +93,7 @@
             // 
             LBLAdminPhoneNumber.AutoSize = true;
             LBLAdminPhoneNumber.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LBLAdminPhoneNumber.Location = new Point(200, 215);
+            LBLAdminPhoneNumber.Location = new Point(208, 214);
             LBLAdminPhoneNumber.Name = "LBLAdminPhoneNumber";
             LBLAdminPhoneNumber.Size = new Size(60, 20);
             LBLAdminPhoneNumber.TabIndex = 14;
@@ -103,7 +103,7 @@
             // 
             LBLAdminEmail.AutoSize = true;
             LBLAdminEmail.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LBLAdminEmail.Location = new Point(128, 139);
+            LBLAdminEmail.Location = new Point(122, 138);
             LBLAdminEmail.Name = "LBLAdminEmail";
             LBLAdminEmail.Size = new Size(60, 20);
             LBLAdminEmail.TabIndex = 13;
@@ -113,7 +113,7 @@
             // 
             LBLAdminUsername.AutoSize = true;
             LBLAdminUsername.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LBLAdminUsername.Location = new Point(172, 67);
+            LBLAdminUsername.Location = new Point(171, 66);
             LBLAdminUsername.Name = "LBLAdminUsername";
             LBLAdminUsername.Size = new Size(60, 20);
             LBLAdminUsername.TabIndex = 12;
@@ -160,7 +160,7 @@
             groupBox1.Controls.Add(LBLCars);
             groupBox1.Controls.Add(label8);
             groupBox1.Font = new Font("Arial Rounded MT Bold", 12F);
-            groupBox1.Location = new Point(37, 364);
+            groupBox1.Location = new Point(107, 372);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
@@ -168,6 +168,27 @@
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cars and news";
+            // 
+            // LBLNews
+            // 
+            LBLNews.AutoSize = true;
+            LBLNews.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LBLNews.Location = new Point(210, 152);
+            LBLNews.Name = "LBLNews";
+            LBLNews.Size = new Size(60, 20);
+            LBLNews.TabIndex = 14;
+            LBLNews.Text = "label4";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Arial Rounded MT Bold", 12F);
+            label4.Location = new Point(31, 148);
+            label4.Margin = new Padding(5, 0, 5, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(178, 23);
+            label4.TabIndex = 13;
+            label4.Text = "Number of News:";
             // 
             // LBLCars
             // 
@@ -198,7 +219,7 @@
             groupBox3.Controls.Add(LBLUsers);
             groupBox3.Controls.Add(label2);
             groupBox3.Font = new Font("Arial Rounded MT Bold", 12F);
-            groupBox3.Location = new Point(904, 364);
+            groupBox3.Location = new Point(974, 372);
             groupBox3.Margin = new Padding(3, 4, 3, 4);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(3, 4, 3, 4);
@@ -252,7 +273,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = WinDesktopApp.Properties.Resources.car_removebg_preview;
-            pictureBox1.Location = new Point(68, 67);
+            pictureBox1.Location = new Point(138, 75);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(307, 238);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -262,33 +283,12 @@
             // pictureBox2
             // 
             pictureBox2.Image = WinDesktopApp.Properties.Resources.users_removebg_preview;
-            pictureBox2.Location = new Point(947, 67);
+            pictureBox2.Location = new Point(1017, 75);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(307, 238);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 19;
             pictureBox2.TabStop = false;
-            // 
-            // LBLNews
-            // 
-            LBLNews.AutoSize = true;
-            LBLNews.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LBLNews.Location = new Point(210, 152);
-            LBLNews.Name = "LBLNews";
-            LBLNews.Size = new Size(60, 20);
-            LBLNews.TabIndex = 14;
-            LBLNews.Text = "label4";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Arial Rounded MT Bold", 12F);
-            label4.Location = new Point(31, 148);
-            label4.Margin = new Padding(5, 0, 5, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(178, 23);
-            label4.TabIndex = 13;
-            label4.Text = "Number of News:";
             // 
             // AdminInfoUC
             // 
@@ -302,7 +302,7 @@
             Controls.Add(groupBox2);
             Margin = new Padding(5, 4, 5, 4);
             Name = "AdminInfoUC";
-            Size = new Size(1326, 669);
+            Size = new Size(1463, 689);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);

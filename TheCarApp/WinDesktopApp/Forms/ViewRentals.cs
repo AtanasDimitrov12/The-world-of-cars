@@ -26,6 +26,17 @@ namespace WinDesktopApp.Forms
             manager = rm;
             IsView = View;
             DisplayRentInfo(rent, View);
+            CheckForView();
+        }
+
+        public void CheckForView() 
+        {
+            if (IsView)
+            {
+                BTNClose.Location = new Point(397, 392);
+                BTNUpdate.Visible = false;
+                BTNUpdate.Enabled = false;
+            }
         }
 
         public void DisplayRentInfo(RentACar rent, bool View)
@@ -56,38 +67,37 @@ namespace WinDesktopApp.Forms
 
         private void BTNUpdate_Click(object sender, EventArgs e)
         {
-            if (IsView)
+            if (CBRentStatus.SelectedItem != null)
             {
-                this.Close();
-            }
-            else
-            {
-                if (CBRentStatus.SelectedItem != null)
+                if (rent.user.Username == TBUsername.Text && $"{rent.car.Brand} {rent.car.Model}" == TBCar.Text)
                 {
-                    if (rent.user.Username == TBUsername.Text && $"{rent.car.Brand} {rent.car.Model}" == TBCar.Text)
+                    RentStatus newStatus;
+                    if (Enum.TryParse<RentStatus>(CBRentStatus.Text, true, out newStatus))
                     {
-                        RentStatus newStatus;
-                        if (Enum.TryParse<RentStatus>(CBRentStatus.Text, true, out newStatus))
-                        {
-                            rent.StartDate = DTPStartDate.Value;
-                            rent.ReturnDate = DTPEndDate.Value;
-                            rent.TotalPrice = manager.CalculatePrice(null, rent.car.PricePerDay, DTPStartDate.Value, DTPEndDate.Value);
-                            manager.UpdateRentStatus(rent, newStatus);
-                            RentChanged?.Invoke(this, EventArgs.Empty);
-                            this.Close();
-                        }
-                    }
-                    else 
-                    {
-                        MessageBox.Show("User and car information cannot be changed!");
+                        rent.StartDate = DTPStartDate.Value;
+                        rent.ReturnDate = DTPEndDate.Value;
+                        rent.TotalPrice = manager.CalculatePrice(null, rent.car.PricePerDay, DTPStartDate.Value, DTPEndDate.Value);
+                        manager.UpdateRentStatus(rent, newStatus);
+                        RentChanged?.Invoke(this, EventArgs.Empty);
+                        this.Close();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Please first select Rent Status first!");
+                    MessageBox.Show("User and car information cannot be changed!");
                 }
-
             }
+            else
+            {
+                MessageBox.Show("Please first select Rent Status first!");
+            }
+
+
+        }
+
+        private void BTNClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

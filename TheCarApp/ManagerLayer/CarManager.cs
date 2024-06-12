@@ -171,6 +171,35 @@ namespace Manager_Layer
             return cars.FirstOrDefault(car => car.Id == carId);
         }
 
+        public Car MapCarDtoToCar(CarDTO carDTO)
+        {
+            if (carDTO == null)
+                throw new ArgumentNullException(nameof(carDTO));
+
+            if (string.IsNullOrEmpty(carDTO.CarStatus))
+                throw new ArgumentException("CarStatus cannot be null or empty", nameof(carDTO.CarStatus));
+
+            CarStatus status;
+            if (!Enum.TryParse<CarStatus>(carDTO.CarStatus, true, out status))
+                throw new ArgumentException($"Invalid CarStatus value: {carDTO.CarStatus}");
+
+            var car = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, status, carDTO.NumberOfSeats, carDTO.NumberOfDoors, carDTO.Views);
+
+            foreach (var extraDTO in carDTO.CarExtras)
+            {
+                var extra = new Extra(extraDTO.extraName, extraDTO.Id);
+                car.AddExtra(extra);
+            }
+
+            foreach (var picDTO in carDTO.Pictures)
+            {
+                var pic = new Picture(picDTO.Id, picDTO.PictureURL);
+                car.AddPicture(pic);
+            }
+
+            return car;
+        }
+
         public bool LoadCars(out string errorMessage)
         {
             errorMessage = string.Empty;
