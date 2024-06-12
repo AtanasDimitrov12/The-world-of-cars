@@ -50,7 +50,6 @@
             TBCarNumOfDoors = new TextBox();
             label17 = new Label();
             label18 = new Label();
-            TBCarColor = new TextBox();
             TBCarVIN = new TextBox();
             label19 = new Label();
             TBCarPrice = new TextBox();
@@ -72,6 +71,9 @@
             BTNRemovePicture = new Button();
             CBPictureURL = new ComboBox();
             groupBox3 = new GroupBox();
+            TBColor = new TextBox();
+            CBColor = new ComboBox();
+            TBGearbox = new TextBox();
             groupBox4 = new GroupBox();
             BTNClose = new Button();
             ((System.ComponentModel.ISupportInitialize)NUDCarMileage).BeginInit();
@@ -85,10 +87,10 @@
             // 
             // RTBCarDescription
             // 
-            RTBCarDescription.Location = new Point(24, 44);
-            RTBCarDescription.Margin = new Padding(5, 4, 5, 4);
+            RTBCarDescription.Location = new Point(21, 33);
+            RTBCarDescription.Margin = new Padding(4, 3, 4, 3);
             RTBCarDescription.Name = "RTBCarDescription";
-            RTBCarDescription.Size = new Size(633, 108);
+            RTBCarDescription.Size = new Size(554, 82);
             RTBCarDescription.TabIndex = 11;
             RTBCarDescription.Text = "";
             // 
@@ -96,38 +98,38 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Arial Rounded MT Bold", 12F);
-            label6.Location = new Point(33, 72);
-            label6.Margin = new Padding(5, 0, 5, 0);
+            label6.Location = new Point(29, 54);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(75, 23);
+            label6.Size = new Size(60, 18);
             label6.TabIndex = 22;
             label6.Text = "Model:";
             // 
             // TBCarModel
             // 
-            TBCarModel.Location = new Point(151, 73);
-            TBCarModel.Margin = new Padding(5, 4, 5, 4);
+            TBCarModel.Location = new Point(132, 55);
+            TBCarModel.Margin = new Padding(4, 3, 4, 3);
             TBCarModel.Name = "TBCarModel";
-            TBCarModel.Size = new Size(188, 26);
+            TBCarModel.Size = new Size(287, 23);
             TBCarModel.TabIndex = 21;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Arial Rounded MT Bold", 12F);
-            label7.Location = new Point(33, 24);
-            label7.Margin = new Padding(5, 0, 5, 0);
+            label7.Location = new Point(29, 18);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(76, 23);
+            label7.Size = new Size(62, 18);
             label7.TabIndex = 20;
             label7.Text = "Brand:";
             // 
             // TBCarBrand
             // 
-            TBCarBrand.Location = new Point(151, 20);
-            TBCarBrand.Margin = new Padding(5, 4, 5, 4);
+            TBCarBrand.Location = new Point(132, 15);
+            TBCarBrand.Margin = new Padding(4, 3, 4, 3);
             TBCarBrand.Name = "TBCarBrand";
-            TBCarBrand.Size = new Size(188, 26);
+            TBCarBrand.Size = new Size(287, 23);
             TBCarBrand.TabIndex = 19;
             TBCarBrand.TextChanged += TBCarBrand_TextChanged;
             // 
@@ -135,68 +137,68 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Arial Rounded MT Bold", 12F);
-            label8.Location = new Point(33, 126);
-            label8.Margin = new Padding(5, 0, 5, 0);
+            label8.Location = new Point(29, 94);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(179, 23);
+            label8.Size = new Size(146, 18);
             label8.TabIndex = 23;
             label8.Text = "First registration:";
             // 
             // DTPCarFirstReg
             // 
-            DTPCarFirstReg.Location = new Point(218, 126);
-            DTPCarFirstReg.Margin = new Padding(5, 4, 5, 4);
+            DTPCarFirstReg.Location = new Point(191, 94);
+            DTPCarFirstReg.Margin = new Padding(4, 3, 4, 3);
             DTPCarFirstReg.Name = "DTPCarFirstReg";
-            DTPCarFirstReg.Size = new Size(121, 26);
+            DTPCarFirstReg.Size = new Size(228, 23);
             DTPCarFirstReg.TabIndex = 24;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Arial Rounded MT Bold", 12F);
-            label9.Location = new Point(33, 173);
-            label9.Margin = new Padding(5, 0, 5, 0);
+            label9.Location = new Point(29, 130);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(92, 23);
+            label9.Size = new Size(74, 18);
             label9.TabIndex = 25;
             label9.Text = "Mileage:";
             // 
             // NUDCarMileage
             // 
-            NUDCarMileage.Location = new Point(151, 176);
-            NUDCarMileage.Margin = new Padding(5, 4, 5, 4);
+            NUDCarMileage.Location = new Point(132, 132);
+            NUDCarMileage.Margin = new Padding(4, 3, 4, 3);
             NUDCarMileage.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             NUDCarMileage.Name = "NUDCarMileage";
-            NUDCarMileage.Size = new Size(190, 26);
+            NUDCarMileage.Size = new Size(287, 23);
             NUDCarMileage.TabIndex = 26;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Arial Rounded MT Bold", 12F);
-            label10.Location = new Point(33, 224);
-            label10.Margin = new Padding(5, 0, 5, 0);
+            label10.Location = new Point(29, 168);
+            label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(57, 23);
+            label10.Size = new Size(47, 18);
             label10.TabIndex = 27;
             label10.Text = "Fuel:";
             // 
             // TBCarFuel
             // 
-            TBCarFuel.Location = new Point(151, 224);
-            TBCarFuel.Margin = new Padding(5, 4, 5, 4);
+            TBCarFuel.Location = new Point(132, 168);
+            TBCarFuel.Margin = new Padding(4, 3, 4, 3);
             TBCarFuel.Name = "TBCarFuel";
-            TBCarFuel.Size = new Size(188, 26);
+            TBCarFuel.Size = new Size(287, 23);
             TBCarFuel.TabIndex = 28;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Arial Rounded MT Bold", 12F);
-            label11.Location = new Point(33, 284);
-            label11.Margin = new Padding(5, 0, 5, 0);
+            label11.Location = new Point(29, 213);
+            label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new Size(126, 23);
+            label11.Size = new Size(103, 18);
             label11.TabIndex = 29;
             label11.Text = "Engine size:";
             // 
@@ -204,10 +206,10 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Arial Rounded MT Bold", 12F);
-            label12.Location = new Point(33, 344);
-            label12.Margin = new Padding(5, 0, 5, 0);
+            label12.Location = new Point(29, 258);
+            label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
-            label12.Size = new Size(78, 23);
+            label12.Size = new Size(64, 18);
             label12.TabIndex = 31;
             label12.Text = "Power:";
             // 
@@ -215,10 +217,10 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Arial Rounded MT Bold", 12F);
-            label13.Location = new Point(312, 346);
-            label13.Margin = new Padding(5, 0, 5, 0);
+            label13.Location = new Point(391, 258);
+            label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
-            label13.Size = new Size(35, 23);
+            label13.Size = new Size(28, 18);
             label13.TabIndex = 33;
             label13.Text = "hp";
             // 
@@ -226,10 +228,10 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Arial Rounded MT Bold", 12F);
-            label14.Location = new Point(312, 286);
-            label14.Margin = new Padding(5, 0, 5, 0);
+            label14.Location = new Point(391, 213);
+            label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
-            label14.Size = new Size(34, 23);
+            label14.Size = new Size(28, 18);
             label14.TabIndex = 34;
             label14.Text = "cc";
             // 
@@ -237,58 +239,58 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Arial Rounded MT Bold", 12F);
-            label15.Location = new Point(33, 396);
-            label15.Margin = new Padding(5, 0, 5, 0);
+            label15.Location = new Point(29, 297);
+            label15.Margin = new Padding(4, 0, 4, 0);
             label15.Name = "label15";
-            label15.Size = new Size(100, 23);
+            label15.Size = new Size(81, 18);
             label15.TabIndex = 35;
             label15.Text = "Gearbox:";
             // 
             // CBCarGearbox
             // 
             CBCarGearbox.FormattingEnabled = true;
-            CBCarGearbox.Items.AddRange(new object[] { "Manuel", "Automatish " });
-            CBCarGearbox.Location = new Point(151, 397);
-            CBCarGearbox.Margin = new Padding(5, 4, 5, 4);
+            CBCarGearbox.Items.AddRange(new object[] { "Manuel", "Automatic " });
+            CBCarGearbox.Location = new Point(132, 298);
+            CBCarGearbox.Margin = new Padding(4, 3, 4, 3);
             CBCarGearbox.Name = "CBCarGearbox";
-            CBCarGearbox.Size = new Size(188, 26);
+            CBCarGearbox.Size = new Size(287, 23);
             CBCarGearbox.TabIndex = 36;
             // 
             // label16
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Arial Rounded MT Bold", 12F);
-            label16.Location = new Point(33, 449);
-            label16.Margin = new Padding(5, 0, 5, 0);
+            label16.Location = new Point(29, 337);
+            label16.Margin = new Padding(4, 0, 4, 0);
             label16.Name = "label16";
-            label16.Size = new Size(177, 23);
+            label16.Size = new Size(143, 18);
             label16.TabIndex = 37;
             label16.Text = "Number of seats:";
             // 
             // TBCarNumOfSeats
             // 
-            TBCarNumOfSeats.Location = new Point(232, 450);
-            TBCarNumOfSeats.Margin = new Padding(5, 4, 5, 4);
+            TBCarNumOfSeats.Location = new Point(203, 338);
+            TBCarNumOfSeats.Margin = new Padding(4, 3, 4, 3);
             TBCarNumOfSeats.Name = "TBCarNumOfSeats";
-            TBCarNumOfSeats.Size = new Size(107, 26);
+            TBCarNumOfSeats.Size = new Size(216, 23);
             TBCarNumOfSeats.TabIndex = 38;
             // 
             // TBCarNumOfDoors
             // 
-            TBCarNumOfDoors.Location = new Point(232, 502);
-            TBCarNumOfDoors.Margin = new Padding(5, 4, 5, 4);
+            TBCarNumOfDoors.Location = new Point(203, 376);
+            TBCarNumOfDoors.Margin = new Padding(4, 3, 4, 3);
             TBCarNumOfDoors.Name = "TBCarNumOfDoors";
-            TBCarNumOfDoors.Size = new Size(107, 26);
+            TBCarNumOfDoors.Size = new Size(216, 23);
             TBCarNumOfDoors.TabIndex = 40;
             // 
             // label17
             // 
             label17.AutoSize = true;
             label17.Font = new Font("Arial Rounded MT Bold", 12F);
-            label17.Location = new Point(33, 501);
-            label17.Margin = new Padding(5, 0, 5, 0);
+            label17.Location = new Point(29, 376);
+            label17.Margin = new Padding(4, 0, 4, 0);
             label17.Name = "label17";
-            label17.Size = new Size(181, 23);
+            label17.Size = new Size(145, 18);
             label17.TabIndex = 39;
             label17.Text = "Number of doors:";
             // 
@@ -296,56 +298,48 @@
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Arial Rounded MT Bold", 12F);
-            label18.Location = new Point(33, 557);
-            label18.Margin = new Padding(5, 0, 5, 0);
+            label18.Location = new Point(29, 413);
+            label18.Margin = new Padding(4, 0, 4, 0);
             label18.Name = "label18";
-            label18.Size = new Size(69, 23);
+            label18.Size = new Size(56, 18);
             label18.TabIndex = 41;
             label18.Text = "Color:";
             // 
-            // TBCarColor
-            // 
-            TBCarColor.Location = new Point(151, 560);
-            TBCarColor.Margin = new Padding(5, 4, 5, 4);
-            TBCarColor.Name = "TBCarColor";
-            TBCarColor.Size = new Size(188, 26);
-            TBCarColor.TabIndex = 42;
-            // 
             // TBCarVIN
             // 
-            TBCarVIN.Location = new Point(151, 605);
-            TBCarVIN.Margin = new Padding(5, 4, 5, 4);
+            TBCarVIN.Location = new Point(132, 448);
+            TBCarVIN.Margin = new Padding(4, 3, 4, 3);
             TBCarVIN.Name = "TBCarVIN";
-            TBCarVIN.Size = new Size(188, 26);
+            TBCarVIN.Size = new Size(287, 23);
             TBCarVIN.TabIndex = 44;
             // 
             // label19
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Arial Rounded MT Bold", 12F);
-            label19.Location = new Point(33, 604);
-            label19.Margin = new Padding(5, 0, 5, 0);
+            label19.Location = new Point(29, 448);
+            label19.Margin = new Padding(4, 0, 4, 0);
             label19.Name = "label19";
-            label19.Size = new Size(51, 23);
+            label19.Size = new Size(41, 18);
             label19.TabIndex = 43;
             label19.Text = "VIN:";
             // 
             // TBCarPrice
             // 
-            TBCarPrice.Location = new Point(200, 657);
-            TBCarPrice.Margin = new Padding(5, 4, 5, 4);
+            TBCarPrice.Location = new Point(156, 486);
+            TBCarPrice.Margin = new Padding(4, 3, 4, 3);
             TBCarPrice.Name = "TBCarPrice";
-            TBCarPrice.Size = new Size(82, 26);
+            TBCarPrice.Size = new Size(210, 23);
             TBCarPrice.TabIndex = 46;
             // 
             // label20
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Arial Rounded MT Bold", 12F);
-            label20.Location = new Point(33, 656);
-            label20.Margin = new Padding(5, 0, 5, 0);
+            label20.Location = new Point(29, 486);
+            label20.Margin = new Padding(4, 0, 4, 0);
             label20.Name = "label20";
-            label20.Size = new Size(147, 23);
+            label20.Size = new Size(119, 18);
             label20.TabIndex = 45;
             label20.Text = "Price per day:";
             // 
@@ -353,10 +347,10 @@
             // 
             label21.AutoSize = true;
             label21.Font = new Font("Arial Rounded MT Bold", 12F);
-            label21.Location = new Point(289, 657);
-            label21.Margin = new Padding(5, 0, 5, 0);
+            label21.Location = new Point(374, 486);
+            label21.Margin = new Padding(4, 0, 4, 0);
             label21.Name = "label21";
-            label21.Size = new Size(55, 23);
+            label21.Size = new Size(45, 18);
             label21.TabIndex = 47;
             label21.Text = "euro";
             // 
@@ -369,11 +363,11 @@
             groupBox1.Controls.Add(CBCarExtras);
             groupBox1.Controls.Add(LBExtras);
             groupBox1.Font = new Font("Arial Rounded MT Bold", 9.75F);
-            groupBox1.Location = new Point(476, 239);
-            groupBox1.Margin = new Padding(5, 4, 5, 4);
+            groupBox1.Location = new Point(510, 179);
+            groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(5, 4, 5, 4);
-            groupBox1.Size = new Size(318, 491);
+            groupBox1.Padding = new Padding(4, 3, 4, 3);
+            groupBox1.Size = new Size(278, 368);
             groupBox1.TabIndex = 48;
             groupBox1.TabStop = false;
             groupBox1.Text = "Car's extras";
@@ -383,10 +377,10 @@
             BTNAddExtra.BackColor = Color.FromArgb(88, 129, 87);
             BTNAddExtra.Font = new Font("Arial Rounded MT Bold", 12F);
             BTNAddExtra.ForeColor = Color.White;
-            BTNAddExtra.Location = new Point(101, 168);
-            BTNAddExtra.Margin = new Padding(5, 4, 5, 4);
+            BTNAddExtra.Location = new Point(88, 126);
+            BTNAddExtra.Margin = new Padding(4, 3, 4, 3);
             BTNAddExtra.Name = "BTNAddExtra";
-            BTNAddExtra.Size = new Size(117, 56);
+            BTNAddExtra.Size = new Size(102, 42);
             BTNAddExtra.TabIndex = 1;
             BTNAddExtra.Text = "Add";
             BTNAddExtra.UseVisualStyleBackColor = false;
@@ -397,10 +391,10 @@
             BTNAddExtras.BackColor = Color.FromArgb(88, 129, 87);
             BTNAddExtras.Font = new Font("Arial Rounded MT Bold", 12F);
             BTNAddExtras.ForeColor = Color.White;
-            BTNAddExtras.Location = new Point(84, 39);
-            BTNAddExtras.Margin = new Padding(5, 4, 5, 4);
+            BTNAddExtras.Location = new Point(74, 29);
+            BTNAddExtras.Margin = new Padding(4, 3, 4, 3);
             BTNAddExtras.Name = "BTNAddExtras";
-            BTNAddExtras.Size = new Size(167, 53);
+            BTNAddExtras.Size = new Size(146, 40);
             BTNAddExtras.TabIndex = 53;
             BTNAddExtras.Text = "Manage Extras";
             BTNAddExtras.UseVisualStyleBackColor = false;
@@ -411,10 +405,10 @@
             BTNRemoveExtra.BackColor = Color.FromArgb(88, 129, 87);
             BTNRemoveExtra.Font = new Font("Arial Rounded MT Bold", 12F);
             BTNRemoveExtra.ForeColor = Color.White;
-            BTNRemoveExtra.Location = new Point(101, 424);
-            BTNRemoveExtra.Margin = new Padding(5, 4, 5, 4);
+            BTNRemoveExtra.Location = new Point(88, 318);
+            BTNRemoveExtra.Margin = new Padding(4, 3, 4, 3);
             BTNRemoveExtra.Name = "BTNRemoveExtra";
-            BTNRemoveExtra.Size = new Size(117, 56);
+            BTNRemoveExtra.Size = new Size(102, 42);
             BTNRemoveExtra.TabIndex = 2;
             BTNRemoveExtra.Text = "Remove";
             BTNRemoveExtra.UseVisualStyleBackColor = false;
@@ -424,20 +418,20 @@
             // 
             CBCarExtras.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             CBCarExtras.FormattingEnabled = true;
-            CBCarExtras.Location = new Point(44, 117);
-            CBCarExtras.Margin = new Padding(5, 4, 5, 4);
+            CBCarExtras.Location = new Point(38, 88);
+            CBCarExtras.Margin = new Padding(4, 3, 4, 3);
             CBCarExtras.Name = "CBCarExtras";
-            CBCarExtras.Size = new Size(235, 25);
+            CBCarExtras.Size = new Size(206, 22);
             CBCarExtras.TabIndex = 0;
             // 
             // LBExtras
             // 
             LBExtras.FormattingEnabled = true;
-            LBExtras.ItemHeight = 18;
-            LBExtras.Location = new Point(27, 232);
-            LBExtras.Margin = new Padding(5, 4, 5, 4);
+            LBExtras.ItemHeight = 15;
+            LBExtras.Location = new Point(24, 174);
+            LBExtras.Margin = new Padding(4, 3, 4, 3);
             LBExtras.Name = "LBExtras";
-            LBExtras.Size = new Size(275, 184);
+            LBExtras.Size = new Size(241, 139);
             LBExtras.TabIndex = 49;
             // 
             // BTNAddCar
@@ -445,10 +439,10 @@
             BTNAddCar.BackColor = Color.FromArgb(88, 129, 87);
             BTNAddCar.Font = new Font("Arial Rounded MT Bold", 12F);
             BTNAddCar.ForeColor = Color.White;
-            BTNAddCar.Location = new Point(377, 753);
-            BTNAddCar.Margin = new Padding(5, 4, 5, 4);
+            BTNAddCar.Location = new Point(353, 565);
+            BTNAddCar.Margin = new Padding(4, 3, 4, 3);
             BTNAddCar.Name = "BTNAddCar";
-            BTNAddCar.Size = new Size(235, 73);
+            BTNAddCar.Size = new Size(206, 55);
             BTNAddCar.TabIndex = 50;
             BTNAddCar.Text = "Add Car";
             BTNAddCar.UseVisualStyleBackColor = false;
@@ -456,23 +450,23 @@
             // 
             // NUDCarEngineSize
             // 
-            NUDCarEngineSize.Location = new Point(180, 284);
-            NUDCarEngineSize.Margin = new Padding(5, 4, 5, 4);
+            NUDCarEngineSize.Location = new Point(132, 213);
+            NUDCarEngineSize.Margin = new Padding(4, 3, 4, 3);
             NUDCarEngineSize.Maximum = new decimal(new int[] { 7000, 0, 0, 0 });
             NUDCarEngineSize.Minimum = new decimal(new int[] { 900, 0, 0, 0 });
             NUDCarEngineSize.Name = "NUDCarEngineSize";
-            NUDCarEngineSize.Size = new Size(126, 26);
+            NUDCarEngineSize.Size = new Size(251, 23);
             NUDCarEngineSize.TabIndex = 51;
             NUDCarEngineSize.Value = new decimal(new int[] { 900, 0, 0, 0 });
             // 
             // NUDCarPower
             // 
-            NUDCarPower.Location = new Point(151, 346);
-            NUDCarPower.Margin = new Padding(5, 4, 5, 4);
+            NUDCarPower.Location = new Point(132, 260);
+            NUDCarPower.Margin = new Padding(4, 3, 4, 3);
             NUDCarPower.Maximum = new decimal(new int[] { 1500, 0, 0, 0 });
             NUDCarPower.Minimum = new decimal(new int[] { 50, 0, 0, 0 });
             NUDCarPower.Name = "NUDCarPower";
-            NUDCarPower.Size = new Size(153, 26);
+            NUDCarPower.Size = new Size(251, 23);
             NUDCarPower.TabIndex = 52;
             NUDCarPower.Value = new decimal(new int[] { 50, 0, 0, 0 });
             // 
@@ -485,11 +479,11 @@
             groupBox2.Controls.Add(BTNRemovePicture);
             groupBox2.Controls.Add(CBPictureURL);
             groupBox2.Font = new Font("Arial Rounded MT Bold", 9.75F);
-            groupBox2.Location = new Point(839, 239);
-            groupBox2.Margin = new Padding(5, 4, 5, 4);
+            groupBox2.Location = new Point(828, 179);
+            groupBox2.Margin = new Padding(4, 3, 4, 3);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(5, 4, 5, 4);
-            groupBox2.Size = new Size(318, 491);
+            groupBox2.Padding = new Padding(4, 3, 4, 3);
+            groupBox2.Size = new Size(278, 368);
             groupBox2.TabIndex = 49;
             groupBox2.TabStop = false;
             groupBox2.Text = "Car's pictures";
@@ -499,10 +493,10 @@
             BTNAddPics.BackColor = Color.FromArgb(88, 129, 87);
             BTNAddPics.Font = new Font("Arial Rounded MT Bold", 12F);
             BTNAddPics.ForeColor = Color.White;
-            BTNAddPics.Location = new Point(67, 39);
-            BTNAddPics.Margin = new Padding(5, 4, 5, 4);
+            BTNAddPics.Location = new Point(59, 29);
+            BTNAddPics.Margin = new Padding(4, 3, 4, 3);
             BTNAddPics.Name = "BTNAddPics";
-            BTNAddPics.Size = new Size(187, 53);
+            BTNAddPics.Size = new Size(164, 40);
             BTNAddPics.TabIndex = 54;
             BTNAddPics.Text = "Manage pictures";
             BTNAddPics.UseVisualStyleBackColor = false;
@@ -511,11 +505,11 @@
             // LBPictures
             // 
             LBPictures.FormattingEnabled = true;
-            LBPictures.ItemHeight = 18;
-            LBPictures.Location = new Point(22, 232);
-            LBPictures.Margin = new Padding(5, 4, 5, 4);
+            LBPictures.ItemHeight = 15;
+            LBPictures.Location = new Point(19, 174);
+            LBPictures.Margin = new Padding(4, 3, 4, 3);
             LBPictures.Name = "LBPictures";
-            LBPictures.Size = new Size(275, 184);
+            LBPictures.Size = new Size(241, 139);
             LBPictures.TabIndex = 53;
             // 
             // BTNAddPicture
@@ -523,10 +517,10 @@
             BTNAddPicture.BackColor = Color.FromArgb(88, 129, 87);
             BTNAddPicture.Font = new Font("Arial Rounded MT Bold", 12F);
             BTNAddPicture.ForeColor = Color.White;
-            BTNAddPicture.Location = new Point(99, 168);
-            BTNAddPicture.Margin = new Padding(5, 4, 5, 4);
+            BTNAddPicture.Location = new Point(87, 126);
+            BTNAddPicture.Margin = new Padding(4, 3, 4, 3);
             BTNAddPicture.Name = "BTNAddPicture";
-            BTNAddPicture.Size = new Size(117, 56);
+            BTNAddPicture.Size = new Size(102, 42);
             BTNAddPicture.TabIndex = 1;
             BTNAddPicture.Text = "Add";
             BTNAddPicture.UseVisualStyleBackColor = false;
@@ -537,10 +531,10 @@
             BTNRemovePicture.BackColor = Color.FromArgb(88, 129, 87);
             BTNRemovePicture.Font = new Font("Arial Rounded MT Bold", 12F);
             BTNRemovePicture.ForeColor = Color.White;
-            BTNRemovePicture.Location = new Point(99, 424);
-            BTNRemovePicture.Margin = new Padding(5, 4, 5, 4);
+            BTNRemovePicture.Location = new Point(87, 318);
+            BTNRemovePicture.Margin = new Padding(4, 3, 4, 3);
             BTNRemovePicture.Name = "BTNRemovePicture";
-            BTNRemovePicture.Size = new Size(117, 56);
+            BTNRemovePicture.Size = new Size(102, 42);
             BTNRemovePicture.TabIndex = 2;
             BTNRemovePicture.Text = "Remove";
             BTNRemovePicture.UseVisualStyleBackColor = false;
@@ -550,15 +544,18 @@
             // 
             CBPictureURL.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             CBPictureURL.FormattingEnabled = true;
-            CBPictureURL.Location = new Point(46, 117);
-            CBPictureURL.Margin = new Padding(5, 4, 5, 4);
+            CBPictureURL.Location = new Point(40, 88);
+            CBPictureURL.Margin = new Padding(4, 3, 4, 3);
             CBPictureURL.Name = "CBPictureURL";
-            CBPictureURL.Size = new Size(228, 25);
+            CBPictureURL.Size = new Size(200, 22);
             CBPictureURL.TabIndex = 0;
             // 
             // groupBox3
             // 
             groupBox3.BackColor = Color.FromArgb(163, 177, 138);
+            groupBox3.Controls.Add(TBColor);
+            groupBox3.Controls.Add(CBColor);
+            groupBox3.Controls.Add(TBGearbox);
             groupBox3.Controls.Add(CBCarGearbox);
             groupBox3.Controls.Add(TBCarBrand);
             groupBox3.Controls.Add(NUDCarPower);
@@ -577,7 +574,6 @@
             groupBox3.Controls.Add(label10);
             groupBox3.Controls.Add(label19);
             groupBox3.Controls.Add(TBCarFuel);
-            groupBox3.Controls.Add(TBCarColor);
             groupBox3.Controls.Add(label11);
             groupBox3.Controls.Add(label18);
             groupBox3.Controls.Add(label12);
@@ -589,20 +585,46 @@
             groupBox3.Controls.Add(label16);
             groupBox3.Controls.Add(TBCarNumOfSeats);
             groupBox3.Font = new Font("Arial Rounded MT Bold", 9.75F);
-            groupBox3.Location = new Point(29, 31);
+            groupBox3.Location = new Point(25, 23);
+            groupBox3.Margin = new Padding(3, 2, 3, 2);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(396, 699);
+            groupBox3.Padding = new Padding(3, 2, 3, 2);
+            groupBox3.Size = new Size(458, 524);
             groupBox3.TabIndex = 53;
             groupBox3.TabStop = false;
+            // 
+            // TBColor
+            // 
+            TBColor.Location = new Point(132, 413);
+            TBColor.Name = "TBColor";
+            TBColor.Size = new Size(287, 23);
+            TBColor.TabIndex = 55;
+            // 
+            // CBColor
+            // 
+            CBColor.FormattingEnabled = true;
+            CBColor.Location = new Point(132, 413);
+            CBColor.Name = "CBColor";
+            CBColor.Size = new Size(287, 23);
+            CBColor.TabIndex = 54;
+            // 
+            // TBGearbox
+            // 
+            TBGearbox.Location = new Point(132, 298);
+            TBGearbox.Name = "TBGearbox";
+            TBGearbox.Size = new Size(287, 23);
+            TBGearbox.TabIndex = 53;
             // 
             // groupBox4
             // 
             groupBox4.BackColor = Color.FromArgb(163, 177, 138);
             groupBox4.Controls.Add(RTBCarDescription);
             groupBox4.Font = new Font("Arial Rounded MT Bold", 12F);
-            groupBox4.Location = new Point(476, 31);
+            groupBox4.Location = new Point(510, 23);
+            groupBox4.Margin = new Padding(3, 2, 3, 2);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(681, 185);
+            groupBox4.Padding = new Padding(3, 2, 3, 2);
+            groupBox4.Size = new Size(596, 139);
             groupBox4.TabIndex = 54;
             groupBox4.TabStop = false;
             groupBox4.Text = "Description:";
@@ -612,10 +634,10 @@
             BTNClose.BackColor = Color.FromArgb(88, 129, 87);
             BTNClose.Font = new Font("Arial Rounded MT Bold", 12F);
             BTNClose.ForeColor = Color.White;
-            BTNClose.Location = new Point(642, 753);
-            BTNClose.Margin = new Padding(5, 4, 5, 4);
+            BTNClose.Location = new Point(584, 565);
+            BTNClose.Margin = new Padding(4, 3, 4, 3);
             BTNClose.Name = "BTNClose";
-            BTNClose.Size = new Size(235, 73);
+            BTNClose.Size = new Size(206, 55);
             BTNClose.TabIndex = 55;
             BTNClose.Text = "Close form";
             BTNClose.UseVisualStyleBackColor = false;
@@ -623,17 +645,17 @@
             // 
             // AddCar
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(218, 215, 205);
-            ClientSize = new Size(1189, 839);
+            ClientSize = new Size(1130, 629);
             Controls.Add(BTNClose);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(BTNAddCar);
             Controls.Add(groupBox1);
-            Margin = new Padding(5, 4, 5, 4);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "AddCar";
             Text = "AddCar";
             ((System.ComponentModel.ISupportInitialize)NUDCarMileage).EndInit();
@@ -670,7 +692,6 @@
         private System.Windows.Forms.TextBox TBCarNumOfDoors;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox TBCarColor;
         private System.Windows.Forms.TextBox TBCarVIN;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox TBCarPrice;
@@ -694,5 +715,8 @@
         private GroupBox groupBox3;
         private GroupBox groupBox4;
         private Button BTNClose;
+        private TextBox TBGearbox;
+        private TextBox TBColor;
+        private ComboBox CBColor;
     }
 }

@@ -38,6 +38,7 @@
             panel2 = new Panel();
             label1 = new Label();
             tableLayoutPanel1.SuspendLayout();
+            panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             tableLayoutPanel1.Controls.Add(BTNCarControl, 0, 3);
             tableLayoutPanel1.Controls.Add(BTNCarNews, 0, 1);
             tableLayoutPanel1.Controls.Add(BTNControlAdminInfo, 0, 0);
-            tableLayoutPanel1.Location = new Point(1, 41);
+            tableLayoutPanel1.Location = new Point(0, 65);
             tableLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
@@ -136,6 +137,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(52, 78, 65);
+            panel1.Controls.Add(tableLayoutPanel1);
             panel1.Location = new Point(1, 0);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
@@ -171,12 +173,12 @@
             BackColor = Color.FromArgb(218, 215, 205);
             ClientSize = new Size(1527, 518);
             Controls.Add(panel2);
-            Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
             Margin = new Padding(4, 3, 4, 3);
             Name = "ControlPage";
             Text = "ControlPage";
             tableLayoutPanel1.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);

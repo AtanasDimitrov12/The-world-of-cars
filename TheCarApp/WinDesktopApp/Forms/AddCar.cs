@@ -56,16 +56,29 @@ namespace DesktopApp
             BTNAddPicturesGet = BTNAddPics;
             BTNRemoveExtraGet = BTNRemoveExtra;
             BTNRemovePictureGet = BTNRemovePicture;
+            foreach (var color in Enum.GetValues(typeof(Colors)))
+            {
+                string colorStr = color.ToString();
+                string capitalizedColor = char.ToUpper(colorStr[0]) + colorStr.Substring(1).ToLower();
+                CBColor.Items.Add(capitalizedColor);
+            }
 
             if (carData != null)
             {
                 Modify = true;
                 LoadCarData();
+
             }
             if (IsView)
-            { 
+            {
                 BTNAddCar.Visible = false;
-                BTNClose.Location = new Point(520, 753);
+                BTNClose.Location = new Point(510, 565);
+                DisabledTextBoxes();
+            }
+            else
+            {
+                TBColor.Visible = false;
+                TBGearbox.Visible = false;
             }
         }
 
@@ -76,9 +89,10 @@ namespace DesktopApp
             DTPCarFirstReg.Value = carData.FirstRegistration;
             NUDCarMileage.Value = carData.Mileage;
             TBCarFuel.Text = carData.Fuel;
+            CBCarGearbox.Text = carData.Gearbox;
             NUDCarEngineSize.Value = carData.EngineSize;
             NUDCarPower.Value = carData.HorsePower;
-            TBCarColor.Text = carData.Color;
+            CBColor.Text = carData.Color;
             TBCarVIN.Text = carData.VIN;
             RTBCarDescription.Text = carData.Description;
             TBCarPrice.Text = carData.PricePerDay.ToString();
@@ -137,7 +151,7 @@ namespace DesktopApp
                     string.IsNullOrEmpty(TBCarModel.Text) ||
                     string.IsNullOrEmpty(TBCarFuel.Text) ||
                     CBCarGearbox.SelectedItem == null ||
-                    string.IsNullOrEmpty(TBCarColor.Text) ||
+                    string.IsNullOrEmpty(CBColor.Text) ||
                     string.IsNullOrEmpty(TBCarVIN.Text) ||
                     string.IsNullOrEmpty(RTBCarDescription.Text) ||
                     string.IsNullOrEmpty(TBCarPrice.Text) ||
@@ -150,7 +164,7 @@ namespace DesktopApp
 
                 if (!Modify)
                 {
-                    Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), TBCarFuel.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), TBCarColor.Text, TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text, 0);
+                    Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), TBCarFuel.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), CBColor.SelectedItem.ToString(), TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text, 0);
                     if (pictures.Count != 0)
                     {
                         if (manager.AddCar(car, pictures, extras, out string addCarError))
@@ -196,9 +210,10 @@ namespace DesktopApp
             carData.FirstRegistration = DTPCarFirstReg.Value;
             carData.Mileage = Convert.ToInt32(NUDCarMileage.Value);
             carData.Fuel = TBCarFuel.Text;
+            carData.Gearbox = CBCarGearbox.Text;
             carData.EngineSize = Convert.ToInt32(NUDCarEngineSize.Value);
             carData.HorsePower = Convert.ToInt32(NUDCarPower.Value);
-            carData.Color = TBCarColor.Text;
+            carData.Color = CBColor.Text;
             carData.VIN = TBCarVIN.Text;
             carData.Description = RTBCarDescription.Text;
             carData.PricePerDay = Convert.ToDecimal(TBCarPrice.Text);
@@ -228,7 +243,7 @@ namespace DesktopApp
                 }
                 AddToLB();
             }
-            else 
+            else
             {
                 MessageBox.Show("First, you need to choose an extra to add!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -276,7 +291,7 @@ namespace DesktopApp
                 }
                 AddToLB();
             }
-            else 
+            else
             {
                 MessageBox.Show("First, you need to choose a picture to add!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -352,6 +367,30 @@ namespace DesktopApp
         private void BTNClose_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void DisabledTextBoxes()
+        {
+            TBCarBrand.Enabled = false;
+            TBCarModel.Enabled = false;
+            TBCarFuel.Enabled = false;
+            TBColor.Enabled = false;
+            TBColor.Text = carData.Color;
+            TBCarNumOfDoors.Enabled = false;
+            TBCarNumOfSeats.Enabled = false;
+            TBCarPrice.Enabled = false;
+            TBCarVIN.Enabled = false;
+            TBGearbox.Enabled = false;
+            RTBCarDescription.Enabled = false;
+            CBCarExtras.Visible = false;
+            CBCarGearbox.Enabled = false;
+            CBCarGearbox.Visible = false;
+            CBPictureURL.Visible = false;
+            TBGearbox.Text = carData.Gearbox;
+            DTPCarFirstReg.Enabled = false;
+            NUDCarEngineSize.Enabled = false;
+            NUDCarMileage.Enabled = false;
+            NUDCarPower.Enabled = false;
         }
     }
 }

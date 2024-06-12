@@ -35,7 +35,7 @@ namespace WinDesktopApp.Forms
         {
             if (IsView)
             {
-                BTNClose.Location = new Point(397, 392);
+                BTNClose.Location = new Point(450, 294);
                 BTNUpdate.Visible = false;
                 BTNUpdate.Enabled = false;
             }
@@ -56,6 +56,9 @@ namespace WinDesktopApp.Forms
                 TBRentStatus.Text = rent.RentStatus.ToString();
                 CBRentStatus.Visible = false;
                 CBRentStatus.Enabled = false;
+                DTPStartDate.Enabled = false;
+                DTPEndDate.Enabled = false;
+                TBRentStatus.Enabled = false;
                 BTNUpdate.Text = "Close";
             }
             else
@@ -74,23 +77,18 @@ namespace WinDesktopApp.Forms
         {
             if (CBRentStatus.SelectedItem != null)
             {
-                if (rent.user.Username == TBUsername.Text && $"{rent.car.Brand} {rent.car.Model}" == TBCar.Text)
+
+                RentStatus newStatus;
+                if (Enum.TryParse<RentStatus>(CBRentStatus.Text, true, out newStatus))
                 {
-                    RentStatus newStatus;
-                    if (Enum.TryParse<RentStatus>(CBRentStatus.Text, true, out newStatus))
-                    {
-                        rent.StartDate = DTPStartDate.Value;
-                        rent.ReturnDate = DTPEndDate.Value;
-                        rent.TotalPrice = manager.CalculatePrice(rent.user, rent.car.PricePerDay, DTPStartDate.Value, DTPEndDate.Value);
-                        manager.UpdateRentStatus(rent, newStatus);
-                        RentChanged?.Invoke(this, EventArgs.Empty);
-                        this.Close();
-                    }
+                    rent.StartDate = DTPStartDate.Value;
+                    rent.ReturnDate = DTPEndDate.Value;
+                    rent.TotalPrice = manager.CalculatePrice(rent.user, rent.car.PricePerDay, DTPStartDate.Value, DTPEndDate.Value);
+                    manager.UpdateRentStatus(rent, newStatus);
+                    RentChanged?.Invoke(this, EventArgs.Empty);
+                    this.Close();
                 }
-                else
-                {
-                    MessageBox.Show("User and car information cannot be changed!");
-                }
+
             }
             else
             {
@@ -121,8 +119,6 @@ namespace WinDesktopApp.Forms
             {
                 MessageBox.Show("End date must be after start date.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-
             try
             {
                 TBTotalPrice.Text = manager.CalculatePrice(rent.user, rent.car.PricePerDay, DTPStartDate.Value, DTPEndDate.Value).ToString();
