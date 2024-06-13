@@ -20,6 +20,12 @@ namespace TheCarApp.Pages
         public int Rentals { get; set; }
         [BindProperty]
         public IFormFile ProfilePicture { get; set; }
+        [BindProperty]
+        public string NewUsername { get; set; }
+        [BindProperty]
+        public string NewPassword { get; set; }
+        [BindProperty]
+        public string ConfirmPassword { get; set; }
 
         public AccountPageModel(ProjectManager pm)
         {
@@ -84,6 +90,41 @@ namespace TheCarApp.Pages
         {
             await HttpContext.SignOutAsync();
             return RedirectToPage("/Index");
+        }
+
+        public IActionResult OnPostEditCredentials()
+        {
+            UserEmail = User.Identity.Name;
+            user = _projectManager.PeopleManager.GetUser(UserEmail);
+
+            if (user != null)
+            {
+                if (!string.IsNullOrEmpty(NewUsername) && !_projectManager.PeopleManager.GetAllUsers().Any(u => u.Username == NewUsername && u.Id != user.Id))
+                {
+                    user.Username = NewUsername;
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Username is already taken.");
+                    return Page();
+                }
+
+                if (!string.IsNullOrEmpty(NewPassword) && NewPassword == ConfirmPassword && NewPassword.Length >= 8)
+                {
+                    var (hash, salt) = _projectManager.PeopleManager.HashPassword(NewPassword);
+                    user.Password = hash;
+                    user.PassSalt = salt;
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Password does not meet the requirements or does not match the confirmation.");
+                    return Page();
+                }
+
+                _projectManager.PeopleManager.UpdatePerson(user, out string errorMessage);
+            }
+
+            return RedirectToPage();
         }
     }
 }
