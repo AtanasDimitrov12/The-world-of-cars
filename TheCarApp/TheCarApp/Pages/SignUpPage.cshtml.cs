@@ -13,7 +13,7 @@ namespace TheCarApp.Pages
     [AllowAnonymous]
     public class SignUpPageModel : PageModel
     {
-        private ProjectManager _projectManager = new ProjectManager();
+        private ProjectManager _projectManager;
 
         [BindProperty]
         [Required(ErrorMessage = "Username is required.")]
@@ -35,9 +35,9 @@ namespace TheCarApp.Pages
         [RegularExpression(@"^\d{9}$", ErrorMessage = "Driving license number must be exactly 9 digits.")]
         public string LicenseNumber { get; set; }
 
-        public SignUpPageModel()
+        public SignUpPageModel(ProjectManager pm)
         {
-            _projectManager = new ProjectManager();
+            _projectManager = pm;
         }
 
         public void OnGet()
@@ -48,31 +48,38 @@ namespace TheCarApp.Pages
         {
             if (!ModelState.IsValid)
             {
-                return Page(); 
+                return Page();
             }
 
-            var newUser = new User(0, Email,Password, Username, DateTime.Now, int.Parse(LicenseNumber), null, "/pictures/profile_pictures/blank-profile-picture.jpg");
-            _projectManager.PeopleManager.AddPerson(newUser, out string ErrorMessage); // display
-            var claims = new List<Claim>
+            var newUser = new User(0, Email, Password, Username, DateTime.Now, int.Parse(LicenseNumber), null, "/pictures/profile_pictures/blank-profile-picture.jpg");
+            if (_projectManager.PeopleManager.AddPerson(newUser, out string ErrorMessage))
+            {
+                var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, Email)
                 };
 
-            var claimsIdentity = new ClaimsIdentity(
-                claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var claimsIdentity = new ClaimsIdentity(
+                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-            var authProperties = new AuthenticationProperties
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = true,
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
+                };
+
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity),
+                    authProperties);
+
+                return RedirectToPage("/MarketPlace");
+            }
+            else
             {
-                IsPersistent = true,
-                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
-            };
-
-            await HttpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity),
-                authProperties);
-
-            return RedirectToPage("/MarketPlace");
+                ModelState.AddModelError("", ErrorMessage);
+                return Page();
+            }
         }
 
 
@@ -84,9 +91,9 @@ namespace TheCarApp.Pages
                 if (_projectManager.PeopleManager.AuthenticateUser(Email.ToLower(), Password, out string Errormessage))
                 {
                     var claims = new List<Claim>
-                {
+                    {
                     new Claim(ClaimTypes.Name, Email.ToLower())
-                };
+                    };
 
                     var claimsIdentity = new ClaimsIdentity(
                         claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -110,7 +117,7 @@ namespace TheCarApp.Pages
                     return Page();
                 }
             }
-            else 
+            else
             {
                 ModelState.AddModelError("", "Login failed. Please check your email and password.");
                 return Page();

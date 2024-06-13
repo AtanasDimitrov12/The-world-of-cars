@@ -10,11 +10,16 @@ namespace TheCarApp.Pages
     public class CarNewsModel : PageModel
     {
         public List<CarNews> News { get; set; }
-        public ProjectManager projectManager = new ProjectManager();
+        public ProjectManager projectManager;
         public int TotalPages { get; set; }
         public int CurrentPage { get; set; }
         public string SearchQuery { get; set; }
         public bool AllNewsDisplayed { get; set; }
+
+        public CarNewsModel(ProjectManager pm)
+        {
+            projectManager = pm;
+        }
 
         public void OnGet(int pageNumber = 1, string searchQuery = "")
         {

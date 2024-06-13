@@ -27,6 +27,8 @@
             <button class="filled-button filled-buttonSORT" onclick="window.location.href='?sort=views_desc'">Sort by Views DESC</button>
             <button class="filled-button filled-buttonSORT" onclick="window.location.href='?sort=price_asc'">Sort by Price ASC</button>
             <button class="filled-button filled-buttonSORT" onclick="window.location.href='?sort=price_desc'">Sort by Price DESC</button>
+            <button class="filled-button filled-buttonSORT" onclick="window.location.href='?sort=date_asc'">Sort by Date ASC</button>
+            <button class="filled-button filled-buttonSORT" onclick="window.location.href='?sort=date_desc'">Sort by Date DESC</button>
         </div>
 
         <div id="filterMenu" class="sort-filter-menu">
@@ -58,8 +60,8 @@
                 <div class="form-group">
                     <label for="color">Color</label>
                     <select id="color" name="color">
-                        <option value="Any">Any</option> 
-                        @foreach (var color in Model.Colors)
+                        <option value="Any">Any</option>
+                        @foreach (var color in Model.ColorOptions)
                         {
                             <option value="@color">@color</option>
                         }

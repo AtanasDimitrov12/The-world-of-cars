@@ -213,8 +213,19 @@ img.img-fluid {
     margin-bottom: 20px;
 }
 
+
+.sort-filter-menu {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+}
+
 .filled-button {
-    justify-content: center;
     background-color: #a4c639;
     color: #fff;
     font-size: 13px;
@@ -222,7 +233,7 @@ img.img-fluid {
     font-weight: 700;
     padding: 12px 30px;
     border-radius: 30px;
-    margin: 0 10px; /* Add some margin between buttons if necessary */
+    margin: 0 10px; 
     transition: all 0.3s;
 }
 
@@ -230,6 +241,7 @@ img.img-fluid {
         background-color: #fff;
         color: #a4c639;
     }
+
 
 
 .tabs-content {

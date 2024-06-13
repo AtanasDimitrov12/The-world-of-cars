@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -17,6 +18,12 @@ namespace TheCarApp.Pages
         public void OnGet()
         {
 
+        }
+
+        public async Task<IActionResult> OnPostLogout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToPage("/Index");
         }
     }
 }

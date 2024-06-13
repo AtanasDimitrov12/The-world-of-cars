@@ -29,7 +29,8 @@ namespace Repositories
             try
             {
                 writer.AddUser(user.Username, user.Email, user.Password, user.LicenseNumber, user.CreatedOn, user.PassSalt);
-                writer.UploadProfilePicture(user, user.ProfilePicturePath);
+                user.Id = writer.GetUserId(user.Email);
+                writer.UploadProfilePicture(user.Id, user.ProfilePicturePath);
                 users.Add(user);
                 return true;
             }
@@ -46,8 +47,8 @@ namespace Repositories
             try
             {
                 remover.RemoveProfilePicture(user.Id);
-                writer.UploadProfilePicture(user, relativeFilePath);
-                user.ProfilePicturePath = relativeFilePath; // Update the user profile picture path
+                writer.UploadProfilePicture(user.Id, relativeFilePath);
+                user.ProfilePicturePath = relativeFilePath;
                 return true;
             }
             catch (Exception ex)

@@ -5,6 +5,7 @@ using ManagerLayer;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,8 +15,17 @@ namespace TheCarApp.Pages
     public class MarketPlaceModel : PageModel
     {
         public List<Car> Cars;
-        public ProjectManager projectManager = new ProjectManager();
-        public List<string> Colors { get; set; } = new List<string>() { "Black", "Blue", "White" };
+        public ProjectManager projectManager;
+        public List<string> ColorOptions { get; set; }
+
+        public MarketPlaceModel(ProjectManager pm)
+        {
+            projectManager = pm;
+            ColorOptions = Enum.GetValues(typeof(Colors))
+                               .Cast<Colors>()
+                               .Select(color => color.ToString().Substring(0, 1) + color.ToString().Substring(1).ToLower())
+                               .ToList();
+        }
 
         public void OnGet(string sort, int? minHP, int? maxHP, DateTime? minYear, DateTime? maxYear, decimal? minPrice, decimal? maxPrice, string color)
         {
@@ -27,9 +37,12 @@ namespace TheCarApp.Pages
             if (maxYear.HasValue) Cars = Cars.Where(car => car.FirstRegistration <= maxYear.Value).ToList();
             if (minPrice.HasValue) Cars = Cars.Where(car => car.PricePerDay >= minPrice.Value).ToList();
             if (maxPrice.HasValue) Cars = Cars.Where(car => car.PricePerDay <= maxPrice.Value).ToList();
-            if (!string.IsNullOrEmpty(color) && color != "Any") Cars = Cars.Where(car => car.Color == color).ToList();
+            if (!string.IsNullOrEmpty(color) && color != "Any")
+            {
+                string normalizedColor = color.ToUpper();
+                Cars = Cars.Where(car => car.Color == normalizedColor).ToList();
+            }
 
-            
             switch (sort)
             {
                 case "views_asc":
@@ -43,6 +56,12 @@ namespace TheCarApp.Pages
                     break;
                 case "price_desc":
                     Cars = Cars.OrderByDescending(car => car.PricePerDay).ToList();
+                    break;
+                case "date_asc":
+                    Cars = Cars.OrderBy(car => car.FirstRegistration).ToList();
+                    break;
+                case "date_desc":
+                    Cars = Cars.OrderByDescending(car => car.FirstRegistration).ToList();
                     break;
                 default:
                     break;

@@ -397,6 +397,10 @@
       "PackagePath": "staticwebassets\\pictures\\News_Pictures\\AcuraSUV.jpg"
     },
     {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AtanasProfilePic.jpg",
+      "PackagePath": "staticwebassets\\pictures\\News_Pictures\\AtanasProfilePic.jpg"
+    },
+    {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AudiA4.jpg",
       "PackagePath": "staticwebassets\\pictures\\News_Pictures\\AudiA4.jpg"
     },
@@ -443,6 +447,10 @@
     {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\ExpensiveSteelNews.jpg",
       "PackagePath": "staticwebassets\\pictures\\News_Pictures\\ExpensiveSteelNews.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\FontysLogo.jpg",
+      "PackagePath": "staticwebassets\\pictures\\News_Pictures\\FontysLogo.jpg"
     },
     {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\FordExplorer.jpg",
