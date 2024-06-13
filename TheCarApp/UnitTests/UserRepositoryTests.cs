@@ -62,13 +62,13 @@ namespace UnitTests
         {
             var user = new User(1, "user@example.com", "password", "username", DateTime.Now, 123456789, "salt", "path/to/pic");
             string errorMessage = string.Empty;
-            _mockDataWriter.Setup(m => m.UpdateUser(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DateTime>())).Verifiable();
+            _mockDataWriter.Setup(m => m.UpdateUser(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DateTime>())).Verifiable();
 
             var result = _userRepo.UpdateUser(user, out errorMessage);
 
             Assert.IsTrue(result);
             Assert.AreEqual(string.Empty, errorMessage);
-            _mockDataWriter.Verify(m => m.UpdateUser(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DateTime>()), Times.Once);
+            _mockDataWriter.Verify(m => m.UpdateUser(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DateTime>()), Times.Once);
         }
 
         [TestMethod]

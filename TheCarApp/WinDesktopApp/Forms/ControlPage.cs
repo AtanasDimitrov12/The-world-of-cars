@@ -38,6 +38,7 @@ namespace DesktopApp
 
 
             carControlUC.admInfo = adminInfoUC;
+            carControlUC.rentalsUC = rentalsUC;
             carNewsUC.admInfo = adminInfoUC;
         }
 

@@ -86,7 +86,7 @@ namespace Repositories
             errorMessage = string.Empty;
             try
             {
-                writer.UpdateUser(user.Id, user.Username, user.Email, user.Password, user.LicenseNumber, user.CreatedOn);
+                writer.UpdateUser(user.Id, user.Username, user.Email, user.Password, user.PassSalt, user.LicenseNumber, user.CreatedOn);
                 return true;
             }
             catch (Exception ex)

@@ -122,7 +122,7 @@ namespace DatabaseAccess
             finally { connectionString.Close(); }
         }
 
-        public void UpdateUser(int userId, string Username, string email, string password, int _licenseNumber, DateTime CreatedOn)
+        public void UpdateUser(int userId, string Username, string email, string password, string Salt, int _licenseNumber, DateTime CreatedOn)
         {
             int rowsAffected = -1;
             try
@@ -133,7 +133,8 @@ namespace DatabaseAccess
                           "[Email] = @Email, " +
                           "[PasswordHash] = @PasswordHash, " +
                           "[LicenseNumber] = @License, " +
-                          "[CreatedOn] = @CreatedOn " +
+                          "[CreatedOn] = @CreatedOn, " +
+                          "[Salt] = @Salt " +
                           "WHERE [UserId] = @UserId";
 
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
@@ -142,6 +143,7 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@PasswordHash", password);
                 cmd.Parameters.AddWithValue("@License", _licenseNumber);
                 cmd.Parameters.AddWithValue("@CreatedOn", CreatedOn);
+                cmd.Parameters.AddWithValue("@Salt", Salt);
                 cmd.Parameters.AddWithValue("@UserId", userId);
 
                 rowsAffected = cmd.ExecuteNonQuery();
