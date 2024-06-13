@@ -5,6 +5,7 @@ using DatabaseAccess;
 using Database;
 using Entity_Layer;
 using DTO;
+using System.Linq;
 
 namespace Repositories
 {
@@ -60,14 +61,8 @@ namespace Repositories
 
         public string GetProfilePicPathById(int userId)
         {
-            foreach (var user in users)
-            {
-                if (user.Id == userId)
-                {
-                    return user.ProfilePicturePath;
-                }
-            }
-            return string.Empty;
+            var user = users.FirstOrDefault(u => u.Id == userId);
+            return user?.ProfilePicturePath ?? string.Empty;
         }
 
         public bool RemoveUser(User user, out string errorMessage)
@@ -103,14 +98,8 @@ namespace Repositories
 
         public string GetUserNameById(int userId)
         {
-            foreach (var user in users)
-            {
-                if (user.Id == userId)
-                {
-                    return user.Username;
-                }
-            }
-            return string.Empty;
+            var user = users.FirstOrDefault(u => u.Id == userId);
+            return user?.Username ?? string.Empty;
         }
 
         public List<User> GetAllUsers()

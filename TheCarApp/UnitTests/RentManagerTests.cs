@@ -51,7 +51,7 @@ namespace UnitTests
             DateTime startDate = new DateTime(2023, 10, 1);
             DateTime endDate = new DateTime(2023, 10, 10);
             int days = (int)(endDate - startDate).TotalDays;
-            int discount = 5;
+            int discount = 0;
             decimal expectedPrice = 900m;
 
             _mockRentalStrategy.Setup(s => s.CalculateRentalPrice(basePrice, days, discount))
@@ -66,7 +66,7 @@ namespace UnitTests
         public void CheckForDiscount_WhenUserHasNoRents_ReturnsZero()
         {
             var user = new User(1, "user@example.com", "password", "username", DateTime.Now, 12345, "salt", "/path/to/profile");
-            _rentManager.rentalHistory = new List<RentACar>();
+            _rentManager.RentalHistory = new List<RentACar>();
 
             var result = _rentManager.CheckForDiscount(user);
 
@@ -77,7 +77,7 @@ namespace UnitTests
         public void CheckForDiscount_WhenUserHasRents_ReturnsExpectedDiscount()
         {
             var user = new User(1, "user@example.com", "password", "username", DateTime.Now, 12345, "salt", "/path/to/profile");
-            _rentManager.rentalHistory = new List<RentACar>
+            _rentManager.RentalHistory = new List<RentACar>
             {
                 new RentACar { user = user, RentStatus = RentStatus.COMPLETED },
                 new RentACar { user = user, RentStatus = RentStatus.COMPLETED },
@@ -111,9 +111,9 @@ namespace UnitTests
             _mockDataWriter.Setup(m => m.RentACar(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<DateTime>(), It.IsAny<DateTime>(), It.IsAny<string>()))
                            .Verifiable();
 
-            var result = _rentManager.RentACar(rent);
+            var result = _rentManager.RentACar(rent, out string errorMessage);
 
-            Assert.AreEqual("done", result);
+            Assert.AreEqual(true, result);
             _mockDataWriter.Verify();
         }
 
@@ -134,7 +134,7 @@ namespace UnitTests
             _mockRentalStrategy.Setup(s => s.UpdateRentalStatus(rent, newStatus)).Verifiable();
             _mockDataWriter.Setup(m => m.UpdateRent(It.IsAny<RentACar>())).Verifiable();
 
-            _rentManager.UpdateRentStatus(rent, newStatus);
+            _rentManager.UpdateRentStatus(rent, newStatus, out string errorMessage);
 
             _mockRentalStrategy.Verify();
             _mockDataWriter.Verify();
@@ -153,7 +153,7 @@ namespace UnitTests
                 RentStatus = RentStatus.REQUESTED
             };
 
-            _rentManager.rentalHistory.Add(rent);
+            _rentManager.RentalHistory.Add(rent);
 
             var result = _rentManager.IsCarAvailable(1, new DateTime(2023, 6, 5), new DateTime(2023, 6, 15));
 
@@ -172,7 +172,7 @@ namespace UnitTests
                 RentStatus = RentStatus.REQUESTED
             };
 
-            _rentManager.rentalHistory.Add(rent);
+            _rentManager.RentalHistory.Add(rent);
 
             var result = _rentManager.IsCarAvailable(1, new DateTime(2023, 6, 11), new DateTime(2023, 6, 15));
 
@@ -203,10 +203,10 @@ namespace UnitTests
             _mockCarManager.Setup(m => m.GetCars()).Returns(new List<Car> { car });
             _mockRentalStrategy.Setup(s => s.CalculateRentalPrice(It.IsAny<decimal>(), It.IsAny<int>(), It.IsAny<int>())).Returns(500);
 
-            var result = _rentManager.LoadRentals();
+            var result = _rentManager.LoadRentals(out string errorMessage);
 
-            Assert.AreEqual("done", result);
-            Assert.AreEqual(1, _rentManager.rentalHistory.Count);
+            Assert.AreEqual(true, result);
+            Assert.AreEqual(1, _rentManager.RentalHistory.Count);
         }
     }
 }
