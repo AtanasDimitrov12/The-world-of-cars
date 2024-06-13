@@ -80,18 +80,25 @@ namespace WinDesktopApp.Forms
 
         private void BTNAddExtra_Click(object sender, EventArgs e)
         {
-            Extra extra = new Extra(RTBExtraName.Text);
-            if (manager.AddExtra(extra, out string addExtraError))
+            if (RTBExtraName.Text != "")
             {
-                extra.Id = manager.GetExtraId(extra.ExtraName);
+                Extra extra = new Extra(RTBExtraName.Text);
+                if (manager.AddExtra(extra, out string addExtraError))
+                {
+                    extra.Id = manager.GetExtraId(extra.ExtraName);
 
-                ExtraAdded?.Invoke(this, EventArgs.Empty);
-                FillDataGridView(manager.extras);
-                RTBExtraName.Clear();
+                    ExtraAdded?.Invoke(this, EventArgs.Empty);
+                    FillDataGridView(manager.extras);
+                    RTBExtraName.Clear();
+                }
+                else
+                {
+                    MessageBox.Show($"Failed to add extra: {addExtraError}");
+                }
             }
             else
             {
-                MessageBox.Show($"Failed to add extra: {addExtraError}");
+                MessageBox.Show("Please first write a proper name of the Extra!");
             }
         }
 

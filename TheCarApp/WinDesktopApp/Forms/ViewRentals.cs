@@ -84,9 +84,15 @@ namespace WinDesktopApp.Forms
                     rent.StartDate = DTPStartDate.Value;
                     rent.ReturnDate = DTPEndDate.Value;
                     rent.TotalPrice = manager.CalculatePrice(rent.user, rent.car.PricePerDay, DTPStartDate.Value, DTPEndDate.Value);
-                    manager.UpdateRentStatus(rent, newStatus);
-                    RentChanged?.Invoke(this, EventArgs.Empty);
-                    this.Close();
+                    if (manager.UpdateRentStatus(rent, newStatus, out string ErrorMessage))
+                    {
+                        RentChanged?.Invoke(this, EventArgs.Empty);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(ErrorMessage);
+                    }
                 }
 
             }

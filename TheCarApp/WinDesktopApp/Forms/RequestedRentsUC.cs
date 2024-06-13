@@ -30,7 +30,7 @@ namespace WinDesktopApp.Forms
 
         private void UpdateDGV()
         {
-            rentals = rentManager.rentalHistory.Where(rent => rent.RentStatus == RentStatus.REQUESTED).ToList();
+            rentals = rentManager.RentalHistory.Where(rent => rent.RentStatus == RentStatus.REQUESTED).ToList();
             FillDataGridView(rentals);
         }
 
@@ -161,14 +161,20 @@ namespace WinDesktopApp.Forms
                     var StartDateString = DGVRequestRents.Rows[e.RowIndex].Cells["Start Date"].Value.ToString();
                     var car = DGVRequestRents.Rows[e.RowIndex].Cells["Car"].Value.ToString();
 
-                    foreach (var selectedRental in rentManager.rentalHistory)
+                    foreach (var selectedRental in rentManager.RentalHistory)
                     {
                         if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
                         {
-                            rentManager.UpdateRentStatus(selectedRental, RentStatus.SCHEDULE);
-                            RentChanged?.Invoke(this, EventArgs.Empty);
-                            UpdateDGV();
-                            break;
+                            if (rentManager.UpdateRentStatus(selectedRental, RentStatus.SCHEDULE, out string ErrorMessage))
+                            {
+                                RentChanged?.Invoke(this, EventArgs.Empty);
+                                UpdateDGV();
+                                break;
+                            }
+                            else
+                            {
+                                MessageBox.Show(ErrorMessage);
+                            }
                         }
                     }
                 }
@@ -182,14 +188,20 @@ namespace WinDesktopApp.Forms
                     var StartDateString = DGVRequestRents.Rows[e.RowIndex].Cells["Start Date"].Value.ToString();
                     var car = DGVRequestRents.Rows[e.RowIndex].Cells["Car"].Value.ToString();
 
-                    foreach (var selectedRental in rentManager.rentalHistory)
+                    foreach (var selectedRental in rentManager.RentalHistory)
                     {
                         if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
                         {
-                            rentManager.UpdateRentStatus(selectedRental, RentStatus.CANCELLED);
-                            RentChanged?.Invoke(this, EventArgs.Empty);
-                            UpdateDGV();
-                            break;
+                            if (rentManager.UpdateRentStatus(selectedRental, RentStatus.CANCELLED, out string ErrorMessage))
+                            {
+                                RentChanged?.Invoke(this, EventArgs.Empty);
+                                UpdateDGV();
+                                break;
+                            }
+                            else
+                            {
+                                MessageBox.Show(ErrorMessage);
+                            }
                         }
                     }
                 }

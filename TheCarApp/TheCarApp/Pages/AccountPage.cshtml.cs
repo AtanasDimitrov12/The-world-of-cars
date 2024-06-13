@@ -26,11 +26,11 @@ namespace TheCarApp.Pages
             UserEmail = User.Identity.Name;
             user = _projectManager.PeopleManager.GetUser(UserEmail);
 
-            rentals = _projectManager.RentManager.rentalHistory
+            rentals = _projectManager.RentManager.RentalHistory
                    .Where(rental => rental.user.Id == user.Id)
                    .ToList();
 
-            Rentals = _projectManager.RentManager.rentalHistory
+            Rentals = _projectManager.RentManager.RentalHistory
                    .Where(rental => rental.user.Id == user.Id && rental.RentStatus != Entity_Layer.Enums.RentStatus.CANCELLED && rental.RentStatus != Entity_Layer.Enums.RentStatus.REQUESTED)
                    .ToList().Count;
         }

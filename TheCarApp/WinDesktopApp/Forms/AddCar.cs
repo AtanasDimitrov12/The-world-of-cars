@@ -80,6 +80,28 @@ namespace DesktopApp
                 TBColor.Visible = false;
                 TBGearbox.Visible = false;
             }
+            TBCarBrand.MaxLength = 50;
+            TBCarModel.MaxLength = 255;
+            TBCarVIN.MaxLength = 255;
+
+            TBCarBrand.TextChanged += ValidateTextLength;
+            TBCarModel.TextChanged += ValidateTextLength;
+            TBCarVIN.TextChanged += ValidateTextLength;
+        }
+
+        private void ValidateTextLength(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                int maxLength = textBox.MaxLength;
+                if (textBox.Text.Length > maxLength)
+                {
+                    MessageBox.Show($"Input is too long. Please enter a maximum of {maxLength} characters.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    textBox.Text = textBox.Text.Substring(0, maxLength);
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
         }
 
         public void LoadCarData()
@@ -88,7 +110,7 @@ namespace DesktopApp
             TBCarModel.Text = carData.Model;
             DTPCarFirstReg.Value = carData.FirstRegistration;
             NUDCarMileage.Value = carData.Mileage;
-            TBCarFuel.Text = carData.Fuel;
+            CBFuelType.Text = carData.Fuel;
             CBCarGearbox.Text = carData.Gearbox;
             NUDCarEngineSize.Value = carData.EngineSize;
             NUDCarPower.Value = carData.HorsePower;
@@ -149,7 +171,7 @@ namespace DesktopApp
             {
                 if (string.IsNullOrEmpty(TBCarBrand.Text) ||
                     string.IsNullOrEmpty(TBCarModel.Text) ||
-                    string.IsNullOrEmpty(TBCarFuel.Text) ||
+                    CBFuelType.SelectedItem == null ||
                     CBCarGearbox.SelectedItem == null ||
                     string.IsNullOrEmpty(CBColor.Text) ||
                     string.IsNullOrEmpty(TBCarVIN.Text) ||
@@ -164,7 +186,7 @@ namespace DesktopApp
 
                 if (!Modify)
                 {
-                    Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), TBCarFuel.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), CBColor.SelectedItem.ToString(), TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text, 0);
+                    Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), CBFuelType.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), CBColor.SelectedItem.ToString(), TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text, 0);
                     if (pictures.Count != 0)
                     {
                         if (manager.AddCar(car, pictures, extras, out string addCarError))
@@ -209,7 +231,7 @@ namespace DesktopApp
             carData.Model = TBCarModel.Text;
             carData.FirstRegistration = DTPCarFirstReg.Value;
             carData.Mileage = Convert.ToInt32(NUDCarMileage.Value);
-            carData.Fuel = TBCarFuel.Text;
+            carData.Fuel = CBFuelType.Text;
             carData.Gearbox = CBCarGearbox.Text;
             carData.EngineSize = Convert.ToInt32(NUDCarEngineSize.Value);
             carData.HorsePower = Convert.ToInt32(NUDCarPower.Value);
@@ -373,7 +395,7 @@ namespace DesktopApp
         {
             TBCarBrand.Enabled = false;
             TBCarModel.Enabled = false;
-            TBCarFuel.Enabled = false;
+            CBFuelType.Enabled = false;
             TBColor.Enabled = false;
             TBColor.Text = carData.Color;
             TBCarNumOfDoors.Enabled = false;

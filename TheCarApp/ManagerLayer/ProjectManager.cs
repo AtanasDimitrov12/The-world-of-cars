@@ -61,7 +61,7 @@ namespace ManagerLayer
             NewsManager.LoadNews(out string NewsErrorMessage);
             UserRepository.LoadUsers(out string UserErrorMessage);
             AdministratorRepository.LoadAdmins(out string AdminErrorMessage);
-            RentManager.LoadRentals();
+            RentManager.LoadRentals(out string RentsErrorMessage);
         }
     }
 }

@@ -38,18 +38,26 @@ namespace DesktopApp
 
         public void DisplayDataInfo()
         {
-            LBLCars.Text = carManager.GetCars().Count.ToString();
-            LBLUsers.Text = manager.GetAllUsers().Count.ToString();
-            LBLRentals.Text = rentManager.rentalHistory.Count.ToString();
-            LBLNews.Text = newsManager.news.Count.ToString();   
+            TBCars.Text = carManager.GetCars().Count.ToString();
+            TBCars.Enabled = false;
+            TBUsers.Text = manager.GetAllUsers().Count.ToString();
+            TBUsers.Enabled = false;
+            TBRentals.Text = rentManager.RentalHistory.Count.ToString();
+            TBRentals.Enabled = false;
+            TBNews.Text = newsManager.news.Count.ToString();
+            TBNews.Enabled = false;
+            TBUsername.Enabled = false;
+            TBEmail.Enabled = false;
+            TBPhoneNumber.Enabled = false;
+
         }
 
         public void DisplayAdminInfo()
         {
-            LBLAdminEmail.Text = admins[0].Email;
-            LBLAdminUsername.Text = admins[0].Username;
-            LBLAdminPhoneNumber.Text = admins[0].PhoneNumber;
-            
+            TBEmail.Text = admins[0].Email;
+            TBUsername.Text = admins[0].Username;
+            TBPhoneNumber.Text = admins[0].PhoneNumber;
+
         }
 
         private void BTNChangeAdminInfo_Click(object sender, EventArgs e)
@@ -69,6 +77,11 @@ namespace DesktopApp
         private void AddCar_CarAdded(object sender, EventArgs e)
         {
             DisplayDataInfo();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

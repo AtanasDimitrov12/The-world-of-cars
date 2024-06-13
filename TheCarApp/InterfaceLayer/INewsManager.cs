@@ -15,6 +15,8 @@ namespace InterfaceLayer
         bool AddNews(CarNews carnews, out string errorMessage);
         bool DeleteNews(CarNews carnews, out string errorMessage);
         bool UpdateNews(CarNews news, out string errorMessage);
+        List<CarNews> GetNewsASC();
+        List<CarNews> GetNewsDESC();
         CarNews GetNewsById(int id);
         CarNews MapCarNewsDtoToCarNews(CarNewsDTO newsDTO);
         bool LoadNews(out string errorMessage);

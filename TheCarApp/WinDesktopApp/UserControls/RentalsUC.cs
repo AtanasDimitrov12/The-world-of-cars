@@ -14,7 +14,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinDesktopApp.Forms;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WinDesktopApp.UserControls
 {
@@ -28,15 +27,16 @@ namespace WinDesktopApp.UserControls
             peopleManager = pm;
             this.rentManager = rentManager;
             InitializeGridView();
-            FillDataGridView(rentManager.rentalHistory);
+            FillDataGridView(rentManager.RentalHistory);
             UpdateRequestedLabel();
             this.DGVRentals.CellPainting += DGVRentals_CellPainting;
         }
 
         private void UpdateRequestedLabel()
         {
-            int RequestedRentals = rentManager.rentalHistory.Where(r => r.RentStatus == Entity_Layer.Enums.RentStatus.REQUESTED).Count();
-            LBLNumOfRentals.Text = RequestedRentals.ToString();
+            int RequestedRentals = rentManager.RentalHistory.Where(r => r.RentStatus == Entity_Layer.Enums.RentStatus.REQUESTED).Count();
+            TBRents.Text = RequestedRentals.ToString();
+            TBRents.Enabled = false;
         }
 
         private void InitializeGridView()
@@ -103,15 +103,13 @@ namespace WinDesktopApp.UserControls
                     e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
                     var buttonRect = e.CellBounds;
-                    var buttonColor = Color.White; // Default color
-                    var textColor = Color.Black; // Default text color
+                    var buttonColor = Color.White; 
+                    var textColor = Color.Black; 
 
                     if (e.ColumnIndex == DGVRentals.Columns["View"].Index)
                     {
                         buttonColor = ColorTranslator.FromHtml("#3A5A40");
-                        //buttonColor = ColorTranslator.FromHtml("#588157");
                         textColor = Color.White;
-                        //buttonColor = ColorTranslator.FromHtml("#A3B18A");
                     }
                     else if (e.ColumnIndex == DGVRentals.Columns["Modify"].Index)
                     {
@@ -177,7 +175,7 @@ namespace WinDesktopApp.UserControls
         private void BTNSearchByUsername_Click(object sender, EventArgs e)
         {
             string Username = TBUsername.Text;
-            var filteredRentals = rentManager.rentalHistory
+            var filteredRentals = rentManager.RentalHistory
                 .Where(rent => Regex.IsMatch(rent.user.Username, Regex.Escape(Username), RegexOptions.IgnoreCase))
                 .ToList();
             FillDataGridView(filteredRentals);
@@ -185,14 +183,14 @@ namespace WinDesktopApp.UserControls
 
         private void RBASC_CheckedChanged(object sender, EventArgs e)
         {
-            List<RentACar> rentals = rentManager.rentalHistory;
+            List<RentACar> rentals = rentManager.RentalHistory;
             rentals = rentals.OrderBy(r => r.StartDate).ToList();
             FillDataGridView(rentals);
         }
 
         private void RBDESC_CheckedChanged(object sender, EventArgs e)
         {
-            List<RentACar> rentals = rentManager.rentalHistory;
+            List<RentACar> rentals = rentManager.RentalHistory;
             rentals = rentals.OrderByDescending(r => r.StartDate).ToList();
             FillDataGridView(rentals);
         }
@@ -207,7 +205,7 @@ namespace WinDesktopApp.UserControls
 
         private void ChangeRent_RentChanged(object sender, EventArgs e)
         {
-            FillDataGridView(rentManager.rentalHistory);
+            FillDataGridView(rentManager.RentalHistory);
             UpdateRequestedLabel();
         }
 
@@ -222,7 +220,7 @@ namespace WinDesktopApp.UserControls
                     var StartDateString = DGVRentals.Rows[e.RowIndex].Cells["Start Date"].Value.ToString();
                     var car = DGVRentals.Rows[e.RowIndex].Cells["Car"].Value.ToString();
 
-                    foreach (var selectedRental in rentManager.rentalHistory)
+                    foreach (var selectedRental in rentManager.RentalHistory)
                     {
                         if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
                         {
@@ -244,13 +242,19 @@ namespace WinDesktopApp.UserControls
                     var StartDateString = DGVRentals.Rows[e.RowIndex].Cells["Start Date"].Value.ToString();
                     var car = DGVRentals.Rows[e.RowIndex].Cells["Car"].Value.ToString();
 
-                    foreach (var selectedRental in rentManager.rentalHistory)
+                    foreach (var selectedRental in rentManager.RentalHistory)
                     {
                         if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
                         {
-                            rentManager.RemoveRent(selectedRental);
-                            FillDataGridView(rentManager.rentalHistory);
-                            break;
+                            if (rentManager.RemoveRent(selectedRental, out string ErrorMessage))
+                            {
+                                FillDataGridView(rentManager.RentalHistory);
+                                break;
+                            }
+                            else
+                            {
+                                MessageBox.Show(ErrorMessage);
+                            }
                         }
                     }
                 }
@@ -264,7 +268,7 @@ namespace WinDesktopApp.UserControls
                     var StartDateString = DGVRentals.Rows[e.RowIndex].Cells["Start Date"].Value.ToString();
                     var car = DGVRentals.Rows[e.RowIndex].Cells["Car"].Value.ToString();
 
-                    foreach (var selectedRental in rentManager.rentalHistory)
+                    foreach (var selectedRental in rentManager.RentalHistory)
                     {
                         if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
                         {

@@ -1,206 +1,163 @@
 ﻿using Database;
 using DatabaseAccess;
 using DTO;
-using Entity_Layer;
 using Entity_Layer.Enums;
 using EntityLayout;
-using Manager_Layer;
-using Entity_Layer.Interfaces;
+using InterfaceLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InterfaceLayer;
-using ManagerLayer.Strategy;
+using Entity_Layer.Interfaces;
+using Manager_Layer;
 
-namespace ManagerLayer
+namespace Entity_Layer
 {
     public class RentManager : IRentManager
     {
-        private IRentalStrategyFactory _rentalStrategy;
-        public List<RentACar> rentalHistory { get; set; }
-        private IPeopleDataWriter writer;
-        private IPeopleDataRemover remover;
-        private IDataAccess access;
-        private IPeopleManager peopleManager;
-        private ICarManager carManager;
+        public List<RentACar> RentalHistory { get; set; }
+        private readonly IDataAccess _dataAccess;
+        private readonly IPeopleDataWriter _dataWriter;
+        private readonly IPeopleDataRemover _dataRemover;
+        private readonly IPeopleManager _peopleManager;
+        private readonly ICarManager _carManager;
+        private readonly IRentalStrategyFactory _rentalStrategyFactory;
 
-        public RentManager(IDataAccess dataAccess, IPeopleDataWriter dataWriter, IPeopleDataRemover dataRemover, IPeopleManager pm, ICarManager carManager, IRentalStrategyFactory rentalStrategyFactory)
+        public RentManager(IDataAccess dataAccess, IPeopleDataWriter dataWriter, IPeopleDataRemover dataRemover, IPeopleManager peopleManager, ICarManager carManager, IRentalStrategyFactory rentalStrategyFactory)
         {
-            rentalHistory = new List<RentACar>();
-            writer = dataWriter;
-            remover = dataRemover;
-            access = dataAccess;
-            peopleManager = pm;
-            this.carManager = carManager;
-            _rentalStrategy = rentalStrategyFactory;
+            RentalHistory = new List<RentACar>();
+            _dataAccess = dataAccess;
+            _dataWriter = dataWriter;
+            _dataRemover = dataRemover;
+            _peopleManager = peopleManager;
+            _carManager = carManager;
+            _rentalStrategyFactory = rentalStrategyFactory;
         }
 
-
-
-
-
-        //public bool IsPeakSeason(DateTime startDate, DateTime endDate)
-        //{
-        //    // Define peak season logic
-        //    // Example: June to August is peak season
-        //    if (startDate.Month >= 6 && startDate.Month <= 8)
-        //    { return true; }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
-
-        public decimal CalculatePrice(User user, decimal BasePrice, DateTime startDate, DateTime endDate)
+        public decimal CalculatePrice(User user, decimal basePrice, DateTime startDate, DateTime endDate)
         {
-            TimeSpan timeSpan = endDate - startDate;
-            int days = (int)timeSpan.TotalDays;
-            int Discount = CheckForDiscount(user);
-            _rentalStrategy = new RentalStrategyFactory();
-            return _rentalStrategy.GetRentalStrategy(startDate, endDate).CalculateRentalPrice(BasePrice, Convert.ToInt32(days), Discount);
-            
+            int days = (endDate - startDate).Days;
+            int discount = CheckForDiscount(user);
+            var strategy = _rentalStrategyFactory.GetRentalStrategy(startDate, endDate);
+            return strategy.CalculateRentalPrice(basePrice, days, discount);
         }
 
         public int CheckForDiscount(User user)
         {
-            if (user == null)
-            {
-                return 0;
-            }
-            int NumOfRents = 0;
-            int Discount = 0;
-            foreach (var rent in rentalHistory)
-            {
-                if (rent.user == user && rent.RentStatus != RentStatus.CANCELLED)
-                {
-                    NumOfRents++;
-                }
-            }
+            if (user == null) return 0;
 
-            if (NumOfRents >= 10 && NumOfRents < 25)
-            {
-                Discount = 5;
-            }
-            else if (NumOfRents >= 25)
-            {
-                Discount = 10;
-            }
-            return Discount;
+            int numOfRents = RentalHistory.Count(r => r.user == user && r.RentStatus != RentStatus.CANCELLED);
+            if (numOfRents >= 25) return 10;
+            if (numOfRents >= 10) return 5;
+            return 0;
         }
 
-        public string RentACar(RentACar rentACar)
+        public bool RentACar(RentACar rentACar, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
-                writer.RentACar(rentACar.car.Id, rentACar.user.Id, rentACar.StartDate, rentACar.ReturnDate, rentACar.RentStatus.ToString());
-
-
-                rentalHistory.Add(rentACar);
-                return "done";
-
+                _dataWriter.RentACar(rentACar.car.Id, rentACar.user.Id, rentACar.StartDate, rentACar.ReturnDate, rentACar.RentStatus.ToString());
+                RentalHistory.Add(rentACar);
+                return true;
             }
-
             catch (Exception ex)
             {
-                return ex.Message;
+                errorMessage = ex.Message;
+                return false;
             }
         }
 
-        public void UpdateRentStatus(RentACar rental, RentStatus newStatus)
+        public bool UpdateRentStatus(RentACar rental, RentStatus newStatus, out string errorMessage)
         {
-            _rentalStrategy.GetRentalStrategy(rental.StartDate, rental.ReturnDate).UpdateRentalStatus(rental, newStatus);
-            UpdateRental(rental);
+            errorMessage = string.Empty;
+            try
+            {
+                var strategy = _rentalStrategyFactory.GetRentalStrategy(rental.StartDate, rental.ReturnDate);
+                strategy.UpdateRentalStatus(rental, newStatus);
+                _dataWriter.UpdateRent(rental);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+                return false;
+            }
         }
 
-        public void UpdateRental(RentACar rental)
+        public bool RemoveRent(RentACar rental, out string errorMessage)
         {
-            writer.UpdateRent(rental);
-        }
-
-        public void RemoveRent(RentACar rental)
-        {
-            remover.RemoveRental(rental);
-            rentalHistory.Remove(rental);
+            errorMessage = string.Empty;
+            try
+            {
+                _dataRemover.RemoveRental(rental);
+                RentalHistory.Remove(rental);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+                return false;
+            }
         }
 
         public List<RentACar> GetRentedPeriods(int carId)
         {
-            var rentedPeriods = rentalHistory
+            return RentalHistory
                 .Where(r => r.car.Id == carId && r.RentStatus != RentStatus.CANCELLED)
                 .ToList();
-
-            return rentedPeriods;
         }
-
 
         public bool IsCarAvailable(int carId, DateTime startDate, DateTime endDate)
         {
-            foreach (var rent in rentalHistory)
-            {
-                if (rent.car.Id == carId)
-                {
-
-                    if (startDate < rent.ReturnDate && endDate > rent.StartDate)
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
+            return RentalHistory
+                .Where(r => r.car.Id == carId)
+                .All(r => startDate >= r.ReturnDate || endDate <= r.StartDate);
         }
 
-
-
-        public string LoadRentals()
+        public bool LoadRentals(out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
-                var loadedRentals = access?.GetRentals();
+                var loadedRentals = _dataAccess.GetRentals();
                 if (loadedRentals == null)
                 {
-                    return "No rentals to load.";
+                    errorMessage = "No rentals to load.";
+                    return false;
                 }
 
                 foreach (var rentDTO in loadedRentals)
                 {
-                    if (rentDTO == null)
-                    {
-                        continue;
-                    }
+                    if (rentDTO == null) continue;
 
                     if (!Enum.TryParse(rentDTO.Status.ToUpper(), true, out RentStatus status))
                     {
-                        return $"Warning: {rentDTO.Id} has an invalid status assigned.";
+                        errorMessage = $"Warning: {rentDTO.Id} has an invalid status assigned.";
+                        return false;
                     }
 
-                    var user = peopleManager.GetAllUsers().FirstOrDefault(u => u.Id == rentDTO.UserID);
-                    if (user == null)
+                    var user = _peopleManager.GetAllUsers().FirstOrDefault(u => u.Id == rentDTO.UserID);
+                    if (user == null) continue;
+
+                    var car = _carManager.GetCars().FirstOrDefault(c => c.Id == rentDTO.CarId);
+                    if (car == null) continue;
+
+                    if (rentDTO.ReturnDate < DateTime.Now) status = RentStatus.COMPLETED;
+
+                    var rental = new RentACar(user, car, rentDTO.StartDate, rentDTO.ReturnDate, status)
                     {
-                        continue;
-                    }
-
-                    var car = carManager?.GetCars()?.FirstOrDefault(c => c.Id == rentDTO.CarId);
-                    if (car == null)
-                    {
-                        continue;
-                    }
-
-                    var rental = new RentACar(user, car, rentDTO.StartDate, rentDTO.ReturnDate, status);
-                    rental.TotalPrice = CalculatePrice(user, car.PricePerDay, rentDTO.StartDate, rentDTO.ReturnDate);
-                    rentalHistory.Add(rental);
-
+                        TotalPrice = CalculatePrice(user, car.PricePerDay, rentDTO.StartDate, rentDTO.ReturnDate)
+                    };
+                    RentalHistory.Add(rental);
                 }
 
-                return "done";
+                return true;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                return $"Error: {ex.Message}";
+                errorMessage = $"Error: {ex.Message}";
+                return false;
             }
         }
-
-
     }
 }

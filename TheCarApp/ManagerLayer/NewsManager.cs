@@ -78,6 +78,19 @@ namespace Entity_Layer
                 return false;
             }
         }
+        public List<CarNews> GetNewsASC()
+        {
+            news.Sort(new CarNewsDateAscendingComparer());
+            return news;
+        }
+
+        public List<CarNews> GetNewsDESC()
+        {
+            news.Sort(new CarNewsDateDescendingComparer());
+            return news;
+        }
+
+
 
         public CarNews GetNewsById(int id)
         {

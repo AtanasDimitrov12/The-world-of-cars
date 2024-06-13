@@ -283,11 +283,11 @@ namespace DesktopApp
 
                         if (result == DialogResult.Yes)
                         {
-                            foreach (var rent in rentManager.rentalHistory)
+                            foreach (var rent in rentManager.RentalHistory)
                             {
                                 if (rent.car.Id == selectedCar.Id)
                                 {
-                                    rentManager.RemoveRent(rent);
+                                    rentManager.RemoveRent(rent, out string errorMessage);
                                 }
                             }
                             if (carManager.RemoveCar(selectedCar, out string updateCarError))

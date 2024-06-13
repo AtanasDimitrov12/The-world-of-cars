@@ -12,16 +12,22 @@ namespace InterfaceLayer
 {
     public interface IRentManager
     {
-        List<RentACar> rentalHistory { get; set; }
+        List<RentACar> RentalHistory { get; set; }
 
-        decimal CalculatePrice(User user, decimal BasePrice, DateTime startDate, DateTime endDate);
+        decimal CalculatePrice(User user, decimal basePrice, DateTime startDate, DateTime endDate);
+
         int CheckForDiscount(User user);
-        string RentACar(RentACar rentACar);
-        void UpdateRentStatus(RentACar rental, RentStatus newStatus);
-        void UpdateRental(RentACar rental);
-        void RemoveRent(RentACar rental);
-        bool IsCarAvailable(int carId, DateTime startDate, DateTime endDate);
+
+        bool RentACar(RentACar rentACar, out string errorMessage);
+
+        bool UpdateRentStatus(RentACar rental, RentStatus newStatus, out string errorMessage);
+
+        bool RemoveRent(RentACar rental, out string errorMessage);
+
         List<RentACar> GetRentedPeriods(int carId);
-        string LoadRentals();
+
+        bool IsCarAvailable(int carId, DateTime startDate, DateTime endDate);
+
+        bool LoadRentals(out string errorMessage);
     }
 }

@@ -36,7 +36,6 @@ namespace TheCarApp.Pages
             }
             else
             {
-                // Record the view
                 projectManager.CarManager.RecordCarView(carId, out string ErrorMessage);
                 RentedPeriods = projectManager.RentManager.GetRentedPeriods(carId);
             }
@@ -75,7 +74,6 @@ namespace TheCarApp.Pages
             }
             catch (Exception ex)
             {
-                // Log the exception
                 Console.WriteLine("Error in OnPostCalculatePrice: " + ex.Message);
                 return new JsonResult(new { errorMessage = "An error occurred while calculating the price." });
             }
@@ -104,7 +102,6 @@ namespace TheCarApp.Pages
 
             user = projectManager.PeopleManager.GetUser(User.Identity.Name);
 
-            // Check for overlapping rentals
             if (!projectManager.RentManager.IsCarAvailable(Car.Id, StartDate, EndDate))
             {
                 ErrorMessage = "The car is already rented for the selected period.";
@@ -114,14 +111,20 @@ namespace TheCarApp.Pages
             try
             {
                 RentACar rentACar = new RentACar(user, Car, StartDate, EndDate, RentStatus.REQUESTED);
-                projectManager.RentManager.RentACar(rentACar);
-                PriceResult = projectManager.RentManager.CalculatePrice(user, Car.PricePerDay, StartDate, EndDate);
-                ErrorMessage = null;
-                return RedirectToPage("RentConfirmation", new { carId = Car.Id, Start = StartDate, End = EndDate, Price = PriceResult });
+                if (projectManager.RentManager.RentACar(rentACar, out string errorMessage))
+                {
+                    PriceResult = projectManager.RentManager.CalculatePrice(user, Car.PricePerDay, StartDate, EndDate);
+                    ErrorMessage = null;
+                    return RedirectToPage("RentConfirmation", new { carId = Car.Id, Start = StartDate, End = EndDate, Price = PriceResult });
+                }
+                else
+                {
+                    Console.WriteLine("Error in OnPostRentCar: " + errorMessage);
+                    ErrorMessage = errorMessage;
+                }
             }
             catch (Exception ex)
             {
-                // Log the exception
                 Console.WriteLine("Error in OnPostRentCar: " + ex.Message);
                 ErrorMessage = "An error occurred while renting the car.";
             }

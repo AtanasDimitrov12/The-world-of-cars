@@ -38,7 +38,6 @@
             label9 = new Label();
             NUDCarMileage = new NumericUpDown();
             label10 = new Label();
-            TBCarFuel = new TextBox();
             label11 = new Label();
             label12 = new Label();
             label13 = new Label();
@@ -71,6 +70,7 @@
             BTNRemovePicture = new Button();
             CBPictureURL = new ComboBox();
             groupBox3 = new GroupBox();
+            CBFuelType = new ComboBox();
             TBColor = new TextBox();
             CBColor = new ComboBox();
             TBGearbox = new TextBox();
@@ -182,14 +182,6 @@
             label10.Size = new Size(47, 18);
             label10.TabIndex = 27;
             label10.Text = "Fuel:";
-            // 
-            // TBCarFuel
-            // 
-            TBCarFuel.Location = new Point(132, 168);
-            TBCarFuel.Margin = new Padding(4, 3, 4, 3);
-            TBCarFuel.Name = "TBCarFuel";
-            TBCarFuel.Size = new Size(287, 23);
-            TBCarFuel.TabIndex = 28;
             // 
             // label11
             // 
@@ -553,6 +545,7 @@
             // groupBox3
             // 
             groupBox3.BackColor = Color.FromArgb(163, 177, 138);
+            groupBox3.Controls.Add(CBFuelType);
             groupBox3.Controls.Add(TBColor);
             groupBox3.Controls.Add(CBColor);
             groupBox3.Controls.Add(TBGearbox);
@@ -573,7 +566,6 @@
             groupBox3.Controls.Add(TBCarVIN);
             groupBox3.Controls.Add(label10);
             groupBox3.Controls.Add(label19);
-            groupBox3.Controls.Add(TBCarFuel);
             groupBox3.Controls.Add(label11);
             groupBox3.Controls.Add(label18);
             groupBox3.Controls.Add(label12);
@@ -592,6 +584,15 @@
             groupBox3.Size = new Size(458, 524);
             groupBox3.TabIndex = 53;
             groupBox3.TabStop = false;
+            // 
+            // CBFuelType
+            // 
+            CBFuelType.FormattingEnabled = true;
+            CBFuelType.Items.AddRange(new object[] { "Petrol", "Diesel", "Electric", "Hybrid" });
+            CBFuelType.Location = new Point(132, 168);
+            CBFuelType.Name = "CBFuelType";
+            CBFuelType.Size = new Size(287, 23);
+            CBFuelType.TabIndex = 56;
             // 
             // TBColor
             // 
@@ -680,7 +681,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown NUDCarMileage;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox TBCarFuel;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
@@ -718,5 +718,6 @@
         private TextBox TBGearbox;
         private TextBox TBColor;
         private ComboBox CBColor;
+        private ComboBox CBFuelType;
     }
 }
