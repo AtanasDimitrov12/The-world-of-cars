@@ -41,7 +41,7 @@ namespace WinDesktopApp.Forms
             TBModel.Text = car.Model;
             TBModel.Enabled = false;
             TBYear.Text = car.FirstRegistration.ToShortDateString();
-            TBModel.Enabled = false;
+            TBYear.Enabled = false;
             TBStatus.Text = car.CarStatus.ToString().ToLower();
             TBStatus.Enabled = false;
         }
