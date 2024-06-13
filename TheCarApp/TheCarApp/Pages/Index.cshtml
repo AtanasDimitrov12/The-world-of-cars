@@ -14,19 +14,12 @@
             <div class="text-content">
                 <h1>Welcome</h1>
                 <br>
-                @* <div>
-                    Authenticated: @User.Identity.IsAuthenticated
-                    Name: @User.Identity.Name
-                </div> *@
                 <h5>Dive into the world of cars with our expansive collection of the latest models and an engaging community eager to share insights. Join us to stay ahead in the automotive world and connect with enthusiasts and experts alike!</h5>
                 <br>
+                 @if (!User.Identity.IsAuthenticated)
+                        {
                 <a href="/SignUpPage" class="filled-button"><button class="button button2">Register</button></a>
-                <div class="col-md-12 mb-3 text-center">
-                    <form method="post" asp-page-handler="Logout">
-                        <button type="submit" class="btn btn-warning logout-button">Log Out</button>
-                    </form>
-                </div>
-
+                        }
             </div>
         </div>
     </div>

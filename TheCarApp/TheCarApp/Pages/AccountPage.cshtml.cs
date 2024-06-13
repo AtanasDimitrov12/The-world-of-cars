@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Data.SqlClient;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 
 namespace TheCarApp.Pages
@@ -23,6 +23,8 @@ namespace TheCarApp.Pages
         [BindProperty]
         public string NewUsername { get; set; }
         [BindProperty]
+        [Required(ErrorMessage = "Password is required.")]
+        [StringLength(100, MinimumLength = 8, ErrorMessage = "Password must be at least 8 characters long.")]
         public string NewPassword { get; set; }
         [BindProperty]
         public string ConfirmPassword { get; set; }
@@ -105,7 +107,7 @@ namespace TheCarApp.Pages
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Username is already taken.");
+                    ModelState.AddModelError("NewUsername", "Username is already taken.");
                     return Page();
                 }
 
@@ -117,7 +119,7 @@ namespace TheCarApp.Pages
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Password does not meet the requirements or does not match the confirmation.");
+                    ModelState.AddModelError("NewPassword", "Password does not meet the requirements or does not match the confirmation.");
                     return Page();
                 }
 

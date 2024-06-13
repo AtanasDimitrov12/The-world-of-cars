@@ -2,6 +2,7 @@
 @model TheCarApp.Pages.AccountPageModel
 @{
     ViewData["Title"] = "Account Page";
+    bool hasValidationErrors = !ViewData.ModelState.IsValid;
 }
 <link rel="stylesheet" href="~/css/Account.css" asp-append-version="true" />
 
@@ -57,12 +58,16 @@
                     }
                 </div>
                 <div class="col-md-12 mb-3 text-center">
-                    <form method="post" asp-page-handler="Logout">
-                        <button type="submit" class="btn btn-warning logout-button">Log Out</button>
-                    </form>
-                </div>
-                <div class="col-md-12 mb-3 text-center">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit Credentials</button>
+                    <div class="row justify-content-center">
+                        <div class="col-auto">
+                            <button type="button" class="filled-button" data-toggle="modal" data-target="#editModal">Edit Info</button>
+                        </div>
+                        <div class="col-auto">
+                            <form method="post" asp-page-handler="Logout">
+                                <button type="submit" class="filled-buttonRed">Log Out</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             <form method="post" enctype="multipart/form-data" asp-page-handler="UploadProfilePicture">
@@ -103,33 +108,37 @@
 </div>
 
 <!-- Modal for Editing Credentials -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade @(hasValidationErrors ? "show" : "")" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Edit Credentials</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
             <form method="post" asp-page-handler="EditCredentials">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Credentials</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <div class="modal-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label for="newUsername">New Username</label>
-                        <input type="text" class="form-control" id="newUsername" name="NewUsername" value="@Model.user.Username" required>
+                        <input type="text" class="form-control" id="newUsername" name="NewUsername" value="@Model.NewUsername" required>
+                        <span asp-validation-for="NewUsername" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label for="newPassword">New Password</label>
                         <input type="password" class="form-control" id="newPassword" name="NewPassword" required>
+                        <span asp-validation-for="NewPassword" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label for="confirmPassword">Confirm Password</label>
                         <input type="password" class="form-control" id="confirmPassword" name="ConfirmPassword" required>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="filled-button">Save</button>
+                    <button type="button" class="filled-buttonRed" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>
@@ -141,5 +150,11 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvvFietmj6auH01lgj" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3ENjlS5i3xRLtFJfhh8bRM9" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvvFietmj6auH01lgj" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            if ('@hasValidationErrors' === 'True') {
+                $('#editModal').modal('show');
+            }
+        });
+    </script>
 }
-

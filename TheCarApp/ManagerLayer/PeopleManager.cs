@@ -75,8 +75,14 @@ namespace ManagerLayer
             switch (person)
             {
                 case User user:
+                    var (hash, salt) = HashPassword(user.Password);
+                    user.Password = hash;
+                    user.PassSalt = salt;
                     return _userRepository.UpdateUser(user, out errorMessage);
                 case Administrator admin:
+                    (hash, salt) = HashPassword(admin.Password);
+                    admin.Password = hash;
+                    admin.PassSalt = salt;
                     return _administratorRepository.UpdateAdmin(admin, out errorMessage);
                 default:
                     errorMessage = "Unsupported person type";

@@ -140,7 +140,7 @@ namespace DatabaseAccess
                 cmd.Parameters.AddWithValue("@Username", Username);
                 cmd.Parameters.AddWithValue("@Email", email);
                 cmd.Parameters.AddWithValue("@PasswordHash", password);
-                cmd.Parameters.AddWithValue("@PhoneNumber", _licenseNumber);
+                cmd.Parameters.AddWithValue("@License", _licenseNumber);
                 cmd.Parameters.AddWithValue("@CreatedOn", CreatedOn);
                 cmd.Parameters.AddWithValue("@UserId", userId);
 
