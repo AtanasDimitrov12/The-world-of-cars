@@ -40,7 +40,7 @@ namespace TheCarApp.Pages
             if (!string.IsNullOrEmpty(color) && color != "Any")
             {
                 string normalizedColor = color.ToUpper();
-                Cars = Cars.Where(car => car.Color == normalizedColor).ToList();
+                Cars = Cars.Where(car => car.Color.ToUpper() == normalizedColor).ToList();
             }
 
             switch (sort)
