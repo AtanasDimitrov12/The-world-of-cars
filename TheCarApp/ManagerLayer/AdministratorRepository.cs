@@ -6,7 +6,7 @@ using InterfaceLayer;
 using System;
 using System.Collections.Generic;
 
-namespace Repositories
+namespace Manager_Layer
 {
     public class AdministratorRepository : IAdministratorRepository
     {

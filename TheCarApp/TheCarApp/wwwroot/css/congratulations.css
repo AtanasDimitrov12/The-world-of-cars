@@ -40,8 +40,8 @@ body {
     }
 
 .img-fluid {
-    width: 100%; /* Ensures responsiveness */
-    cursor: pointer; /* Indicates that the image is clickable */
+    width: 100%; 
+    cursor: pointer; 
 }
 
 .services {

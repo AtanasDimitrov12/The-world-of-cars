@@ -42,8 +42,8 @@ namespace WinDesktopApp.Forms
                     e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
                     var buttonRect = e.CellBounds;
-                    var buttonColor = Color.White; // Default color
-                    var textColor = Color.Black; // Default text color
+                    var buttonColor = Color.White; 
+                    var textColor = Color.Black; 
 
 
                     if (e.ColumnIndex == DGVPictures.Columns["Delete"].Index)
