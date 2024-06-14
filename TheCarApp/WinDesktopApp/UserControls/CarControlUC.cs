@@ -259,7 +259,7 @@ namespace DesktopApp
 
                             if (carManager.RemoveCar(selectedCar, out string updateCarError))
                             {
-                                MessageBox.Show("Car removed successfully.");
+                                MessageBox.Show("Car removed successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 FillDataGridView(carManager.GetCars());
                                 admInfo.DisplayDataInfo();
                                 rentalsUC.FillDataGridView(rentManager.RentalHistory);

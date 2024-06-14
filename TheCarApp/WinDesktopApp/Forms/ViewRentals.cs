@@ -20,7 +20,10 @@ namespace WinDesktopApp.Forms
         RentACar rent;
         IRentManager manager;
         bool IsView;
+        private bool isInitializing = true; 
+
         public event EventHandler RentChanged;
+
         public ViewRentals(RentACar rent, IRentManager rm, bool View)
         {
             InitializeComponent();
@@ -29,6 +32,7 @@ namespace WinDesktopApp.Forms
             IsView = View;
             DisplayRentInfo(rent, View);
             CheckForView();
+            isInitializing = false; 
         }
 
         public void CheckForView()
@@ -70,14 +74,12 @@ namespace WinDesktopApp.Forms
                 TBRentStatus.Enabled = false;
                 TBRentStatus.Visible = false;
             }
-
         }
 
         private void BTNUpdate_Click(object sender, EventArgs e)
         {
             if (CBRentStatus.SelectedItem != null)
             {
-
                 RentStatus newStatus;
                 if (Enum.TryParse<RentStatus>(CBRentStatus.Text, true, out newStatus))
                 {
@@ -94,14 +96,11 @@ namespace WinDesktopApp.Forms
                         MessageBox.Show(ErrorMessage);
                     }
                 }
-
             }
             else
             {
                 MessageBox.Show("Please first select Rent Status first!");
             }
-
-
         }
 
         private void BTNClose_Click(object sender, EventArgs e)
@@ -111,12 +110,18 @@ namespace WinDesktopApp.Forms
 
         private void DTPStartDate_ValueChanged(object sender, EventArgs e)
         {
-            CalculateTotalPrice();
+            if (!isInitializing)
+            {
+                CalculateTotalPrice();
+            }
         }
 
         private void DTPEndDate_ValueChanged(object sender, EventArgs e)
         {
-            CalculateTotalPrice();
+            if (!isInitializing)
+            {
+                CalculateTotalPrice();
+            }
         }
 
         public void CalculateTotalPrice()

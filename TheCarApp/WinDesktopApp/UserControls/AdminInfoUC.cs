@@ -32,8 +32,17 @@ namespace DesktopApp
             this.rentManager = rm;
             this.newsManager = nm;
             admins = administratorRepository.GetAllAdministrators();
-            DisplayAdminInfo();
-            DisplayDataInfo();
+
+            if (admins.Count == 0)
+            {
+                MessageBox.Show($"Failed to load data. Please check your connection! No data will be loaded!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Application.Exit();
+            }
+            else
+            {
+                DisplayAdminInfo();
+                DisplayDataInfo();
+            }
         }
 
         public void DisplayDataInfo()

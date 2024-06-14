@@ -203,7 +203,7 @@ namespace DesktopApp
                         }
                         else
                         {
-                            MessageBox.Show($"Failed to add car: {addCarError}");
+                            MessageBox.Show($"Failed to add car: {addCarError}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
@@ -216,7 +216,7 @@ namespace DesktopApp
                     UpdateCarData();
                     if (manager.UpdateCar(carData, pictures, extras, out string updateCarError))
                     {
-                        MessageBox.Show($"You successfully updated that car!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show($"You successfully updated that car!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CarAdded?.Invoke(this, EventArgs.Empty);
                         this.Close();
                     }

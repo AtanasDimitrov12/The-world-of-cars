@@ -66,10 +66,11 @@
                 __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
             },
             success: function (result) {
-                $('#totalPrice').text(result.price + '€');
                 if (result.errorMessage) {
+                    $('#totalPrice').text('');
                     $('.alert-danger').text(result.errorMessage).show();
                 } else {
+                    $('#totalPrice').text(result.price + '€');
                     $('.alert-danger').hide();
                 }
             },
@@ -79,6 +80,8 @@
             }
         });
     }
+
+
 </script>
 
 <style>
@@ -201,6 +204,12 @@
                                 <strong class="pull-right">@Model.Car.PricePerDay&#8364;</strong>
                             </div>
                         </li>
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Note</span>
+                                <strong class="pull-right text-danger">Months from June to August are peak season and the price is up by 20%</strong>
+                            </div>
+                        </li>
                     </ul>
                     <br>
                     <div>
@@ -236,6 +245,7 @@
                                 @Model.ErrorMessage
                             </div>
                         }
+                        <div class="alert alert-danger" style="display:none;"></div>
                     </div>
                 </form>
 
@@ -265,21 +275,7 @@
                     }
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="tabs-content">
-                    <h4>Contact Details</h4>
-                    <!-- Display contact information -->
-                </div>
-                <br>
-            </div>
         </div>
         <br>
-    </div>
-</div>
-
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Congratulations, you successfully booked that car! Come to our office to sign the contract!</p>
     </div>
 </div>

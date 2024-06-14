@@ -36,7 +36,7 @@ namespace TheCarApp.Pages
             }
             else
             {
-                projectManager.CarManager.RecordCarView(carId, out string ErrorMessage);
+                projectManager.CarManager.RecordCarView(carId, out string errorMessage);
                 RentedPeriods = projectManager.RentManager.GetRentedPeriods(carId);
             }
             UserEmail = User.Identity.Name;
@@ -60,12 +60,11 @@ namespace TheCarApp.Pages
                 return new JsonResult(new { errorMessage = "End date must be after start date." });
             }
 
-            if (StartDate < DateTime.Now)
+            if (StartDate < DateTime.Now.Date)
             {
-                ErrorMessage = "Start date must be after today.";
-                return new JsonResult(new { errorMessage = "Start date must be after today." });
+                ErrorMessage = "Start date must be today or later.";
+                return new JsonResult(new { errorMessage = "Start date must be today or later." });
             }
-        
 
             try
             {
@@ -94,9 +93,9 @@ namespace TheCarApp.Pages
                 return Page();
             }
 
-            if (StartDate < DateTime.Now)
+            if (StartDate < DateTime.Now.Date)
             {
-                ErrorMessage = "Start date must be after today.";
+                ErrorMessage = "Start date must be today or later.";
                 return Page();
             }
 

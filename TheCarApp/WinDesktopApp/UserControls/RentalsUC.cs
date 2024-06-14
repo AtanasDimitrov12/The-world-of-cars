@@ -225,7 +225,19 @@ namespace WinDesktopApp.UserControls
                 return;
             }
 
-            if (e.ColumnIndex == DGVRentals.Columns["Modify"].Index)
+            if (e.ColumnIndex == DGVRentals.Columns["View"].Index)
+            {
+                foreach (var selectedRental in rentManager.RentalHistory)
+                {
+                    if (selectedRental?.user?.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car?.Brand} {selectedRental.car?.Model}" == car)
+                    {
+                        ViewRentals viewRent = new ViewRentals(selectedRental, rentManager, true);
+                        viewRent.Show();
+                        break;
+                    }
+                }
+            }
+            else if (e.ColumnIndex == DGVRentals.Columns["Modify"].Index)
             {
                 foreach (var selectedRental in rentManager.RentalHistory)
                 {
@@ -257,18 +269,7 @@ namespace WinDesktopApp.UserControls
                     }
                 }
             }
-            else if (e.ColumnIndex == DGVRentals.Columns["View"].Index)
-            {
-                foreach (var selectedRental in rentManager.RentalHistory)
-                {
-                    if (selectedRental?.user?.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car?.Brand} {selectedRental.car?.Model}" == car)
-                    {
-                        ViewRentals viewRent = new ViewRentals(selectedRental, rentManager, true);
-                        viewRent.Show();
-                        break;
-                    }
-                }
-            }
+            
         }
 
     }

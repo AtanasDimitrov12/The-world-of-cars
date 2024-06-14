@@ -309,12 +309,20 @@
       "PackagePath": "staticwebassets\\pictures\\AudiQ74.jpg"
     },
     {
-      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMW2.jpg",
-      "PackagePath": "staticwebassets\\pictures\\BMW2.jpg"
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMW330.jpg",
+      "PackagePath": "staticwebassets\\pictures\\BMW330.jpg"
     },
     {
-      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMW3.jpg",
-      "PackagePath": "staticwebassets\\pictures\\BMW3.jpg"
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMW3302.jpg",
+      "PackagePath": "staticwebassets\\pictures\\BMW3302.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMW3303.jpg",
+      "PackagePath": "staticwebassets\\pictures\\BMW3303.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMW3304.jpg",
+      "PackagePath": "staticwebassets\\pictures\\BMW3304.jpg"
     },
     {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWX5.jpg",
@@ -361,12 +369,36 @@
       "PackagePath": "staticwebassets\\pictures\\Fiat500X.jpg"
     },
     {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Fiat500X2.jpg",
+      "PackagePath": "staticwebassets\\pictures\\Fiat500X2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Fiat500X3.jpg",
+      "PackagePath": "staticwebassets\\pictures\\Fiat500X3.jpg"
+    },
+    {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\GT1000.jpg",
       "PackagePath": "staticwebassets\\pictures\\GT1000.jpg"
     },
     {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Kia.jpg",
       "PackagePath": "staticwebassets\\pictures\\Kia.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\LexusRX350.jpg",
+      "PackagePath": "staticwebassets\\pictures\\LexusRX350.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\LexusRX3502.jpg",
+      "PackagePath": "staticwebassets\\pictures\\LexusRX3502.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\LexusRX3503.jpg",
+      "PackagePath": "staticwebassets\\pictures\\LexusRX3503.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\LexusRX3504.jpg",
+      "PackagePath": "staticwebassets\\pictures\\LexusRX3504.jpg"
     },
     {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Marketplace.jpg",
@@ -629,6 +661,22 @@
       "PackagePath": "staticwebassets\\pictures\\Porsche.jpg"
     },
     {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\TeslaS.jpg",
+      "PackagePath": "staticwebassets\\pictures\\TeslaS.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\TeslaS2.jpg",
+      "PackagePath": "staticwebassets\\pictures\\TeslaS2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\TeslaS3.jpg",
+      "PackagePath": "staticwebassets\\pictures\\TeslaS3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\TeslaS4.jpg",
+      "PackagePath": "staticwebassets\\pictures\\TeslaS4.jpg"
+    },
+    {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\ToyotaRav4.jpg",
       "PackagePath": "staticwebassets\\pictures\\ToyotaRav4.jpg"
     },
@@ -647,6 +695,22 @@
     {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\ToyotaRav45.jpg",
       "PackagePath": "staticwebassets\\pictures\\ToyotaRav45.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\VolvoXC90.jpg",
+      "PackagePath": "staticwebassets\\pictures\\VolvoXC90.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\VolvoXC902.jpg",
+      "PackagePath": "staticwebassets\\pictures\\VolvoXC902.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\VolvoXC903.jpg",
+      "PackagePath": "staticwebassets\\pictures\\VolvoXC903.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\VolvoXC904.jpg",
+      "PackagePath": "staticwebassets\\pictures\\VolvoXC904.jpg"
     },
     {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\background.jpg",
@@ -685,12 +749,72 @@
       "PackagePath": "staticwebassets\\pictures\\profile_pictures\\AtanasProfilePic.jpg"
     },
     {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\Beyonce.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\Beyonce.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\Depay.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\Depay.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\FontysLogo.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\FontysLogo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\IvoProfilePic.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\IvoProfilePic.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\Virgil.png",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\Virgil.png"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\Wijnaldum.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\Wijnaldum.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\ake.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\ake.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\ariana.jpeg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\ariana.jpeg"
+    },
+    {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\blank-profile-picture.jpg",
       "PackagePath": "staticwebassets\\pictures\\profile_pictures\\blank-profile-picture.jpg"
     },
     {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\car.png",
       "PackagePath": "staticwebassets\\pictures\\profile_pictures\\car.png"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\frenkie.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\frenkie.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\gakpo.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\gakpo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\konata.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\konata.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\rihanna.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\rihanna.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\selena.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\selena.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\verstappen.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\verstappen.jpg"
+    },
+    {
+      "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\xavi-simons.jpg",
+      "PackagePath": "staticwebassets\\pictures\\profile_pictures\\xavi-simons.jpg"
     },
     {
       "Id": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\rentCar.jpg",
