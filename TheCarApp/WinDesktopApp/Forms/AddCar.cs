@@ -87,6 +87,8 @@ namespace DesktopApp
             TBCarBrand.TextChanged += ValidateTextLength;
             TBCarModel.TextChanged += ValidateTextLength;
             TBCarVIN.TextChanged += ValidateTextLength;
+            LBExtras.Items.Clear();
+            LBPictures.Items.Clear();
         }
 
         private void ValidateTextLength(object sender, EventArgs e)
@@ -106,6 +108,12 @@ namespace DesktopApp
 
         public void LoadCarData()
         {
+            // Clear existing items to avoid duplication
+            pictures.Clear();
+            extras.Clear();
+            LBExtras.Items.Clear();
+            LBPictures.Items.Clear();
+
             TBCarBrand.Text = carData.Brand;
             TBCarModel.Text = carData.Model;
             DTPCarFirstReg.Value = carData.FirstRegistration;
@@ -118,11 +126,9 @@ namespace DesktopApp
             TBCarVIN.Text = carData.VIN;
             RTBCarDescription.Text = carData.Description;
             TBCarPrice.Text = carData.PricePerDay.ToString();
-            TBCarNumOfSeats.Text = carData.NumberOfSeats.ToString();
-            TBCarNumOfDoors.Text = carData.NumberOfDoors;
+            NUDSeats.Value = carData.NumberOfSeats;
+            CBDoors.Text = carData.NumberOfDoors;
 
-            pictures.Clear();
-            extras.Clear();
             foreach (var picture in carData.Pictures)
             {
                 pictures.Add(picture);
@@ -134,6 +140,7 @@ namespace DesktopApp
             }
             AddToLB();
         }
+
 
         private void AddToLB()
         {
@@ -149,6 +156,7 @@ namespace DesktopApp
                 LBExtras.Items.Add($"{extra.ExtraName}");
             }
         }
+
 
         public void LoadCB()
         {
@@ -171,14 +179,13 @@ namespace DesktopApp
             {
                 if (string.IsNullOrEmpty(TBCarBrand.Text) ||
                     string.IsNullOrEmpty(TBCarModel.Text) ||
-                    CBFuelType.SelectedItem == null ||
-                    CBCarGearbox.SelectedItem == null ||
-                    string.IsNullOrEmpty(CBColor.Text) ||
+                    CBFuelType.Text == "" ||
+                    CBCarGearbox.Text == "" ||
+                    CBColor.Text == "" ||
                     string.IsNullOrEmpty(TBCarVIN.Text) ||
                     string.IsNullOrEmpty(RTBCarDescription.Text) ||
                     string.IsNullOrEmpty(TBCarPrice.Text) ||
-                    string.IsNullOrEmpty(TBCarNumOfSeats.Text) ||
-                    string.IsNullOrEmpty(TBCarNumOfDoors.Text))
+                    CBDoors.Text == "")
                 {
                     MessageBox.Show("All fields must be filled in.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -186,7 +193,7 @@ namespace DesktopApp
 
                 if (!Modify)
                 {
-                    Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), CBFuelType.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), CBColor.SelectedItem.ToString(), TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(TBCarNumOfSeats.Text), TBCarNumOfDoors.Text, 0);
+                    Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), CBFuelType.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), CBColor.SelectedItem.ToString(), TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(NUDSeats.Value), CBDoors.Text, 0);
                     if (pictures.Count != 0)
                     {
                         if (manager.AddCar(car, pictures, extras, out string addCarError))
@@ -209,6 +216,7 @@ namespace DesktopApp
                     UpdateCarData();
                     if (manager.UpdateCar(carData, pictures, extras, out string updateCarError))
                     {
+                        MessageBox.Show($"You successfully updated that car!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         CarAdded?.Invoke(this, EventArgs.Empty);
                         this.Close();
                     }
@@ -239,31 +247,26 @@ namespace DesktopApp
             carData.VIN = TBCarVIN.Text;
             carData.Description = RTBCarDescription.Text;
             carData.PricePerDay = Convert.ToDecimal(TBCarPrice.Text);
-            carData.NumberOfSeats = Convert.ToInt32(TBCarNumOfSeats.Text);
-            carData.NumberOfDoors = TBCarNumOfDoors.Text;
+            carData.NumberOfSeats = Convert.ToInt32(NUDSeats.Value);
+            carData.NumberOfDoors = CBDoors.Text;
         }
 
         private void BTNAddExtra_Click(object sender, EventArgs e)
         {
             if (CBCarExtras.Text != "")
             {
-                int Index = CBCarExtras.SelectedIndex;
-                if (extras.Count > 0)
+                int index = CBCarExtras.SelectedIndex;
+                Extra selectedExtra = extraManager.extras[index];
+
+                if (extras.Any(ex => ex.ExtraName == selectedExtra.ExtraName))
                 {
-                    if (!extras.Contains(extraManager.extras[Index]))
-                    {
-                        extras.Add(extraManager.extras[Index]);
-                    }
-                    else
-                    {
-                        MessageBox.Show("This extra is already added to that car!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    MessageBox.Show("This extra is already added to that car!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    extras.Add(extraManager.extras[Index]);
+                    extras.Add(selectedExtra);
+                    AddToLB();
                 }
-                AddToLB();
             }
             else
             {
@@ -271,17 +274,16 @@ namespace DesktopApp
             }
         }
 
+
         private void BTNRemoveExtra_Click(object sender, EventArgs e)
         {
-            string ExtraName = LBExtras.SelectedItem as string;
-            if (ExtraName != null)
+            string extraName = LBExtras.SelectedItem as string;
+            if (extraName != null)
             {
-                foreach (var ex in extraManager.extras)
+                Extra extraToRemove = extras.FirstOrDefault(ex => ex.ExtraName == extraName);
+                if (extraToRemove != null)
                 {
-                    if (ex.ExtraName == ExtraName)
-                    {
-                        extras.Remove(ex);
-                    }
+                    extras.Remove(extraToRemove);
                 }
             }
             else
@@ -291,27 +293,23 @@ namespace DesktopApp
             AddToLB();
         }
 
+
         private void BTNAddPicture_Click(object sender, EventArgs e)
         {
             if (CBPictureURL.Text != "")
             {
-                int Index = CBPictureURL.SelectedIndex;
-                if (pictures.Count > 0)
+                int index = CBPictureURL.SelectedIndex;
+                Picture selectedPicture = pictureManager.pictures[index];
+
+                if (pictures.Any(pic => pic.PictureURL == selectedPicture.PictureURL))
                 {
-                    if (!pictures.Contains(pictureManager.pictures[Index]))
-                    {
-                        pictures.Add(pictureManager.pictures[Index]);
-                    }
-                    else
-                    {
-                        MessageBox.Show("This picture is already added to that car!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    MessageBox.Show("This picture is already added to that car!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    pictures.Add(pictureManager.pictures[Index]);
+                    pictures.Add(selectedPicture);
+                    AddToLB();
                 }
-                AddToLB();
             }
             else
             {
@@ -319,32 +317,25 @@ namespace DesktopApp
             }
         }
 
+
         private void BTNRemovePicture_Click(object sender, EventArgs e)
         {
-            string PicURL = LBPictures.SelectedItem as string;
-            try
+            string picURL = LBPictures.SelectedItem as string;
+            if (picURL != null)
             {
-                if (PicURL != null)
+                Picture pictureToRemove = pictures.FirstOrDefault(pic => pic.PictureURL == picURL);
+                if (pictureToRemove != null)
                 {
-                    foreach (var pic in pictureManager.pictures)
-                    {
-                        if (pic.PictureURL == PicURL)
-                        {
-                            pictures.Remove(pic);
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No item is selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    pictures.Remove(pictureToRemove);
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("No item is selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             AddToLB();
         }
+
 
         private void BTNAddExtras_Click(object sender, EventArgs e)
         {
@@ -398,8 +389,8 @@ namespace DesktopApp
             CBFuelType.Enabled = false;
             TBColor.Enabled = false;
             TBColor.Text = carData.Color;
-            TBCarNumOfDoors.Enabled = false;
-            TBCarNumOfSeats.Enabled = false;
+            CBDoors.Enabled = false;
+            NUDSeats.Enabled = false;
             TBCarPrice.Enabled = false;
             TBCarVIN.Enabled = false;
             TBGearbox.Enabled = false;

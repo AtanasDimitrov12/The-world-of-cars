@@ -76,15 +76,13 @@ namespace DesktopApp
                     e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
                     var buttonRect = e.CellBounds;
-                    var buttonColor = Color.White; // Default color
-                    var textColor = Color.Black; // Default text color
+                    var buttonColor = Color.White; 
+                    var textColor = Color.Black; 
 
                     if (e.ColumnIndex == DGVCars.Columns["View"].Index)
                     {
                         buttonColor = ColorTranslator.FromHtml("#3A5A40");
-                        //buttonColor = ColorTranslator.FromHtml("#588157");
                         textColor = Color.White;
-                        //buttonColor = ColorTranslator.FromHtml("#A3B18A");
                     }
                     else if (e.ColumnIndex == DGVCars.Columns["Modify"].Index)
                     {
@@ -99,7 +97,6 @@ namespace DesktopApp
                     else if (e.ColumnIndex == DGVCars.Columns["Change Status"].Index)
                     {
                         buttonColor = ColorTranslator.FromHtml("#588157");
-                        //buttonColor = ColorTranslator.FromHtml("#344E41");
                         textColor = Color.White;
                     }
 

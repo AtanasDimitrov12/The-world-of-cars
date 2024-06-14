@@ -45,8 +45,6 @@
             label15 = new Label();
             CBCarGearbox = new ComboBox();
             label16 = new Label();
-            TBCarNumOfSeats = new TextBox();
-            TBCarNumOfDoors = new TextBox();
             label17 = new Label();
             label18 = new Label();
             TBCarVIN = new TextBox();
@@ -76,6 +74,8 @@
             TBGearbox = new TextBox();
             groupBox4 = new GroupBox();
             BTNClose = new Button();
+            NUDSeats = new NumericUpDown();
+            CBDoors = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)NUDCarMileage).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NUDCarEngineSize).BeginInit();
@@ -83,6 +83,7 @@
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)NUDSeats).BeginInit();
             SuspendLayout();
             // 
             // RTBCarDescription
@@ -258,22 +259,6 @@
             label16.Size = new Size(143, 18);
             label16.TabIndex = 37;
             label16.Text = "Number of seats:";
-            // 
-            // TBCarNumOfSeats
-            // 
-            TBCarNumOfSeats.Location = new Point(203, 338);
-            TBCarNumOfSeats.Margin = new Padding(4, 3, 4, 3);
-            TBCarNumOfSeats.Name = "TBCarNumOfSeats";
-            TBCarNumOfSeats.Size = new Size(216, 23);
-            TBCarNumOfSeats.TabIndex = 38;
-            // 
-            // TBCarNumOfDoors
-            // 
-            TBCarNumOfDoors.Location = new Point(203, 376);
-            TBCarNumOfDoors.Margin = new Padding(4, 3, 4, 3);
-            TBCarNumOfDoors.Name = "TBCarNumOfDoors";
-            TBCarNumOfDoors.Size = new Size(216, 23);
-            TBCarNumOfDoors.TabIndex = 40;
             // 
             // label17
             // 
@@ -545,6 +530,8 @@
             // groupBox3
             // 
             groupBox3.BackColor = Color.FromArgb(163, 177, 138);
+            groupBox3.Controls.Add(CBDoors);
+            groupBox3.Controls.Add(NUDSeats);
             groupBox3.Controls.Add(CBFuelType);
             groupBox3.Controls.Add(TBColor);
             groupBox3.Controls.Add(CBColor);
@@ -570,12 +557,10 @@
             groupBox3.Controls.Add(label18);
             groupBox3.Controls.Add(label12);
             groupBox3.Controls.Add(label13);
-            groupBox3.Controls.Add(TBCarNumOfDoors);
             groupBox3.Controls.Add(label14);
             groupBox3.Controls.Add(label15);
             groupBox3.Controls.Add(label17);
             groupBox3.Controls.Add(label16);
-            groupBox3.Controls.Add(TBCarNumOfSeats);
             groupBox3.Font = new Font("Arial Rounded MT Bold", 9.75F);
             groupBox3.Location = new Point(25, 23);
             groupBox3.Margin = new Padding(3, 2, 3, 2);
@@ -644,6 +629,26 @@
             BTNClose.UseVisualStyleBackColor = false;
             BTNClose.Click += BTNClose_Click_1;
             // 
+            // NUDSeats
+            // 
+            NUDSeats.Location = new Point(203, 338);
+            NUDSeats.Margin = new Padding(4, 3, 4, 3);
+            NUDSeats.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            NUDSeats.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
+            NUDSeats.Name = "NUDSeats";
+            NUDSeats.Size = new Size(216, 23);
+            NUDSeats.TabIndex = 57;
+            NUDSeats.Value = new decimal(new int[] { 2, 0, 0, 0 });
+            // 
+            // CBDoors
+            // 
+            CBDoors.FormattingEnabled = true;
+            CBDoors.Items.AddRange(new object[] { "2/3", "4/5" });
+            CBDoors.Location = new Point(203, 371);
+            CBDoors.Name = "CBDoors";
+            CBDoors.Size = new Size(216, 23);
+            CBDoors.TabIndex = 58;
+            // 
             // AddCar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -667,6 +672,7 @@
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)NUDSeats).EndInit();
             ResumeLayout(false);
         }
 
@@ -688,8 +694,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox CBCarGearbox;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox TBCarNumOfSeats;
-        private System.Windows.Forms.TextBox TBCarNumOfDoors;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox TBCarVIN;
@@ -719,5 +723,7 @@
         private TextBox TBColor;
         private ComboBox CBColor;
         private ComboBox CBFuelType;
+        private ComboBox CBDoors;
+        private NumericUpDown NUDSeats;
     }
 }

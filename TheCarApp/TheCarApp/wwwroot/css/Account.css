@@ -10,23 +10,19 @@ body {
     font-size: 1rem;
     color: black;
 }
-
-.flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    background-color: white;
+header {
+    background-color: rgba(0,0,0,0.9);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.9);
 }
 
 .container.pt-5 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 10px;
     width: 100%;
+    margin-top: 100px;
     max-width: 850px;
     text-align: center;
-    padding: 20px; /* Added padding */
+    padding: 40px; 
     background-color: white;
 }
 
@@ -245,6 +241,7 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+    margin-top: 80px; /* Adjusted margin-top to make room for the navbar */
 }
 
 .table {
@@ -262,7 +259,7 @@ button {
 @media (max-width: 992px) {
     .flex-container {
         margin-inline: 0;
-        margin-top: 20px;
+        margin-top: 80px; /* Adjusted margin-top to make room for the navbar */
     }
 
     .container.pt-5 {
