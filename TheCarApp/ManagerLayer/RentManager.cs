@@ -42,8 +42,7 @@ namespace Entity_Layer
         }
 
         public int CheckForDiscount(User user)
-        {
-            if (user == null) return 0;
+        { 
 
             int numOfRents = RentalHistory.Count(r => r.user == user && r.RentStatus != RentStatus.CANCELLED);
             if (numOfRents >= 25) return 10;
@@ -97,6 +96,10 @@ namespace Entity_Layer
             {
                 errorMessage = ex.Message;
                 return false;
+
+
+
+
             }
         }
 

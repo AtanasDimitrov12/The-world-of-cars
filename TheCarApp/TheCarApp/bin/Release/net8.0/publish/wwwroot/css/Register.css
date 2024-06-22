@@ -159,7 +159,7 @@ flex-container {
 .forms .form-content .input-box {
     display: flex;
     flex-direction: column; 
-    height: 60px; /* Adjust height to accommodate error messages */
+    height: 60px; 
     width: 100%;
     margin: 10px 0;
     position: relative;

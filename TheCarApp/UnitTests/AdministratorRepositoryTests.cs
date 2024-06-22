@@ -6,6 +6,8 @@ using Entity_Layer;
 using InterfaceLayer;
 using System.Collections.Generic;
 using DTO;
+using ManagerLayer;
+using Manager_Layer;
 
 namespace UnitTests
 {
@@ -15,7 +17,7 @@ namespace UnitTests
         private Mock<IPeopleDataWriter> _mockDataWriter;
         private Mock<IPeopleDataRemover> _mockDataRemover;
         private Mock<IDataAccess> _mockDataAccess;
-        private AdministratorRepository _adminRepo;
+        private IAdministratorRepository _adminRepo;
 
         [TestInitialize]
         public void Setup()
