@@ -9,71 +9,82 @@
 <div class="main-banner header-text" id="top">
     <div class="container pt-5">
         <h1 class="text-center mb-4">Account Details</h1>
-        @if (!string.IsNullOrEmpty(Model.user.ProfilePicturePath))
+        @if (Model.user != null)
         {
-            <div class="text-center mb-4 profile-picture-wrapper">
-                <img src="@Model.user.ProfilePicturePath" alt="Profile Picture" class="profile-picture">
-                <div class="profile-picture-overlay">
-                    <label for="profilePicture" class="edit-label">Edit</label>
+            @if (!string.IsNullOrEmpty(Model.user.ProfilePicturePath))
+            {
+                <div class="text-center mb-4 profile-picture-wrapper">
+                    <img src="@Model.user.ProfilePicturePath" alt="Profile Picture" class="profile-picture">
+                    <div class="profile-picture-overlay">
+                        <label for="profilePicture" class="edit-label">Edit</label>
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h5>Username:</h5>
+                    <p>@Model.user.Username</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Email:</h5>
+                    <p>@Model.user.Email</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Driving License Number:</h5>
+                    <p>@Model.user.LicenseNumber</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Account Created On:</h5>
+                    <p>@Model.user.CreatedOn.ToString("MMMM dd, yyyy")</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Num. of rentals :</h5>
+                    <p>@Model.Rentals.ToString()</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Unlocked discount:</h5>
+                    @{
+                        if (Model.Rentals < 10)
+                        {
+                            <p>You need to do @(10 - Model.Rentals) more rentals to unlock a discount.</p>
+                        }
+                        else if (Model.Rentals >= 10 && Model.Rentals < 25)
+                        {
+                            <p>Your discount is 5%. After @(25 - Model.Rentals) more rentals, you will unlock a bigger discount.</p>
+                        }
+                        else if (Model.Rentals >= 25)
+                        {
+                            <p>Your discount is 10%.</p>
+                        }
+                    }
+                </div>
+                <div class="col-md-12 mb-3 text-center">
+                    <div class="row justify-content-center">
+                        <div class="col-auto">
+                            <button type="button" class="filled-button" data-toggle="modal" data-target="#editModal">Edit Info</button>
+                        </div>
+                        <div class="col-auto">
+                            <form method="post" asp-page-handler="Logout">
+                                <button type="submit" class="filled-buttonRed">Log Out</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <form method="post" enctype="multipart/form-data" asp-page-handler="UploadProfilePicture">
+                <div class="form-group">
+                    <input type="file" class="form-control-file d-none" id="profilePicture" name="ProfilePicture" onchange="this.form.submit()">
+                </div>
+            </form>
         }
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <h5>Username:</h5>
-                <p>@Model.user.Username</p>
-            </div>
-            <div class="col-md-6 mb-3">
-                <h5>Email:</h5>
-                <p>@Model.user.Email</p>
-            </div>
-            <div class="col-md-6 mb-3">
-                <h5>Driving License Number:</h5>
-                <p>@Model.user.LicenseNumber</p>
-            </div>
-            <div class="col-md-6 mb-3">
-                <h5>Account Created On:</h5>
-                <p>@Model.user.CreatedOn.ToString("MMMM dd, yyyy")</p>
-            </div>
-            <div class="col-md-6 mb-3">
-                <h5>Num. of rentals :</h5>
-                <p>@Model.Rentals.ToString()</p>
-            </div>
-            <div class="col-md-6 mb-3">
-                <h5>Unlocked discount:</h5>
-                @{
-                    if (Model.Rentals < 10)
-                    {
-                        <p>You need to do @(10 - Model.Rentals) more rentals to unlock a discount.</p>
-                    }
-                    else if (Model.Rentals >= 10 && Model.Rentals < 25)
-                    {
-                        <p>Your discount is 5%. After @(25 - Model.Rentals) more rentals, you will unlock a bigger discount.</p>
-                    }
-                    else if (Model.Rentals >= 25)
-                    {
-                        <p>Your discount is 10%.</p>
-                    }
-                }
-            </div>
-            <div class="col-md-12 mb-3 text-center">
-                <div class="row justify-content-center">
-                    <div class="col-auto">
-                        <button type="button" class="filled-button" data-toggle="modal" data-target="#editModal">Edit Info</button>
-                    </div>
-                    <div class="col-auto">
-                        <form method="post" asp-page-handler="Logout">
-                            <button type="submit" class="filled-buttonRed">Log Out</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <form method="post" enctype="multipart/form-data" asp-page-handler="UploadProfilePicture">
-            <div class="form-group">
-                <input type="file" class="form-control-file d-none" id="profilePicture" name="ProfilePicture" onchange="this.form.submit()">
-            </div>
-        </form>
+        else
+        {
+            <p>User not found.</p>
+            <form method="post" asp-page-handler="Logout">
+                <button type="submit" class="filled-buttonRed">Log Out</button>
+            </form>
+        }
+
         <h7 class="text-center my-4">Rental History</h7>
         <table class="table">
             <thead>
@@ -104,7 +115,6 @@
         </table>
     </div>
 </div>
-
 
 <!-- Modal for Editing Credentials -->
 <div class="modal fade @(hasValidationErrors ? "show" : "")" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
@@ -142,7 +152,6 @@
             </form>
         </div>
     </div>
-
 
     @section Scripts {
         <partial name="_ValidationScriptsPartial" />
