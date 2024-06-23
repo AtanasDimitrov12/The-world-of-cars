@@ -5,6 +5,7 @@ using DatabaseAccess;
 using Database;
 using Entity_Layer;
 using DTO;
+using System.Linq;
 
 namespace Repositories
 {
@@ -29,7 +30,8 @@ namespace Repositories
             try
             {
                 writer.AddUser(user.Username, user.Email, user.Password, user.LicenseNumber, user.CreatedOn, user.PassSalt);
-                writer.UploadProfilePicture(user, user.ProfilePicturePath);
+                user.Id = writer.GetUserId(user.Email);
+                writer.UploadProfilePicture(user.Id, user.ProfilePicturePath);
                 users.Add(user);
                 return true;
             }
@@ -46,8 +48,8 @@ namespace Repositories
             try
             {
                 remover.RemoveProfilePicture(user.Id);
-                writer.UploadProfilePicture(user, relativeFilePath);
-                user.ProfilePicturePath = relativeFilePath; // Update the user profile picture path
+                writer.UploadProfilePicture(user.Id, relativeFilePath);
+                user.ProfilePicturePath = relativeFilePath;
                 return true;
             }
             catch (Exception ex)
@@ -59,14 +61,8 @@ namespace Repositories
 
         public string GetProfilePicPathById(int userId)
         {
-            foreach (var user in users)
-            {
-                if (user.Id == userId)
-                {
-                    return user.ProfilePicturePath;
-                }
-            }
-            return string.Empty;
+            var user = users.FirstOrDefault(u => u.Id == userId);
+            return user?.ProfilePicturePath ?? string.Empty;
         }
 
         public bool RemoveUser(User user, out string errorMessage)
@@ -90,7 +86,7 @@ namespace Repositories
             errorMessage = string.Empty;
             try
             {
-                writer.UpdateUser(user.Id, user.Username, user.Email, user.Password, user.LicenseNumber, user.CreatedOn);
+                writer.UpdateUser(user.Id, user.Username, user.Email, user.Password, user.PassSalt, user.LicenseNumber, user.CreatedOn);
                 return true;
             }
             catch (Exception ex)
@@ -102,14 +98,8 @@ namespace Repositories
 
         public string GetUserNameById(int userId)
         {
-            foreach (var user in users)
-            {
-                if (user.Id == userId)
-                {
-                    return user.Username;
-                }
-            }
-            return string.Empty;
+            var user = users.FirstOrDefault(u => u.Id == userId);
+            return user?.Username ?? string.Empty;
         }
 
         public List<User> GetAllUsers()

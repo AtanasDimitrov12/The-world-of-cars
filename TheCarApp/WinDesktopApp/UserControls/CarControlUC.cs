@@ -14,6 +14,7 @@ using WinDesktopApp.Forms;
 using InterfaceLayer;
 using Entity_Layer;
 using WinDesktopApp.Models;
+using WinDesktopApp.UserControls;
 
 namespace DesktopApp
 {
@@ -24,6 +25,7 @@ namespace DesktopApp
         IExtraManager extraManager;
         IPictureManager pictureManager;
         public AdminInfoUC admInfo { get; set; }
+        public RentalsUC rentalsUC { get; set; }
 
         public CarControlUC(IRentManager rm, ICarManager cm, IExtraManager em, IPictureManager picM)
         {
@@ -35,8 +37,6 @@ namespace DesktopApp
             InitializeGridView();
             FillDataGridView(carManager.GetCars());
             this.DGVCars.CellPainting += DGVCars_CellPainting;
-            this.DGVCars.CellFormatting += DGVCars_CellFormatting;
-            this.DGVCars.RowPrePaint += DGVCars_RowPrePaint;
 
         }
 
@@ -76,15 +76,13 @@ namespace DesktopApp
                     e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
                     var buttonRect = e.CellBounds;
-                    var buttonColor = Color.White; // Default color
-                    var textColor = Color.Black; // Default text color
+                    var buttonColor = Color.White; 
+                    var textColor = Color.Black; 
 
                     if (e.ColumnIndex == DGVCars.Columns["View"].Index)
                     {
                         buttonColor = ColorTranslator.FromHtml("#3A5A40");
-                        //buttonColor = ColorTranslator.FromHtml("#588157");
                         textColor = Color.White;
-                        //buttonColor = ColorTranslator.FromHtml("#A3B18A");
                     }
                     else if (e.ColumnIndex == DGVCars.Columns["Modify"].Index)
                     {
@@ -99,7 +97,6 @@ namespace DesktopApp
                     else if (e.ColumnIndex == DGVCars.Columns["Change Status"].Index)
                     {
                         buttonColor = ColorTranslator.FromHtml("#588157");
-                        //buttonColor = ColorTranslator.FromHtml("#344E41");
                         textColor = Color.White;
                     }
 
@@ -131,39 +128,7 @@ namespace DesktopApp
             }
         }
 
-        private void DGVCars_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                if (DGVCars.Columns[e.ColumnIndex].Name == "Status")
-                {
-                    // Check if the cell value is null
-                    if (e.Value != null)
-                    {
-                        string status = e.Value.ToString();
-                        if (status == "AVAILABLE")
-                        {
-                            //e.CellStyle.BackColor = ColorTranslator.FromHtml("#588157");
-                        }
-                        else if (status == "UNAVAILABLE")
-                        {
-                            //e.CellStyle.BackColor = ColorTranslator.FromHtml("#3A5A40");
-                        }
-                    }
-                }
-            }
-        }
-
-        private void DGVCars_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
-        {
-            if ((e.State & DataGridViewElementStates.Selected) == DataGridViewElementStates.Selected)
-            {
-                var row = DGVCars.Rows[e.RowIndex];
-                row.DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#3A5A40");
-                row.DefaultCellStyle.SelectionForeColor = Color.White;
-            }
-        }
-
+        
 
         private void InitializeGridView()
         {
@@ -276,32 +241,34 @@ namespace DesktopApp
                     else if (e.ColumnIndex == DGVCars.Columns["Delete"].Index)
                     {
                         DialogResult result = MessageBox.Show(
-        "Are you sure you want to delete that car? If you delete it, it will affect users' rentals.",
-        "Confirmation",
-        MessageBoxButtons.YesNo,
-        MessageBoxIcon.Warning);
+                            "Are you sure you want to delete that car? If you delete it, it will affect users' rentals.",
+                            "Confirmation",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Warning);
 
                         if (result == DialogResult.Yes)
                         {
-                            foreach (var rent in rentManager.RentalHistory)
+                            var rentsToRemove = rentManager.RentalHistory
+                                .Where(rent => rent.car.Id == selectedCar.Id)
+                                .ToList();
+
+                            foreach (var rent in rentsToRemove)
                             {
-                                if (rent.car.Id == selectedCar.Id)
-                                {
-                                    rentManager.RemoveRent(rent, out string errorMessage);
-                                }
+                                rentManager.RemoveRent(rent, out string errorMessage);
                             }
+
                             if (carManager.RemoveCar(selectedCar, out string updateCarError))
                             {
-                                MessageBox.Show("Car removed successfully.");
+                                MessageBox.Show("Car removed successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 FillDataGridView(carManager.GetCars());
                                 admInfo.DisplayDataInfo();
+                                rentalsUC.FillDataGridView(rentManager.RentalHistory);
                                 return;
                             }
                             else
                             {
                                 MessageBox.Show($"Failed to update car: {updateCarError}");
                             }
-                            
                         }
                         else
                         {

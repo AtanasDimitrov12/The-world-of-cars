@@ -15,7 +15,7 @@ namespace ManagerLayer.Strategy
         {
             // Increased pricing during peak season
             decimal Price = (BasePriceOfCar * 1.2m) * daysRented; // 20% more
-            return Price - Price*Discount;
+            return Price - Price * (Discount / 100);
         }
 
 

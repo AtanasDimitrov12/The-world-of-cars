@@ -16,7 +16,7 @@ namespace ManagerLayer.Strategy
         {
             // Standard pricing logic
             decimal Price = BasePriceOfCar * daysRented;
-            return Price - Price * Discount;
+            return Price - Price * (Discount/100);
         }
 
 

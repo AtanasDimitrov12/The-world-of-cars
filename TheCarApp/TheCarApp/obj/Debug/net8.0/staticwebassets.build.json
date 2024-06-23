@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1TPvvTqDd3SxAuo42zUxSibSOcD/D6VRxaNE+KI7YA0=",
+  "Hash": "RfcgKH4gaEp3dWd5kZTj1/mo1v+uo6NUNzdZdv+CSbQ=",
   "Source": "TheCarApp",
   "BasePath": "_content/TheCarApp",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "TheCarApp\\wwwroot",
       "Source": "TheCarApp",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TheCarApp.styles.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TheCarApp.styles.css",
       "SourceId": "TheCarApp",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "TheCarApp.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TheCarApp.styles.css"
+      "OriginalItemSpec": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TheCarApp.styles.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TheCarApp.bundle.scp.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TheCarApp.bundle.scp.css",
       "SourceId": "TheCarApp",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "TheCarApp.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TheCarApp.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TheCarApp.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\Account.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\Account.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "css/Account.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Account.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\congratulations.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\congratulations.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "css/congratulations.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\css\\congratulations.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\Home.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\Home.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "css/Home.css",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Home.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\market.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\market.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "css/market.css",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\css\\market.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\News.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\News.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "css/News.css",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\css\\News.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\Register.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\Register.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "css/Register.css",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Register.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\rent.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\rent.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "css/rent.css",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\css\\rent.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\css\\site.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\favicon.ico",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\js\\rent.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\js\\rent.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "js/rent.js",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\js\\rent.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\js\\site.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -302,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -321,10 +321,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -359,10 +359,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -378,10 +378,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -397,10 +397,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -416,10 +416,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -435,10 +435,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -454,10 +454,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -473,10 +473,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -492,10 +492,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -511,10 +511,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -530,10 +530,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -549,10 +549,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -568,10 +568,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -587,10 +587,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -606,10 +606,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -625,10 +625,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -644,10 +644,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -663,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -682,10 +682,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -701,10 +701,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -720,10 +720,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -739,10 +739,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -758,10 +758,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -777,10 +777,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -796,10 +796,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -815,10 +815,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -834,10 +834,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -853,10 +853,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -872,10 +872,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -891,10 +891,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -910,10 +910,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -929,10 +929,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -948,10 +948,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -967,10 +967,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -986,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -1005,10 +1005,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -1024,10 +1024,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -1043,10 +1043,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -1062,10 +1062,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -1081,10 +1081,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -1100,10 +1100,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -1119,10 +1119,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -1138,10 +1138,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -1157,10 +1157,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -1176,10 +1176,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -1195,10 +1195,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -1214,10 +1214,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -1233,10 +1233,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -1252,10 +1252,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -1271,10 +1271,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -1290,10 +1290,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -1328,10 +1328,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -1347,10 +1347,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiA5.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiA5.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/AudiA5.jpg",
       "AssetKind": "All",
@@ -1366,10 +1366,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\AudiA5.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiA52.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiA52.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/AudiA52.jpg",
       "AssetKind": "All",
@@ -1385,10 +1385,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\AudiA52.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiA53.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiA53.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/AudiA53.jpg",
       "AssetKind": "All",
@@ -1404,10 +1404,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\AudiA53.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiA54.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiA54.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/AudiA54.jpg",
       "AssetKind": "All",
@@ -1423,10 +1423,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\AudiA54.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiQ7.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiQ7.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/AudiQ7.jpg",
       "AssetKind": "All",
@@ -1442,10 +1442,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\AudiQ7.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiQ72.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiQ72.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/AudiQ72.jpg",
       "AssetKind": "All",
@@ -1461,10 +1461,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\AudiQ72.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiQ73.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiQ73.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/AudiQ73.jpg",
       "AssetKind": "All",
@@ -1480,10 +1480,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\AudiQ73.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiQ74.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\AudiQ74.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/AudiQ74.jpg",
       "AssetKind": "All",
@@ -1499,10 +1499,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\AudiQ74.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\background.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\background.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/background.jpg",
       "AssetKind": "All",
@@ -1518,10 +1518,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\background.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\banner.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\banner.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/banner.jpg",
       "AssetKind": "All",
@@ -1537,10 +1537,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\banner.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\bmw.png",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\bmw.png",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/bmw.png",
       "AssetKind": "All",
@@ -1556,12 +1556,12 @@
       "OriginalItemSpec": "wwwroot\\pictures\\bmw.png"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMW2.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMW330.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
-      "RelativePath": "pictures/BMW2.jpg",
+      "RelativePath": "pictures/BMW330.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1572,15 +1572,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\pictures\\BMW2.jpg"
+      "OriginalItemSpec": "wwwroot\\pictures\\BMW330.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMW3.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMW3302.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
-      "RelativePath": "pictures/BMW3.jpg",
+      "RelativePath": "pictures/BMW3302.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1591,13 +1591,51 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\pictures\\BMW3.jpg"
+      "OriginalItemSpec": "wwwroot\\pictures\\BMW3302.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWX5.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMW3303.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/BMW3303.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\BMW3303.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMW3304.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/BMW3304.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\BMW3304.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWX5.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/BMWX5.jpg",
       "AssetKind": "All",
@@ -1613,10 +1651,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\BMWX5.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWX52.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWX52.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/BMWX52.jpg",
       "AssetKind": "All",
@@ -1632,10 +1670,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\BMWX52.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWX53.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWX53.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/BMWX53.jpg",
       "AssetKind": "All",
@@ -1651,10 +1689,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\BMWX53.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWX54.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWX54.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/BMWX54.jpg",
       "AssetKind": "All",
@@ -1670,10 +1708,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\BMWX54.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWZ4.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\BMWZ4.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/BMWZ4.jpg",
       "AssetKind": "All",
@@ -1689,10 +1727,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\BMWZ4.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Dacia.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Dacia.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/Dacia.jpg",
       "AssetKind": "All",
@@ -1708,10 +1746,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\Dacia.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\DaciaDuster.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\DaciaDuster.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/DaciaDuster.jpg",
       "AssetKind": "All",
@@ -1727,10 +1765,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\DaciaDuster.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\DaciaDuster2.jpeg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\DaciaDuster2.jpeg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/DaciaDuster2.jpeg",
       "AssetKind": "All",
@@ -1746,10 +1784,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\DaciaDuster2.jpeg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\DaciaDuster3.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\DaciaDuster3.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/DaciaDuster3.jpg",
       "AssetKind": "All",
@@ -1765,10 +1803,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\DaciaDuster3.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\DaciaDuster4.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\DaciaDuster4.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/DaciaDuster4.jpg",
       "AssetKind": "All",
@@ -1784,10 +1822,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\DaciaDuster4.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Fiat500X.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Fiat500X.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/Fiat500X.jpg",
       "AssetKind": "All",
@@ -1803,10 +1841,48 @@
       "OriginalItemSpec": "wwwroot\\pictures\\Fiat500X.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\GT1000.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Fiat500X2.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/Fiat500X2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\Fiat500X2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Fiat500X3.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/Fiat500X3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\Fiat500X3.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\GT1000.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/GT1000.jpg",
       "AssetKind": "All",
@@ -1822,10 +1898,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\GT1000.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\homepage.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\homepage.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/homepage.jpg",
       "AssetKind": "All",
@@ -1841,10 +1917,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\homepage.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Kia.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Kia.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/Kia.jpg",
       "AssetKind": "All",
@@ -1860,10 +1936,86 @@
       "OriginalItemSpec": "wwwroot\\pictures\\Kia.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\logo_transparent.png",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\LexusRX350.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/LexusRX350.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\LexusRX350.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\LexusRX3502.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/LexusRX3502.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\LexusRX3502.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\LexusRX3503.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/LexusRX3503.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\LexusRX3503.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\LexusRX3504.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/LexusRX3504.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\LexusRX3504.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\logo_transparent.png",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/logo_transparent.png",
       "AssetKind": "All",
@@ -1879,10 +2031,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\logo_transparent.png"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Marketplace.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Marketplace.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/Marketplace.jpg",
       "AssetKind": "All",
@@ -1898,10 +2050,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\Marketplace.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Mazda.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Mazda.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/Mazda.jpg",
       "AssetKind": "All",
@@ -1917,10 +2069,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\Mazda.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\mb.png",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\mb.png",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/mb.png",
       "AssetKind": "All",
@@ -1936,10 +2088,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\mb.png"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\MbCclass.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\MbCclass.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/MbCclass.jpg",
       "AssetKind": "All",
@@ -1955,10 +2107,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\MbCclass.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\MbCclass2.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\MbCclass2.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/MbCclass2.jpg",
       "AssetKind": "All",
@@ -1974,10 +2126,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\MbCclass2.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\MbCclass3.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\MbCclass3.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/MbCclass3.jpg",
       "AssetKind": "All",
@@ -1993,10 +2145,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\MbCclass3.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\MbCclass4.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\MbCclass4.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/MbCclass4.jpg",
       "AssetKind": "All",
@@ -2012,10 +2164,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\MbCclass4.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AcuraSUV.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AcuraSUV.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/AcuraSUV.jpg",
       "AssetKind": "All",
@@ -2031,10 +2183,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\AcuraSUV.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AtanasProfilePic.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AtanasProfilePic.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/AtanasProfilePic.jpg",
       "AssetKind": "All",
@@ -2050,10 +2202,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\AtanasProfilePic.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AudiA4.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AudiA4.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/AudiA4.jpg",
       "AssetKind": "All",
@@ -2069,10 +2221,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\AudiA4.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AudiA6Hybrid.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AudiA6Hybrid.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/AudiA6Hybrid.jpg",
       "AssetKind": "All",
@@ -2088,10 +2240,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\AudiA6Hybrid.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AudiQ4Etron.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\AudiQ4Etron.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/AudiQ4Etron.jpg",
       "AssetKind": "All",
@@ -2107,10 +2259,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\AudiQ4Etron.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\BMWI4News.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\BMWI4News.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/BMWI4News.jpg",
       "AssetKind": "All",
@@ -2126,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\BMWI4News.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\BMWM8.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\BMWM8.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/BMWM8.jpg",
       "AssetKind": "All",
@@ -2145,10 +2297,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\BMWM8.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\BMWX5.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\BMWX5.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/BMWX5.jpg",
       "AssetKind": "All",
@@ -2164,10 +2316,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\BMWX5.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\BMWX8.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\BMWX8.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/BMWX8.jpg",
       "AssetKind": "All",
@@ -2183,10 +2335,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\BMWX8.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\Cadilac.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\Cadilac.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/Cadilac.jpg",
       "AssetKind": "All",
@@ -2202,10 +2354,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\Cadilac.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\Chevy2024Truck.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\Chevy2024Truck.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/Chevy2024Truck.jpg",
       "AssetKind": "All",
@@ -2221,10 +2373,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\Chevy2024Truck.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\ChevyTahoe.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\ChevyTahoe.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/ChevyTahoe.jpg",
       "AssetKind": "All",
@@ -2240,10 +2392,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\ChevyTahoe.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\ChipStorageNews.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\ChipStorageNews.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/ChipStorageNews.jpg",
       "AssetKind": "All",
@@ -2259,10 +2411,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\ChipStorageNews.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\ExpensiveSteelNews.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\ExpensiveSteelNews.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/ExpensiveSteelNews.jpg",
       "AssetKind": "All",
@@ -2278,10 +2430,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\ExpensiveSteelNews.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\FontysLogo.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\FontysLogo.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/FontysLogo.jpg",
       "AssetKind": "All",
@@ -2297,10 +2449,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\FontysLogo.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\FordExplorer.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\FordExplorer.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/FordExplorer.jpg",
       "AssetKind": "All",
@@ -2316,10 +2468,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\FordExplorer.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\FordMachE.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\FordMachE.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/FordMachE.jpg",
       "AssetKind": "All",
@@ -2335,10 +2487,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\FordMachE.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\FordMustang.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\FordMustang.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/FordMustang.jpg",
       "AssetKind": "All",
@@ -2354,10 +2506,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\FordMustang.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\FordTruck.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\FordTruck.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/FordTruck.jpg",
       "AssetKind": "All",
@@ -2373,10 +2525,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\FordTruck.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\GT1000.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\GT1000.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/GT1000.jpg",
       "AssetKind": "All",
@@ -2392,10 +2544,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\GT1000.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\HondaCivic.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\HondaCivic.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/HondaCivic.jpg",
       "AssetKind": "All",
@@ -2411,10 +2563,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\HondaCivic.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\HondaCRVNews.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\HondaCRVNews.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/HondaCRVNews.jpg",
       "AssetKind": "All",
@@ -2430,10 +2582,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\HondaCRVNews.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\HyundaiSantaFe.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\HyundaiSantaFe.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/HyundaiSantaFe.jpg",
       "AssetKind": "All",
@@ -2449,10 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\HyundaiSantaFe.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\HyundaiTucson.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\HyundaiTucson.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/HyundaiTucson.jpg",
       "AssetKind": "All",
@@ -2468,10 +2620,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\HyundaiTucson.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\JeepGrandCherokee.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\JeepGrandCherokee.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/JeepGrandCherokee.jpg",
       "AssetKind": "All",
@@ -2487,10 +2639,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\JeepGrandCherokee.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\JeepWrangler.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\JeepWrangler.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/JeepWrangler.jpg",
       "AssetKind": "All",
@@ -2506,10 +2658,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\JeepWrangler.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\KiaSportage.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\KiaSportage.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/KiaSportage.jpg",
       "AssetKind": "All",
@@ -2525,10 +2677,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\KiaSportage.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\landRover2024.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\landRover2024.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/landRover2024.jpg",
       "AssetKind": "All",
@@ -2544,10 +2696,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\landRover2024.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\LandRoverDefender.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\LandRoverDefender.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/LandRoverDefender.jpg",
       "AssetKind": "All",
@@ -2563,10 +2715,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\LandRoverDefender.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\LexusGX.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\LexusGX.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/LexusGX.jpg",
       "AssetKind": "All",
@@ -2582,10 +2734,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\LexusGX.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\LexusRX.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\LexusRX.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/LexusRX.jpg",
       "AssetKind": "All",
@@ -2601,10 +2753,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\LexusRX.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\MazdaCX5.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\MazdaCX5.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/MazdaCX5.jpg",
       "AssetKind": "All",
@@ -2620,10 +2772,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\MazdaCX5.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\MBEclass.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\MBEclass.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/MBEclass.jpg",
       "AssetKind": "All",
@@ -2639,10 +2791,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\MBEclass.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\MBGLE.jpeg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\MBGLE.jpeg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/MBGLE.jpeg",
       "AssetKind": "All",
@@ -2658,10 +2810,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\MBGLE.jpeg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\MercedesCHypryd.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\MercedesCHypryd.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/MercedesCHypryd.jpg",
       "AssetKind": "All",
@@ -2677,10 +2829,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\MercedesCHypryd.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\MitsubishiOutlander.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\MitsubishiOutlander.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/MitsubishiOutlander.jpg",
       "AssetKind": "All",
@@ -2696,10 +2848,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\MitsubishiOutlander.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\NewRegulatoryApprovals.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\NewRegulatoryApprovals.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/NewRegulatoryApprovals.jpg",
       "AssetKind": "All",
@@ -2715,10 +2867,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\NewRegulatoryApprovals.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\NewsElectricAuto.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\NewsElectricAuto.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/NewsElectricAuto.jpg",
       "AssetKind": "All",
@@ -2734,10 +2886,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\NewsElectricAuto.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\NissanPathfinder.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\NissanPathfinder.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/NissanPathfinder.jpg",
       "AssetKind": "All",
@@ -2753,10 +2905,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\NissanPathfinder.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\NissanZ.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\NissanZ.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/NissanZ.jpg",
       "AssetKind": "All",
@@ -2772,10 +2924,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\NissanZ.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\Porsche911.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\Porsche911.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/Porsche911.jpg",
       "AssetKind": "All",
@@ -2791,10 +2943,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\Porsche911.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\SubaruForester.jpeg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\SubaruForester.jpeg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/SubaruForester.jpeg",
       "AssetKind": "All",
@@ -2810,10 +2962,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\SubaruForester.jpeg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\SubaruImpreza.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\SubaruImpreza.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/SubaruImpreza.jpg",
       "AssetKind": "All",
@@ -2829,10 +2981,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\SubaruImpreza.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\SubaruOutdoor.jpeg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\SubaruOutdoor.jpeg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/SubaruOutdoor.jpeg",
       "AssetKind": "All",
@@ -2848,10 +3000,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\SubaruOutdoor.jpeg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\TeslaFactory.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\TeslaFactory.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/TeslaFactory.jpg",
       "AssetKind": "All",
@@ -2867,10 +3019,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\TeslaFactory.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\TeslaYNews.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\TeslaYNews.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/TeslaYNews.jpg",
       "AssetKind": "All",
@@ -2886,10 +3038,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\TeslaYNews.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\TopToyota.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\TopToyota.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/TopToyota.jpg",
       "AssetKind": "All",
@@ -2905,10 +3057,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\TopToyota.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\ToyotaCamry.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\ToyotaCamry.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/ToyotaCamry.jpg",
       "AssetKind": "All",
@@ -2924,10 +3076,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\ToyotaCamry.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\ToyotaGR2024.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\ToyotaGR2024.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/ToyotaGR2024.jpg",
       "AssetKind": "All",
@@ -2943,10 +3095,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\ToyotaGR2024.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\ToyotaLandCruiser.jpeg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\ToyotaLandCruiser.jpeg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/ToyotaLandCruiser.jpeg",
       "AssetKind": "All",
@@ -2962,10 +3114,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\ToyotaLandCruiser.jpeg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\VolvoXC60.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\VolvoXC60.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/VolvoXC60.jpg",
       "AssetKind": "All",
@@ -2981,10 +3133,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\VolvoXC60.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\VolvoXC90.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\VolvoXC90.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/VolvoXC90.jpg",
       "AssetKind": "All",
@@ -3000,10 +3152,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\VolvoXC90.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\VWElectricNews.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\News_Pictures\\VWElectricNews.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/News_Pictures/VWElectricNews.jpg",
       "AssetKind": "All",
@@ -3019,10 +3171,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\News_Pictures\\VWElectricNews.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\opel.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\opel.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/opel.jpg",
       "AssetKind": "All",
@@ -3038,10 +3190,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\opel.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/Opel_Astra.jpg",
       "AssetKind": "All",
@@ -3057,10 +3209,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\Opel_Astra.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra1.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra1.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/Opel_Astra1.jpg",
       "AssetKind": "All",
@@ -3076,10 +3228,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\Opel_Astra1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra2.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra2.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/Opel_Astra2.jpg",
       "AssetKind": "All",
@@ -3095,10 +3247,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\Opel_Astra2.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra3.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra3.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/Opel_Astra3.jpg",
       "AssetKind": "All",
@@ -3114,10 +3266,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\Opel_Astra3.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra4.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Opel_Astra4.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/Opel_Astra4.jpg",
       "AssetKind": "All",
@@ -3133,10 +3285,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\Opel_Astra4.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Porsche.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\Porsche.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/Porsche.jpg",
       "AssetKind": "All",
@@ -3152,10 +3304,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\Porsche.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\436283195_3573747766208765_932864016596974853_n.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\436283195_3573747766208765_932864016596974853_n.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/profile_pictures/436283195_3573747766208765_932864016596974853_n.jpg",
       "AssetKind": "All",
@@ -3171,10 +3323,48 @@
       "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\436283195_3573747766208765_932864016596974853_n.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\AtanasProfilePic.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\ake.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/ake.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\ake.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\ariana.jpeg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/ariana.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\ariana.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\AtanasProfilePic.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/profile_pictures/AtanasProfilePic.jpg",
       "AssetKind": "All",
@@ -3190,10 +3380,29 @@
       "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\AtanasProfilePic.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\blank-profile-picture.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\Beyonce.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/Beyonce.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\Beyonce.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\blank-profile-picture.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/profile_pictures/blank-profile-picture.jpg",
       "AssetKind": "All",
@@ -3209,10 +3418,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\blank-profile-picture.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\car.png",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\car.png",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/profile_pictures/car.png",
       "AssetKind": "All",
@@ -3228,10 +3437,238 @@
       "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\car.png"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\rentCar.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\Depay.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/Depay.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\Depay.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\FontysLogo.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/FontysLogo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\FontysLogo.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\frenkie.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/frenkie.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\frenkie.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\gakpo.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/gakpo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\gakpo.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\IvoProfilePic.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/IvoProfilePic.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\IvoProfilePic.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\konata.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/konata.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\konata.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\rihanna.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/rihanna.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\rihanna.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\selena.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/selena.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\selena.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\verstappen.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/verstappen.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\verstappen.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\Virgil.png",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/Virgil.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\Virgil.png"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\Wijnaldum.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/Wijnaldum.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\Wijnaldum.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\profile_pictures\\xavi-simons.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/profile_pictures/xavi-simons.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\profile_pictures\\xavi-simons.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\rentCar.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/rentCar.jpg",
       "AssetKind": "All",
@@ -3247,10 +3684,86 @@
       "OriginalItemSpec": "wwwroot\\pictures\\rentCar.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\ToyotaRav4.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\TeslaS.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/TeslaS.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\TeslaS.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\TeslaS2.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/TeslaS2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\TeslaS2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\TeslaS3.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/TeslaS3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\TeslaS3.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\TeslaS4.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/TeslaS4.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\TeslaS4.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\ToyotaRav4.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/ToyotaRav4.jpg",
       "AssetKind": "All",
@@ -3266,10 +3779,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\ToyotaRav4.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\ToyotaRav42.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\ToyotaRav42.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/ToyotaRav42.jpg",
       "AssetKind": "All",
@@ -3285,10 +3798,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\ToyotaRav42.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\ToyotaRav43.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\ToyotaRav43.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/ToyotaRav43.jpg",
       "AssetKind": "All",
@@ -3304,10 +3817,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\ToyotaRav43.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\ToyotaRav44.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\ToyotaRav44.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/ToyotaRav44.jpg",
       "AssetKind": "All",
@@ -3323,10 +3836,10 @@
       "OriginalItemSpec": "wwwroot\\pictures\\ToyotaRav44.jpg"
     },
     {
-      "Identity": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\ToyotaRav45.jpg",
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\ToyotaRav45.jpg",
       "SourceId": "TheCarApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
       "BasePath": "_content/TheCarApp",
       "RelativePath": "pictures/ToyotaRav45.jpg",
       "AssetKind": "All",
@@ -3340,6 +3853,82 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\pictures\\ToyotaRav45.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\VolvoXC90.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/VolvoXC90.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\VolvoXC90.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\VolvoXC902.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/VolvoXC902.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\VolvoXC902.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\VolvoXC903.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/VolvoXC903.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\VolvoXC903.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\pictures\\VolvoXC904.jpg",
+      "SourceId": "TheCarApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\klond\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\wwwroot\\",
+      "BasePath": "_content/TheCarApp",
+      "RelativePath": "pictures/VolvoXC904.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\VolvoXC904.jpg"
     }
   ]
 }

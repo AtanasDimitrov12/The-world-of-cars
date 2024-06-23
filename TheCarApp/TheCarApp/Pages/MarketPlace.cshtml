@@ -27,6 +27,8 @@
             <button class="filled-button filled-buttonSORT" onclick="window.location.href='?sort=views_desc'">Sort by Views DESC</button>
             <button class="filled-button filled-buttonSORT" onclick="window.location.href='?sort=price_asc'">Sort by Price ASC</button>
             <button class="filled-button filled-buttonSORT" onclick="window.location.href='?sort=price_desc'">Sort by Price DESC</button>
+            <button class="filled-button filled-buttonSORT" onclick="window.location.href='?sort=date_asc'">Sort by Date ASC</button>
+            <button class="filled-button filled-buttonSORT" onclick="window.location.href='?sort=date_desc'">Sort by Date DESC</button>
         </div>
 
         <div id="filterMenu" class="sort-filter-menu">
@@ -58,8 +60,8 @@
                 <div class="form-group">
                     <label for="color">Color</label>
                     <select id="color" name="color">
-                        <option value="Any">Any</option> 
-                        @foreach (var color in Model.Colors)
+                        <option value="Any">Any</option>
+                        @foreach (var color in Model.ColorOptions)
                         {
                             <option value="@color">@color</option>
                         }
@@ -73,30 +75,42 @@
         </div>
         <div class="containerCV">
             <div class="row">
-                @foreach (var car in Model.Cars)
+                @if (!Model.Cars.Any())
                 {
-                    <div class="col-md-4">
-                        <div class="service-item">
-                            <img src="/pictures/@car.Pictures[0].PictureURL" alt="@car.Brand">
-                            <div class="down-content">
-                                <div class="car-header">
-                                    <h4>@car.Brand @car.Model</h4>
-                                </div>
-                                <div style="margin-bottom:10px;">
-                                    <div class="price">
-                                        <span>Base price per day: @car.PricePerDay&#8364;</span>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="col-md-12">
+                        <h6>There are no cars that match these filters!</h6>
+                    </div>
+                }
+                else
+                {
+                    @foreach (var car in Model.Cars)
+                    {
+                        <div class="col-md-4">
+                            <div class="service-item">
+                                <img src="/pictures/@car.Pictures[0].PictureURL" alt="@car.Brand">
+                                <div class="down-content">
+                                    <div class="car-header">
+                                        <h4>@car.Brand @car.Model</h4>
                                     </div>
+                                    <div style="margin-bottom:10px;">
+                                        <div class="price">
+                                            <span>Base price per day: @car.PricePerDay&#8364;</span>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <i class="fa fa-eye"></i> @car.Views <br>
+                                        <i class="fa fa-dashboard"></i> @car.Mileage km <br>
+                                        <i class="fa fa-cube"></i> @car.EngineSize cc <br>
+                                        <i class="fa fa-cog"></i> @car.Gearbox
+                                    </p>
+                                    <a href="/RentACarPage/@car.Id" class="filled-button">View More</a>
                                 </div>
-                                <p>
-                                    <i class="fa fa-eye"></i> @car.Views <br>
-                                    <i class="fa fa-dashboard"></i> @car.Mileage km <br>
-                                    <i class="fa fa-cube"></i> @car.EngineSize cc <br>
-                                    <i class="fa fa-cog"></i> @car.Gearbox
-                                </p>
-                                <a href="/RentACarPage/@car.Id" class="filled-button">View More</a>
                             </div>
                         </div>
-                    </div>
+                    }
                 }
             </div>
         </div>
@@ -107,7 +121,6 @@
         <br>
     </div>
 </div>
-
 
 <script>
     document.getElementById('sortButton').addEventListener('click', function () {

@@ -45,7 +45,16 @@ namespace DesktopApp
                 BTNAdd.Visible = false;
                 btnBrowseImage.Enabled = false;
                 btnBrowseImage.Visible = false;
+                DisabledTextBoxes();
             }
+        }
+
+        private void DisabledTextBoxes()
+        { 
+            TBNewsAuthor.Enabled = false;
+            TBNewsTitle.Enabled = false;
+            RTBNewsDescription.Enabled = false;
+            RTBNewsIntro.Enabled = false;
         }
 
         private void LoadNewsData()

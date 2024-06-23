@@ -57,7 +57,7 @@ namespace DatabaseAccess
 
         }
 
-        public void UploadProfilePicture(User user, string relativeFilePath)
+        public void UploadProfilePicture(int UserId, string relativeFilePath)
         {
             int rows = -1;
             try
@@ -68,7 +68,7 @@ namespace DatabaseAccess
 
 
                 var command = new SqlCommand(sql, connectionString);
-                command.Parameters.AddWithValue("@UserId", user.Id);
+                command.Parameters.AddWithValue("@UserId", UserId);
                 command.Parameters.AddWithValue("@FilePath", relativeFilePath);
                 command.Parameters.AddWithValue("@UploadedOn", DateTime.Now);
 
@@ -122,7 +122,7 @@ namespace DatabaseAccess
             finally { connectionString.Close(); }
         }
 
-        public void UpdateUser(int userId, string Username, string email, string password, int _licenseNumber, DateTime CreatedOn)
+        public void UpdateUser(int userId, string Username, string email, string password, string Salt, int _licenseNumber, DateTime CreatedOn)
         {
             int rowsAffected = -1;
             try
@@ -133,15 +133,17 @@ namespace DatabaseAccess
                           "[Email] = @Email, " +
                           "[PasswordHash] = @PasswordHash, " +
                           "[LicenseNumber] = @License, " +
-                          "[CreatedOn] = @CreatedOn " +
+                          "[CreatedOn] = @CreatedOn, " +
+                          "[Salt] = @Salt " +
                           "WHERE [UserId] = @UserId";
 
                 SqlCommand cmd = new SqlCommand(sql, connectionString);
                 cmd.Parameters.AddWithValue("@Username", Username);
                 cmd.Parameters.AddWithValue("@Email", email);
                 cmd.Parameters.AddWithValue("@PasswordHash", password);
-                cmd.Parameters.AddWithValue("@PhoneNumber", _licenseNumber);
+                cmd.Parameters.AddWithValue("@License", _licenseNumber);
                 cmd.Parameters.AddWithValue("@CreatedOn", CreatedOn);
+                cmd.Parameters.AddWithValue("@Salt", Salt);
                 cmd.Parameters.AddWithValue("@UserId", userId);
 
                 rowsAffected = cmd.ExecuteNonQuery();
@@ -159,6 +161,40 @@ namespace DatabaseAccess
             {
                 connectionString.Close();
             }
+        }
+
+        public int GetUserId(string Email)
+        {
+            int userId = -1;
+            try
+            {
+                connectionString.Open();
+                var sql = "SELECT [UserId] FROM [dbo].[Users] WHERE [Email] = @Email";
+
+                SqlCommand cmd = new SqlCommand(sql, connectionString);
+                cmd.Parameters.AddWithValue("@Email", Email);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        userId = (int)reader["UserId"];
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"MSSQL error in GetUserId: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in GetUserId: {ex.Message}");
+            }
+            finally
+            {
+                connectionString.Close();
+            }
+            return userId;
         }
 
         public void UpdateAdministration(int adminId, string username, string email, string passwordHash, string phoneNumber, DateTime createdOn, string PassSalt)

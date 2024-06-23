@@ -1,3 +1,0 @@
-Username: Fontys
-Email: fontys@gmail.com
-Password: Password

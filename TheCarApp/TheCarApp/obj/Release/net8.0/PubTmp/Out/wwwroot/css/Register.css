@@ -12,21 +12,21 @@ body {
 
 flex-container {
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh; 
-    width: 100vw; 
-    padding: 20px; 
-    box-sizing: border-box; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    padding: 20px;
+    box-sizing: border-box;
     background-color: white;
 }
 
 .containerSignUp {
     top: 80px;
     position: relative;
-    max-width: 850px; 
-    width: 100%; 
-    margin: auto; 
+    max-width: 850px;
+    width: 100%;
+    margin: auto;
     padding: 40px 30px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     margin: auto;
@@ -147,6 +147,7 @@ flex-container {
         background: #45a049;
     }
 
+
 .forms .signup-form .title:before {
     width: 20px;
 }
@@ -157,8 +158,8 @@ flex-container {
 
 .forms .form-content .input-box {
     display: flex;
-    align-items: center;
-    height: 50px;
+    flex-direction: column; 
+    height: 60px; 
     width: 100%;
     margin: 10px 0;
     position: relative;
@@ -185,6 +186,7 @@ flex-container {
     position: absolute;
     color: #45a049;
     font-size: 17px;
+    top: 12px;
 }
 
 .forms .form-content .text {
@@ -226,7 +228,7 @@ flex-container {
 }
 
 .forms .form-content .button input {
-    color: #fff; 
+    color: #fff;
     background: #45a049;
     border-radius: 6px;
     padding: 0;
@@ -235,25 +237,34 @@ flex-container {
 }
 
     .forms .form-content .button input:hover {
-        background: #39833c; 
+        background: #39833c;
     }
+
 input[type="submit"] {
-    background-color: #45a049; 
-    color: white; 
+    background-color: #45a049;
+    color: white;
     padding: 15px 30px;
     font-size: 1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    display: block; 
-    width: 100%; 
-    margin: 10px 0; 
+    display: block;
+    width: 100%;
+    margin: 10px 0;
 }
 
     input[type="submit"]:hover {
-        background-color: #39833c; 
+        background-color: #39833c;
     }
+
+.text-danger {
+    color: #e3342f;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    margin-left: 0px; 
+    display: block;
+}
 
 @media (max-width: 730px) {
     .containerSignUp .cover {
@@ -266,6 +277,6 @@ input[type="submit"] {
 
         .containerSignUp .form-content .input-box,
         .containerSignUp .form-content .button input {
-            width: calc(100% - 60px); 
+            width: calc(100% - 60px);
         }
 }

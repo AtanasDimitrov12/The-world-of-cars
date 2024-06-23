@@ -33,14 +33,14 @@ namespace UnitTests
             var user = new User(1, "user@example.com", "password", "username", DateTime.Now, 123456789, "salt", "path/to/pic");
             string errorMessage = string.Empty;
             _mockDataWriter.Setup(m => m.AddUser(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DateTime>(), It.IsAny<string>())).Verifiable();
-            _mockDataWriter.Setup(m => m.UploadProfilePicture(It.IsAny<User>(), It.IsAny<string>())).Verifiable();
+            _mockDataWriter.Setup(m => m.UploadProfilePicture(It.IsAny<int>(), It.IsAny<string>())).Verifiable();
 
             var result = _userRepo.AddUser(user, out errorMessage);
 
             Assert.IsTrue(result);
             Assert.AreEqual(string.Empty, errorMessage);
             _mockDataWriter.Verify(m => m.AddUser(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DateTime>(), It.IsAny<string>()), Times.Once);
-            _mockDataWriter.Verify(m => m.UploadProfilePicture(It.IsAny<User>(), It.IsAny<string>()), Times.Once);
+            _mockDataWriter.Verify(m => m.UploadProfilePicture(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
         }
 
         [TestMethod]
@@ -62,13 +62,13 @@ namespace UnitTests
         {
             var user = new User(1, "user@example.com", "password", "username", DateTime.Now, 123456789, "salt", "path/to/pic");
             string errorMessage = string.Empty;
-            _mockDataWriter.Setup(m => m.UpdateUser(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DateTime>())).Verifiable();
+            _mockDataWriter.Setup(m => m.UpdateUser(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DateTime>())).Verifiable();
 
             var result = _userRepo.UpdateUser(user, out errorMessage);
 
             Assert.IsTrue(result);
             Assert.AreEqual(string.Empty, errorMessage);
-            _mockDataWriter.Verify(m => m.UpdateUser(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DateTime>()), Times.Once);
+            _mockDataWriter.Verify(m => m.UpdateUser(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DateTime>()), Times.Once);
         }
 
         [TestMethod]
@@ -77,7 +77,7 @@ namespace UnitTests
             var user = new User(1, "user@example.com", "password", "username", DateTime.Now, 123456789, "salt", "path/to/pic");
             string errorMessage = string.Empty;
             _mockDataRemover.Setup(m => m.RemoveProfilePicture(It.IsAny<int>())).Verifiable();
-            _mockDataWriter.Setup(m => m.UploadProfilePicture(It.IsAny<User>(), It.IsAny<string>())).Verifiable();
+            _mockDataWriter.Setup(m => m.UploadProfilePicture(It.IsAny<int>(), It.IsAny<string>())).Verifiable();
 
             var result = _userRepo.UploadProfilePicture(user, "new/path/to/pic", out errorMessage);
 
@@ -85,16 +85,16 @@ namespace UnitTests
             Assert.AreEqual(string.Empty, errorMessage);
             Assert.AreEqual("new/path/to/pic", user.ProfilePicturePath);
             _mockDataRemover.Verify(m => m.RemoveProfilePicture(It.IsAny<int>()), Times.Once);
-            _mockDataWriter.Verify(m => m.UploadProfilePicture(It.IsAny<User>(), It.IsAny<string>()), Times.Once);
+            _mockDataWriter.Verify(m => m.UploadProfilePicture(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
         }
 
         [TestMethod]
         public void GetProfilePicPathById_WhenUserExists_ReturnsPath()
         {
-            var user = new User(1, "user@example.com", "password", "username", DateTime.Now, 123456789, "salt", "path/to/pic");
-            _userRepo.AddUser(user, out _);
+            var user = new User(24, "user@example.com", "password", "username", DateTime.Now, 123456789, "salt", "path/to/pic");
+            _userRepo.AddUser(user, out string errorMessage);
 
-            var result = _userRepo.GetProfilePicPathById(1);
+            var result = _userRepo.GetProfilePicPathById(user.Id);
 
             Assert.AreEqual("path/to/pic", result);
         }
@@ -102,10 +102,10 @@ namespace UnitTests
         [TestMethod]
         public void GetUserNameById_WhenUserExists_ReturnsUserName()
         {
-            var user = new User(1, "user@example.com", "password", "username", DateTime.Now, 123456789, "salt", "path/to/pic");
-            _userRepo.AddUser(user, out _);
+            var user = new User(24, "user@example.com", "password", "username", DateTime.Now, 123456789, "salt", "path/to/pic");
+            _userRepo.AddUser(user, out string errorMessage);
 
-            var result = _userRepo.GetUserNameById(1);
+            var result = _userRepo.GetUserNameById(user.Id);
 
             Assert.AreEqual("username", result);
         }
