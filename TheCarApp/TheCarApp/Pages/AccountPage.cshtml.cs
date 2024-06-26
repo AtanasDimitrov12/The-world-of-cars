@@ -14,8 +14,8 @@ namespace TheCarApp.Pages
     public class AccountPageModel : PageModel
     {
         private readonly ProjectManager _projectManager;
-        public User user { get; set; }
-        public List<RentACar> rentals { get; set; }
+        public User user { get; set; } = new User();
+        public List<RentACar> rentals { get; set; } = new List<RentACar>();
         public string UserEmail { get; set; }
         public int Rentals { get; set; }
         [BindProperty]
@@ -32,7 +32,6 @@ namespace TheCarApp.Pages
         public AccountPageModel(ProjectManager pm)
         {
             _projectManager = pm;
-            rentals = new List<RentACar>();
         }
 
         public void OnGet()
@@ -46,9 +45,8 @@ namespace TheCarApp.Pages
                     .Where(rental => rental.user != null && rental.user.Id == user.Id)
                     .ToList();
 
-                Rentals = _projectManager.RentManager.RentalHistory
-                    .Where(rental => rental.user != null && rental.user.Id == user.Id && rental.RentStatus != Entity_Layer.Enums.RentStatus.CANCELLED && rental.RentStatus != Entity_Layer.Enums.RentStatus.REQUESTED)
-                    .Count();
+                Rentals = rentals
+                    .Count(rental => rental.RentStatus != Entity_Layer.Enums.RentStatus.CANCELLED && rental.RentStatus != Entity_Layer.Enums.RentStatus.REQUESTED);
             }
             else
             {

@@ -19,6 +19,10 @@ namespace Entity_Layer
             this.LicenseNumber = License;
             ProfilePicturePath = profilePicturePath;
         }
+        public User()
+        { 
+        
+        }
 
         public override string ToString()
         {

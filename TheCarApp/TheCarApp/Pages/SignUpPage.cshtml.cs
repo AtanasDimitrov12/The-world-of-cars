@@ -44,10 +44,21 @@ namespace TheCarApp.Pages
         {
         }
 
+        private bool IsLicenseNumberTaken(string licenseNumber)
+        {
+            return _projectManager.PeopleManager.GetAllUsers().Any(u => u.LicenseNumber == int.Parse(licenseNumber));
+        }
+
         public async Task<IActionResult> OnPostSignUp()
         {
             if (!ModelState.IsValid)
             {
+                return Page();
+            }
+
+            if (IsLicenseNumberTaken(LicenseNumber))
+            {
+                ModelState.AddModelError("LicenseNumber", "A user with this driving license number already exists.");
                 return Page();
             }
 
@@ -82,8 +93,6 @@ namespace TheCarApp.Pages
             }
         }
 
-
-
         public async Task<IActionResult> OnPostLogin()
         {
             if (Email != null && Password != null)
@@ -92,7 +101,7 @@ namespace TheCarApp.Pages
                 {
                     var claims = new List<Claim>
                     {
-                    new Claim(ClaimTypes.Name, Email.ToLower())
+                        new Claim(ClaimTypes.Name, Email.ToLower())
                     };
 
                     var claimsIdentity = new ClaimsIdentity(
