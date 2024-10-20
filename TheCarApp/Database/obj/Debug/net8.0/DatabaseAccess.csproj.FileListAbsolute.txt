@@ -36,3 +36,4 @@ C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Database\bin\Debug\ne
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Database\bin\Debug\net8.0\InterfaceLayer.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Database\bin\Debug\net8.0\InterfaceLayer.pdb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\Database\bin\Debug\net8.0\Entity Layer.pdb
+C:\Users\Asus ROG\source\repos\The-world-of-cars\TheCarApp\Database\obj\Debug\net8.0\DatabaseAccess.sourcelink.json

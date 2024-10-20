@@ -20,3 +20,4 @@ C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\EntityLayout\obj\Debu
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\EntityLayout\obj\Debug\net8.0\refint\Entity Layer.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\EntityLayout\obj\Debug\net8.0\Entity Layer.pdb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\EntityLayout\obj\Debug\net8.0\ref\Entity Layer.dll
+C:\Users\Asus ROG\source\repos\The-world-of-cars\TheCarApp\EntityLayout\obj\Debug\net8.0\Entity Layer.sourcelink.json

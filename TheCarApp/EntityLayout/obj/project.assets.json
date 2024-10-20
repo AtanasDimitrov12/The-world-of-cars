@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj",
+      "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj",
       "projectName": "Entity Layer",
-      "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj",
+      "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj",
       "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\obj\\",
+      "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\EntityLayout\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

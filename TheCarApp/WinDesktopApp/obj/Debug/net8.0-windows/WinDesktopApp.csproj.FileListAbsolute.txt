@@ -102,3 +102,4 @@ C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\
 C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Forms.ViewRentals.resources
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Forms.RequestedRentsUC.resources
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Forms.ViewRentals.resources
+C:\Users\Asus ROG\source\repos\The-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.sourcelink.json

@@ -40,3 +40,4 @@ C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\n
 C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\InterfaceLayer.pdb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\InterfaceLayer.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\InterfaceLayer.pdb
+C:\Users\Asus ROG\source\repos\The-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.sourcelink.json

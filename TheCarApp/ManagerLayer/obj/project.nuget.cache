@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NMCDoib4/+YJ/LyaQnfEtqr1Qw8D3N+RD6XB11tns2/38w1g9Fzk/yf7D1YS1HPSDlri2Fa2pFDboV34lXLwqQ==",
+  "dgSpecHash": "6UXZQRT+MkNy9qcK0A68vf78B77lrQrml2rWwXBDuv7hUbgEWS8VWNyX+JB670JXgS8E6t6RFn3/cBbrZ7v0qg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj",
+  "projectFilePath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Asus ROG\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Asus ROG\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

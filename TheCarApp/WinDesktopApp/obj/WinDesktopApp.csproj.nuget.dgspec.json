@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\WinDesktopApp\\WinDesktopApp.csproj": {}
+    "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\WinDesktopApp\\WinDesktopApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj": {
+    "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj",
         "projectName": "DatabaseAccess",
-        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj",
+        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj",
         "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\obj\\",
+        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\Database\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj": {
-                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj"
+              "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\DTO\\DTO.csproj": {
+                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\DTO\\DTO.csproj"
               },
-              "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\InterfaceLayer\\InterfaceLayer.csproj": {
-                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\InterfaceLayer\\InterfaceLayer.csproj"
+              "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\InterfaceLayer\\InterfaceLayer.csproj": {
+                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\InterfaceLayer\\InterfaceLayer.csproj"
               }
             }
           }
@@ -68,18 +68,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj": {
+    "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\DTO\\DTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj",
+        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\DTO\\DTO.csproj",
         "projectName": "DTO",
-        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj",
+        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\DTO\\DTO.csproj",
         "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\obj\\",
+        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\DTO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -123,18 +123,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
+    "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj",
+        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj",
         "projectName": "Entity Layer",
-        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj",
+        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj",
         "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\obj\\",
+        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\EntityLayout\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -178,18 +178,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\InterfaceLayer\\InterfaceLayer.csproj": {
+    "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\InterfaceLayer\\InterfaceLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\InterfaceLayer\\InterfaceLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\InterfaceLayer\\InterfaceLayer.csproj",
         "projectName": "InterfaceLayer",
-        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\InterfaceLayer\\InterfaceLayer.csproj",
+        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\InterfaceLayer\\InterfaceLayer.csproj",
         "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\InterfaceLayer\\obj\\",
+        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\InterfaceLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -206,11 +206,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj": {
-                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj"
+              "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\DTO\\DTO.csproj": {
+                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\DTO\\DTO.csproj"
               },
-              "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
-                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj"
+              "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
+                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj"
               }
             }
           }
@@ -240,18 +240,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj": {
+    "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj",
         "projectName": "ManagerLayer",
-        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj",
+        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj",
         "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\obj\\",
+        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\ManagerLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -268,14 +268,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj": {
-                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj"
+              "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj": {
+                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj"
               },
-              "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj": {
-                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj"
+              "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\DTO\\DTO.csproj": {
+                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\DTO\\DTO.csproj"
               },
-              "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
-                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj"
+              "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
+                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj"
               }
             }
           }
@@ -305,18 +305,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\WinDesktopApp\\WinDesktopApp.csproj": {
+    "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\WinDesktopApp\\WinDesktopApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\WinDesktopApp\\WinDesktopApp.csproj",
+        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\WinDesktopApp\\WinDesktopApp.csproj",
         "projectName": "WinDesktopApp",
-        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\WinDesktopApp\\WinDesktopApp.csproj",
+        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\WinDesktopApp\\WinDesktopApp.csproj",
         "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\WinDesktopApp\\obj\\",
+        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\WinDesktopApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -333,11 +333,11 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
-                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj"
+              "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj": {
+                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\EntityLayout\\Entity Layer.csproj"
               },
-              "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj": {
-                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj"
+              "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj": {
+                "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj"
               }
             }
           }
@@ -370,7 +370,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
