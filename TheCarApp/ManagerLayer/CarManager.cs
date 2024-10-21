@@ -40,12 +40,12 @@ namespace Manager_Layer
                 foreach (var pic in pictures)
                 {
                     _dataWriter.AddCarPictures(car.Id, pic.Id);
-                    car.AddPicture(pic);
+                    car.Pictures.Add(pic);
                 }
                 foreach (var extra in extras)
                 {
                     _dataWriter.AddCarExtras(car.Id, extra.Id);
-                    car.AddExtra(extra);
+                    car.CarExtras.Add(extra);
                 }
                 cars.Add(car);
                 return true;
@@ -69,12 +69,12 @@ namespace Manager_Layer
                 foreach (var pic in pictures)
                 {
                     _dataWriter.AddCarPictures(car.Id, pic.Id);
-                    car.AddPicture(pic);
+                    car.Pictures.Add(pic);
                 }
                 foreach (var extra in extras)
                 {
                     _dataWriter.AddCarExtras(car.Id, extra.Id);
-                    car.AddExtra(extra);
+                    car.CarExtras.Add(extra);
                 }
                 return true;
             }
@@ -188,13 +188,13 @@ namespace Manager_Layer
             foreach (var extraDTO in carDTO.CarExtras)
             {
                 var extra = new Extra(extraDTO.extraName, extraDTO.Id);
-                car.AddExtra(extra);
+                car.CarExtras.Add(extra);
             }
 
             foreach (var picDTO in carDTO.Pictures)
             {
                 var pic = new Picture(picDTO.Id, picDTO.PictureURL);
-                car.AddPicture(pic);
+                car.Pictures.Add(pic);
             }
 
             return car;
@@ -217,12 +217,12 @@ namespace Manager_Layer
                             foreach (var extraDTO in carDTO.CarExtras)
                             {
                                 var extra = new Extra(extraDTO.extraName, extraDTO.Id);
-                                loadCar.AddExtra(extra);
+                                loadCar.CarExtras.Add(extra);
                             }
                             foreach (var picDTO in carDTO.Pictures)
                             {
                                 var pic = new Picture(picDTO.Id, picDTO.PictureURL);
-                                loadCar.AddPicture(pic);
+                                loadCar.Pictures.Add(pic);
                             }
                             cars.Add(loadCar);
                         }

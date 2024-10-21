@@ -44,13 +44,13 @@ namespace UnitTests
             foreach (var extraDTO in carDTO.CarExtras)
             {
                 var extra = new Extra(extraDTO.extraName, extraDTO.Id);
-                car.AddExtra(extra);
+                car.CarExtras.Add(extra);
             }
 
             foreach (var picDTO in carDTO.Pictures)
             {
                 var pic = new Picture(picDTO.Id, picDTO.PictureURL);
-                car.AddPicture(pic);
+                car.Pictures.Add(pic);
             }
 
             return car;

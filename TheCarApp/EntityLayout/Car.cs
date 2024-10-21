@@ -57,14 +57,14 @@ namespace EntityLayout
             Views = views;
         }
 
-        public Car(string brand, string model, DateTime Year, int Mileage, string FuelType, int Enginesize, int horsePower, string GearBox, string color, string VIN, string description, decimal pricePerDay, CarStatus carStatus, int numberOfSeats, string numberOfDoors, int views)
+        public Car(string brand, string model, DateTime Year, int Mileage, string FuelType, int engineSize, int horsePower, string GearBox, string color, string VIN, string description, decimal pricePerDay, CarStatus carStatus, int numberOfSeats, string numberOfDoors, int views)
         {
             this.Brand = brand;
             Model = model;
             FirstRegistration = Year;
             this.Mileage = Mileage;
             Fuel = FuelType;
-            EngineSize = Enginesize;
+            EngineSize = engineSize;
             HorsePower = horsePower;
             Gearbox = GearBox;
             Color = color;
@@ -81,25 +81,7 @@ namespace EntityLayout
 
         public Car()
         { }
-        public void AddPicture(Picture picture)
-        {
-            this.Pictures.Add(picture);
-        }
 
-        public void RemovePicture(Picture picture)
-        {
-            this.Pictures.Remove(picture);
-        }
-
-        public void AddExtra(Extra extra)
-        {
-            CarExtras.Add(extra);
-        }
-
-        public void RemoveExtra(Extra extra)
-        {
-            CarExtras.Remove(extra);
-        }
 
         public string GetInfo()
         {

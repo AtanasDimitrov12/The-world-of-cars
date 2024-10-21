@@ -27,7 +27,8 @@ namespace ManagerLayer
                 _dataWriter.AddComment(news.Id, comment.UserId, comment.Date, comment.Message);
                 int commentId = _dataWriter.GetCommentId(comment.Date);
                 comment.Id = commentId;
-                news.AddComment(comment);
+                news.Comments.Add(comment);
+                news.NrOfComments++;
                 return true;
             }
             catch (Exception ex)
@@ -43,7 +44,8 @@ namespace ManagerLayer
             try
             {
                 _dataRemover.RemoveComment(comment.Id);
-                news.RemoveComment(comment);
+                news.Comments.Remove(comment);
+                news.NrOfComments--;
                 return true;
             }
             catch (Exception ex)

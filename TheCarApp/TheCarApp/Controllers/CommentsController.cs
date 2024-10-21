@@ -36,7 +36,8 @@ namespace TheCarApp.Controllers
                                    profilePic = _projectManager.UserRepository.GetProfilePicPathById(comment.UserId)
                                });
 
-            var hasMore = news.GetCommentsLastToNew().Count() > page * pageSize;
+            var sortedComments = news.Comments.OrderByDescending(c => c.Date);
+            var hasMore = sortedComments.Count() > page * pageSize;
 
             return Ok(new
             {

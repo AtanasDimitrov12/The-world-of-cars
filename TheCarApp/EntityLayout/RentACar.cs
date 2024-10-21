@@ -30,9 +30,5 @@ namespace Manager_Layer
         public RentACar()
         { }
 
-        public void ChangeStatus(RentStatus Status)
-        {
-            this.RentStatus = Status;
-        }
     }
 }

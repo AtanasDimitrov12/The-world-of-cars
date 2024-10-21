@@ -14,7 +14,7 @@ namespace Entity_Layer
         public string NewsDescription { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string ImageURL { get; set; }
-        public int NrOfMessages{ get; set; }
+        public int NrOfComments{ get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
         public string ShortIntro { get; set; }
@@ -26,7 +26,7 @@ namespace Entity_Layer
             NewsDescription = newsDescription;
             ReleaseDate = releaseDate;
             ImageURL = imageURL;
-            NrOfMessages = 0;
+            NrOfComments = 0;
             Title = title;
             Author = author;
             ShortIntro = shortIntro;
@@ -38,7 +38,7 @@ namespace Entity_Layer
             NewsDescription = newsDescription;
             ReleaseDate = releaseDate;
             ImageURL = imageURL;
-            NrOfMessages = 0;
+            NrOfComments = 0;
             Title = title;
             Author = author;
             ShortIntro = shortIntro;
@@ -47,28 +47,7 @@ namespace Entity_Layer
 
         public CarNews() { }
 
-        public void AddComment(Comment comment)
-        {
-            Comments.Add(comment);
-            NrOfMessages++; 
-        }
-
-        public void RemoveComment(Comment comment) 
-        {
-            Comments.Remove(comment);
-            NrOfMessages--;
-        }
-
-        public List<Comment> GetComments() 
-        {
-            return Comments; 
-        }
-
-        public List<Comment> GetCommentsLastToNew()
-        {
-            var sortedComments = Comments.OrderByDescending(c => c.Date);
-            return sortedComments.ToList();
-        }
+        
 
     }
 }
