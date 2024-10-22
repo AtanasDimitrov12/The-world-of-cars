@@ -409,6 +409,12 @@ namespace DatabaseAccess
                 Console.WriteLine($"An error occurred in this action: {ex.Message}");
             }
             finally { connectionString.Close(); }
+            // var car = context.Cars.FirstOrDefault(x => x.CarId == ID); // Assuming 'ID' is the car identifier
+            //if (car != null)
+            //{
+            //    car.Extras.Add(extra); // Assuming 'Extras' is a collection, and 'extra' is the object to add
+            //    context.SaveChanges(); // Don't forget to save changes to the database
+            //}
         }
 
         public void AddPicture(string PictureURL)

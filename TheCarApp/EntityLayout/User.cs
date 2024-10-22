@@ -24,9 +24,5 @@ namespace Entity_Layer
         
         }
 
-        public override string ToString()
-        {
-            return LicenseNumber.ToString();
-        }
     }
 }

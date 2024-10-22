@@ -25,7 +25,9 @@ namespace TheCarApp.Controllers
                 return NotFound();
             }
 
-            var comments = news.GetCommentsLastToNew()
+            var sortedComments = news.Comments.OrderByDescending(c => c.Date);
+
+            var comments = sortedComments
                                .Skip((page - 1) * pageSize)
                                .Take(pageSize)
                                .Select(comment => new
@@ -36,7 +38,7 @@ namespace TheCarApp.Controllers
                                    profilePic = _projectManager.UserRepository.GetProfilePicPathById(comment.UserId)
                                });
 
-            var sortedComments = news.Comments.OrderByDescending(c => c.Date);
+            
             var hasMore = sortedComments.Count() > page * pageSize;
 
             return Ok(new

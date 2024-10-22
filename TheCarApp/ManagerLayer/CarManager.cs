@@ -55,6 +55,18 @@ namespace Manager_Layer
                 errorMessage = ex.Message;
                 return false;
             }
+
+            //try{
+            //    car.Pictures = pictures;
+            //    car.CarExtras = extras;
+            //    this.carAppContext.Cars.Add(car);
+            //    this.carAppContext.SaveChanges();
+            //}
+            //catch (Exception ex) 
+            //{
+            //    errorMessage = ex.Message;
+            //    return false;
+            //}
         }
 
         public bool UpdateCar(Car car, List<Picture> pictures, List<Extra> extras, out string errorMessage)

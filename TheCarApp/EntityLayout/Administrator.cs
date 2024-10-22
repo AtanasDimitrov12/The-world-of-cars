@@ -15,9 +15,5 @@ namespace Entity_Layer
             this.PhoneNumber = PhoneNumber;
         }
 
-        public override string ToString()
-        {
-            return PhoneNumber;
-        }
     }
 }

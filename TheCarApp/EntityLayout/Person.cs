@@ -30,6 +30,5 @@ namespace Entity_Layer
         
         }
 
-        public abstract string ToString();
     }
 }
