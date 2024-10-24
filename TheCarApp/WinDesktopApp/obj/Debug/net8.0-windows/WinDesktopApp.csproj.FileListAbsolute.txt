@@ -1,81 +1,9 @@
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.csproj.AssemblyReference.cache
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\DesktopApp.AddCar.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\DesktopApp.AddNews.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\DesktopApp.ControlPage.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\DesktopApp.AdminInfoUC.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\DesktopApp.CarControlUC.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\DesktopApp.CarNewsUC.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\DesktopApp.CommentsControlUC.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.csproj.GenerateResource.cache
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.AssemblyInfoInputs.cache
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.AssemblyInfo.cs
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.csproj.CoreCompileInputs.cache
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\WinDesktopApp.exe
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\WinDesktopApp.deps.json
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\WinDesktopApp.runtimeconfig.json
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\WinDesktopApp.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\WinDesktopApp.pdb
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\DatabaseAccess.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\DTO.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Entity Layer.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\ManagerLayer.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\ManagerLayer.pdb
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\DatabaseAccess.pdb
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\DTO.pdb
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Entity Layer.pdb
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.csproj.CopyComplete
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\refint\WinDesktopApp.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.pdb
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.genruntimeconfig.cache
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\ref\WinDesktopApp.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\WinDesktopApp.exe
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\WinDesktopApp.deps.json
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\WinDesktopApp.runtimeconfig.json
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\WinDesktopApp.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\DatabaseAccess.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\DTO.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\ManagerLayer.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Forms.AddExtra.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Forms.AddPicture.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\InterfaceLayer.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\InterfaceLayer.pdb
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Forms.ChangeCarStatus.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Forms.AdminVerification.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Forms.ChangeAdminInformation.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Properties.Resources.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Models.AddCarForm.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Models.ModifyCarForm.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Models.ViewCarForm.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.UserControls.RentalsUC.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Forms.RequestedRentsUC.resources
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.Forms.ViewRentals.resources
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\WinDesktopApp.pdb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\AutoMapper.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Interfaces.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Identity.Client.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Data.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Data.Models.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Mapping.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Azure.Core.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Azure.Identity.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Humanizer.dll
@@ -85,8 +13,22 @@ C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Deb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.CodeAnalysis.Workspaces.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Data.SqlClient.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Identity.Client.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.Identity.Client.NativeInterop.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Abstractions.dll
@@ -163,8 +105,10 @@ C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Deb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win-arm64\native\msalruntime_arm64.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win-x64\native\msalruntime.dll
@@ -178,6 +122,13 @@ C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Deb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Data.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Data.Models.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\DatabaseAccess.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\DTO.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Interfaces.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\ManagerLayer.dll
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Mapping.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\ManagerLayer.pdb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Data.pdb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\bin\Debug\net8.0-windows\Data.Models.pdb
@@ -211,6 +162,9 @@ C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Deb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.AssemblyInfo.cs
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.csproj.CoreCompileInputs.cache
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.sourcelink.json
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.csproj.CopyComplete
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\refint\WinDesktopApp.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.pdb
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\WinDesktopApp.genruntimeconfig.cache
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\WinDesktopApp\obj\Debug\net8.0-windows\ref\WinDesktopApp.dll

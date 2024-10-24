@@ -1,24 +1,3 @@
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.csproj.AssemblyReference.cache
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.AssemblyInfoInputs.cache
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.AssemblyInfo.cs
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.csproj.CoreCompileInputs.cache
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\ManagerLayer.deps.json
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\ManagerLayer.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\ManagerLayer.pdb
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\DatabaseAccess.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\DTO.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\Entity Layer.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\DatabaseAccess.pdb
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\DTO.pdb
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\Entity Layer.pdb
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.csproj.CopyComplete
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\refint\ManagerLayer.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.pdb
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ref\ManagerLayer.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\InterfaceLayer.dll
-C:\Users\klond\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\InterfaceLayer.pdb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\ManagerLayer.deps.json
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\ManagerLayer.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\bin\Debug\net8.0\ManagerLayer.pdb
@@ -40,8 +19,8 @@ C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debu
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.AssemblyInfo.cs
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.csproj.CoreCompileInputs.cache
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.sourcelink.json
+C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.csproj.CopyComplete
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\refint\ManagerLayer.dll
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.pdb
 C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ref\ManagerLayer.dll
-C:\Users\Asus ROG\source\repos\the-world-of-cars\TheCarApp\ManagerLayer\obj\Debug\net8.0\ManagerLayer.csproj.CopyComplete

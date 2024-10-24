@@ -14,7 +14,7 @@ namespace TheCarApp.Pages
     [Authorize]
     public class AccountPageModel : PageModel
     {
-        private readonly ProjectManager _projectManager;
+        public ProjectManager _projectManager;
         public UserDTO user { get; set; } = new UserDTO();
         public List<RentACarDTO> rentals { get; set; } = new List<RentACarDTO>();
         public string UserEmail { get; set; }
