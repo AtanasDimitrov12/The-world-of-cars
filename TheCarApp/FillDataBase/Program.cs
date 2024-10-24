@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using Entity_Layer;
+using DTO;
 using InterfaceLayer;
 using ManagerLayer;
 using System.ComponentModel;
@@ -1476,8 +1476,8 @@ ProjectManager m = new ProjectManager();
 IPeopleManager pm = m.PeopleManager;
 INewsManager nm = m.NewsManager;
 ICommentsManager cm = m.CommentsManager;    
-List<User> users = pm.GetAllUsers();
-List<CarNews> news = nm.news;
+List<UserDTO> users = pm.GetAllUsers().ToList();
+List<CarNewsDTO> news = nm.News;
 
 
 
@@ -1497,12 +1497,12 @@ if (Start == "Start")
             Random randomU = new Random();
             int randomUser = randomU.Next(0, users.Count - 1);
 
-            Comment comment = new Comment();
-            comment.Message = Comments[randomComments];
+            CommentDTO comment = new CommentDTO();
+            comment.Content = Comments[randomComments];
             comment.UserId = users[randomUser].Id;
-            comment.Date = DateTime.Now;
+            comment.CommentDate = DateTime.Now;
 
-            cm.AddComment(n, comment, out string Errormessage);
+            await cm.AddCommentAsync(n, comment);
         }
     }
 

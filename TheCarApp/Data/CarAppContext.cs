@@ -37,26 +37,17 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.NoAction;
+            }
 
-            // Configure one-to-many relationship between CarExtra and Car
             modelBuilder.Entity<CarExtra>()
                 .HasOne(ce => ce.Car)
                 .WithMany(c => c.CarExtras)
                 .HasForeignKey(ce => ce.CarId)
-                .OnDelete(DeleteBehavior.NoAction);  // Set to restrict to prevent cascading delete conflicts
+                .OnDelete(DeleteBehavior.NoAction);
 
-            // Other relationships, for example:
-            modelBuilder.Entity<CarPicture>()
-                .HasOne(cp => cp.Car)
-                .WithMany(c => c.CarPictures)
-                .HasForeignKey(cp => cp.CarId)
-                .OnDelete(DeleteBehavior.Restrict);  // Avoid cascading deletes here as well
-
-            modelBuilder.Entity<Rental>()
-                .HasOne(r => r.Car)
-                .WithMany(c => c.Rentals)
-                .HasForeignKey(r => r.CarId)
-                .OnDelete(DeleteBehavior.Restrict);  // Avoid cascading deletes here
 
             modelBuilder.Entity<Car>()
                 .Property(c => c.PricePerDay)

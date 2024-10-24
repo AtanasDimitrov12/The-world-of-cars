@@ -64,7 +64,7 @@ namespace ManagerLayer
                 // Remove related comments
                 foreach (var comment in carNews.Comments)
                 {
-                    await _dataRemover.RemoveCommentAsync(comment.NewsId);
+                    await _dataRemover.RemoveCommentAsync(Convert.ToInt32(comment.NewsId));
                 }
 
                 // Remove the news article

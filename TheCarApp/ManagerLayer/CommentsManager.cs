@@ -30,21 +30,23 @@ namespace ManagerLayer
                 await _dataWriter.AddCommentAsync(newsDTO.Id, comment.UserId, comment.CommentDate, comment.Content);
 
                 // Retrieve the comment ID and update the comment entity
-                int commentId = Convert.ToInt32(_dataWriter.GetCommentIdAsync(comment.CommentDate));
+                int commentId = await _dataWriter.GetCommentIdAsync(comment.CommentDate);
                 comment.CommentId = commentId;
 
                 // Map the updated comment back to DTO and add it to the DTO list
-                var updatedCommentDTO = _mapper.Map<CommentDTO>(comment);
-                newsDTO.Comments.Add(updatedCommentDTO);
+                commentDTO.Id = commentId;
+                newsDTO.Comments.Add(commentDTO);
                 newsDTO.NrOfComments++;
 
-                return (true, null);
+                return (true, null); // Success
             }
             catch (Exception ex)
             {
-                return (false, ex.Message);
+                return (false, ex.Message); // Ensure that the error message is returned correctly
             }
         }
+
+
 
         // Removes a comment from a news article and updates the DTO
         public async Task<(bool Success, string ErrorMessage)> RemoveCommentAsync(CarNewsDTO newsDTO, CommentDTO commentDTO)

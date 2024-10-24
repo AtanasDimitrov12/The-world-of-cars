@@ -25,9 +25,10 @@ namespace WinDesktopApp
                 {
                     // Apply pending migrations (this will create the database if it doesn't exist)
                     context.Database.Migrate();
+                    //context.Database.EnsureCreated();
 
                     // Seed the admin if the Administrators table is empty
-                    context.SeedAdminIfTableIsEmpty();
+                    //context.SeedAdminIfTableIsEmpty();
                 }
             }
 

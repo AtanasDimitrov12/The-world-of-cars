@@ -96,7 +96,7 @@ namespace DatabaseAccess
                 var comment = await _context.Comments
                     .FirstOrDefaultAsync(c => c.CommentDate == date);
 
-                return comment != null ? comment.NewsId : -1;
+                return comment != null ? Convert.ToInt32(comment.NewsId) : -1;
             }
             catch (Exception ex)
             {

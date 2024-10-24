@@ -133,7 +133,7 @@ namespace DesktopApp
             {
                 if (userDictionary.TryGetValue(comment.UserId, out string username))
                 {
-                    this.DGVComments.Rows.Add(username, comment.Date, comment.Content);
+                    this.DGVComments.Rows.Add(username, comment.CommentDate, comment.Content);
                 }
             }
         }
@@ -248,7 +248,7 @@ namespace DesktopApp
         private void SortCommentsAscending(List<CommentDTO> comments)
         {
 
-            comments = comments.OrderBy(comm => comm.Date).ToList();
+            comments = comments.OrderBy(comm => comm.CommentDate).ToList();
 
             FillDataGridView(comments);
         }
@@ -256,7 +256,7 @@ namespace DesktopApp
         private void SortCommentsDescending(List<CommentDTO> comments)
         {
 
-            comments = comments.OrderByDescending(comm => comm.Date).ToList();
+            comments = comments.OrderByDescending(comm => comm.CommentDate).ToList();
 
             FillDataGridView(comments);
         }

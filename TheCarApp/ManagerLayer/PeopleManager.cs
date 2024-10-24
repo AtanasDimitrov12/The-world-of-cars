@@ -102,7 +102,7 @@ namespace ManagerLayer
         }
 
         // Shared password hashing logic
-        private (string Hash, string Salt) HashPassword(string password)
+        public (string Hash, string Salt) HashPassword(string password)
         {
             byte[] salt = RandomNumberGenerator.GetBytes(16);
             var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, hashAlgorithm);

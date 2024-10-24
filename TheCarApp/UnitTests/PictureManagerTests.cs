@@ -1,11 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ManagerLayer;
-using Entity_Layer;
 using InterfaceLayer;
+using DTO;
 using System;
 using System.Collections.Generic;
-using DTO;
+using System.Threading.Tasks;
+using Data.Models;
 
 namespace UnitTests
 {
@@ -23,104 +24,105 @@ namespace UnitTests
             _mockDataAccess = new Mock<IDataAccess>();
             _mockDataWriter = new Mock<ICarDataWriter>();
             _mockDataRemover = new Mock<ICarDataRemover>();
-            _pictureManager = new PictureManager(_mockDataAccess.Object, _mockDataWriter.Object, _mockDataRemover.Object);
+            var mapper = new Mock<AutoMapper.IMapper>(); // Mocked mapper for unit tests
+            _pictureManager = new PictureManager(_mockDataAccess.Object, _mockDataWriter.Object, _mockDataRemover.Object, mapper.Object);
         }
 
         [TestMethod]
-        public void AddPicture_WhenCalled_ReturnsTrue()
+        public async Task AddPicture_WhenCalled_ReturnsTrue()
         {
-            var pic = new Picture(1, "url");
+            var picDTO = new PictureDTO { Id = 1, PictureURL = "url" };
 
-            _mockDataWriter.Setup(m => m.AddPicture(It.IsAny<string>())).Verifiable();
+            _mockDataWriter.Setup(m => m.AddPicture(It.IsAny<string>())).Returns(Task.CompletedTask);
 
-            var result = _pictureManager.AddPicture(pic, out string errorMessage);
+            var result = await _pictureManager.AddPictureAsync(picDTO);
 
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            Assert.AreEqual(1, _pictureManager.pictures.Count);
+            Assert.IsTrue(result.Success);
+            Assert.AreEqual(string.Empty, result.ErrorMessage);
+            Assert.AreEqual(1, _pictureManager.Pictures.Count);
         }
 
         [TestMethod]
-        public void AddPicture_WhenExceptionThrown_ReturnsFalse()
+        public async Task AddPicture_WhenExceptionThrown_ReturnsFalse()
         {
-            var pic = new Picture(1, "url");
+            var picDTO = new PictureDTO { Id = 1, PictureURL = "url" };
 
-            _mockDataWriter.Setup(m => m.AddPicture(It.IsAny<string>()))
-                           .Throws(new Exception("Database error"));
+            _mockDataWriter.Setup(m => m.AddPicture(It.IsAny<string>())).ThrowsAsync(new Exception("Database error"));
 
-            var result = _pictureManager.AddPicture(pic, out string errorMessage);
+            var result = await _pictureManager.AddPictureAsync(picDTO);
 
-            Assert.IsFalse(result);
-            Assert.AreEqual("Database error", errorMessage);
+            Assert.IsFalse(result.Success);
+            Assert.AreEqual("Database error", result.ErrorMessage);
         }
 
         [TestMethod]
-        public void RemovePicture_WhenCalled_ReturnsTrue()
+        public async Task RemovePicture_WhenCalled_ReturnsTrue()
         {
-            var pic = new Picture(1, "url");
-            _pictureManager.pictures.Add(pic);
+            var picDTO = new PictureDTO { Id = 1, PictureURL = "url" };
+            _pictureManager.Pictures.Add(picDTO);
 
-            _mockDataRemover.Setup(m => m.RemovePicture(It.IsAny<int>())).Verifiable();
+            _mockDataRemover.Setup(m => m.RemovePictureAsync(It.IsAny<int>())).Returns(Task.CompletedTask);
 
-            var result = _pictureManager.RemovePicture(pic, out string errorMessage);
+            var result = await _pictureManager.RemovePictureAsync(picDTO);
 
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            Assert.AreEqual(0, _pictureManager.pictures.Count);
+            Assert.IsTrue(result.Success);
+            Assert.AreEqual(string.Empty, result.ErrorMessage);
+            Assert.AreEqual(0, _pictureManager.Pictures.Count);
         }
 
         [TestMethod]
-        public void RemovePicture_WhenExceptionThrown_ReturnsFalse()
+        public async Task RemovePicture_WhenExceptionThrown_ReturnsFalse()
         {
-            var pic = new Picture(1, "url");
-            _pictureManager.pictures.Add(pic);
+            var picDTO = new PictureDTO { Id = 1, PictureURL = "url" };
+            _pictureManager.Pictures.Add(picDTO);
 
-            _mockDataRemover.Setup(m => m.RemovePicture(It.IsAny<int>()))
-                            .Throws(new Exception("Database error"));
+            _mockDataRemover.Setup(m => m.RemovePictureAsync(It.IsAny<int>())).ThrowsAsync(new Exception("Database error"));
 
-            var result = _pictureManager.RemovePicture(pic, out string errorMessage);
+            var result = await _pictureManager.RemovePictureAsync(picDTO);
 
-            Assert.IsFalse(result);
-            Assert.AreEqual("Database error", errorMessage);
+            Assert.IsFalse(result.Success);
+            Assert.AreEqual("Database error", result.ErrorMessage);
         }
 
         [TestMethod]
-        public void GetPicId_WhenCalled_ReturnsPictureId()
+        public async Task GetPicId_WhenCalled_ReturnsPictureId()
         {
             var url = "url";
-            _mockDataWriter.Setup(m => m.GetPictureId(It.IsAny<string>())).Returns(1);
+            _mockDataWriter.Setup(m => m.GetPictureId(It.IsAny<string>())).ReturnsAsync(1);
 
-            var result = _pictureManager.GetPicId(url);
+            var result = await _pictureManager.GetPicIdAsync(url);
 
             Assert.AreEqual(1, result);
         }
 
         [TestMethod]
-        public void LoadPictures_WhenCalled_ReturnsTrue()
+        public async Task LoadPictures_WhenCalled_ReturnsTrue()
         {
-            var loadedPics = new List<PictureDTO>
+            var loadedPics = new List<CarPicture> // Mock the return of CarPicture entities
             {
-                new PictureDTO { Id = 1, PictureURL = "url1" },
-                new PictureDTO { Id = 2, PictureURL = "url2" }
+                new CarPicture { CarPictureId = 1, PictureURL = "url1" },
+                new CarPicture { CarPictureId = 2, PictureURL = "url2" }
             };
-            _mockDataAccess.Setup(m => m.GetAllPictures()).Returns(loadedPics);
 
-            var result = _pictureManager.LoadPictures(out string errorMessage);
+            // Setup mock to return CarPicture list
+            _mockDataAccess.Setup(m => m.GetAllPicturesAsync()).ReturnsAsync(loadedPics);
 
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            Assert.AreEqual(2, _pictureManager.pictures.Count);
+            var result = await _pictureManager.LoadPicturesAsync();
+
+            Assert.IsTrue(result.Success);
+            Assert.AreEqual(string.Empty, result.ErrorMessage);
+            Assert.AreEqual(2, _pictureManager.Pictures.Count);
         }
 
         [TestMethod]
-        public void LoadPictures_WhenExceptionThrown_ReturnsFalse()
+        public async Task LoadPictures_WhenExceptionThrown_ReturnsFalse()
         {
-            _mockDataAccess.Setup(m => m.GetAllPictures()).Throws(new Exception("Database error"));
+            _mockDataAccess.Setup(m => m.GetAllPicturesAsync()).ThrowsAsync(new Exception("Database error"));
 
-            var result = _pictureManager.LoadPictures(out string errorMessage);
+            var result = await _pictureManager.LoadPicturesAsync();
 
-            Assert.IsFalse(result);
-            Assert.AreEqual("Database error", errorMessage);
+            Assert.IsFalse(result.Success);
+            Assert.AreEqual("Database error", result.ErrorMessage);
         }
     }
 }

@@ -54,7 +54,7 @@ namespace TheCarApp.Pages
             if (user != null && NewComment.Content != null)
             {
                 NewComment.UserId = user.Id;
-                NewComment.Date = date;
+                NewComment.CommentDate = date;
                 await projectManager.CommentsManager.AddCommentAsync(news, NewComment); // Display error message
             }
 
