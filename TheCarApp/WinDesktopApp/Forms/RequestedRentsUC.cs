@@ -7,22 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Entity_Layer.Enums;
-using Entity_Layer.Interfaces;
+using DTO.Enums;
+using DTO.Interfaces;
 using InterfaceLayer;
 using Manager_Layer;
+using DTO;
 
 namespace WinDesktopApp.Forms
 {
     public partial class RequestedRentsUC : Form
     {
         IRentManager rentManager;
-        List<RentACar> rentals;
+        ICarManager carManager;
+        IUserManager userManager;
+        List<RentACarDTO> rentals;
         public event EventHandler RentChanged;
-        public RequestedRentsUC(IRentManager rm)
+        public RequestedRentsUC(IRentManager rm, ICarManager cm, IUserManager um)
         {
             InitializeComponent();
             rentManager = rm;
+            carManager = cm;
+            userManager = um;
             InitializeGridView();
             UpdateDGV();
             this.DGVRequestRents.CellPainting += DGVRequestRents_CellPainting;
@@ -30,7 +35,7 @@ namespace WinDesktopApp.Forms
 
         private void UpdateDGV()
         {
-            rentals = rentManager.RentalHistory.Where(rent => rent.RentStatus == RentStatus.REQUESTED).ToList();
+            rentals = rentManager.RentalHistory.Where(rent => rent.Status == RentStatus.REQUESTED.ToString()).ToList();
             FillDataGridView(rentals);
         }
 
@@ -136,21 +141,21 @@ namespace WinDesktopApp.Forms
             }
         }
 
-        private void FillDataGridView(List<RentACar> rentals)
+        private void FillDataGridView(List<RentACarDTO> rentals)
         {
             this.DGVRequestRents.Rows.Clear();
 
             foreach (var rent in rentals)
             {
-                string Car = $"{rent.car.Brand} {rent.car.Model}";
-                this.DGVRequestRents.Rows.Add(rent.user.Username, Car, rent.StartDate.ToShortDateString(), rent.ReturnDate.ToShortDateString(), rent.TotalPrice, rent.RentStatus);
+                string Car = $"{carManager.SearchForCar(rent.CarId).Brand} {carManager.SearchForCar(rent.CarId).Model}";
+                this.DGVRequestRents.Rows.Add(userManager.GetUserNameById(rent.UserId), Car, rent.StartDate.ToShortDateString(), rent.EndDate.ToShortDateString(), rent.TotalPrice, rent.Status);
 
             }
         }
 
 
 
-        private void DGVRequestRents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void DGVRequestRents_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == DGVRequestRents.Columns["Approve"].Index && e.RowIndex >= 0)
             {
@@ -163,9 +168,10 @@ namespace WinDesktopApp.Forms
 
                     foreach (var selectedRental in rentManager.RentalHistory)
                     {
-                        if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
+                        if (userManager.GetUserNameById(selectedRental.UserId) == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{carManager.SearchForCar(selectedRental.CarId).Brand} {carManager.SearchForCar(selectedRental.CarId).Model}" == car)
                         {
-                            if (rentManager.UpdateRentStatus(selectedRental, RentStatus.SCHEDULE, out string ErrorMessage))
+                            (bool Response, string errorMessage) = await rentManager.UpdateRentStatusAsync(selectedRental, RentStatus.SCHEDULE);
+                            if (Response)
                             {
                                 RentChanged?.Invoke(this, EventArgs.Empty);
                                 UpdateDGV();
@@ -173,7 +179,7 @@ namespace WinDesktopApp.Forms
                             }
                             else
                             {
-                                MessageBox.Show(ErrorMessage);
+                                MessageBox.Show(errorMessage);
                             }
                         }
                     }
@@ -190,9 +196,10 @@ namespace WinDesktopApp.Forms
 
                     foreach (var selectedRental in rentManager.RentalHistory)
                     {
-                        if (selectedRental.user.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car.Brand} {selectedRental.car.Model}" == car)
+                        if (userManager.GetUserNameById(selectedRental.UserId) == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{carManager.SearchForCar(selectedRental.CarId).Brand}   {carManager.SearchForCar(selectedRental.CarId).Model}" == car)
                         {
-                            if (rentManager.UpdateRentStatus(selectedRental, RentStatus.CANCELLED, out string ErrorMessage))
+                            (bool Response, string errorMessage) = await rentManager.UpdateRentStatusAsync(selectedRental, RentStatus.CANCELLED);
+                            if (Response)
                             {
                                 RentChanged?.Invoke(this, EventArgs.Empty);
                                 UpdateDGV();
@@ -200,7 +207,7 @@ namespace WinDesktopApp.Forms
                             }
                             else
                             {
-                                MessageBox.Show(ErrorMessage);
+                                MessageBox.Show(errorMessage);
                             }
                         }
                     }

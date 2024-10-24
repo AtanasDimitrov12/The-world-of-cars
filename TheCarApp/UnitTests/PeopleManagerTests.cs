@@ -6,15 +6,15 @@ using Moq;
 [TestClass]
 public class PeopleManagerTests
 {
-    private Mock<IUserRepository> _mockUserRepository;
-    private Mock<IAdministratorRepository> _mockAdministratorRepository;
+    private Mock<IUserManager> _mockUserRepository;
+    private Mock<IAdministratorManager> _mockAdministratorRepository;
     private PeopleManager _peopleManager;
 
     [TestInitialize]
     public void Setup()
     {
-        _mockUserRepository = new Mock<IUserRepository>();
-        _mockAdministratorRepository = new Mock<IAdministratorRepository>();
+        _mockUserRepository = new Mock<IUserManager>();
+        _mockAdministratorRepository = new Mock<IAdministratorManager>();
         _peopleManager = new PeopleManager(_mockUserRepository.Object, _mockAdministratorRepository.Object);
     }
 

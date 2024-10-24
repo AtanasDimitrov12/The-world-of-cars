@@ -26,14 +26,13 @@ namespace Data.Models
         [MaxLength(20)]
         public string LicenseNumber { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public DateTime ModifiedOn { get; set; }
 
         [Required]
         public string Salt { get; set; }
 
         // Combined from UserProfilePictures table
         public string ProfilePictureFilePath { get; set; }
-        public DateTime? ProfilePictureUploadedOn { get; set; }
 
         // Relationships
         public virtual ICollection<Comment> Comments { get; set; }

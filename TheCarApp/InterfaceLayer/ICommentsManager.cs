@@ -1,4 +1,4 @@
-﻿using Entity_Layer;
+﻿using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,8 @@ namespace InterfaceLayer
 {
     public interface ICommentsManager
     {
-        bool AddComment(CarNews news, Comment comment, out string errorMessage);
-        bool RemoveComment(CarNews news, Comment comment, out string errorMessage);
+        Task<(bool Success, string ErrorMessage)> AddCommentAsync(CarNewsDTO newsDTO, CommentDTO commentDTO);
+
+        Task<(bool Success, string ErrorMessage)> RemoveCommentAsync(CarNewsDTO newsDTO, CommentDTO commentDTO);
     }
 }

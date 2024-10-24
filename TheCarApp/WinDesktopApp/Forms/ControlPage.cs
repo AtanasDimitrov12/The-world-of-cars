@@ -31,7 +31,7 @@ namespace DesktopApp
             carNewsUC = new CarNewsUC(projectManager.PeopleManager, projectManager.NewsManager);
             carControlUC = new CarControlUC(projectManager.RentManager, projectManager.CarManager, projectManager.ExtraManager, projectManager.PictureManager);
             commentsControlUC = new CommentsControlUC(projectManager.NewsManager, projectManager.CommentsManager, projectManager.PeopleManager);
-            rentalsUC = new RentalsUC(projectManager.PeopleManager, projectManager.RentManager);
+            rentalsUC = new RentalsUC(projectManager.PeopleManager, projectManager.RentManager, projectManager.CarManager, projectManager.UserManager);
             userControls = new List<UserControl> { adminInfoUC, carNewsUC, carControlUC, commentsControlUC, rentalsUC };
             this.Controls.Add(panel2);
             AddUC();

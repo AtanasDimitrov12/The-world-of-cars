@@ -1,200 +1,108 @@
-﻿using Entity_Layer;
-using InterfaceLayer;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using Data;
+using Data.Models;
+using InterfaceLayer;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseAccess
 {
     public class CarNewsDataWriter : ICarNewsDataWriter
     {
-        private readonly SqlConnection connectionString;
+        private readonly CarAppContext _context;
 
-        public CarNewsDataWriter()
+        public CarNewsDataWriter(CarAppContext context)
         {
-            connectionString = DatabaseConnection.connectionString;
+            _context = context;
         }
 
-        public void AddCarNews(string Author, string Title, DateTime DatePosted, string NewsDescription, string ImageURL, string Intro)
+        public async Task AddCarNewsAsync(string Author, string Title, DateTime DatePosted, string NewsDescription, string ImageURL, string Intro)
         {
-            int rows = -1;
             try
             {
-
-                connectionString.Open();
-                var sql = "INSERT INTO [dbo].[News] ([Author], [Title], [DatePosted], [NewsDescription], [ImageURL], [ShortIntro]) " +
-                    "VALUES (@Author, @Title, @DatePosted, @Description, @ImageURL, @ShortIntro)";
-
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@Author", Author);
-                cmd.Parameters.AddWithValue("@Title", Title);
-                cmd.Parameters.AddWithValue("@DatePosted", DatePosted);
-                cmd.Parameters.AddWithValue("@Description", NewsDescription);
-                cmd.Parameters.AddWithValue("@ImageURL", ImageURL);
-                cmd.Parameters.AddWithValue("@ShortIntro", Intro);
-
-                rows = cmd.ExecuteNonQuery();
-                
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {   
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
-            }
-            finally { connectionString.Close(); }
-        }
-
-        public void UpdateNews(CarNews news)
-        {
-            int rowsAffected = -1;
-            try
-            {
-                connectionString.Open();
-                var sql = "UPDATE [dbo].[News] SET " +
-                          "[Author] = @Author, " +
-                          "[Title] = @Title, " +
-                          "[DatePosted] = @DatePosted, " +
-                          "[NewsDescription] = @NewsDescription, " +
-                          "[ImageURL] = @ImageURL, " +
-                          "[ShortIntro] = @ShortIntro " +
-                          "WHERE NewsId = @NewsId;";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@Author", news.Author);
-                cmd.Parameters.AddWithValue("@Title", news.Title);
-                cmd.Parameters.AddWithValue("@DatePosted", news.ReleaseDate);
-                cmd.Parameters.AddWithValue("@NewsDescription", news.NewsDescription);
-                cmd.Parameters.AddWithValue("@ImageURL", news.ImageURL);
-                cmd.Parameters.AddWithValue("@ShortIntro", news.ShortIntro);
-                cmd.Parameters.AddWithValue("@NewsId", news.Id);
-
-                rowsAffected = cmd.ExecuteNonQuery();
-                
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"SQL Server error in update action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in the update action: {ex.Message}");
-            }
-            finally
-            {
-                connectionString.Close();
-            }
-        }
-
-        public void AddComment(int NewsId, int UserId, DateTime CommentDate, string Content)
-        {
-            int rows = -1;
-            try
-            {
-
-                connectionString.Open();
-                var sql = "INSERT INTO [dbo].[Comments] ([NewsId], [UserID], [CommentDate], [Content]) " +
-                    "VALUES (@NewsId, @UserId, @CommentDate, @Content)";
-
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@NewsId", NewsId);
-                cmd.Parameters.AddWithValue("@UserId", UserId);
-                cmd.Parameters.AddWithValue("@CommentDate", CommentDate);
-                cmd.Parameters.AddWithValue("@Content", Content);
-
-                rows = cmd.ExecuteNonQuery();
-                
-
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
-            }
-            finally { connectionString.Close(); }
-        }
-
-        public int GetNewsId(string Title)
-        {
-            int NewsId = -1;
-            try
-            {
-                connectionString.Open();
-                var sql = "SELECT [NewsId] FROM [dbi530410_carapp].[dbo].[News] WHERE [Title] = @Title";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@Title", Title);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                var news = new News
                 {
-                    if (reader.Read())
-                    {
-                        NewsId = (int)reader["NewsId"];
-                    }
-                }
-                
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in GetNewsId: {ex.Message}");
+                    Author = Author,
+                    Title = Title,
+                    DatePosted = DatePosted,
+                    NewsDescription = NewsDescription,
+                    ImageURL = ImageURL,
+                    ShortIntro = Intro
+                };
+
+                await _context.News.AddAsync(news);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in GetNewsId: {ex.Message}");
+                Console.WriteLine($"An error occurred while adding news: {ex.Message}");
             }
-            finally
-            {
-                connectionString.Close();
-                
-            }
-            return NewsId;
         }
 
-        public int GetCommentId(DateTime date)
+        public async Task UpdateNewsAsync(News news)
         {
-            int CommentId = -1;
             try
             {
-                connectionString.Open();
-                var sql = "SELECT [CommentId] FROM [dbi530410_carapp].[dbo].[Comments]WHERE [CommentDate] = @Date";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@Date", date);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        CommentId = (int)reader["CommentId"];
-                    }
-                }
-                
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in GetCommentId: {ex.Message}");
+                _context.News.Update(news);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in GetCommentId: {ex.Message}");
+                Console.WriteLine($"An error occurred while updating news: {ex.Message}");
             }
-            finally
+        }
+
+        public async Task AddCommentAsync(int NewsId, int UserId, DateTime CommentDate, string Content)
+        {
+            try
             {
-                connectionString.Close();
+                var comment = new Comment
+                {
+                    NewsId = NewsId,
+                    UserId = UserId,
+                    CommentDate = CommentDate,
+                    Content = Content
+                };
+
+                await _context.Comments.AddAsync(comment);
+                await _context.SaveChangesAsync();
             }
-            return CommentId;
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while adding a comment: {ex.Message}");
+            }
+        }
+
+        public async Task<int> GetNewsIdAsync(string Title)
+        {
+            try
+            {
+                var news = await _context.News
+                    .FirstOrDefaultAsync(n => n.Title == Title);
+
+                return news != null ? news.NewsId : -1;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while getting the News ID: {ex.Message}");
+                return -1;
+            }
+        }
+
+        public async Task<int> GetCommentIdAsync(DateTime date)
+        {
+            try
+            {
+                var comment = await _context.Comments
+                    .FirstOrDefaultAsync(c => c.CommentDate == date);
+
+                return comment != null ? comment.NewsId : -1;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while getting the Comment ID: {ex.Message}");
+                return -1;
+            }
         }
     }
 }

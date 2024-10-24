@@ -1,7 +1,7 @@
-﻿using Entity_Layer.Enums;
+﻿using DTO.Enums;
+using DTO;
 using InterfaceLayer;
 using Manager_Layer;
-using Entity_Layer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +20,9 @@ namespace ManagerLayer.Strategy
         }
 
 
-        public void UpdateRentalStatus(RentACar rental, RentStatus status)
+        public void UpdateRentalStatus(RentACarDTO rental, RentStatus status)
         {
-            rental.RentStatus = status;
+            rental.Status = status.ToString();
         }
     }
 }

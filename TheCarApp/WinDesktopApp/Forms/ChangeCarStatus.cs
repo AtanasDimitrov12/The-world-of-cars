@@ -1,5 +1,4 @@
-﻿using EntityLayout;
-using InterfaceLayer;
+﻿using InterfaceLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,17 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using Entity_Layer.Enums;
+using DTO.Enums;
+using DTO;
 using Manager_Layer;
 
 namespace WinDesktopApp.Forms
 {
     public partial class ChangeCarStatus : Form
     {
-        Car car;
+        CarDTO car;
         ICarManager manager;
         public event EventHandler StatusChanged;
-        public ChangeCarStatus(Car SelectedCar, ICarManager cm)
+        public ChangeCarStatus(CarDTO SelectedCar, ICarManager cm)
         {
             InitializeComponent();
             manager = cm;
@@ -43,16 +43,18 @@ namespace WinDesktopApp.Forms
             TBModel.Enabled = false;
             TBYear.Text = car.FirstRegistration.ToShortDateString();
             TBYear.Enabled = false;
-            TBStatus.Text = car.CarStatus.ToString().ToLower();
+            TBStatus.Text = car.Status.ToString().ToLower();
             TBStatus.Enabled = false;
         }
 
-        private void BTNUpdate_Click(object sender, EventArgs e)
+        private async void BTNUpdate_Click(object sender, EventArgs e)
         {
             CarStatus newStatus;
             if (Enum.TryParse<CarStatus>(CBChangeStatus.Text.ToUpper(), true, out newStatus))
             {
-                if (manager.ChangeCarStatus(car, CBChangeStatus.Text.ToUpper(), newStatus, out string updateCarError))
+
+                (bool Response, string ErrorMessage) = await manager.ChangeCarStatusAsync(car, CBChangeStatus.Text.ToUpper(), newStatus);
+                if (Response)
                 {
                     Console.WriteLine("Car updated successfully.");
                     StatusChanged?.Invoke(this, EventArgs.Empty);
@@ -60,7 +62,7 @@ namespace WinDesktopApp.Forms
                 }
                 else
                 {
-                    Console.WriteLine($"Failed to update car: {updateCarError}");
+                    Console.WriteLine($"Failed to update car: {ErrorMessage}");
                 }
 
             }

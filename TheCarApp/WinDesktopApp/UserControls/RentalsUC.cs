@@ -1,5 +1,4 @@
 ﻿using DesktopApp;
-using Entity_Layer;
 using InterfaceLayer;
 using Manager_Layer;
 using ManagerLayer;
@@ -14,6 +13,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinDesktopApp.Forms;
+using DTO;
+using DTO.Enums;
 
 namespace WinDesktopApp.UserControls
 {
@@ -21,11 +22,15 @@ namespace WinDesktopApp.UserControls
     {
         IPeopleManager peopleManager;
         IRentManager rentManager;
-        public RentalsUC(IPeopleManager pm, IRentManager rentManager)
+        ICarManager carManager;
+        IUserManager userManager;
+        public RentalsUC(IPeopleManager pm, IRentManager rentManager, ICarManager cm, IUserManager um)
         {
             InitializeComponent();
             peopleManager = pm;
             this.rentManager = rentManager;
+            this.carManager = cm;
+            this.userManager = um;
             InitializeGridView();
             FillDataGridView(rentManager.RentalHistory);
             UpdateRequestedLabel();
@@ -34,7 +39,7 @@ namespace WinDesktopApp.UserControls
 
         private void UpdateRequestedLabel()
         {
-            int RequestedRentals = rentManager.RentalHistory.Where(r => r.RentStatus == Entity_Layer.Enums.RentStatus.REQUESTED).Count();
+            int RequestedRentals = rentManager.RentalHistory.Where(r => r.Status == RentStatus.REQUESTED.ToString()).Count();
             TBRents.Text = RequestedRentals.ToString();
             TBRents.Enabled = false;
         }
@@ -150,14 +155,14 @@ namespace WinDesktopApp.UserControls
             }
         }
 
-        public void FillDataGridView(List<RentACar> rentals)
+        public void FillDataGridView(List<RentACarDTO> rentals)
         {
             this.DGVRentals.Rows.Clear();
 
             foreach (var rent in rentals)
             {
-                string Car = $"{rent.car.Brand} {rent.car.Model}";
-                this.DGVRentals.Rows.Add(rent.user.Username, Car, rent.StartDate.ToShortDateString(), rent.ReturnDate.ToShortDateString(), rent.TotalPrice, rent.RentStatus);
+                string Car = $"{carManager.GetCarById(rent.CarId).Brand} {carManager.GetCarById(rent.CarId).Model}";
+                this.DGVRentals.Rows.Add(userManager.GetUserNameById(rent.UserId), Car, rent.StartDate.ToShortDateString(), rent.EndDate.ToShortDateString(), rent.TotalPrice, rent.Status);
 
             }
         }
@@ -176,21 +181,21 @@ namespace WinDesktopApp.UserControls
         {
             string Username = TBUsername.Text;
             var filteredRentals = rentManager.RentalHistory
-                .Where(rent => Regex.IsMatch(rent.user.Username, Regex.Escape(Username), RegexOptions.IgnoreCase))
+                .Where(rent => Regex.IsMatch(userManager.GetUserNameById(rent.UserId), Regex.Escape(Username), RegexOptions.IgnoreCase))
                 .ToList();
             FillDataGridView(filteredRentals);
         }
 
         private void RBASC_CheckedChanged(object sender, EventArgs e)
         {
-            List<RentACar> rentals = rentManager.RentalHistory;
+            List<RentACarDTO> rentals = rentManager.RentalHistory;
             rentals = rentals.OrderBy(r => r.StartDate).ToList();
             FillDataGridView(rentals);
         }
 
         private void RBDESC_CheckedChanged(object sender, EventArgs e)
         {
-            List<RentACar> rentals = rentManager.RentalHistory;
+            List<RentACarDTO> rentals = rentManager.RentalHistory;
             rentals = rentals.OrderByDescending(r => r.StartDate).ToList();
             FillDataGridView(rentals);
         }
@@ -198,7 +203,7 @@ namespace WinDesktopApp.UserControls
         
         private void BTNCheckRentals_Click(object sender, EventArgs e)
         {
-            RequestedRentsUC checkRentals = new RequestedRentsUC(rentManager);
+            RequestedRentsUC checkRentals = new RequestedRentsUC(rentManager, carManager, userManager);
             checkRentals.RentChanged += ChangeRent_RentChanged;
             checkRentals.Show();
         }
@@ -209,7 +214,7 @@ namespace WinDesktopApp.UserControls
             UpdateRequestedLabel();
         }
 
-        private void DGVRentals_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        private async void DGVRentals_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
             {
@@ -229,9 +234,9 @@ namespace WinDesktopApp.UserControls
             {
                 foreach (var selectedRental in rentManager.RentalHistory)
                 {
-                    if (selectedRental?.user?.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car?.Brand} {selectedRental.car?.Model}" == car)
+                    if (userManager.GetUserNameById(selectedRental.UserId) == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{carManager.SearchForCar(selectedRental.CarId).Brand} {carManager.SearchForCar(selectedRental.CarId).Model}" == car)
                     {
-                        ViewRentals viewRent = new ViewRentals(selectedRental, rentManager, true);
+                        ViewRentals viewRent = new ViewRentals(selectedRental, rentManager, true, carManager, userManager);
                         viewRent.Show();
                         break;
                     }
@@ -241,9 +246,9 @@ namespace WinDesktopApp.UserControls
             {
                 foreach (var selectedRental in rentManager.RentalHistory)
                 {
-                    if (selectedRental?.user?.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car?.Brand} {selectedRental.car?.Model}" == car)
+                    if (userManager.GetUserNameById(selectedRental.UserId) == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{carManager.SearchForCar(selectedRental.CarId)?.Brand} {carManager.SearchForCar(selectedRental.CarId).Model}" == car)
                     {
-                        ViewRentals modifyRent = new ViewRentals(selectedRental, rentManager, false);
+                        ViewRentals modifyRent = new ViewRentals(selectedRental, rentManager, false, carManager, userManager);
                         modifyRent.RentChanged += ChangeRent_RentChanged;
                         modifyRent.Show();
                         UpdateRequestedLabel();
@@ -255,9 +260,10 @@ namespace WinDesktopApp.UserControls
             {
                 foreach (var selectedRental in rentManager.RentalHistory)
                 {
-                    if (selectedRental?.user?.Username == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{selectedRental.car?.Brand} {selectedRental.car?.Model}" == car)
+                    if (userManager.GetUserNameById(selectedRental.UserId) == Username && selectedRental.StartDate.ToShortDateString() == StartDateString && $"{carManager.SearchForCar(selectedRental.CarId).Brand} {carManager.SearchForCar(selectedRental.CarId).Model}" == car)
                     {
-                        if (rentManager.RemoveRent(selectedRental, out string ErrorMessage))
+                        (bool Response, string ErrorMessage) = await rentManager.RemoveRentAsync(selectedRental);
+                        if (Response)
                         {
                             FillDataGridView(rentManager.RentalHistory);
                             break;

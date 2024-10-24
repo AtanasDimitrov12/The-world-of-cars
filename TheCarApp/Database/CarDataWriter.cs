@@ -1,521 +1,199 @@
-﻿using Entity_Layer;
-using EntityLayout;
-using InterfaceLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Data.Models;
+using InterfaceLayer;
+using Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseAccess
 {
     public class CarDataWriter : ICarDataWriter
     {
-        private readonly SqlConnection connectionString;
+        private readonly CarAppContext _context;
 
-        public CarDataWriter()
+        public CarDataWriter(CarAppContext context)
         {
-            connectionString = DatabaseConnection.connectionString;
+            _context = context;
         }
 
-        public void AddCar(string Brand, string Model, DateTime FirstRegistration, int Mileage, string Fuel, int EngineSize, int HP, string Gearbox, int NumOfSeats, string NumOfDoors, string color, string VIN, string Status)
+        public async Task AddCar(Car car)
         {
-            int rows = -1;
             try
             {
-
-                connectionString.Open();
-                var sql = "INSERT INTO [dbo].[Cars] ([Brand], [Model], [FirstRegistration], [Mileage], [Fuel], [EngineSize], [Power], [Gearbox], [NumberOfSeats], [NumberOfDoors], [Color], [VIN], [Status]) " +
-                    "VALUES (@Brand, @Model, @FirstRegistration, @Mileage, @Fuel, @EngineSize, @HP, @Gearbox, @NumOfSeats, @NumOfDoors, @color, @VIN, @Status)";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@Brand", Brand);
-                cmd.Parameters.AddWithValue("@Model", Model);
-                cmd.Parameters.AddWithValue("@FirstRegistration", FirstRegistration);
-                cmd.Parameters.AddWithValue("@Mileage", Mileage);
-                cmd.Parameters.AddWithValue("@Fuel", Fuel);
-                cmd.Parameters.AddWithValue("@EngineSize", EngineSize);
-                cmd.Parameters.AddWithValue("@HP", HP);
-                cmd.Parameters.AddWithValue("@Gearbox", Gearbox);
-                cmd.Parameters.AddWithValue("@NumOfSeats", NumOfSeats);
-                cmd.Parameters.AddWithValue("@NumOfDoors", NumOfDoors);
-                cmd.Parameters.AddWithValue("@color", color);
-                cmd.Parameters.AddWithValue("@VIN", VIN);
-                cmd.Parameters.AddWithValue("@Status", Status);
-
-                rows = cmd.ExecuteNonQuery();
-                
-
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+                // Add the car entity to the DbSet and save changes
+                _context.Cars.Add(car);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+                Console.WriteLine($"An error occurred while adding a car: {ex.Message}");
             }
-            finally { connectionString.Close(); }
-
         }
 
-        public void AddCarDescription(int CarId, string Description, decimal Price)
+
+        public async Task RecordCarView(int carId)
         {
-            int rows = -1;
             try
             {
+                // Fetch the car from the database
+                var car = await _context.Cars.FirstOrDefaultAsync(c => c.CarId == carId);
 
-                connectionString.Open();
-                var sql = "INSERT INTO [dbo].[CarDescription] ([CarId], [CarDescription], [PricePerDay]) " +
-                    "VALUES (@CarId, @Description, @PricePerDay);";
+                if (car != null)
+                {
+                    // Increment the view count if the car exists
+                    car.ViewCount++;
 
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@CarId", CarId);
-                cmd.Parameters.AddWithValue("@Description", Description);
-                cmd.Parameters.AddWithValue("@PricePerDay", Price);
-
-                rows = cmd.ExecuteNonQuery();
-                
-
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+                    // Save changes to the database
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    Console.WriteLine($"Car with ID {carId} not found.");
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+                Console.WriteLine($"An error occurred while recording car views: {ex.Message}");
             }
-            finally { connectionString.Close(); }
         }
 
-        public void AddCarExtras(int CarId, int ExtraId)
+
+        public async Task UpdateCar(Car car)
         {
-            int rows = -1;
             try
             {
-
-                connectionString.Open();
-                var sql = "INSERT INTO [dbo].[CarExtras] ([CarId], [ExtraId]) " +
-                    "VALUES (@CarId, @ExtraId)";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@CarId", CarId);
-                cmd.Parameters.AddWithValue("@ExtraId", ExtraId);
-
-                rows = cmd.ExecuteNonQuery();
-                
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+                _context.Cars.Update(car); // Update the car entity in the DbSet
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+                Console.WriteLine($"An error occurred while updating the car: {ex.Message}");
             }
-            finally { connectionString.Close(); }
-        }
-
-        public void AddCarPictures(int CarId, int PictureId)
-        {
-            int rows = -1;
-            try
-            {
-
-                connectionString.Open();
-                var sql = "INSERT INTO [dbo].[CarPictures] ([PictureID], [CarID]) " +
-                    "VALUES (@PictureId, @CarId)";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@CarId", CarId);
-                cmd.Parameters.AddWithValue("@PictureId", PictureId);
-
-                rows = cmd.ExecuteNonQuery();
-                
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
-            }
-            finally { connectionString.Close(); }
         }
 
         
 
-        public void RecordCarView(int CarId)
+        public async Task ChangeCarStatus(int carId, string status)
         {
-            int rows = -1;
             try
             {
-                connectionString.Open();
-                var sql = "UPDATE [dbo].[CarViews] SET ViewCount = ViewCount + 1 WHERE CarId = @CarId;";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@CarId", CarId);
-
-                rows = cmd.ExecuteNonQuery();
-                if (rows == 0)
+                var car = await _context.Cars.FindAsync(carId);
+                if (car != null)
                 {
-                    sql = "INSERT INTO [dbo].[CarViews] (CarId, ViewCount) VALUES (@CarId, 1);";
-                    cmd = new SqlCommand(sql, connectionString);
-                    cmd.Parameters.AddWithValue("@CarId", CarId);
-                    rows = cmd.ExecuteNonQuery();
-                }
-
-                
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
-            }
-            finally
-            {
-                connectionString.Close();
-            }
-        }
-
-
-        public void UpdateCar(Car car)
-        {
-            int rows = -1;
-            try
-            {
-
-                connectionString.Open();
-                var sql = "UPDATE [dbo].[Cars] SET [Brand] = @Brand, [Model] = @Model, [FirstRegistration] = @FirstRegistration, [Mileage] = @Mileage, [Fuel] = @Fuel, [EngineSize] = @EngineSize, [Power] = @Power, [Gearbox] = @Gearbox, [NumberOfSeats] = @NumberOfSeats, [NumberOfDoors] = @NumberOfDoors, [Color] = @Color, [VIN] = @VIN, [Status] = @Status " +
-                    "WHERE CarId = @CARID;";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@Brand", car.Brand);
-                cmd.Parameters.AddWithValue("@Model", car.Model);
-                cmd.Parameters.AddWithValue("@FirstRegistration", car.FirstRegistration);
-                cmd.Parameters.AddWithValue("@Mileage", car.Mileage);
-                cmd.Parameters.AddWithValue("@Fuel", car.Fuel);
-                cmd.Parameters.AddWithValue("@EngineSize", car.EngineSize);
-                cmd.Parameters.AddWithValue("@Power", car.HorsePower);
-                cmd.Parameters.AddWithValue("@Gearbox", car.Gearbox);
-                cmd.Parameters.AddWithValue("@NumberOfSeats", car.NumberOfSeats);
-                cmd.Parameters.AddWithValue("@NumberOfDoors", car.NumberOfDoors);
-                cmd.Parameters.AddWithValue("@Color", car.Color);
-                cmd.Parameters.AddWithValue("@VIN", car.VIN);
-                cmd.Parameters.AddWithValue("@Status", car.CarStatus.ToString());
-                cmd.Parameters.AddWithValue("@CARID", car.Id);
-
-                rows = cmd.ExecuteNonQuery();
-                
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
-            }
-            finally { connectionString.Close(); }
-        }
-
-        public void UpdateCarDescription(Car car)
-        {
-            int rows = -1;
-            try
-            {
-
-                connectionString.Open();
-                var sql = "UPDATE [dbo].[CarDescription] SET [CarDescription] = @CarDescription, [PricePerDay] = @PricePerDay " +
-                    "WHERE CarId = @CARID;";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-
-                cmd.Parameters.AddWithValue("@CarDescription", car.Description);
-                cmd.Parameters.AddWithValue("@PricePerDay", car.PricePerDay);
-                cmd.Parameters.AddWithValue("@CARID", car.Id);
-
-                rows = cmd.ExecuteNonQuery();
-                
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
-            }
-            finally { connectionString.Close(); }
-
-        }
-
-        public void ChangeCarStatus(Car car, string Status)
-        {
-            int rows = -1;
-            try
-            {
-
-                connectionString.Open();
-                var sql = "UPDATE [dbo].[Cars] SET [Status] = @Status " +
-                    "WHERE CarId = @CARID;";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-
-                cmd.Parameters.AddWithValue("@Status", Status);
-                cmd.Parameters.AddWithValue("@CARID", car.Id);
-
-                rows = cmd.ExecuteNonQuery();
-                
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
-            }
-            finally { connectionString.Close(); }
-
-        }
-
-        public void RemoveCarExtras(int CarId)
-        {
-            int rows = -1;
-            try
-            {
-
-                connectionString.Open();
-                var sql = "DELETE FROM [dbo].[CarExtras] WHERE CarId = @carId;";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@carId", CarId);
-
-                rows = cmd.ExecuteNonQuery();
-                
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
-            }
-            finally { connectionString.Close(); }
-        }
-
-        public void RemoveCarPictures(int CarId)
-        {
-            int rows = -1;
-            try
-            {
-
-                connectionString.Open();
-                var sql = "DELETE FROM [dbo].[CarPictures] WHERE CarID = @carId;";
-
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@carId", CarId);
-
-                rows = cmd.ExecuteNonQuery();
-                
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
-            }
-            finally { connectionString.Close(); }
-        }
-
-        public int GetCarId(string VIN)
-        {
-            int carId = -1;
-            try
-            {
-                connectionString.Open();
-                var sql = "SELECT [CarId] FROM [dbo].[Cars] WHERE [VIN] = @VIN";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@VIN", VIN);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        carId = (int)reader["CarId"];
-                    }
+                    car.Status = status;
+                    await _context.SaveChangesAsync();
                 }
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
-                Console.WriteLine($"MSSQL error in GetCarId: {ex.Message}");
+                Console.WriteLine($"An error occurred while changing car status: {ex.Message}");
+            }
+        }
+
+        public async Task RemoveCarExtras(int carId)
+        {
+            try
+            {
+                var carExtras = _context.CarExtras.Where(ce => ce.CarId == carId);
+                _context.CarExtras.RemoveRange(carExtras);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in GetCarId: {ex.Message}");
+                Console.WriteLine($"An error occurred while removing car extras: {ex.Message}");
             }
-            finally
-            {
-                connectionString.Close();
-            }
-            return carId;
         }
 
-        public void AddExtra(string ExtraName)
+        public async Task RemoveCarPictures(int carId)
         {
-            int rows = -1;
             try
             {
-
-                connectionString.Open();
-                var sql = "INSERT INTO [dbo].[Extras] ([ExtraName])" +
-                    "VALUES (@ExtraName)";
-
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@ExtraName", ExtraName);
-
-                rows = cmd.ExecuteNonQuery();
-                
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+                var carPictures = _context.CarPictures.Where(cp => cp.CarId == carId);
+                _context.CarPictures.RemoveRange(carPictures);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+                Console.WriteLine($"An error occurred while removing car pictures: {ex.Message}");
             }
-            finally { connectionString.Close(); }
-            // var car = context.Cars.FirstOrDefault(x => x.CarId == ID); // Assuming 'ID' is the car identifier
-            //if (car != null)
-            //{
-            //    car.Extras.Add(extra); // Assuming 'Extras' is a collection, and 'extra' is the object to add
-            //    context.SaveChanges(); // Don't forget to save changes to the database
-            //}
         }
 
-        public void AddPicture(string PictureURL)
+        public async Task<int> GetCarId(string vin)
         {
-            int rows = -1;
             try
             {
-
-                connectionString.Open();
-                var sql = "INSERT INTO [dbo].[Pictures] ([PictureURL])" +
-                    "VALUES (@PictureURL)";
-
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@PictureURL", PictureURL);
-
-                rows = cmd.ExecuteNonQuery();
-                
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+                var car = await _context.Cars.FirstOrDefaultAsync(c => c.VIN == vin);
+                return car?.CarId ?? -1;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+                Console.WriteLine($"An error occurred while getting car ID: {ex.Message}");
+                return -1;
             }
-            finally { connectionString.Close(); }
         }
 
-
-
-
-
-        public int GetExtraId(string ExtraName)
+        public async Task AddExtra(string extraName)
         {
-            int ExtraId = -1;
             try
             {
-                connectionString.Open();
-                var sql = "SELECT [ExtraId] FROM [dbo].[Extras] WHERE [ExtraName] = @ExtraName";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@ExtraName", ExtraName);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                var extra = new CarExtra
                 {
-                    if (reader.Read())
-                    {
-                        ExtraId = (int)reader["ExtraId"];
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in GetExtraId: {ex.Message}");
+                    ExtraName = extraName
+                };
+                _context.CarExtras.Add(extra);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in GetExtraId: {ex.Message}");
+                Console.WriteLine($"An error occurred while adding extra: {ex.Message}");
             }
-            finally
-            {
-                connectionString.Close();
-            }
-            return ExtraId;
         }
 
-        public int GetPictureId(string PictureURL)
+        public async Task AddPicture(string pictureUrl)
         {
-            int PictureId = -1;
             try
             {
-                connectionString.Open();
-                var sql = "SELECT [PictureId] FROM [dbo].[Pictures] WHERE [PictureURL] = @PictureURL";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@PictureURL", PictureURL);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                var picture = new CarPicture
                 {
-                    if (reader.Read())
-                    {
-                        PictureId = (int)reader["PictureId"];
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in GetPictureId: {ex.Message}");
+                    PictureURL = pictureUrl
+                };
+                _context.CarPictures.Add(picture);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in GetPictureId: {ex.Message}");
+                Console.WriteLine($"An error occurred while adding picture: {ex.Message}");
             }
-            finally
+        }
+
+        public async Task<int> GetExtraId(string extraName)
+        {
+            try
             {
-                connectionString.Close();
+                var extra = await _context.CarExtras.FirstOrDefaultAsync(e => e.ExtraName == extraName);
+                return extra?.CarExtraId ?? -1;
             }
-            return PictureId;
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while getting extra ID: {ex.Message}");
+                return -1;
+            }
+        }
+
+        public async Task<int> GetPictureId(string pictureUrl)
+        {
+            try
+            {
+                var picture = await _context.CarPictures.FirstOrDefaultAsync(p => p.PictureURL == pictureUrl);
+                return picture?.CarPictureId ?? -1;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while getting picture ID: {ex.Message}");
+                return -1;
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace UnitTests
         private Mock<IPeopleDataWriter> _mockDataWriter;
         private Mock<IPeopleDataRemover> _mockDataRemover;
         private Mock<IDataAccess> _mockDataAccess;
-        private UserRepository _userRepo;
+        private UserManager _userRepo;
 
         [TestInitialize]
         public void Setup()
@@ -24,7 +24,7 @@ namespace UnitTests
             _mockDataWriter = new Mock<IPeopleDataWriter>();
             _mockDataRemover = new Mock<IPeopleDataRemover>();
             _mockDataAccess = new Mock<IDataAccess>();
-            _userRepo = new UserRepository(_mockDataAccess.Object, _mockDataWriter.Object, _mockDataRemover.Object);
+            _userRepo = new UserManager(_mockDataAccess.Object, _mockDataWriter.Object, _mockDataRemover.Object);
         }
 
         [TestMethod]

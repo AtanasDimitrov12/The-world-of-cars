@@ -1,5 +1,4 @@
 ﻿using Manager_Layer;
-using EntityLayout;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DTO;
-using Entity_Layer.Enums;
-using Entity_Layer;
+using DTO.Enums;
 using ManagerLayer;
 using InterfaceLayer;
 using WinDesktopApp.Forms;
+using Data.Models;
 
 namespace DesktopApp
 {
@@ -23,11 +22,11 @@ namespace DesktopApp
         ICarManager manager;
         IPictureManager pictureManager;
         IExtraManager extraManager;
-        List<Extra> extras;
-        List<Picture> pictures;
+        List<ExtraDTO> extras;
+        List<PictureDTO> pictures;
         bool Modify;
         bool IsView;
-        Car carData;
+        CarDTO carData;
         public event EventHandler CarAdded;
         public Button BTNAddCarGet { get; }
         public Button BTNAddExtraGet { get; }
@@ -37,14 +36,14 @@ namespace DesktopApp
         public Button BTNRemovePictureGet { get; }
         public Button BTNRemoveExtraGet { get; }
 
-        public AddCar(Car car, ICarManager cm, IExtraManager em, IPictureManager picManager, bool View)
+        public AddCar(CarDTO car, ICarManager cm, IExtraManager em, IPictureManager picManager, bool View)
         {
             InitializeComponent();
             manager = cm;
             pictureManager = picManager;
             extraManager = em;
-            extras = new List<Extra>();
-            pictures = new List<Picture>();
+            extras = new List<ExtraDTO>();
+            pictures = new List<PictureDTO>();
             IsView = View;
             Modify = false;
             LoadCB();
@@ -162,17 +161,17 @@ namespace DesktopApp
         {
             CBCarExtras.Items.Clear();
             CBPictureURL.Items.Clear();
-            foreach (Extra extra in extraManager.extras)
+            foreach (ExtraDTO extra in extraManager.Extras)
             {
                 CBCarExtras.Items.Add($"{extra.ExtraName}");
             }
-            foreach (Picture pic in pictureManager.pictures)
+            foreach (PictureDTO pic in pictureManager.Pictures)
             {
                 CBPictureURL.Items.Add($"{pic.PictureURL}");
             }
         }
 
-        private void BTNAddCar_Click(object sender, EventArgs e)
+        private async void BTNAddCar_Click(object sender, EventArgs e)
         {
 
             try
@@ -193,17 +192,40 @@ namespace DesktopApp
 
                 if (!Modify)
                 {
-                    Car car = new Car(TBCarBrand.Text, TBCarModel.Text, DTPCarFirstReg.Value, Convert.ToInt32(NUDCarMileage.Value), CBFuelType.Text, Convert.ToInt32(NUDCarEngineSize.Value), Convert.ToInt32(NUDCarPower.Value), CBCarGearbox.SelectedItem.ToString(), CBColor.SelectedItem.ToString(), TBCarVIN.Text, RTBCarDescription.Text, Convert.ToDecimal(TBCarPrice.Text), CarStatus.AVAILABLE, Convert.ToInt32(NUDSeats.Value), CBDoors.Text, 0);
+                    
                     if (pictures.Count != 0)
                     {
-                        if (manager.AddCar(car, pictures, extras, out string addCarError))
+                        CarDTO car = new CarDTO
+                        {
+                            Brand = TBCarBrand.Text,
+                            Model = TBCarModel.Text,
+                            FirstRegistration = DTPCarFirstReg.Value,
+                            Mileage = Convert.ToInt32(NUDCarMileage.Value),
+                            Fuel = CBFuelType.Text,
+                            EngineSize = Convert.ToInt32(NUDCarEngineSize.Value),
+                            HorsePower = Convert.ToInt32(NUDCarPower.Value),
+                            Gearbox = CBCarGearbox.SelectedItem.ToString(),
+                            Color = CBColor.SelectedItem.ToString(),
+                            VIN = TBCarVIN.Text,
+                            Description = RTBCarDescription.Text,
+                            PricePerDay = Convert.ToDecimal(TBCarPrice.Text),
+                            Status = CarStatus.AVAILABLE.ToString(),
+                            NumberOfSeats = Convert.ToInt32(NUDSeats.Value),
+                            NumberOfDoors = CBDoors.Text,
+                            ViewCount = 0,
+                            Pictures = pictures,
+                            CarExtras = extras
+                        };
+                        // add  pictures, extras to the car
+                        (bool Response, string errorMessage) = await manager.AddCarAsync(car);
+                        if (Response)
                         {
                             CarAdded?.Invoke(this, EventArgs.Empty);
                             this.Close();
                         }
                         else
                         {
-                            MessageBox.Show($"Failed to add car: {addCarError}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"Failed to add car: {errorMessage}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
@@ -214,7 +236,8 @@ namespace DesktopApp
                 else
                 {
                     UpdateCarData();
-                    if (manager.UpdateCar(carData, pictures, extras, out string updateCarError))
+                    (bool Response, string errorMessage) = await manager.UpdateCarAsync(carData);
+                    if (Response)
                     {
                         MessageBox.Show($"You successfully updated that car!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CarAdded?.Invoke(this, EventArgs.Empty);
@@ -222,7 +245,7 @@ namespace DesktopApp
                     }
                     else
                     {
-                        MessageBox.Show($"Failed to update car: {updateCarError}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show($"Failed to update car: {errorMessage}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -249,6 +272,8 @@ namespace DesktopApp
             carData.PricePerDay = Convert.ToDecimal(TBCarPrice.Text);
             carData.NumberOfSeats = Convert.ToInt32(NUDSeats.Value);
             carData.NumberOfDoors = CBDoors.Text;
+            carData.Pictures = pictures;
+            carData.CarExtras = extras;
         }
 
         private void BTNAddExtra_Click(object sender, EventArgs e)
@@ -256,7 +281,7 @@ namespace DesktopApp
             if (CBCarExtras.Text != "")
             {
                 int index = CBCarExtras.SelectedIndex;
-                Extra selectedExtra = extraManager.extras[index];
+                ExtraDTO selectedExtra = extraManager.Extras[index];
 
                 if (extras.Any(ex => ex.ExtraName == selectedExtra.ExtraName))
                 {
@@ -280,7 +305,7 @@ namespace DesktopApp
             string extraName = LBExtras.SelectedItem as string;
             if (extraName != null)
             {
-                Extra extraToRemove = extras.FirstOrDefault(ex => ex.ExtraName == extraName);
+                ExtraDTO extraToRemove = extras.FirstOrDefault(ex => ex.ExtraName == extraName);
                 if (extraToRemove != null)
                 {
                     extras.Remove(extraToRemove);
@@ -299,7 +324,7 @@ namespace DesktopApp
             if (CBPictureURL.Text != "")
             {
                 int index = CBPictureURL.SelectedIndex;
-                Picture selectedPicture = pictureManager.pictures[index];
+                PictureDTO selectedPicture = pictureManager.Pictures[index];
 
                 if (pictures.Any(pic => pic.PictureURL == selectedPicture.PictureURL))
                 {
@@ -323,7 +348,7 @@ namespace DesktopApp
             string picURL = LBPictures.SelectedItem as string;
             if (picURL != null)
             {
-                Picture pictureToRemove = pictures.FirstOrDefault(pic => pic.PictureURL == picURL);
+                PictureDTO pictureToRemove = pictures.FirstOrDefault(pic => pic.PictureURL == picURL);
                 if (pictureToRemove != null)
                 {
                     pictures.Remove(pictureToRemove);

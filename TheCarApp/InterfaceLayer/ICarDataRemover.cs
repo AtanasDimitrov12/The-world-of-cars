@@ -8,12 +8,10 @@ namespace InterfaceLayer
 {
     public interface ICarDataRemover
     {
-        void RemoveCar(int CarId);
-        void RemoveCarDescription(int CarId);
-        void RemoveCarExtras(int CarId);
-        void RemoveCarPictures(int CarId);
-        void RemoveCarViewsHistory(int CarId);
-        void RemoveExtra(int ExtraId);
-        void RemovePicture(int PicId);
+        Task RemoveCarAsync(int carId);
+        Task RemoveCarExtrasAsync(int carId);
+        Task RemoveCarPicturesAsync(int carId);
+        Task RemoveExtraAsync(int extraId);
+        Task RemovePictureAsync(int picId);
     }
 }

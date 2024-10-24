@@ -32,10 +32,10 @@ namespace TheCarApp.Controllers
                                .Take(pageSize)
                                .Select(comment => new
                                {
-                                   comment.Message,
+                                   comment.Content,
                                    comment.Date,
-                                   userName = _projectManager.UserRepository.GetUserNameById(comment.UserId),
-                                   profilePic = _projectManager.UserRepository.GetProfilePicPathById(comment.UserId)
+                                   userName = _projectManager.UserManager.GetUserNameById(comment.UserId),
+                                   profilePic = _projectManager.UserManager.GetProfilePicPathById(comment.UserId)
                                });
 
             

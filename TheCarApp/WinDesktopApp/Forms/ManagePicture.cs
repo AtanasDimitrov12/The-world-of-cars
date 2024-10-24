@@ -1,6 +1,4 @@
-﻿using Entity_Layer;
-using EntityLayout;
-using Manager_Layer;
+﻿using Manager_Layer;
 using ManagerLayer;
 using System;
 using System.Collections.Generic;
@@ -14,6 +12,7 @@ using System.Windows.Forms;
 using InterfaceLayer;
 using DesktopApp;
 using System.Text.RegularExpressions;
+using DTO;
 
 namespace WinDesktopApp.Forms
 {
@@ -28,7 +27,7 @@ namespace WinDesktopApp.Forms
             InitializeComponent();
             manager = pm;
             InitializeGridView();
-            FillDataGridView(manager.pictures);
+            FillDataGridView(manager.Pictures);
             this.DGVPictures.CellClick += DGVPictures_CellContentClick;
             this.DGVPictures.CellPainting += DGVPictures_CellPainting;
         }
@@ -81,7 +80,7 @@ namespace WinDesktopApp.Forms
         }
 
 
-        private void BTNAddPicture_Click(object sender, EventArgs e)
+        private async void BTNAddPicture_Click(object sender, EventArgs e)
         {
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -121,14 +120,16 @@ namespace WinDesktopApp.Forms
 
                         var relativeFilePath = $"/pictures/News_Pictures/{fileName}";
                         MessageBox.Show($"Image successfully uploaded to: {relativeFilePath}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Picture pic = new Picture(fileName);
-                        if (manager.AddPicture(pic, out string addPictureError))
+                        PictureDTO pic = new PictureDTO();
+                        pic.PictureURL = fileName;
+                        (bool Response, string errorMessage) = await manager.AddPictureAsync(pic);
+                        if (Response)
                         {
-                            pic.Id = manager.GetPicId(pic.PictureURL);
+                            pic.Id = await manager.GetPicIdAsync(pic.PictureURL);
                             PicAdded?.Invoke(this, EventArgs.Empty);
-                            FillDataGridView(manager.pictures);
+                            FillDataGridView(manager.Pictures);
                         }
-                        else { MessageBox.Show($"Failed to add picture: {addPictureError}"); }
+                        else { MessageBox.Show($"Failed to add picture: {errorMessage}"); }
 
                     }
                     catch (Exception ex)
@@ -172,7 +173,7 @@ namespace WinDesktopApp.Forms
             DGVPictures.RowHeadersDefaultCellStyle.Font = gridFont;
         }
 
-        private void FillDataGridView(List<Picture> pics)
+        private void FillDataGridView(List<PictureDTO> pics)
         {
             this.DGVPictures.Rows.Clear();
             foreach (var pic in pics)
@@ -181,7 +182,7 @@ namespace WinDesktopApp.Forms
             }
         }
 
-        private void DGVPictures_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void DGVPictures_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == DGVPictures.Columns["Delete"].Index && e.RowIndex >= 0)
             {
@@ -189,20 +190,20 @@ namespace WinDesktopApp.Forms
                 {
                     var picId = Convert.ToInt32(DGVPictures.Rows[e.RowIndex].Cells["ID"].Value);
 
-                    foreach (var selectedPic in manager.pictures)
+                    foreach (var selectedPic in manager.Pictures)
                     {
                         if (selectedPic.Id == picId)
                         {
-
-                            if (manager.RemovePicture(selectedPic, out string removePictureError))
+                            (bool Response, string errorMessage) = await manager.RemovePictureAsync(selectedPic);
+                            if (Response)
                             {
                                 MessageBox.Show("Picture removed successfully.");
-                                FillDataGridView(manager.pictures);
+                                FillDataGridView(manager.Pictures);
                                 break;
                             }
                             else
                             {
-                                MessageBox.Show($"Failed to remove picture: {removePictureError}");
+                                MessageBox.Show($"Failed to remove picture: {errorMessage}");
                             }
                         }
                     }
@@ -213,7 +214,7 @@ namespace WinDesktopApp.Forms
         private void BTN_Click(object sender, EventArgs e)
         {
             string url = TBSearch.Text;
-            var filteredPics = manager.pictures
+            var filteredPics = manager.Pictures
                 .Where(pic => Regex.IsMatch(pic.PictureURL, Regex.Escape(url), RegexOptions.IgnoreCase))
                 .ToList();
             FillDataGridView(filteredPics);

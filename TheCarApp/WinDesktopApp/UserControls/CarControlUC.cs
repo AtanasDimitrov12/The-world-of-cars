@@ -1,20 +1,10 @@
-﻿using EntityLayout;
-using Manager_Layer;
-using ManagerLayer;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Manager_Layer;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using WinDesktopApp.Forms;
 using InterfaceLayer;
-using Entity_Layer;
 using WinDesktopApp.Models;
 using WinDesktopApp.UserControls;
+using DTO;
 
 namespace DesktopApp
 {
@@ -189,12 +179,12 @@ namespace DesktopApp
             DGVCars.RowHeadersDefaultCellStyle.Font = gridFont;
         }
 
-        private void FillDataGridView(List<Car> cars)
+        private void FillDataGridView(List<CarDTO> cars)
         {
             this.DGVCars.Rows.Clear();
             foreach (var car in cars)
             {
-                this.DGVCars.Rows.Add(car.Brand, car.Model, car.FirstRegistration.ToShortDateString(), car.VIN, car.CarStatus);
+                this.DGVCars.Rows.Add(car.Brand, car.Model, car.FirstRegistration.ToShortDateString(), car.VIN, car.Status);
             }
         }
 
@@ -219,7 +209,7 @@ namespace DesktopApp
             }
         }
 
-        private void DGVCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void DGVCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -249,15 +239,17 @@ namespace DesktopApp
                         if (result == DialogResult.Yes)
                         {
                             var rentsToRemove = rentManager.RentalHistory
-                                .Where(rent => rent.car.Id == selectedCar.Id)
+                                .Where(rent => rent.CarId == selectedCar.Id)
                                 .ToList();
 
                             foreach (var rent in rentsToRemove)
                             {
-                                rentManager.RemoveRent(rent, out string errorMessage);
+                                await rentManager.RemoveRentAsync(rent);
                             }
 
-                            if (carManager.RemoveCar(selectedCar, out string updateCarError))
+                            (bool Response, string ErrorMessage) = await carManager.RemoveCarAsync(selectedCar);
+
+                            if (Response)
                             {
                                 MessageBox.Show("Car removed successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 FillDataGridView(carManager.GetCars());
@@ -267,7 +259,7 @@ namespace DesktopApp
                             }
                             else
                             {
-                                MessageBox.Show($"Failed to update car: {updateCarError}");
+                                MessageBox.Show($"Failed to remove car: {ErrorMessage}");
                             }
                         }
                         else

@@ -1,99 +1,93 @@
-﻿using InterfaceLayer;
-using Manager_Layer;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using Data;
+using Data.Models;
+using InterfaceLayer;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseAccess
 {
     public class PeopleDataRemover : IPeopleDataRemover
     {
-        private readonly SqlConnection connectionString;
+        private readonly CarAppContext _context;
 
-        public PeopleDataRemover()
+        public PeopleDataRemover(CarAppContext context)
         {
-            connectionString = DatabaseConnection.connectionString;
+            _context = context;
         }
 
-        public void RemoveUser(int UserId)
+        // Removes a user by ID
+        public async Task RemoveUserAsync(int userId)
         {
-            int rows = -1;
             try
             {
-                connectionString.Open();
-                var sql = "DELETE FROM [dbo].[Users] WHERE [UserId] = @UserId";
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@UserId", UserId);
-                rows = cmd.ExecuteNonQuery();
-
+                var user = await _context.Users.FindAsync(userId);
+                if (user != null)
+                {
+                    _context.Users.Remove(user);
+                    await _context.SaveChangesAsync();
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
-            finally { connectionString.Close(); }
         }
 
-        public void RemoveProfilePicture(int UserId)
+        // Since profile pictures are now part of the User entity, this method will just clear the profile picture path and save the changes
+        public async Task RemoveProfilePictureAsync(int userId)
         {
-            int rows = -1;
             try
             {
-                connectionString.Open();
-                var sql = "DELETE FROM [dbo].[UserProfilePictures] WHERE [UserId] = @UserId";
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@UserId", UserId);
-                rows = cmd.ExecuteNonQuery();
-
+                var user = await _context.Users.FindAsync(userId);
+                if (user != null)
+                {
+                    user.ProfilePictureFilePath = null; // Remove the profile picture by clearing the path
+                    await _context.SaveChangesAsync();
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
-            finally { connectionString.Close(); }
         }
 
-        public void RemoveAdmin(int AdminId)
+        // Removes an admin by ID
+        public async Task RemoveAdminAsync(int adminId)
         {
-            int rows = -1;
             try
             {
-                connectionString.Open();
-                var sql = "DELETE FROM [dbi530410_carapp].[dbo].[Admininstration] WHERE [AdminId] = @AdminId";
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@AdminId", AdminId);
-                rows = cmd.ExecuteNonQuery();
-
+                var admin = await _context.Administrators.FindAsync(adminId);
+                if (admin != null)
+                {
+                    _context.Administrators.Remove(admin);
+                    await _context.SaveChangesAsync();
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
-            finally { connectionString.Close(); }
         }
 
-        public void RemoveRental(RentACar rent)
+        // Removes a rental based on user ID, car ID, and start date
+        public async Task RemoveRentalAsync(Rental rent)
         {
-            int rows = -1;
             try
             {
-                connectionString.Open();
-                var sql = "DELETE FROM [dbo].[Rentals] WHERE [UserId] = @UserId AND [CarId] = @CarId AND [StartDate] = @StartDate";
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@UserId", rent.user.Id);
-                cmd.Parameters.AddWithValue("@CarId", rent.car.Id);
-                cmd.Parameters.AddWithValue("@StartDate", rent.StartDate);
-                rows = cmd.ExecuteNonQuery();
+                var rental = await _context.Rentals
+                    .FirstOrDefaultAsync(r => r.UserId == rent.User.UserId && r.CarId == rent.Car.CarId && r.StartDate == rent.StartDate);
 
+                if (rental != null)
+                {
+                    _context.Rentals.Remove(rental);
+                    await _context.SaveChangesAsync();
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
-            finally { connectionString.Close(); }
         }
     }
 }

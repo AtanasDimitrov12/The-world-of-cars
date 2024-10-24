@@ -10,13 +10,13 @@ namespace Data.Models
     public class CarPicture
     {
         [Key]
-        public int PictureId { get; set; }
+        public int CarPictureId { get; set; }
 
         [Required]
         public string PictureURL { get; set; }
 
         // Foreign Key to Car
-        public int CarId { get; set; }
+        public int CarId { get; set; } // Ensure only one CarId is defined
         public Car Car { get; set; }
     }
 

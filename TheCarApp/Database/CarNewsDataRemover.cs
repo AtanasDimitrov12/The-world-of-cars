@@ -1,60 +1,63 @@
-﻿using InterfaceLayer;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using Data;
+using Data.Models;
+using InterfaceLayer;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseAccess
 {
     public class CarNewsDataRemover : ICarNewsDataRemover
     {
-        private readonly SqlConnection connectionString;
+        private readonly CarAppContext _context;
 
-        public CarNewsDataRemover()
+        public CarNewsDataRemover(CarAppContext context)
         {
-            connectionString = DatabaseConnection.connectionString;
+            _context = context;
         }
 
-        public void RemoveNews(int NewsId)
+        // Removes a News entry
+        public async Task RemoveNewsAsync(int newsId)
         {
-            int rows = -1;
             try
             {
-                connectionString.Open();
-                var sql = "DELETE FROM [dbo].[News] WHERE [NewsId] = @NewsId";
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@NewsId", NewsId);
-                rows = cmd.ExecuteNonQuery();
-
-                
+                var news = await _context.News.FindAsync(newsId);
+                if (news != null)
+                {
+                    _context.News.Remove(news);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    Console.WriteLine($"News with ID {newsId} not found.");
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
-            finally { connectionString.Close(); }
         }
 
-        public void RemoveComment(int CommentId)
+        // Removes a Comment entry
+        public async Task RemoveCommentAsync(int commentId)
         {
-            int rows = -1;
             try
             {
-                connectionString.Open();
-                var sql = "DELETE FROM [dbo].[Comments] WHERE [CommentId] = @CommentId";
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@CommentId", CommentId);
-                rows = cmd.ExecuteNonQuery();
-
-                
+                var comment = await _context.Comments.FindAsync(commentId);
+                if (comment != null)
+                {
+                    _context.Comments.Remove(comment);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    Console.WriteLine($"Comment with ID {commentId} not found.");
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
-            finally { connectionString.Close(); }
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Data.Models
         public string ExtraName { get; set; }
 
         // Foreign Key to Car
-        public int CarId { get; set; }
+        public int CarId { get; set; } // Ensure only one CarId is defined
         public Car Car { get; set; }
     }
 }

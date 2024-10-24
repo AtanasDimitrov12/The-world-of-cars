@@ -1,39 +1,40 @@
-﻿using Database;
-using DatabaseAccess;
+﻿using AutoMapper;
+using Data.Models;
 using DTO;
-using Entity_Layer.Enums;
-using EntityLayout;
+using DTO.Enums;
 using InterfaceLayer;
+using Manager_Layer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Entity_Layer.Interfaces;
-using Manager_Layer;
+using System.Threading.Tasks;
 
-namespace Entity_Layer
+namespace ManagerLayer
 {
     public class RentManager : IRentManager
     {
-        public List<RentACar> RentalHistory { get; set; }
+        public List<RentACarDTO> RentalHistory { get; set; }
         private readonly IDataAccess _dataAccess;
         private readonly IPeopleDataWriter _dataWriter;
         private readonly IPeopleDataRemover _dataRemover;
         private readonly IPeopleManager _peopleManager;
         private readonly ICarManager _carManager;
         private readonly IRentalStrategyFactory _rentalStrategyFactory;
+        private readonly IMapper _mapper;
 
-        public RentManager(IDataAccess dataAccess, IPeopleDataWriter dataWriter, IPeopleDataRemover dataRemover, IPeopleManager peopleManager, ICarManager carManager, IRentalStrategyFactory rentalStrategyFactory)
+        public RentManager(IDataAccess dataAccess, IPeopleDataWriter dataWriter, IPeopleDataRemover dataRemover, IPeopleManager peopleManager, ICarManager carManager, IRentalStrategyFactory rentalStrategyFactory, IMapper mapper)
         {
-            RentalHistory = new List<RentACar>();
+            RentalHistory = new List<RentACarDTO>();
             _dataAccess = dataAccess;
             _dataWriter = dataWriter;
             _dataRemover = dataRemover;
             _peopleManager = peopleManager;
             _carManager = carManager;
             _rentalStrategyFactory = rentalStrategyFactory;
+            _mapper = mapper;
         }
 
-        public decimal CalculatePrice(User user, decimal basePrice, DateTime startDate, DateTime endDate)
+        public decimal CalculatePrice(UserDTO user, decimal basePrice, DateTime startDate, DateTime endDate)
         {
             int days = (endDate - startDate).Days;
             int discount = CheckForDiscount(user);
@@ -41,126 +42,116 @@ namespace Entity_Layer
             return strategy.CalculateRentalPrice(basePrice, days, discount);
         }
 
-        public int CheckForDiscount(User user)
-        { 
-
-            int numOfRents = RentalHistory.Count(r => r.user == user && r.RentStatus != RentStatus.CANCELLED);
+        public int CheckForDiscount(UserDTO user)
+        {
+            int numOfRents = RentalHistory.Count(r => r.UserId == user.Id && r.Status != RentStatus.CANCELLED.ToString());
             if (numOfRents >= 25) return 10;
             if (numOfRents >= 10) return 5;
             return 0;
         }
 
-        public bool RentACar(RentACar rentACar, out string errorMessage)
+        public async Task<(bool Success, string ErrorMessage)> RentACarAsync(RentACarDTO rentDTO)
         {
-            errorMessage = string.Empty;
             try
             {
-                _dataWriter.RentACar(rentACar.car.Id, rentACar.user.Id, rentACar.StartDate, rentACar.ReturnDate, rentACar.RentStatus.ToString());
-                RentalHistory.Add(rentACar);
-                return true;
+                var rental = _mapper.Map<Rental>(rentDTO);
+                await _dataWriter.RentACarAsync(rental);
+
+                // Add to RentalHistory DTO list
+                RentalHistory.Add(rentDTO);
+                return (true, null);
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message);
             }
         }
 
-        public bool UpdateRentStatus(RentACar rental, RentStatus newStatus, out string errorMessage)
+        public async Task<(bool Success, string ErrorMessage)> UpdateRentStatusAsync(RentACarDTO rentalDTO, RentStatus newStatus)
         {
-            errorMessage = string.Empty;
             try
             {
-                var strategy = _rentalStrategyFactory.GetRentalStrategy(rental.StartDate, rental.ReturnDate);
-                strategy.UpdateRentalStatus(rental, newStatus);
-                _dataWriter.UpdateRent(rental);
-                return true;
+                var strategy = _rentalStrategyFactory.GetRentalStrategy(rentalDTO.StartDate, rentalDTO.EndDate);
+                strategy.UpdateRentalStatus(rentalDTO, newStatus);
+
+                var rental = _mapper.Map<Rental>(rentalDTO);
+                await _dataWriter.UpdateRentAsync(rental);
+
+                // Update the DTO status in RentalHistory
+                rentalDTO.Status = newStatus.ToString();
+                return (true, null);
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message);
             }
         }
 
-        public bool RemoveRent(RentACar rental, out string errorMessage)
+        public async Task<(bool Success, string ErrorMessage)> RemoveRentAsync(RentACarDTO rentalDTO)
         {
-            errorMessage = string.Empty;
             try
             {
-                _dataRemover.RemoveRental(rental);
-                RentalHistory.Remove(rental);
-                return true;
+                var rental = _mapper.Map<Rental>(rentalDTO);
+                await _dataRemover.RemoveRentalAsync(rental);
+                RentalHistory.Remove(rentalDTO);
+                return (true, null);
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
-
-
-
-
+                return (false, ex.Message);
             }
         }
 
-        public List<RentACar> GetRentedPeriods(int carId)
+        public async Task<(bool Success, string ErrorMessage)> LoadRentalsAsync()
+        {
+            try
+            {
+                var loadedRentals = await _dataAccess.GetRentalsAsync();
+                if (loadedRentals == null)
+                {
+                    return (false, "No rentals to load.");
+                }
+
+                foreach (var rents in loadedRentals)
+                {
+                    if (rents == null) continue;
+
+                    
+
+                    var user = _peopleManager.GetAllUsers().FirstOrDefault(u => u.Id == rents.UserId);
+                    if (user == null) continue;
+
+                    var car = _carManager.GetCars().FirstOrDefault(c => c.Id == rents.CarId);
+                    if (car == null) continue;
+
+                    if (rents.EndDate < DateTime.Now) rents.Status = RentStatus.COMPLETED.ToString();
+
+                    
+
+                    // Add to RentalHistory as DTO
+                    RentalHistory.Add(_mapper.Map<RentACarDTO>(rents)); // Add custom logic for calculate total price || call the method on the top
+                }
+
+                return (true, null);
+            }
+            catch (Exception ex)
+            {
+                return (false, $"Error: {ex.Message}");
+            }
+        }
+
+        public List<RentACarDTO> GetRentedPeriods(int carId)
         {
             return RentalHistory
-                .Where(r => r.car.Id == carId && r.RentStatus != RentStatus.CANCELLED)
+                .Where(r => r.CarId == carId && r.Status != RentStatus.CANCELLED.ToString())
                 .ToList();
         }
 
         public bool IsCarAvailable(int carId, DateTime startDate, DateTime endDate)
         {
             return RentalHistory
-                .Where(r => r.car.Id == carId)
-                .All(r => startDate >= r.ReturnDate || endDate <= r.StartDate);
-        }
-
-        public bool LoadRentals(out string errorMessage)
-        {
-            errorMessage = string.Empty;
-            try
-            {
-                var loadedRentals = _dataAccess.GetRentals();
-                if (loadedRentals == null)
-                {
-                    errorMessage = "No rentals to load.";
-                    return false;
-                }
-
-                foreach (var rentDTO in loadedRentals)
-                {
-                    if (rentDTO == null) continue;
-
-                    if (!Enum.TryParse(rentDTO.Status.ToUpper(), true, out RentStatus status))
-                    {
-                        errorMessage = $"Warning: {rentDTO.Id} has an invalid status assigned.";
-                        return false;
-                    }
-
-                    var user = _peopleManager.GetAllUsers().FirstOrDefault(u => u.Id == rentDTO.UserID);
-                    if (user == null) continue;
-
-                    var car = _carManager.GetCars().FirstOrDefault(c => c.Id == rentDTO.CarId);
-                    if (car == null) continue;
-
-                    if (rentDTO.ReturnDate < DateTime.Now) status = RentStatus.COMPLETED;
-
-                    var rental = new RentACar(user, car, rentDTO.StartDate, rentDTO.ReturnDate, status)
-                    {
-                        TotalPrice = CalculatePrice(user, car.PricePerDay, rentDTO.StartDate, rentDTO.ReturnDate)
-                    };
-                    RentalHistory.Add(rental);
-                }
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                errorMessage = $"Error: {ex.Message}";
-                return false;
-            }
+                .Where(r => r.CarId == carId)
+                .All(r => startDate >= r.EndDate || endDate <= r.StartDate);
         }
     }
 }

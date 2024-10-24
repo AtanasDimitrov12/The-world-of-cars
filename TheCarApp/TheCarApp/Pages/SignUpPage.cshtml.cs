@@ -1,7 +1,7 @@
 using ManagerLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Entity_Layer;
+using DTO;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -62,8 +62,19 @@ namespace TheCarApp.Pages
                 return Page();
             }
 
-            var newUser = new User(0, Email, Password, Username, DateTime.Now, int.Parse(LicenseNumber), null, "/pictures/profile_pictures/blank-profile-picture.jpg");
-            if (_projectManager.PeopleManager.AddPerson(newUser, out string ErrorMessage))
+            var newUser = new UserDTO
+            {
+                Id = 0,
+                Email = Email,
+                PasswordHash = Password,
+                Username = Username,
+                ModifiedOn = DateTime.Now,
+                LicenseNumber = int.Parse(LicenseNumber),
+                Salt = null,
+                ProfilePictureFilePath = "/pictures/profile_pictures/blank-profile-picture.jpg"
+            };
+            (bool Response, string ErrorMessage) = await _projectManager.PeopleManager.AddPersonAsync(newUser);
+            if (Response)
             {
                 var claims = new List<Claim>
                 {

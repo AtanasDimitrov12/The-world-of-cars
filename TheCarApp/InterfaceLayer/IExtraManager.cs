@@ -1,4 +1,4 @@
-﻿using Entity_Layer;
+﻿using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +9,11 @@ namespace InterfaceLayer
 {
     public interface IExtraManager
     {
-        List<Extra> extras { get; set; }
-        bool AddExtra(Extra extra, out string errorMessage);
-        bool RemoveExtra(Extra extra, out string errorMessage);
-        int GetExtraId(string extraName);
-        bool LoadExtra(out string errorMessage);
+        Task<(bool Success, string ErrorMessage)> AddExtraAsync(ExtraDTO extraDTO);
+        Task<(bool Success, string ErrorMessage)> RemoveExtraAsync(ExtraDTO extraDTO);
+        Task<int> GetExtraIdAsync(string extraName);
+        Task<(bool Success, string ErrorMessage)> LoadExtraAsync();
+        List<ExtraDTO> Extras { get; set; }
     }
 
 }

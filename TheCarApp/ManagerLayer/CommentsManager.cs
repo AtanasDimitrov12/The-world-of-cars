@@ -1,57 +1,71 @@
-﻿using Database;
-using Entity_Layer;
-using EntityLayout;
+﻿using AutoMapper;
 using InterfaceLayer;
-using System;
+using Data.Models;
+using DTO;
 
 namespace ManagerLayer
 {
     public class CommentsManager : ICommentsManager
     {
-        private readonly IDataAccess _dataAccess;
         private readonly ICarNewsDataWriter _dataWriter;
         private readonly ICarNewsDataRemover _dataRemover;
+        private readonly IMapper _mapper;
 
-        public CommentsManager(IDataAccess dataAccess, ICarNewsDataWriter dataWriter, ICarNewsDataRemover dataRemover)
+        public CommentsManager(ICarNewsDataWriter dataWriter, ICarNewsDataRemover dataRemover, IMapper mapper)
         {
-            _dataAccess = dataAccess;
             _dataWriter = dataWriter;
             _dataRemover = dataRemover;
+            _mapper = mapper;
         }
 
-        public bool AddComment(CarNews news, Comment comment, out string errorMessage)
+        // Adds a comment to a news article and maps it to CommentDTO
+        public async Task<(bool Success, string ErrorMessage)> AddCommentAsync(CarNewsDTO newsDTO, CommentDTO commentDTO)
         {
-            errorMessage = string.Empty;
             try
             {
-                _dataWriter.AddComment(news.Id, comment.UserId, comment.Date, comment.Message);
-                int commentId = _dataWriter.GetCommentId(comment.Date);
-                comment.Id = commentId;
-                news.Comments.Add(comment);
-                news.NrOfComments++;
-                return true;
+                // Map DTO to entity
+                var comment = _mapper.Map<Comment>(commentDTO);
+
+                // Add the comment using the data writer
+                await _dataWriter.AddCommentAsync(newsDTO.Id, comment.UserId, comment.CommentDate, comment.Content);
+
+                // Retrieve the comment ID and update the comment entity
+                int commentId = Convert.ToInt32(_dataWriter.GetCommentIdAsync(comment.CommentDate));
+                comment.CommentId = commentId;
+
+                // Map the updated comment back to DTO and add it to the DTO list
+                var updatedCommentDTO = _mapper.Map<CommentDTO>(comment);
+                newsDTO.Comments.Add(updatedCommentDTO);
+                newsDTO.NrOfComments++;
+
+                return (true, null);
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message);
             }
         }
 
-        public bool RemoveComment(CarNews news, Comment comment, out string errorMessage)
+        // Removes a comment from a news article and updates the DTO
+        public async Task<(bool Success, string ErrorMessage)> RemoveCommentAsync(CarNewsDTO newsDTO, CommentDTO commentDTO)
         {
-            errorMessage = string.Empty;
             try
             {
-                _dataRemover.RemoveComment(comment.Id);
-                news.Comments.Remove(comment);
-                news.NrOfComments--;
-                return true;
+                // Map DTO to entity
+                var comment = _mapper.Map<Comment>(commentDTO);
+
+                // Remove the comment using the data remover
+                await _dataRemover.RemoveCommentAsync(comment.CommentId);
+
+                // Remove the comment from the DTO list and update the comment count
+                newsDTO.Comments.Remove(commentDTO);
+                newsDTO.NrOfComments--;
+
+                return (true, null);
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message);
             }
         }
     }
