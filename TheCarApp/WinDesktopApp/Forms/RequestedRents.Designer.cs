@@ -1,6 +1,6 @@
 ﻿namespace WinDesktopApp.Forms
 {
-    partial class RequestedRentsUC
+    partial class RequestedRents
     {
         /// <summary>
         /// Required designer variable.

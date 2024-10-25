@@ -13,7 +13,7 @@ using DTO;
 using Manager_Layer;
 using System.Xml.Linq;
 
-namespace DesktopApp
+namespace WinDesktopApp.UserControls
 {
     public partial class CommentsControlUC : UserControl
     {

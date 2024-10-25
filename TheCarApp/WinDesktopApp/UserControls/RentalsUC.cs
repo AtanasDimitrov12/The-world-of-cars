@@ -1,5 +1,4 @@
-﻿using DesktopApp;
-using InterfaceLayer;
+﻿using InterfaceLayer;
 using Manager_Layer;
 using ManagerLayer;
 using System;
@@ -203,7 +202,7 @@ namespace WinDesktopApp.UserControls
         
         private void BTNCheckRentals_Click(object sender, EventArgs e)
         {
-            RequestedRentsUC checkRentals = new RequestedRentsUC(rentManager, carManager, userManager);
+            RequestedRents checkRentals = new RequestedRents(rentManager, carManager, userManager);
             checkRentals.RentChanged += ChangeRent_RentChanged;
             checkRentals.Show();
         }

@@ -13,7 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 using System.IO;
 
-namespace DesktopApp
+namespace WinDesktopApp.Forms
 {
     public partial class AddNews : Form
     {

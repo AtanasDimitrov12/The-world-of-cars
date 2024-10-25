@@ -6,7 +6,7 @@ using WinDesktopApp.Models;
 using WinDesktopApp.UserControls;
 using DTO;
 
-namespace DesktopApp
+namespace WinDesktopApp.UserControls
 {
     public partial class CarControlUC : UserControl
     {

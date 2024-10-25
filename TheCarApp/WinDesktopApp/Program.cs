@@ -1,47 +1,52 @@
-using DesktopApp;
+using System;
+using System.Windows.Forms;
+using WinDesktopApp;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Data;
+using WinDesktopApp.Forms;
 
 namespace WinDesktopApp
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // Create a service collection and configure the DbContext
+            
+
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
 
-            // Build the service provider to get the CarAppContext
-            using (var serviceProvider = serviceCollection.BuildServiceProvider())
+            try
             {
-                // Resolve CarAppContext
-                using (var context = serviceProvider.GetRequiredService<CarAppContext>())
+                using (var serviceProvider = serviceCollection.BuildServiceProvider())
                 {
-                    // Apply pending migrations (this will create the database if it doesn't exist)
-                    context.Database.Migrate();
-                    //context.Database.EnsureCreated();
-
-                    // Seed the admin if the Administrators table is empty
-                    //context.SeedAdminIfTableIsEmpty();
+                    using (var context = serviceProvider.GetRequiredService<CarAppContext>())
+                    {
+                        // Apply migrations if needed
+                        context.Database.Migrate();
+                    }
                 }
-            }
 
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new ControlPage());
+                // Initialize the application and run the main form
+                ApplicationConfiguration.Initialize();
+                //MessageBox.Show("Worked!");
+                Application.Run(new ControlPage());
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during startup: {ex.Message}");
+            }
+            finally
+            {
+                
+            }
         }
 
-        // Configure the services, including DbContext
         private static void ConfigureServices(IServiceCollection services)
         {
-            // Add DbContext with your connection string
             services.AddDbContext<CarAppContext>(options =>
                 options.UseSqlServer(Configuration.ConnectionString));
         }

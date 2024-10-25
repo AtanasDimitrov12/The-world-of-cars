@@ -12,8 +12,9 @@ using InterfaceLayer;
 using Manager_Layer;
 using DTO;
 using System.Text.RegularExpressions;
+using WinDesktopApp.Forms;
 
-namespace DesktopApp
+namespace WinDesktopApp.UserControls
 {
     public partial class CarNewsUC : UserControl
     {

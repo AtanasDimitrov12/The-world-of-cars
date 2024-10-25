@@ -1,13 +1,7 @@
-﻿using DesktopApp;
-using InterfaceLayer;
+﻿using InterfaceLayer;
 using Manager_Layer;
-using ManagerLayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DTO;
+using WinDesktopApp.Forms;
 
 namespace WinDesktopApp.Models
 {

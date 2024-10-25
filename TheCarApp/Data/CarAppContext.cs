@@ -20,20 +20,20 @@ namespace Data
 
         public CarAppContext(DbContextOptions<CarAppContext> options) : base(options) { }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            // Use your connection string here
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(Configuration.ConnectionString);
-            }
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    // Use your connection string here
+        //    if (!optionsBuilder.IsConfigured)
+        //    {
+        //        optionsBuilder.UseSqlServer(Configuration.ConnectionString);
+        //    }
+        //}
 
-        public void ApplyMigrations()
-        {
-            // Apply any pending migrations
-            Database.Migrate();
-        }
+        //public void ApplyMigrations()
+        //{
+        //    // Apply any pending migrations
+        //    Database.Migrate();
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -15,14 +15,14 @@ using DTO;
 
 namespace WinDesktopApp.Forms
 {
-    public partial class RequestedRentsUC : Form
+    public partial class RequestedRents : Form
     {
         IRentManager rentManager;
         ICarManager carManager;
         IUserManager userManager;
         List<RentACarDTO> rentals;
         public event EventHandler RentChanged;
-        public RequestedRentsUC(IRentManager rm, ICarManager cm, IUserManager um)
+        public RequestedRents(IRentManager rm, ICarManager cm, IUserManager um)
         {
             InitializeComponent();
             rentManager = rm;

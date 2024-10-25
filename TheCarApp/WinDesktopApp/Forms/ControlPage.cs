@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿
 using ManagerLayer;
 using WinDesktopApp.UserControls;
 
-namespace DesktopApp
+namespace WinDesktopApp.Forms
 {
     public partial class ControlPage : Form
     {
@@ -41,6 +33,8 @@ namespace DesktopApp
             carControlUC.rentalsUC = rentalsUC;
             carNewsUC.admInfo = adminInfoUC;
         }
+
+        
 
 
         public void AddUC()

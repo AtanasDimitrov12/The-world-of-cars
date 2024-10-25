@@ -15,7 +15,7 @@ using InterfaceLayer;
 using WinDesktopApp.Forms;
 using Data.Models;
 
-namespace DesktopApp
+namespace WinDesktopApp.Forms
 {
     public partial class AddCar : Form
     {

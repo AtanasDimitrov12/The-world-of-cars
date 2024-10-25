@@ -13,7 +13,7 @@ using WinDesktopApp.Forms;
 using Manager_Layer;
 using DTO;
 
-namespace DesktopApp
+namespace WinDesktopApp.UserControls
 {
     public partial class AdminInfoUC : UserControl
     {
