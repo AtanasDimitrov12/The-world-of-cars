@@ -1,86 +1,104 @@
-﻿using Database;
-using DTO;
-using Entity_Layer;
-using EntityLayout;
-using InterfaceLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
+using Data.Models;
+using DTO;
+using InterfaceLayer;
 
 namespace ManagerLayer
 {
     public class ExtraManager : IExtraManager
     {
-        public List<Extra> extras { get; set; }
+        public List<ExtraDTO> Extras { get; set; }
         private readonly IDataAccess _dataAccess;
         private readonly ICarDataWriter _dataWriter;
         private readonly ICarDataRemover _dataRemover;
+        private readonly IMapper _mapper;
 
-        public ExtraManager(IDataAccess dataAccess, ICarDataWriter dataWriter, ICarDataRemover dataRemover)
+        public ExtraManager(IDataAccess dataAccess, ICarDataWriter dataWriter, ICarDataRemover dataRemover, IMapper mapper)
         {
-            extras = new List<Extra>();
-            this._dataAccess = dataAccess;
+            Extras = new List<ExtraDTO>();
+            _dataAccess = dataAccess;
             _dataWriter = dataWriter;
             _dataRemover = dataRemover;
-            LoadExtra(out _); // Initialize extras list
+            _mapper = mapper;
+
+            LoadExtraAsync().Wait(); // Initialize extras list asynchronously
         }
 
-        public bool AddExtra(Extra extra, out string errorMessage)
+        // Adds a new Extra to the system and maps to ExtraDTO
+        public async Task<(bool Success, string ErrorMessage)> AddExtraAsync(ExtraDTO extraDTO)
         {
-            errorMessage = string.Empty;
             try
             {
-                _dataWriter.AddExtra(extra.ExtraName);
-                extras.Add(extra);
-                return true;
+                // Map DTO to entity
+                var extra = _mapper.Map<CarExtra>(extraDTO);
+
+                // Add to the database
+                await _dataWriter.AddExtra(extra.ExtraName);
+
+                // Map back to DTO and add to the list
+                var updatedExtraDTO = _mapper.Map<ExtraDTO>(extra);
+                Extras.Add(updatedExtraDTO);
+
+                return (true, null); // Success
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message); // Return error message on failure
             }
         }
 
-        public bool RemoveExtra(Extra extra, out string errorMessage)
+        // Removes an Extra from the system and maps from ExtraDTO
+        public async Task<(bool Success, string ErrorMessage)> RemoveExtraAsync(ExtraDTO extraDTO)
         {
-            errorMessage = string.Empty;
             try
             {
-                _dataRemover.RemoveExtra(extra.Id);
-                extras.Remove(extra);
-                return true;
+                // Map DTO to entity
+                var extra = _mapper.Map<CarExtra>(extraDTO);
+
+                // Remove from the database
+                await _dataRemover.RemoveExtraAsync(extra.CarExtraId);
+
+                // Remove from the list
+                Extras.Remove(extraDTO);
+
+                return (true, null); // Success
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message); // Return error message on failure
             }
         }
 
-        public int GetExtraId(string extraName)
+        // Gets the ID of the Extra based on its name
+        public async Task<int> GetExtraIdAsync(string extraName)
         {
-            return _dataWriter.GetExtraId(extraName);
+            return await _dataWriter.GetExtraId(extraName);
         }
 
-        public bool LoadExtra(out string errorMessage)
+        // Loads Extras from the database and maps to ExtraDTO
+        public async Task<(bool Success, string ErrorMessage)> LoadExtraAsync()
         {
-            errorMessage = string.Empty;
             try
             {
-                var loadExtras = _dataAccess.GetAllExtras();
-                if (loadExtras != null)
+                var loadedExtras = await _dataAccess.GetAllExtrasAsync();
+                if (loadedExtras != null)
                 {
-                    foreach (ExtraDTO ex in loadExtras)
+                    Extras.Clear();
+                    foreach (var extraDTO in loadedExtras)
                     {
-                        Extra extra = new Extra(ex.extraName, ex.Id);
-                        extras.Add(extra);
+                        // Map each ExtraDTO to its entity
+                        var extra = _mapper.Map<ExtraDTO>(extraDTO);
+                        Extras.Add(extra);
                     }
                 }
-                return true;
+                return (true, null); // Success
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message); // Return error message on failure
             }
         }
     }

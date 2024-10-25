@@ -61,6 +61,7 @@ namespace Data.Models
 
         // Combined from CarDescription table
         public string CarDescription { get; set; }
+
         public decimal PricePerDay { get; set; }
 
         // Combined from CarViews table
@@ -71,8 +72,7 @@ namespace Data.Models
         public virtual ICollection<CarExtra> CarExtras { get; set; }
         public virtual ICollection<Rental> Rentals { get; set; }
 
-
-        public Car() 
+        public Car()
         {
             CarPictures = new HashSet<CarPicture>();
             CarExtras = new HashSet<CarExtra>();

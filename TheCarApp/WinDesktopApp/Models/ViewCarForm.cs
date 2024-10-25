@@ -1,14 +1,7 @@
-﻿using DesktopApp;
-using Entity_Layer;
-using EntityLayout;
-using InterfaceLayer;
+﻿using InterfaceLayer;
 using Manager_Layer;
-using ManagerLayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DTO;
+using WinDesktopApp.Forms;
 
 namespace WinDesktopApp.Models
 {
@@ -16,7 +9,7 @@ namespace WinDesktopApp.Models
     {
         private readonly AddCar _addCarForm;
 
-        public ViewCarForm(Car car, ICarManager cm, IExtraManager em, IPictureManager picManager)
+        public ViewCarForm(CarDTO car, ICarManager cm, IExtraManager em, IPictureManager picManager)
         {
             _addCarForm = new AddCar(car, cm, em, picManager, true);
             _addCarForm.BTNAddCarGet.Click += OnAddCarClicked;
@@ -51,9 +44,9 @@ namespace WinDesktopApp.Models
             addCar.CarAdded += (s, e) => CarActionCompleted?.Invoke(this, e);
         }
 
-        public void LoadCarData(Car car) => _addCarForm.LoadCarData();
+        public void LoadCarData(CarDTO car) => _addCarForm.LoadCarData();
 
-        public void LoadExtrasAndPictures(List<Extra> extras, List<Picture> pictures) => _addCarForm.LoadCB();
+        public void LoadExtrasAndPictures(List<ExtraDTO> extras, List<PictureDTO> pictures) => _addCarForm.LoadCB();
 
         private void OnAddCarClicked(object sender, EventArgs e)
         {

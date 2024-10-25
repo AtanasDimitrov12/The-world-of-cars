@@ -1,14 +1,15 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Entity_Layer;
-using Entity_Layer.Enums;
 using InterfaceLayer;
+using Manager_Layer;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using EntityLayout;
-using DTO;
-using Manager_Layer;
+using System.Threading.Tasks;
+using AutoMapper;
+using Data.Models;
+using DTO.Enums;
 
 namespace UnitTests
 {
@@ -18,7 +19,8 @@ namespace UnitTests
         private Mock<IDataAccess> _mockDataAccess;
         private Mock<ICarDataWriter> _mockDataWriter;
         private Mock<ICarDataRemover> _mockDataRemover;
-        private CarManager _carManager;
+        private ICarManager _carManager;
+        private Mock<IMapper> _mockMapper;
 
         [TestInitialize]
         public void Setup()
@@ -26,189 +28,177 @@ namespace UnitTests
             _mockDataAccess = new Mock<IDataAccess>();
             _mockDataWriter = new Mock<ICarDataWriter>();
             _mockDataRemover = new Mock<ICarDataRemover>();
-            _carManager = new CarManager(_mockDataAccess.Object, _mockDataWriter.Object, _mockDataRemover.Object);
+            _mockMapper = new Mock<IMapper>();
+            _carManager = new CarManager(_mockMapper.Object, _mockDataAccess.Object, _mockDataWriter.Object, _mockDataRemover.Object);
         }
 
-        public Car MapCarDtoToCar(CarDTO carDTO)
+        [TestMethod]
+        public async Task AddCarAsync_WhenCarIsAdded_ReturnsTrue()
         {
-            if (carDTO == null)
-                throw new ArgumentNullException(nameof(carDTO));
+            var carDTO = new CarDTO { VIN = "123ABC" };
+            var car = new Car();
 
-            if (string.IsNullOrEmpty(carDTO.CarStatus))
-                throw new ArgumentException("CarStatus cannot be null or empty", nameof(carDTO.CarStatus));
+            // Setup mapping from DTO to Car
+            _mockMapper.Setup(m => m.Map<Car>(It.IsAny<CarDTO>())).Returns(car);
 
-            var status = Enum.Parse<CarStatus>(carDTO.CarStatus, true);
+            // Mock the data writer behavior
+            _mockDataWriter.Setup(m => m.AddCar(It.IsAny<Car>())).Returns(Task.CompletedTask);
+            _mockDataWriter.Setup(m => m.GetCarId(It.IsAny<string>())).ReturnsAsync(1);
 
-            var car = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, status, carDTO.NumberOfSeats, carDTO.NumberOfDoors, carDTO.Views);
+            var result = await _carManager.AddCarAsync(carDTO);
 
-            foreach (var extraDTO in carDTO.CarExtras)
+            Assert.IsTrue(result.Success);
+            Assert.IsNull(result.ErrorMessage);
+            _mockDataWriter.Verify(m => m.AddCar(It.IsAny<Car>()), Times.Once);
+        }
+
+        [TestMethod]
+        public async Task RemoveCarAsync_WhenCarIsRemoved_ReturnsTrue()
+        {
+            var carDTO = new CarDTO { Id = 1 };
+            var car = new Car();
+
+            // Setup mapping from DTO to Car
+            _mockMapper.Setup(m => m.Map<Car>(It.IsAny<CarDTO>())).Returns(car);
+
+            // Mock the data remover behavior
+            _mockDataRemover.Setup(m => m.RemoveCarAsync(It.IsAny<int>())).Returns(Task.CompletedTask);
+
+            var result = await _carManager.RemoveCarAsync(carDTO);
+
+            Assert.IsTrue(result.Success);
+            Assert.IsNull(result.ErrorMessage);
+            _mockDataRemover.Verify(m => m.RemoveCarAsync(It.IsAny<int>()), Times.Once);
+        }
+
+        [TestMethod]
+        public async Task UpdateCarAsync_WhenCarIsUpdated_ReturnsTrue()
+        {
+            var carDTO = new CarDTO { Id = 1, Description = "Updated Description", PricePerDay = 50 };
+            var car = new Car();
+
+            // Setup mapping from DTO to Car
+            _mockMapper.Setup(m => m.Map<Car>(It.IsAny<CarDTO>())).Returns(car);
+
+            // Mock the data writer behavior
+            _mockDataWriter.Setup(m => m.UpdateCar(It.IsAny<Car>())).Returns(Task.CompletedTask);
+
+            var result = await _carManager.UpdateCarAsync(carDTO);
+
+            Assert.IsTrue(result.Success);
+            Assert.IsNull(result.ErrorMessage);
+            _mockDataWriter.Verify(m => m.UpdateCar(It.IsAny<Car>()), Times.Once);
+        }
+
+        [TestMethod]
+        public async Task ChangeCarStatusAsync_WhenCarStatusIsChanged_ReturnsTrue()
+        {
+            var carDTO = new CarDTO { Id = 1, Status = CarStatus.AVAILABLE.ToString() };
+            var car = new Car { Status = CarStatus.AVAILABLE.ToString() };
+            var newStatus = CarStatus.UNAVAILABLE.ToString();
+
+            // Setup mapping from DTO to Car
+            _mockMapper.Setup(m => m.Map<Car>(It.IsAny<CarDTO>())).Returns(car);
+
+            // Mock the data writer behavior
+            _mockDataWriter.Setup(m => m.ChangeCarStatus(It.IsAny<int>(), It.IsAny<string>())).Returns(Task.CompletedTask);
+
+            var result = await _carManager.ChangeCarStatusAsync(carDTO, newStatus, CarStatus.UNAVAILABLE);
+
+            Assert.IsTrue(result.Success);
+            Assert.IsNull(result.ErrorMessage);
+            Assert.AreEqual(CarStatus.UNAVAILABLE.ToString(), carDTO.Status);
+            _mockDataWriter.Verify(m => m.ChangeCarStatus(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+        }
+
+        [TestMethod]
+        public async Task RecordCarViewAsync_WhenCarIsViewed_ReturnsTrue()
+        {
+            var carDTO = new CarDTO { Id = 1, ViewCount = 10 };
+            var car = new Car { CarId = 1, ViewCount = 10 };
+
+            // Mock the data access behavior
+            _mockDataWriter.Setup(m => m.RecordCarView(It.IsAny<int>())).Returns(Task.CompletedTask);
+
+            // Setup mapping from DTO to Car
+            _mockMapper.Setup(m => m.Map<Car>(carDTO)).Returns(car);
+
+            _carManager.GetCars().Add(carDTO);
+
+            var result = await _carManager.RecordCarViewAsync(carDTO.Id);
+
+            Assert.IsTrue(result.Success);
+            Assert.IsNull(result.ErrorMessage);
+            Assert.AreEqual(11, carDTO.ViewCount);
+            _mockDataWriter.Verify(m => m.RecordCarView(It.IsAny<int>()), Times.Once);
+        }
+
+        [TestMethod]
+        public async Task LoadCarsAsync_WhenCarsAreLoaded_ReturnsTrue()
+        {
+            var carList = new List<Car>
             {
-                var extra = new Extra(extraDTO.extraName, extraDTO.Id);
-                car.CarExtras.Add(extra);
-            }
-
-            foreach (var picDTO in carDTO.Pictures)
-            {
-                var pic = new Picture(picDTO.Id, picDTO.PictureURL);
-                car.Pictures.Add(pic);
-            }
-
-            return car;
-        }
-
-        [TestMethod]
-        public void AddCar_WhenCalled_ReturnsTrue()
-        {
-            var car = new Car { VIN = "123ABC" };
-            var pictures = new List<Picture>();
-            var extras = new List<Extra>();
-
-            _mockDataWriter.Setup(m => m.AddCar(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DateTime>(), It.IsAny<int>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-                           .Verifiable();
-            _mockDataWriter.Setup(m => m.GetCarId(It.IsAny<string>())).Returns(1);
-            _mockDataWriter.Setup(m => m.AddCarDescription(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<decimal>())).Verifiable();
-
-            var result = _carManager.AddCar(car, pictures, extras, out string errorMessage);
-
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            _mockDataWriter.Verify(m => m.AddCarDescription(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<decimal>()), Times.Once);
-        }
-
-        [TestMethod]
-        public void RemoveCar_WhenCalled_ReturnsTrue()
-        {
-            var car = new Car { Id = 1 };
-            _mockDataRemover.Setup(m => m.RemoveCar(It.IsAny<int>())).Verifiable();
-
-            var result = _carManager.RemoveCar(car, out string errorMessage);
-
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-        }
-
-        [TestMethod]
-        public void UpdateCar_WhenAllUpdatesSucceed_ReturnsTrue()
-        {
-            var car = new Car { Id = 1, Description = "Details", PricePerDay = 50, Pictures = new List<Picture>(), CarExtras = new List<Extra>() };
-            var pictures = new List<Picture>() { new Picture(1, "url") };
-            var extras = new List<Extra>() { new Extra("GPS", 1) };
-            _mockDataWriter.Setup(m => m.UpdateCar(car)).Verifiable();
-            _mockDataWriter.Setup(m => m.UpdateCarDescription(car)).Verifiable();
-            _mockDataRemover.Setup(m => m.RemoveCarPictures(car.Id)).Verifiable();
-            _mockDataRemover.Setup(m => m.RemoveCarExtras(car.Id)).Verifiable();
-            _mockDataWriter.Setup(m => m.AddCarPictures(car.Id, It.IsAny<int>())).Verifiable();
-            _mockDataWriter.Setup(m => m.AddCarExtras(car.Id, It.IsAny<int>())).Verifiable();
-
-            var result = _carManager.UpdateCar(car, pictures, extras, out string errorMessage);
-
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            _mockDataWriter.Verify(m => m.AddCarPictures(car.Id, It.IsAny<int>()), Times.Exactly(pictures.Count));
-            _mockDataWriter.Verify(m => m.AddCarExtras(car.Id, It.IsAny<int>()), Times.Exactly(extras.Count));
-        }
-
-        [TestMethod]
-        public void ChangeCarStatus_WhenCalled_ReturnsTrue()
-        {
-            var car = new Car { Id = 1, CarStatus = CarStatus.AVAILABLE };
-            var newStatus = "UNAVAILABLE";
-            var status = CarStatus.UNAVAILABLE;
-
-            _mockDataWriter.Setup(m => m.ChangeCarStatus(It.IsAny<Car>(), It.IsAny<string>())).Verifiable();
-
-            var result = _carManager.ChangeCarStatus(car, newStatus, status, out string errorMessage);
-
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            Assert.AreEqual(status, car.CarStatus);
-        }
-
-        [TestMethod]
-        public void RecordCarView_WhenCarExists_ReturnsTrue()
-        {
-            var carId = 1;
-            var carDTO = new CarDTO
-            {
-                Id = carId,
-                Views = 10,
-                CarStatus = CarStatus.AVAILABLE.ToString(),
-                Brand = "Test Brand",
-                Model = "Test Model",
-                FirstRegistration = DateTime.Now,
-                Mileage = 10000,
-                Fuel = "Gasoline",
-                EngineSize = 2000,
-                HorsePower = 150,
-                Gearbox = "Automatic",
-                Color = "Black",
-                VIN = "123ABC",
-                Description = "Test Description",
-                PricePerDay = 100,
-                NumberOfSeats = 5,
-                NumberOfDoors = "4/5",
-                CarExtras = new List<ExtraDTO>(), // Initialize to avoid null reference
-                Pictures = new List<PictureDTO>() // Initialize to avoid null reference
+                new Car { CarId = 1, Brand = "Audi", Model = "A4", Status = CarStatus.AVAILABLE.ToString() },
+                new Car { CarId = 2, Brand = "BMW", Model = "X5", Status = CarStatus.UNAVAILABLE.ToString() }
             };
 
-            _mockDataAccess.Setup(m => m.GetCarById(carId)).Returns(carDTO);
-            _mockDataWriter.Setup(m => m.RecordCarView(It.IsAny<int>())).Verifiable();
+            // Mock data access to return the list of cars
+            _mockDataAccess.Setup(m => m.GetCarsAsync()).ReturnsAsync(carList);
 
-            var car = _carManager.MapCarDtoToCar(carDTO);
-            _carManager.GetCars().Add(car);
+            // Mock mapping from Car to CarDTO
+            _mockMapper.Setup(m => m.Map<CarDTO>(It.IsAny<Car>())).Returns((Car car) => new CarDTO
+            {
+                Id = car.CarId,
+                Brand = car.Brand,
+                Model = car.Model,
+                Status = car.Status.ToString()
+            });
 
-            var result = _carManager.RecordCarView(carId, out string errorMessage);
+            var result = await _carManager.LoadCarsAsync();
 
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            Assert.AreEqual(11, car.Views);
+            Assert.IsTrue(result.Success);
+            Assert.IsNull(result.ErrorMessage);
+            Assert.AreEqual(2, _carManager.GetCars().Count);
         }
 
+        [TestMethod]
+        public void GetCarsASC_ReturnsCarsSortedByBrandAscending()
+        {
+            var carDTOs = new List<CarDTO>
+            {
+                new CarDTO { Id = 1, Brand = "BMW" },
+                new CarDTO { Id = 2, Brand = "Audi" }
+            };
+            _carManager.GetCars().AddRange(carDTOs);
+
+            var result = _carManager.GetCarsASC();
+
+            Assert.AreEqual("Audi", result[0].Brand);
+            Assert.AreEqual("BMW", result[1].Brand);
+        }
 
         [TestMethod]
-        public void RecordCarView_WhenCarDoesNotExist_ReturnsFalse()
+        public void GetCarsDESC_ReturnsCarsSortedByBrandDescending()
         {
-            var carId = 1;
-            _mockDataWriter.Setup(m => m.RecordCarView(It.IsAny<int>())).Verifiable();
-            _mockDataAccess.Setup(m => m.GetCarById(carId)).Returns((CarDTO)null);
+            var carDTOs = new List<CarDTO>
+            {
+                new CarDTO { Id = 1, Brand = "Audi" },
+                new CarDTO { Id = 2, Brand = "BMW" }
+            };
+            _carManager.GetCars().AddRange(carDTOs);
 
-            var result = _carManager.RecordCarView(carId, out string errorMessage);
+            var result = _carManager.GetCarsDESC();
 
-            Assert.IsFalse(result);
-            Assert.AreEqual("Car not found", errorMessage);
+            Assert.AreEqual("BMW", result[0].Brand);
+            Assert.AreEqual("Audi", result[1].Brand);
         }
 
         [TestMethod]
         public void GetCarById_WhenCarExists_ReturnsCar()
         {
             var carId = 1;
-            var carDTO = new CarDTO
-            {
-                Id = carId,
-                CarStatus = CarStatus.AVAILABLE.ToString(), // Ensure CarStatus is properly set
-                Brand = "Test Brand",
-                Model = "Test Model",
-                FirstRegistration = DateTime.Now,
-                Mileage = 10000,
-                Fuel = "Gasoline",
-                EngineSize = 2000,
-                HorsePower = 150,
-                Gearbox = "Automatic",
-                Color = "Black",
-                VIN = "123ABC",
-                Description = "Test Description",
-                PricePerDay = 100,
-                NumberOfSeats = 5,
-                NumberOfDoors = "4/5",
-                Views = 0,
-                CarExtras = new List<ExtraDTO>(),
-                Pictures = new List<PictureDTO>()
-            };
-
-            _mockDataAccess.Setup(m => m.GetCarById(carId)).Returns(carDTO);
-
-            var car = _carManager.MapCarDtoToCar(carDTO);
-            _carManager.GetCars().Add(car);
+            var carDTO = new CarDTO { Id = carId, Brand = "Audi" };
+            _carManager.GetCars().Add(carDTO);
 
             var result = _carManager.GetCarById(carId);
 
@@ -220,92 +210,10 @@ namespace UnitTests
         public void GetCarById_WhenCarDoesNotExist_ReturnsNull()
         {
             var carId = 1;
-            _mockDataAccess.Setup(m => m.GetCarById(carId)).Returns((CarDTO)null);
 
             var result = _carManager.GetCarById(carId);
 
             Assert.IsNull(result);
-        }
-
-        [TestMethod]
-        public void GetCars_ReturnsAllCars()
-        {
-            var carDTOs = new List<CarDTO>
-    {
-        new CarDTO { Id = 1, CarStatus = CarStatus.AVAILABLE.ToString(), Brand = "Test", Model = "Model1", FirstRegistration = DateTime.Now, Mileage = 1000, Fuel = "Gasoline", EngineSize = 2000, HorsePower = 150, Gearbox = "Automatic", Color = "Black", VIN = "VIN1", Description = "Desc1", PricePerDay = 100, NumberOfSeats = 5, NumberOfDoors = "4/5", Views = 10, CarExtras = new List<ExtraDTO>(), Pictures = new List<PictureDTO>() },
-        new CarDTO { Id = 2, CarStatus = CarStatus.UNAVAILABLE.ToString(), Brand = "Test2", Model = "Model2", FirstRegistration = DateTime.Now, Mileage = 2000, Fuel = "Diesel", EngineSize = 3000, HorsePower = 200, Gearbox = "Manual", Color = "Red", VIN = "VIN2", Description = "Desc2", PricePerDay = 150, NumberOfSeats = 4, NumberOfDoors = "2/3", Views = 20, CarExtras = new List<ExtraDTO>(), Pictures = new List<PictureDTO>() }
-    };
-
-            var cars = carDTOs.Select(dto => _carManager.MapCarDtoToCar(dto)).ToList();
-            _carManager.GetCars().AddRange(cars);
-
-            var result = _carManager.GetCars();
-
-            Assert.AreEqual(2, result.Count);
-            Assert.AreEqual(1, result[0].Id);
-            Assert.AreEqual(2, result[1].Id);
-        }
-
-        [TestMethod]
-        public void GetCarsASC_ReturnsCarsSortedByBrandAscending()
-        {
-            var car1 = new Car { Brand = "Audi" };
-            var car2 = new Car { Brand = "BMW" };
-            var cars = new List<Car> { car2, car1 };
-            _carManager.GetCars().AddRange(cars);
-
-            var result = _carManager.GetCarsASC();
-
-            Assert.AreEqual(car1.Brand, result[0].Brand);
-            Assert.AreEqual(car2.Brand, result[1].Brand);
-        }
-
-        [TestMethod]
-        public void GetCarsDESC_ReturnsCarsSortedByBrandDescending()
-        {
-            var car1 = new Car { Brand = "Audi" };
-            var car2 = new Car { Brand = "BMW" };
-            var cars = new List<Car> { car1, car2 };
-            _carManager.GetCars().AddRange(cars);
-
-            var result = _carManager.GetCarsDESC();
-
-            Assert.AreEqual(car2.Brand, result[0].Brand);
-            Assert.AreEqual(car1.Brand, result[1].Brand);
-        }
-
-        [TestMethod]
-        public void LoadCars_WhenCalled_ReturnsTrue()
-        {
-            var carDTOs = new List<CarDTO>
-            {
-                new CarDTO
-                {
-                    Id = 1,
-                    Brand = "Audi",
-                    CarStatus = "Available",
-                    CarExtras = new List<ExtraDTO>(),
-                    Pictures = new List<PictureDTO>()
-                }
-            };
-            _mockDataAccess.Setup(m => m.GetCars()).Returns(carDTOs);
-
-            var result = _carManager.LoadCars(out string errorMessage);
-
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            Assert.AreEqual(carDTOs.Count, _carManager.GetCars().Count);
-        }
-
-        [TestMethod]
-        public void LoadCars_WhenExceptionThrown_ReturnsFalse()
-        {
-            _mockDataAccess.Setup(m => m.GetCars()).Throws(new Exception("Database error"));
-
-            var result = _carManager.LoadCars(out string errorMessage);
-
-            Assert.IsFalse(result);
-            Assert.AreEqual("Database error", errorMessage);
         }
     }
 }

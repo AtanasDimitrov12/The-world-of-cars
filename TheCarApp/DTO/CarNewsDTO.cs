@@ -13,10 +13,10 @@ namespace DTO
         public string NewsDescription { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string ImageURL { get; set; }
-        public int NrOfMessages { get; set; }
+        public int NrOfComments { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
         public string ShortIntro { get; set; }
-        public List<CommentDTO> comments { get; set; }
+        public List<CommentDTO> Comments { get; set; }
     }
 }

@@ -1,129 +1,151 @@
-﻿using Database;
-using DatabaseAccess;
+﻿using AutoMapper;
+using Data.Models;
 using DTO;
-using Entity_Layer.Enums;
-using EntityLayout;
+using DTO.Interfaces;
 using InterfaceLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Entity_Layer.Interfaces;
+using System.Threading.Tasks;
 
-namespace Entity_Layer
+namespace ManagerLayer
 {
     public class NewsManager : INewsManager
     {
-        public List<CarNews> news { get; set; }
+        public List<CarNewsDTO> News { get; set; }
         private readonly IDataAccess _dataAccess;
         private readonly ICarNewsDataWriter _dataWriter;
         private readonly ICarNewsDataRemover _dataRemover;
+        private readonly IMapper _mapper;
 
-        public NewsManager(IDataAccess dataAccess, ICarNewsDataWriter dataWriter, ICarNewsDataRemover dataRemover)
+        public NewsManager(IDataAccess dataAccess, ICarNewsDataWriter dataWriter, ICarNewsDataRemover dataRemover, IMapper mapper)
         {
-            news = new List<CarNews>();
+            News = new List<CarNewsDTO>();
             _dataAccess = dataAccess;
             _dataWriter = dataWriter;
             _dataRemover = dataRemover;
+            _mapper = mapper;
         }
 
-        public bool AddNews(CarNews carnews, out string errorMessage)
+        // Adds a new news article and maps from CarNewsDTO
+        public async Task<(bool Success, string ErrorMessage)> AddNewsAsync(CarNewsDTO carNewsDTO)
         {
-            errorMessage = string.Empty;
             try
             {
-                _dataWriter.AddCarNews(carnews.Author, carnews.Title, carnews.ReleaseDate, carnews.NewsDescription, carnews.ImageURL, carnews.ShortIntro);
-                int NewsId = _dataWriter.GetNewsId(carnews.Title);
-                carnews.Id = NewsId;
-                news.Add(carnews);
-                return true;
+                // Map DTO to entity
+                var carNews = _mapper.Map<News>(carNewsDTO);
+
+                await _dataWriter.AddCarNewsAsync(carNews.Author, carNews.Title, carNews.DatePosted, carNews.NewsDescription, carNews.ImageURL, carNews.ShortIntro);
+
+                // Get the NewsId from the database
+                int newsId = await _dataWriter.GetNewsIdAsync(carNews.Title);
+                carNews.NewsId = newsId;
+
+                // Map back to DTO and add to the list
+                var updatedNewsDTO = _mapper.Map<CarNewsDTO>(carNews);
+                News.Add(updatedNewsDTO);
+
+                return (true, null); // Success
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message); // Return error message on failure
             }
         }
 
-        public bool DeleteNews(CarNews carnews, out string errorMessage)
+        // Deletes a news article and removes its related comments
+        public async Task<(bool Success, string ErrorMessage)> DeleteNewsAsync(CarNewsDTO carNewsDTO)
         {
-            errorMessage = string.Empty;
             try
             {
-                foreach (var comm in carnews.Comments)
+                // Map DTO to entity
+                var carNews = _mapper.Map<News>(carNewsDTO);
+
+                // Remove related comments
+                foreach (var comment in carNews.Comments)
                 {
-                    _dataRemover.RemoveComment(comm.Id);
+                    await _dataRemover.RemoveCommentAsync(Convert.ToInt32(comment.NewsId));
                 }
-                _dataRemover.RemoveNews(carnews.Id);
-                news.Remove(carnews);
-                return true;
+
+                // Remove the news article
+                await _dataRemover.RemoveNewsAsync(carNews.NewsId);
+                News.Remove(carNewsDTO);
+
+                return (true, null); // Success
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message); // Return error message on failure
             }
         }
 
-        public bool UpdateNews(CarNews news, out string errorMessage)
+        // Updates a news article
+        public async Task<(bool Success, string ErrorMessage)> UpdateNewsAsync(CarNewsDTO carNewsDTO)
         {
-            errorMessage = string.Empty;
             try
             {
-                _dataWriter.UpdateNews(news);
-                return true;
+                // Map DTO to entity
+                var carNews = _mapper.Map<News>(carNewsDTO);
+
+                // Update the news
+                await _dataWriter.UpdateNewsAsync(carNews);
+
+                // Update the DTO list
+                var index = News.FindIndex(n => n.Id == carNews.NewsId);
+                if (index != -1)
+                {
+                    News[index] = carNewsDTO;
+                }
+
+                return (true, null); // Success
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message); // Return error message on failure
             }
         }
-        public List<CarNews> GetNewsASC()
+
+        // Gets the list of news sorted in ascending order by date
+        public List<CarNewsDTO> GetNewsASC()
         {
-            news.Sort(new CarNewsDateAscendingComparer());
-            return news;
+            News.Sort(new CarNewsDateAscendingComparer());
+            return News;
         }
 
-        public List<CarNews> GetNewsDESC()
+        // Gets the list of news sorted in descending order by date
+        public List<CarNewsDTO> GetNewsDESC()
         {
-            news.Sort(new CarNewsDateDescendingComparer());
-            return news;
+            News.Sort(new CarNewsDateDescendingComparer());
+            return News;
         }
 
-
-
-        public CarNews GetNewsById(int id)
+        // Gets a news article by its ID
+        public CarNewsDTO GetNewsById(int id)
         {
-            return news.FirstOrDefault(n => n.Id == id);
+            return News.FirstOrDefault(n => n.Id == id);
         }
 
-        public CarNews MapCarNewsDtoToCarNews(CarNewsDTO newsDTO)
+        // Loads news from the database and maps them to DTOs
+        public async Task<(bool Success, string ErrorMessage)> LoadNewsAsync()
         {
-            var comments = newsDTO.comments.Select(comment => new Comment(comment.Id, comment.UserId, comment.Date, comment.Content)).ToList();
-            return new CarNews(newsDTO.Id, newsDTO.NewsDescription, newsDTO.ReleaseDate, newsDTO.ImageURL, newsDTO.Title, newsDTO.Author, newsDTO.ShortIntro, comments);
-        }
-
-        public bool LoadNews(out string errorMessage)
-        {
-            errorMessage = string.Empty;
             try
             {
-                var carNewsList = _dataAccess.GetCarNews();
+                var carNewsList = await _dataAccess.GetCarNewsAsync();
                 if (carNewsList != null)
                 {
-                    foreach (CarNewsDTO newsDTO in carNewsList)
+                    News.Clear();
+                    foreach (var newsDTO in carNewsList)
                     {
-                        var loadComments = newsDTO.comments.Select(comment => new Comment(comment.Id, comment.UserId, comment.Date, comment.Content)).ToList();
-                        var loadnews = new CarNews(newsDTO.Id, newsDTO.NewsDescription, newsDTO.ReleaseDate, newsDTO.ImageURL, newsDTO.Title, newsDTO.Author, newsDTO.ShortIntro, loadComments);
-                        news.Add(loadnews);
+                        // Map each news entity to DTO
+                        var mappedNews = _mapper.Map<CarNewsDTO>(newsDTO);
+                        News.Add(mappedNews);
                     }
                 }
-                return true;
+                return (true, null); // Success
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message); // Return error message on failure
             }
         }
     }

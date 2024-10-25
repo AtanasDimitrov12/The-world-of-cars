@@ -1,4 +1,4 @@
-﻿using EntityLayout;
+﻿using Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,20 +9,16 @@ namespace InterfaceLayer
 {
     public interface ICarDataWriter
     {
-        void AddCar(string Brand, string Model, DateTime FirstRegistration, int Mileage, string Fuel, int EngineSize, int HP, string Gearbox, int NumOfSeats, string NumOfDoors, string color, string VIN, string Status);
-        void AddCarDescription(int CarId, string Description, decimal Price);
-        void AddCarExtras(int CarId, int ExtraId);
-        void AddCarPictures(int CarId, int PictureId);
-        
-        void RecordCarView(int CarId);
-        void UpdateCar(Car car);
-        void UpdateCarDescription(Car car);
-        void ChangeCarStatus(Car car, string Status);
-        
-        int GetCarId(string VIN);
-        void AddExtra(string ExtraName);
-        void AddPicture(string PictureURL);
-        int GetExtraId(string ExtraName);
-        int GetPictureId(string PictureURL);
+        Task AddCar(Car car);
+        Task RecordCarView(int carId);
+        Task UpdateCar(Car car);
+        Task ChangeCarStatus(int carId, string status);
+        Task RemoveCarExtras(int carId);
+        Task RemoveCarPictures(int carId);
+        Task<int> GetCarId(string vin);
+        Task AddExtra(string extraName);
+        Task AddPicture(string pictureUrl);
+        Task<int> GetExtraId(string extraName);
+        Task<int> GetPictureId(string pictureUrl);
     }
 }

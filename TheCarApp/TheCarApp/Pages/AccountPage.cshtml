@@ -11,10 +11,10 @@
         <h1 class="text-center mb-4">Account Details</h1>
         @if (Model.user != null)
         {
-            @if (!string.IsNullOrEmpty(Model.user.ProfilePicturePath))
+            @if (!string.IsNullOrEmpty(Model.user.ProfilePictureFilePath))
             {
                 <div class="text-center mb-4 profile-picture-wrapper">
-                    <img src="@Model.user.ProfilePicturePath" alt="Profile Picture" class="profile-picture">
+                    <img src="@Model.user.ProfilePictureFilePath" alt="Profile Picture" class="profile-picture">
                     <div class="profile-picture-overlay">
                         <label for="profilePicture" class="edit-label">Edit</label>
                     </div>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <h5>Account Created On:</h5>
-                    <p>@Model.user.CreatedOn.ToString("MMMM dd, yyyy")</p>
+                    <p>@Model.user.ModifiedOn.ToString("MMMM dd, yyyy")</p>
                 </div>
                 <div class="col-md-6 mb-3">
                     <h5>Num. of rentals :</h5>
@@ -102,12 +102,12 @@
                 @foreach (var rent in @Model.rentals)
                 {
                     <tr>
-                        <td>@rent.car.Id</td>
-                        <td>@rent.car.Brand</td>
-                        <td>@rent.car.Model</td>
+                        <td>@rent.CarId</td>
+                        <td>@Model._projectManager.CarManager.GetCarById(@rent.CarId).Brand</td>
+                        <td>@Model._projectManager.CarManager.GetCarById(@rent.CarId).Model</td>
                         <td>@rent.StartDate.ToShortDateString()</td>
-                        <td>@rent.ReturnDate.ToShortDateString()</td>
-                        <td>@rent.RentStatus.ToString()</td>
+                        <td>@rent.EndDate.ToShortDateString()</td>
+                        <td>@rent.Status.ToString()</td>
                         <td>@rent.TotalPrice.ToString()</td>
                     </tr>
                 }

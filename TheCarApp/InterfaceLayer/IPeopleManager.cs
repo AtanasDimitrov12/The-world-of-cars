@@ -1,4 +1,4 @@
-﻿using Entity_Layer;
+﻿using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +9,12 @@ namespace InterfaceLayer
 {
     public interface IPeopleManager
     {
-        List<Person> people { get; set; }
-
-        bool AddPerson(Person person, out string errorMessage);
-        bool RemovePerson(Person person, out string errorMessage);
-        bool UpdatePerson(Person person, out string errorMessage);
-        bool AuthenticateUser(string userEmail, string userPass, out string errorMessage);
-        public (string Hash, string Salt) HashPassword(string password);
-        bool VerifyPassword(string enteredPassword, string storedPass, string base64Salt);
-        User GetUser(string email);
-        IEnumerable<Person> GetAllPeople();
-        List<User> GetAllUsers();
+        Task<(bool Success, string ErrorMessage)> AddPersonAsync(object person);
+        Task<(bool Success, string ErrorMessage)> RemovePersonAsync(object person);
+        Task<(bool Success, string ErrorMessage)> UpdatePersonAsync(object person);
+        bool AuthenticateUser(string email, string password, out string errorMessage);
+        IEnumerable<UserDTO> GetAllUsers();
+        IEnumerable<AdministratorDTO> GetAllAdministrators();
+        IEnumerable<object> GetAllPeople();
     }
 }

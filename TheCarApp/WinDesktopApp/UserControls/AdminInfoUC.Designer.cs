@@ -1,4 +1,4 @@
-﻿namespace DesktopApp
+﻿namespace WinDesktopApp.UserControls
 {
     partial class AdminInfoUC
     {

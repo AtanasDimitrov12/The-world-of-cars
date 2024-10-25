@@ -1,5 +1,4 @@
-﻿using Entity_Layer;
-using ManagerLayer;
+﻿using ManagerLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,26 +9,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using InterfaceLayer;
-using EntityLayout;
+using DTO;
 using Manager_Layer;
 using System.Xml.Linq;
 
-namespace DesktopApp
+namespace WinDesktopApp.UserControls
 {
     public partial class CommentsControlUC : UserControl
     {
         INewsManager newsManager;
         ICommentsManager commentsManager;
         IPeopleManager peopleManager;
-        List<Comment> allComments;
+        List<CommentDTO> allComments;
         public CommentsControlUC(INewsManager nm, ICommentsManager cm, IPeopleManager pm)
         {
             InitializeComponent();
             newsManager = nm;
             commentsManager = cm;
             peopleManager = pm;
-            allComments = new List<Comment>();
-            foreach (CarNews news in newsManager.news)
+            allComments = new List<CommentDTO>();
+            foreach (CarNewsDTO news in newsManager.News)
             {
                 CBNews.Items.Add(news.Title);
                 foreach (var comm in news.Comments)
@@ -124,7 +123,7 @@ namespace DesktopApp
             }
         }
 
-        private void FillDataGridView(List<Comment> comments)
+        private void FillDataGridView(List<CommentDTO> comments)
         {
             var userDictionary = peopleManager.GetAllUsers().ToDictionary(user => user.Id, user => user.Username);
 
@@ -134,7 +133,7 @@ namespace DesktopApp
             {
                 if (userDictionary.TryGetValue(comment.UserId, out string username))
                 {
-                    this.DGVComments.Rows.Add(username, comment.Date, comment.Message);
+                    this.DGVComments.Rows.Add(username, comment.CommentDate, comment.Content);
                 }
             }
         }
@@ -152,14 +151,14 @@ namespace DesktopApp
 
         private void DisplayComments(string NewsTitle)
         {
-            List<Comment> comments = new List<Comment>();
+            List<CommentDTO> comments = new List<CommentDTO>();
             if (NewsTitle != "")
             {
-                foreach (CarNews news in newsManager.news)
+                foreach (CarNewsDTO news in newsManager.News)
                 {
                     if (news.Title == NewsTitle)
                     {
-                        foreach (Comment comm in news.Comments)
+                        foreach (CommentDTO comm in news.Comments)
                         {
                             comments.Add(comm);
                         }
@@ -174,7 +173,7 @@ namespace DesktopApp
 
         }
 
-        private void DGVComments_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void DGVComments_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == DGVComments.Columns["Delete"].Index && e.RowIndex >= 0)
             {
@@ -183,13 +182,14 @@ namespace DesktopApp
 
                     var Comment = DGVComments.Rows[e.RowIndex].Cells["Comment"].Value.ToString();
 
-                    foreach (var news in newsManager.news)
+                    foreach (var news in newsManager.News)
                     {
                         foreach (var comm in news.Comments)
                         {
-                            if (comm.Message == Comment)
+                            if (comm.Content == Comment)
                             {
-                                if (commentsManager.RemoveComment(news, comm, out string errorMessage))
+                                (bool Response, string errorMessage) = await commentsManager.RemoveCommentAsync(news, comm);
+                                if (Response)
                                 {
                                     MessageBox.Show("You successfully delete that comment!");
                                     DisplayComments(CBNews.Text);
@@ -211,7 +211,7 @@ namespace DesktopApp
         {
             if (!string.IsNullOrEmpty(CBNews.Text))
             {
-                foreach (CarNews news in newsManager.news)
+                foreach (CarNewsDTO news in newsManager.News)
                 {
                     if (news.Title == CBNews.Text)
                     {
@@ -230,7 +230,7 @@ namespace DesktopApp
         {
             if (!string.IsNullOrEmpty(CBNews.Text))
             {
-                foreach (CarNews news in newsManager.news)
+                foreach (CarNewsDTO news in newsManager.News)
                 {
                     if (news.Title == CBNews.Text)
                     {
@@ -245,18 +245,18 @@ namespace DesktopApp
             }
         }
 
-        private void SortCommentsAscending(List<Comment> comments)
+        private void SortCommentsAscending(List<CommentDTO> comments)
         {
 
-            comments = comments.OrderBy(comm => comm.Date).ToList();
+            comments = comments.OrderBy(comm => comm.CommentDate).ToList();
 
             FillDataGridView(comments);
         }
 
-        private void SortCommentsDescending(List<Comment> comments)
+        private void SortCommentsDescending(List<CommentDTO> comments)
         {
 
-            comments = comments.OrderByDescending(comm => comm.Date).ToList();
+            comments = comments.OrderByDescending(comm => comm.CommentDate).ToList();
 
             FillDataGridView(comments);
         }

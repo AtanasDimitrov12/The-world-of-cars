@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Entity_Layer;
+using DTO;
 using Manager_Layer;
 using Microsoft.AspNetCore.Authorization;
-using EntityLayout;
 using ManagerLayer;
-using Entity_Layer.Enums;
+using DTO.Enums;
 
 namespace TheCarApp.Pages
 {
@@ -14,19 +13,19 @@ namespace TheCarApp.Pages
     {
         private readonly ProjectManager projectManager;
 
-        public Car Car { get; set; }
-        public User user { get; set; }
+        public CarDTO Car { get; set; }
+        public UserDTO user { get; set; }
         public string UserEmail { get; set; }
         public decimal PriceResult { get; set; }
         public string ErrorMessage { get; set; }
-        public List<RentACar> RentedPeriods { get; set; }
+        public List<RentACarDTO> RentedPeriods { get; set; }
 
         public RentACarPageModel(ProjectManager _projectManager)
         {
             projectManager = _projectManager;
         }
 
-        public IActionResult OnGet(int carId)
+        public async Task<IActionResult> OnGet(int carId)
         {
             Car = projectManager.CarManager.GetCarById(carId);
 
@@ -36,11 +35,11 @@ namespace TheCarApp.Pages
             }
             else
             {
-                projectManager.CarManager.RecordCarView(carId, out string errorMessage);
+                await projectManager.CarManager.RecordCarViewAsync(carId);
                 RentedPeriods = projectManager.RentManager.GetRentedPeriods(carId);
             }
             UserEmail = User.Identity.Name;
-            user = projectManager.PeopleManager.GetUser(UserEmail);
+            user = projectManager.UserManager.FindUserByEmail(UserEmail);
 
             return Page();
         }
@@ -78,7 +77,7 @@ namespace TheCarApp.Pages
             }
         }
 
-        public IActionResult OnPostRentCar(DateTime StartDate, DateTime EndDate)
+        public async Task<IActionResult> OnPostRentCar(DateTime StartDate, DateTime EndDate)
         {
             Car = projectManager.CarManager.GetCarById(int.Parse(RouteData.Values["CarId"].ToString()));
             if (Car == null)
@@ -99,7 +98,7 @@ namespace TheCarApp.Pages
                 return Page();
             }
 
-            user = projectManager.PeopleManager.GetUser(User.Identity.Name);
+            user = projectManager.UserManager.FindUserByEmail(User.Identity.Name);
 
             if (!projectManager.RentManager.IsCarAvailable(Car.Id, StartDate, EndDate))
             {
@@ -109,8 +108,17 @@ namespace TheCarApp.Pages
 
             try
             {
-                RentACar rentACar = new RentACar(user, Car, StartDate, EndDate, RentStatus.REQUESTED);
-                if (projectManager.RentManager.RentACar(rentACar, out string errorMessage))
+                RentACarDTO rentACar = new RentACarDTO() 
+                {
+                    UserId = user.Id,
+                    CarId = Car.Id,
+                    StartDate = StartDate,
+                    EndDate = EndDate,
+                    Status = RentStatus.REQUESTED.ToString(),
+                };
+
+                (bool Response, string errorMessage) = await projectManager.RentManager.RentACarAsync(rentACar);
+                if (Response)
                 {
                     PriceResult = projectManager.RentManager.CalculatePrice(user, Car.PricePerDay, StartDate, EndDate);
                     ErrorMessage = null;

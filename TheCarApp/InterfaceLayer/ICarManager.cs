@@ -1,29 +1,44 @@
-﻿using DTO;
-using Entity_Layer;
-using Entity_Layer.Enums;
-using EntityLayout;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Data.Models;
+using DTO;
+using DTO.Enums;
 
-namespace InterfaceLayer
+namespace Manager_Layer
 {
     public interface ICarManager
     {
-        bool AddCar(Car car, List<Picture> pictures, List<Extra> extras, out string errorMessage);
-        bool RemoveCar(Car car, out string errorMessage);
-        bool ChangeCarStatus(Car car, string newStatus, CarStatus Status, out string errorMessage);
-        bool RecordCarView(int carId, out string errorMessage);
-        bool UpdateCar(Car car, List<Picture> pictures, List<Extra> extras, out string errorMessage);
-        Car SearchForCar(int index);
-        List<Car> GetCars();
-        List<Car> GetCarsASC();
-        List<Car> GetCarsDESC();
-        Car GetCarById(int carId);
-        Car MapCarDtoToCar(CarDTO carDTO);
-        bool LoadCars(out string errorMessage);
+        // Adds a car and its related data to the database
+        Task<(bool Success, string ErrorMessage)> AddCarAsync(CarDTO carDTO);
+
+        // Updates the car and its related data
+        Task<(bool Success, string ErrorMessage)> UpdateCarAsync(CarDTO carDTO);
+
+        // Removes a car
+        Task<(bool Success, string ErrorMessage)> RemoveCarAsync(CarDTO carDTO);
+
+        // Changes the status of a car
+        Task<(bool Success, string ErrorMessage)> ChangeCarStatusAsync(CarDTO carDTO, string newStatus, CarStatus status);
+
+        // Records a car view
+        Task<(bool Success, string ErrorMessage)> RecordCarViewAsync(int carId);
+
+        // Searches for a car by index
+        CarDTO SearchForCar(int index);
+
+        // Gets all cars
+        List<CarDTO> GetCars();
+
+        // Gets cars sorted in ascending order by brand
+        List<CarDTO> GetCarsASC();
+
+        // Gets cars sorted in descending order by brand
+        List<CarDTO> GetCarsDESC();
+
+        // Gets a car by ID
+        CarDTO GetCarById(int carId);
+
+        // Loads cars from the database and adds them to the in-memory list
+        Task<(bool Success, string ErrorMessage)> LoadCarsAsync();
     }
 }
-

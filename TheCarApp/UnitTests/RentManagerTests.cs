@@ -1,16 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ManagerLayer;
-using Entity_Layer;
-using Entity_Layer.Enums;
 using InterfaceLayer;
+using Manager_Layer;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using EntityLayout;
-using ManagerLayer.Strategy;
+using System.Threading.Tasks;
 using DTO;
-using Manager_Layer;
+using DTO.Enums;
+using Data.Models;
 
 namespace UnitTests
 {
@@ -40,13 +38,14 @@ namespace UnitTests
             _mockRentalStrategyFactory.Setup(f => f.GetRentalStrategy(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
                                       .Returns(_mockRentalStrategy.Object);
 
-            _rentManager = new RentManager(_mockDataAccess.Object, _mockDataWriter.Object, _mockDataRemover.Object, _mockPeopleManager.Object, _mockCarManager.Object, _mockRentalStrategyFactory.Object);
+            var mockMapper = new Mock<AutoMapper.IMapper>(); // Mock the AutoMapper
+            _rentManager = new RentManager(_mockDataAccess.Object, _mockDataWriter.Object, _mockDataRemover.Object, _mockPeopleManager.Object, _mockCarManager.Object, _mockRentalStrategyFactory.Object, mockMapper.Object);
         }
 
         [TestMethod]
         public void CalculatePrice_WhenCalled_ReturnsExpectedPrice()
         {
-            var user = new User(1, "user@example.com", "password", "username", DateTime.Now, 12345, "salt", "/path/to/profile");
+            var user = new UserDTO { Id = 1, Email = "user@example.com" };
             decimal basePrice = 100m;
             DateTime startDate = new DateTime(2023, 10, 1);
             DateTime endDate = new DateTime(2023, 10, 10);
@@ -65,8 +64,8 @@ namespace UnitTests
         [TestMethod]
         public void CheckForDiscount_WhenUserHasNoRents_ReturnsZero()
         {
-            var user = new User(1, "user@example.com", "password", "username", DateTime.Now, 12345, "salt", "/path/to/profile");
-            _rentManager.RentalHistory = new List<RentACar>();
+            var user = new UserDTO { Id = 1, Email = "user@example.com" };
+            _rentManager.RentalHistory = new List<RentACarDTO>();
 
             var result = _rentManager.CheckForDiscount(user);
 
@@ -76,81 +75,88 @@ namespace UnitTests
         [TestMethod]
         public void CheckForDiscount_WhenUserHasRents_ReturnsExpectedDiscount()
         {
-            var user = new User(1, "user@example.com", "password", "username", DateTime.Now, 12345, "salt", "/path/to/profile");
-            _rentManager.RentalHistory = new List<RentACar>
+            var user = new UserDTO { Id = 1, Email = "user@example.com" };
+            _rentManager.RentalHistory = new List<RentACarDTO>
             {
-                new RentACar { user = user, RentStatus = RentStatus.COMPLETED },
-                new RentACar { user = user, RentStatus = RentStatus.COMPLETED },
-                new RentACar { user = user, RentStatus = RentStatus.COMPLETED },
-                new RentACar { user = user, RentStatus = RentStatus.COMPLETED },
-                new RentACar { user = user, RentStatus = RentStatus.COMPLETED },
-                new RentACar { user = user, RentStatus = RentStatus.COMPLETED },
-                new RentACar { user = user, RentStatus = RentStatus.COMPLETED },
-                new RentACar { user = user, RentStatus = RentStatus.COMPLETED },
-                new RentACar { user = user, RentStatus = RentStatus.COMPLETED },
-                new RentACar { user = user, RentStatus = RentStatus.COMPLETED }
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() },
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() },
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() },
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() },
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() },
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() },
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() },
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() },
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() },
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() },
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() },
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() },
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() },
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() },
+                new RentACarDTO { UserId = user.Id, Status = RentStatus.COMPLETED.ToString() }
+                // Repeat for more completed rents to test discount logic
             };
 
             var result = _rentManager.CheckForDiscount(user);
 
-            Assert.AreEqual(5, result);
+            Assert.AreEqual(5, result); // Depending on the number of rents in the history, adjust the expected discount
         }
 
         [TestMethod]
-        public void RentACar_WhenCalled_ReturnsDone()
+        public async Task RentACar_WhenCalled_ReturnsDone()
         {
-            var rent = new RentACar
+            var rent = new RentACarDTO
             {
-                car = new Car { Id = 1 },
-                user = new User(1, "user@example.com", "password", "username", DateTime.Now, 12345, "salt", "/path/to/profile"),
+                CarId = 1,
+                UserId = 1,
                 StartDate = DateTime.Now,
-                ReturnDate = DateTime.Now.AddDays(5),
-                RentStatus = RentStatus.REQUESTED
+                EndDate = DateTime.Now.AddDays(5),
+                Status = RentStatus.REQUESTED.ToString()
             };
 
-            _mockDataWriter.Setup(m => m.RentACar(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<DateTime>(), It.IsAny<DateTime>(), It.IsAny<string>()))
+            _mockDataWriter.Setup(m => m.RentACarAsync(It.IsAny<Rental>()))
+                           .Returns(Task.CompletedTask)
                            .Verifiable();
 
-            var result = _rentManager.RentACar(rent, out string errorMessage);
+            var (success, errorMessage) = await _rentManager.RentACarAsync(rent);
 
-            Assert.AreEqual(true, result);
+            Assert.IsTrue(success);
             _mockDataWriter.Verify();
         }
 
         [TestMethod]
-        public void UpdateRentStatus_WhenCalled_UpdatesStatus()
+        public async Task UpdateRentStatus_WhenCalled_UpdatesStatus()
         {
-            var rent = new RentACar
+            var rent = new RentACarDTO
             {
-                car = new Car { Id = 1 },
-                user = new User(1, "user@example.com", "password", "username", DateTime.Now, 12345, "salt", "/path/to/profile"),
+                CarId = 1,
+                UserId = 1,
                 StartDate = DateTime.Now,
-                ReturnDate = DateTime.Now.AddDays(5),
-                RentStatus = RentStatus.REQUESTED
+                EndDate = DateTime.Now.AddDays(5),
+                Status = RentStatus.REQUESTED.ToString()
             };
 
             var newStatus = RentStatus.COMPLETED;
 
-            _mockRentalStrategy.Setup(s => s.UpdateRentalStatus(rent, newStatus)).Verifiable();
-            _mockDataWriter.Setup(m => m.UpdateRent(It.IsAny<RentACar>())).Verifiable();
+            _mockRentalStrategy.Setup(s => s.UpdateRentalStatus(It.IsAny<RentACarDTO>(), newStatus)).Verifiable();
+            _mockDataWriter.Setup(m => m.UpdateRentAsync(It.IsAny<Rental>())).Returns(Task.CompletedTask).Verifiable();
 
-            _rentManager.UpdateRentStatus(rent, newStatus, out string errorMessage);
+            var (success, errorMessage) = await _rentManager.UpdateRentStatusAsync(rent, newStatus);
 
+            Assert.IsTrue(success);
             _mockRentalStrategy.Verify();
             _mockDataWriter.Verify();
         }
 
-
         [TestMethod]
         public void IsCarAvailable_WhenCarIsNotAvailable_ReturnsFalse()
         {
-            var rent = new RentACar
+            var rent = new RentACarDTO
             {
-                car = new Car { Id = 1 },
-                user = new User(1, "user@example.com", "password", "username", DateTime.Now, 12345, "salt", "/path/to/profile"),
+                CarId = 1,
+                UserId = 1,
                 StartDate = new DateTime(2023, 6, 1),
-                ReturnDate = new DateTime(2023, 6, 10),
-                RentStatus = RentStatus.REQUESTED
+                EndDate = new DateTime(2023, 6, 10),
+                Status = RentStatus.REQUESTED.ToString()
             };
 
             _rentManager.RentalHistory.Add(rent);
@@ -163,13 +169,13 @@ namespace UnitTests
         [TestMethod]
         public void IsCarAvailable_WhenCarIsAvailable_ReturnsTrue()
         {
-            var rent = new RentACar
+            var rent = new RentACarDTO
             {
-                car = new Car { Id = 1 },
-                user = new User(1, "user@example.com", "password", "username", DateTime.Now, 12345, "salt", "/path/to/profile"),
+                CarId = 1,
+                UserId = 1,
                 StartDate = new DateTime(2023, 6, 1),
-                ReturnDate = new DateTime(2023, 6, 10),
-                RentStatus = RentStatus.REQUESTED
+                EndDate = new DateTime(2023, 6, 10),
+                Status = RentStatus.REQUESTED.ToString()
             };
 
             _rentManager.RentalHistory.Add(rent);
@@ -180,33 +186,44 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void LoadRentals_WhenCalled_ReturnsDone()
+        public async Task LoadRentals_WhenCalled_ReturnsDone()
         {
-            var rentals = new List<RentACarDTO>
+                    // Create a list of Rental entities
+            var rentals = new List<Rental>
             {
-                new RentACarDTO
+                new Rental
                 {
-                    Id = 1,
+                    RentalId = 1,
                     CarId = 1,
-                    UserID = 1,
+                    UserId = 1,
                     StartDate = DateTime.Now,
-                    ReturnDate = DateTime.Now.AddDays(5),
-                    Status = "REQUESTED"
+                    EndDate = DateTime.Now.AddDays(5),
+                    Status = RentStatus.REQUESTED.ToString()
                 }
             };
 
-            var user = new User(1, "user@example.com", "password", "username", DateTime.Now, 12345, "salt", "/path/to/profile");
-            var car = new Car { Id = 1, PricePerDay = 100 };
+            // Mock the data access method to return a Task with List<Rental>
+            _mockDataAccess.Setup(m => m.GetRentalsAsync()).ReturnsAsync(rentals);
 
-            _mockDataAccess.Setup(m => m.GetRentals()).Returns(rentals);
-            _mockPeopleManager.Setup(m => m.GetAllUsers()).Returns(new List<User> { user });
-            _mockCarManager.Setup(m => m.GetCars()).Returns(new List<Car> { car });
-            _mockRentalStrategy.Setup(s => s.CalculateRentalPrice(It.IsAny<decimal>(), It.IsAny<int>(), It.IsAny<int>())).Returns(500);
+            // Mock the people manager to return a list of UserDTOs
+             _mockPeopleManager.Setup(m => m.GetAllUsers()).Returns(new List<UserDTO>
+            {
+                new UserDTO { Id = 1, Email = "user@example.com" }
+            });
 
-            var result = _rentManager.LoadRentals(out string errorMessage);
+            // Mock the car manager to return a list of CarDTOs
+             _mockCarManager.Setup(m => m.GetCars()).Returns(new List<CarDTO>
+            {
+                new CarDTO { Id = 1, PricePerDay = 100 }
+            });
 
-            Assert.AreEqual(true, result);
+            // Execute the method
+            var (success, errorMessage) = await _rentManager.LoadRentalsAsync();
+
+            // Assert the result
+            Assert.IsTrue(success);
             Assert.AreEqual(1, _rentManager.RentalHistory.Count);
         }
+
     }
 }

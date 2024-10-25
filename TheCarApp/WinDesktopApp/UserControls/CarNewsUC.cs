@@ -1,6 +1,4 @@
-﻿using Entity_Layer;
-using Entity_Layer.Interfaces;
-using ManagerLayer;
+﻿using ManagerLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,23 +10,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using InterfaceLayer;
 using Manager_Layer;
-using EntityLayout;
+using DTO;
 using System.Text.RegularExpressions;
+using WinDesktopApp.Forms;
 
-namespace DesktopApp
+namespace WinDesktopApp.UserControls
 {
     public partial class CarNewsUC : UserControl
     {
         IPeopleManager peopleManager;
         INewsManager newsManager;
-        List<CarNews> News;
+        List<CarNewsDTO> News;
         public AdminInfoUC admInfo { get; set; }
         public CarNewsUC(IPeopleManager pm, INewsManager nw)
         {
             InitializeComponent();
             this.peopleManager = pm;
             this.newsManager = nw;
-            News = newsManager.news;
+            News = newsManager.News;
             InitializeGridView();
             FillDataGridView(News);
             this.DGVNews.CellPainting += DGVNews_CellPainting;
@@ -158,7 +157,7 @@ namespace DesktopApp
 
 
 
-        private void FillDataGridView(List<CarNews> news)
+        private void FillDataGridView(List<CarNewsDTO> news)
         {
             this.DGVNews.Rows.Clear();
             foreach (var carNews in news)
@@ -182,13 +181,13 @@ namespace DesktopApp
         private void BTNSearchByTitle_Click(object sender, EventArgs e)
         {
             string title = TBNewsTitle.Text;
-            var filteredNews = newsManager.news
+            var filteredNews = newsManager.News
                 .Where(news => Regex.IsMatch(news.Title, Regex.Escape(title), RegexOptions.IgnoreCase))
                 .ToList();
             FillDataGridView(filteredNews);
         }
 
-        private void DGVNews_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void DGVNews_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == DGVNews.Columns["Modify"].Index && e.RowIndex >= 0)
             {
@@ -198,7 +197,7 @@ namespace DesktopApp
                     var newsTitle = DGVNews.Rows[e.RowIndex].Cells["Title"].Value.ToString();
                     var newsAuthor = DGVNews.Rows[e.RowIndex].Cells["Author"].Value.ToString();
 
-                    foreach (var selectedNews in newsManager.news)
+                    foreach (var selectedNews in newsManager.News)
                     {
                         if (selectedNews.Title == newsTitle && selectedNews.Author == newsAuthor)
                         {
@@ -219,7 +218,7 @@ namespace DesktopApp
                     var newsTitle = DGVNews.Rows[e.RowIndex].Cells["Title"].Value.ToString();
                     var newsAuthor = DGVNews.Rows[e.RowIndex].Cells["Author"].Value.ToString();
 
-                    foreach (var selectedNews in newsManager.news)
+                    foreach (var selectedNews in newsManager.News)
                     {
                         if (selectedNews.Title == newsTitle && selectedNews.Author == newsAuthor)
                         {
@@ -231,9 +230,10 @@ namespace DesktopApp
 
                             if (result == DialogResult.Yes)
                             {
-                                if (newsManager.DeleteNews(selectedNews, out string errorMessage))
+                                (bool Response, string errorMessage) = await newsManager.DeleteNewsAsync(selectedNews);
+                                if (Response)
                                 {
-                                    FillDataGridView(newsManager.news);
+                                    FillDataGridView(newsManager.News);
                                     admInfo.DisplayDataInfo();
                                     break;
                                 }
@@ -258,7 +258,7 @@ namespace DesktopApp
                     var newsTitle = DGVNews.Rows[e.RowIndex].Cells["Title"].Value.ToString();
                     var newsAuthor = DGVNews.Rows[e.RowIndex].Cells["Author"].Value.ToString();
 
-                    foreach (var selectedNews in newsManager.news)
+                    foreach (var selectedNews in newsManager.News)
                     {
                         if (selectedNews.Title == newsTitle && selectedNews.Author == newsAuthor)
                         {
@@ -273,7 +273,7 @@ namespace DesktopApp
 
         private void BTNShowAll_Click(object sender, EventArgs e)
         {
-            FillDataGridView(newsManager.news);
+            FillDataGridView(newsManager.News);
         }
     }
 }

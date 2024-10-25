@@ -1,4 +1,5 @@
-using Entity_Layer;
+using DTO;
+using DTO.Enums;
 using Manager_Layer;
 using ManagerLayer;
 using Microsoft.AspNetCore.Authentication;
@@ -13,9 +14,9 @@ namespace TheCarApp.Pages
     [Authorize]
     public class AccountPageModel : PageModel
     {
-        private readonly ProjectManager _projectManager;
-        public User user { get; set; } = new User();
-        public List<RentACar> rentals { get; set; } = new List<RentACar>();
+        public ProjectManager _projectManager;
+        public UserDTO user { get; set; } = new UserDTO();
+        public List<RentACarDTO> rentals { get; set; } = new List<RentACarDTO>();
         public string UserEmail { get; set; }
         public int Rentals { get; set; }
         [BindProperty]
@@ -37,16 +38,17 @@ namespace TheCarApp.Pages
         public void OnGet()
         {
             UserEmail = User.Identity.Name;
-            user = _projectManager.PeopleManager.GetUser(UserEmail);
+            
+            user = _projectManager.UserManager.FindUserByEmail(UserEmail);
 
             if (user != null)
             {
                 rentals = _projectManager.RentManager.RentalHistory
-                    .Where(rental => rental.user != null && rental.user.Id == user.Id)
+                    .Where(rental => _projectManager.UserManager.FindUserById(rental.UserId) != null && rental.UserId == user.Id)
                     .ToList();
 
                 Rentals = rentals
-                    .Count(rental => rental.RentStatus != Entity_Layer.Enums.RentStatus.CANCELLED && rental.RentStatus != Entity_Layer.Enums.RentStatus.REQUESTED);
+                    .Count(rental => rental.Status != RentStatus.CANCELLED.ToString() && rental.Status != RentStatus.REQUESTED.ToString());
             }
             else
             {
@@ -57,7 +59,7 @@ namespace TheCarApp.Pages
         public async Task<IActionResult> OnPostUploadProfilePicture()
         {
             UserEmail = User.Identity.Name;
-            user = _projectManager.PeopleManager.GetUser(UserEmail);
+            user = _projectManager.UserManager.FindUserByEmail(UserEmail);
 
             if (ProfilePicture != null && ProfilePicture.Length > 0)
             {
@@ -80,7 +82,7 @@ namespace TheCarApp.Pages
 
                 var relativeFilePath = $"/pictures/profile_pictures/{fileName}";
 
-                _projectManager.UserRepository.UploadProfilePicture(user, relativeFilePath, out string Errormessage);
+                await _projectManager.UserManager.UploadProfilePictureAsync(user, relativeFilePath);
             }
 
             return RedirectToPage();
@@ -92,10 +94,10 @@ namespace TheCarApp.Pages
             return RedirectToPage("/Index");
         }
 
-        public IActionResult OnPostEditCredentials()
+        public async Task<IActionResult> OnPostEditCredentials()
         {
             UserEmail = User.Identity.Name;
-            user = _projectManager.PeopleManager.GetUser(UserEmail);
+            user = _projectManager.UserManager.FindUserByEmail(UserEmail);
 
             if (user != null)
             {
@@ -111,9 +113,10 @@ namespace TheCarApp.Pages
 
                 if (!string.IsNullOrEmpty(NewPassword) && NewPassword == ConfirmPassword && NewPassword.Length >= 8)
                 {
-                    var (hash, salt) = _projectManager.PeopleManager.HashPassword(NewPassword);
-                    user.Password = hash;
-                    user.PassSalt = salt;
+                    user.PasswordHash = NewPassword;
+                    await _projectManager.PeopleManager.UpdatePersonAsync(user);
+                    
+                    
                 }
                 else
                 {
@@ -121,7 +124,7 @@ namespace TheCarApp.Pages
                     return Page();
                 }
 
-                _projectManager.PeopleManager.UpdatePerson(user, out string errorMessage);
+                await _projectManager.PeopleManager.UpdatePersonAsync(user);
             }
 
             return RedirectToPage();

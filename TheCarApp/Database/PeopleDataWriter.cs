@@ -1,313 +1,196 @@
-﻿using Entity_Layer;
-using EntityLayout;
-using InterfaceLayer;
-using Manager_Layer;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using Data;
+using Data.Models;
+using InterfaceLayer;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseAccess
 {
     public class PeopleDataWriter : IPeopleDataWriter
     {
-        private readonly SqlConnection connectionString;
+        private readonly CarAppContext _context;
 
-        public PeopleDataWriter()
+        public PeopleDataWriter(CarAppContext context)
         {
-            connectionString = DatabaseConnection.connectionString;
+            _context = context;
         }
 
-        public void AddUser(string Username, string email, string password, int LicenseNumber, DateTime CreatedOn, string Salt)
+        // Adds a new user
+        public async Task AddUserAsync(User newUser)
         {
-            int rows = -1;
             try
             {
-
-                connectionString.Open();
-                var sql = "INSERT INTO [dbo].[Users] ([Username], [Email], [PasswordHash], [LicenseNumber], [CreatedOn], [Salt])" +
-                    "VALUES (@UserName, @Email, @Password, @LicenseNumber, @CreatedOn, @Salt)";
-
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@UserName", Username);
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@Password", password);
-                cmd.Parameters.AddWithValue("@LicenseNumber", LicenseNumber);
-                cmd.Parameters.AddWithValue("@CreatedOn", CreatedOn);
-                cmd.Parameters.AddWithValue("@Salt", Salt);
-
-                rows = cmd.ExecuteNonQuery();
-
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
-            }
-            finally { connectionString.Close(); }
-
-        }
-
-        public void UploadProfilePicture(int UserId, string relativeFilePath)
-        {
-            int rows = -1;
-            try
-            {
-
-                connectionString.Open();
-                var sql = "INSERT INTO UserProfilePictures (UserId, FilePath, UploadedOn) VALUES (@UserId, @FilePath, @UploadedOn)";
-
-
-                var command = new SqlCommand(sql, connectionString);
-                command.Parameters.AddWithValue("@UserId", UserId);
-                command.Parameters.AddWithValue("@FilePath", relativeFilePath);
-                command.Parameters.AddWithValue("@UploadedOn", DateTime.Now);
-
-                rows = command.ExecuteNonQuery();
-
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
-            }
-            finally { connectionString.Close(); }
-
-        }
-
-        public void AddAdmin(string Username, string email, string password, string PhoneNumber, DateTime CreatedOn, string PassSalt)
-        {
-            int rows = -1;
-            try
-            {
-
-                connectionString.Open();
-                var sql = "INSERT INTO [dbo].[Admininstration] ([Username], [Email], [PasswordHash], [PhoneNumber], [CreatedOn], [PassSalt])" +
-                    "VALUES (@UserName, @Email, @Password, @PhoneNumber, @CreatedOn, @PassSalt)";
-
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@UserName", Username);
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@Password", password);
-                cmd.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
-                cmd.Parameters.AddWithValue("@CreatedOn", CreatedOn);
-                cmd.Parameters.AddWithValue("@PassSalt", PassSalt);
-
-                rows = cmd.ExecuteNonQuery();
-
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
-            }
-            finally { connectionString.Close(); }
-        }
-
-        public void UpdateUser(int userId, string Username, string email, string password, string Salt, int _licenseNumber, DateTime CreatedOn)
-        {
-            int rowsAffected = -1;
-            try
-            {
-                connectionString.Open();
-                var sql = "UPDATE [dbo].[Users] " +
-                          "SET [Username] = @Username, " +
-                          "[Email] = @Email, " +
-                          "[PasswordHash] = @PasswordHash, " +
-                          "[LicenseNumber] = @License, " +
-                          "[CreatedOn] = @CreatedOn, " +
-                          "[Salt] = @Salt " +
-                          "WHERE [UserId] = @UserId";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@PasswordHash", password);
-                cmd.Parameters.AddWithValue("@License", _licenseNumber);
-                cmd.Parameters.AddWithValue("@CreatedOn", CreatedOn);
-                cmd.Parameters.AddWithValue("@Salt", Salt);
-                cmd.Parameters.AddWithValue("@UserId", userId);
-
-                rowsAffected = cmd.ExecuteNonQuery();
-
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"SQL Server error in update action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in the update action: {ex.Message}");
-            }
-            finally
-            {
-                connectionString.Close();
-            }
-        }
-
-        public int GetUserId(string Email)
-        {
-            int userId = -1;
-            try
-            {
-                connectionString.Open();
-                var sql = "SELECT [UserId] FROM [dbo].[Users] WHERE [Email] = @Email";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@Email", Email);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                var user = new User
                 {
-                    if (reader.Read())
-                    {
-                        userId = (int)reader["UserId"];
-                    }
+                    Username = newUser.Username,
+                    Email = newUser.Email,
+                    PasswordHash = newUser.PasswordHash,
+                    LicenseNumber = newUser.LicenseNumber,
+                    ModifiedOn = newUser.ModifiedOn,
+                    Salt = newUser.Salt,
+                    ProfilePictureFilePath = newUser.ProfilePictureFilePath
+
+                };
+
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+
+        // Uploads a profile picture (updates User entity directly)
+        public async Task UploadProfilePictureAsync(int userId, string relativeFilePath)
+        {
+            try
+            {
+                var user = await _context.Users.FindAsync(userId);
+                if (user != null)
+                {
+                    user.ProfilePictureFilePath = relativeFilePath;
+                    user.ModifiedOn = DateTime.Now;
+                    await _context.SaveChangesAsync();
                 }
             }
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in GetUserId: {ex.Message}");
-            }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in GetUserId: {ex.Message}");
-            }
-            finally
-            {
-                connectionString.Close();
-            }
-            return userId;
-        }
-
-        public void UpdateAdministration(int adminId, string username, string email, string passwordHash, string phoneNumber, DateTime createdOn, string PassSalt)
-        {
-            int rowsAffected = -1;
-            try
-            {
-                connectionString.Open();
-                var sql = "UPDATE [dbo].[Admininstration] " +
-                          "SET [Username] = @Username, " +
-                          "[Email] = @Email, " +
-                          "[PasswordHash] = @PasswordHash, " +
-                          "[PhoneNumber] = @PhoneNumber, " +
-                          "[CreatedOn] = @CreatedOn, " +
-                          "[PassSalt] = @PassSalt " +
-                          "WHERE [AdminId] = @AdminId";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@Username", username);
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@PasswordHash", passwordHash);
-                cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
-                cmd.Parameters.AddWithValue("@CreatedOn", createdOn);
-                cmd.Parameters.AddWithValue("@PassSalt", PassSalt);
-                cmd.Parameters.AddWithValue("@AdminId", adminId);
-
-                rowsAffected = cmd.ExecuteNonQuery();
-
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"SQL Server error in update action: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in the update action: {ex.Message}");
-            }
-            finally
-            {
-                connectionString.Close();
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
 
-        public void RentACar(int CarsId, int UserId, DateTime StartDate, DateTime EndDate, string Status)
+
+
+        // Adds a new administrator
+        public async Task AddAdminAsync(Administrator adm)
         {
-            int rows = -1;
             try
             {
+                var admin = new Administrator
+                {
+                    Username = adm.Username,
+                    Email = adm.Email,
+                    PasswordHash = adm.PasswordHash,
+                    PhoneNumber = adm.PhoneNumber,
+                    ModifiedOn = adm.ModifiedOn,
+                    Salt = adm.Salt
+                };
 
-                connectionString.Open();
-                var sql = "INSERT INTO [dbo].[Rentals] ([UserId], [CarId], [StartDate], [EndDate], [Status]) " +
-                    "VALUES (@UserId, @CarsId, @StartDate, @EndDate, @Status)";
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@UserId", UserId);
-                cmd.Parameters.AddWithValue("@CarsId", CarsId);
-                cmd.Parameters.AddWithValue("@StartDate", StartDate);
-                cmd.Parameters.AddWithValue("@EndDate", EndDate);
-                cmd.Parameters.AddWithValue("@Status", Status);
-
-                rows = cmd.ExecuteNonQuery();
-
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+                _context.Administrators.Add(admin);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
-            finally { connectionString.Close(); }
         }
 
-        public void UpdateRent(RentACar rental)
+        // Updates an existing user
+        public async Task UpdateUserAsync(User updatedUser)
         {
-            int rows = -1;
             try
             {
-
-                connectionString.Open();
-                var sql = "UPDATE[dbo].[Rentals] " +
-                    "SET [UserId] = @UserId " +
-                    ",[CarId] = @CarId " +
-                    ",[StartDate] = @StartDate " +
-                    ",[EndDate] = @EndDate " +
-                    ",[Status] = @Status " +
-                    "WHERE [UserId] = @UserId AND [CarId] = @CarId AND [StartDate] = @StartDate";
-
-
-
-
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@UserId", rental.user.Id);
-                cmd.Parameters.AddWithValue("@CarId", rental.car.Id);
-                cmd.Parameters.AddWithValue("@StartDate", rental.StartDate);
-                cmd.Parameters.AddWithValue("@EndDate", rental.ReturnDate);
-                cmd.Parameters.AddWithValue("@Status", rental.RentStatus.ToString());
-
-                rows = cmd.ExecuteNonQuery();
-
-            }
-
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"MSSQL error in this action: {ex.Message}");
+                var user = await _context.Users.FindAsync(updatedUser.UserId);
+                if (user != null)
+                {
+                    user.Username = updatedUser.Username;
+                    user.Email = updatedUser.Email;
+                    user.PasswordHash = updatedUser.PasswordHash;
+                    user.LicenseNumber = updatedUser.LicenseNumber;
+                    user.ModifiedOn = updatedUser.ModifiedOn;
+                    user.Salt = updatedUser.Salt;
+                    await _context.SaveChangesAsync();
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred in this action: {ex.Message}");
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
-            finally { connectionString.Close(); }
+        }
+
+        // Retrieves user ID by email
+        public async Task<int> GetUserIdAsync(string email)
+        {
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+                return user?.UserId ?? -1;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                return -1;
+            }
+        }
+
+        // Updates an existing administrator
+        public async Task UpdateAdminAsync(Administrator updatedAdm)
+        {
+            try
+            {
+                var admin = await _context.Administrators.FindAsync(updatedAdm);
+                if (admin != null)
+                {
+                    admin.Username = updatedAdm.Username;
+                    admin.Email = updatedAdm.Email;
+                    admin.PasswordHash = updatedAdm.PasswordHash;
+                    admin.PhoneNumber = updatedAdm.PhoneNumber;
+                    admin.ModifiedOn = updatedAdm.ModifiedOn;
+                    admin.Salt = updatedAdm.Salt;
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+
+        // Records a new rental
+        public async Task RentACarAsync(Rental newRental)
+        {
+            try
+            {
+                var rental = new Rental
+                {
+                    UserId = newRental.UserId,
+                    CarId = newRental.CarId,
+                    StartDate = newRental.StartDate,
+                    EndDate = newRental.EndDate,
+                    Status = newRental.Status
+                };
+
+                _context.Rentals.Add(rental);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+
+        // Updates an existing rental
+        public async Task UpdateRentAsync(Rental rental)
+        {
+            try
+            {
+                var existingRental = await _context.Rentals
+                    .FirstOrDefaultAsync(r => r.UserId == rental.User.UserId && r.CarId == rental.Car.CarId && r.StartDate == rental.StartDate);
+
+                if (existingRental != null)
+                {
+                    existingRental.EndDate = rental.EndDate;
+                    existingRental.Status = rental.Status.ToString();
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
         }
     }
 }

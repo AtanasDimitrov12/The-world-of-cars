@@ -1,4 +1,4 @@
-﻿using Entity_Layer;
+﻿using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +9,11 @@ namespace InterfaceLayer
 {
     public interface IPictureManager
     {
-        List<Picture> pictures { get; set; }
-        bool AddPicture(Picture pic, out string errorMessage);
-        bool RemovePicture(Picture pic, out string errorMessage);
-        bool LoadPictures(out string errorMessage);
-        int GetPicId(string URL);
+        Task<(bool Success, string ErrorMessage)> AddPictureAsync(PictureDTO picDTO);
+        Task<(bool Success, string ErrorMessage)> RemovePictureAsync(PictureDTO picDTO);
+        Task<(bool Success, string ErrorMessage)> LoadPicturesAsync();
+        Task<int> GetPicIdAsync(string URL);
+        List<PictureDTO> Pictures { get; set; }
     }
 
 }

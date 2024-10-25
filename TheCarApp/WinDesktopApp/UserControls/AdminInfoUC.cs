@@ -8,22 +8,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Entity_Layer;
 using InterfaceLayer;
 using WinDesktopApp.Forms;
 using Manager_Layer;
+using DTO;
 
-namespace DesktopApp
+namespace WinDesktopApp.UserControls
 {
     public partial class AdminInfoUC : UserControl
     {
         IPeopleManager manager;
-        IAdministratorRepository administratorRepository;
+        IAdministratorManager administratorRepository;
         ICarManager carManager;
         IRentManager rentManager;
         INewsManager newsManager;
-        List<Administrator> admins;
-        public AdminInfoUC(IPeopleManager pm, IAdministratorRepository administratorRepository, ICarManager cm, IRentManager rm, INewsManager nm)
+        List<AdministratorDTO> admins;
+        public AdminInfoUC(IPeopleManager pm, IAdministratorManager administratorRepository, ICarManager cm, IRentManager rm, INewsManager nm)
         {
             InitializeComponent();
             manager = pm;
@@ -49,11 +49,11 @@ namespace DesktopApp
         {
             TBCars.Text = carManager.GetCars().Count.ToString();
             TBCars.Enabled = false;
-            TBUsers.Text = manager.GetAllUsers().Count.ToString();
+            TBUsers.Text = manager.GetAllUsers().ToList().Count().ToString();
             TBUsers.Enabled = false;
             TBRentals.Text = rentManager.RentalHistory.Count.ToString();
             TBRentals.Enabled = false;
-            TBNews.Text = newsManager.news.Count.ToString();
+            TBNews.Text = newsManager.News.Count.ToString();
             TBNews.Enabled = false;
             TBUsername.Enabled = false;
             TBEmail.Enabled = false;

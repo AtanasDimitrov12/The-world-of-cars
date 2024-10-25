@@ -1,11 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ManagerLayer;
-using Entity_Layer;
 using InterfaceLayer;
+using DTO;
 using System;
 using System.Collections.Generic;
-using DTO;
+using System.Threading.Tasks;
+using AutoMapper;
+using Data.Models;
 
 namespace UnitTests
 {
@@ -16,6 +18,7 @@ namespace UnitTests
         private Mock<ICarDataWriter> _mockDataWriter;
         private Mock<ICarDataRemover> _mockDataRemover;
         private ExtraManager _extraManager;
+        private Mock<IMapper> _mockMapper;
 
         [TestInitialize]
         public void Setup()
@@ -23,104 +26,120 @@ namespace UnitTests
             _mockDataAccess = new Mock<IDataAccess>();
             _mockDataWriter = new Mock<ICarDataWriter>();
             _mockDataRemover = new Mock<ICarDataRemover>();
-            _extraManager = new ExtraManager(_mockDataAccess.Object, _mockDataWriter.Object, _mockDataRemover.Object);
+            _mockMapper = new Mock<IMapper>();
+            _extraManager = new ExtraManager(_mockDataAccess.Object, _mockDataWriter.Object, _mockDataRemover.Object, _mockMapper.Object);
         }
 
         [TestMethod]
-        public void AddExtra_WhenCalled_ReturnsTrue()
+        public async Task AddExtraAsync_WhenCalled_ReturnsTrue()
         {
-            var extra = new Extra("GPS", 1);
+            var extraDTO = new ExtraDTO { Id = 1, ExtraName = "GPS" };
+            var extraEntity = new CarExtra { CarExtraId = 1, ExtraName = "GPS" };
 
-            _mockDataWriter.Setup(m => m.AddExtra(It.IsAny<string>())).Verifiable();
+            // Setup mapping from DTO to Entity
+            _mockMapper.Setup(m => m.Map<CarExtra>(It.IsAny<ExtraDTO>())).Returns(extraEntity);
 
-            var result = _extraManager.AddExtra(extra, out string errorMessage);
+            // Mock data writer behavior
+            _mockDataWriter.Setup(m => m.AddExtra(It.IsAny<string>())).Returns(Task.CompletedTask);
 
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            Assert.AreEqual(1, _extraManager.extras.Count);
+            var result = await _extraManager.AddExtraAsync(extraDTO);
+
+            Assert.IsTrue(result.Success);
+            Assert.AreEqual(string.Empty, result.ErrorMessage);
+            Assert.AreEqual(1, _extraManager.Extras.Count);
         }
 
         [TestMethod]
-        public void AddExtra_WhenExceptionThrown_ReturnsFalse()
+        public async Task AddExtraAsync_WhenExceptionThrown_ReturnsFalse()
         {
-            var extra = new Extra("GPS", 1);
+            var extraDTO = new ExtraDTO { Id = 1, ExtraName = "GPS" };
 
-            _mockDataWriter.Setup(m => m.AddExtra(It.IsAny<string>()))
-                           .Throws(new Exception("Database error"));
+            // Mock data writer to throw an exception
+            _mockDataWriter.Setup(m => m.AddExtra(It.IsAny<string>())).ThrowsAsync(new Exception("Database error"));
 
-            var result = _extraManager.AddExtra(extra, out string errorMessage);
+            var result = await _extraManager.AddExtraAsync(extraDTO);
 
-            Assert.IsFalse(result);
-            Assert.AreEqual("Database error", errorMessage);
+            Assert.IsFalse(result.Success);
+            Assert.AreEqual("Database error", result.ErrorMessage);
         }
 
         [TestMethod]
-        public void RemoveExtra_WhenCalled_ReturnsTrue()
+        public async Task RemoveExtraAsync_WhenCalled_ReturnsTrue()
         {
-            var extra = new Extra("GPS", 1);
-            _extraManager.extras.Add(extra);
+            var extraDTO = new ExtraDTO { Id = 1, ExtraName = "GPS" };
+            _extraManager.Extras.Add(extraDTO);
 
-            _mockDataRemover.Setup(m => m.RemoveExtra(It.IsAny<int>())).Verifiable();
+            // Mock data remover behavior
+            _mockDataRemover.Setup(m => m.RemoveExtraAsync(It.IsAny<int>())).Returns(Task.CompletedTask);
 
-            var result = _extraManager.RemoveExtra(extra, out string errorMessage);
+            var result = await _extraManager.RemoveExtraAsync(extraDTO);
 
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            Assert.AreEqual(0, _extraManager.extras.Count);
+            Assert.IsTrue(result.Success);
+            Assert.AreEqual(string.Empty, result.ErrorMessage);
+            Assert.AreEqual(0, _extraManager.Extras.Count);
         }
 
         [TestMethod]
-        public void RemoveExtra_WhenExceptionThrown_ReturnsFalse()
+        public async Task RemoveExtraAsync_WhenExceptionThrown_ReturnsFalse()
         {
-            var extra = new Extra("GPS", 1);
-            _extraManager.extras.Add(extra);
+            var extraDTO = new ExtraDTO { Id = 1, ExtraName = "GPS" };
+            _extraManager.Extras.Add(extraDTO);
 
-            _mockDataRemover.Setup(m => m.RemoveExtra(It.IsAny<int>()))
-                            .Throws(new Exception("Database error"));
+            // Mock data remover to throw an exception
+            _mockDataRemover.Setup(m => m.RemoveExtraAsync(It.IsAny<int>())).ThrowsAsync(new Exception("Database error"));
 
-            var result = _extraManager.RemoveExtra(extra, out string errorMessage);
+            var result = await _extraManager.RemoveExtraAsync(extraDTO);
 
-            Assert.IsFalse(result);
-            Assert.AreEqual("Database error", errorMessage);
+            Assert.IsFalse(result.Success);
+            Assert.AreEqual("Database error", result.ErrorMessage);
         }
 
         [TestMethod]
-        public void GetExtraId_WhenCalled_ReturnsExtraId()
+        public async Task GetExtraIdAsync_WhenCalled_ReturnsExtraId()
         {
             var extraName = "GPS";
-            _mockDataWriter.Setup(m => m.GetExtraId(It.IsAny<string>())).Returns(1);
 
-            var result = _extraManager.GetExtraId(extraName);
+            // Mock data writer behavior
+            _mockDataWriter.Setup(m => m.GetExtraId(extraName)).ReturnsAsync(1);
+
+            var result = await _extraManager.GetExtraIdAsync(extraName);
 
             Assert.AreEqual(1, result);
         }
 
         [TestMethod]
-        public void LoadExtra_WhenCalled_ReturnsTrue()
+        public async Task LoadExtraAsync_WhenCalled_ReturnsTrue()
         {
-            var loadExtras = new List<ExtraDTO>
+            // Mock data access behavior: Set the return value to a Task<List<CarExtra>>
+            var loadExtras = new List<CarExtra>
             {
-                new ExtraDTO { Id = 1, extraName = "GPS" },
-                new ExtraDTO { Id = 2, extraName = "Sunroof" }
+                new CarExtra { CarExtraId = 1, ExtraName = "GPS", CarId = 101 },
+                new CarExtra { CarExtraId = 2, ExtraName = "Sunroof", CarId = 102 }
             };
-            _mockDataAccess.Setup(m => m.GetAllExtras()).Returns(loadExtras);
 
-            var result = _extraManager.LoadExtra(out string errorMessage);
+            // Ensure that the mock method returns the correct type (Task<List<CarExtra>>)
+            _mockDataAccess.Setup(m => m.GetAllExtrasAsync())
+                           .ReturnsAsync(loadExtras);
 
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            Assert.AreEqual(2, _extraManager.extras.Count);
+            var result = await _extraManager.LoadExtraAsync();
+
+            Assert.IsTrue(result.Success);
+            Assert.AreEqual(string.Empty, result.ErrorMessage);
+            Assert.AreEqual(2, _extraManager.Extras.Count); // Verifying that 2 extras were loaded
         }
 
+
+
         [TestMethod]
-        public void LoadExtra_WhenExceptionThrown_ReturnsFalse()
+        public async Task LoadExtraAsync_WhenExceptionThrown_ReturnsFalse()
         {
-            _mockDataAccess.Setup(m => m.GetAllExtras()).Throws(new Exception("Database error"));
+            // Mock data access to throw an exception
+            _mockDataAccess.Setup(m => m.GetAllExtrasAsync()).ThrowsAsync(new Exception("Database error"));
 
-            var result = _extraManager.LoadExtra(out string errorMessage);
+            var result = await _extraManager.LoadExtraAsync();
 
-            Assert.IsFalse(result);
-            Assert.AreEqual("Database error", errorMessage);
+            Assert.IsFalse(result.Success);
+            Assert.AreEqual("Database error", result.ErrorMessage);
         }
     }
 }

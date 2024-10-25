@@ -1,93 +1,120 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ManagerLayer;
-using Entity_Layer;
 using InterfaceLayer;
 using System;
 using System.Collections.Generic;
-using EntityLayout;
+using System.Threading.Tasks;
+using DTO;
+using AutoMapper;
+using Data.Models;
 
 namespace UnitTests
 {
     [TestClass]
     public class CommentsManagerTests
     {
-        private Mock<IDataAccess> _mockDataAccess;
         private Mock<ICarNewsDataWriter> _mockDataWriter;
         private Mock<ICarNewsDataRemover> _mockDataRemover;
-        private CommentsManager _commentsManager;
+        private ICommentsManager _commentsManager;
+        private Mock<IMapper> _mockMapper;
 
         [TestInitialize]
         public void Setup()
         {
-            _mockDataAccess = new Mock<IDataAccess>();
             _mockDataWriter = new Mock<ICarNewsDataWriter>();
             _mockDataRemover = new Mock<ICarNewsDataRemover>();
-            _commentsManager = new CommentsManager(_mockDataAccess.Object, _mockDataWriter.Object, _mockDataRemover.Object);
+            _mockMapper = new Mock<IMapper>();
+            _commentsManager = new CommentsManager(_mockDataWriter.Object, _mockDataRemover.Object, _mockMapper.Object);
         }
 
         [TestMethod]
-        public void AddComment_WhenCalled_ReturnsTrue()
+        public async Task AddCommentAsync_WhenCalled_ReturnsTrue()
         {
-            var news = new CarNews { Id = 1, Comments = new List<Comment>() };
-            var comment = new Comment { UserId = 1, Date = DateTime.Now, Message = "Test Comment" };
+            var newsDTO = new CarNewsDTO() { Id = 1, Comments = new List<CommentDTO>(), NrOfComments = 0 };
+            var commentDTO = new CommentDTO() { UserId = 1, CommentDate = DateTime.Now, Content = "Test Comment" };
+            var comment = new Comment { UserId = 1, CommentDate = commentDTO.CommentDate, Content = "Test Comment" };
 
-            _mockDataWriter.Setup(m => m.AddComment(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<DateTime>(), It.IsAny<string>())).Verifiable();
-            _mockDataWriter.Setup(m => m.GetCommentId(It.IsAny<DateTime>())).Returns(1);
+            // Setup mapping from CommentDTO to Comment entity
+            _mockMapper.Setup(m => m.Map<Comment>(It.IsAny<CommentDTO>())).Returns(comment);
 
-            var result = _commentsManager.AddComment(news, comment, out string errorMessage);
+            // Mock the data writer behavior
+            _mockDataWriter.Setup(m => m.AddCommentAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<DateTime>(), It.IsAny<string>()))
+                           .Returns(Task.CompletedTask);
+            _mockDataWriter.Setup(m => m.GetCommentIdAsync(It.IsAny<DateTime>())).ReturnsAsync(1);
 
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            Assert.AreEqual(1, comment.Id);
-            Assert.AreEqual(1, news.Comments.Count);
+            var result = await _commentsManager.AddCommentAsync(newsDTO, commentDTO);
+
+            Assert.IsTrue(result.Success);
+            Assert.IsNull(result.ErrorMessage);
+            Assert.AreEqual(1, commentDTO.Id);
+            Assert.AreEqual(1, newsDTO.Comments.Count);
+            Assert.AreEqual(1, newsDTO.NrOfComments);
+
+            // Verify that AddCommentAsync and GetCommentIdAsync were called correctly
+            _mockDataWriter.Verify(m => m.AddCommentAsync(newsDTO.Id, commentDTO.UserId, commentDTO.CommentDate, commentDTO.Content), Times.Once);
+            _mockDataWriter.Verify(m => m.GetCommentIdAsync(commentDTO.CommentDate), Times.Once);
         }
 
         [TestMethod]
-        public void AddComment_WhenExceptionThrown_ReturnsFalse()
+        public async Task AddCommentAsync_WhenExceptionThrown_ReturnsFalse()
         {
-            var news = new CarNews { Id = 1, Comments = new List<Comment>() };
-            var comment = new Comment { UserId = 1, Date = DateTime.Now, Message = "Test Comment" };
+            var newsDTO = new CarNewsDTO { Id = 1, ImageURL = "file/to/path", Comments = new List<CommentDTO>() };
+            var commentDTO = new CommentDTO { UserId = 1, CommentDate = DateTime.Now, Content = "Test Comment" };
 
-            _mockDataWriter.Setup(m => m.AddComment(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<DateTime>(), It.IsAny<string>()))
-                           .Throws(new Exception("Database error"));
+            // Mock the data writer behavior to throw an exception
+            _mockDataWriter.Setup(m => m.AddCommentAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<DateTime>(), It.IsAny<string>()))
+                           .ThrowsAsync(new Exception("Object reference not set to an instance of an object."));
 
-            var result = _commentsManager.AddComment(news, comment, out string errorMessage);
+            var result = await _commentsManager.AddCommentAsync(newsDTO, commentDTO);
 
-            Assert.IsFalse(result);
-            Assert.AreEqual("Database error", errorMessage);
+            // Check if the exception is handled correctly and the proper error message is returned
+            Assert.IsFalse(result.Success);
+            Assert.AreEqual("Object reference not set to an instance of an object.", result.ErrorMessage);
+
+            // Verify that AddCommentAsync was called and failed as expected
+            _mockDataWriter.Verify(m => m.AddCommentAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<DateTime>(), It.IsAny<string>()), Times.Once);
         }
 
         [TestMethod]
-        public void RemoveComment_WhenCalled_ReturnsTrue()
+        public async Task RemoveCommentAsync_WhenCalled_ReturnsTrue()
         {
-            var news = new CarNews { Id = 1, Comments = new List<Comment>() };
-            var comment = new Comment { Id = 1, UserId = 1, Date = DateTime.Now, Message = "Test Comment" };
-            news.Comments.Add(comment);
+            var newsDTO = new CarNewsDTO { Id = 1, Comments = new List<CommentDTO>() };
+            var commentDTO = new CommentDTO { Id = 1, UserId = 1, CommentDate = DateTime.Now, Content = "Test Comment" };
+            newsDTO.Comments.Add(commentDTO);
+            newsDTO.NrOfComments = 1;
 
-            _mockDataRemover.Setup(m => m.RemoveComment(It.IsAny<int>())).Verifiable();
+            // Mock the data remover behavior
+            _mockDataRemover.Setup(m => m.RemoveCommentAsync(It.IsAny<int>())).Returns(Task.CompletedTask);
 
-            var result = _commentsManager.RemoveComment(news, comment, out string errorMessage);
+            var result = await _commentsManager.RemoveCommentAsync(newsDTO, commentDTO);
 
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            Assert.AreEqual(0, news.Comments.Count);
+            Assert.IsTrue(result.Success);
+            Assert.IsNull(result.ErrorMessage);
+            Assert.AreEqual(0, newsDTO.Comments.Count);
+            Assert.AreEqual(0, newsDTO.NrOfComments);
+
+            // Verify that RemoveCommentAsync was called correctly
+            _mockDataRemover.Verify(m => m.RemoveCommentAsync(commentDTO.Id), Times.Once);
         }
 
         [TestMethod]
-        public void RemoveComment_WhenExceptionThrown_ReturnsFalse()
+        public async Task RemoveCommentAsync_WhenExceptionThrown_ReturnsFalse()
         {
-            var news = new CarNews { Id = 1, Comments = new List<Comment>() };
-            var comment = new Comment { Id = 1, UserId = 1, Date = DateTime.Now, Message = "Test Comment" };
-            news.Comments.Add(comment);
+            var newsDTO = new CarNewsDTO { Id = 1, Comments = new List<CommentDTO>() };
+            var commentDTO = new CommentDTO { Id = 1, UserId = 1, CommentDate = DateTime.Now, Content = "Test Comment" };
+            newsDTO.Comments.Add(commentDTO);
 
-            _mockDataRemover.Setup(m => m.RemoveComment(It.IsAny<int>()))
-                            .Throws(new Exception("Database error"));
+            // Mock the data remover behavior to throw an exception
+            _mockDataRemover.Setup(m => m.RemoveCommentAsync(It.IsAny<int>())).ThrowsAsync(new Exception("Object reference not set to an instance of an object."));
 
-            var result = _commentsManager.RemoveComment(news, comment, out string errorMessage);
+            var result = await _commentsManager.RemoveCommentAsync(newsDTO, commentDTO);
 
-            Assert.IsFalse(result);
-            Assert.AreEqual("Database error", errorMessage);
+            Assert.IsFalse(result.Success);
+            Assert.AreEqual("Object reference not set to an instance of an object.", result.ErrorMessage);
+
+            // Verify that RemoveCommentAsync was called and failed as expected
+            _mockDataRemover.Verify(m => m.RemoveCommentAsync(commentDTO.Id), Times.Once);
         }
     }
 }
