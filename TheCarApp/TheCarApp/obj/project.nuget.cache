@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "im8Ug/cH6RllH+CTok67+6TaUbv1EUPmhlsdwCswC4Y8PncpO8WxNSC6usnoiTLma35W5Ec5qHD8CNmUsl1bCg==",
+  "dgSpecHash": "XfYxIY7oX07FD6py0dQDpbPi8FJMu3vv2ZAnZ8ZcrN5QF22uQ2BdGjxcGpNCw1HfqAWaxogX2XM3l99bfn7ong==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\TheCarApp\\TheCarApp.csproj",
+  "projectFilePath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\TheCarApp\\TheCarApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Asus ROG\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Asus ROG\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
