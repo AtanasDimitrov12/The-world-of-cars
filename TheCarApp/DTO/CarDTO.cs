@@ -15,10 +15,10 @@ namespace DTO
         public int Mileage { get; set; }
         public string Fuel { get; set; }
         public int EngineSize { get; set; }
-        public int HorsePower { get; set; }
+        public int HP { get; set; }
         public string Gearbox { get; set; }
-        public int NumberOfSeats { get; set; }
-        public string NumberOfDoors { get; set; }
+        public int NumOfSeats { get; set; }
+        public string NumOfDoors { get; set; }
         public string Color { get; set; }
         public string VIN { get; set; }
         public string Description { get; set; }

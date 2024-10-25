@@ -31,8 +31,8 @@ namespace TheCarApp.Pages
         {
             Cars = projectManager.CarManager.GetCars();
 
-            if (minHP.HasValue) Cars = Cars.Where(car => car.HorsePower >= minHP.Value).ToList();
-            if (maxHP.HasValue) Cars = Cars.Where(car => car.HorsePower <= maxHP.Value).ToList();
+            if (minHP.HasValue) Cars = Cars.Where(car => car.HP >= minHP.Value).ToList();
+            if (maxHP.HasValue) Cars = Cars.Where(car => car.HP <= maxHP.Value).ToList();
             if (minYear.HasValue) Cars = Cars.Where(car => car.FirstRegistration >= minYear.Value).ToList();
             if (maxYear.HasValue) Cars = Cars.Where(car => car.FirstRegistration <= maxYear.Value).ToList();
             if (minPrice.HasValue) Cars = Cars.Where(car => car.PricePerDay >= minPrice.Value).ToList();

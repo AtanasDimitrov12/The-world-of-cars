@@ -23,10 +23,10 @@ namespace DesktopApp
         ProjectManager projectManager;
         
 
-        public ControlPage()
+        public ControlPage(ProjectManager pm)
         {
             InitializeComponent();
-            projectManager = new ProjectManager();
+            projectManager = pm;
             adminInfoUC = new AdminInfoUC(projectManager.PeopleManager, projectManager.AdministratorRepository, projectManager.CarManager, projectManager.RentManager, projectManager.NewsManager);
             carNewsUC = new CarNewsUC(projectManager.PeopleManager, projectManager.NewsManager);
             carControlUC = new CarControlUC(projectManager.RentManager, projectManager.CarManager, projectManager.ExtraManager, projectManager.PictureManager);
