@@ -5053,11 +5053,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\UnitTests\\UnitTests.csproj",
+      "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\UnitTests\\UnitTests.csproj",
       "projectName": "UnitTests",
-      "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\UnitTests\\UnitTests.csproj",
+      "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\UnitTests\\UnitTests.csproj",
       "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\UnitTests\\obj\\",
+      "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5074,8 +5074,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj": {
-              "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj"
+            "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj": {
+              "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj"
             }
           }
         }

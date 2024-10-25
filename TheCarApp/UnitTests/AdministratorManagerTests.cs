@@ -1,12 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Moq;
 using AutoMapper;
 using DTO;
 using InterfaceLayer;
-using ManagerLayer;
 using Manager_Layer;
 using Data.Models;
 

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DTO;
-using Manager_Layer;
+﻿using DTO;
+using InterfaceLayer;
 
-namespace InterfaceLayer
+namespace WinDesktopApp.Models.Abstract_Factory_Pattern
 {
     public interface ICarFormFactory
     {

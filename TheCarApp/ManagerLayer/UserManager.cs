@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using AutoMapper;
+﻿using AutoMapper;
 using InterfaceLayer;
-using DatabaseAccess;
 using Data.Models;
 using DTO;
-using System.Linq;
 
 namespace ManagerLayer
 {

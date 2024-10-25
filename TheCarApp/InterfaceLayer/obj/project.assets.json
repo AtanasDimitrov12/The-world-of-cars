@@ -48,11 +48,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\InterfaceLayer\\Interfaces.csproj",
+      "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\InterfaceLayer\\Interfaces.csproj",
       "projectName": "Interfaces",
-      "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\InterfaceLayer\\Interfaces.csproj",
+      "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\InterfaceLayer\\Interfaces.csproj",
       "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\InterfaceLayer\\obj\\",
+      "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\InterfaceLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -69,11 +69,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Data.Models\\Data.Models.csproj": {
-              "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Data.Models\\Data.Models.csproj"
+            "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\Data.Models\\Data.Models.csproj": {
+              "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\Data.Models\\Data.Models.csproj"
             },
-            "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj": {
-              "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\DTO\\DTO.csproj"
+            "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\DTO\\DTO.csproj": {
+              "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\DTO\\DTO.csproj"
             }
           }
         }

@@ -1,10 +1,9 @@
-﻿using Manager_Layer;
-using System.Data;
+﻿using System.Data;
 using WinDesktopApp.Forms;
 using InterfaceLayer;
 using WinDesktopApp.Models;
-using WinDesktopApp.UserControls;
 using DTO;
+using WinDesktopApp.Models.Abstract_Factory_Pattern;
 
 namespace WinDesktopApp.UserControls
 {

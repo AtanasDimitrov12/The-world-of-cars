@@ -1,10 +1,8 @@
-using System;
-using System.Windows.Forms;
-using WinDesktopApp;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Data;
 using WinDesktopApp.Forms;
+using ManagerLayer;
 
 namespace WinDesktopApp
 {
@@ -31,8 +29,8 @@ namespace WinDesktopApp
 
                 // Initialize the application and run the main form
                 ApplicationConfiguration.Initialize();
-                //MessageBox.Show("Worked!");
-                Application.Run(new ControlPage());
+                ProjectManager projectManager = new ProjectManager();
+                Application.Run(new ControlPage(projectManager));
 
             }
             catch (Exception ex)

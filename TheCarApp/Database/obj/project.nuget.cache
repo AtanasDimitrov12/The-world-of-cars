@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dqlf05DlSgv07vbXWNKBpNRTQo7xziTYTBmiPoZg0xsISTjLs0BZuEhi+XrYQHdWlkDSEfADSj6wtX3ImaAcJA==",
+  "dgSpecHash": "032j1qLNZrNAAtB8DaacDSJEPcfSSeUgsiaeE428G81CY+y0l/07eeNcZzdnnbArbvfgMVA4NlK4konY/FbhFA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj",
+  "projectFilePath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\Database\\DatabaseAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Asus ROG\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Asus ROG\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

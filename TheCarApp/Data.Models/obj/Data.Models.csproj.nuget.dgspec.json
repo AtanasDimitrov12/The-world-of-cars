@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Data.Models\\Data.Models.csproj": {}
+    "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\Data.Models\\Data.Models.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Data.Models\\Data.Models.csproj": {
+    "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\Data.Models\\Data.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Data.Models\\Data.Models.csproj",
+        "projectUniqueName": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\Data.Models\\Data.Models.csproj",
         "projectName": "Data.Models",
-        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Data.Models\\Data.Models.csproj",
+        "projectPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\Data.Models\\Data.Models.csproj",
         "packagesPath": "C:\\Users\\Asus ROG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\Data.Models\\obj\\",
+        "outputPath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\Data.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Asus ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",

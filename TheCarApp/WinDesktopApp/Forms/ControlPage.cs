@@ -1,5 +1,4 @@
-﻿
-using ManagerLayer;
+﻿using ManagerLayer;
 using WinDesktopApp.UserControls;
 
 namespace WinDesktopApp.Forms

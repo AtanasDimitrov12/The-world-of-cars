@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DTO;
+﻿using DTO;
 
-namespace InterfaceLayer
+namespace WinDesktopApp.Models.Abstract_Factory_Pattern
 {
     public interface ICarForm
     {

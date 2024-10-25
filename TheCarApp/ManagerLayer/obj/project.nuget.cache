@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "C8bi99zGW4PSiJA24ldRe63e3d+m9mwzlBC+XYR2GWfHapX092psdN/Ks9lczkSoZKtnYuKyHqJjCiUt2Mfl+A==",
+  "dgSpecHash": "W4PwwMJMgQ6K8W/ZRu2XBTpA8kJPyYGpD9NGPz0vcFb7hAiZy3+p+DwN2zzqVFCnlLxAj5jS2d5B89V9upS9yg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj",
+  "projectFilePath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\ManagerLayer\\ManagerLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Asus ROG\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Asus ROG\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

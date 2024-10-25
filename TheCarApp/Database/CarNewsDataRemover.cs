@@ -1,9 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
-using Data;
-using Data.Models;
+﻿using Data;
 using InterfaceLayer;
-using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseAccess
 {

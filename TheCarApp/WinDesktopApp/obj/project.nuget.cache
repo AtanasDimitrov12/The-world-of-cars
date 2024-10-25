@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DotrjUIckAo1rlmJcxbijjOVDKSlGblKPN2NAJewGAzSc5LQPfbXvEzEJ6ZgpMA8cm+d3JCmgvpzSVIaXmX6ZA==",
+  "dgSpecHash": "cp3IXSRSBlFRttRsIJZ7FMY2bDQjMTtee86zjjsZDdMqFQK0kXYimG22eQBllWAq8je1MFdBD7f2vjHuI9fFAQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Asus ROG\\source\\repos\\the-world-of-cars\\TheCarApp\\WinDesktopApp\\WinDesktopApp.csproj",
+  "projectFilePath": "C:\\Users\\Asus ROG\\source\\repos\\The-world-of-cars\\TheCarApp\\WinDesktopApp\\WinDesktopApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Asus ROG\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Asus ROG\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

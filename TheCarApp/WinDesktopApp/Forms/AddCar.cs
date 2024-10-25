@@ -1,19 +1,7 @@
 ﻿using Manager_Layer;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using DTO;
 using DTO.Enums;
-using ManagerLayer;
 using InterfaceLayer;
-using WinDesktopApp.Forms;
-using Data.Models;
 
 namespace WinDesktopApp.Forms
 {
@@ -120,13 +108,13 @@ namespace WinDesktopApp.Forms
             CBFuelType.Text = carData.Fuel;
             CBCarGearbox.Text = carData.Gearbox;
             NUDCarEngineSize.Value = carData.EngineSize;
-            NUDCarPower.Value = carData.HorsePower;
+            NUDCarPower.Value = carData.HP;
             CBColor.Text = carData.Color;
             TBCarVIN.Text = carData.VIN;
             RTBCarDescription.Text = carData.Description;
             TBCarPrice.Text = carData.PricePerDay.ToString();
-            NUDSeats.Value = carData.NumberOfSeats;
-            CBDoors.Text = carData.NumberOfDoors;
+            NUDSeats.Value = carData.NumOfSeats;
+            CBDoors.Text = carData.NumOfDoors;
 
             foreach (var picture in carData.Pictures)
             {
@@ -203,15 +191,15 @@ namespace WinDesktopApp.Forms
                             Mileage = Convert.ToInt32(NUDCarMileage.Value),
                             Fuel = CBFuelType.Text,
                             EngineSize = Convert.ToInt32(NUDCarEngineSize.Value),
-                            HorsePower = Convert.ToInt32(NUDCarPower.Value),
+                            HP = Convert.ToInt32(NUDCarPower.Value),
                             Gearbox = CBCarGearbox.SelectedItem.ToString(),
                             Color = CBColor.SelectedItem.ToString(),
                             VIN = TBCarVIN.Text,
                             Description = RTBCarDescription.Text,
                             PricePerDay = Convert.ToDecimal(TBCarPrice.Text),
                             Status = CarStatus.AVAILABLE.ToString(),
-                            NumberOfSeats = Convert.ToInt32(NUDSeats.Value),
-                            NumberOfDoors = CBDoors.Text,
+                            NumOfSeats = Convert.ToInt32(NUDSeats.Value),
+                            NumOfDoors = CBDoors.Text,
                             ViewCount = 0,
                             Pictures = pictures,
                             CarExtras = extras
@@ -265,13 +253,13 @@ namespace WinDesktopApp.Forms
             carData.Fuel = CBFuelType.Text;
             carData.Gearbox = CBCarGearbox.Text;
             carData.EngineSize = Convert.ToInt32(NUDCarEngineSize.Value);
-            carData.HorsePower = Convert.ToInt32(NUDCarPower.Value);
+            carData.HP = Convert.ToInt32(NUDCarPower.Value);
             carData.Color = CBColor.Text;
             carData.VIN = TBCarVIN.Text;
             carData.Description = RTBCarDescription.Text;
             carData.PricePerDay = Convert.ToDecimal(TBCarPrice.Text);
-            carData.NumberOfSeats = Convert.ToInt32(NUDSeats.Value);
-            carData.NumberOfDoors = CBDoors.Text;
+            carData.NumOfSeats = Convert.ToInt32(NUDSeats.Value);
+            carData.NumOfDoors = CBDoors.Text;
             carData.Pictures = pictures;
             carData.CarExtras = extras;
         }

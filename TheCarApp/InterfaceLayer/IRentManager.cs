@@ -1,5 +1,4 @@
-﻿using Data.Models;
-using DTO.Enums;
+﻿using DTO.Enums;
 using DTO;
 
 namespace InterfaceLayer

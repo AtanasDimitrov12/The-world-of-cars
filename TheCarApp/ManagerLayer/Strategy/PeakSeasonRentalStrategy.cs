@@ -1,12 +1,6 @@
 ﻿using DTO;
 using DTO.Enums;
 using InterfaceLayer;
-using Manager_Layer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ManagerLayer.Strategy
 {

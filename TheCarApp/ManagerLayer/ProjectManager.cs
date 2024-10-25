@@ -4,9 +4,7 @@ using DatabaseAccess;
 using InterfaceLayer;
 using Manager_Layer;
 using ManagerLayer.Strategy;
-using Mapping;
 using Microsoft.EntityFrameworkCore;
-using DataConfiguration = Data.Configuration;  // Aliasing the Configuration class from Data namespace
 
 namespace ManagerLayer
 {
@@ -55,7 +53,7 @@ namespace ManagerLayer
             PictureManager = new PictureManager(DataAccess, CarDataWriter, CarDataRemover, mapper);
             UserManager = new UserManager(DataAccess, PeopleDataWriter, PeopleDataRemover, mapper);
             AdministratorRepository = new AdministratorManager(DataAccess, PeopleDataWriter, PeopleDataRemover, mapper);
-            PeopleManager = new PeopleManager(UserManager, AdministratorRepository, mapper);
+            PeopleManager = new PeopleManager(UserManager, AdministratorRepository);
             RentManager = new RentManager(DataAccess, PeopleDataWriter, PeopleDataRemover, PeopleManager, CarManager, rentalStrategyFactory, mapper);
             LoadAllData();
         }

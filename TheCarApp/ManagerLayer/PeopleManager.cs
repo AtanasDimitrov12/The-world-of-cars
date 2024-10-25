@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using AutoMapper;
-using System.Linq;
+﻿using AutoMapper;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using DTO;
 using InterfaceLayer;
 
@@ -14,16 +9,14 @@ namespace ManagerLayer
     {
         private readonly IUserManager _userManager;
         private readonly IAdministratorManager _adminManager;
-        private readonly IMapper _mapper;
         const int keySize = 64;
         const int iterations = 350000;
         HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
 
-        public PeopleManager(IUserManager userManager, IAdministratorManager adminManager, IMapper mapper)
+        public PeopleManager(IUserManager userManager, IAdministratorManager adminManager)
         {
             _userManager = userManager;
             _adminManager = adminManager;
-            _mapper = mapper;
         }
 
         // Method to add both User and Administrator

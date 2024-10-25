@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Data.Models;
-using DTO;
+﻿using DTO;
 using DTO.Enums;
 
-namespace Manager_Layer
+namespace InterfaceLayer
 {
     public interface ICarManager
     {

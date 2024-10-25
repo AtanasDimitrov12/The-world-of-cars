@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Data.Models;
-using DatabaseAccess;
 using DTO;
 using InterfaceLayer;
 

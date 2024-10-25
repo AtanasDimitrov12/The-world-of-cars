@@ -1,9 +1,5 @@
-﻿using Data.Models;
-using InterfaceLayer;
+﻿using InterfaceLayer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Threading.Tasks;
 using Data;
 
 namespace DatabaseAccess

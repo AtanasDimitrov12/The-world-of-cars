@@ -3,10 +3,6 @@ using Data.Models;
 using DTO;
 using DTO.Interfaces;
 using InterfaceLayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ManagerLayer
 {

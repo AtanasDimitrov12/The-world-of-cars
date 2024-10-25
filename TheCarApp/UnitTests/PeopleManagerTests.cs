@@ -1,12 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
+﻿using Moq;
 using DTO;
 using InterfaceLayer;
 using ManagerLayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 
 namespace UnitTests
@@ -24,7 +19,7 @@ namespace UnitTests
             _mockUserManager = new Mock<IUserManager>();
             _mockAdminManager = new Mock<IAdministratorManager>();
             var mapper = new Mock<AutoMapper.IMapper>(); // AutoMapper is not necessary for tests
-            _peopleManager = new PeopleManager(_mockUserManager.Object, _mockAdminManager.Object, mapper.Object);
+            _peopleManager = new PeopleManager(_mockUserManager.Object, _mockAdminManager.Object);
         }
 
         [TestMethod]

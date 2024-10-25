@@ -2,9 +2,6 @@
 using Data.Models;
 using DTO;
 using InterfaceLayer;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace ManagerLayer
 {
