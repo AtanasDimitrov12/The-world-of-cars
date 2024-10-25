@@ -8,24 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DTO;
-using Entity_Layer;
 using InterfaceLayer;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 using System.IO;
 
-namespace DesktopApp
+namespace WinDesktopApp.Forms
 {
     public partial class AddNews : Form
     {
         private string selectedImagePath;
-        private CarNews newsData;
+        private CarNewsDTO newsData;
         private INewsManager NewsManager;
         public event EventHandler NewsAdded;
         private bool IsView;
         private bool Modify;
 
-        public AddNews(CarNews news, INewsManager newsManager, bool View)
+        public AddNews(CarNewsDTO news, INewsManager newsManager, bool View)
         {
             InitializeComponent();
             newsData = news;
@@ -117,7 +116,7 @@ namespace DesktopApp
             return true;
         }
 
-        private void BTNAdd_Click(object sender, EventArgs e)
+        private async void BTNAdd_Click(object sender, EventArgs e)
         {
             if (!AreFieldsNotEmpty())
             {
@@ -136,8 +135,15 @@ namespace DesktopApp
                     var newImagePath = Path.Combine(projectRootDirectory, "TheCarApp", "TheCarApp", "wwwroot", "pictures", "News_Pictures", fileName);
 
 
-                    CarNews news = new CarNews(RTBNewsDescription.Text, dateTime, fileName, TBNewsTitle.Text, TBNewsAuthor.Text, RTBNewsIntro.Text);
-                    if (NewsManager.AddNews(news, out string addNewsError))
+                    CarNewsDTO news = new CarNewsDTO();
+                    news.Author = TBNewsAuthor.Text;
+                    news.ShortIntro = RTBNewsIntro.Text;
+                    news.ImageURL = fileName;
+                    news.NewsDescription = RTBNewsDescription.Text;
+                    news.ReleaseDate = dateTime;
+                    news.Title = TBNewsTitle.Text;
+                    (bool Response, string errorMessage) = await NewsManager.AddNewsAsync(news);
+                    if (Response)
                     {
                         MessageBox.Show("You successfully added this news!");
                         NewsAdded?.Invoke(this, EventArgs.Empty);
@@ -146,7 +152,7 @@ namespace DesktopApp
                     }
                     else
                     {
-                        MessageBox.Show($"Failed to add news: {addNewsError}");
+                        MessageBox.Show($"Failed to add news: {errorMessage}");
                     }
                 }
                 catch (Exception ex)
@@ -195,7 +201,8 @@ namespace DesktopApp
                     newsData.ShortIntro = RTBNewsIntro.Text;
                     newsData.NewsDescription = RTBNewsDescription.Text;
                     newsData.ImageURL = fileName;
-                    if (NewsManager.UpdateNews(newsData, out string updateNewsError))
+                    (bool Response, string errorMessage) = await NewsManager.UpdateNewsAsync(newsData);
+                    if (Response)
                     {
                         MessageBox.Show("You successfully updated this news!");
                         NewsAdded?.Invoke(this, EventArgs.Empty);
@@ -204,7 +211,7 @@ namespace DesktopApp
                     }
                     else
                     {
-                        MessageBox.Show($"Failed to update news: {updateNewsError}");
+                        MessageBox.Show($"Failed to update news: {errorMessage}");
                     }
                 }
                 else

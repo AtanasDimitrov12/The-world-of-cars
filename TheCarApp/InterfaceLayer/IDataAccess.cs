@@ -3,21 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DTO;
+using Data.Models;
+
 
 namespace InterfaceLayer
 {
     public interface IDataAccess
     {
-        List<CarDTO> GetCars();
-        List<CarNewsDTO> GetCarNews();
-        List<CommentDTO> GetCommentsForNews(int newsId);
-        List<RentACarDTO> GetRentals();
-        List<PictureDTO> GetAllPictures();
-        List<ExtraDTO> GetAllExtras();
-        UserDTO GetUserById(int userId);
-        CarDTO GetCarById(int carId);
-        List<UserDTO> GetUsers();
-        List<AdministratorDTO> GetAdministrators();
+        // Fetch all cars
+        Task<List<Car>> GetCarsAsync();
+
+        // Fetch all car extras
+        Task<List<CarExtra>> GetAllExtrasAsync();
+        Task<List<CarPicture>> GetAllPicturesAsync();
+
+        // Fetch pictures for a car by car ID
+        Task<List<CarPicture>> GetCarPicturesAsync(int carId);
+
+        // Fetch a car by ID
+        Task<Car> GetCarByIdAsync(int carId);
+
+        // Fetch all car news
+        Task<List<News>> GetCarNewsAsync();
+
+        // Fetch comments for a specific news item by news ID
+        Task<List<Comment>> GetCommentsForNewsAsync(int newsId);
+
+        // Fetch all rentals
+        Task<List<Rental>> GetRentalsAsync();
+
+        // Fetch a user by ID
+        Task<User> GetUserByIdAsync(int userId);
+
+        // Fetch all users
+        Task<List<User>> GetUsersAsync();
+
+        // Fetch all administrators
+        Task<List<Administrator>> GetAdministratorsAsync();
     }
 }

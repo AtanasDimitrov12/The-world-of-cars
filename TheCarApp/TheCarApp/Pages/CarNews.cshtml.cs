@@ -1,4 +1,4 @@
-using Entity_Layer;
+using DTO;
 using ManagerLayer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +9,7 @@ namespace TheCarApp.Pages
     [Authorize]
     public class CarNewsModel : PageModel
     {
-        public List<CarNews> News { get; set; }
+        public List<CarNewsDTO> News { get; set; }
         public ProjectManager projectManager;
         public int TotalPages { get; set; }
         public int CurrentPage { get; set; }
@@ -25,8 +25,8 @@ namespace TheCarApp.Pages
         {
             SearchQuery = searchQuery;
             var allNews = string.IsNullOrEmpty(searchQuery)
-                ? projectManager.NewsManager.news
-                : projectManager.NewsManager.news
+                ? projectManager.NewsManager.News
+                : projectManager.NewsManager.News
                     .Where(n => n.Title.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
                                 n.NewsDescription.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
                     .ToList();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,12 +20,14 @@ namespace Data.Models
         public string Status { get; set; }
 
         // Foreign Key to User
-        public int UserId { get; set; }
-        public User User { get; set; }
+        [ForeignKey("User")]
+        public int? UserId { get; set; }
+        public virtual User User { get; set; }
 
         // Foreign Key to Car
-        public int CarId { get; set; }
-        public Car Car { get; set; }
+        [ForeignKey("Car")]
+        public int? CarId { get; set; }
+        public virtual Car Car { get; set; }
     }
 
 }

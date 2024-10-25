@@ -1,6 +1,4 @@
-﻿using DesktopApp;
-using Entity_Layer;
-using EntityLayout;
+﻿using DTO;
 using InterfaceLayer;
 using Manager_Layer;
 using ManagerLayer;
@@ -9,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinDesktopApp.Forms;
 
 namespace WinDesktopApp.Models
 {
@@ -37,9 +36,9 @@ namespace WinDesktopApp.Models
             addCar.Show();
         }
 
-        public void LoadCarData(Car car) { }
+        public void LoadCarData(CarDTO car) { }
 
-        public void LoadExtrasAndPictures(List<Extra> extras, List<Picture> pictures) => _addCarForm.LoadCB();
+        public void LoadExtrasAndPictures(List<ExtraDTO> extras, List<PictureDTO> pictures) => _addCarForm.LoadCB();
 
         private void OnAddCarClicked(object sender, EventArgs e)
         {

@@ -1,157 +1,125 @@
-﻿using InterfaceLayer;
+﻿using Data.Models;
+using InterfaceLayer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Data;
 
 namespace DatabaseAccess
 {
     public class CarDataRemover : ICarDataRemover
     {
-        private readonly SqlConnection connectionString;
+        private readonly CarAppContext _context;
 
-        public CarDataRemover()
+        public CarDataRemover(CarAppContext context)
         {
-            connectionString = DatabaseConnection.connectionString;
+            _context = context;
         }
 
-        public void RemoveCar(int CarId)
+        public async Task RemoveCarAsync(int carId)
         {
-            int rows = -1;
             try
             {
-                RemoveCarDescription(CarId);
-                RemoveCarExtras(CarId);
-                RemoveCarPictures(CarId);
-                RemoveCarViewsHistory(CarId);
-                connectionString.Open();
-                var sql = "DELETE FROM [dbo].[Cars] WHERE [CarId] = @CarId";
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@CarId", CarId);
-                rows = cmd.ExecuteNonQuery();
+                // Remove related data first
+                await RemoveCarExtrasAsync(carId);
+                await RemoveCarPicturesAsync(carId);
 
+                // Now remove the car itself
+                var car = await _context.Cars.FindAsync(carId);
+                if (car != null)
+                {
+                    _context.Cars.Remove(car);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    Console.WriteLine($"Car with ID {carId} not found.");
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
-            finally { connectionString.Close(); }
         }
 
-        public void RemoveCarDescription(int CarId)
+        
+
+        public async Task RemoveCarExtrasAsync(int carId)
         {
-            int rows = -1;
             try
             {
-                connectionString.Open();
-                var sql = "DELETE FROM [dbo].[CarDescription] WHERE [CarId] = @CarId";
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@CarId", CarId);
-                rows = cmd.ExecuteNonQuery();
+                var carExtras = await _context.CarExtras
+                    .Where(e => e.CarId == carId)
+                    .ToListAsync();
+
+                if (carExtras.Count > 0)
+                {
+                    _context.CarExtras.RemoveRange(carExtras);
+                    await _context.SaveChangesAsync();
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
-            finally { connectionString.Close(); }
         }
 
-        public void RemoveCarExtras(int CarId)
+        public async Task RemoveCarPicturesAsync(int carId)
         {
-            int rows = -1;
             try
             {
-                connectionString.Open();
-                var sql = "DELETE FROM [dbo].[CarExtras] WHERE [CarId] = @CarId";
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@CarId", CarId);
-                rows = cmd.ExecuteNonQuery();
+                var carPictures = await _context.CarPictures
+                    .Where(p => p.CarId == carId)
+                    .ToListAsync();
 
+                if (carPictures.Count > 0)
+                {
+                    _context.CarPictures.RemoveRange(carPictures);
+                    await _context.SaveChangesAsync();
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
-            finally { connectionString.Close(); }
         }
 
-        public void RemoveCarPictures(int CarId)
+        
+
+
+        public async Task RemoveExtraAsync(int extraId)
         {
-            int rows = -1;
             try
             {
-                connectionString.Open();
-                var sql = "DELETE FROM [dbo].[CarPictures] WHERE [CarId] = @CarId";
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@CarId", CarId);
-                rows = cmd.ExecuteNonQuery();
-
+                var extra = await _context.CarExtras.FindAsync(extraId);
+                if (extra != null)
+                {
+                    _context.CarExtras.Remove(extra);
+                    await _context.SaveChangesAsync();
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
-            finally { connectionString.Close(); }
         }
 
-        public void RemoveCarViewsHistory(int CarId)
+        public async Task RemovePictureAsync(int picId)
         {
-            int rows = -1;
             try
             {
-                connectionString.Open();
-                var sql = "DELETE FROM [dbo].[CarViews] WHERE [CarID] = @CarId";
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@CarId", CarId);
-                rows = cmd.ExecuteNonQuery();
-
+                var picture = await _context.CarPictures.FindAsync(picId);
+                if (picture != null)
+                {
+                    _context.CarPictures.Remove(picture);
+                    await _context.SaveChangesAsync();
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
-            finally { connectionString.Close(); }
-        }
-
-        public void RemoveExtra(int ExtraId)
-        {
-            int rows = -1;
-            try
-            {
-                connectionString.Open();
-                var sql = "DELETE FROM [dbi530410_carapp].[dbo].[Extras] WHERE [ExtraId] = @ExtraId";
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@ExtraId", ExtraId);
-                rows = cmd.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred: {ex.Message}");
-            }
-            finally { connectionString.Close(); }
-        }
-
-        public void RemovePicture(int PicId)
-        {
-            int rows = -1;
-            try
-            {
-                connectionString.Open();
-                var sql = "DELETE FROM [dbi530410_carapp].[dbo].[Pictures] WHERE [PictureId] = @PicId";
-                SqlCommand cmd = new SqlCommand(sql, connectionString);
-                cmd.Parameters.AddWithValue("@PicId", PicId);
-                rows = cmd.ExecuteNonQuery();
-
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred: {ex.Message}");
-            }
-            finally { connectionString.Close(); }
         }
     }
 }

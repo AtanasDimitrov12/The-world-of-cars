@@ -1,255 +1,198 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Database;
+using System.Threading.Tasks;
+using Data.Models;
 using DatabaseAccess;
-using DTO;
-using Entity_Layer;
-using Entity_Layer.Enums;
-using Entity_Layer.Interfaces;
-using EntityLayout;
+using DTO.Enums;
+using DTO.Interfaces;
 using InterfaceLayer;
+using DTO;
+using AutoMapper;
 
 namespace Manager_Layer
 {
     public class CarManager : ICarManager
     {
-        private List<Car> cars;
+        private List<CarDTO> cars;
         private readonly IDataAccess _dataAccess;
         private readonly ICarDataWriter _dataWriter;
         private readonly ICarDataRemover _dataRemover;
+        private readonly IMapper _mapper;
 
-        public CarManager(IDataAccess dataAccess, ICarDataWriter dataWriter, ICarDataRemover dataRemover)
+        public CarManager(IMapper mapper, IDataAccess dataAccess, ICarDataWriter dataWriter, ICarDataRemover dataRemover)
         {
-            cars = new List<Car>();
+            cars = new List<CarDTO>();
             _dataAccess = dataAccess;
             _dataWriter = dataWriter;
             _dataRemover = dataRemover;
+            _mapper = mapper;
         }
 
-        public bool AddCar(Car car, List<Picture> pictures, List<Extra> extras, out string errorMessage)
+        // Adds a car and its related data (CarPictures, CarExtras) to the database
+        public async Task<(bool Success, string ErrorMessage)> AddCarAsync(CarDTO carDTO)
         {
-            errorMessage = string.Empty;
             try
             {
-                _dataWriter.AddCar(car.Brand, car.Model, car.FirstRegistration, car.Mileage, car.Fuel, car.EngineSize, car.HorsePower, car.Gearbox, car.NumberOfSeats, car.NumberOfDoors, car.Color, car.VIN, car.CarStatus.ToString());
+                Car car = _mapper.Map<Car>(carDTO);
 
-                int carId = _dataWriter.GetCarId(car.VIN);
-                car.Id = carId;
-                _dataWriter.AddCarDescription(car.Id, car.Description, car.PricePerDay);
-                foreach (var pic in pictures)
-                {
-                    _dataWriter.AddCarPictures(car.Id, pic.Id);
-                    car.Pictures.Add(pic);
-                }
-                foreach (var extra in extras)
-                {
-                    _dataWriter.AddCarExtras(car.Id, extra.Id);
-                    car.CarExtras.Add(extra);
-                }
-                cars.Add(car);
-                return true;
+                // Add the car entity
+                await _dataWriter.AddCar(car);
+
+                // Get the Car ID from the database using the VIN (if necessary)
+                car.CarId = await _dataWriter.GetCarId(car.VIN);
+
+                // Map the car entity to CarDTO
+                cars.Add(carDTO);
+
+                return (true, null); // Success
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message); // Return error message on failure
             }
-
-            //try{
-            //    car.Pictures = pictures;
-            //    car.CarExtras = extras;
-            //    this.carAppContext.Cars.Add(car);
-            //    this.carAppContext.SaveChanges();
-            //}
-            //catch (Exception ex) 
-            //{
-            //    errorMessage = ex.Message;
-            //    return false;
-            //}
         }
 
-        public bool UpdateCar(Car car, List<Picture> pictures, List<Extra> extras, out string errorMessage)
+        // Updates the car and its related data
+        public async Task<(bool Success, string ErrorMessage)> UpdateCarAsync(CarDTO carDTO)
         {
-            errorMessage = string.Empty;
             try
             {
-                _dataWriter.UpdateCar(car);
-                _dataWriter.UpdateCarDescription(car);
-                _dataRemover.RemoveCarPictures(car.Id);
-                _dataRemover.RemoveCarExtras(car.Id);
-                foreach (var pic in pictures)
-                {
-                    _dataWriter.AddCarPictures(car.Id, pic.Id);
-                    car.Pictures.Add(pic);
-                }
-                foreach (var extra in extras)
-                {
-                    _dataWriter.AddCarExtras(car.Id, extra.Id);
-                    car.CarExtras.Add(extra);
-                }
-                return true;
+                Car car = _mapper.Map<Car>(carDTO);
+                await _dataWriter.UpdateCar(car);
+
+                // Map the car entity to CarDTO
+                //var carDTO = cars.FirstOrDefault(c => c.Id == car.CarId);
+                //if (carDTO != null)
+                //{
+                //    carDTO = _mapper.Map<CarDTO>(car);
+                //}
+
+                return (true, null); // Success
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message); // Return error message on failure
             }
         }
 
-        public bool RemoveCar(Car car, out string errorMessage)
+        // Removes a car
+        public async Task<(bool Success, string ErrorMessage)> RemoveCarAsync(CarDTO carDTO)
         {
-            errorMessage = string.Empty;
             try
             {
-                _dataRemover.RemoveCar(car.Id);
-                cars.Remove(car);
-                return true;
+                Car car = _mapper.Map<Car>(carDTO);
+                await _dataRemover.RemoveCarAsync(car.CarId);
+
+                // Remove the corresponding DTO
+                //var carDTO = cars.FirstOrDefault(c => c.Id == car.CarId);
+                //if (carDTO != null)
+                //{
+                //    cars.Remove(carDTO);
+                //}
+
+                return (true, null); // Success
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message); // Return error message on failure
             }
         }
 
-        public bool ChangeCarStatus(Car car, string newStatus, CarStatus status, out string errorMessage)
+        // Changes the status of a car
+        public async Task<(bool Success, string ErrorMessage)> ChangeCarStatusAsync(CarDTO carDTO, string newStatus, CarStatus status)
         {
-            errorMessage = string.Empty;
             try
             {
-                _dataWriter.ChangeCarStatus(car, newStatus);
-                car.CarStatus = status;
-                return true;
+                Car car = _mapper.Map<Car>(carDTO);
+                await _dataWriter.ChangeCarStatus(car.CarId, newStatus);
+                
+                carDTO.Status = status.ToString();
+                
+
+                return (true, null); // Success
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message); // Return error message on failure
             }
         }
 
-        public bool RecordCarView(int carId, out string errorMessage)
+        // Records a car view
+        public async Task<(bool Success, string ErrorMessage)> RecordCarViewAsync(int carId)
         {
-            errorMessage = string.Empty;
             try
             {
-                _dataWriter.RecordCarView(carId);
+                await _dataWriter.RecordCarView(carId);
                 var car = GetCarById(carId);
                 if (car != null)
                 {
-                    car.Views++;
-                    return true;
+                    car.ViewCount++;
+                    return (true, null); // Success
                 }
                 else
                 {
-                    errorMessage = "Car not found";
-                    return false;
+                    return (false, "Car not found"); // Car not found
                 }
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message); // Return error message on failure
             }
         }
 
-        public Car SearchForCar(int index)
+        // Searches for a car by index
+        public CarDTO SearchForCar(int index)
         {
             return cars.ElementAtOrDefault(index);
         }
 
-        public List<Car> GetCars()
+        // Gets all cars
+        public List<CarDTO> GetCars()
         {
             return cars;
         }
 
-        public List<Car> GetCarsASC()
+        // Gets cars sorted in ascending order by brand
+        public List<CarDTO> GetCarsASC()
         {
-            var asc = new AscendingBrandComparer();
-            cars.Sort(asc);
+            cars.Sort(new AscendingBrandComparer());
             return cars;
         }
 
-        public List<Car> GetCarsDESC()
+        // Gets cars sorted in descending order by brand
+        public List<CarDTO> GetCarsDESC()
         {
-            var desc = new DescendingBrandComparer();
-            cars.Sort(desc);
+            cars.Sort(new DescendingBrandComparer());
             return cars;
         }
 
-        public Car GetCarById(int carId)
+        // Gets a car by ID
+        public CarDTO GetCarById(int carId)
         {
             return cars.FirstOrDefault(car => car.Id == carId);
         }
 
-        public Car MapCarDtoToCar(CarDTO carDTO)
+        // Loads cars from the database and adds them to the in-memory list
+        public async Task<(bool Success, string ErrorMessage)> LoadCarsAsync()
         {
-            if (carDTO == null)
-                throw new ArgumentNullException(nameof(carDTO));
-
-            if (string.IsNullOrEmpty(carDTO.CarStatus))
-                throw new ArgumentException("CarStatus cannot be null or empty", nameof(carDTO.CarStatus));
-
-            CarStatus status;
-            if (!Enum.TryParse<CarStatus>(carDTO.CarStatus, true, out status))
-                throw new ArgumentException($"Invalid CarStatus value: {carDTO.CarStatus}");
-
-            var car = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, status, carDTO.NumberOfSeats, carDTO.NumberOfDoors, carDTO.Views);
-
-            foreach (var extraDTO in carDTO.CarExtras)
-            {
-                var extra = new Extra(extraDTO.extraName, extraDTO.Id);
-                car.CarExtras.Add(extra);
-            }
-
-            foreach (var picDTO in carDTO.Pictures)
-            {
-                var pic = new Picture(picDTO.Id, picDTO.PictureURL);
-                car.Pictures.Add(pic);
-            }
-
-            return car;
-        }
-
-        public bool LoadCars(out string errorMessage)
-        {
-            errorMessage = string.Empty;
             try
             {
-                var loadedCars = _dataAccess.GetCars();
+                var loadedCars = await _dataAccess.GetCarsAsync();
                 if (loadedCars != null)
                 {
-                    foreach (var carDTO in loadedCars)
+                    // Map each car entity to CarDTO and add to the in-memory list
+                    foreach (var carEntity in loadedCars)
                     {
-                        if (Enum.TryParse(carDTO.CarStatus, true, out CarStatus status))
-                        {
-                            var loadCar = new Car(carDTO.Id, carDTO.Brand, carDTO.Model, carDTO.FirstRegistration, carDTO.Mileage, carDTO.Fuel, carDTO.EngineSize, carDTO.HorsePower, carDTO.Gearbox, carDTO.Color, carDTO.VIN, carDTO.Description, carDTO.PricePerDay, status, carDTO.NumberOfSeats, carDTO.NumberOfDoors, carDTO.Views);
-
-                            foreach (var extraDTO in carDTO.CarExtras)
-                            {
-                                var extra = new Extra(extraDTO.extraName, extraDTO.Id);
-                                loadCar.CarExtras.Add(extra);
-                            }
-                            foreach (var picDTO in carDTO.Pictures)
-                            {
-                                var pic = new Picture(picDTO.Id, picDTO.PictureURL);
-                                loadCar.Pictures.Add(pic);
-                            }
-                            cars.Add(loadCar);
-                        }
-                        else
-                        {
-                            errorMessage = $"Warning: {carDTO.Id} has an invalid status assigned.";
-                        }
+                        CarDTO carDTO = _mapper.Map<CarDTO>(carEntity);
+                        cars.Add(carDTO);
                     }
                 }
-                return true;
+                return (true, null); // Success
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return false;
+                return (false, ex.Message); // Return error message on failure
             }
         }
     }

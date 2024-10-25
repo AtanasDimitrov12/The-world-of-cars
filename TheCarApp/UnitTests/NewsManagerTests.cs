@@ -1,13 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Entity_Layer;
-using Entity_Layer.Interfaces;
+using ManagerLayer;
+using Data.Models;
 using InterfaceLayer;
+using DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using EntityLayout;
-using DTO;
+using System.Threading.Tasks;
+using AutoMapper;
 
 namespace UnitTests
 {
@@ -18,6 +18,7 @@ namespace UnitTests
         private Mock<ICarNewsDataWriter> _mockDataWriter;
         private Mock<ICarNewsDataRemover> _mockDataRemover;
         private NewsManager _newsManager;
+        private IMapper _mapper;
 
         [TestInitialize]
         public void Setup()
@@ -25,56 +26,84 @@ namespace UnitTests
             _mockDataAccess = new Mock<IDataAccess>();
             _mockDataWriter = new Mock<ICarNewsDataWriter>();
             _mockDataRemover = new Mock<ICarNewsDataRemover>();
-            _newsManager = new NewsManager(_mockDataAccess.Object, _mockDataWriter.Object, _mockDataRemover.Object);
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<CarNewsDTO, News>().ReverseMap();
+            });
+
+            _mapper = config.CreateMapper();
+            _newsManager = new NewsManager(_mockDataAccess.Object, _mockDataWriter.Object, _mockDataRemover.Object, _mapper);
         }
 
         [TestMethod]
-        public void AddNews_WhenCalled_ReturnsTrue()
+        public async Task AddNews_WhenCalled_ReturnsTrue()
         {
-            var carnews = new CarNews { Title = "Test News" };
+            var carNewsDTO = new CarNewsDTO
+            {
+                Title = "Test News",
+                Author = "Author",
+                NewsDescription = "Description",
+                ReleaseDate = DateTime.Now,
+                ImageURL = "image.jpg",
+                ShortIntro = "Intro"
+            };
 
-            _mockDataWriter.Setup(m => m.AddCarNews(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DateTime>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+            _mockDataWriter.Setup(m => m.AddCarNewsAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DateTime>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                           .Returns(Task.CompletedTask)
                            .Verifiable();
-            _mockDataWriter.Setup(m => m.GetNewsId(It.IsAny<string>())).Returns(1);
 
-            var result = _newsManager.AddNews(carnews, out string errorMessage);
+            _mockDataWriter.Setup(m => m.GetNewsIdAsync(It.IsAny<string>())).ReturnsAsync(1);
 
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            Assert.AreEqual(1, carnews.Id);
+            var result = await _newsManager.AddNewsAsync(carNewsDTO);
+
+            Assert.IsTrue(result.Success);
+            Assert.AreEqual(string.Empty, result.ErrorMessage);
+            Assert.AreEqual(1, carNewsDTO.Id);
         }
 
         [TestMethod]
-        public void DeleteNews_WhenCalled_ReturnsTrue()
+        public async Task DeleteNews_WhenCalled_ReturnsTrue()
         {
-            var carnews = new CarNews { Id = 1, Comments = new List<Comment> { new Comment(1, 1, DateTime.Now, "Test Comment") } };
-            _mockDataRemover.Setup(m => m.RemoveComment(It.IsAny<int>())).Verifiable();
-            _mockDataRemover.Setup(m => m.RemoveNews(It.IsAny<int>())).Verifiable();
+            var carNewsDTO = new CarNewsDTO
+            {
+                Id = 1,
+                Title = "Test News",
+                Comments = new List<CommentDTO> { new CommentDTO { Id = 1, UserId = 1, CommentDate = DateTime.Now, Content = "Test Comment" } }
+            };
 
-            var result = _newsManager.DeleteNews(carnews, out string errorMessage);
+            _mockDataRemover.Setup(m => m.RemoveCommentAsync(It.IsAny<int>())).Returns(Task.CompletedTask).Verifiable();
+            _mockDataRemover.Setup(m => m.RemoveNewsAsync(It.IsAny<int>())).Returns(Task.CompletedTask).Verifiable();
 
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
+            var result = await _newsManager.DeleteNewsAsync(carNewsDTO);
+
+            Assert.IsTrue(result.Success);
+            Assert.AreEqual(string.Empty, result.ErrorMessage);
         }
 
         [TestMethod]
-        public void UpdateNews_WhenCalled_ReturnsTrue()
+        public async Task UpdateNews_WhenCalled_ReturnsTrue()
         {
-            var carnews = new CarNews { Id = 1, Title = "Updated Title" };
-            _mockDataWriter.Setup(m => m.UpdateNews(carnews)).Verifiable();
+            var carNewsDTO = new CarNewsDTO
+            {
+                Id = 1,
+                Title = "Updated Title"
+            };
 
-            var result = _newsManager.UpdateNews(carnews, out string errorMessage);
+            _mockDataWriter.Setup(m => m.UpdateNewsAsync(It.IsAny<News>())).Returns(Task.CompletedTask).Verifiable();
 
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
+            var result = await _newsManager.UpdateNewsAsync(carNewsDTO);
+
+            Assert.IsTrue(result.Success);
+            Assert.AreEqual(string.Empty, result.ErrorMessage);
         }
 
         [TestMethod]
         public void GetNewsById_WhenNewsExists_ReturnsNews()
         {
             var newsId = 1;
-            var carnews = new CarNews { Id = newsId };
-            _newsManager.news.Add(carnews);
+            var carNewsDTO = new CarNewsDTO { Id = newsId };
+            _newsManager.News.Add(carNewsDTO);
 
             var result = _newsManager.GetNewsById(newsId);
 
@@ -93,40 +122,43 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void LoadNews_WhenCalled_ReturnsTrue()
+        public async Task LoadNews_WhenCalled_ReturnsTrue()
         {
-            var carNewsDTOs = new List<CarNewsDTO>
+            // Use News (Data.Models) for mock return type
+            var carNewsEntities = new List<News>
             {
-                new CarNewsDTO
+                new News
                 {
-                    Id = 1,
+                    NewsId = 1,
                     Title = "Test News",
                     Author = "Author",
-                    ReleaseDate = DateTime.Now,
+                    DatePosted = DateTime.Now,
                     NewsDescription = "Description",
                     ImageURL = "image.jpg",
                     ShortIntro = "Intro",
-                    comments = new List<CommentDTO>()
+                    Comments = new List<Comment>()
                 }
             };
-            _mockDataAccess.Setup(m => m.GetCarNews()).Returns(carNewsDTOs);
 
-            var result = _newsManager.LoadNews(out string errorMessage);
+            // Mocking GetCarNewsAsync to return News (entity type)
+            _mockDataAccess.Setup(m => m.GetCarNewsAsync()).ReturnsAsync(carNewsEntities);
 
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, errorMessage);
-            Assert.AreEqual(carNewsDTOs.Count, _newsManager.news.Count);
+            var result = await _newsManager.LoadNewsAsync();
+
+            Assert.IsTrue(result.Success);
+            Assert.AreEqual(string.Empty, result.ErrorMessage);
+            Assert.AreEqual(carNewsEntities.Count, _newsManager.News.Count);
         }
 
         [TestMethod]
-        public void LoadNews_WhenExceptionThrown_ReturnsFalse()
+        public async Task LoadNews_WhenExceptionThrown_ReturnsFalse()
         {
-            _mockDataAccess.Setup(m => m.GetCarNews()).Throws(new Exception("Database error"));
+            _mockDataAccess.Setup(m => m.GetCarNewsAsync()).ThrowsAsync(new Exception("Database error"));
 
-            var result = _newsManager.LoadNews(out string errorMessage);
+            var result = await _newsManager.LoadNewsAsync();
 
-            Assert.IsFalse(result);
-            Assert.AreEqual("Database error", errorMessage);
+            Assert.IsFalse(result.Success);
+            Assert.AreEqual("Database error", result.ErrorMessage);
         }
     }
 }

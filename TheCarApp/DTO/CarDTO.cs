@@ -25,8 +25,8 @@ namespace DTO
         public decimal PricePerDay { get; set; }
         public List<PictureDTO> Pictures { get; set; }
         public List<ExtraDTO> CarExtras { get; set; }
-        public string CarStatus { get; set; }
-        public int Views { get; set; }
+        public string Status { get; set; }
+        public int ViewCount { get; set; }
 
     }
 }

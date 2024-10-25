@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Database\DatabaseAccess.csproj" />
-    <ProjectReference Include="..\EntityLayout\Entity Layer.csproj" />
     <ProjectReference Include="..\ManagerLayer\ManagerLayer.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,4 @@
-﻿namespace DesktopApp
+﻿namespace WinDesktopApp.Forms
 {
     partial class AddNews
     {

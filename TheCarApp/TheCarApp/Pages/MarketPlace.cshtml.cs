@@ -1,5 +1,5 @@
-using Entity_Layer.Enums;
-using EntityLayout;
+using DTO.Enums;
+using DTO;
 using Manager_Layer;
 using ManagerLayer;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -14,7 +14,7 @@ namespace TheCarApp.Pages
     [Authorize]
     public class MarketPlaceModel : PageModel
     {
-        public List<Car> Cars;
+        public List<CarDTO> Cars;
         public ProjectManager projectManager;
         public List<string> ColorOptions { get; set; }
 
@@ -46,10 +46,10 @@ namespace TheCarApp.Pages
             switch (sort)
             {
                 case "views_asc":
-                    Cars = Cars.OrderBy(car => car.Views).ToList();
+                    Cars = Cars.OrderBy(car => car.ViewCount).ToList();
                     break;
                 case "views_desc":
-                    Cars = Cars.OrderByDescending(car => car.Views).ToList();
+                    Cars = Cars.OrderByDescending(car => car.ViewCount).ToList();
                     break;
                 case "price_asc":
                     Cars = Cars.OrderBy(car => car.PricePerDay).ToList();

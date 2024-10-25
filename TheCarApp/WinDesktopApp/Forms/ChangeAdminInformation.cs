@@ -1,25 +1,12 @@
-﻿using Entity_Layer;
-using InterfaceLayer;
-using Microsoft.VisualBasic.ApplicationServices;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
+﻿using InterfaceLayer;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using DTO;
 
 namespace WinDesktopApp.Forms
 {
     public partial class ChangeAdminInformation : Form
     {
-        Administrator Admin;
+        AdministratorDTO Admin;
         IPeopleManager Manager;
         public event EventHandler InfoChanged;
 
@@ -27,7 +14,7 @@ namespace WinDesktopApp.Forms
         private string initialUsername;
         private string initialPhoneNumber;
         private string initialPassword;
-        public ChangeAdminInformation(Administrator adm, IPeopleManager pm)
+        public ChangeAdminInformation(AdministratorDTO adm, IPeopleManager pm)
         {
             InitializeComponent();
             Admin = adm;
@@ -66,22 +53,20 @@ namespace WinDesktopApp.Forms
         }
 
 
-        private void BTNUpdateAdminInfo_Click(object sender, EventArgs e)
+        private async void BTNUpdateAdminInfo_Click(object sender, EventArgs e)
         {
             if (TBAdminPassword.Text != "")
             {
                 if (CheckValidity(TBAdminEmail.Text, TBAdminPassword.Text, TBAdminUsername.Text, TBAdminPhoneNumber.Text))
                 {
                     Admin.Email = TBAdminEmail.Text;
-                    Admin.Password = TBAdminPassword.Text;
+                    Admin.PasswordHash = TBAdminPassword.Text;
                     Admin.Username = TBAdminUsername.Text;
                     Admin.PhoneNumber = TBAdminPhoneNumber.Text;
-                    //string hash;
-                    //string salt;
-                    var (hash, salt) = Manager.HashPassword(Admin.Password);
-                    Admin.Password = hash;
-                    Admin.PassSalt = salt;
-                    if (Manager.UpdatePerson(Admin, out string ErrorMessage))
+
+                    (bool result, string ErrorMessage) = await Manager.UpdatePersonAsync(Admin);
+
+                    if (result)
                     {
                         InfoChanged?.Invoke(this, EventArgs.Empty);
                         MessageBox.Show("You successfully update the admin's information!");
@@ -95,12 +80,15 @@ namespace WinDesktopApp.Forms
             }
             else
             {
-                if (CheckValidity(TBAdminEmail.Text, Admin.Password, TBAdminUsername.Text, TBAdminPhoneNumber.Text))
+                if (CheckValidity(TBAdminEmail.Text, Admin.PasswordHash, TBAdminUsername.Text, TBAdminPhoneNumber.Text))
                 {
                     Admin.Email = TBAdminEmail.Text;
                     Admin.Username = TBAdminUsername.Text;
                     Admin.PhoneNumber = TBAdminPhoneNumber.Text;
-                    if (Manager.UpdatePerson(Admin, out string ErrorMessage))
+
+                    (bool result, string ErrorMessage) = await Manager.UpdatePersonAsync(Admin);
+
+                    if (result)
                     {
                         InfoChanged?.Invoke(this, EventArgs.Empty);
                         MessageBox.Show("You successfully update the admin's information!");

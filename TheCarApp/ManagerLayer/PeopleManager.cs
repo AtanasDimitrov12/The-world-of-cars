@@ -1,117 +1,107 @@
-﻿using Database;
-using DatabaseAccess;
-using DTO;
-using Entity_Layer;
-using Entity_Layer.Enums;
-using EntityLayout;
-using InterfaceLayer;
-using Manager_Layer;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using AutoMapper;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using DTO;
+using InterfaceLayer;
 
 namespace ManagerLayer
 {
     public class PeopleManager : IPeopleManager
     {
-        public List<Person> people { get; set; }
-        private IUserRepository _userRepository;
-        private IAdministratorRepository _administratorRepository;
+        private readonly IUserManager _userManager;
+        private readonly IAdministratorManager _adminManager;
+        private readonly IMapper _mapper;
         const int keySize = 64;
         const int iterations = 350000;
         HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
 
-        public PeopleManager(IUserRepository userRepository, IAdministratorRepository administratorRepository)
+        public PeopleManager(IUserManager userManager, IAdministratorManager adminManager, IMapper mapper)
         {
-            people = new List<Person>();
-            _userRepository = userRepository;
-            _administratorRepository = administratorRepository;
+            _userManager = userManager;
+            _adminManager = adminManager;
+            _mapper = mapper;
         }
 
-        public bool AddPerson(Person person, out string errorMessage)
+        // Method to add both User and Administrator
+        public async Task<(bool Success, string ErrorMessage)> AddPersonAsync(object person)
         {
-            errorMessage = string.Empty;
-            switch (person)
+            if (person is UserDTO userDto)
             {
-                case User user:
-                    var (hash, salt) = HashPassword(user.Password);
-                    user.Password = hash;
-                    user.PassSalt = salt;
-                    return _userRepository.AddUser(user, out errorMessage);
-
-                case Administrator admin:
-                    (hash, salt) = HashPassword(admin.Password);
-                    admin.Password = hash;
-                    admin.PassSalt = salt;
-                    return _administratorRepository.AddAdmin(admin, out errorMessage);
-
-                default:
-                    errorMessage = "Unsupported person type";
-                    return false;
+                var (hash, salt) = HashPassword(userDto.PasswordHash);
+                userDto.PasswordHash = hash;
+                userDto.Salt = salt;
+                return await _userManager.AddUserAsync(userDto);
             }
+            else if (person is AdministratorDTO adminDto)
+            {
+                var (hash, salt) = HashPassword(adminDto.PasswordHash);
+                adminDto.PasswordHash = hash;
+                adminDto.Salt = salt;
+                return await _adminManager.AddAdminAsync(adminDto);
+            }
+            return (false, "Invalid person type.");
         }
 
-        public bool RemovePerson(Person person, out string errorMessage)
+        // Method to remove both User and Administrator
+        public async Task<(bool Success, string ErrorMessage)> RemovePersonAsync(object person)
         {
-            errorMessage = string.Empty;
-            switch (person)
+            if (person is UserDTO userDto)
             {
-                case User user:
-                    return _userRepository.RemoveUser(user, out errorMessage);
-                case Administrator admin:
-                    return _administratorRepository.RemoveAdmin(admin, out errorMessage);
-                default:
-                    errorMessage = "Unsupported person type";
-                    return false;
+                return await _userManager.RemoveUserAsync(userDto);
             }
+            else if (person is AdministratorDTO adminDto)
+            {
+                return await _adminManager.RemoveAdminAsync(adminDto);
+            }
+            return (false, "Invalid person type.");
         }
 
-        public bool UpdatePerson(Person person, out string errorMessage)
+        // Method to update both User and Administrator
+        public async Task<(bool Success, string ErrorMessage)> UpdatePersonAsync(object person)
         {
-            errorMessage = string.Empty;
-            switch (person)
+            if (person is UserDTO userDto)
             {
-                case User user:
-                    var (hash, salt) = HashPassword(user.Password);
-                    user.Password = hash;
-                    user.PassSalt = salt;
-                    return _userRepository.UpdateUser(user, out errorMessage);
-                case Administrator admin:
-                    (hash, salt) = HashPassword(admin.Password);
-                    admin.Password = hash;
-                    admin.PassSalt = salt;
-                    return _administratorRepository.UpdateAdmin(admin, out errorMessage);
-                default:
-                    errorMessage = "Unsupported person type";
-                    return false;
+                var (hash, salt) = HashPassword(userDto.PasswordHash);
+                userDto.PasswordHash = hash;
+                userDto.Salt = salt;
+                return await _userManager.UpdateUserAsync(userDto);
             }
+            else if (person is AdministratorDTO adminDto)
+            {
+                var (hash, salt) = HashPassword(adminDto.PasswordHash);
+                adminDto.PasswordHash = hash;
+                adminDto.Salt = salt;
+                return await _adminManager.UpdateAdminAsync(adminDto);
+            }
+            return (false, "Invalid person type.");
         }
 
-        public bool AuthenticateUser(string userEmail, string userPass, out string errorMessage)
+        // Authentication for users (similar logic can be applied for administrators)
+        public bool AuthenticateUser(string email, string password, out string errorMessage)
         {
             errorMessage = string.Empty;
-            foreach (User user in _userRepository.GetAllUsers())
+
+            var user = _userManager.GetAllUsers().FirstOrDefault(u => u.Email == email);
+            if (user != null && VerifyPassword(password, user.PasswordHash, user.Salt))
             {
-                if (user.Email == userEmail)
-                {
-                    if (VerifyPassword(userPass, user.Password, user.PassSalt))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        errorMessage = "Invalid password.";
-                        return false;
-                    }
-                }
+                return true;
             }
-            errorMessage = "User not found.";
+
+            var admin = _adminManager.GetAllAdministrators().FirstOrDefault(a => a.Email == email);
+            if (admin != null && VerifyPassword(password, admin.PasswordHash, admin.Salt))
+            {
+                return true;
+            }
+
+            errorMessage = "Invalid credentials.";
             return false;
         }
 
+        // Shared password hashing logic
         public (string Hash, string Salt) HashPassword(string password)
         {
             byte[] salt = RandomNumberGenerator.GetBytes(16);
@@ -121,31 +111,36 @@ namespace ManagerLayer
             return (Convert.ToBase64String(hash), Convert.ToBase64String(salt));
         }
 
-        public bool VerifyPassword(string enteredPassword, string storedPass, string base64Salt)
+        // Shared password verification logic
+        private bool VerifyPassword(string enteredPassword, string storedPasswordHash, string storedSalt)
         {
-            byte[] salt = Convert.FromBase64String(base64Salt);
+            byte[] salt = Convert.FromBase64String(storedSalt);
             var pbkdf2 = new Rfc2898DeriveBytes(enteredPassword, salt, iterations, hashAlgorithm);
             byte[] hash = pbkdf2.GetBytes(keySize);
 
-            return Convert.ToBase64String(hash) == storedPass;
+            return Convert.ToBase64String(hash) == storedPasswordHash;
         }
 
-        public User GetUser(string email)
+        // Fetching all users
+        public IEnumerable<UserDTO> GetAllUsers()
         {
-            return _userRepository.GetAllUsers().FirstOrDefault(user => user.Email == email);
+            return _userManager.GetAllUsers();
         }
 
-        public IEnumerable<Person> GetAllPeople()
+        // Fetching all administrators
+        public IEnumerable<AdministratorDTO> GetAllAdministrators()
         {
-            var users = _userRepository.GetAllUsers();
-            var admins = _administratorRepository.GetAllAdministrators();
-
-            return users.Cast<Person>().Concat(admins);
+            return _adminManager.GetAllAdministrators();
         }
 
-        public List<User> GetAllUsers()
+        // Method to get all people (both Users and Administrators)
+        public IEnumerable<object> GetAllPeople()
         {
-            return _userRepository.GetAllUsers();
+            var users = _userManager.GetAllUsers();
+            var admins = _adminManager.GetAllAdministrators();
+
+            return users.Cast<object>().Concat(admins);
         }
+
     }
 }

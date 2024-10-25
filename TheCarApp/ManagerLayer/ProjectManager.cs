@@ -1,15 +1,12 @@
-﻿using Database;
+﻿using AutoMapper;
+using Data;
 using DatabaseAccess;
-using Entity_Layer;
 using InterfaceLayer;
 using Manager_Layer;
 using ManagerLayer.Strategy;
-using Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Mapping;
+using Microsoft.EntityFrameworkCore;
+using DataConfiguration = Data.Configuration;  // Aliasing the Configuration class from Data namespace
 
 namespace ManagerLayer
 {
@@ -22,8 +19,8 @@ namespace ManagerLayer
         public IPeopleManager PeopleManager { get; set; }
         public IExtraManager ExtraManager { get; set; }
         public IPictureManager PictureManager { get; set; }
-        public IUserRepository UserRepository { get; set; }
-        public IAdministratorRepository AdministratorRepository { get; set; }
+        public IUserManager UserManager { get; set; }
+        public IAdministratorManager AdministratorRepository { get; set; }
         public IDataAccess DataAccess { get; set; }
         public IPeopleDataWriter PeopleDataWriter { get; set; }
         public ICarDataWriter CarDataWriter { get; set; }
@@ -32,36 +29,44 @@ namespace ManagerLayer
         public ICarNewsDataRemover CarNewsDataRemover { get; set; }
         public IPeopleDataRemover PeopleDataRemover { get; set; }
         public IRentalStrategyFactory rentalStrategyFactory { get; set; }
+        public Mapping.Configuration mappingConfiguration { get; set; } // Mapping Configuration is used here
+        public CarAppContext context { get; set; }
+        public IMapper mapper { get; set; }
 
         public ProjectManager()
         {
-            DataAccess = new DataAccess();
-            PeopleDataWriter = new PeopleDataWriter();
-            CarDataWriter = new CarDataWriter();
-            CarNewsDataWriter = new CarNewsDataWriter();
-            CarDataRemover = new CarDataRemover();
-            CarNewsDataRemover = new CarNewsDataRemover();
-            PeopleDataRemover = new PeopleDataRemover();
+            mappingConfiguration = new Mapping.Configuration();  // Mapping Configuration object
+            mapper = mappingConfiguration.Config();
+            var optionsBuilder = new DbContextOptionsBuilder<CarAppContext>();
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-IL35000\SQLEXPRESS;Database=CarApp;Integrated Security=true;TrustServerCertificate=True");
+            context = new CarAppContext(optionsBuilder.Options);
+            DataAccess = new DataAccess(context);
+            PeopleDataWriter = new PeopleDataWriter(context);
+            CarDataWriter = new CarDataWriter(context);
+            CarNewsDataWriter = new CarNewsDataWriter(context);
+            CarDataRemover = new CarDataRemover(context);
+            CarNewsDataRemover = new CarNewsDataRemover(context);
+            PeopleDataRemover = new PeopleDataRemover(context);
             rentalStrategyFactory = new RentalStrategyFactory();
-            CarManager = new CarManager(DataAccess, CarDataWriter, CarDataRemover);
-            NewsManager = new NewsManager(DataAccess, CarNewsDataWriter, CarNewsDataRemover);
-            CommentsManager = new CommentsManager(DataAccess, CarNewsDataWriter, CarNewsDataRemover);
-            ExtraManager = new ExtraManager(DataAccess, CarDataWriter, CarDataRemover);
-            PictureManager = new PictureManager(DataAccess, CarDataWriter, CarDataRemover);
-            UserRepository = new UserRepository(DataAccess, PeopleDataWriter, PeopleDataRemover);
-            AdministratorRepository = new AdministratorRepository(DataAccess, PeopleDataWriter, PeopleDataRemover);
-            PeopleManager = new PeopleManager(UserRepository, AdministratorRepository);
-            RentManager = new RentManager(DataAccess, PeopleDataWriter, PeopleDataRemover, PeopleManager, CarManager, rentalStrategyFactory);
+            CarManager = new CarManager(mapper, DataAccess, CarDataWriter, CarDataRemover);
+            NewsManager = new NewsManager(DataAccess, CarNewsDataWriter, CarNewsDataRemover, mapper);
+            CommentsManager = new CommentsManager(CarNewsDataWriter, CarNewsDataRemover, mapper);
+            ExtraManager = new ExtraManager(DataAccess, CarDataWriter, CarDataRemover, mapper);
+            PictureManager = new PictureManager(DataAccess, CarDataWriter, CarDataRemover, mapper);
+            UserManager = new UserManager(DataAccess, PeopleDataWriter, PeopleDataRemover, mapper);
+            AdministratorRepository = new AdministratorManager(DataAccess, PeopleDataWriter, PeopleDataRemover, mapper);
+            PeopleManager = new PeopleManager(UserManager, AdministratorRepository, mapper);
+            RentManager = new RentManager(DataAccess, PeopleDataWriter, PeopleDataRemover, PeopleManager, CarManager, rentalStrategyFactory, mapper);
             LoadAllData();
         }
 
-        public void LoadAllData()
-        { 
-            CarManager.LoadCars(out string CarerrorMessage);
-            NewsManager.LoadNews(out string NewsErrorMessage);
-            UserRepository.LoadUsers(out string UserErrorMessage);
-            AdministratorRepository.LoadAdmins(out string AdminErrorMessage);
-            RentManager.LoadRentals(out string RentsErrorMessage);
+        public async void LoadAllData()
+        {
+            await CarManager.LoadCarsAsync();
+            await NewsManager.LoadNewsAsync();
+            await UserManager.LoadUsersAsync();
+            await AdministratorRepository.LoadAdminsAsync();
+            await RentManager.LoadRentalsAsync();
         }
     }
 }

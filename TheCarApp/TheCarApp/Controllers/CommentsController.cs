@@ -25,17 +25,17 @@ namespace TheCarApp.Controllers
                 return NotFound();
             }
 
-            var sortedComments = news.Comments.OrderByDescending(c => c.Date);
+            var sortedComments = news.Comments.OrderByDescending(c => c.CommentDate);
 
             var comments = sortedComments
                                .Skip((page - 1) * pageSize)
                                .Take(pageSize)
                                .Select(comment => new
                                {
-                                   comment.Message,
-                                   comment.Date,
-                                   userName = _projectManager.UserRepository.GetUserNameById(comment.UserId),
-                                   profilePic = _projectManager.UserRepository.GetProfilePicPathById(comment.UserId)
+                                   comment.Content,
+                                   comment.CommentDate,
+                                   userName = _projectManager.UserManager.GetUserNameById(comment.UserId),
+                                   profilePic = _projectManager.UserManager.GetProfilePicPathById(comment.UserId)
                                });
 
             

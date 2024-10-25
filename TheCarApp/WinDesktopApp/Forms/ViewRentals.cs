@@ -1,6 +1,4 @@
-﻿using Entity_Layer.Enums;
-using EntityLayout;
-using InterfaceLayer;
+﻿using InterfaceLayer;
 using Manager_Layer;
 using ManagerLayer;
 using System;
@@ -12,24 +10,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DTO;
+using DTO.Enums;
+using Azure;
+
 
 namespace WinDesktopApp.Forms
 {
     public partial class ViewRentals : Form
     {
-        RentACar rent;
+        RentACarDTO rent;
         IRentManager manager;
+        ICarManager carManager;
+        IUserManager userManager;
         bool IsView;
         private bool isInitializing = true; 
 
         public event EventHandler RentChanged;
 
-        public ViewRentals(RentACar rent, IRentManager rm, bool View)
+        public ViewRentals(RentACarDTO rent, IRentManager rm, bool View, ICarManager cm, IUserManager um)
         {
             InitializeComponent();
             this.rent = rent;
             manager = rm;
             IsView = View;
+            carManager = cm;
+            userManager = um;
             DisplayRentInfo(rent, View);
             CheckForView();
             isInitializing = false; 
@@ -45,19 +51,19 @@ namespace WinDesktopApp.Forms
             }
         }
 
-        public void DisplayRentInfo(RentACar rent, bool View)
+        public void DisplayRentInfo(RentACarDTO rent, bool View)
         {
-            TBUsername.Text = rent.user.Username;
-            TBCar.Text = $"{rent.car.Brand} {rent.car.Model}";
+            TBUsername.Text = userManager.GetUserNameById(rent.UserId);
+            TBCar.Text = $"{carManager.SearchForCar(rent.CarId).Brand} {carManager.SearchForCar(rent.CarId).Model}";
             DTPStartDate.Value = rent.StartDate;
-            DTPEndDate.Value = rent.ReturnDate;
+            DTPEndDate.Value = rent.EndDate;
             TBTotalPrice.Text = rent.TotalPrice.ToString();
             TBCar.Enabled = false;
             TBUsername.Enabled = false;
             TBTotalPrice.Enabled = false;
             if (IsView)
             {
-                TBRentStatus.Text = rent.RentStatus.ToString();
+                TBRentStatus.Text = rent.Status.ToString();
                 CBRentStatus.Visible = false;
                 CBRentStatus.Enabled = false;
                 DTPStartDate.Enabled = false;
@@ -76,7 +82,7 @@ namespace WinDesktopApp.Forms
             }
         }
 
-        private void BTNUpdate_Click(object sender, EventArgs e)
+        private async void BTNUpdate_Click(object sender, EventArgs e)
         {
             if (CBRentStatus.SelectedItem != null)
             {
@@ -84,9 +90,11 @@ namespace WinDesktopApp.Forms
                 if (Enum.TryParse<RentStatus>(CBRentStatus.Text, true, out newStatus))
                 {
                     rent.StartDate = DTPStartDate.Value;
-                    rent.ReturnDate = DTPEndDate.Value;
-                    rent.TotalPrice = manager.CalculatePrice(rent.user, rent.car.PricePerDay, DTPStartDate.Value, DTPEndDate.Value);
-                    if (manager.UpdateRentStatus(rent, newStatus, out string ErrorMessage))
+                    rent.EndDate = DTPEndDate.Value;
+                    rent.TotalPrice = manager.CalculatePrice(userManager.FindUserById(rent.UserId), carManager.SearchForCar(rent.CarId).PricePerDay, DTPStartDate.Value, DTPEndDate.Value);
+
+                    (bool Response, string ErrorMessage) = await manager.UpdateRentStatusAsync(rent, newStatus);
+                    if (Response)
                     {
                         RentChanged?.Invoke(this, EventArgs.Empty);
                         this.Close();
@@ -132,7 +140,7 @@ namespace WinDesktopApp.Forms
             }
             try
             {
-                TBTotalPrice.Text = manager.CalculatePrice(rent.user, rent.car.PricePerDay, DTPStartDate.Value, DTPEndDate.Value).ToString();
+                TBTotalPrice.Text = manager.CalculatePrice(userManager.FindUserById(rent.UserId), carManager.SearchForCar(rent.CarId).PricePerDay, DTPStartDate.Value, DTPEndDate.Value).ToString();
             }
             catch (Exception ex)
             {

@@ -1,5 +1,4 @@
-﻿using Entity_Layer;
-using Manager_Layer;
+﻿using Manager_Layer;
 using ManagerLayer;
 using System;
 using System.Collections.Generic;
@@ -12,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using InterfaceLayer;
 using System.Text.RegularExpressions;
+using DTO;
 
 namespace WinDesktopApp.Forms
 {
@@ -25,7 +25,7 @@ namespace WinDesktopApp.Forms
             InitializeComponent();
             manager = em;
             InitializeGridView();
-            FillDataGridView(manager.extras);
+            FillDataGridView(manager.Extras);
             this.DGVExtras.CellClick += DGVExtras_CellContentClick;
             this.DGVExtras.CellPainting += DGVExtras_CellPainting;
         }
@@ -78,22 +78,24 @@ namespace WinDesktopApp.Forms
         }
 
 
-        private void BTNAddExtra_Click(object sender, EventArgs e)
+        private async void BTNAddExtra_Click(object sender, EventArgs e)
         {
             if (RTBExtraName.Text != "")
             {
-                Extra extra = new Extra(RTBExtraName.Text);
-                if (manager.AddExtra(extra, out string addExtraError))
+                ExtraDTO extra = new ExtraDTO();
+                extra.ExtraName = RTBExtraName.Text;
+                (bool Response, string errorMessage) = await manager.AddExtraAsync(extra);
+                if (Response)
                 {
-                    extra.Id = manager.GetExtraId(extra.ExtraName);
+                    extra.Id = await manager.GetExtraIdAsync(extra.ExtraName);
 
                     ExtraAdded?.Invoke(this, EventArgs.Empty);
-                    FillDataGridView(manager.extras);
+                    FillDataGridView(manager.Extras);
                     RTBExtraName.Clear();
                 }
                 else
                 {
-                    MessageBox.Show($"Failed to add extra: {addExtraError}");
+                    MessageBox.Show($"Failed to add extra: {errorMessage}");
                 }
             }
             else
@@ -135,7 +137,7 @@ namespace WinDesktopApp.Forms
             DGVExtras.RowHeadersDefaultCellStyle.Font = gridFont;
         }
 
-        private void FillDataGridView(List<Extra> extras)
+        private void FillDataGridView(List<ExtraDTO> extras)
         {
             this.DGVExtras.Rows.Clear();
             foreach (var extra in extras)
@@ -144,7 +146,7 @@ namespace WinDesktopApp.Forms
             }
         }
 
-        private void DGVExtras_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void DGVExtras_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == DGVExtras.Columns["Delete"].Index && e.RowIndex >= 0)
             {
@@ -152,18 +154,19 @@ namespace WinDesktopApp.Forms
                 {
                     var extraId = Convert.ToInt32(DGVExtras.Rows[e.RowIndex].Cells["ID"].Value);
 
-                    foreach (var selectedExtras in manager.extras)
+                    foreach (var selectedExtras in manager.Extras)
                     {
                         if (selectedExtras.Id == extraId)
                         {
-                            if (manager.RemoveExtra(selectedExtras, out string removeExtraError))
+                            (bool Response, string errorMessage) = await manager.RemoveExtraAsync(selectedExtras);
+                            if (Response)
                             {
-                                FillDataGridView(manager.extras);
+                                FillDataGridView(manager.Extras);
                                 break;
                             }
                             else
                             {
-                                MessageBox.Show($"Failed to remove extra: {removeExtraError}");
+                                MessageBox.Show($"Failed to remove extra: {errorMessage}");
                             }
                         }
                     }
@@ -174,7 +177,7 @@ namespace WinDesktopApp.Forms
         private void BTNSearch_Click(object sender, EventArgs e)
         {
             string extraName = TBSearch.Text;
-            var filteredExtras = manager.extras
+            var filteredExtras = manager.Extras
                 .Where(extra => Regex.IsMatch(extra.ExtraName, Regex.Escape(extraName), RegexOptions.IgnoreCase))
                 .ToList();
             FillDataGridView(filteredExtras);

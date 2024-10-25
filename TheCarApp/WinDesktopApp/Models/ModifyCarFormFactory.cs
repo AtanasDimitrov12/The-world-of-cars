@@ -1,5 +1,6 @@
-﻿using EntityLayout;
+﻿using DTO;
 using InterfaceLayer;
+using Manager_Layer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace WinDesktopApp.Models
 {
     public class ModifyCarFormFactory : ICarFormFactory
     {
-        public ICarForm CreateCarForm(Car car, ICarManager cm, IExtraManager em, IPictureManager picManager)
+        public ICarForm CreateCarForm(CarDTO car, ICarManager cm, IExtraManager em, IPictureManager picManager)
         {
             return new ModifyCarForm(car, cm, em, picManager);
         }

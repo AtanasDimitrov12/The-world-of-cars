@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿
 using ManagerLayer;
 using WinDesktopApp.UserControls;
 
-namespace DesktopApp
+namespace WinDesktopApp.Forms
 {
     public partial class ControlPage : Form
     {
@@ -31,7 +23,7 @@ namespace DesktopApp
             carNewsUC = new CarNewsUC(projectManager.PeopleManager, projectManager.NewsManager);
             carControlUC = new CarControlUC(projectManager.RentManager, projectManager.CarManager, projectManager.ExtraManager, projectManager.PictureManager);
             commentsControlUC = new CommentsControlUC(projectManager.NewsManager, projectManager.CommentsManager, projectManager.PeopleManager);
-            rentalsUC = new RentalsUC(projectManager.PeopleManager, projectManager.RentManager);
+            rentalsUC = new RentalsUC(projectManager.PeopleManager, projectManager.RentManager, projectManager.CarManager, projectManager.UserManager);
             userControls = new List<UserControl> { adminInfoUC, carNewsUC, carControlUC, commentsControlUC, rentalsUC };
             this.Controls.Add(panel2);
             AddUC();
@@ -41,6 +33,8 @@ namespace DesktopApp
             carControlUC.rentalsUC = rentalsUC;
             carNewsUC.admInfo = adminInfoUC;
         }
+
+        
 
 
         public void AddUC()

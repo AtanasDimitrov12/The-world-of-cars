@@ -1,5 +1,4 @@
-using Entity_Layer;
-using EntityLayout;
+using DTO;
 using ManagerLayer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components.Forms;
@@ -12,15 +11,15 @@ namespace TheCarApp.Pages
     public class NewsDetailsModel : PageModel
     {
         public ProjectManager projectManager { get; set; }
-        public CarNews news { get; set; }
+        public CarNewsDTO news { get; set; }
 
         [BindProperty]
-        public Comment NewComment { get; set; }
+        public CommentDTO NewComment { get; set; }
 
         public NewsDetailsModel(ProjectManager pm)
         {
             projectManager = pm; 
-            NewComment = new Comment();
+            NewComment = new CommentDTO();
         }
 
         public void OnGet(int NewsId)
@@ -50,13 +49,13 @@ namespace TheCarApp.Pages
 
             
             DateTime date = DateTime.Now;
-            var user = projectManager.PeopleManager.GetUser(User.Identity.Name);
+            var user = projectManager.UserManager.FindUserByEmail(User.Identity.Name);
 
-            if (user != null && NewComment.Message != null)
+            if (user != null && NewComment.Content != null)
             {
                 NewComment.UserId = user.Id;
-                NewComment.Date = date;
-                projectManager.CommentsManager.AddComment(news, NewComment, out string errorMessage); // Display error message
+                NewComment.CommentDate = date;
+                await projectManager.CommentsManager.AddCommentAsync(news, NewComment); // Display error message
             }
 
             

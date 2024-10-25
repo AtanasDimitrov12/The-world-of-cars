@@ -1,4 +1,4 @@
-using EntityLayout;
+using DTO;
 using InterfaceLayer;
 using Manager_Layer;
 using ManagerLayer;
@@ -17,11 +17,11 @@ namespace TheCarApp.Pages
             _carManager = _projectManager.CarManager;
         }
 
-        public Car Car { get; set; }
+        public CarDTO Car { get; set; }
         public DateTime RentalStartDate { get; set; }
         public DateTime RentalEndDate { get; set; }
         public decimal TotalPrice { get; set; }
-        public RentACar rent { get; set; }
+        public RentACarDTO rent { get; set; }
 
         public void OnGet(int carId, DateTime Start, DateTime End, decimal Price)
         {
