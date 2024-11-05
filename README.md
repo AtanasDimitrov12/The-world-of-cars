@@ -2,6 +2,10 @@
 
 The World of Cars is a comprehensive platform that integrates both vehicle rental services and automotive news. This project is aimed at car enthusiasts, offering a unified experience for browsing detailed car profiles, staying up-to-date with the latest industry news, and engaging with a vibrant community through forums and car advertisements.
 
+##Link to Hosted Website:
+
+https://i530410.luna.fhict.nl/
+
 ## Features
 
 ### Web Application
